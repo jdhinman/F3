@@ -157,10 +157,55 @@ deviation appears in any forum post found so far. Read directly from the inflate
 rejects the chunk; one that assumes 8-byte doubles mis-reads every numeric constant and desynchronises
 from there. Any decompiler must read numbers as **4-byte floats**.
 
-**[UNKNOWN]** what `format = 2` signifies structurally. The bytes immediately after the top-level
-proto's source string did not parse as a stock Lua 5.1 proto header, so format 2 likely inserts or
-reorders fields. **Determining the proto layout is the next concrete task**, and `ChunkSpy_KVM.lua`
-already implements it - read its `DecompileFunction` rather than guessing.
+### What `format = 2` changes  **[VERIFIED]** - solved 2026-08-05
+
+**Format 2 inserts one extra string, `funcname`, immediately after `source`.** That is the entire
+difference. From `ChunkSpy_KVM.lua`'s proto reader:
+
+```lua
+func.source   = LoadString()
+func.funcname = LoadString()    -- not present in stock Lua 5.1
+func.linedefined = LoadInt()
+```
+
+**Proto layout, KoreVM format 2:**
+
+```
+string   source
+string   funcname            <-- the only structural addition
+int      linedefined
+int      lastlinedefined
+byte     nups
+byte     numparams
+byte     is_vararg
+byte     maxstacksize
+         code, constants, protos, lineinfo, locvars, upvalues   (Lua 5.1 order, unchanged)
+```
+
+Verified by re-parsing the first chunk of `gamescripts.bnk.dat` with this layout. Every field lands
+on a sane value, which a wrong layout does not do:
+
+| Field | Value |
+|---|---|
+| `source` | `d:\Pulse\work\f3-daily-build-PC\Deploy\Fable2_win32\data\scripts\AI\AIBase.lua` |
+| **`funcname`** | **`(main chunk)`** |
+| `linedefined` / `lastlinedefined` | 0 / 0 |
+| `nups`, `numparams` | 0, 0 |
+| `is_vararg` | 2 (`VARARG_ISVARARG`) |
+| `maxstacksize` | 20 |
+| `sizecode` | 467 instructions |
+
+`(main chunk)` is Lua's own name for a top-level function, and `linedefined = 0` with
+`is_vararg = 2` is exactly right for one. The layout is correct.
+
+This was the misparse behind the earlier garbage read: what looked like `linedefined = 13` was the
+**length prefix of the `funcname` string**, and everything after it was shifted.
+
+> [!success] The specification is now complete
+> Four deviations, all verified: the 7-bit opcode field with A/C/B/OP ordering, the 87-opcode
+> LuaPlus-derived instruction set, `format = 2` adding `funcname`, and 4-byte floats for
+> `lua_Number`. Nothing about the container or the encoding remains unknown. What is left is
+> **writing the decompiler back end**, which is ordinary work.
 
 ## The debug-data advantage, now confirmed  **[VERIFIED]** 2026-08-05
 
