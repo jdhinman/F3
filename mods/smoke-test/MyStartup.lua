@@ -11,14 +11,23 @@
 -- Every call here was read out of the game's own decompiled scripts, so the names are
 -- the engine's, not guesses.
 
-local LOG = "f3mod-smoke.txt"
+-- The game's working directory is unknown, and a diagnostic that might have written its
+-- output somewhere we did not look is worthless. Write to every candidate; whichever
+-- succeeds also tells us what the working directory is.
+-- ABS_PATH is the one certain answer. Edit it to your install if it differs.
+local ABS_PATH = "C:\\Games\\Fable 3\\f3mod-smoke.txt"
+local LOGS = { "f3mod-smoke.txt", "data\\f3mod-smoke.txt", "..\\f3mod-smoke.txt", ABS_PATH }
 
 local function log(message)
     -- io is available: gameface\qbtext.lua calls io.open in the shipped scripts.
-    local f = io.open(LOG, "a")
-    if f then
-        f:write(message, "\n")
-        f:close()
+    if io and io.open then
+        for i = 1, #LOGS do
+            local f = io.open(LOGS[i], "a")
+            if f then
+                f:write(message, "\n")
+                f:close()
+            end
+        end
     end
     -- cprint is the game's own console convention, 1690 uses across the corpus.
     if cprint then cprint("[f3mod] " .. message) end
