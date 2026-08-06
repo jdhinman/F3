@@ -44,6 +44,87 @@ So the retail build ships a **declared, empty, sanctioned slot for a user script
 `data\scripts\startup\MyStartup.lua` into place should be enough, with no edit to
 `dir.manifest` and none of the `DEMO001` quest-code collision the community injector warns about.
 
+### Why loose startup files were never going to be enough  **[VERIFIED]** 2026-08-06
+
+The community injector is mirrored (`reference/fable3mod/files/89-ScriptInjector.zip` and
+`167-Fable3_ScriptInjector.zip`). Unpacking it settles the question, and it is **not** a loose-file
+method:
+
+```
+DLC/10_ScriptInjector/Content/ScriptInjector.bnk       <- a DLC package
+source/scripts/quests/DEMO001_ScriptInjector.lua
+source/scripts/quests/questsetupscript.lua             <- an OVERRIDE of a shipped script
+source/scripts/quests/scriptactivation_additional.lua
+```
+
+Their `questsetupscript.lua` is a copy of the shipped one with **one line appended**:
+
+```lua
+RunScript("Quests/scriptactivation_additional.lua")
+```
+
+which registers a quest that then does the actual work:
+
+```lua
+function DEMO001_ScriptInjector:State_START_Main()
+    while true do
+        coroutine.yield()
+        if mod_last_run == nil or mod_last_run + 60 < Timing.GetWorldFrame() then
+            RunScript("scripts\MyMod\MyScript01.lua")
+            mod_last_run = Timing.GetWorldFrame()
+        end
+        ...
+```
+
+**The override mechanism is DLC bank mount order, not loose files.** `package_info.xml` sets
+`mountOrder 9150`, above the base game, so the DLC's `questsetupscript.lua` wins. Loose files enter
+only at the *end*, once a script they control is already running and can `RunScript` them by
+explicit path. That is the chicken-and-egg the DLC exists to solve, and it explains why a loose
+`MyStartup.lua` alone did nothing.
+
+Verified with our own tools rather than trusted: extracting `ScriptInjector.bnk` with
+`tools/bnk-extract.ps1` gives 4 entries, 0 failures, **all four plaintext**, and the in-bank quest
+script is byte-identical to the published source. No binaries. (Their bank also uses
+`compressedFlag=False`, an uncompressed index - a case none of the game's own banks use, and one
+our extractor handled without changes.)
+
+> [!warning] Their injector does not match this install
+> Diffing their `questsetupscript.lua` against the retail one - which needs a decompiler, so nobody
+> could do it before - it is a **superset**: nothing retail loads is lost, but it adds six
+> `RunScript` calls, and **none of those six files exist in this install**, in the gamescripts banks
+> or in the DLC banks:
+> `DLC1_Unlocks`, `DLC2_Unlocks`, `DLC_DogSkin_Unlocks`, `ChapterProgress_DLC_EP1`,
+> `QOTA_AssassinateManager2`, `QOTS_ShoppingListManager`.
+> Their copy came from a different build. Installing it unchanged asks the game to load six missing
+> scripts.
+
+### Lionhead's own patch hook, already installed  **[VERIFIED]** 2026-08-06
+
+`DLC\99_dlc2_fixes\Content\dlc2_fixes.bnk` contains three files, one of which is
+`scripts/miscellaneous/saveload/postscriptsloaded.lua` - an **override of a base-game script**
+(the base copy is 113 KB, the DLC's is 120 KB).
+
+Nothing in Lua calls it. The engine loads `Miscellaneous/SaveLoad/PostScriptsLoaded.lua` by name
+after scripts are loaded, and its content is a `WatchDog` system:
+
+```lua
+WatchDog = {}
+function WatchDog.AddFunctionReplacementWatchDog(f) ... end
+function ApplyWatchDogsWithVersionGreaterThan(v)
+    GeneralScriptManager.AddScript(WatchDog.ChestyChessLevelLoad)
+    GeneralScriptManager.AddScript(WatchDog.SakerFightMercenaries)
+    ...
+```
+
+**This is Lionhead's own post-release patching mechanism**: an engine-invoked hook that registers
+arbitrary scripts on the scheduler after load, used to ship dozens of bug fixes without repacking
+the base banks. It is the natural injection point - engine-invoked, already proven to be
+overridable by DLC, and not a quest, so unlike a quest file it would hot-reload.
+
+The catch: overriding it replaces the ~60 shipped WatchDog fixes, so an override has to carry them
+forward. The DLC's copy is compiled and stripped, so our decompile of it is lower fidelity than the
+rest of the corpus.
+
 ### Tested. First attempt produced nothing.  **[VERIFIED]** 2026-08-06
 
 `MyStartup.lua` was installed to `data\scripts\startup\` and the game launched. **No log file
