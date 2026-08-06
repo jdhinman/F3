@@ -157,25 +157,9 @@ string**, so the debug data survives extraction. → [[KoreVM]]
 This supersedes the earlier scanning approach, which recovered ~31 of 803 and produced a misleading
 "47 scripts" inventory.
 
-### Superseded: the payload is a different structure  **[UNKNOWN]**
-
-`.bnk.dat` does **not** use the block format - it begins with a zlib stream at offset 0 with no block
-header. Running the block reader over it yields less data than went in, which is impossible and
-proves the model is wrong for payloads.
-
-**[INFERRED]** each file in the bank is separately compressed, and the index carries per-file offset
-and size. That matches the index's shape: a repeating record of roughly 24 bytes containing a 4-byte
-value that looks like a **filename hash** (`9DBF3677`, `10AB0522`, `1CAB184F`...) followed by BE32
-fields that look like offset and two sizes. Record stride alternates 20 and 28 bytes, so entries are
-variable-length and the layout is not yet pinned.
-
 **Do not extract payloads by scanning for zlib headers.** It loses most of the data: a scan recovered
 only 31-47 distinct scripts from `gamescripts`, against **804 script files** listed in
-[[Preservation|`functions.txt`]]. Any inventory taken that way is a floor, not a census.
-
-**Next step:** finish the index record layout, then extract payload entries by offset. BlackDemon's
-BNK Utils already does this correctly and is [[Preservation|captured]], so its behaviour is the
-reference.
+[[Preservation|`functions.txt`]]. Any inventory taken that way is a floor, not a census. Use the index.
 
 > [!warning] Two engineering traps, both paid for
 > **Never slice the byte array to feed a stream.** `$bytes[$i..$end]` copies the whole remainder at

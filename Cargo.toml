@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+members = ["crates/korevm"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Jake Hinman <jd21hinman@gmail.com>"]
+license = "MIT"

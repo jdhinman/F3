@@ -108,6 +108,46 @@ sentinel left in place rather than a real terminator. Do not treat 82 as the opc
 `opmode(t,a,b,c,m) = ((t)<<7) | ((a)<<6) | ((b)<<4) | ((c)<<2) | (m)` - note the **`<<7`**, widened
 from stock Lua's `<<6` to match the 7-bit opcode.
 
+## The spec, confirmed against all 803 scripts  **[VERIFIED]** 2026-08-05
+
+`crates/korevm` implements everything above: header, format-2 proto layout, the 7-bit
+instruction decode and the opcode table, plus a `luac -l -l` style listing (`koredis`).
+Run over the whole extracted corpus:
+
+| Measure | Result |
+|---|---|
+| compiled chunks parsed | **797 / 797**, zero failures |
+| bytes left over after parsing | **0**, on every file |
+| functions (protos) recovered | 15,888 |
+| instructions decoded | 966,899 |
+| instructions outside opcodes 0-86 | **0** |
+
+The two numbers that matter as proof: **every chunk consumes exactly its own byte length**,
+which a wrong proto layout cannot do, and **not one instruction in 966,899 decodes above 86**,
+which a wrong opcode field width cannot do (a 6-bit or 8-bit field would scatter values across
+the undefined 87-127 range immediately). The `funcname` insertion and the 4-byte `lua_Number`
+are both load-bearing here; removing either desynchronises the very first proto.
+
+### Only 54 of the 87 opcodes are ever emitted  **[VERIFIED]**
+
+The histogram (`koredis --opcodes`) shows 33 opcodes that never occur anywhere in the corpus:
+
+- **the whole LuaPlus struct family** - `NEWSTRUCT`, `DATA`, `SETSLOT{,N,I,S,MT}`,
+  `CHECKTYPE{,S}`, `GETSLOT{,MT}`, `SELFSLOT{,MT}`. Fable's scripts never use LuaPlus structs.
+- **the bitwise ops** - `BOR`, `BXOR`, `BSHL`, `BSHR`.
+- **the unspecialised generic forms** - `CALL`, `CALL_C`, `CALL_M`, `TAILCALL{,_C,_M}`,
+  `GETTABLE`, `GETTABLE_N`, `SETTABLE{,_BK}`, `SETTABLE_N{,_BK}`. The compiler always picks a
+  specialised variant, so the generic ones are dead in practice.
+- `SETUPVAL_R1`, `MOD_BK`, `POW_BK`, and `OPCODE_MAX` (confirming it is a sentinel, never emitted).
+
+Six opcodes cover 80% of all instructions: `GETGLOBAL`, `GETFIELD_R1`, `LOADK`, `CALL_I`,
+`SETFIELD`, `JMP`.
+
+**This shrinks the back end substantially.** The lowering pass needs to handle 54 opcodes, and
+after collapsing the specialised forms it is close to stock Lua 5.1's core set. Everything the
+struct family would have demanded - typed slots with no Lua-source equivalent - simply does not
+arise.
+
 ## Why the existing decompiler falls short, and what a real one needs
 
 Keshire's [[Prior Art|Fable3LUADecompiler]] (MIT, forked into `third_party/`) was adapted from a Call
