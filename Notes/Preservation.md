@@ -61,6 +61,27 @@ with the expected layout:
 
 So the *packaging* is recoverable. The *content* is not, unless you already have it.
 
+## Our working baseline, and its provenance caveat
+
+**We work from a repack, not from retail media.** The physical discs exist but are deliberately not
+being used as a working copy - reasonable for a delisted title, where intact original media is worth
+more than a convenient one.
+
+This is recorded because it changes how much weight a byte-level finding can carry:
+
+- **[VERIFIED] on our install** is not automatically **[VERIFIED] on retail.** A repack is by
+  definition recompressed and re-packaged, so file sizes, container padding and archive layout may
+  differ from the pressed discs even when the game plays identically.
+- **Offsets and sizes are the risk.** [[Child System|Artofeel's `101BF01F` and `0019176C`]] are
+  version-specific already; a repack adds a second reason they might not line up.
+- **Script and data *contents* are far safer** than container layout. A repack that changes how files
+  are stored usually leaves the files themselves intact.
+
+**Practical rule for this vault: every measurement states that it came from the repack.** If a finding
+ever needs retail-grade certainty, the discs can be imaged once to ISO and the measurement repeated -
+a single read, no ongoing wear. Until then, treat container-level numbers as provisional and
+content-level findings as sound.
+
 ## The corpus is small, finite, and fragile
 
 [fable3mod.com](http://fable3mod.com/forums/) - FUDforum 3.0.9, **broken TLS certificate, plain HTTP
