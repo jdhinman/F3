@@ -483,12 +483,15 @@ impl<'a> Decompiler<'a> {
             exprs.push(Expr::Unknown(format!("R{a}")));
         }
         let mut vars = Vec::new();
+        // The loop variables are scoped to the body, so read their names at the body's
+        // first instruction. Reading them at the loop end finds them already out of scope.
+        let body_start = pc + 1;
         for i in 0..nvars.max(1) {
             let r = a + 3 + i;
             let name = self
-                .local_name(r, tfor + 1)
+                .local_name(r, body_start)
                 .unwrap_or_else(|| format!("v{r}"));
-            if let Some(li) = self.local_at(r, tfor + 1) {
+            if let Some(li) = self.local_at(r, body_start) {
                 self.declared[li] = true;
             }
             self.set_reg(r, Expr::Name(name.clone()));
@@ -1148,6 +1151,35 @@ impl<'a> Decompiler<'a> {
                 self.set_reg(r, Expr::MultiRest);
             }
             self.top = a + c - 1;
+        }
+        // `a, b = f()` where a and b are existing locals: the results land in scratch
+        // registers and are then copied out with MOVEs. Recognise the whole run, or the
+        // second result reads as a bare `nil` and the first lands on the wrong name.
+        if c >= 3 {
+            let nres = c - 1;
+            let mut targets: Vec<Option<usize>> = vec![None; nres];
+            let mut j = pc + 1;
+            while self.op(j) == "MOVE" {
+                let src = self.ins(j).b() as usize;
+                if src < a || src >= a + nres || targets[src - a].is_some() {
+                    break;
+                }
+                targets[src - a] = Some(self.ins(j).a() as usize);
+                j += 1;
+            }
+            let all: Option<Vec<usize>> = targets.iter().copied().collect();
+            if let Some(regs) = all {
+                if regs.iter().all(|&r| self.local_name(r, j).is_some()) {
+                    let names: Vec<Expr> =
+                        regs.iter().map(|&r| Expr::Name(self.local_name(r, j).unwrap())).collect();
+                    let value = self.regs[a].clone().unwrap_or(Expr::Nil);
+                    for (&r, name) in regs.iter().zip(names.iter()) {
+                        self.set_reg(r, name.clone());
+                    }
+                    self.out.push(Stmt::Assign(names, vec![value]));
+                    return j;
+                }
+            }
         }
         // Multiple results landing in registers that are not about to become locals still
         // need somewhere to go, so emit the assignment now.
