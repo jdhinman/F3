@@ -131,6 +131,75 @@ solved by the four numbers above. What is missing is the standard decompiler bac
 None of that is novel research. It is the well-trodden path taken by `unluac`, `luadec` and every
 Lua decompiler, applied to a documented instruction set.
 
+## Chunk header: two more deviations, found by measurement  **[VERIFIED]**
+
+`lopcodes.h` specifies the *instruction* encoding. The **chunk header** deviates too, and neither
+deviation appears in any forum post found so far. Read directly from the inflated bank:
+
+```
+1B 4C 75 61 51 02 01 04 04 04 04 00
+ \27 L  u  a  |  |  |  |  |  |  |  +-- integral flag = 0
+              |  |  |  |  |  |  +----- sizeof(lua_Number) = 4   <-- stock Lua 5.1: 8
+              |  |  |  |  |  +-------- sizeof(Instruction) = 4
+              |  |  |  |  +----------- sizeof(size_t)      = 4
+              |  |  |  +-------------- sizeof(int)         = 4
+              |  |  +----------------- endianness = 1 (little)
+              |  +-------------------- format version = 2       <-- stock Lua 5.1: 0
+              +----------------------- version = 0x51 (Lua 5.1)
+```
+
+| Field | KoreVM | Stock Lua 5.1 |
+|---|---|---|
+| format version | **2** | 0 |
+| `sizeof(lua_Number)` | **4** (single-precision float) | 8 (double) |
+
+**Both break stock tooling independently of the opcode changes.** A loader that assumes format 0
+rejects the chunk; one that assumes 8-byte doubles mis-reads every numeric constant and desynchronises
+from there. Any decompiler must read numbers as **4-byte floats**.
+
+**[UNKNOWN]** what `format = 2` signifies structurally. The bytes immediately after the top-level
+proto's source string did not parse as a stock Lua 5.1 proto header, so format 2 likely inserts or
+reorders fields. **Determining the proto layout is the next concrete task**, and `ChunkSpy_KVM.lua`
+already implements it - read its `DecompileFunction` rather than guessing.
+
+## The debug-data advantage, now confirmed  **[VERIFIED]** 2026-08-05
+
+> [!success] The debug build ships, and it is decisive
+> The hypothesis was that `gamescripts.bnk` retains compiler debug data while `gamescripts_r.bnk` is
+> stripped. **Tested and confirmed.**
+
+Both banks are a **single zlib stream** (`78 DA`) wrapping concatenated Lua chunks. Inflating each
+and inspecting the first chunk:
+
+| | `gamescripts.bnk.dat` | `gamescripts_r.bnk.dat` |
+|---|---|---|
+| chunk header | identical (`fmt=2`, `Number=4`) | identical |
+| top-level `source` string | **present, 79 chars** | **length 0, absent** |
+| build-path strings in first ~114 KB inflated | **122** | **0** |
+
+The recovered source path:
+
+```
+d:\Pulse\work\f3-daily-build-PC\Deploy\Fable2_win32\data\scripts\AI\AIBase.lua
+```
+
+**What this means for the decompiler.** `source` is exactly what `luac -s` removes, alongside line
+numbers and local variable names. Its presence means the non-stripped bank should also carry
+`lineinfo`, `locvars` and `upvalue` names. A decompiler targeting `gamescripts.bnk` therefore emits
+**named locals and real line numbers**, not `local_1`-style algebra - which is the difference between
+readable source and a puzzle, and it removes the hardest part of the job before it starts.
+
+**Work from `gamescripts.bnk`, never `gamescripts_r.bnk`.**
+
+> [!note] A build-system fossil
+> `d:\Pulse\work\f3-daily-build-PC\Deploy\**Fable2_win32**\` - Lionhead's build machine, their "Pulse"
+> build system, and a Fable **2** directory inside a Fable **3** daily build. Fable 3 was built on the
+> Fable 2 codebase, which independently supports [[Lua Scripting|using Fable 2's decompilable scripts
+> as a Rosetta stone]].
+>
+> Compare Anniversary shipping its own studio database credentials. Both games leaked their build
+> environment into retail.
+
 ## The debug-data advantage nobody has exploited
 
 Stripped scripts (`_r`) lose line numbers and local variable names. From the same thread:
