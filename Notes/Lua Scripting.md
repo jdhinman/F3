@@ -1,8 +1,8 @@
 ---
 title: "Lua Scripting"
 description: "Fable III's game logic is extensively Lua, the scripts have been decompiled, and mod scripts hot-reload without relaunching"
-updated: 2026-08-05
-confidence: documented
+updated: 2026-08-06
+confidence: verified
 tags:
   - runtime
   - scripting
