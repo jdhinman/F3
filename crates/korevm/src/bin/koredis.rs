@@ -7,6 +7,19 @@
 use korevm::disasm::{self, Options};
 use std::process::ExitCode;
 
+/// Write to stdout, treating a closed pipe as a normal end rather than a panic, so
+/// piping into `head` works.
+fn write_out(s: &str) -> bool {
+    use std::io::Write;
+    let stdout = std::io::stdout();
+    let mut lock = stdout.lock();
+    match lock.write_all(s.as_bytes()) {
+        Ok(()) => true,
+        Err(e) if e.kind() == std::io::ErrorKind::BrokenPipe => false,
+        Err(_) => false,
+    }
+}
+
 fn main() -> ExitCode {
     let mut args = std::env::args().skip(1);
     let mut files = Vec::new();
@@ -65,7 +78,7 @@ fn main() -> ExitCode {
                         c.main.source
                     );
                 } else {
-                    print!("{}", disasm::chunk(&c, &opts));
+                    if !write_out(&disasm::chunk(&c, &opts)) { return ExitCode::SUCCESS; }
                 }
             }
             Err(e) => {

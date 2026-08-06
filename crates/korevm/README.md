@@ -78,8 +78,10 @@ mislabels an operand in the listing; it cannot desynchronise the decode, because
 instruction is a fixed 4 bytes.
 
 Decompiler output is [VERIFIED] to the extent stated and no further: **797 of 797 files emit
-valid Lua 5.1**, and **745 of 797 come back with nothing unrecovered**. The remaining 52 carry
-135 notes between them, each marking one construct at one pc. Validity is machine-checked;
+valid Lua 5.1**, and **713 of 797 come back with nothing unrecovered**. Of the other 84, 33 are
+chunks the game shipped without debug info (the `gameface` UI layer), where local names have to
+be synthesised; the remaining 51 carry one note per unrecovered construct, at the pc where it
+happens. Validity is machine-checked;
 *semantic* equivalence is only directly confirmed on the one file that ships as both source
 and bytecode, where the token multisets match exactly.
 

@@ -15,9 +15,77 @@ tags:
 > The Anniversary project spent a day failing to execute a single line of new code. Here the loop is
 > edit-file, alt-tab, see it.
 
-All **[DOCUMENTED]**. Sources are the fable3mod forums, retrieved 2026-08-05.
+## The game declares its own mod hook  **[VERIFIED]** 2026-08-06
 
-## The injection method  **[DOCUMENTED]**
+> [!success] No manifest edit, no quest hijack, no injector
+> The shipped `scripts/startup/startup.lua` ends with:
+>
+> ```lua
+> AddOptionalStartupScript("MyStartup.lua")
+> ```
+>
+> and `scripts/startup/StartupConsoleScript.lua` ends with:
+>
+> ```lua
+> Debug.AddOptionalStartupConsoleScript("MyStartupConsoleScript.lua")
+> ```
+
+Three facts, each checked against this install:
+
+1. **`data/dir.manifest` already lists them.** It is plain CRLF text, one relative path per
+   line, 530 lines. Four of those lines are
+   `scripts\startup\mystartup.lua`, `scripts\startup\mystartupconsolescript.lua` and their
+   `scripts_r\` twins.
+2. **Neither file exists** - not loose on disk, and not inside `gamescripts.bnk`. The manifest
+   entries are dangling.
+3. **The loader calls them anyway**, because the call is `AddOptional...`.
+
+So the retail build ships a **declared, empty, sanctioned slot for a user script**. Dropping
+`data\scripts\startup\MyStartup.lua` into place should be enough, with no edit to
+`dir.manifest` and none of the `DEMO001` quest-code collision the community injector warns about.
+
+**[UNKNOWN]** whether the retail loader honours it - `AddOptionalStartupScript` may be compiled
+out of a release build, and `startup.lua` also calls `SetEnableFullDebugMenu(true)` and
+`SetUseRetailFrontEnd(false)`, which suggests the bank may hold the development startup rather
+than the one retail runs. **This is the first thing to test, and it is a five-minute test.**
+
+### Hot reload is real, and quests are excluded
+
+`miscellaneous/GeneralSetupScript.lua` defines what the engine calls when a script file changes:
+
+```lua
+function RefreshFile(file_name)
+    if string.regfind(string.lower(file_name), "ai[%\\%/]") then      Debug.ReloadAI()
+    elseif string.regfind(string.lower(file_name), "camera[%\\%/]") then Debug.ReloadCameras()
+    elseif string.regfind(string.lower(file_name), "crescendo") then  RunScript("miscellaneous/CrescendoSetupScript.lua")
+    elseif string.regfind(string.lower(file_name), "qot") then        cprint("Skipping Refresh for Template Quest")
+    elseif string.regfind(string.lower(file_name), "q%a%d+") then     cprint("Skipping Refresh for Quest File")
+    else                                                              RunScript(file_name)
+    end
+end
+```
+
+This is the mechanism behind "edit file, alt-tab, see it", and it carries a constraint the forum
+posts never mention: **quest files do not hot-reload.** Anything matching `q<letter><digits>` or
+`qot` is explicitly skipped, so quest work needs a relaunch. AI and camera files get a
+subsystem-wide reload rather than a plain re-run.
+
+### What a mod can call
+
+Read off the corpus, so these are names the engine really binds:
+
+| Need | Call | Uses |
+|---|---|---|
+| console output | `cprint(...)` | 1690 |
+| plain output | `print(...)` | 137 |
+| on-screen text | `Debug.DrawText(text, CI32Vector2(x, y))` | 39 |
+| **file output** | `io.open(path, "r"/"w")` | the `io` library is present |
+| run another file | `RunScript("miscellaneous/Utils.lua")` | ~150 |
+
+`io` being available matters: a mod can write its own log file, so the **smoke test does not
+depend on getting the debug console open**.
+
+## The injection method  **[DOCUMENTED]** - the community route
 
 Posted by **Artofeel**, 2014-11-16, "Improved script injection method (Console workaround)":
 
@@ -76,9 +144,9 @@ dramatically change the behavior of the AI in battle."*
 
 → [[Child System]]
 
-**[UNKNOWN]** whether the retail PC install ships these as compiled Lua that we can decompile
-ourselves, or whether we depend on that 2013 archive. Establish this first - a self-serve decompile
-is worth far more than a 13-year-old zip.
+**[VERIFIED]** the install ships them as compiled Lua and we decompile them ourselves. **803 scripts
+extracted, 797 decompiled to valid Lua**, against the 2013 archive's partial file list. The
+13-year-old zip is now a cross-check, not a dependency. → [[KoreVM]]
 
 ## KoreVM, and the fact that makes everything possible
 
@@ -109,7 +177,8 @@ and
 | Route | State |
 |---|---|
 | **Disassembler** - `ChunkSpy_kvm.lua`, run as `lua.exe ChunkSpy_kvm.lua <script.lua> -o out.txt` | **works** |
-| **Decompiler** - Keshire's `Fable3LUADecompiler` | partial. Good at widgets and menus, poor at large functional blocks. *"no one experienced has come in to write the new decompiler that's needed"* |
+| **Decompiler** - `crates/korevm`, ours | **solved.** 797 of 797 files emit valid Lua 5.1, 713 with nothing unrecovered. → [[KoreVM]] |
+| Keshire's `Fable3LUADecompiler` | superseded. Good at widgets and menus, poor at large functional blocks. *"no one experienced has come in to write the new decompiler that's needed"* |
 | **`functions.txt`** - 15,104 signatures with parameter names, by source file | **captured**. → [[Preservation]] |
 | **Fable 2's scripts** - Fable 2 does *not* use KoreVM and **has** a working decompiler, and *"a lot of the scripts are the same between the two games"* | **a Rosetta stone.** Read F2's readable source to understand F3's compiled equivalent |
 
@@ -120,8 +189,14 @@ precisely because Fable 2's Lua is tractable.
 
 **`script` vs `script_r`.** *"There shouldn't be a difference between the script and script_r other
 than one contains compiler debug information. Which is REALLY helpful as it contains line information
-and local variables."* Retail ships `_r`, the stripped one - which is why decompiling our own install
-is the hard path.
+and local variables."* The forum's conclusion that retail ships only the stripped `_r` bank is
+**wrong for this install**: `data\` holds **both**, and `gamescripts.bnk` retains full debug data -
+source paths, line numbers, local names. That is why decompiled output carries real variable names.
+→ [[KoreVM]]
+
+**But not uniformly.** 33 of 797 chunks were compiled stripped even in the debug bank, and they are
+almost all under `scripts/gameface/` - the Scaleform UI layer. Those decompile with synthesised
+local names and are flagged as such in the output.
 
 **Some plaintext survived.** *"They actually put plaintext, uncompiled lua in copies of certain
 files. Like `scriptactivation.lua`."* Worth hunting for every such file in the install; each one is

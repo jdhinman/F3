@@ -76,10 +76,43 @@ fn whole_corpus_decompiles_within_the_defect_budget() {
         }
     }
     assert!(
-        with_notes <= 55,
+        with_notes <= 90,
         "{with_notes} of {} files carry notes ({total_notes} total)",
         files.len()
     );
+}
+
+/// The gameface (UI) chunks ship without debug info. Their output must say so, and must
+/// not leave bare register names standing where a value should be.
+#[test]
+fn stripped_chunks_are_flagged_and_still_readable() {
+    let Some(files) = corpus() else { return };
+    let Some(f) = files.iter().find(|f| f.ends_with("gameface/qbtext.lua")) else { return };
+    let (text, notes) = decompile(f);
+    assert!(notes >= 1, "a chunk with no debug info must be flagged");
+    assert!(text.contains("compiled without debug info"), "{text}");
+    // Multiple results must land in named slots rather than becoming a bare `nil`.
+    assert!(text.contains("local_3, local_4 = string.find("), "{text}");
+}
+
+/// Bare `R<n>` in the output means a value the rebuild lost. A handful survive in the
+/// stripped chunks; a jump means something regressed.
+#[test]
+fn unresolved_registers_stay_rare() {
+    let Some(files) = corpus() else { return };
+    let mut count = 0usize;
+    for f in &files {
+        let (text, _) = decompile(f);
+        count += text
+            .split(|c: char| !c.is_ascii_alphanumeric() && c != '_')
+            .filter(|w| {
+                w.len() >= 2
+                    && w.starts_with('R')
+                    && w[1..].chars().all(|c| c.is_ascii_digit())
+            })
+            .count();
+    }
+    assert!(count <= 10, "{count} unresolved registers in the output");
 }
 
 #[test]

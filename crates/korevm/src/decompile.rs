@@ -37,7 +37,16 @@ pub fn proto(p: &Proto) -> Output {
 /// Convenience: decompile a whole chunk, with a header comment naming the source file.
 pub fn chunk(c: &crate::chunk::Chunk) -> Output {
     let mut out = proto(&c.main);
-    if !c.main.source.is_empty() {
+    if c.main.source.is_empty() {
+        // Not every chunk in the bank carries debug data: the gameface (UI) scripts were
+        // compiled stripped. Without locvars there is no way to tell a local from a
+        // temporary, so locals are synthesised and reassignment is only partly
+        // recoverable. Say so at the top rather than let the output pass for a faithful
+        // reading of the source.
+        let msg = "chunk compiled without debug info; local names are synthesised";
+        out.notes.push(msg.to_string());
+        out.body.insert(0, Stmt::Note(format!("[decompiler] {msg}")));
+    } else {
         out.body.insert(0, Stmt::Note(format!("source: {}", c.main.source)));
     }
     out
@@ -62,6 +71,9 @@ struct Decompiler<'a> {
     active_heads: Vec<usize>,
     /// Register currently receiving the value of an `and`/`or` expression.
     value_target: Option<usize>,
+    /// Registers given synthetic `local_N` names because the proto was compiled without
+    /// debug info. Declared together at the top of the function.
+    synth_regs: std::collections::BTreeSet<usize>,
     /// Every pc that counts as leaving the current nesting normally: the end of each
     /// enclosing block, and where each enclosing structure hands control on afterwards.
     /// The compiler chains jumps, so a branch nested several blocks deep routinely jumps
@@ -95,6 +107,7 @@ impl<'a> Decompiler<'a> {
             loop_exits: Vec::new(),
             active_heads: Vec::new(),
             value_target: None,
+            synth_regs: std::collections::BTreeSet::new(),
             enclosing_ends: Vec::new(),
             notes: Vec::new(),
         }
@@ -270,11 +283,17 @@ impl<'a> Decompiler<'a> {
 
     fn function_body(&mut self) -> Vec<Stmt> {
         // Parameters occupy the first registers and are live from pc 0.
+        let params = self.params();
         for i in 0..self.p.num_params as usize {
             if let Some(li) = self.local_at(i, 0) {
                 self.declared[li] = true;
                 let name = self.p.locvars[li].name.clone();
                 self.set_reg(i, Expr::Name(name));
+            } else if let Some(name) = params.get(i) {
+                // Stripped proto: no locvar for the parameter, so seed the synthetic name
+                // `params()` will print in the signature. Otherwise reads of it come out
+                // as a bare register and read like a global.
+                self.set_reg(i, Expr::Name(name.clone()));
             }
         }
         self.top = self.p.num_params as usize;
@@ -283,6 +302,13 @@ impl<'a> Decompiler<'a> {
         // Every function ends in a RETURN the source did not write.
         if matches!(body.last(), Some(Stmt::Return(v)) if v.is_empty()) {
             body.pop();
+        }
+        // Declare synthesised locals once at the top, so a name assigned inside a nested
+        // block is still in scope where it is read.
+        if !self.synth_regs.is_empty() {
+            let names: Vec<String> =
+                self.synth_regs.iter().map(|r| format!("local_{r}")).collect();
+            body.insert(0, Stmt::Local(names, Vec::new()));
         }
         body
     }
@@ -1141,6 +1167,22 @@ impl<'a> Decompiler<'a> {
         if c == 1 {
             self.out.push(Stmt::Call(expr));
             self.top = a;
+            return pc + 1;
+        }
+        // Stripped protos carry no locvars, so there is no way to know which registers
+        // hold locals and the extra results of a multi-return call have nowhere to go.
+        // Give them synthetic names instead of letting a later read find a MultiRest and
+        // render it as `nil`. See `synth_regs` for where they get declared.
+        if c >= 3 && self.p.locvars.is_empty() {
+            let n = c - 1;
+            let names: Vec<String> = (a..a + n).map(|r| format!("local_{r}")).collect();
+            for (i, r) in (a..a + n).enumerate() {
+                self.synth_regs.insert(r);
+                self.set_reg(r, Expr::Name(names[i].clone()));
+            }
+            self.top = a + n;
+            let targets = names.into_iter().map(Expr::Name).collect();
+            self.out.push(Stmt::Assign(targets, vec![expr]));
             return pc + 1;
         }
         self.set_reg(a, expr);
