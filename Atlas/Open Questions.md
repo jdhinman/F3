@@ -44,6 +44,19 @@ conflict detection and load-order merge were built for. Reusing the *method* is 
 **Is `dir.manifest` a merge point?** If every mod appends to one shared file, two mods installed
 naively will fight over it. That is the same problem the Anniversary project solved for `.tng`.
 
+## Preservation - do this before building
+
+**Mirror fable3mod.com.** 776 topics / 1,542 messages, broken TLS, plain HTTP only. The Formats (28
+topics) and Tools (56) sections are irreplaceable. -> [[Preservation]]
+
+**Capture the four forum attachments**: BNKUtils.zip (90 KB), fable3_decompiled_scripts_1.zip
+(223 KB), ScriptInjector.zip (6.5 KB), Catspaw GFWL emu v15d. None is mirrored anywhere we control.
+
+**Fork the MIT tools** (Fable3LUADecompiler, Fable-3-GDB-Tool) into third_party/ with licences intact.
+
+**When was Fable III actually delisted?** Two contradictory claims: Steam October 2025, versus GFWL
+2013-08-22 and Steam 2013-12-05. -> [[Preservation]]
+
 ## Housekeeping
 
 - **Fable3Mod forums unread**, only search-summarised.
