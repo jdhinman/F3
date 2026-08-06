@@ -70,10 +70,53 @@ art\gui\gameface\bedmenubox.bgf
 art\gui\gameface\interactionmenurightcontrol.lua
 ```
 
-**[UNKNOWN]** the larger banks (`gamescripts`, `gamescripts_r`, `levels`) do **not** decompress at any
-zlib candidate offset, so they use a different scheme - plausibly uncompressed, chunked, or an
-Xbox-era codec such as LZX. That is the next thing to crack, and BlackDemon's BNK Utils
-([[Preservation|captured]]) already solves it, so read its behaviour rather than guessing.
+### Index compression solved  **[VERIFIED]** 2026-08-05
+
+The earlier "does not decompress" note was wrong twice over: the zlib header sits at **offset 17**
+(deflate data at 19, not 17 - feeding DeflateStream the 2-byte header fails silently), and the index
+is **block-compressed**, not one stream.
+
+**Block layout, repeated to the end of the index:**
+
+```
+byte    flag              (varies per block; purpose unknown)
+BE32    uncompressed size (65536, or less for the final block)
+zlib    stream
+```
+
+Confirmed on `guiscripts.bnk`: header declares `0x3876` = **14,454**, and it inflates to exactly
+14,454 in **1 block, 0 short**. The larger indexes stop at exactly 65,536 with a single stream, which
+is the 64 KB block cap rather than corruption.
+
+`tools/bnk-inflate.ps1` implements this.
+
+### The payload is a different structure  **[UNKNOWN]**
+
+`.bnk.dat` does **not** use the block format - it begins with a zlib stream at offset 0 with no block
+header. Running the block reader over it yields less data than went in, which is impossible and
+proves the model is wrong for payloads.
+
+**[INFERRED]** each file in the bank is separately compressed, and the index carries per-file offset
+and size. That matches the index's shape: a repeating record of roughly 24 bytes containing a 4-byte
+value that looks like a **filename hash** (`9DBF3677`, `10AB0522`, `1CAB184F`...) followed by BE32
+fields that look like offset and two sizes. Record stride alternates 20 and 28 bytes, so entries are
+variable-length and the layout is not yet pinned.
+
+**Do not extract payloads by scanning for zlib headers.** It loses most of the data: a scan recovered
+only 31-47 distinct scripts from `gamescripts`, against **804 script files** listed in
+[[Preservation|`functions.txt`]]. Any inventory taken that way is a floor, not a census.
+
+**Next step:** finish the index record layout, then extract payload entries by offset. BlackDemon's
+BNK Utils already does this correctly and is [[Preservation|captured]], so its behaviour is the
+reference.
+
+> [!warning] Two engineering traps, both paid for
+> **Never slice the byte array to feed a stream.** `$bytes[$i..$end]` copies the whole remainder at
+> every candidate offset and makes scanning quadratic - it ran over six minutes on a 4.5 MB file
+> before being killed. Use `MemoryStream($bytes, $offset, $count, $false)`, which is a view.
+>
+> **PowerShell variables are case-insensitive.** A `$out` accumulator silently aliases the `-Out`
+> parameter and becomes a string, so every `.Write()` fails at runtime. Name it something else.
 
 ## The container story
 
