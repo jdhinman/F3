@@ -44,6 +44,22 @@ conflict detection and load-order merge were built for. Reusing the *method* is 
 **Is `dir.manifest` a merge point?** If every mod appends to one shared file, two mods installed
 naively will fight over it. That is the same problem the Anniversary project solved for `.tng`.
 
+## The decompiler - the community asked for a dev, this is the work
+
+**Does `gamescripts.bnk` (non-`_r`) carry compiler debug data?** It is 1.37 MB larger than the
+stripped bank. If yes, decompiled output gets real local names and line numbers, which changes what
+the decompiler must reconstruct. **Test before writing any decompiler code.** -> [[KoreVM]]
+
+**Build the decompiler back end.** Decoding is solved: 7-bit opcode, A/C/B/OP field order, 87
+opcodes, all specified. What is missing is lowering the specialised opcodes to Lua 5.1 core,
+CFG construction, structuring, and expression rebuilding. Not novel research. -> [[KoreVM]]
+
+**Which LuaPlus version is KoreVM derived from?** The struct and specialised opcodes are LuaPlus.
+Pinning the version gives reference semantics for every opcode for free.
+
+**Crack the large BNK banks.** guiscripts decodes; gamescripts, gamescripts_r and levels do not
+decompress at any zlib offset. BNK Utils solves it already, so read its behaviour. -> [[Formats]]
+
 ## Preservation - do this before building
 
 **Mirror fable3mod.com.** 776 topics / 1,542 messages, broken TLS, plain HTTP only. The Formats (28
