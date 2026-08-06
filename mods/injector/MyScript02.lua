@@ -1,0 +1,2 @@
+-- Runs only while the screen is fading. Deliberately does nothing: the injector calls it
+-- unconditionally, and an empty file proves the path resolves without changing anything.
