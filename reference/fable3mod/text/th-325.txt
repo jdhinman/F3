@@ -1,0 +1,382 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » How to mod Fable 3's Textures 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » How to mod Fable 3's Textures (A (mostly) complete guide on modding any and all of the game's textures) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ How to mod Fable 3's Textures 
+ Mon, 23 May 2022 10:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheoBear 
+ Messages: 3 Registered: May 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ After a lot of research, here's a guide on how to mod any and all textures for Fable 3! I'm not a modder really, so there's probably a lot of mistakes and better methods of doing this so please take it with a grain of salt, and BACK UP/TEST EVERYTHING BEFORE YOU RUIN YOUR GAME! I also have no idea if this will get you banned in XBL, but it's probably a good chance it will. 
+ 
+This process uses BNKUtils (Referred to as BNKU), Fable3_Tex_Converter (Referred to as F3T), and Nvidia Texture Tools Exporter (Referred to as NTTE). BNKUtils for extracting the .tex files, and repacking everything, Fable3_Tex_Converter for converting the .tex files to .dds, and Nvidia Texture Tools Exporter for converting the .dds files to .png for easier changes. If you want to do this for a lot of textures, I recommend using XnConvert to convert everything out of .dds for editing, then back to .dds for conversion to .tex. 
+ 
+ Tool links: 
+ 
+BNKU - http://fable3mod.com/forums/index.php?t=msg&th=34&st art=0& 
+F3T - http://fable3mod.com/forums/index.php?t=msg&th=72&st art=0& 
+NTTE - https://developer.nvidia.com/nvidia-texture-tools-exporter 
+XnConvert - https://www.xnview.com/en/xnconvert/ 
+ 
+Step by step instructions (I'm using the globals_textures.bnk for this tutorial, but the process is the same for any texture bank you found.): 
+ 
+ Prerequisites: 
+ 
+ BACK. UP. YOUR. GAME. FILES. 
+ Open BNKBrowser, and find levels.bnk in the Fable3/data folder. Extract it TO THE FABLE 3 DATA FOLDER. 
+ Create a new folder somewhere, and name it "Workbench". This is going to be where we make all our changes to texture files, and unless otherwise specified where everything will be going. 
+ Open "\steamapps\common\Fable 3\data\globals\globals_textures.bnk" and Extract all 
+ Create an "Extracted" folder, extract all of the above to here. 
+ 
+From here, you now have all of the game's textures, but we need to change and repack them into their own packages. Each texture has it's own resolution and format that will need to be specified in F3T, and converted as such. You'll want to keep these in mind when you are converting the picture around to and from .dds. I would strongly recommend keeping a completely separate folder with all of your untouched extracted tex files that you can use as a backup in case anything goes wrong. Also, F3T will NOT save your original .tex files upon conversion, so always keep a copy somewhere!! 
+ 
+ Converting Textures 
+ 
+ Locate the texture you'd like to edit 
+ Copy it to you F3T folder, and open it by dragging the .tex file over the .bat file. 
+ Specify the resolution and format. 
+ Open the newly created .dds texture in NTTE to ensure that it looks correct. (This is the part that can take the most time. Some textures I've found don't seem to have a set resolution that's within F3T, but it should work for the vast majority of them. At least, the ones you'll see the most often. 
+ Save it to wherever you'd like, and edit it how you please. 
+ When done, if you need to convert it back to .dds, open the file in NTTE and save it as a .dds file again where you have F3T. 
+ Drag one of them onto the .bat file, and select 1 to convert it back to a .tex file, and select 1 again to have it convert all of your newly created .dds files. 
+ Grab all of your files and place them into a "data" directory in your workbench folder. 
+ 
+Now is when we'll need to do some trickery and magic to get our textures patched in to the game. 
+ 
+ Creating your mod 
+ 
+ Create a folder and subfolders that has the EXACT structure that the base game uses for the textures you are replacing, and place the .tex files we made there. If this is not done correctly, YOU WILL NOT HAVE A MODDED TEXTURE AND THE GAME WILL LIKELY CRASH. 
+ Open the Creator. 
+ Click "Add Folder(s)", and navigate to the TOP folder of where your modded textures are. As in, if the actual directory starts with "Mod", but then has "art" in it as the next folder, select the "Mod" folder. 
+ You can check if this was done correctly by looking at the creator output under "relative location" and ensure that it starts with "art\" 
+ Click "Create" 
+ Name it whatever you like 
+ Create a "data" folder, and place the "art" folder within it. 
+ Save the new .bnk files to this data folder. 
+ Navigate back to your Fable 3 game folder, and copy the "dir.manifest" and "startup.vfsconfig" files. 
+ Copy them to your mod's data folder as well. 
+ Open dir.manifest, and insert 2 new lines at the top 
+ Input the name of your just created .bnk and .bnk.dat files here 
+ This directs the game to load the 2 new bank files with the rest of the game. 
+ Open startup.vfsconfig 
+ Scroll down to where you see "Globals Models and Textures" and underneath "Composite". 
+ Input a new line here under "globals/globals_textures.bnk" 
+ Insert <Required><Bank Path = "[MODBNKNAME].bnk"/></Required 
+ This tells the game what .bnk to use as well. 
+ 
+Copy your mod's data folder to the data directory of your Fable 3 game, and paste. Now, launch Fable 3. 
+You did it! You just modded a texture!! Congrats, have fun! 
+ 
+For modding textures in bulk: 
+ 
+I'm working on something with this method above and it seems to work fine, but doing this for thousands of textures can take a long time. The part that would get most people is making sure the folder structure is the same. Placing each individual texture file back into their respective folder is tedious as all hell. Luckily, it's quite easy to do this with some basic command prompt commands. 
+ 
+BNKU, specifically the browser will extract banks and keep their folder structure for you. If you're doing texture modding in bulk, follow this process to ensure all of your textures are placed correctly (Note: The game uses the same name for some textures, so if there's a better method of going about this, please do let me know! 
+ 
+ Bulk Editing Textures 
+ 
+ Once you've extracted your .bnk, search within the top folder for all .tex files. You can do this with the "type:tex" option in the search box of Windows Explorer. 
+ Copy all of these files to a separate, single folder. 
+ Separate these files by size. I've found that a good portion of textures all follow the same resolution and format based on the size of the .tex file, BUT there are exceptions. Always double check your textures!!! 
+ Convert your .tex files to .dds as shown above. 
+ Convert everything to .dds using the "Converting Textures" section above, and use XnConvert to bulk convert those .dds files to a more editable format if you wish, and then back to .dds afterwards. 
+ Once everything is converted back to .tex as listed above, and ready to be put back into a .bnk, open command prompt. 
+ Open 2 explorer windows. One that goes to the top level of the folder structure for your original .tex files, and the other the folder that holds all of your edited .tex files.. 
+ Type this command into cmd: replace "[LOCATION OF FIRST FOLDER]\*.tex" "[LOCATION OF SECOND FOLDER]" /s 
+ This will search the second path for all .tex files to replace within the first path. It's backwards, I know, but it works. If you're unsure, make a couple test folders with some copies of textures and test it for yourself. 
+ Continue with Step 2 of the BNKCreator tutorial. 
+ 
+I've made notes of a few different resolutions and formats that seem to work for a lot of textures depending on their initial .tex size. I'd encourage anyone to expand upon this so we can all have a comprehensive list of the correct resolution/format for anyone to use. You can find that attached. 
+ 
+ Fable 3 also seems perfectly capable of using much larger size textures than it's original. 
+ 
+For this though, I would STRONGLY recommend patching your game's .exe to use the LargeAddressAware flag. You can find instructions for that here: http://fable3mod.com/forums/index.php?t=msg&th=56&st art=0& 
+ 
+Go nuts, and please credit all tool authors and myself if you happen to make a mod with this! Also, include a link back here so that others may find this and make their own texture mods! 
+ 
+ 
+ 
+ Attachment: Fable3TextureResFormat.xlsx 
+ 
+ (Size: 9.39KB, Downloaded 1763 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to mod Fable 3's Textures 
+ Mon, 01 August 2022 22:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I occasionally check this site and I'm happy to see a detailed guide on this finally. I recommend throwing it as a guide on the Nexus too btw. To make sure people see it. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to mod Fable 3's Textures 
+ Wed, 02 August 2023 12:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheoBear 
+ Messages: 3 Registered: May 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Done! https://www.nexusmods.com/fableIII/mods/13/ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Where to find creature names/ script function (?) names 
+
+ 
+ Next Topic: 
+ About Top Adult SEO 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:17 PDT 2026 
+
+ Total time taken to generate the page: 0.05468 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

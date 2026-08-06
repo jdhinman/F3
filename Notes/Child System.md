@@ -64,6 +64,61 @@ reviewable.
 
 **Read those two files before designing anything.**
 
+## The machinery already exists  **[DOCUMENTED]** - found 2026-08-05
+
+> [!success] This reframes the whole feature
+> "Children never grow up" is **not a missing feature**. The growing-up machinery ships with the
+> game: a cutscene, a quest that plays it, and a debug function that triggers it. What is missing is
+> whatever normally *calls* it.
+
+Recovered from `functions.txt`, a 707 KB index of **15,104 Lua function signatures** grouped by source
+file, mirrored from the fable3mod forums. → [[Preservation]]
+
+| Symbol | Source file |
+|---|---|
+| **`Debug.MakeChildGrowUpThroughTime()`** | `./ai/opinionsdebug.lua` |
+| **`Debug.PlayChildGrownUpICS()`** | debug ICS players |
+| **`QU090_ChildGrownICS:PlayChildGrownCutscene(self)`** | `./quests/qu090_childgrownics.lua` |
+| `QU080_ChildBirthICS:PlayScene(self,spouse,baby)` | `./quests/qu080_childbirthics.lua` |
+| `Debug.CreateHeroChildren()`, `Debug.CreateInstantFamily()`, `Debug.CreateSpouse()`, `Debug.CreateFamily(player,world_name,level_name)` | `./ai/opinionsdebug.lua` |
+| `Debug.TogglePregnancyCertainty()`, `Debug.ResetCurrentRelationshipStage(hero,stage)` | `./ai/opinionsdebug.lua` |
+
+`QU090_ChildGrownICS` is a **complete quest** - `Init`, a state machine, camera setup,
+`SetChildAndParentPositions`, `GetParent`, `GetMaritalHomeMarkers`, `CheckLineOfSight`. Someone built
+the entire child-grown-up scene.
+
+### The surrounding family simulation is also richer than expected
+
+| Area | Evidence |
+|---|---|
+| Parent/child AI | `behaviourparentchildinteraction.lua` - `BehaviourChildTalkToParent`, `BehaviourParentTalkToChild` |
+| Child labour | `behaviourchildlabour.lua` - goto table, work at table, clean floor, hammer, carry |
+| Spouse AI | `behaviourspouse.lua` - `BehaviourSpousePostChildBirth`, `BehaviourSpouseHoneymoonPeriod`, `GetLineAboutChild(self,child)` |
+| Divorce | `familydivorcegroupmind.lua` |
+| Orphanage | `orphanagegroupmind.lua` |
+| Family queries | `ScriptFunction.IsPlayersChild(entity)`, `GetNonHeroParentForChild`, `GetNannyForChild`, `GetNonHeroGuardianForChild` |
+| World map | `worldmap/family.lua` - `NewFamilyMember(mesh_id,offset,is_child)` |
+
+Note `NewFamilyMember` takes a **`mesh_id`** and an **`is_child`** flag, which is the first hint that
+child and adult family members are distinct meshes rather than one scaled model.
+
+### Why this is probably a one-line mod, and why that needs proving
+
+[[Lua Scripting|The injector's own worked example is `Debug.SetUseFreeCamera(true)`]] - a `Debug.*`
+call, dropped in a script file, taking effect on the next tick. `Debug.MakeChildGrowUpThroughTime()`
+is the same shape of symbol in the same namespace.
+
+**So the first experiment is a single line in `MyScript01.lua`.**
+
+**[UNKNOWN]** and not to be assumed:
+
+- whether these `Debug.*` functions survive in the **retail** build or were stripped
+- whether "grow up through time" advances one step (baby to child, the step that already works) or
+  goes further
+- whether the result is a functioning adult, or the broken thing the section below warns about
+- what `agegroupenum.lua` actually enumerates - it contains no functions, so it is pure data and its
+  contents were not recoverable from `functions.txt`
+
 ## The hard question nobody has answered
 
 **Does raising the age value produce a functioning adult, or a broken child?**

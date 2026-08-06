@@ -1,0 +1,627 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Gender change 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Gender change (I need help.) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Gender change 
+ Sat, 16 August 2014 10:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Leandra 
+ Messages: 1 Registered: August 2014 Location: France
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi everyone, I find myself in need of help. After I read ZackTiro's script modding setup turorial I saw that we could change gender in game. While I found a code that allows me to change it in debugmenu.txt, anytime I write it on scriptactivation.lua it does not work. I really don't know what to do. I don't know anything about modding, if someone could help me it would be great. 
+Thanks. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Gender change 
+ Sat, 06 September 2014 01:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ does this work? 
+ Gender.Set(GetLocalHero(), EGender.EG_FEMALE) 
+ 
+ 
+Gender can be: 
+ EGender.EG_ANDROGYNOUS
+EGender.EG_FEMALE
+EGender.EG_MALE
+EGender.EG_NONE 
+ 
+ 
+but probably you will need change hero entity with this function 
+ Debug.ChangePlayerEntity('CreatureHeroFemale') 
+ 
+ 
+anyway, why you need to change gender in current game? It's just broke some things possibly 
+...hmmm..for lesbo with Elise? :3 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Gender change 
+ Sun, 07 September 2014 22:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ zyreq 
+ Messages: 8 Registered: February 2014 Location: Britain,USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sat, 06 September 2014 01:10 does this work? 
+ Gender.Set(GetLocalHero(), EGender.EG_FEMALE) 
+ 
+ 
+Gender can be: 
+ EGender.EG_ANDROGYNOUS
+EGender.EG_FEMALE
+EGender.EG_MALE
+EGender.EG_NONE 
+ 
+ 
+but probably you will need change hero entity with this function 
+ Debug.ChangePlayerEntity('CreatureHeroFemale') 
+ 
+ 
+anyway, why you need to change gender in current game? It's just broke some things possibly 
+...hmmm..for lesbo with Elise? :3 
+ 
+ 
+Btw artofeel, are you going to be modding Fable Anniversary? We need smart guys like you. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Gender change 
+ Mon, 08 September 2014 01:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ zyreq wrote on Mon, 08 September 2014 11:43 Btw artofeel, are you going to be modding Fable Anniversary? We need smart guys like you. of course I will try, if there are no sanctions for this :) 
+ but first we need smart guys who will write tools since the game is created on the Unreal engine , it will be much easier :3 
+ 
+ 
+ [Updated on: Thu, 11 September 2014 23:58]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Gender change 
+ Mon, 05 October 2015 14:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ragnin 
+ Messages: 8 Registered: October 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Sorry to necro an old thread but seemed like a better idea then just creating a new one for a thread already still on the first page. 
+Anyway I've been trying to get as Artofeel put it Lesbo with Elise. Using the above gender change options I can change my hero but then Elise either just changes back into Elliot or if she was already on screen speaks with Elliot's voice which is kinda of fun but not what I'm looking for. So is there a script to just change Elliot into Elise without having to effect the hero's gender? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Gender change 
+ Tue, 13 October 2015 20:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ragnin 
+ Messages: 8 Registered: October 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel helped me out and I can pretty much use the gender codes to make Elliot appear as Elise. You just need to use Gender.Set(GetLocalHero( , EGender.EG_MALE) before you select your cloths and later before you go to the bowerstone industrial. After you have done this Elise will be there instead of Elliot. You can change back using Gender.Set(GetLocalHero( , EGender.EG_FEMALE)so that the world treats you as a princess again. 
+ Problem is that Elise will speak using Elliot's voice and lines. If you don't change back into a female then Elise speaks as normal BUT your character looks funny with badly fitting cloths AND you speak using the Male heroes voice and lines. Once you have married Elise she will stay the same regardless of what gender you have yourself set too (I just left myself set to male when I married her to keep her using the female voice. Not sure if that matters or not). I will note that you can not have sex with her if you are set to female, I did notice that when you have sex with her set as a male that my hero still played female sex sounds and noises. 
+ 
+ 
+Update: So I figured out that Elise/Elliot's voice is set to the gender of the hero. I even went a replaced some of Elliot's lines with Elise's. Problem is that some of the hero's lines are tied to the same .wav files I think. Because the parts that I replaced had my female hero responding with the male hero's voice. So I pretty much figure that it is impossible to get a female voiced hero talking with a female voiced elise in the same cutscene. I also want to thank Artofeel for his help in telling me how to do all this and how to figure this out. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Gender change 
+ Tue, 31 March 2020 10:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ XanWasting 
+ Messages: 8 Registered: March 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Using gender.Set(GetLocalHero( , Egender.EG_MALE) on a female character doesn't seem to change anything for me. 
+The Debug.ChangePlayerEntity('CreatureHeroFemale' and Debug.ChangePlayerEntity('CreatureHero' does though. No glitches as far as I can tell, too. 
+I'm using the improved script injector from Artofeel, maybe that's the difference. 
+EDIT: why is the closing bracket converted into smiley face here, lol. 
+ 
+ 
+ [Updated on: Tue, 31 March 2020 10:07]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Gender change 
+ Tue, 06 October 2020 01:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ iwanadiefast 
+ Messages: 2 Registered: October 2020 Location: rio de janeiro
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Debug.CreateEntityByHero('CreatureVillagerElise',1) to spawn Elise or Elliot 
+ 
+Gender.Set(Targeting.GetTarget(GetLocalHero( ,EGender.EG_ANDROGYNOUS) to set her/him as both male and female, allowing you to marry and have children with her/him. You must be facing them when using the code 
+ 
+ 
+ be born, feed, live, mate, die, repeat
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ gfwlive question + modding question 
+
+ 
+ Next Topic: 
+ Need a Modder Since Xbox / Microsoft Support is Useless 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:02 PDT 2026 
+
+ Total time taken to generate the page: 0.05595 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

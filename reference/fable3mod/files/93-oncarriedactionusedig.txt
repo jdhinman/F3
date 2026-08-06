@@ -1,0 +1,760 @@
+Pos   Hex Data           Description or Code
+------------------------------------------------------------------------
+0000                     ** source chunk: C:\Users\Matthew\Documents\My Games\Fable 3\working\ChunkSpy_KVM\oncarriedactionusedig.lua
+                         ** global header start **
+0000  1B4C7561           header signature: "\27Lua"
+0004  51                 version (major:minor hex digits)
+0005  02                 format (0=official)
+0006  01                 endianness (1=little endian)
+0007  04                 size of int (bytes)
+0008  04                 size of size_t (bytes)
+0009  04                 size of Instruction (bytes)
+000A  04                 size of number (bytes)
+000B  00                 integral (1=integral)
+                         * number type: single
+                         * x86 standard (32-bit, little endian, doubles)
+                         ** global header end **
+                         
+0010                     ** function [0] definition (level 1)
+                         ** start of function **
+                         source name: (none)
+0014  00000000           line defined (0)
+0018  00000000           last line defined (0)
+001C  00                 nups (0)
+001D  00                 numparams (0)
+001E  02                 is_vararg (2)
+001F  02                 maxstacksize (2)
+                         * code:
+0020  0D000000           sizecode (13)
+0024  0001000C           [01] getglobal      0   1        ; OnActionUseBase
+0028  00020110           [02] self           0   0   258  ; "new"
+002C  0002047E           [03] call_i_r1      0   2   2  
+0030  00000036           [04] setglobal      0   0        ; OnCarriedActionUseDig
+0034  0000000C           [05] getglobal      0   0        ; OnCarriedActionUseDig
+0038  00040788           [06] setfield_r1    0   3   260  ; AlwaysOnServer true
+003C  0000000C           [07] getglobal      0   0        ; OnCarriedActionUseDig
+0040  01000078           [08] closure        1   0        ; 0 upvalues
+0044  00010A1E           [09] setfield       0   5   1    ; Update
+0048  0000000C           [10] getglobal      0   0        ; OnCarriedActionUseDig
+004C  01010078           [11] closure        1   1        ; 0 upvalues
+0050  00010C1E           [12] setfield       0   6   1    ; OnExit
+0054  00000212           [13] return         0   1      
+                         * constants:
+0058  07000000           sizek (7)
+005C  04                 const type 4
+                         const [0]: "OnCarriedActionUseDig"
+0077  04                 const type 4
+                         const [1]: "OnActionUseBase"
+008C  04                 const type 4
+                         const [2]: "new"
+0095  04                 const type 4
+                         const [3]: "AlwaysOnServer"
+00A9  01                 const type 1
+00AA  01                 const [4]: (true)
+00AB  04                 const type 4
+                         const [5]: "Update"
+00B7  04                 const type 4
+                         const [6]: "OnExit"
+                         * functions:
+00C3  02000000           sizep (2)
+                         
+00CB                     ** function [0] definition (level 2)
+                         ** start of function **
+                         source name: (none)
+00CF  04000000           line defined (4)
+00D3  A0000000           last line defined (160)
+00D7  00                 nups (0)
+00D8  01                 numparams (1)
+00D9  00                 is_vararg (0)
+00DA  0D                 maxstacksize (13)
+                         * code:
+00DB  89010000           sizecode (393)
+00DF  01000000           [001] getfield       1   0   0    ; EntityUsingItem
+00E3  01010310           [002] self           1   1   257  ; "IsAlive"
+00E7  0102047E           [003] call_i_r1      1   2   2  
+00EB  01000002           [004] test           1       0    ; to [6] if true
+00EF  00820139           [005] jmp            387          ; to [393]
+00F3  0102000C           [006] getglobal      1   2        ; Action
+00F7  01030286           [007] getfield_r1    1   1   3    ; IsPerformingAnyAction
+00FB  02000000           [008] getfield       2   0   0    ; EntityUsingItem
+00FF  01020404           [009] call_i         1   2   2  
+0103  01000002           [010] test           1       0    ; to [12] if true
+0107  00000039           [011] jmp            1            ; to [13]
+010B  00000212           [012] return         0   1      
+010F  0104000C           [013] getglobal      1   4        ; Network
+0113  01050286           [014] getfield_r1    1   1   5    ; SetLevelTransitionBlockedBecauseOfDigging
+0117  0200021A           [015] loadbool       2   1   0    ; true
+011B  01010404           [016] call_i         1   2   1  
+011F  0106000C           [017] getglobal      1   6        ; HandHoldingIK
+0123  01070286           [018] getfield_r1    1   1   7    ; IsHandHolding
+0127  0208000C           [019] getglobal      2   8        ; GetLocalHero
+012B  0200027E           [020] call_i_r1      2   1   0  
+012F  01020004           [021] call_i         1   0   2  
+0133  01000002           [022] test           1       0    ; to [24] if true
+0137  000E0039           [023] jmp            15           ; to [39]
+013B  0106000C           [024] getglobal      1   6        ; HandHoldingIK
+013F  01090286           [025] getfield_r1    1   1   9    ; GetPartner
+0143  0208000C           [026] getglobal      2   8        ; GetLocalHero
+0147  0200027E           [027] call_i_r1      2   1   0  
+014B  01020004           [028] call_i         1   0   2  
+014F  01000002           [029] test           1       0    ; to [31] if true
+0153  00070039           [030] jmp            8            ; to [39]
+0157  02010310           [031] self           2   1   257  ; "IsAlive"
+015B  0202047E           [032] call_i_r1      2   2   2  
+015F  02000002           [033] test           2       0    ; to [35] if true
+0163  00030039           [034] jmp            4            ; to [39]
+0167  020A000C           [035] getglobal      2   10       ; HandHolding
+016B  020B0486           [036] getfield_r1    2   2   11   ; ClearHandHolding
+016F  0300020E           [037] move           3   1      
+0173  02010404           [038] call_i         2   2   1  
+0177  010C000C           [039] getglobal      1   12       ; SearchTools
+017B  010D0286           [040] getfield_r1    1   1   13   ; StartNewSearch
+017F  020E0032           [041] loadk          2   14       ; "marker"
+0183  01020404           [042] call_i         1   2   2  
+0187  020C000C           [043] getglobal      2   12       ; SearchTools
+018B  020F0486           [044] getfield_r1    2   2   15   ; FilterWithEC
+018F  0300020E           [045] move           3   1      
+0193  0410000C           [046] getglobal      4   16       ; DiggingSpot
+0197  04110886           [047] getfield_r1    4   4   17   ; GetECType
+019B  0400027E           [048] call_i_r1      4   1   0  
+019F  02010004           [049] call_i         2   0   1  
+01A3  020C000C           [050] getglobal      2   12       ; SearchTools
+01A7  02120486           [051] getfield_r1    2   2   18   ; FilterActiveDiggingSpot
+01AB  0300020E           [052] move           3   1      
+01AF  02010404           [053] call_i         2   2   1  
+01B3  020C000C           [054] getglobal      2   12       ; SearchTools
+01B7  02140486           [055] getfield_r1    2   2   20   ; GetNearestEntity
+01BB  0300020E           [056] move           3   1      
+01BF  04000000           [057] getfield       4   0   0    ; EntityUsingItem
+01C3  04150910           [058] self           4   4   277  ; "GetPosition"
+01C7  0400047E           [059] call_i_r1      4   2   0  
+01CB  02020004           [060] call_i         2   0   2  
+01CF  0002261E           [061] setfield       0   19  2    ; DigSpot
+01D3  02130000           [062] getfield       2   0   19   ; DigSpot
+01D7  02000082           [063] test_r1        2   0   0  
+01DB  00470139           [064] jmp            328          ; to [393]
+01DF  02130000           [065] getfield       2   0   19   ; DigSpot
+01E3  02010510           [066] self           2   2   257  ; "IsAlive"
+01E7  0202047E           [067] call_i_r1      2   2   2  
+01EB  02000002           [068] test           2       0    ; to [70] if true
+01EF  00420139           [069] jmp            323          ; to [393]
+01F3  02160032           [070] loadk          2   22       ; 0
+01F7  0317000C           [071] getglobal      3   23       ; Player
+01FB  03180686           [072] getfield_r1    3   3   24   ; IsAvailable
+01FF  04000000           [073] getfield       4   0   0    ; EntityUsingItem
+0203  03020404           [074] call_i         3   2   2  
+0207  03000002           [075] test           3       0    ; to [77] if true
+020B  00040039           [076] jmp            5            ; to [82]
+020F  0317000C           [077] getglobal      3   23       ; Player
+0213  03190686           [078] getfield_r1    3   3   25   ; StartInteractionMode
+0217  04000000           [079] getfield       4   0   0    ; EntityUsingItem
+021B  03020404           [080] call_i         3   2   2  
+021F  0200060E           [081] move           2   3      
+0223  0302000C           [082] getglobal      3   2        ; Action
+0227  03030686           [083] getfield_r1    3   3   3    ; IsPerformingAnyAction
+022B  04000000           [084] getfield       4   0   0    ; EntityUsingItem
+022F  03020404           [085] call_i         3   2   2  
+0233  03000002           [086] test           3       0    ; to [88] if true
+0237  00030039           [087] jmp            4            ; to [92]
+023B  031A000C           [088] getglobal      3   26       ; coroutine
+023F  031B0686           [089] getfield_r1    3   3   27   ; yield
+0243  0301027E           [090] call_i_r1      3   1   1  
+0247  00F5FF38           [091] jmp            -10          ; to [82]
+024B  031C000C           [092] getglobal      3   28       ; Inventory
+024F  031D0686           [093] getfield_r1    3   3   29   ; InstantiateItem
+0253  04000000           [094] getfield       4   0   0    ; EntityUsingItem
+0257  051E0000           [095] getfield       5   0   30   ; InventoryItemBeingUsed
+025B  061F0032           [096] loadk          6   31       ; "Spade"
+025F  03020804           [097] call_i         3   4   2  
+0263  0400005C           [098] newtable       4   0   0    ; array=0, hash=0
+0267  0520000C           [099] getglobal      5   32       ; table
+026B  05210A86           [100] getfield_r1    5   5   33   ; insert
+026F  0600080E           [101] move           6   4      
+0273  0700060E           [102] move           7   3      
+0277  05010604           [103] call_i         5   3   1  
+027B  0522000C           [104] getglobal      5   34       ; StartPreloadingMeshesForEntities
+027F  0600080E           [105] move           6   4      
+0283  05010404           [106] call_i         5   2   1  
+0287  0523000C           [107] getglobal      5   35       ; Carrying
+028B  05240A86           [108] getfield_r1    5   5   36   ; PutEntityInSlot
+028F  06000000           [109] getfield       6   0   0    ; EntityUsingItem
+0293  0725000C           [110] getglobal      7   37       ; DummyObjects
+0297  07260E86           [111] getfield_r1    7   7   38   ; HAND_RIGHT
+029B  0800060E           [112] move           8   3      
+029F  05010804           [113] call_i         5   4   1  
+02A3  05270032           [114] loadk          5   39       ; "DigOutofFail"
+02A7  0610000C           [115] getglobal      6   16       ; DiggingSpot
+02AB  06280C86           [116] getfield_r1    6   6   40   ; IsActive
+02AF  07130000           [117] getfield       7   0   19   ; DigSpot
+02B3  06020404           [118] call_i         6   2   2  
+02B7  06000002           [119] test           6       0    ; to [121] if true
+02BB  00360039           [120] jmp            55           ; to [176]
+02BF  0617000C           [121] getglobal      6   23       ; Player
+02C3  06180C86           [122] getfield_r1    6   6   24   ; IsAvailable
+02C7  07000000           [123] getfield       7   0   0    ; EntityUsingItem
+02CB  06020404           [124] call_i         6   2   2  
+02CF  06000002           [125] test           6       0    ; to [127] if true
+02D3  00300039           [126] jmp            49           ; to [176]
+02D7  0617000C           [127] getglobal      6   23       ; Player
+02DB  06290C86           [128] getfield_r1    6   6   41   ; IsWithinValidDiggingDistance
+02DF  07000000           [129] getfield       7   0   0    ; EntityUsingItem
+02E3  08130000           [130] getfield       8   0   19   ; DigSpot
+02E7  06020604           [131] call_i         6   3   2  
+02EB  06000002           [132] test           6       0    ; to [134] if true
+02EF  00290039           [133] jmp            42           ; to [176]
+02F3  0610000C           [134] getglobal      6   16       ; DiggingSpot
+02F7  062A0C86           [135] getfield_r1    6   6   42   ; HasBeenDugByDog
+02FB  07130000           [136] getfield       7   0   19   ; DigSpot
+02FF  06020404           [137] call_i         6   2   2  
+0303  06010002           [138] test           6       1    ; to [140] if false
+0307  00050039           [139] jmp            6            ; to [146]
+030B  0610000C           [140] getglobal      6   16       ; DiggingSpot
+030F  062B0C86           [141] getfield_r1    6   6   43   ; IsDiggableWithoutDog
+0313  07130000           [142] getfield       7   0   19   ; DigSpot
+0317  06020404           [143] call_i         6   2   2  
+031B  06000002           [144] test           6       0    ; to [146] if true
+031F  001D0039           [145] jmp            30           ; to [176]
+0323  052C0032           [146] loadk          5   44       ; "DigOutofSuccess"
+0327  062D000C           [147] getglobal      6   45       ; DogLeadTo
+032B  06180C86           [148] getfield_r1    6   6   24   ; IsAvailable
+032F  07130000           [149] getfield       7   0   19   ; DigSpot
+0333  06020404           [150] call_i         6   2   2  
+0337  06000002           [151] test           6       0    ; to [153] if true
+033B  00040039           [152] jmp            5            ; to [158]
+033F  062D000C           [153] getglobal      6   45       ; DogLeadTo
+0343  062E0C86           [154] getfield_r1    6   6   46   ; SetActive
+0347  07130000           [155] getfield       7   0   19   ; DigSpot
+034B  0800001A           [156] loadbool       8   0   0    ; false
+034F  06010604           [157] call_i         6   3   1  
+0353  062F000C           [158] getglobal      6   47       ; GetDog
+0357  07000000           [159] getfield       7   0   0    ; EntityUsingItem
+035B  06020404           [160] call_i         6   2   2  
+035F  06000002           [161] test           6       0    ; to [163] if true
+0363  000C0039           [162] jmp            13           ; to [176]
+0367  07010D10           [163] self           7   6   257  ; "IsAlive"
+036B  0702047E           [164] call_i_r1      7   2   2  
+036F  07000002           [165] test           7       0    ; to [167] if true
+0373  00080039           [166] jmp            9            ; to [176]
+0377  0730000C           [167] getglobal      7   48       ; Dog
+037B  07310E86           [168] getfield_r1    7   7   49   ; SetMoodTypeForTime
+037F  08000C0E           [169] move           8   6      
+0383  0932000C           [170] getglobal      9   50       ; EDogMoodType
+0387  09331286           [171] getfield_r1    9   9   51   ; DOG_MOOD_TYPE_HAPPY
+038B  0A34000C           [172] getglobal      10  52       ; EDogMoodPriority
+038F  0A351486           [173] getfield_r1    10  10  53   ; DOG_MOOD_PRIORITY_BEHAVIOUR
+0393  0B360032           [174] loadk          11  54       ; 20
+0397  07010A04           [175] call_i         7   5   1  
+039B  0606005C           [176] newtable       6   0   6    ; array=0, hash=6
+039F  0738000C           [177] getglobal      7   56       ; EScriptableAction
+03A3  07390E86           [178] getfield_r1    7   7   57   ; LOOP
+03A7  06076E1E           [179] setfield       6   55  7    ; Type
+03AB  073B000C           [180] getglobal      7   59       ; EActionPriority
+03AF  073C0E86           [181] getfield_r1    7   7   60   ; PRIORITY_INTERACTION
+03B3  0607741E           [182] setfield       6   58  7    ; Priority
+03B7  0703005C           [183] newtable       7   0   3    ; array=0, hash=3
+03BB  0838000C           [184] getglobal      8   56       ; EScriptableAction
+03BF  083E1086           [185] getfield_r1    8   8   62   ; DIG
+03C3  07086E1E           [186] setfield       7   55  8    ; Type
+03C7  07407F1E           [187] setfield       7   63  320  ; Anim "DigInto"
+03CB  07033E1E           [188] setfield       7   31  3    ; Spade
+03CF  06077A1E           [189] setfield       6   61  7    ; IntoAction
+03D3  0703005C           [190] newtable       7   0   3    ; array=0, hash=3
+03D7  0838000C           [191] getglobal      8   56       ; EScriptableAction
+03DB  083E1086           [192] getfield_r1    8   8   62   ; DIG
+03DF  07086E1E           [193] setfield       7   55  8    ; Type
+03E3  07427F1E           [194] setfield       7   63  322  ; Anim "DigLoop"
+03E7  07033E1E           [195] setfield       7   31  3    ; Spade
+03EB  0607821E           [196] setfield       6   65  7    ; LoopAction
+03EF  0702005C           [197] newtable       7   0   2    ; array=0, hash=2
+03F3  0838000C           [198] getglobal      8   56       ; EScriptableAction
+03F7  08441086           [199] getfield_r1    8   8   68   ; PLAY_ANIMATION
+03FB  07086E1E           [200] setfield       7   55  8    ; Type
+03FF  07057E1E           [201] setfield       7   63  5    ; Anim
+0403  0607861E           [202] setfield       6   67  7    ; OutOfAction
+0407  06468B1E           [203] setfield       6   69  326  ; NumLoops 1
+040B  0704000C           [204] getglobal      7   4        ; Network
+040F  07470E86           [205] getfield_r1    7   7   71   ; IsInCouchGame
+0413  0702027E           [206] call_i_r1      7   1   2  
+0417  07010002           [207] test           7       1    ; to [209] if false
+041B  00060039           [208] jmp            7            ; to [216]
+041F  0748000C           [209] getglobal      7   72       ; CameraManager
+0423  07490E86           [210] getfield_r1    7   7   73   ; SetCannedActionCameraMode
+0427  08000000           [211] getfield       8   0   0    ; EntityUsingItem
+042B  094A000C           [212] getglobal      9   74       ; CannedActionCamera
+042F  094B1286           [213] getfield_r1    9   9   75   ; Types
+0433  094C1286           [214] getfield_r1    9   9   76   ; CANNEDACTION_OPEN_CHEST
+0437  07010604           [215] call_i         7   3   1  
+043B  074E000C           [216] getglobal      7   78       ; MessageEvents
+043F  074F0E86           [217] getfield_r1    7   7   79   ; GetMostRecentMessageID
+0443  0702027E           [218] call_i_r1      7   1   2  
+0447  00079A1E           [219] setfield       0   77  7    ; LastMessageID_ActionFinished
+044B  0702000C           [220] getglobal      7   2        ; Action
+044F  07500E86           [221] getfield_r1    7   7   80   ; SetCurrentAction
+0453  08000000           [222] getfield       8   0   0    ; EntityUsingItem
+0457  09000C0E           [223] move           9   6      
+045B  07010604           [224] call_i         7   3   1  
+045F  07160032           [225] loadk          7   22       ; 0
+0463  0802000C           [226] getglobal      8   2        ; Action
+0467  08031086           [227] getfield_r1    8   8   3    ; IsPerformingAnyAction
+046B  09000000           [228] getfield       9   0   0    ; EntityUsingItem
+046F  08020404           [229] call_i         8   2   2  
+0473  08000002           [230] test           8       0    ; to [232] if true
+0477  00150039           [231] jmp            22           ; to [254]
+047B  084E000C           [232] getglobal      8   78       ; MessageEvents
+047F  08511086           [233] getfield_r1    8   8   81   ; IsMessageSentBy
+0483  0952000C           [234] getglobal      9   82       ; EMessageEventType
+0487  09531286           [235] getfield_r1    9   9   83   ; MESSAGE_EVENT_ACTION_FINISHED
+048B  0A000000           [236] getfield       10  0   0    ; EntityUsingItem
+048F  0B4D0000           [237] getfield       11  0   77   ; LastMessageID_ActionFinished
+0493  08030804           [238] call_i         8   4   3  
+0497  08000002           [239] test           8       0    ; to [241] if true
+049B  00080039           [240] jmp            9            ; to [250]
+049F  0A541310           [241] self           10  9   340  ; "GetID"
+04A3  0A02047E           [242] call_i_r1      10  2   2  
+04A7  000A9A1E           [243] setfield       0   77  10   ; LastMessageID_ActionFinished
+04AB  0A551310           [244] self           10  9   341  ; "GetExtraDataAsNumber"
+04AF  0A02047E           [245] call_i_r1      10  2   2  
+04B3  0700140E           [246] move           7   10     
+04B7  00072C66           [247] lt_bk          0   22  7    ; 0, to [249] if true
+04BB  00000039           [248] jmp            1            ; to [250]
+04BF  00030039           [249] jmp            4            ; to [254]
+04C3  0A1A000C           [250] getglobal      10  26       ; coroutine
+04C7  0A1B1486           [251] getfield_r1    10  10  27   ; yield
+04CB  0A01027E           [252] call_i_r1      10  1   1  
+04CF  00E3FF38           [253] jmp            -28          ; to [226]
+04D3  0804000C           [254] getglobal      8   4        ; Network
+04D7  08471086           [255] getfield_r1    8   8   71   ; IsInCouchGame
+04DB  0802027E           [256] call_i_r1      8   1   2  
+04DF  08010002           [257] test           8       1    ; to [259] if false
+04E3  00060039           [258] jmp            7            ; to [266]
+04E7  0848000C           [259] getglobal      8   72       ; CameraManager
+04EB  08491086           [260] getfield_r1    8   8   73   ; SetCannedActionCameraMode
+04EF  09000000           [261] getfield       9   0   0    ; EntityUsingItem
+04F3  0A4A000C           [262] getglobal      10  74       ; CannedActionCamera
+04F7  0A4B1486           [263] getfield_r1    10  10  75   ; Types
+04FB  0A561486           [264] getfield_r1    10  10  86   ; CANNEDACTION_NONE
+04FF  08010604           [265] call_i         8   3   1  
+0503  00072C66           [266] lt_bk          0   22  7    ; 0, to [268] if true
+0507  00200039           [267] jmp            33           ; to [301]
+050B  0817000C           [268] getglobal      8   23       ; Player
+050F  08181086           [269] getfield_r1    8   8   24   ; IsAvailable
+0513  09000000           [270] getfield       9   0   0    ; EntityUsingItem
+0517  08020404           [271] call_i         8   2   2  
+051B  08000002           [272] test           8       0    ; to [274] if true
+051F  00040039           [273] jmp            5            ; to [279]
+0523  0817000C           [274] getglobal      8   23       ; Player
+0527  08571086           [275] getfield_r1    8   8   87   ; StopInteractionMode
+052B  09000000           [276] getfield       9   0   0    ; EntityUsingItem
+052F  0A00040E           [277] move           10  2      
+0533  08010604           [278] call_i         8   3   1  
+0537  0823000C           [279] getglobal      8   35       ; Carrying
+053B  08581086           [280] getfield_r1    8   8   88   ; ReturnEntityToInventory
+053F  09000000           [281] getfield       9   0   0    ; EntityUsingItem
+0543  0A25000C           [282] getglobal      10  37       ; DummyObjects
+0547  0A261486           [283] getfield_r1    10  10  38   ; HAND_RIGHT
+054B  08010604           [284] call_i         8   3   1  
+054F  082D000C           [285] getglobal      8   45       ; DogLeadTo
+0553  08181086           [286] getfield_r1    8   8   24   ; IsAvailable
+0557  09130000           [287] getfield       9   0   19   ; DigSpot
+055B  08020404           [288] call_i         8   2   2  
+055F  08000002           [289] test           8       0    ; to [291] if true
+0563  00040039           [290] jmp            5            ; to [296]
+0567  082D000C           [291] getglobal      8   45       ; DogLeadTo
+056B  082E1086           [292] getfield_r1    8   8   46   ; SetActive
+056F  09130000           [293] getfield       9   0   19   ; DigSpot
+0573  0A00021A           [294] loadbool       10  1   0    ; true
+0577  08010604           [295] call_i         8   3   1  
+057B  0804000C           [296] getglobal      8   4        ; Network
+057F  08051086           [297] getfield_r1    8   8   5    ; SetLevelTransitionBlockedBecauseOfDigging
+0583  0900001A           [298] loadbool       9   0   0    ; false
+0587  08010404           [299] call_i         8   2   1  
+058B  00000212           [300] return         0   1      
+058F  08130000           [301] getfield       8   0   19   ; DigSpot
+0593  08000082           [302] test_r1        8   0   0  
+0597  003C0039           [303] jmp            61           ; to [365]
+059B  08130000           [304] getfield       8   0   19   ; DigSpot
+059F  08011110           [305] self           8   8   257  ; "IsAlive"
+05A3  0802047E           [306] call_i_r1      8   2   2  
+05A7  08000002           [307] test           8       0    ; to [309] if true
+05AB  00370039           [308] jmp            56           ; to [365]
+05AF  002C0B08           [309] eq             0   5   300  ; DigOutofSuccess, to [311] if true
+05B3  001C0039           [310] jmp            29           ; to [340]
+05B7  08000000           [311] getfield       8   0   0    ; EntityUsingItem
+05BB  091C000C           [312] getglobal      9   28       ; Inventory
+05BF  09181286           [313] getfield_r1    9   9   24   ; IsAvailable
+05C3  0A00100E           [314] move           10  8      
+05C7  09020404           [315] call_i         9   2   2  
+05CB  09000002           [316] test           9       0    ; to [318] if true
+05CF  000A0039           [317] jmp            11           ; to [329]
+05D3  091C000C           [318] getglobal      9   28       ; Inventory
+05D7  09181286           [319] getfield_r1    9   9   24   ; IsAvailable
+05DB  0A130000           [320] getfield       10  0   19   ; DigSpot
+05DF  09020404           [321] call_i         9   2   2  
+05E3  09000002           [322] test           9       0    ; to [324] if true
+05E7  00040039           [323] jmp            5            ; to [329]
+05EB  09590110           [324] self           9   0   345  ; "TransferItemsFromObjectToPlayers"
+05EF  0B130000           [325] getfield       11  0   19   ; DigSpot
+05F3  0C00021A           [326] loadbool       12  1   0    ; true
+05F7  09010804           [327] call_i         9   4   1  
+05FB  005BB51E           [328] setfield       0   90  347  ; DidTransferItems true
+05FF  0923000C           [329] getglobal      9   35       ; Carrying
+0603  095C1286           [330] getfield_r1    9   9   92   ; AddAmountForConditionalAugments
+0607  0A000000           [331] getfield       10  0   0    ; EntityUsingItem
+060B  0B130032           [332] loadk          11  19       ; "DigSpot"
+060F  0C460032           [333] loadk          12  70       ; 1
+0613  09010804           [334] call_i         9   4   1  
+0617  0910000C           [335] getglobal      9   16       ; DiggingSpot
+061B  095D1286           [336] getfield_r1    9   9   93   ; OnDug
+061F  0A130000           [337] getfield       10  0   19   ; DigSpot
+0623  0B000000           [338] getfield       11  0   0    ; EntityUsingItem
+0627  09010604           [339] call_i         9   3   1  
+062B  0810000C           [340] getglobal      8   16       ; DiggingSpot
+062F  082A1086           [341] getfield_r1    8   8   42   ; HasBeenDugByDog
+0633  09130000           [342] getfield       9   0   19   ; DigSpot
+0637  08020404           [343] call_i         8   2   2  
+063B  08000002           [344] test           8       0    ; to [346] if true
+063F  00120039           [345] jmp            19           ; to [365]
+0643  085E000C           [346] getglobal      8   94       ; TutorialManager
+0647  085F1086           [347] getfield_r1    8   8   95   ; DisplayTutorial
+064B  0960000C           [348] getglobal      9   96       ; ETutorialType
+064F  09611286           [349] getfield_r1    9   9   97   ; TUTORIAL_DOG_TREASURE_3
+0653  08020404           [350] call_i         8   2   2  
+0657  08000002           [351] test           8       0    ; to [353] if true
+065B  000B0039           [352] jmp            12           ; to [365]
+065F  081A000C           [353] getglobal      8   26       ; coroutine
+0663  081B1086           [354] getfield_r1    8   8   27   ; yield
+0667  0801027E           [355] call_i_r1      8   1   1  
+066B  0862000C           [356] getglobal      8   98       ; GUI
+066F  08631086           [357] getfield_r1    8   8   99   ; IsUIActive
+0673  0802027E           [358] call_i_r1      8   1   2  
+0677  08000002           [359] test           8       0    ; to [361] if true
+067B  00030039           [360] jmp            4            ; to [365]
+067F  081A000C           [361] getglobal      8   26       ; coroutine
+0683  081B1086           [362] getfield_r1    8   8   27   ; yield
+0687  0801027E           [363] call_i_r1      8   1   1  
+068B  00F6FF38           [364] jmp            -9           ; to [356]
+068F  0848000C           [365] getglobal      8   72       ; CameraManager
+0693  08491086           [366] getfield_r1    8   8   73   ; SetCannedActionCameraMode
+0697  09000000           [367] getfield       9   0   0    ; EntityUsingItem
+069B  0A4A000C           [368] getglobal      10  74       ; CannedActionCamera
+069F  0A4B1486           [369] getfield_r1    10  10  75   ; Types
+06A3  0A561486           [370] getfield_r1    10  10  86   ; CANNEDACTION_NONE
+06A7  08010604           [371] call_i         8   3   1  
+06AB  0817000C           [372] getglobal      8   23       ; Player
+06AF  08181086           [373] getfield_r1    8   8   24   ; IsAvailable
+06B3  09000000           [374] getfield       9   0   0    ; EntityUsingItem
+06B7  08020404           [375] call_i         8   2   2  
+06BB  08000002           [376] test           8       0    ; to [378] if true
+06BF  00040039           [377] jmp            5            ; to [383]
+06C3  0817000C           [378] getglobal      8   23       ; Player
+06C7  08571086           [379] getfield_r1    8   8   87   ; StopInteractionMode
+06CB  09000000           [380] getfield       9   0   0    ; EntityUsingItem
+06CF  0A00040E           [381] move           10  2      
+06D3  08010604           [382] call_i         8   3   1  
+06D7  0804000C           [383] getglobal      8   4        ; Network
+06DB  08051086           [384] getfield_r1    8   8   5    ; SetLevelTransitionBlockedBecauseOfDigging
+06DF  0900001A           [385] loadbool       9   0   0    ; false
+06E3  08010404           [386] call_i         8   2   1  
+06E7  0823000C           [387] getglobal      8   35       ; Carrying
+06EB  08581086           [388] getfield_r1    8   8   88   ; ReturnEntityToInventory
+06EF  09000000           [389] getfield       9   0   0    ; EntityUsingItem
+06F3  0A25000C           [390] getglobal      10  37       ; DummyObjects
+06F7  0A261486           [391] getfield_r1    10  10  38   ; HAND_RIGHT
+06FB  08010604           [392] call_i         8   3   1  
+06FF  00000212           [393] return         0   1      
+                         * constants:
+0703  64000000           sizek (100)
+0707  04                 const type 4
+                         const [0]: "EntityUsingItem"
+071C  04                 const type 4
+                         const [1]: "IsAlive"
+0729  04                 const type 4
+                         const [2]: "Action"
+0735  04                 const type 4
+                         const [3]: "IsPerformingAnyAction"
+0750  04                 const type 4
+                         const [4]: "Network"
+075D  04                 const type 4
+                         const [5]: "SetLevelTransitionBlockedBecauseOfDigging"
+078C  04                 const type 4
+                         const [6]: "HandHoldingIK"
+079F  04                 const type 4
+                         const [7]: "IsHandHolding"
+07B2  04                 const type 4
+                         const [8]: "GetLocalHero"
+07C4  04                 const type 4
+                         const [9]: "GetPartner"
+07D4  04                 const type 4
+                         const [10]: "HandHolding"
+07E5  04                 const type 4
+                         const [11]: "ClearHandHolding"
+07FB  04                 const type 4
+                         const [12]: "SearchTools"
+080C  04                 const type 4
+                         const [13]: "StartNewSearch"
+0820  04                 const type 4
+                         const [14]: "marker"
+082C  04                 const type 4
+                         const [15]: "FilterWithEC"
+083E  04                 const type 4
+                         const [16]: "DiggingSpot"
+084F  04                 const type 4
+                         const [17]: "GetECType"
+085E  04                 const type 4
+                         const [18]: "FilterActiveDiggingSpot"
+087B  04                 const type 4
+                         const [19]: "DigSpot"
+0888  04                 const type 4
+                         const [20]: "GetNearestEntity"
+089E  04                 const type 4
+                         const [21]: "GetPosition"
+08AF  03                 const type 3
+08B0  00000000           const [22]: (0)
+08B4  04                 const type 4
+                         const [23]: "Player"
+08C0  04                 const type 4
+                         const [24]: "IsAvailable"
+08D1  04                 const type 4
+                         const [25]: "StartInteractionMode"
+08EB  04                 const type 4
+                         const [26]: "coroutine"
+08FA  04                 const type 4
+                         const [27]: "yield"
+0905  04                 const type 4
+                         const [28]: "Inventory"
+0914  04                 const type 4
+                         const [29]: "InstantiateItem"
+0929  04                 const type 4
+                         const [30]: "InventoryItemBeingUsed"
+0945  04                 const type 4
+                         const [31]: "Spade"
+0950  04                 const type 4
+                         const [32]: "table"
+095B  04                 const type 4
+                         const [33]: "insert"
+0967  04                 const type 4
+                         const [34]: "StartPreloadingMeshesForEntities"
+098D  04                 const type 4
+                         const [35]: "Carrying"
+099B  04                 const type 4
+                         const [36]: "PutEntityInSlot"
+09B0  04                 const type 4
+                         const [37]: "DummyObjects"
+09C2  04                 const type 4
+                         const [38]: "HAND_RIGHT"
+09D2  04                 const type 4
+                         const [39]: "DigOutofFail"
+09E4  04                 const type 4
+                         const [40]: "IsActive"
+09F2  04                 const type 4
+                         const [41]: "IsWithinValidDiggingDistance"
+0A14  04                 const type 4
+                         const [42]: "HasBeenDugByDog"
+0A29  04                 const type 4
+                         const [43]: "IsDiggableWithoutDog"
+0A43  04                 const type 4
+                         const [44]: "DigOutofSuccess"
+0A58  04                 const type 4
+                         const [45]: "DogLeadTo"
+0A67  04                 const type 4
+                         const [46]: "SetActive"
+0A76  04                 const type 4
+                         const [47]: "GetDog"
+0A82  04                 const type 4
+                         const [48]: "Dog"
+0A8B  04                 const type 4
+                         const [49]: "SetMoodTypeForTime"
+0AA3  04                 const type 4
+                         const [50]: "EDogMoodType"
+0AB5  04                 const type 4
+                         const [51]: "DOG_MOOD_TYPE_HAPPY"
+0ACE  04                 const type 4
+                         const [52]: "EDogMoodPriority"
+0AE4  04                 const type 4
+                         const [53]: "DOG_MOOD_PRIORITY_BEHAVIOUR"
+0B05  03                 const type 3
+0B06  0000A041           const [54]: (20)
+0B0A  04                 const type 4
+                         const [55]: "Type"
+0B14  04                 const type 4
+                         const [56]: "EScriptableAction"
+0B2B  04                 const type 4
+                         const [57]: "LOOP"
+0B35  04                 const type 4
+                         const [58]: "Priority"
+0B43  04                 const type 4
+                         const [59]: "EActionPriority"
+0B58  04                 const type 4
+                         const [60]: "PRIORITY_INTERACTION"
+0B72  04                 const type 4
+                         const [61]: "IntoAction"
+0B82  04                 const type 4
+                         const [62]: "DIG"
+0B8B  04                 const type 4
+                         const [63]: "Anim"
+0B95  04                 const type 4
+                         const [64]: "DigInto"
+0BA2  04                 const type 4
+                         const [65]: "LoopAction"
+0BB2  04                 const type 4
+                         const [66]: "DigLoop"
+0BBF  04                 const type 4
+                         const [67]: "OutOfAction"
+0BD0  04                 const type 4
+                         const [68]: "PLAY_ANIMATION"
+0BE4  04                 const type 4
+                         const [69]: "NumLoops"
+0BF2  03                 const type 3
+0BF3  0000803F           const [70]: (1)
+0BF7  04                 const type 4
+                         const [71]: "IsInCouchGame"
+0C0A  04                 const type 4
+                         const [72]: "CameraManager"
+0C1D  04                 const type 4
+                         const [73]: "SetCannedActionCameraMode"
+0C3C  04                 const type 4
+                         const [74]: "CannedActionCamera"
+0C54  04                 const type 4
+                         const [75]: "Types"
+0C5F  04                 const type 4
+                         const [76]: "CANNEDACTION_OPEN_CHEST"
+0C7C  04                 const type 4
+                         const [77]: "LastMessageID_ActionFinished"
+0C9E  04                 const type 4
+                         const [78]: "MessageEvents"
+0CB1  04                 const type 4
+                         const [79]: "GetMostRecentMessageID"
+0CCD  04                 const type 4
+                         const [80]: "SetCurrentAction"
+0CE3  04                 const type 4
+                         const [81]: "IsMessageSentBy"
+0CF8  04                 const type 4
+                         const [82]: "EMessageEventType"
+0D0F  04                 const type 4
+                         const [83]: "MESSAGE_EVENT_ACTION_FINISHED"
+0D32  04                 const type 4
+                         const [84]: "GetID"
+0D3D  04                 const type 4
+                         const [85]: "GetExtraDataAsNumber"
+0D57  04                 const type 4
+                         const [86]: "CANNEDACTION_NONE"
+0D6E  04                 const type 4
+                         const [87]: "StopInteractionMode"
+0D87  04                 const type 4
+                         const [88]: "ReturnEntityToInventory"
+0DA4  04                 const type 4
+                         const [89]: "TransferItemsFromObjectToPlayers"
+0DCA  04                 const type 4
+                         const [90]: "DidTransferItems"
+0DE0  01                 const type 1
+0DE1  01                 const [91]: (true)
+0DE2  04                 const type 4
+                         const [92]: "AddAmountForConditionalAugments"
+0E07  04                 const type 4
+                         const [93]: "OnDug"
+0E12  04                 const type 4
+                         const [94]: "TutorialManager"
+0E27  04                 const type 4
+                         const [95]: "DisplayTutorial"
+0E3C  04                 const type 4
+                         const [96]: "ETutorialType"
+0E4F  04                 const type 4
+                         const [97]: "TUTORIAL_DOG_TREASURE_3"
+0E6C  04                 const type 4
+                         const [98]: "GUI"
+0E75  04                 const type 4
+                         const [99]: "IsUIActive"
+                         * functions:
+0E85  00000000           sizep (0)
+                         * lines:
+0E89  00000000           sizelineinfo (0)
+                         [pc] (line)
+                         * locals:
+0E8D  00000000           sizelocvars (0)
+                         * upvalues:
+0E91  00000000           sizeupvalues (0)
+                         ** end of function **
+
+                         
+0E99                     ** function [1] definition (level 2)
+                         ** start of function **
+                         source name: (none)
+0E9D  A3000000           line defined (163)
+0EA1  B2000000           last line defined (178)
+0EA5  00                 nups (0)
+0EA6  01                 numparams (1)
+0EA7  00                 is_vararg (0)
+0EA8  04                 maxstacksize (4)
+                         * code:
+0EA9  1E000000           sizecode (30)
+0EAD  01000000           [01] getfield       1   0   0    ; DigSpot
+0EB1  01010308           [02] eq             1   1   257  ; nil, to [4] if false
+0EB5  00170039           [03] jmp            24           ; to [28]
+0EB9  01000000           [04] getfield       1   0   0    ; DigSpot
+0EBD  01020310           [05] self           1   1   258  ; "IsAlive"
+0EC1  0102047E           [06] call_i_r1      1   2   2  
+0EC5  01000002           [07] test           1       0    ; to [9] if true
+0EC9  00120039           [08] jmp            19           ; to [28]
+0ECD  01030000           [09] getfield       1   0   3    ; DidTransferItems
+0ED1  01010082           [10] test_r1        1   0   1  
+0ED5  000F0039           [11] jmp            16           ; to [28]
+0ED9  0104000C           [12] getglobal      1   4        ; DiggingSpot
+0EDD  01050286           [13] getfield_r1    1   1   5    ; SetAsActive
+0EE1  02000000           [14] getfield       2   0   0    ; DigSpot
+0EE5  0300021A           [15] loadbool       3   1   0    ; true
+0EE9  01010604           [16] call_i         1   3   1  
+0EED  0106000C           [17] getglobal      1   6        ; DogLeadTo
+0EF1  01070286           [18] getfield_r1    1   1   7    ; IsAvailable
+0EF5  02000000           [19] getfield       2   0   0    ; DigSpot
+0EF9  01020404           [20] call_i         1   2   2  
+0EFD  01000002           [21] test           1       0    ; to [23] if true
+0F01  00040039           [22] jmp            5            ; to [28]
+0F05  0106000C           [23] getglobal      1   6        ; DogLeadTo
+0F09  01080286           [24] getfield_r1    1   1   8    ; SetActive
+0F0D  02000000           [25] getfield       2   0   0    ; DigSpot
+0F11  0300021A           [26] loadbool       3   1   0    ; true
+0F15  01010604           [27] call_i         1   3   1  
+0F19  0001011E           [28] setfield       0   0   257  ; DigSpot nil
+0F1D  0001071E           [29] setfield       0   3   257  ; DidTransferItems nil
+0F21  00000212           [30] return         0   1      
+                         * constants:
+0F25  09000000           sizek (9)
+0F29  04                 const type 4
+                         const [0]: "DigSpot"
+0F36  00                 const type 0
+                         const [1]: nil
+0F37  04                 const type 4
+                         const [2]: "IsAlive"
+0F44  04                 const type 4
+                         const [3]: "DidTransferItems"
+0F5A  04                 const type 4
+                         const [4]: "DiggingSpot"
+0F6B  04                 const type 4
+                         const [5]: "SetAsActive"
+0F7C  04                 const type 4
+                         const [6]: "DogLeadTo"
+0F8B  04                 const type 4
+                         const [7]: "IsAvailable"
+0F9C  04                 const type 4
+                         const [8]: "SetActive"
+                         * functions:
+0FAB  00000000           sizep (0)
+                         * lines:
+0FAF  00000000           sizelineinfo (0)
+                         [pc] (line)
+                         * locals:
+0FB3  00000000           sizelocvars (0)
+                         * upvalues:
+0FB7  00000000           sizeupvalues (0)
+                         ** end of function **
+
+                         * lines:
+0FBB  00000000           sizelineinfo (0)
+                         [pc] (line)
+                         * locals:
+0FBF  00000000           sizelocvars (0)
+                         * upvalues:
+0FC3  00000000           sizeupvalues (0)
+                         ** end of function **
+
+0FC7                     ** end of chunk **

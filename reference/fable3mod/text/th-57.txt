@@ -1,0 +1,310 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » [Question]Add items to your character via a save editor. 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » [Question]Add items to your character via a save editor. 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ [Question]Add items to your character via a save editor. 
+ Thu, 19 September 2013 04:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Would something like that be possible? I've recently purchased fable 3 on my Xbox, and I would love to have "The Inquisitor" on my sanctuary. Apparently, I did not pre-order the game and there are lots of items which are available only if you have pre-ordered the game. I'm looking to add every single one of them since there is no other legitimate way. 
+ 
+For your information, I already did some research on my own, but to my luck I failed. 
+ 
+First of all I thought that since fable 3 on xbox has almost the same structure as the one on the PC, I've decided to port my xbox 360 save on my PC, adding the items with a LUA function then after all that, porting the game back to xbox 360. Now you may say that the save gets corrupted if the checksums are incorrect, well I have already managed to edit the xbox save successfully without corrupting my save at a later point (this obviously involved checksum fixing). Based on that logic, I wanted to extract the contents of the xbox save which are: 
+ 
+- chaptersave.bin 
+- checksumsave.bin 
+- entityuid.bin 
+- failquestherosave.bin 
+- failquestmainsave.bin 
+- herosave.bin 
+- leaderboardstatssave.bin 
+- mainsave.bin 
+- saveuid.bin 
+ 
+and then I would rename all of those files to the actual PC naming structure (which involves adding "hero1autosave_xxxx.bin"), later on I would open the hero1autosave_herosave.bin on fable 3 save editor and recompile the checksums, to my surprise though, the editor said that the files were corrupted to an extent that they were not recoverable/fixable/whateverable. I've tried porting the very same files to my xbox and they worked brilliantly. So I guess the structure must be different on the PC and the Xbox. Either that, or I used a wrong XUID or however that's called. As my PC save files are located on a folder called "1000100010001000". 
+ 
+My second attempt was to try using the xbox save editor (not the horizon) to modify "herosave.bin", but I am totally lost in this program. Not really, I mean, I have found some things, but they were not quite as I expected them to be. For instance, the field named "Character.Carry.SheathWeaponBack" looks quite interesting, there are four rows of values in there, comparing to another save the only row that changes is the second one, on my save the row is "232 int 127 0000007F" while on the other save the row is "232 int 609 00000261", could this mean that this id (609/00000261) is the id of a weapon? I looked it up using the items list from ZackTiro's Script Modding Setup Tutorial and to my surprise there was no relevant id to one of those, even if there was one, it led me to a random object from that list. 
+ 
+Does anyone have the xbox version of fable 3? If yes, have you tried adding pre-order items? If you care to tell me, let me know, I'm all ears. Till I receive a reply I will keep searching and if I find anything I will keep this topic updated. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Question]Add items to your character via a save editor. 
+ Thu, 19 September 2013 08:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm no expert on saves, but I think they are tied to your profile. Other than that, I've never touched them. So good luck! Let us know how your research and testing goes. 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Question]Add items to your character via a save editor. 
+ Thu, 19 September 2013 11:47 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Thu, 19 September 2013 08:58 I'm no expert on saves, but I think they are tied to your profile. Other than that, I've never touched them. So good luck! Let us know how your research and testing goes. 
+ 
+I'm neither an expert really, I just followed a random tutorial which worked perfectly. Anyway, I still have a few things in mind that I have yet to try, I will definitely keep you updated whether the testing goes well or not. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Is it possible? 
+
+ 
+ Next Topic: 
+ Noob help with DLC unlocking 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:21 PDT 2026 
+
+ Total time taken to generate the page: 0.05483 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

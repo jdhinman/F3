@@ -1,0 +1,194 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » GENV File Format 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » GENV File Format 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ GENV File Format 
+ Thu, 21 November 2013 08:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TodX:1228534635 
+This seems to be an environment map, don't know what it's linking to yet though. 
+ 
+ 
+
+#include "standard-types.hsl"
+
+#pragma byteorder(big_endian)
+#pragma maxarray(65536) // max that hw 5.1 will allow
+#pragma maxstring(512)
+
+typedef struct GENV // environment map
+{
+	DWORD	Unknowns1[5];
+	DWORD	CellsX;
+	DWORD	CellsY;
+	DWORD	Unknown2;
+	
+	DWORD	Map[CellsX*CellsY];	// Environment ID for that cell
+} GENV;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ ENGINE_LEVEL - LevelGraphicsFile Format 
+
+ 
+ Next Topic: 
+ LOCO File Format 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:48 PDT 2026 
+
+ Total time taken to generate the page: 0.05532 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,374 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » ZackTiro's Script Modding Setup Tutorial 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » ZackTiro's Script Modding Setup Tutorial 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ ZackTiro's Script Modding Setup Tutorial 
+ Mon, 09 September 2013 18:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ [This was originally written by ZackTiro - Keshire] 
+ 
+Gonna start from scratch again soonMade a small tutorial for the the Lua scripts. 
+ 
+All Credits goes to Keshire and BlackDemon for finding this usefull method ;D 
+ 
+Steps needed to do this: 
+ 
+0.) Make a Backup of: Gamescripts_r.bnk, dir.mainfest, startup.vsconfig 
+ 
+1.) Extract the Gamescripts_r.bnk with BlackDemons Extract tool found here 
+2.) Copy the &quot;scripts&quot; folder into the Fable 3 data folder so it looks like X:\X\Fable III\data\scipts (X=Placeholder) 
+3.) EDIT: Continue with 4.) 
+4.) Download this file and rename it to dir.manifest and copy it in your data folder. 
+5.) Go to scripts\quests and delete scriptactivation.lua. 
+6.) Rename scriptactivation.txt to scriptactivation.lua. 
+7.) Open the file and serach for this line marked red in the code text. 
+ 
+ 
+ 
+ 
+ 
+ 
+Quote: Quote: --------------- Script Activation --------------------- 
+ 
+-- N O T E S 
+ 
+-- * if .states isn't defined, states is assumed to be {&quot;START&quot;} 
+-- * if .states is defined, one of the states /must/ be &quot;START&quot; 
+-- * if AbleToRun isn't defined, quest is assumed to always be runnable 
+-- when in a valid chapter 
+-- * (possibly could do the same with start_chap and end_chap, assuming 
+-- quest runs from Chapters.Start to Chapters.End if not defined) 
+ 
+ 
+ScriptActivation={} 
+ 
+-- // -- C O R E -- // -- 
+ 
+-- ** -- QU000 - The Road To Rule -- ** -- 
+ 
+ScriptActivation[ScriptCode.QU000]={} 
+ ScriptActivation[ScriptCode.QU000].name=&quot;QU000_Road ToRule&quot; 
+ ScriptActivation[ScriptCode.QU000].display_name=&quot;Th e Road To Rule&quot; 
+ ScriptActivation[ScriptCode.QU000].start_chap=Chapters.Start 
+ScriptActivation[ScriptCode.QU000].end_chap=Chapters.End 
+ScriptActivation[ScriptCode.QU000].states = 
+{ 
+	-- DevFrontEnd: allow 
+	&quot;SETUP&quot;, 
+	&quot;ESCAPE_CAVE_TAKE_THE_SEAL&quot;, 
+	&quot;HERO_TEST_MUSIC_BOX&quot;, 
+	&quot;RENEGADE_CAMP_SAKER&quot;, 
+	&quot;GYPSY_CAMP_SABINE&quot;, 
+	&quot;HOBBE_CAVE_ARENA&quot;, 
+	&quot;MOURNINGWOOD_SWIFT_PROMISE&quot;, 
+	&quot;BOWERSTONE_RENOWN_BREAK&quot;, 
+	&quot;BOWERSTONE_PAGE_PROMISE&quot;, 
+	&quot;AURORA_KALIN_PROMISE&quot;, 
+	&quot;CASTLE_CORONATION&quot;, 
+	&quot;CASTLE_FOR_ALBION&quot;, 
+	&quot;BOWERSTONE_MARKET_BATTLE&quot; 
+} 
+ScriptActivation[ScriptCode.QU000].initial_levels = 
+{ 
+	-- DevFrontEnd: allow 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot; 
+} 
+ScriptActivation[ScriptCode.QU000].initial_markers = 
+{ 
+	-- DevFrontEnd: allow 
+	&quot;QU000_Debug_PSETUP&quot;, 
+	&quot;QU000_Debug_PESCAPE_CAVE_TAKE_THE_SEAL&quot;, 
+	&quot;QU000_Debug_PHERO_TEST_MUSIC_BOX&quot;, 
+	&quot;QU000_Debug_PRENEGADE_CAMP_SAKER&quot;, 
+	&quot;QU000_Debug_PGYPSY_CAMP_SABINE&quot;, 
+	&quot;QU000_Debug_PHOBBE_CAVE_ARENA&quot;, 
+ &quot;QU000_Debug_PMOURNINGWOOD_SWIFT_PROMISE&quot;, 
+	&quot;QU000_Debug_PBOWERSTONE_RENOWN_BREAK&quot;, 
+	&quot;QU000_Debug_PBOWERSTONE_PAGE_PROMISE&quot;, 
+	&quot;QU000_Debug_PAURORA_KALIN_PROMISE&quot;, 
+	&quot;QU000_Debug_PCASTLE_CORONATION&quot;, 
+	&quot;QU000_Debug_PCASTLE_FOR_ALBION&quot;, 
+	&quot;QU000_Debug_PBOWERSTONE_MARKET_BATTLE&quot; 
+} 
+ 
+ 
+ ScriptActivation[ScriptCode.QU000].AbleToRun=nil 
+8.) Replace nil with function () 
+9.) now you can add a line, to add items just use this: 
+ 
+ Inventory.AddItemOfType(GetLocalHero(), 'YourItemFromFromTheItemList') 
+ 
+ 
+10. After that put under this line return nil and under that line put end and it should look like this: 
+ 
+Quote: Quote: --------------- Script Activation --------------------- 
+ 
+-- N O T E S 
+ 
+-- * if .states isn't defined, states is assumed to be {&quot;START&quot;} 
+-- * if .states is defined, one of the states /must/ be &quot;START&quot; 
+-- * if AbleToRun isn't defined, quest is assumed to always be runnable 
+-- when in a valid chapter 
+-- * (possibly could do the same with start_chap and end_chap, assuming 
+-- quest runs from Chapters.Start to Chapters.End if not defined) 
+ 
+ 
+ScriptActivation={} 
+ 
+-- // -- C O R E -- // -- 
+ 
+-- ** -- QU000 - The Road To Rule -- ** -- 
+ 
+ScriptActivation[ScriptCode.QU000]={} 
+ ScriptActivation[ScriptCode.QU000].name=&quot;QU000_Road ToRule&quot; 
+ ScriptActivation[ScriptCode.QU000].display_name=&quot;Th e Road To Rule&quot; 
+ ScriptActivation[ScriptCode.QU000].start_chap=Chapters.Start 
+ScriptActivation[ScriptCode.QU000].end_chap=Chapters.End 
+ScriptActivation[ScriptCode.QU000].states = 
+{ 
+	-- DevFrontEnd: allow 
+	&quot;SETUP&quot;, 
+	&quot;ESCAPE_CAVE_TAKE_THE_SEAL&quot;, 
+	&quot;HERO_TEST_MUSIC_BOX&quot;, 
+	&quot;RENEGADE_CAMP_SAKER&quot;, 
+	&quot;GYPSY_CAMP_SABINE&quot;, 
+	&quot;HOBBE_CAVE_ARENA&quot;, 
+	&quot;MOURNINGWOOD_SWIFT_PROMISE&quot;, 
+	&quot;BOWERSTONE_RENOWN_BREAK&quot;, 
+	&quot;BOWERSTONE_PAGE_PROMISE&quot;, 
+	&quot;AURORA_KALIN_PROMISE&quot;, 
+	&quot;CASTLE_CORONATION&quot;, 
+	&quot;CASTLE_FOR_ALBION&quot;, 
+	&quot;BOWERSTONE_MARKET_BATTLE&quot; 
+} 
+ScriptActivation[ScriptCode.QU000].initial_levels = 
+{ 
+	-- DevFrontEnd: allow 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot;, 
+	&quot;DemonDoors\\RoadToRule&quot; 
+} 
+ScriptActivation[ScriptCode.QU000].initial_markers = 
+{ 
+	-- DevFrontEnd: allow 
+	&quot;QU000_Debug_PSETUP&quot;, 
+	&quot;QU000_Debug_PESCAPE_CAVE_TAKE_THE_SEAL&quot;, 
+	&quot;QU000_Debug_PHERO_TEST_MUSIC_BOX&quot;, 
+	&quot;QU000_Debug_PRENEGADE_CAMP_SAKER&quot;, 
+	&quot;QU000_Debug_PGYPSY_CAMP_SABINE&quot;, 
+	&quot;QU000_Debug_PHOBBE_CAVE_ARENA&quot;, 
+ &quot;QU000_Debug_PMOURNINGWOOD_SWIFT_PROMISE&quot;, 
+	&quot;QU000_Debug_PBOWERSTONE_RENOWN_BREAK&quot;, 
+	&quot;QU000_Debug_PBOWERSTONE_PAGE_PROMISE&quot;, 
+	&quot;QU000_Debug_PAURORA_KALIN_PROMISE&quot;, 
+	&quot;QU000_Debug_PCASTLE_CORONATION&quot;, 
+	&quot;QU000_Debug_PCASTLE_FOR_ALBION&quot;, 
+	&quot;QU000_Debug_PBOWERSTONE_MARKET_BATTLE&quot; 
+} 
+ 
+ 
+ ScriptActivation[ScriptCode.QU000].AbleToRun=function () 
+ 
+ 
+Inventory.AddItemOfType(GetLocalHero(), 'YourItemFromFromTheItemList') 
+return nil 
+end 
+ 
+11.) open starup.vsconfig and delete the line where gamescripts_r.bnk is written, save it and start the game. 
+ 
+12.) Load the Game and save it after receiving all items 
+13.) Optional: Restore all original Files. (I had to do this cause the road to rule didnt load with the changed scripts) 
+ 
+NOTE: DLC's will override any script in the Fable 3 Folder. 
+NOTE 2: Some items of the Item List are Fable 2 items, so be cautious. 
+NOTE 3: All credits go to BlackDemon and Keshire for finding this use full thing. 
+NOTE 4: You can even change you Gender with a script command, look commands up in the file debugmenu.lua found inside scripts\startup 
+ 
+ 
+and Finaly the Itemlist. 
+ 
+ 
+ Item List 
+ 
+ 
+ 
+ [Updated on: Mon, 09 September 2013 22:23]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+ 
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Decompiled Lua Scripts 
+
+	
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:15 PDT 2026 
+
+ Total time taken to generate the page: 0.05246 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

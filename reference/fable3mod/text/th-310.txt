@@ -1,0 +1,199 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Now you too can make sheathed weapons invisible 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Now you too can make sheathed weapons invisible 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Now you too can make sheathed weapons invisible 
+ Tue, 06 July 2021 04:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ JinXP 
+ Messages: 1 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello. 
+I figured it out myself. 
+What you need to do is rig your game with this: 
+ http://fable3mod.com/forums/index.php?t=msg&goto=943&amp ;amp ;amp ;amp ;amp ;&srch=script+injector#msg_943 
+Download the file, put the 10_ScriptInjector in your DLC folder. 
+Create the scripts folder in your data folder, then MyMod folder in scripts, and the MyScripts lua files there also. 
+These are the codes that worked for me to hide sheathed weapons: 
+Gameflow.RoadToRule.HIDE_MELEE_WEAPONS() 
+Gameflow.RoadToRule.HIDE_RANGED_WEAPONS() 
+Gameflow.RoadToRule.HIDE_GAUNTLET_WEAPONS() 
+Gameflow.RoadToRule.HIDE_ALL_WEAPONS() 
+ 
+To get your weapons back, use these: 
+Gameflow.RoadToRule.SHOW_MELEE_WEAPONS() 
+Gameflow.RoadToRule.SHOW_RANGED_WEAPONS() 
+Gameflow.RoadToRule.SHOW_GAUNTLET_WEAPONS() 
+Gameflow.RoadToRule.SHOW_ALL_WEAPONS() 
+ 
+You only need one of the codes, I tried the ALL_WEAPONS code and it worked for me, it hid the gun and the sword, though the magic was still on. 
+ 
+Just to clarify how this works. You can start the game, then alt tab out of the game, open the MyScripts01.lua or MyScripts02.lua with notepad and paste, for example, Gameflow.RoadToRule.HIDE_ALL_WEAPONS(), then get back in game and the weapons are gone. 
+When you want them back for combat, do the same alt tab shtick and replace the code with, let's say Gameflow.RoadToRule.SHOW_ALL_WEAPONS() 
+ 
+I tried this a number of times, I didn't have any issues yet. Good idea is to always backup your savegame folder just in case. 
+If you want to screw around with more codes, you can find them all where I did, which is here: 
+ http://fable3mod.com/forums/index.php?t=msg&th=100&s tart=0& 
+ 
+Oh, and also for anyone playing Fable 2 who wants to have a clean back in that, there is a very easily done glitch for that you can see here: 
+ https://www.youtube.com/watch?v=JpfwWfIbvjY 
+ 
+ 
+ [Updated on: Sun, 18 July 2021 07:51]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Red / Blue Color swap 
+
+ 
+ Next Topic: 
+ ALL weapons available? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:09 PDT 2026 
+
+ Total time taken to generate the page: 0.05505 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

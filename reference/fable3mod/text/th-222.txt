@@ -1,0 +1,366 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Manually upgrade legendary weapons? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Manually upgrade legendary weapons? (Possible?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Manually upgrade legendary weapons? 
+ Mon, 27 October 2014 18:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have so many questions lately. 
+ 
+I found ScriptFunction.AddUpgradeStatToWeapon(params) 
+ in the functions.txt posted here on the forums. I suppose this is used to upgrade legendaries?! If yes, where would I find the parameters and how does the game recognize which weapon I want to upgrade? Would it automatically register and upgrade the equipped weapon? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Manually upgrade legendary weapons? 
+ Sat, 29 November 2014 02:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ it works like this: 
+ ScriptFunction.AddUpgradeStatToWeapon({amount_to_add = 2000, ranged = true, text_tag = "MORTAR_RANGE_SCORE"}) 
+ 
+'ranged = true' may be omitted, or there is can be 'melee = true' but it not required anyway 
+MAIN value is 'text_tag' you can find it in globals.gdb, look for 'ScriptTag' 
+anyway there is only few weapons that have it... 
+ 
+SHOOTING_RANGE_SCORE
+MORTAR_RANGE_SCORE
+CRIMINAL_BROUGHT_IN
+JobGold
+SLAVE_BROUGHT_IN
+HadOrgyWithNumPeople
+DigSpot
+ 
+ 
+so... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Manually upgrade legendary weapons? 
+ Mon, 01 December 2014 10:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks so much! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Manually upgrade legendary weapons? 
+ Tue, 04 October 2022 10:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ OtherWise 
+ Messages: 1 Registered: October 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ is there anyone that can elaborate a bit more on how to find the "ScriptTag", as i m not currently able to find it. 
+The closest thing i find with "tag" is "nameTag" and "descriptionTag" and they don't seem relevant. 
+ 
+Plus since its mentioned not all weapons have "ScriptTag", how do we level that ones? since each weapon has 3 conditions to level up. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ black tattoos 
+
+ 
+ Next Topic: 
+ Fable 3 DLCs 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:12 PDT 2026 
+
+ Total time taken to generate the page: 0.05527 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

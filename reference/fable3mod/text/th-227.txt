@@ -1,0 +1,317 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » How to Traitor's Keep: Throne of Blood Unlocking? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » How to Traitor's Keep: Throne of Blood Unlocking? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ How to Traitor's Keep: Throne of Blood Unlocking? 
+ Thu, 11 December 2014 09:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ - Google translator - 
+ 
+Hello. 
+ 
+We enjoy Fable 3 in Korea. 
+ 
+Was accidentally discovered this forum in Google. 
+ 
+I learned different ways of modding the Fable 3 here. Thank you. 
+ 
+But that you really want to ... 
+ 
+I have to say I did not get through the Google translator English. 
+ 
+Please note. 
+ 
+ 
+I'll talk to my question. 
+ 
+ 
+1. Traitor's Keep DLC for non-genuine users there a way to unlock the paid DLC? 
+ 
+2. Is there any way to unlock it, even if not using a paid DLC through the other way? 
+ 
+3. Is there a way to do something as a soldier costume pack? 
+ 
+ 
+Let me know if there was a way to pay for the DLC Traitor's keep throne of blood how to unlock ... 
+ 
+Sorry, English and more. Thank you. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to Traitor's Keep: Throne of Blood Unlocking? 
+ Tue, 16 December 2014 04:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 1+2. http://fable3mod.com/forums/index.php?t=msg&th=102&s tart=0 
+3. Yes. You need to modify globals.gdb, but it's can be really painful if you don't know what to do... 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to Traitor's Keep: Throne of Blood Unlocking? 
+ Thu, 25 December 2014 10:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Has been solved! Thank you. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Where the heck are the fable 3 voice files stored?? 
+
+ 
+ Next Topic: 
+ How do you edit a security catalogue file? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:15 PDT 2026 
+
+ Total time taken to generate the page: 0.05391 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

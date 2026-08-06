@@ -1,0 +1,1335 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » killable children 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » killable children 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ killable children 
+ Mon, 17 February 2014 13:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ zyreq 
+ Messages: 8 Registered: February 2014 Location: Britain,USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hey, is there a way to make children killable? 
+Can i do it with a hex edit? 
+ 
+ 
+Cheers 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Tue, 18 February 2014 00:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ yep! 
+but this method is messy 
+killable children is hardcoded with AGE parameter 
+so if you change age for all children's to > 18 then they will be killable and they no more will be children... 
+so you _probably_ ( I never tested!! :D ) have sex with them 
+ 
+you may use GDB editor 
+you need to edit globals.gdb file 
+the main children offset is: 101BF01F 
+you need AgeComponent, change Age to > 18 or to 0 (then they will be month-old baby, killable baby) 
+ 
+or use HEX-editor, go to 0019176C offset and change A value to > 12 (hex) or to 0 
+this offsets for latest DLC 
+ 
+also, this effects only for new children's, not to already exist 
+ 
+ 
+ [Updated on: Tue, 18 February 2014 00:08]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Tue, 18 February 2014 16:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ zyreq 
+ Messages: 8 Registered: February 2014 Location: Britain,USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks, can you send me the link to the GBD editor? Keshire hasn't uploaded it yet. 
+ 
+Btw, i'm still learning how to hex edit so i am a bit confused. I only have the offset 0019176 0 not 0019176 C does the C represent something? 
+ 
+Thanks. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Tue, 18 February 2014 22:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ zyreq wrote on Wed, 19 February 2014 05:52 Thanks, can you send me the link to the GBD editor? Keshire hasn't uploaded it yet. see attachment 
+ zyreq wrote on Wed, 19 February 2014 05:52 Btw, i'm still learning how to hex edit so i am a bit confused. I only have the offset 0019176 0 not 0019176 C does the C represent something? 00191760 offset represent line that contents 15 numbers 
+ 1 2 3 4 5 6 7 8 9 A B C D E F 
+ 
+so you need: C 
+smart HEX-editor show selected offset in status bar 
+also simple use GO TO function 
+ 
+ 
+ 
+ Attachment: GDBEditor.exe 
+ 
+ (Size: 31.00KB, Downloaded 3723 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Wed, 19 February 2014 12:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Tue, 18 February 2014 00:07 yep! 
+but this method is messy 
+killable children is hardcoded with AGE parameter 
+so if you change age for all children's to > 18 then they will be killable and they no more will be children... 
+so you _probably_ ( I never tested!! have sex with them 
+ 
+you may use GDB editor 
+you need to edit globals.gdb file 
+the main children offset is: 101BF01F 
+you need AgeComponent, change Age to > 18 or to 0 (then they will be month-old baby, killable baby) 
+ 
+or use HEX-editor, go to 0019176C offset and change A value to > 12 (hex) or to 0 
+this offsets for latest DLC 
+ 
+also, this effects only for new children's, not to already exist 
+ 
+It's probably used in one of the combat targeting scripts too. So hitting up the GDB would be kind of a workaround. 
+ 
+ Artofeel wrote on Tue, 18 February 2014 22:59 zyreq wrote on Wed, 19 February 2014 05:52 Thanks, can you send me the link to the GBD editor? Keshire hasn't uploaded it yet. see attachment 
+ 
+Thank you, I've been incredibly busy. 
+ 
+ 
+ [Updated on: Wed, 19 February 2014 12:33]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Wed, 19 February 2014 15:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ zyreq 
+ Messages: 8 Registered: February 2014 Location: Britain,USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks. 
+But i can't manage to open a .gdb file with the editor for some reason. 
+ 
+ 
+Also, if i create a new game i assume all the children will be killable, right? 
+ 
+ 
+ 
+EDIT: Once i finish editing the gdb how do i import it into levels.bnk? 
+ 
+ 
+ [Updated on: Wed, 19 February 2014 16:42]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Wed, 19 February 2014 21:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Thu, 20 February 2014 01:32 It's probably used in one of the combat targeting scripts too. So hitting up the GDB would be kind of a workaround. hmmm, maybe 
+but I think it something more than external script function 
+I mean, children's, they are like not exist for combat, AI just ignore them, they are completely not hittable, like they are fucking immortal gods... 
+so I think it something in game engine itself 
+also, I remember when I experimenting with them, I change some "targetable" component or something and sometime enemy can hit them with area magic cast, but they not die 
+ zyreq wrote on Thu, 20 February 2014 04:28 But i can't manage to open a .gdb file with the editor for some reason. editor need to be in the same folder as .gdb file 
+ zyreq wrote on Thu, 20 February 2014 04:28 Also, if i create a new game i assume all the children will be killable, right? yes 
+ zyreq wrote on Thu, 20 February 2014 04:28 EDIT: Once i finish editing the gdb how do i import it into levels.bnk? levels.bnk? 
+you are using globals.gdb from original game? 
+if so, then those offsets is not correct 
+ 
+to import modded files to game use timeslip xlive remover 
+Keshire already write how to 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Wed, 19 February 2014 22:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ zyreq 
+ Messages: 8 Registered: February 2014 Location: Britain,USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks. If i can't use the globals.gdb from the original, which globals do i use? From where? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Thu, 20 February 2014 04:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ zyreq wrote on Wed, 19 February 2014 22:02 Thanks. If i can't use the globals.gdb from the original, which globals do i use? From where? 
+ 
+Traitor's Keep. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Thu, 20 February 2014 06:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ if he play with Traitor's Keep DLC of course 
+this the AGE offset for non DLC globals.gdb 
+001778DC 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Thu, 20 February 2014 16:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ zyreq 
+ Messages: 8 Registered: February 2014 Location: Britain,USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks again guys. 
+ 
+Okay, i have finished modifying the globals.gbd, now what? 
+I downloaded the xlive remover and read the readme but mentioned nothing of custom files. 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Fri, 21 February 2014 21:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ you need to pack it to .bnk and place in subfolder mod1 - mod9 in data folder 
+use this as example 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Tue, 01 March 2016 00:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ EL KAISER 
+ Messages: 2 Registered: February 2016 Location: Argentina
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Can someone help me? 
+I have one problem with these ways to make children killable. 
+I don´t have a "Globals.GDB" file in my Fable III game. I have, in "Fable III/data/Globals (folder)/ "Globals_models.bnk" and "Globals_textures.bnk". What should i do? I have to open one of those files to modify the age thing? I can only open the 1st file with Programmer Studio and inside there's nothing like the offset's you are giving here... 
+Can someone explain me what to do...? 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+    Re: killable children 
+ Sun, 06 March 2016 15:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ EL KAISER 
+ Messages: 2 Registered: February 2016 Location: Argentina
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi! Can someone please explain me, step-by-step, and with all details, how to make children killable? 
+What programs to use? How to use them? Which archives i have to modify and how to do it, etc.? 
+I would REALLY appreciate if someone could help me with this... the file Globals.lua doesn´t exist in my game directory. There exist 2 files called "globals_textures.bnk" and "globals_models.bnk"... 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Sat, 27 August 2016 23:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ use BlackDemon's BNK Utils to extract "Globals.GDB" from .bnk file (I don't remember which one, streaming.bnk or levels.bnk) 
+BUT if you use DLC, extract it from dlc2free.bnk (Traitors Keep) or dlc_freeforall.bnk (Understone) 
+after modifying you need to pack it again 
+better to separate DLC folder, but you can replace original 
+ 
+SIMPLE WAY is use some mod that modifying "Globals.GDB" like this one 
+just extract, mod Globals.GDB and pack it back 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Tue, 28 February 2017 16:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So I pulled everything out from the Traitor's Keep DLC and found the globals.gdb file. 
+Opening it with the GDB Editor and running Arto's offset through it I found the AgeComponent variable, but it looks like this: B3688653 
+ 
+It says in a HEX conversion table that 19 is written as 13, but I don't quite get how to run that through using the format Fable 3 uses. 
+Would it be so simple as editing it to read 00000013? 
+ 
+ 
+ [Updated on: Tue, 28 February 2017 16:34]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Wed, 01 March 2017 22:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ it should look like this 
+ 
+ 
+ 
+ 
+ Attachment: child_age.png 
+ 
+ (Size: 50.36KB, Downloaded 4651 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Thu, 02 March 2017 09:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ah, that's what it was. I forgot to check the "Extrapolate Parent and Child" box. 
+Thanks again, Arto. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: killable children 
+ Thu, 15 April 2021 19:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ After six years since last discussion I've uploaded to the Nexus a copy anyone can install if they want it. I also have more extensive mods which integrate this (under the radar of course). https://www.nexusmods.com/fableIII/mods/7?tab=description 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Weird camera stalling glitch after leaving sanctuary 
+
+ 
+ Next Topic: 
+ Red / Blue Color swap 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:55 PDT 2026 
+
+ Total time taken to generate the page: 0.06859 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

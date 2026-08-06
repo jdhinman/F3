@@ -1,0 +1,233 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » weapon augment quests 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » weapon augment quests 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ weapon augment quests 
+ Tue, 05 May 2020 12:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ AgentTed 
+ Messages: 1 Registered: May 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Is there a script floating around that simply completes all the weapon upgrade quests? I have the fable 3 save editor as well but fuck if I know what all the numbers mean so I don't mess with it. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: weapon augment quests 
+ Tue, 05 May 2020 18:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So you want every weapon to start at it's max upgrade level? 
+It's possible but that would prevent the weapon from actually MORPHING through usage. 
+There are a few morphs that don't depend on combat but behaviour. Sadly there's very few of those. 
+ 
+I unfortunately am not that acquainted with the script or how to manipulate it this way. 
+Someone like Keshire or Artofeel would probably be able to help you out. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Influencing Villager Personality 
+
+ 
+ Next Topic: 
+ Stuck in the sanctuary before Page mission in Bowerstone 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:58 PDT 2026 
+
+ Total time taken to generate the page: 0.05287 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

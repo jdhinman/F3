@@ -1,0 +1,1 @@
+module(...,package.seeall)QuestManager.NewJobInstanceThread("JobLuteHeroInstance")function JobLuteHeroInstance:Init()	Layers.ActivateLayer(self.JobData.Layer)endfunction JobLuteHeroInstance:Update()	while true do		coroutine.yield()		ScriptFunction.JobReactToOptionalQuestSuspension(self.JobData.Layer)	endend

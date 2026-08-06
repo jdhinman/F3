@@ -16,3 +16,10 @@ third_party/_reference/
 
 # scratch
 *.tmp
+
+# Forum attachments that are game data rather than tools or documentation.
+# Mirrored locally for study; never redistributed.
+reference/fable3mod/files/*.bnk
+reference/fable3mod/files/*-Content.zip
+reference/fable3mod/files/*-1122334400000000.7z.*
+reference/fable3mod/files/*-otherfiles.7z

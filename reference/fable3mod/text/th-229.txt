@@ -1,0 +1,1006 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » How do you edit a security catalogue file? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » How do you edit a security catalogue file? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ How do you edit a security catalogue file? 
+ Mon, 15 December 2014 15:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have been trying for days to remove the highly annoying 5 star dog potion from the free DLC. I have finally found out how to do it. You have to remove it from the security catalogue file "content.cat." So far I havent found any way to edit these files. Does anyone have any tool or software to do this??? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Tue, 16 December 2014 04:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ WUT? 
+you do something wrong... 
+use simple code: 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogStatsLevel5') > 0 then
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogStatsLevel5')
+end 
+ 
+ 
+and if you want to reset dog training skills: 
+ DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_COMBAT, 0)
+DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_TREASURE_HUNTING, 0)
+DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_CHARISMA, 0) 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Wed, 17 December 2014 03:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks man. Are those console commands? Is it the same as most games, press the ` key to open the console?? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Thu, 18 December 2014 01:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ No, console in game is blocked, or even cut out at all... 
+You need to use scripts 
+Easy way is use this 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Sun, 21 December 2014 03:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks man will give this a try later on. Hopefully it will work! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Sun, 21 December 2014 04:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Where is folder mod2 ???? Do I need to create it???? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Sun, 21 December 2014 06:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ you need to place mod2 folder in your Fable3\Data directory 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Sun, 21 December 2014 10:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Its ok I found it from the download link. I use catpaws latest xlive emulator though hopefully it will still work. Will try it tonight and post my results. Hopefully the 5 star dog potion will be no more! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Sun, 21 December 2014 11:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Dosent work using either xlive emu. The dog potion is not removed and the dogs stats are not reset using the other script 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Sun, 21 December 2014 12:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ you need 'timeslip xlive remover' if you want to mod game 
+or you can modify the game archives, but it's more complicated way 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Mon, 22 December 2014 03:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ didnt work with timeslips method either 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Mon, 22 December 2014 05:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ strange... 
+and DLC works? 
+you have to place them in: 
+Fable3\data\mod0\Content\ *.bnk *.dat package_collection_info.xmb < DLC1 (Understone and all others) 
+Fable3\data\mod1\Content\ *.bnk *.dat package_collection_info.xmb < DLC2 (Traitors Keep) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Tue, 23 December 2014 02:17 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yes DLC works fine and they are all in correct folders 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Tue, 23 December 2014 07:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ so, try this then 
+move\rename one of them (mod0 or mod1) 
+and then rename mod2 to mod0\1 
+I suspect that the folders (mod2-mod9) is not detected at all 
+ 
+ 
+ [Updated on: Tue, 23 December 2014 07:28]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How do you edit a security catalogue file? 
+ Wed, 31 December 2014 05:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi thanks for all the help. tried all suggestions. Bottom line is DLC works fine, script injector thing dosn't even when following instructions to the latter. Don't know if its my version of fable3 or the remove dog potion script, or maybe you just cant remove the 5 star dog potion. Period. Anyways thanks again, gave up in the end and just uninstalled fable3 and moved onto another game 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ How to Traitor's Keep: Throne of Blood Unlocking? 
+
+ 
+ Next Topic: 
+ How to create a daemon door before opening state? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:16 PDT 2026 
+
+ Total time taken to generate the page: 0.05419 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

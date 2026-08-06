@@ -1,0 +1,195 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » WAV converter 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » WAV converter (batch (no GUI)) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ WAV converter 
+ Wed, 25 September 2013 00:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This is a simple tools to convert wav files FROM the game format and TO a game format. 
+ Download 
+ 
+make Shortcut (not copy) of "Fable3_WAV_convert.bat" to: 
+ %APPDATA%\Microsoft\Windows\SendTo 
+ 
+then Right Click -> SendTo -> select Shortcut 
+ 
+or drag-and-drop file(s) on "Fable3_WAV_convert.bat" 
+ 
+it will convert all WAV files in a directory 
+ 
+ 
+manual conversion 
+You need to cut starting 4 bytes 
+ hexed.exe -r 0 4 "filename" 
+ 
+if starting 4 bytes were xwma, then you need to do decompression 
+ xWMAEncode.exe input_filename output_filename 
+ 
+ 
+to convert back to a game format, you need to add 4 bytes to start of the file: 
+ hexed.exe -i 0 1 77 61 76 00 "filename" 
+ 
+ 
+used 
+ hexed 
+and xWMAEncode 
+ 
+ 
+ [Updated on: Fri, 27 September 2013 03:28]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+	
+ 
+ Next Topic: 
+ TEX converter 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:24 PDT 2026 
+
+ Total time taken to generate the page: 0.05779 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

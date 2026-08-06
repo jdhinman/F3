@@ -1,0 +1,290 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » I had a question about transferring Fable 3 saves 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » I had a question about transferring Fable 3 saves (This is probably a very simple thing, and I'm sorry to bother you all with it) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ I had a question about transferring Fable 3 saves 
+ Tue, 12 November 2013 17:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ woodywdpckr 
+ Messages: 1 Registered: November 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This is a really simple and dumb problem, but I've been trying to transfer a Fable 3 save from a previous game over to my other computer. I think I know about the encryption and such, how it uses an ID from that computer, and the easiest way is just to transfer the account info and paste it into my folder on my new computer. However, I didn't think to grab that. I've got a save editor, and I've been trying to transfer the GFWL blob over to my new save, buuut I'm dumb. Any way you gents/ladies might deign to help? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: I had a question about transferring Fable 3 saves 
+ Wed, 13 November 2013 07:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ so you have timeslip GFWL remover and save editor? 
+then you need to open save and replace 'xuid upper\lower parts' to 10001000 
+and put that save to 1000100010001000 folder in your ..\Documents\Saved Games\Lionhead Studios\Fable 3\ 
+or maybe you can replace 'xuid upper\lower parts' with your new ID and _maybe_ it will work 
+ 
+ 
+ [Updated on: Wed, 13 November 2013 07:11]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: I had a question about transferring Fable 3 saves 
+ Fri, 09 December 2016 03:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Any news on this?" I'm trying to do this as well, I've done all other step but that one............. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Need help.........again 
+
+ 
+ Next Topic: 
+ Remove weapon? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:41 PDT 2026 
+
+ Total time taken to generate the page: 0.05115 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,365 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » Updated Tools 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » Updated Tools 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Updated Tools 
+ Wed, 18 March 2020 08:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Quietly sneaks in and drops a few things 
+ 
+Updated GDB tool, allows editing and saving. Project Migrated to VS2019 
+ https://github.com/Keshire/Fable-3-GDB-Tool 
+ 
+Updated Blender plugins for Blender 2.82 
+ https://github.com/Keshire/Blender-io_mesh_mdl 
+ 
+Fable 3 Lua decompiler (WIP) 
+ https://github.com/Keshire/Fable3LUADecompiler 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Updated Tools 
+ Mon, 30 March 2020 23:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ awesome man 
+so lua decompiler should do what I did some years a go? simple scripts w/o functions? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Updated Tools 
+ Fri, 03 April 2020 04:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ XanWasting 
+ Messages: 8 Registered: March 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ What exe am I supposed to drop files in the decompiler? There's none... 
+ALso do I understand this correctly? Will this decompiler make the scripts human readable? 
+ 
+ 
+ [Updated on: Fri, 03 April 2020 04:27]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Updated Tools 
+ Fri, 03 April 2020 07:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Mon, 30 March 2020 23:25 awesome man 
+so lua decompiler should do what I did some years a go? simple scripts w/o functions? 
+It does functions as well. I haven't done the while/dowhile loops yet. And it will slightly choke on some of the larger scripts. 
+ 
+ XanWasting wrote on Fri, 03 April 2020 04:19 What exe am I supposed to drop files in the decompiler? There's none... 
+ALso do I understand this correctly? Will this decompiler make the scripts human readable? 
+ https://github.com/Keshire/Fable3LUADecompiler/releases/down load/0.0.2/Fable3LUADecompiler.zip 
+ 
+The decompiler isn't 100% 1 to 1 yet. So you can't just decompile and throw the script back into the game. But it is otherwise readable lua. 
+ 
+ 
+ [Updated on: Fri, 03 April 2020 07:37]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ GDB editors 
+
+ 
+ Next Topic: 
+ GDB Editor v0.3 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:56 PDT 2026 
+
+ Total time taken to generate the page: 0.05263 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

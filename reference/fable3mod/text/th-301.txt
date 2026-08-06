@@ -1,0 +1,293 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » gfwlive question + modding question 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » gfwlive question + modding question 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ gfwlive question + modding question 
+ Wed, 16 September 2020 22:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kumisnami 
+ Messages: 4 Registered: September 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So I decided to re-download my Fable 3 copy on Steam and I noticed something odd. When I downloaded and launched it, off on the right side of my screen something widows store related popped up and said something along the lines of "older copy of gfwl on an older game... blah blah..." and tosses me a gfwlivesetup.exe. I have literally never had it toss me this exe before when I downloaded the game so am wondering if this is a new thing and am able to play online again (if not idc i'll just find a way to cheat in legendary weapons) or if it's just something that oddly enough never popped up for me and to continue using the patch that disables it. 
+ 
+Secondly, I was wondering if there's any real graphics mods or if I would have to do it myself (somehow probably sloppily, but don't mind trying). I have every single file that Keshire posted, so I can probably figure it out. I found like 1 or 2 "ultimate graphics" floating around but tbh it kinda looked like they only changed the lighting and didn't even change any textures. Also I have 32gb of memory and honestly have zero idea what "Graphic enhancements (little tweak)" (sorry new and need 1 message to post a link...) actually is. All it seems to do is lets the game use more memory. Doesn't seem like a texture mod or anything. Should I bother using it? 
+ 
+ 
+ [Updated on: Wed, 16 September 2020 22:57]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: gfwlive question + modding question 
+ Thu, 17 September 2020 00:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kumisnami 
+ Messages: 4 Registered: September 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Actually, I wanted to add that I did get GFWLive to work for online mode on PC. It works as long as you have the steam version. Can leave the steps if anyone was curious. Still wondering about the graphics mods though and if not wondering what files specifically I would need to edit to increase to potentially 2k/4k. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: gfwlive question + modding question 
+ Tue, 29 September 2020 22:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Kumisnami wrote on Thu, 17 September 2020 12:30 what files specifically I would need to edit to increase to potentially 2k/4k. you need to edit TEX files (there are just DDS textures with cut header) 
+here some "not user friendly" converter 
+ http://fable3mod.com/forums/index.php?t=msg&th=72&st art=0 
+tex files must be in GBD file (I don't remember which one), also don't forget about DLC (they have their own) 
+and remember Fable 3 is x32 bit, so limit is 2GB RAM, you can force Large Address Aware, but game will crash around 3,5GB anyway 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Script using 
+
+ 
+ Next Topic: 
+ Gender change 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:03 PDT 2026 
+
+ Total time taken to generate the page: 0.05328 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

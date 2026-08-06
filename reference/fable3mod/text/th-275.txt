@@ -1,0 +1,743 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » My Script file is failing to run 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » My Script file is failing to run (I have everything I need done done) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ My Script file is failing to run 
+ Thu, 15 June 2017 16:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Before I get to the crux of the problem, I just want to know one thing: 
+Short of making assumptions, is there any way of making sure the DLC is active ? 
+ 
+So here's what's what: 
+I have catspaw's xlive remover 15d, the DLC packs in the DLC folder, the catspaw version of GFWL remover, the dir.manifest switched out and edited and the script file's in the MyMod folder. It's pathed like this in the dir.manifest: scripts\MyMod\MyScript01.lua 
+ 
+What's actually happening is MyScript01.lua is failing to run. 
+ 
+So, DLC folder structure: 
+01_Understone 
+02_TraitorsKeep 
+03_InquisitorPack 
+10_ScriptInjector 
+90_DLC_xlive_remover 
+ 
+I'm hoping someone can tell me what's wrong here. 
+I'm also attaching my script file. 
+ 
+EDIT: I have another script file that works as intended (opening Brightwall and Mistpeak Demon Doors and removing the ***** dog potion) 
+EDIT 2: Starting a new game doesn't help. 
+ 
+ 
+ 
+ Attachment: MyScript01.lua 
+ 
+ (Size: 2.77KB, Downloaded 3194 times) 
+ 
+ 
+ 
+ [Updated on: Fri, 16 June 2017 08:16]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Fri, 16 June 2017 23:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ DLC is active if your scripts executed (they loaded if 10_ScriptInjector loaded too) 
+also you don't need InquisitorPack if you add weapons by script (there is nothing inside) 
+and about script 
+is msgbox working? it's easy way to check script 
+just add it to the end of MyScript01.lua 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Sat, 17 June 2017 07:01 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Deleted Inquisitor Pack. 
+Still nothing doing. 
+There's no need to add a msgbox as the weapons should show up in a GUI box when added. 
+I even tried to start a new game. 
+ 
+ 
+ [Updated on: Sat, 17 June 2017 08:17]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Sat, 17 June 2017 10:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ squark wrote on Sat, 17 June 2017 19:01 There's no need to add a msgbox as the weapons should show up in a GUI box when added. 
+but if some weapons is wrong, what happened? 
+add msgbox to the end of script 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Sat, 17 June 2017 10:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ The problem actually is that NOTHING is happening with the script. 
+But... I probably should add it anyhow. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Sat, 17 June 2017 20:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay, can't find a "delete" button, so I have to doublepost. 
+ 
+I decided to try timeslip's method... And it fecking worked. 
+So unless timeslip's xlive file will cause problems with the DLC, I'm pretty much set. 
+ 
+ 
+ [Updated on: Sat, 17 June 2017 20:19]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Sat, 17 June 2017 23:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have problems with timeslip's xlive (DLC are not determined and my saves failed to load) 
+so that why I switched to catspaw's xlive 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Sun, 18 June 2017 08:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay, I'm having problems. It's borked. 
+Even with Script Injector and my custom scripts removed, it's starting me with all the weapons. 
+I don't need to tell anyone that'll cause the game to freeze on the first visit to The Road to Rule. 
+ 
+Back to trying to get catspaw's stuff to work. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Sun, 18 June 2017 13:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Sussed! 
+I was one "end" statement short! 
+So, even though I'd ended the if and for statements, I didn't end the script entirely! 
+Wow, that's a weight off my shoulders... And yours, Arto. Thanks for the support and understanding. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: My Script file is failing to run 
+ Sun, 18 June 2017 23:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ as I say 
+always keep msgbox at the end of script to know if scripts is correct :) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Note regarding spawning Fable II weapons 
+
+ 
+ Next Topic: 
+ Dlc purchased through steam 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:44 PDT 2026 
+
+ Total time taken to generate the page: 0.05428 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,173 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » "A Marriage of Inconvenience" not showing up 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » "A Marriage of Inconvenience" not showing up 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ "A Marriage of Inconvenience" not showing up 
+ Wed, 29 September 2021 12:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ PhunkieJ 
+ Messages: 1 Registered: September 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I think this is a fairly common issue where this quest does not work as intended. It's not showing up at all on this most recent playthrough, as in it's not on the quest list, the spouses aren't outside arguing, the house is locked up tight. I'm thinking I can do 
+ questTracker.Register(questManager.HeroEntity "QO???_???") 
+
+but I don't know what the name of the quest is. I tried to find it looking through .bnk files but couldn't find anything. Would this work and if so does anyone know what the name of the quest is? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ ALL weapons available? 
+
+ 
+ Next Topic: 
+ Jasper Voice Glitch 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:13 PDT 2026 
+
+ Total time taken to generate the page: 0.05190 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,249 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Camera mod 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Camera mod (more smoother and tasty) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Camera mod 
+ Sun, 17 November 2013 01:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Since I probably will never finish the work on my mod, perhaps it would be better to split it into parts 
+this part about the camera 
+it is just a fine-tuning 
+it changes the movement of the camera, they are now smoother and with inertia 
+and it alters position of the camera for almost all game situations 
+ 
+install: 
+you must to run the script with your like this 
+ 
+RunScript("scripts\\artofeel_camera_mod.lua")
+ 
+
+easiest way is to use this script injector 
+ http://fable3mod.com/forums/index.php?t=msg&th=225&s tart=0 
+ 
+ 
+ 
+ Attachment: Artofeel_camera_mod.zip 
+ 
+ (Size: 2.23KB, Downloaded 3635 times) 
+ 
+ 
+ 
+ [Updated on: Wed, 30 September 2020 22:45]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Camera mod 
+ Tue, 14 April 2020 04:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ klownk 
+ Messages: 1 Registered: April 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ We want the exact opposite. Raw movement and no inertia... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Xlive weapons updates remove 
+
+ 
+ Next Topic: 
+ Removing Animations 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:44 PDT 2026 
+
+ Total time taken to generate the page: 0.05704 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,178 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Godwin estate bugfix request... 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Godwin estate bugfix request... (Can you help to make script which fix that bug?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+    Godwin estate bugfix request... 
+ Wed, 24 February 2021 19:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ NamelessHero 
+ Messages: 1 Registered: August 2020 Location: Russian Federation
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ At one point the ability to play the jukebox in the mansion at the Godwin Manor may become unavailable, meaning the Hobbes will not spawn. If the player goes to look at the highscores there are none. 
+ 
+Most of guides advice to play in co-op, but you know that co-op for PC version of Fable III with DLCs doesn't work correctly. And one guide advised to save in an other area, then restart game and travel to Godwin Estate. I tried it, but it wasn't succesful. 
+ 
+And sailor in Ravenscar can't to voyage The Hero to Godwin Estate: pressing button (Y) on gamepad of key [3] on keyboard doesn't launch a voyage to Godwin Estate, but voyage to Olde Bowerstone and Clockwork Island work correctly. (Yes I know, The Hero of Brightwall can use a map for fast travel, but will be better to fix this minor bug). 
+ 
+Do you have some minds how to fix this problems? 
+ 
+ 
+ 
+ [Updated on: Wed, 24 February 2021 20:07]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Need a Modder Since Xbox / Microsoft Support is Useless 
+
+ 
+ Next Topic: 
+ Some questions about unlocking some things 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:05 PDT 2026 
+
+ Total time taken to generate the page: 0.04701 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

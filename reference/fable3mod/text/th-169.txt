@@ -1,0 +1,628 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Rebel's Weapon & Tattoo Pack 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Rebel's Weapon & Tattoo Pack 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Rebel's Weapon & Tattoo Pack 
+ Thu, 10 April 2014 17:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ alexmvss 
+ Messages: 1 Registered: April 2014 Location: Russia
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello guys. Fable 3 is one of my favourite games. I have all DLC's except the pre-order one. So, since there is no way to recieve it, I hope you could help me activate it, cause as I know it's already in the game files. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Rebel's Weapon & Tattoo Pack 
+ Sun, 20 April 2014 00:01 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ You can add it manually by with code 
+ 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), '>>Item<<') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), '>>Item<<')
+	GUI.DisplayReceivedItem('>>Item<<')
+end 
+ 
+ 
+whete >>Item<< is: 
+ 
+Industrial Tattoo 
+ObjectTattooSuitSE1 
+ 
+Balance Tattoo 
+ObjectTattooSuitSE2 
+ 
+Dragonsbreath Tattoo 
+ObjectTattooSuitSE3 
+ 
+Crystal Tattoo 
+ObjectTattooSuitSE4 
+ 
+Swirlwing Tattoo 
+ObjectTattooSuitSE5 
+ 
+Clockwork Tattoo 
+ObjectTattooSuitSE7 
+ 
+example 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectTattooSuitSE1') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectTattooSuitSE1')
+	GUI.DisplayReceivedItem('ObjectTattooSuitSE1')
+end 
+ 
+ 
+what is Rebel's Weapon? 
+ 
+You may also add this 
+ Gameflow.AllowFakePreOrderTemplates = true 
+ 
+it will add 2 quest in Brightwall village 
+they probably not part of any DLC\PreOrderPacks and does not activate at all 
+ 
+ 
+ [Updated on: Sun, 20 April 2014 00:03]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Rebel's Weapon & Tattoo Pack 
+ Wed, 22 October 2014 03:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Rebel's Weapon Pack is The Shardborne Sword, The Champion Hammer, Channeler Sword, Absolver Hammer and Inquisitor Sword. All the pre order DLC that wasn't available for the PC until Fable 3 went to Steam. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Rebel's Weapon & Tattoo Pack 
+ Thu, 23 October 2014 09:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Then items name is: 
+ 
+ObjectInventoryLegendarySwordShardborne
+ObjectInventoryLegendaryHammerChampion
+ObjectInventoryLegendarySwordChanneler
+ObjectInventoryLegendaryHammerAbsolver
+ObjectInventoryLegendarySwordInquisitor
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Rebel's Weapon & Tattoo Pack 
+ Mon, 10 November 2014 06:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ What's the 2 quests in Brightfall? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Rebel's Weapon & Tattoo Pack 
+ Mon, 10 November 2014 17:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I think those are the quests added with the 'create your own villager' available only on xbox as a pre-order bonus. Only one quest would show up in game -- good quest for a good villager, evil quest for an evil villager. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Rebel's Weapon & Tattoo Pack 
+ Mon, 10 November 2014 23:39 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ovnidemon wrote on Mon, 10 November 2014 19:15 What's the 2 quests in Brightfall? 
+QOTA_TOW010 - "How to Get Ahead in Academia" (kill scientist in Mistpeak valley) 
+QOTF_TOW010 - "The Search" (find letter in Mistpeak valley) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Rebel's Weapon & Tattoo Pack 
+ Tue, 11 November 2014 01:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks. Now, I just need to figure out how to make that work. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Need some help 
+
+ 
+ Next Topic: 
+ MessageBox Extended 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:00 PDT 2026 
+
+ Total time taken to generate the page: 0.05339 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

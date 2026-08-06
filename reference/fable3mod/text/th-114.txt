@@ -1,0 +1,260 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Quest template (qt000_template.lua) 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Quest template (qt000_template.lua) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Quest template (qt000_template.lua) 
+ Mon, 11 November 2013 06:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This isn't finished but the gist is here. All that's left is to rewrite the QT000_QuestGiver:Init and CustomUpdate for the state stuff. It's been awhile since I've read assembly so I'm out of practice. 
+ 
+ Toggle Spoiler 
+ 
+module(...,package.seeall)
+
+QuestManager.NewQuestQuestThread("QT000_Template")
+
+--function [0]
+function QT000_Template:Init()
+	self:StartNewEntityThread("QT000_QuestGiverEntity", QT000_QuestGiver)
+end
+
+--function [1]
+function QT000_Template:OnQuestSuspend()
+	cprint("Template suspended!")
+end
+
+--function [2]
+function QT000_Template:OnQuestUnsuspend()
+	cprint("Template unsuspended!")	
+end
+
+--function [3]
+function QT000_Template:State_START_SkipTo()
+	
+end
+
+--function [4]
+function QT000_Template:State_START_Main()
+	self:InitialiseMainLayers()	
+end
+
+--function [5]
+function QT000_Template:State_MIDDLE_SkipTo()
+	self:InitialiseMainLayers()
+end
+
+--function [6]
+function QT000_Template:State_MIDDLE_Main()
+	
+end
+
+--function [7]
+function QT000_Template:State_FINALLE_SkipTo()
+	self:State_MIDDLE_SkipTo()
+end
+
+--function [8]
+function QT000_Template:State_FINALLE_Main()
+	
+end
+
+--function [9]
+function QT000_Template:InitialiseMainLayers()
+	Layers.ActivateLayer("QT000_Template")
+end
+
+--function [10]
+function QT000_Template:OnExit()
+	Layers.DeactivateLayer("QT000_Template")
+end
+
+QuestManager.NewEntityThread("QT000_QuestGiver")
+
+--function [11]
+function QT000_QuestGiver:Init()
+	--[[
+	CreateEnum({"INTRO",
+ "OFFER",
+ "WAIT_AROUND"}) = States
+ 
+	self:SetState("INTRO")
+	]]--
+end
+
+--function [12]
+function QT000_QuestGiver:CustomUpdate()
+
+end
+
+--function [13]
+function QT000_QuestGiver:OnTerminated()
+	if MessageEvents.IsMessageSentTo(EMessageEventType.MESSAGE_EVENT_KILLED, self.Entity) then
+	end
+end
+ 
+ 
+
+ 
+ 
+ 
+ [Updated on: Mon, 11 November 2013 06:50]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Question about scriptactivation 
+
+ 
+ Next Topic: 
+ Job Example scripts 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:38 PDT 2026 
+
+ Total time taken to generate the page: 0.05330 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

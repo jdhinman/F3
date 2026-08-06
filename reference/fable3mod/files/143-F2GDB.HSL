@@ -1,0 +1,328 @@
+#include "standard-types.hsl"
+#pragma byteorder(big_endian)
+#pragma maxarray(65536)
+#pragma hide()
+
+#pragma enumsize(4)
+#pragma enumsign("unsigned")
+
+typedef enum F2Enum
+{
+
+//Components
+NULL = 0x811C9DC5
+parent = 0x5F6317D5
+ActionManagerSimpleComponent = 0xDF23719F
+AdditionalRagdollComponent = 0xB33AB2C4
+AgeComponent = 0x3EB23AB7
+AIBrainComponent = 0xCD405756
+AIMovementModesComponent = 0x688A1691
+AmbientCreatureComponent = 0xC09AEA19
+AmbushComponent = 0xC2F9543A
+AnimationManagerComponent = 0x7C63CDDF
+APLHelperComponent = 0xC2702B2B
+AppearanceModifierComponent = 0xD949A6F5
+AppearanceModifierManagerComponent = 0x549D93BE
+AugmentableComponent = 0x9DC93C5B
+AutomaticObjectInteractionComponent = 0x938F6A7E
+AutoPickUpComponent = 0xB3BBFB95
+BalverineComponent = 0xF814F49E
+BalverinePerchComponent = 0x8C980618
+BansheeComponent = 0x6122274C
+BedComponent = 0xB50C15B7
+BeetleComponent = 0xFD04EFA9
+BlockComponent = 0x47714865
+BloodAlcoholComponent = 0x839F8344
+BobComponent = 0x864C2ACF
+BonusContainerComponent = 0xF37D2104
+BreadcrumberComponent = 0x97D7DB30
+BreakableComponent = 0x932FED57
+BuildingComponent = 0x2BB2DD22
+BuildingIncomeComponent = 0xFF54B615
+BulletComponent = 0x76999766
+ButterflyAreaComponent = 0xF601539A
+ButterflyComponent = 0x6B31E367
+CameraComponent = 0xE4FF68C5
+CameraInterestComponent = 0xA922F253
+CameraSplineComponent = 0x5626E1F4
+CameraValuesComponent = 0x6B767967
+CarriedComponent = 0xD07AE2AA
+CarryingComponent = 0x69104D9F
+ChestComponent = 0x379C25A9
+ClockComponent = 0xD6C5A732
+CombatComponent = 0xF6D5AD36
+CombatTalkComponent = 0x0FDAFD30
+ComboComponent = 0xF2460FB6
+CommunityServiceComponent = 0xEEF32652
+Components = 0x4DD10B69
+ConversationPointComponent = 0x0E88EC57
+CrateComponent = 0x5D6FCC17
+CrateStackComponent = 0x743B3887
+CreatureComponent = 0xC3B90D4F
+CreatureGeneratorComponent = 0xA2371C5A
+CreatureGeneratorSpawnPointComponent = 0x110071AD
+CreatureSpawnPointComponent = 0x1054A35C
+CrescendoComponent = 0x0A826118
+CustomUpperBodyPoseComponent = 0xB0B5AA7C
+CutsceneReactionComponent = 0xCC9B6BE5
+DeadRiserComponent = 0x20116F73
+DecapitatableComponent = 0x14E29581
+DemonDoorComponent = 0xEC511FBB
+DiggingSpotComponent = 0x4D89E63B
+DiveSpotComponent = 0x76E2C0A0
+DogComponent = 0x65A5F006
+DogInfluencerComponent = 0x52A3ED59
+DogLeadToComponent = 0x09D8D1BD
+DogStatsComponent = 0xB41D7E63
+DogTriggerComponent = 0x7C846E9C
+DoorComponent = 0x8A3823E6
+DyeComponent = 0x7CD84946
+EntityModeManagerComponent = 0xB07E8F63
+EntityOwnerComponent = 0xB8D410BE
+ExclusionZoneComponent = 0xB0F941E2
+ExperienceComponent = 0x766ED176
+ExperienceOrbComponent = 0x4EEB4A21
+ExperienceRewardComponent = 0xD3CB1FB5
+ExplosionComponent = 0x19E00437
+ExpressionPerformerComponent = 0xB758A964
+FacialExpressionComponent = 0x6F404F3C
+FactionComponent = 0x8CE69EBC
+FarmCrateComponent = 0x7D60B1B3
+FastTravelStopComponent = 0x48D55078
+FirearmComponent = 0x0A644D42
+FiringPositionComponent = 0x1E4A896E
+FollowComponent = 0x644DBB5B
+FootStepsComponent = 0xF89557EB
+FurnitureUnlockComponent = 0x072CB0C2
+GenderComponent = 0x1DE3DF3F
+GenericTriggerComponent = 0xA947B2D9
+GiftComponent = 0x9993A9B4
+GossipComponent = 0x8E96CF53
+GraphEdgeControllerComponent = 0x9B2729D1
+GraphicAppearanceAnimatedMeshComponent = 0x21D312CA
+GraphicAppearanceComponent = 0xA7B6EF56
+GraphicAppearanceEyesComponent = 0x3C06A4E4
+GraphicAppearanceLightComponent = 0xBB61B654
+GraphicAppearanceMorphComponent = 0x0D4ADA1A
+GraphicAppearanceStaticMeshComponent = 0x29CF50D1
+GraphicAppearanceStaticMultipleMeshComponent = 0xCE642A15
+GroupMindComponent = 0x72F3BC5B
+GuildMessagesComponent = 0x50CBB6EF
+HealthComponent = 0x26546FBC
+HeroStatueComponent = 0xB77F7EB2
+HeroTitleComponent = 0xBD3C9102
+HighlightedItemComponent = 0x4E7FFF52
+HitResponseFlyingCreatureComponent = 0x1F6092DC
+HitResponsePlayActionComponent = 0xAF3E6B06
+HittableComponent = 0x39B2F951
+HollowmanWispComponent = 0xEA238706
+HollowmanWispSourceComponent = 0x0589929B
+InventoryComponent = 0x1C7D7B74
+InventoryItemComponent = 0xC3318103
+KynapseComponent = 0xF5E8BFAB
+LeadHeroComponent = 0xD6BC93A0
+LevelExitComponent = 0x30D88F7E
+LifetimeComponent = 0x158686E1
+LinkedAnimationComponent = 0xB3FD2B95
+LocationManagerComponent = 0x3A462C96
+LookComponent = 0x025D4371
+LooseProjectileComponent = 0xF1687B7D
+LuciensSoldierSpellComponent = 0x9162A235
+ManaComponent = 0xEAFB6EF5
+ManagedLocationComponent = 0xD5064702
+MapTokenComponent = 0xF88DC301
+MapwhoComponent = 0xE81B2D58
+MarkerComponent = 0xD0355688
+MarkerLocationTypeComponent = 0xAB92D72F
+MentalistComponent = 0xD68D332B
+MoneyComponent = 0xE21AB7A0
+MoodComponent = 0xE12933AD
+MorphComponent = 0xD48D5142
+NavigationComponent = 0x08E9F814
+NavigatorControlComponent = 0x5E1AAB28
+NetworkComponent = 0x6DFC9D86
+NonCombatCreatureRadiusComponent = 0xA99BF13C
+NPCRewardGiverComponent = 0x776F3477
+NPCScriptControlledTargetingComponent = 0xE62D530F
+NPCVaultingComponent = 0x0E9AB28F
+ObjectAttachmentComponent = 0x408F6C5C
+ObjectComponent = 0xF1A5EEB9
+OnActionUseComponent = 0x6C70C002
+OnUseEffectComponent = 0xCBE26949
+OpinionReactionComponent = 0x5DAC8F8D
+OwnedEntityComponent = 0xABA2343A
+ParticleAttacherComponent = 0x19516626
+ParticleEmitterComponent = 0x19EED53C
+PerceptionComponent = 0xF0FB7769
+PhysicsFilterManagerComponent = 0x73A0D078
+PhysicsRagdollComponentManagerComponent = 0x01EC1EDC
+PhysicsSimpleComponent = 0x619F96CF
+PhysicsSimpleLightComponent = 0x1279896B
+PhysicsSimpleScaledComponent = 0x4A69285D
+PhysicsSimulationCharacterControlledComponent = 0xD51F7655
+PhysicsSimulationCharacterNavigatorComponent = 0xC5A11B7A
+PhysicsSimulationDynamicComponent = 0xFC8A57C5
+PhysicsSimulationKeyframedComponent = 0x6B177DD0
+PhysicsSimulationStaticComponent = 0xF73572C4
+PlayerAbilityComponent = 0xA9B35CE9
+PlayerComponent = 0xDDEB05BF
+PlayerControlComponent = 0x71FB913A
+PlayerDrunkennessComponent = 0x49ADBDBD
+PlayerFamilyComponent = 0xCE4F8713
+PlayerPropertiesComponent = 0x89C509E2
+PlayerSpellManagerComponent = 0x3114A596
+PlayerWebsiteUnlocksComponent = 0xF3D59ACD
+PointOfInterestComponent = 0x7CAA55B5
+ProjectileComponent = 0x68552041
+QuestTrackerComponent = 0x9BA4B9BC
+ReadableComponent = 0x89ABB47E
+RegroupPointComponent = 0xFC0E0D80
+RemoveComponent = 0x9B41D00A
+ShadowCreatureComponent = 0x2B1E4BC7
+ShardComponent = 0x107B894C
+ShopComponent = 0xDF44493A
+ShopItemComponent = 0xDEC45061
+ShopkeeperComponent = 0x60F13F00
+ShoveableComponent = 0x64625BAD
+SoundComponent = 0x22EA4237
+SpacialAwarenessComponent = 0xD7369BCE
+SpellHeatableComponent = 0x2D57D524
+SpellManagerComponent = 0xC4B12503
+SpellMovableComponent = 0x8C23770E
+SpellNotHeatableComponent = 0x6E60D23B
+SpellReactionModifiersComponent = 0x55D462D7
+SprintComponent = 0x448DEEFA
+StabKillableComponent = 0xC5B4E56E
+StanceComponent = 0x3B6F9532
+StatsComponent = 0x2137636B
+StiltWalkerComponent = 0x4833992C
+SubgameControllerComponent = 0xD6874FE0
+SummonerComponent = 0x9B8F0DB6
+SwimmingComponent = 0xB238DE1B
+TalkComponent = 0x95E9F8B8
+TargetedComponent = 0x3B3DB5FA
+TargetingAIComponent = 0x140EABE9
+TargetingDogComponent = 0xFDD3D5F9
+TargetingPlayerComponent = 0xCFDFF556
+TransientComponent = 0x3E766772
+TriggerComponent = 0xD9587494
+TriggerVolumeExclusionZoneComponent = 0xE657FE2E
+TrollComponent = 0xC5FFF38B
+TrollProjectileComponent = 0xE2A8BC1C
+TrollTremorComponent = 0xB6B307C2
+TrollWeakSpotComponent = 0xAD3755AB
+TrophyExpressionDataComponent = 0xEE5E5F46
+UpgradeableFurnitureComponent = 0x6052AF88
+UpgradeableFurnitureUnlockerComponent = 0x6D214E3F
+VaultableComponent = 0xB78F5B7C
+VaultingComponent = 0xA37C5F26
+VaultLineComponent = 0x3B31013A
+ViewpointComponent = 0x11EE2819
+VillageComponent = 0x42D8A6AC
+VillageCrimeManagerComponent = 0xC08E4575
+VillageMemberComponent = 0x86848796
+VillagerComponent = 0x5BA014D4
+VillagerListComponent = 0x807E7C78
+VortexComponent = 0x5C0AA8DE
+WaveMachineComponent = 0xF68DC50E
+WeaponComponent = 0x2C34431E
+WeaponOpinionEffectsComponent = 0x69E55026
+WeaponSetManagerComponent = 0x32E07CE9
+WhereaboutsComponent = 0x863231F1
+WorkplaceComponent = 0xD98B49B0
+WorldMapInfoComponent = 0x4663FBE4
+
+//Some inventory Items
+
+//Some Creatures
+
+}F2Enum;
+
+typedef struct UnknownHashStruct
+{
+    F2Enum    Hash;
+    F2Enum    Hash;
+}UnknownHashStruct;
+
+typedef struct TDTypes
+{
+	WORD	DataType;
+	WORD	ArrayPointer; //This is retarded
+}TDTypes;
+
+typedef struct HashTable
+{
+    DWORD    	Hash;
+    zstring    	String;
+}HashTable;
+
+typedef struct TData
+{
+	dword		Offset;
+	dword		TemplateData[ubyteAt(24+ulongAt(0x08)+Offset+2)];
+	//Jump to Template data, grab 
+}TData;
+
+#pragma show()
+
+typedef struct HashBlock
+{
+    DWORD    		Header;				// = 00 01 00 00 Always
+    DWORD    		HashTableSize;
+    DWORD    		HashCount;
+    HashTable		HashTableArray[HashCount];
+    DWORD    		HashPointerArray[HashCount];	//Pointers back into StringArray
+}HashBlock;
+
+typedef struct Template
+{
+	WORD		Count1;				//This should be little_endian!! WTF
+							//seems to be used for animation states)
+	ubyte		Count2;
+	bool		NoComponents;			//Boolean
+	DWORD		Hash[(Count1*256) + Count2];	//(Count1*256) fucking endian...
+	TDTypes		Array[(Count1*256) + Count2];	//This looks to be controlling datatypes used.
+}Template;
+
+struct HashIndex
+{
+    	DWORD		Hash[ulongAt(0x04)];		//[CountA]
+   	WORD		Unknowns2[ulongAt(0x04)];	//[CountA]
+};
+
+
+typedef struct GDB
+{
+	#pragma lockAt(0)
+	char    	GDB_Tag[4];			// = "GDB\0x00"
+	DWORD    	TDCount;
+	DWORD    	TDSize;
+	DWORD    	TSize;
+	DWORD    	unkCount;
+	DWORD    	NULL;
+	TData		TemplateData[TDCount];
+	//Template	Templates[];			//Still don't have a count.
+	//DWORD		HashIndex[TDCount];
+	//WORD		Unknown[TDCount];		//Offset or 16 bit Hashes??
+	//UnknownHashStruct	Hashes[unkCount];
+	HashBlock	Strings;
+
+
+}GBD;
+
+struct Default_B
+{
+	#pragma lockAt(0)
+	char    		GDB_Tag[4];			// = "GDB\0x00"
+	DWORD    		TDCount;
+	DWORD    		TDSize;
+	DWORD    		TSize;
+	DWORD    		unkCount;
+	DWORD    		NULL;
+	TData			TemplateData[TDCount];
+	Template		Templates[68];
+	F2Enum			Hashes[TDCount];
+	WORD			Unknown[TDCount];
+	UnknownHashStruct	Hashes[unkCount];
+	HashBlock		Strings;
+};

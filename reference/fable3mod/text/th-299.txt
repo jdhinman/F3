@@ -1,0 +1,391 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Is it possible to upgrade weapons using scripts? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Is it possible to upgrade weapons using scripts? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Is it possible to upgrade weapons using scripts? 
+ Thu, 23 July 2020 16:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Tasty 
+ Messages: 6 Registered: July 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Is it possible to upgrade weapons with scripts? 
+I've searched the forums and found some threads that say it's possible but the scripts posted in them don't work for me. 
+The reason I'm looking for this is because some of the task required to upgrade the weapon are tedious and ruin the immersion for me. 
+Some of the task other weapons have are completely impossible because of the shutdown of GFWL. 
+I don't really know what I'm doing and have just been using the scripts others have posted here and I barely got that to work. 
+I'm using the "Improved injection method" I don't know if that changes anything but I thought I should mention that. 
+What I'm looking for specifically is a way to increase the number of tasks done so I can upgrade the weapon in game without having to do things like killing 150 civilians. 
+I don't know how to wright scripts, so if anyone could post a script that might work. I would be very grateful. 
+Here are some links of the threads I was looking at 
+ http://fable3mod.com/forums/index.php?t=msg&goto=956&amp ; 
+ http://fable3mod.com/forums/index.php?t=msg&goto=760&amp ; 
+ http://fable3mod.com/forums/index.php?t=msg&goto=556&amp ; 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible to upgrade weapons using scripts? 
+ Fri, 16 October 2020 07:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ iwanadiefast 
+ Messages: 2 Registered: October 2020 Location: rio de janeiro
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ usually i just cheat engine the values (which are floats but whole) or change the amount required with the gdb editor from whatever ridiculous number to 1 
+ 
+ be born, feed, live, mate, die, repeat
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible to upgrade weapons using scripts? 
+ Mon, 08 March 2021 23:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have actually already changed all the weapons in the game like this reducing almost all requirements by about 3-10 times. Kills are now down to 32 from 150 (gotta love hex). Florishes hits down to 15 from 200. Florish kills down from 50 to 5. Some weapons I kept the same like Mirian's Mutiator because I felt 5 of each interrelated task is quite feasible. Here's the file. Just replace the file (after backing up the original) in the DLC2 Traitors Keep Content sub-folder. My location is "D:\Fable 3\DLC\traitors_keep\Content". I actually reduced the file size from 24kB to 21kB by shaving off so many zeroes I think. I've tested on my game (not even a new save just the one I was using) and it works just fine. It does not change the text in game so it will stay say 150 kills or whatever but it does affect the progress bar (if I can fix the text later I'll upload that too) but for now just trust it requires "less" of the same task usually. 
+ 
+Fun notes: 
+1. Reaver Industries Perorator required 700 units of evil (how the system tracks morality I don't know but I think it's logarithmic? and the average weapon requires like 300 (already too much) so it takes forever in the base game. 
+2. I picked 32 kills because its close to the 30 kills you'll get in your average medium long mission it the game so it still requires some commitment for at least one quest but no longer grinding it. 
+ 
+I hope to later normalize all weapons in the game's damage including the hero weapons so weapon choice becomes stylistic instead of gameplay biased. I'm still figuring this out, I can't figure out where hero weapons data is stored because this .ods I found somewhere around here doesn't record their locations. I provided it too (I haven't updated it's values to match mine though sorry). 
+ 
+ I have no idea if file locations (especially DLC ones) are affected by my use of a repack recently made available (in the year 2020) but I own this game on Xbox 360 so its reasonably legal for me to have it. 
+ 
+you can edit it yourself with the instructions found here (sorry it's longform) http://fable3mod.com/forums/index.php?t=msg&goto=872&amp ;#msg_872. image links are dead maybe I'll make my own later. ods is also found at the top of that page 
+ 
+TL;dr is overwrite your dlc2free.bnk with mine after backing your original up (save a copy of it somewhere else outside Fable 3's directory) and my location to store it was D:\Fable 3\DLC\traitors_keep\Content 
+the ods is for posterity and for someone who knows how to edit this themself I have no idea what the blue column is for 
+ 
+ 
+ 
+ 
+ Attachment: dlc2free.bnk 
+ 
+ (Size: 20.48KB, Downloaded 2068 times) 
+ 
+ 
+ Attachment: Fable3WeaponModification.ods 
+ 
+ (Size: 116.61KB, Downloaded 2150 times) 
+ 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible to upgrade weapons using scripts? 
+ Sat, 03 April 2021 07:04 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ As an update I recommend using newer versions of the mod available on the nexus due to file size limitations. I'm improving it every few weeks. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ GFWL Weapon Augments 
+
+ 
+ Next Topic: 
+ Weird camera stalling glitch after leaving sanctuary 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:02 PDT 2026 
+
+ Total time taken to generate the page: 0.05831 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

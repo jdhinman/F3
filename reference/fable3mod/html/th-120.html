@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="description" content="postscriptsloaded.lua rewrite *WIP* " />
+	<title>Fable3mod: Modding Discussion &raquo; postscriptsloaded.lua rewrite *WIP*</title>
+	<link rel="search" type="application/opensearchdescription+xml" title="Fable3mod Search" href="/forums/open_search.php" />
+	<link rel="alternate" type="application/rss+xml" title="Syndicate this forum (XML)" href="/forums/feed.php?mode=m&amp;th=120&amp;basic=1" />
+	<link rel="stylesheet" href="/forums/theme/default/forum.css" media="screen" title="Default Forum Theme" />
+	<link rel="stylesheet" href="/forums/js/ui/jquery-ui.css" media="screen" />
+	<script src="/forums/js/jquery.js"></script>
+	<script async src="/forums/js/ui/jquery-ui.js"></script>
+	<script src="/forums/js/lib.js"></script>
+</head>
+<body>
+<!--  -->
+<div class="header">
+  
+  <div class="headsearch">
+    <form id="headsearch" method="get" action="/forums/index.php"><input type="hidden" name="SQ" value="0" />
+      <br /><label accesskey="f" title="Forum Search">Forum Search:<br />
+      <input type="search" name="srch" value="" size="20" placeholder="Forum Search" /></label>
+      <input type="hidden" name="t" value="search" />
+      <input type="image" src="/forums/theme/default/images/search.png" alt="Search" name="btn_submit">&nbsp;
+    </form>
+  </div>
+    <a href="/forums/index.php" title="Home">
+    <img src="/forums/theme/default/images/header.gif" alt="" align="left" height="80" />
+    <span class="headtitle">Fable3mod</span>
+  </a><br />
+  <span class="headdescr">Discussions for modifying Fable 3<br /><br /></span>
+</div>
+<div class="content">
+
+<!-- Table for sidebars. -->
+<table width="100%"><tr><td>
+<div id="UserControlPanel">
+<ul>
+		<li><a href="/forums/index.php?t=finduser&amp;btn_submit=Find&amp;" title="Members"><img src="/forums/theme/default/images/top_members.png" alt="" /> Members</a></li>			 <li><a href="/forums/index.php?t=search&amp;forum_limiter=5&amp;" title="Search"><img src="/forums/theme/default/images/top_search.png" alt="" /> Search</a></li>	<li><a accesskey="h" href="/forums/index.php?t=help_index&amp;" title="Help"><img src="/forums/theme/default/images/top_help.png" alt="" /> Help</a></li>
+	<li><a href="/forums/index.php?t=register&amp;" title="Register"><img src="/forums/theme/default/images/top_register.png" alt="" /> Register</a></li>
+	<li><a href="/forums/index.php?t=login&amp;" title="Login"><img src="/forums/theme/default/images/top_login.png" alt="" /> Login</a></li>	<li><a href="/forums/index.php?t=index&amp;" title="Home"><img src="/forums/theme/default/images/top_home.png" alt="" /> Home</a></li>
+	</ul>
+</div>
+<a name="page_top"> </a>
+<a href="/forums/index.php?t=i&amp;">Home</a>&nbsp;&raquo; <a href="/forums/index.php?t=i&amp;cat=4&amp;">Modding Forums</a>&nbsp;&raquo; <a href="/forums/index.php?t=thread&amp;frm_id=5&amp;">Modding Discussion</a>&nbsp;&raquo; <strong>postscriptsloaded.lua rewrite *WIP*</strong> 
+<span id="threadRating"></span>
+<table cellspacing="0" cellpadding="0" border="0" class="wa">
+<tr>
+<td class="GenText al">
+	<span class="GenText fb">Show:</span>
+<a href="/forums/index.php?t=selmsg&amp;date=today&amp;&amp;frm_id=5&amp;th=120" title="Show all messages that were posted today" rel="nofollow">Today&#39;s Messages</a>
+<b>::</b> <a href="/forums/index.php?t=polllist&amp;" rel="nofollow">Show Polls</a>
+<b>::</b> <a href="/forums/index.php?t=mnav&amp;" rel="nofollow">Message Navigator</a>
+	<br />
+				
+		</td>
+<td class="vb ar">
+	<a href="/forums/index.php?t=post&amp;frm_id=5&amp;"><img alt="Create a new topic" src="/forums/theme/default/images/new_thread.gif" /></a>&nbsp;<a href="/forums/index.php?t=post&amp;th_id=120&amp;reply_to=265&amp;&amp;start=0"><img src="/forums/theme/default/images/post_reply.gif" alt="Submit Reply" /></a></td>
+</tr>
+</table>
+
+<table cellspacing="0" cellpadding="0" class="ContentTable"><tr>
+	<td class="MsgSpacer">
+		<table cellspacing="0" cellpadding="0" class="MsgTable">
+		<tr>
+			<td class="MsgR1 vt al MsgSubText"><a name="msg_num_1"></a><a name="msg_265"></a><a href="/forums/index.php?t=msg&amp;th=120&amp;goto=265&amp;#msg_265" class="MsgSubText">postscriptsloaded.lua rewrite *WIP*</a> </td>
+			<td class="MsgR1 vt ar"><span class="DateText">Wed, 13 November 2013 12:15</span> <a href="javascript://" onclick="chng_focus('#msg_num_2');"><img alt="Go to next message" title="Go to next message" src="/forums/theme/default/images/down.png" width="16" height="11" /></a></td>
+		</tr>
+		<tr class="MsgR2">
+			<td class="MsgR2" colspan="2">
+				<table cellspacing="0" cellpadding="0" class="ContentTable">
+				<tr class="MsgR2">
+				
+					<td class="msgud">
+						<img src="/forums/theme/default/images/offline.png" alt="Keshire is currently offline" title="Keshire is currently offline" />&nbsp;
+						<a href="/forums/index.php?t=usrinfo&amp;id=6&amp;">Keshire</a>
+						<br /><b>Messages:</b> 137<br /><b>Registered:</b> August 2013 
+						
+					</td>
+					<td class="msgud"><div class="ctags">Senior Member</div></td>
+					<td class="msgot"></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" class="MsgR3">
+		<span class="MsgBodyText">I'm only doing this because it's one of the bigger scripts and I keep hearing that that is where some long standing bugs are.<br />
+<br />
+This going to be pretty time consuming, and I'm sure I'll need multiple people to look it over.</span>
+		<ul class="AttachmentsList">
+	<li>
+	<img alt="" src="/forums/images/mime/txt.gif" class="at" />
+	<span class="GenText fb">Attachment:</span> <a href="/forums/index.php?t=getfile&amp;id=46&amp;" title="postscriptsloadedF2.txt">postscriptsloadedF2.txt</a>
+	<br />
+	<span class="SmallText">(Size: 28.25KB, Downloaded 2886 times)</span>
+</li><li>
+	<img alt="" src="/forums/images/mime/txt.gif" class="at" />
+	<span class="GenText fb">Attachment:</span> <a href="/forums/index.php?t=getfile&amp;id=47&amp;" title="postscriptsloaded.txt">postscriptsloaded.txt</a>
+	<br />
+	<span class="SmallText">(Size: 1.62MB, Downloaded 6293 times)</span>
+</li><li>
+	<img alt="" src="/forums/images/mime/unknown.gif" class="at" />
+	<span class="GenText fb">Attachment:</span> <a href="/forums/index.php?t=getfile&amp;id=51&amp;" title="postscriptsloaded.lua">postscriptsloaded.lua</a>
+	<br />
+	<span class="SmallText">(Size: 20.85KB, Downloaded 2967 times)</span>
+</li>
+</ul>
+		
+		<div class="SmallText"><p class="fl">[Updated on: Fri, 15 November 2013 11:22]</p><p class="fr"><a href="/forums/index.php?t=report&amp;msg_id=265&amp;" rel="nofollow">Report message to a moderator</a></p></div>
+</td></tr>
+<tr>
+	<td colspan="2" class="MsgToolBar">
+		<table border="0" cellspacing="0" cellpadding="0" class="wa">
+		<tr>
+			<td class="al nw">
+				<a href="/forums/index.php?t=usrinfo&amp;id=6&amp;"><img alt="" src="/forums/theme/default/images/msg_about.gif" /></a>&nbsp;<a href="/forums/index.php?t=ppost&amp;toi=6&amp;rmid=265&amp;"><img alt="Send a private message to this user" title="Send a private message to this user" src="/forums/theme/default/images/msg_pm.gif" /></a>
+				
+			</td>
+			<td class="GenText wa ac">&nbsp;</td>
+			<td class="nw ar">
+				
+				
+				<a href="/forums/index.php?t=post&amp;reply_to=265&amp;"><img alt="" src="/forums/theme/default/images/msg_reply.gif" /></a>&nbsp;
+				<a href="/forums/index.php?t=post&amp;reply_to=265&amp;quote=true&amp;"><img alt="" src="/forums/theme/default/images/msg_quote.gif" /></a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</td></tr><tr>
+	<td class="MsgSpacer">
+		<table cellspacing="0" cellpadding="0" class="MsgTable">
+		<tr>
+			<td class="MsgR1 vt al MsgSubText"><a name="msg_num_2"></a><a name="msg_266"></a><a href="/forums/index.php?t=msg&amp;th=120&amp;goto=266&amp;#msg_266" class="MsgSubText">Re: postscriptsloaded.lua rewrite *WIP*</a> </td>
+			<td class="MsgR1 vt ar"><span class="DateText">Fri, 15 November 2013 00:43</span> <a href="javascript://" onclick="chng_focus('#msg_num_1');"><img alt="Go to previous message" title="Go to previous message" src="/forums/theme/default/images/up.png" width="16" height="11" /></a><a href="javascript://" onclick="chng_focus('#msg_num_3');"><img alt="Go to next message" title="Go to next message" src="/forums/theme/default/images/down.png" width="16" height="11" /></a></td>
+		</tr>
+		<tr class="MsgR2">
+			<td class="MsgR2" colspan="2">
+				<table cellspacing="0" cellpadding="0" class="ContentTable">
+				<tr class="MsgR2">
+				
+					<td class="msgud">
+						<img src="/forums/theme/default/images/offline.png" alt="Artofeel is currently offline" title="Artofeel is currently offline" />&nbsp;
+						<a href="/forums/index.php?t=usrinfo&amp;id=9&amp;">Artofeel</a>
+						<br /><b>Messages:</b> 195<br /><b>Registered:</b> August 2013 <br /><b>Location: </b>Russia
+						
+					</td>
+					<td class="msgud"><div class="ctags">Senior Member</div></td>
+					<td class="msgot"></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" class="MsgR3">
+		<span class="MsgBodyText">Great!<br />
+so, we only can decompile the original script, not DLC?<br />
+it's sad, because the original works pretty fine...<br />
+<br />
+I'm sorry that I can't help you right now<br />
+as soon as I will have free time, I'll try to help</span>
+		
+		
+		<div class="SmallText"><p class="fl">[Updated on: Fri, 15 November 2013 00:47]</p><p class="fr"><a href="/forums/index.php?t=report&amp;msg_id=266&amp;" rel="nofollow">Report message to a moderator</a></p></div>
+</td></tr>
+<tr>
+	<td colspan="2" class="MsgToolBar">
+		<table border="0" cellspacing="0" cellpadding="0" class="wa">
+		<tr>
+			<td class="al nw">
+				<a href="/forums/index.php?t=usrinfo&amp;id=9&amp;"><img alt="" src="/forums/theme/default/images/msg_about.gif" /></a>&nbsp;<a href="/forums/index.php?t=ppost&amp;toi=9&amp;rmid=266&amp;"><img alt="Send a private message to this user" title="Send a private message to this user" src="/forums/theme/default/images/msg_pm.gif" /></a>
+				
+			</td>
+			<td class="GenText wa ac">&nbsp;</td>
+			<td class="nw ar">
+				
+				
+				<a href="/forums/index.php?t=post&amp;reply_to=266&amp;"><img alt="" src="/forums/theme/default/images/msg_reply.gif" /></a>&nbsp;
+				<a href="/forums/index.php?t=post&amp;reply_to=266&amp;quote=true&amp;"><img alt="" src="/forums/theme/default/images/msg_quote.gif" /></a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</td></tr><tr>
+	<td class="MsgSpacer">
+		<table cellspacing="0" cellpadding="0" class="MsgTable">
+		<tr>
+			<td class="MsgR1 vt al MsgSubText"><a name="msg_num_3"></a><a name="msg_268"></a><a href="/forums/index.php?t=msg&amp;th=120&amp;goto=268&amp;#msg_268" class="MsgSubText">Re: postscriptsloaded.lua rewrite *WIP*</a> </td>
+			<td class="MsgR1 vt ar"><span class="DateText">Fri, 15 November 2013 04:43</span> <a href="javascript://" onclick="chng_focus('#msg_num_2');"><img alt="Go to previous message" title="Go to previous message" src="/forums/theme/default/images/up.png" width="16" height="11" /></a><a href="javascript://" onclick="chng_focus('#msg_num_4');"><img alt="Go to next message" title="Go to next message" src="/forums/theme/default/images/down.png" width="16" height="11" /></a></td>
+		</tr>
+		<tr class="MsgR2">
+			<td class="MsgR2" colspan="2">
+				<table cellspacing="0" cellpadding="0" class="ContentTable">
+				<tr class="MsgR2">
+				
+					<td class="msgud">
+						<img src="/forums/theme/default/images/offline.png" alt="Keshire is currently offline" title="Keshire is currently offline" />&nbsp;
+						<a href="/forums/index.php?t=usrinfo&amp;id=6&amp;">Keshire</a>
+						<br /><b>Messages:</b> 137<br /><b>Registered:</b> August 2013 
+						
+					</td>
+					<td class="msgud"><div class="ctags">Senior Member</div></td>
+					<td class="msgot"></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" class="MsgR3">
+		<span class="MsgBodyText"><cite>Artofeel wrote on Fri, 15 November 2013 00&#58;43</cite><blockquote>Great!<br />
+so, we only can decompile the original script, not DLC?<br />
+it's sad, because the original works pretty fine...<br />
+<br />
+I'm sorry that I can't help you right now<br />
+as soon as I will have free time, I'll try to help</blockquote><br />
+<br />
+No debug script for the dlcs. The debug scripts make things vastly easier because of line numbers and locals. We can go back in and make the DLC changes after we get the retail version knocked out.<br />
+<br />
+Edit:<br />
+I can't imagine this is working the way it should...<br />
+<div class="pre"><pre>
+WatchDog.AddChickenChaserCallBack._Name = &quot;WatchDog_WatchDog.AddChickenChaserCallBack&quot;
+</pre></div><br />
+</span>
+		
+		
+		<div class="SmallText"><p class="fl">[Updated on: Fri, 15 November 2013 10:32]</p><p class="fr"><a href="/forums/index.php?t=report&amp;msg_id=268&amp;" rel="nofollow">Report message to a moderator</a></p></div>
+</td></tr>
+<tr>
+	<td colspan="2" class="MsgToolBar">
+		<table border="0" cellspacing="0" cellpadding="0" class="wa">
+		<tr>
+			<td class="al nw">
+				<a href="/forums/index.php?t=usrinfo&amp;id=6&amp;"><img alt="" src="/forums/theme/default/images/msg_about.gif" /></a>&nbsp;<a href="/forums/index.php?t=ppost&amp;toi=6&amp;rmid=268&amp;"><img alt="Send a private message to this user" title="Send a private message to this user" src="/forums/theme/default/images/msg_pm.gif" /></a>
+				
+			</td>
+			<td class="GenText wa ac">&nbsp;</td>
+			<td class="nw ar">
+				
+				
+				<a href="/forums/index.php?t=post&amp;reply_to=268&amp;"><img alt="" src="/forums/theme/default/images/msg_reply.gif" /></a>&nbsp;
+				<a href="/forums/index.php?t=post&amp;reply_to=268&amp;quote=true&amp;"><img alt="" src="/forums/theme/default/images/msg_quote.gif" /></a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</td></tr><tr>
+	<td class="MsgSpacer">
+		<table cellspacing="0" cellpadding="0" class="MsgTable">
+		<tr>
+			<td class="MsgR1 vt al MsgSubText"><a name="msg_num_4"></a><a name="msg_269"></a><a href="/forums/index.php?t=msg&amp;th=120&amp;goto=269&amp;#msg_269" class="MsgSubText">Re: postscriptsloaded.lua rewrite *WIP*</a> </td>
+			<td class="MsgR1 vt ar"><span class="DateText">Fri, 15 November 2013 13:28</span> <a href="javascript://" onclick="chng_focus('#msg_num_3');"><img alt="Go to previous message" title="Go to previous message" src="/forums/theme/default/images/up.png" width="16" height="11" /></a><a href="javascript://" onclick="chng_focus('#msg_num_5');"><img alt="Go to next message" title="Go to next message" src="/forums/theme/default/images/down.png" width="16" height="11" /></a></td>
+		</tr>
+		<tr class="MsgR2">
+			<td class="MsgR2" colspan="2">
+				<table cellspacing="0" cellpadding="0" class="ContentTable">
+				<tr class="MsgR2">
+				
+					<td class="msgud">
+						<img src="/forums/theme/default/images/offline.png" alt="asmcint is currently offline" title="asmcint is currently offline" />&nbsp;
+						<a href="/forums/index.php?t=usrinfo&amp;id=136&amp;">asmcint</a>
+						<br /><b>Messages:</b> 48<br /><b>Registered:</b> September 2013 <br /><b>Location: </b>U.S.A.
+						
+					</td>
+					<td class="msgud"><div class="ctags">Member</div></td>
+					<td class="msgot"></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" class="MsgR3">
+		<span class="MsgBodyText"><cite>Keshire wrote on Fri, 15 November 2013 05&#58;43</cite><blockquote><br />
+I can't imagine this is working the way it should...<br />
+<div class="pre"><pre>
+WatchDog.AddChickenChaserCallBack._Name = &quot;WatchDog_WatchDog.AddChickenChaserCallBack&quot;
+</pre></div><br />
+</blockquote><br />
+<br />
+What... the... <i>fuck!?</i><br />
+<br />
+If I'm reading this right, they're trying to use a variable to list a function, and said variable is <i>longer</i> than the original function!<br />
+<br />
+If I'm not reading this right, then it appears to be some highly redundant code. Either way, what drugs were they on?</span>
+		
+		<br /><br /><div class="signature" />To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.</div>
+		<div class="SmallText"><p class="fr"><a href="/forums/index.php?t=report&amp;msg_id=269&amp;" rel="nofollow">Report message to a moderator</a></p></div>
+</td></tr>
+<tr>
+	<td colspan="2" class="MsgToolBar">
+		<table border="0" cellspacing="0" cellpadding="0" class="wa">
+		<tr>
+			<td class="al nw">
+				<a href="/forums/index.php?t=usrinfo&amp;id=136&amp;"><img alt="" src="/forums/theme/default/images/msg_about.gif" /></a>&nbsp;<a href="/forums/index.php?t=ppost&amp;toi=136&amp;rmid=269&amp;"><img alt="Send a private message to this user" title="Send a private message to this user" src="/forums/theme/default/images/msg_pm.gif" /></a>
+				
+			</td>
+			<td class="GenText wa ac">&nbsp;</td>
+			<td class="nw ar">
+				
+				
+				<a href="/forums/index.php?t=post&amp;reply_to=269&amp;"><img alt="" src="/forums/theme/default/images/msg_reply.gif" /></a>&nbsp;
+				<a href="/forums/index.php?t=post&amp;reply_to=269&amp;quote=true&amp;"><img alt="" src="/forums/theme/default/images/msg_quote.gif" /></a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</td></tr><tr>
+	<td class="MsgSpacer">
+		<table cellspacing="0" cellpadding="0" class="MsgTable">
+		<tr>
+			<td class="MsgR1 vt al MsgSubText"><a name="msg_num_5"></a><a name="msg_270"></a><a href="/forums/index.php?t=msg&amp;th=120&amp;goto=270&amp;#msg_270" class="MsgSubText">Re: postscriptsloaded.lua rewrite *WIP*</a> </td>
+			<td class="MsgR1 vt ar"><span class="DateText">Fri, 15 November 2013 15:21</span> <a href="javascript://" onclick="chng_focus('#msg_num_4');"><img alt="Go to previous message" title="Go to previous message" src="/forums/theme/default/images/up.png" width="16" height="11" /></a></td>
+		</tr>
+		<tr class="MsgR2">
+			<td class="MsgR2" colspan="2">
+				<table cellspacing="0" cellpadding="0" class="ContentTable">
+				<tr class="MsgR2">
+				
+					<td class="msgud">
+						<img src="/forums/theme/default/images/offline.png" alt="Keshire is currently offline" title="Keshire is currently offline" />&nbsp;
+						<a href="/forums/index.php?t=usrinfo&amp;id=6&amp;">Keshire</a>
+						<br /><b>Messages:</b> 137<br /><b>Registered:</b> August 2013 
+						
+					</td>
+					<td class="msgud"><div class="ctags">Senior Member</div></td>
+					<td class="msgot"></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" class="MsgR3">
+		<span class="MsgBodyText"><cite>asmcint wrote on Fri, 15 November 2013 13&#58;28</cite><blockquote><cite>Keshire wrote on Fri, 15 November 2013 05&#58;43</cite><blockquote><br />
+I can't imagine this is working the way it should...<br />
+<div class="pre"><pre>
+WatchDog.AddChickenChaserCallBack._Name = &quot;WatchDog_WatchDog.AddChickenChaserCallBack&quot;
+</pre></div><br />
+</blockquote><br />
+<br />
+What... the... <i>fuck!?</i><br />
+<br />
+If I'm reading this right, they're trying to use a variable to list a function, and said variable is <i>longer</i> than the original function!<br />
+<br />
+If I'm not reading this right, then it appears to be some highly redundant code. Either way, what drugs were they on?</blockquote><br />
+<br />
+Ya. There's some crazy things going on.<br />
+It looks like this is meant to be overriding the base function with a replacement function.<br />
+<br />
+Any function that gets defined in WatchDog gets re-tagged as WatchDog_function, replacing the normal function that runs.<br />
+<div class="pre"><pre>
+		name = &quot;WatchDog_&quot; .. name
+		watch_dog._Name = name
+</pre></div><br />
+<br />
+That AddChickenChaserCallBack sticks out because if it was the same as the others it should have been WatchDog_AddChickenChaserCallBack.<br />
+Obviously I haven't done all the functions yet. I just have them listed out.</span>
+		
+		
+		<div class="SmallText"><p class="fl">[Updated on: Fri, 15 November 2013 15:22]</p><p class="fr"><a href="/forums/index.php?t=report&amp;msg_id=270&amp;" rel="nofollow">Report message to a moderator</a></p></div>
+</td></tr>
+<tr>
+	<td colspan="2" class="MsgToolBar">
+		<table border="0" cellspacing="0" cellpadding="0" class="wa">
+		<tr>
+			<td class="al nw">
+				<a href="/forums/index.php?t=usrinfo&amp;id=6&amp;"><img alt="" src="/forums/theme/default/images/msg_about.gif" /></a>&nbsp;<a href="/forums/index.php?t=ppost&amp;toi=6&amp;rmid=270&amp;"><img alt="Send a private message to this user" title="Send a private message to this user" src="/forums/theme/default/images/msg_pm.gif" /></a>
+				
+			</td>
+			<td class="GenText wa ac">&nbsp;</td>
+			<td class="nw ar">
+				
+				
+				<a href="/forums/index.php?t=post&amp;reply_to=270&amp;"><img alt="" src="/forums/theme/default/images/msg_reply.gif" /></a>&nbsp;
+				<a href="/forums/index.php?t=post&amp;reply_to=270&amp;quote=true&amp;"><img alt="" src="/forums/theme/default/images/msg_quote.gif" /></a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</td></tr></table>
+
+<table border="0" cellspacing="0" cellpadding="0" class="wa">
+<tr>
+	<td class="vt">&nbsp;</td>
+	<td class="GenText ar vb nw"><a href="/forums/index.php?t=post&amp;frm_id=5&amp;"><img alt="Create a new topic" src="/forums/theme/default/images/new_thread.gif" /></a>&nbsp;<a href="/forums/index.php?t=post&amp;th_id=120&amp;reply_to=265&amp;&amp;start=0"><img src="/forums/theme/default/images/post_reply.gif" alt="Submit Reply" /></a></td>
+</tr>
+</table>
+
+
+<table border="0" cellspacing="1" cellpadding="1" align="right">
+	<tr>
+	<td class="ar GenText">Previous Topic:</td>
+	<td class="GenText al"><a href="/forums/index.php?t=msg&amp;goto=255&amp;#msg_255">ScriptFunction clear</a></td>
+</tr>
+	<tr>
+	<td class="GenText ar">Next Topic:</td>
+	<td class="GenText al"><a href="/forums/index.php?t=msg&amp;goto=271&amp;#msg_271">A few unlisted Debug functions</a></td>
+</tr>
+</table>
+
+<span class="SmallText fb">Goto Forum:</span>
+<form action="/forums/index.php" id="frmquicksel" method="get">
+	<input type="hidden" name="t" value="thread" />
+	<input type="hidden" name="SQ" value="0" />
+	<select class="SmallText" name="frm_id">
+		<option disabled="disabled">- Public Forums</option><option value="1">&nbsp;&nbsp;Announcements</option><option value="4">&nbsp;&nbsp;General Discussion</option><option disabled="disabled">- Modding Forums</option><option value="5" selected="selected">&nbsp;&nbsp;Modding Discussion</option><option value="8">&nbsp;&nbsp;Mods</option><option value="6">&nbsp;&nbsp;Tools</option><option value="7">&nbsp;&nbsp;Formats</option>
+	</select>&nbsp;&nbsp;
+	<input type="submit" class="button small" name="frm_goto" value="Go" />
+</form>
+<br /><div class="wa ac">-=] <a href="javascript://" onclick="chng_focus('page_top');">Back to Top</a> [=-</div>
+<div class="ar SmallText">[ <a href="/forums/index.php?t=help_index&amp;section=boardusage#syndicate">Syndicate this forum (XML)</a> ] [ <a href="/forums/feed.php?mode=m&amp;th=120&amp;basic=1"><img src="/forums/theme/default/images/rss.gif" title="Syndicate this forum (XML)" alt="RSS" /></a> ] [ <a href="/forums/pdf.php?th=120&amp;"><img src="/forums/theme/default/images/pdf.gif" title="Generate printable PDF" alt="PDF" /></a> ]</div>
+<br /><div class="ac"><span class="curtime"><b>Current Time:</b> Wed Aug 05 18:03:41 PDT 2026</span></div>
+<br /><div class="SmallText al">Total time taken to generate the page: 0.07647 seconds</div><script>
+	min_max_posts('/forums/theme/default/images', 'Minimize Message', 'Maximize Message');
+	format_code('Code:', 'Select all', 'Show/ hide');
+</script>
+</td></tr></table>
+
+</div>
+<div class="footer ac">
+	<b>.::</b>
+	<a href="mailto:Pe_Ell@fable3mod.com">Contact</a>
+	<b>::</b>
+	<a href="/forums/index.php?t=index&amp;">Home</a>
+	<b>::.</b>
+	<p class="SmallText">Powered by: FUDforum 3.0.9.<br />Copyright &copy;2001-2018 <a href="http://fudforum.org/">FUDforum Bulletin Board Software</a></p>
+</div>
+
+</body></html>

@@ -1,0 +1,823 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Direction spell freeze fix and RoboDog sounds fix 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Direction spell freeze fix and RoboDog sounds fix (Traitor's Keep DLC fixes) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Direction spell freeze fix and RoboDog sounds fix 
+ Mon, 09 September 2013 23:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ first bug detail described here for example 
+in two words, if you cast directed spell or directed spell casted in you, the game freeze, but the animation and the sound continues to play... 
+Thus there is a memory leak, and game falls when is reach 4 gigabytes (limit for 32bit aplication on 64bit OS) 
+ 
+I have this happen with the two heroes, and in both cases it only happened when the total time played was more than 50 hours. 
+ 
+bug is in this script: 
+ scripts\miscellaneous\saveload\postscriptsloaded.lua 
+ 
+in the function: 
+ WatchDog.AssassinsRushAlphaFix.Update() 
+ 
+ 
+I did not correct the problem itself, as script is compiled, and there's a lot of functions...instead I made ​​sure that this function has never been performed. 
+ 
+ 
+the second bug is associated with the robodog sounds 
+after loading a saved game, the sounds in robodog become the same as a normal dog. 
+even though the script was compiled, I managed to completely rewrite it, so now everything is working as it should. 
+ 
+ 
+place extracted files to: 
+for catspaw's GFWL emu 
+..\Fable 3\DLC\99_dlc2_fixes\ 
+for timeslip GFWL remover 
+..\Fable 3\Data\mod9\ 
+*create folders if they did not exist 
+ 
+ 
+ 
+ Attachment: Fable3_direction_spell_freeze_fix.zip 
+ 
+ (Size: 39.49KB, Downloaded 3013 times) 
+ 
+ 
+ 
+ [Updated on: Wed, 25 March 2015 04:40]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Mon, 16 September 2013 11:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ there are still a few bugs that are related 
+ie if you have "direction spell freeze" then you have the others 
+ 
+first: The camera freeze after leaving the sanctuary 
+You can control the hero, but the camera is not moving for a few seconds 
+ 
+second: infinitely lot of guards, like this 
+ how many guards needed to catch one hero? 
+rather testily, as this leads to strong slowdown FPS... 
+ 
+we really need to decompile this script: 
+scripts\miscellaneous\saveload\postscriptsloaded.lua 
+from the last DLC (scriptsandgui.bnk) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Fri, 01 November 2013 10:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Mon, 16 September 2013 11:18 
+we really need to decompile this script: 
+scripts\miscellaneous\saveload\postscriptsloaded.lua 
+from the last DLC (scriptsandgui.bnk) 
+ 
+Last I checked there was a lot of goofy stuff going on in that script. It was one of the scripts I couldn't decompile for Fable 2 because of the pluto lua addon. KoreVM makes it even more problematic. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Sun, 03 November 2013 00:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Fri, 01 November 2013 22:45 Artofeel wrote on Mon, 16 September 2013 11:18 
+we really need to decompile this script: 
+scripts\miscellaneous\saveload\postscriptsloaded.lua 
+from the last DLC (scriptsandgui.bnk) 
+ 
+Last I checked there was a lot of goofy stuff going on in that script. It was one of the scripts I couldn't decompile for Fable 2 because of the pluto lua addon. KoreVM makes it even more problematic. 
+:( 
+btw, I get another bug 
+Called: "Make Peace" 
+Nobody attacks. CombatTalk is work. They are moving to attack but when get close to enemy, just staying and talk... 
+Strange, but it seems big creatures no longer spawning (Saker like renegade\Balverines\HollowMan Summoner) and the overall strength of the opponents reduced (I can kill anyone in one hit) 
+And now I'm not even sure if this bug is related to the same script, or is it something I greatly modded... 
+But this did not happen after loading with the heavily modified data, this happen during long gameplay. 
+So...if there is someone get this bug too, PLEASE report. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Fri, 14 November 2014 12:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sun, 03 November 2013 12:19 
+btw, I get another bug 
+Called: "Make Peace" 
+ 
+it seems that it was my fault with modding 
+the error does not reappear after loading an earlier save game and playing a long time 
+BUT a have another bug 
+Time is stop, and nothing can start it, I've tried: 
+ 
+Timing.SetDaySpeed(1440)
+Timing.SetTimeAsStopped(false)
+Timing.SetInFreezeTimeMode(false)
+Debug.StopDaySpeed(false)
+ 
+ 
+and nothing worked... 
+So...if there is someone get this bug too, PLEASE report. x2 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Thu, 01 January 2015 10:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Stihii 
+ Messages: 1 Registered: January 2015 Location: Romania
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Mon, 09 September 2013 23:11 first bug detail described here for example 
+in two words, if you cast directed spell or directed spell casted in you, the game freeze, but the animation and the sound continues to play... 
+Thus there is a memory leak, and game falls when is reach 4 gigabytes (limit for 32bit aplication on 64bit OS) 
+ 
+I have this happen with the two heroes, and in both cases it only happened when the total time played was more than 50 hours. 
+ 
+bug is in this script: 
+ scripts\miscellaneous\saveload\postscriptsloaded.lua 
+ 
+in the function: 
+ WatchDog.AssassinsRushAlphaFix.Update() 
+ 
+ 
+I did not correct the problem itself, as script is compiled, and there's a lot of functions...instead I made ​​sure that this function has never been performed. 
+ 
+ 
+the second bug is associated with the robodog sounds 
+after loading a saved game, the sounds in robodog become the same as a normal dog. 
+even though the script was compiled, I managed to completely rewrite it, so now everything is working as it should. 
+ 
+ 
+download file and extract in to Fable 3 directory 
+so, files should be in ..\Fable 3\Data\mod9\Content 
+ 
+Artofeel, I just registered now on this forum in order to thank you from the bottom of my heart for being the only person on the whole of Internet to offer a solution for the direction spell freeze! You, my dear friend are doing an immensely better job than the support guys at Lionhead Studios. 
+I applied the patch you provided to my game folder and then loaded a save game where I was encountering the direction spell freeze on a hero with 50+ hours of gameplay. I tested the fix in the Hollow Man Arena in the Wheel of Misfortune (where the bug was reproducible 100% when the lightning spell was directed at me or the summoned creatures) but I also tested in a 1v1 magic showdown with a Saker-like mercenary (which again was 100% freeze before your fix). I DID NOT encounter the freeze again so far, despite spamming spells like crazy. 
+The fixed camera bug after exiting the sanctuary I did not yet get to reproduce (I didn't have a 100% repro rate for that one) but I will keep my eyes open. 
+ 
+As for the robodog bug, I never encountered it seeing as how I have the collie dog. 
+ 
+I will keep an eye opened if I encounter any problems after applying the patch 
+ 
+Brotherly hug from Romania towards Russia for this fix!!! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Tue, 17 February 2015 11:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ donkeymilk 
+ Messages: 4 Registered: February 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi.I just wanted to ask small question. 
+Is this mod for the fable 3 vanilla game only? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Wed, 25 March 2015 04:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ updated archive for catspaw's GFWL emu support 
+ 
+ 
+ donkeymilk wrote on Wed, 18 February 2015 00:55 Is this mod for the fable 3 vanilla game only? 
+Is there is any global mods for Fable 3? :) 
+anyway it just replace two files 
+scripts\miscellaneous\saveload\postscriptsloaded.lua 
+scripts\quests\qu667_robodogsoundmanager.lua 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Thu, 09 April 2015 16:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Wed, 25 March 2015 04:42 updated archive for catspaw's GFWL emu support 
+ 
+ 
+ donkeymilk wrote on Wed, 18 February 2015 00:55 Is this mod for the fable 3 vanilla game only? 
+Is there is any global mods for Fable 3? 
+anyway it just replace two files 
+scripts\miscellaneous\saveload\postscriptsloaded.lua 
+scripts\quests\qu667_robodogsoundmanager.lua 
+ 
+He probably meant vanilla as in no DLC. 
+ 
+Anyways, thanks for keeping things alive here Artofeel. It's really appreciated. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Direction spell freeze fix and RoboDog sounds fix 
+ Fri, 06 August 2021 02:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I don't mean to bump this, but for those who don't use Timeslip's GFWL or the other one, but the modified version of GFWL to enable online, AND aren't using/downloading any Understone files, but have Traitor's Keep (there was a workaround to get to this to work online with others), where would I put these files? I appreciate the help. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Nude Female Hero by Ryuseiken 
+
+ 
+ Next Topic: 
+ Blacksmithing Mod 0.2 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:16 PDT 2026 
+
+ Total time taken to generate the page: 0.05556 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

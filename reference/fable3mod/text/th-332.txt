@@ -1,0 +1,351 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Fable 3 DLCs 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Fable 3 DLCs (DLC) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+    Fable 3 DLCs 
+ Wed, 03 August 2022 02:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ FireshotJDP3 
+ Messages: 2 Registered: August 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi there, everyone. I apologize if this is the wrong space for this, but this seemed like the most logical place. 
+ 
+I've been a long time fan of Fable games, and have bought every copy of Fable over the years, even getting XBox Game Pass just for the oppportunity to play Fable 2. My issue now is getting working versions of the Fable 3 DLC. I've played them before, but am on a new computer, and there's no way to get them, paying or not. I've reached out to Steam and Microsoft for help, but they weren't able to assist. 
+ 
+TLDR: Does anyone have the files for the DLC. I would be forever indebted to you, as I am to the community, for the great content you guys put out. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Fable 3 DLCs 
+ Tue, 16 August 2022 08:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ WinniDex 
+ Messages: 2 Registered: August 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ The whole process is explained here: 
+ https://steamcommunity.com/sharedfiles/filedetails/?id=22679 66544 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Fable 3 DLCs 
+ Tue, 16 August 2022 09:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ FireshotJDP3 
+ Messages: 2 Registered: August 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've already tries that forum, along with about a dozen others. If you'd opened any of the links, you'd notice that the DLC links are dead. The others will download, but not the DLC. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Fable 3 DLCs 
+ Wed, 25 January 2023 08:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kumisnami 
+ Messages: 4 Registered: September 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ My guide has never been dead (it's existed since September 17th, 2020) so I don't know what you're talking about. It also credits quite a few individuals from this forum. 
+ 
+ https://steamcommunity.com/sharedfiles/filedetails/?id=22311 14241 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Manually upgrade legendary weapons? 
+
+ 
+ Next Topic: 
+ How to morph Hero Weapons via scripts? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:18 PDT 2026 
+
+ Total time taken to generate the page: 0.05441 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

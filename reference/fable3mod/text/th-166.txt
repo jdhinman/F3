@@ -1,0 +1,414 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Finding a creature ID. 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Finding a creature ID. 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Finding a creature ID. 
+ Fri, 21 March 2014 07:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks to this guide , I have managed to spawn creatures in game. It is quite simple, but until now I have only figured out Elise's ID which apparently is "CreatureVillagerElise", using BNK Browser I have found quite a few other NPCs that I would like to spawn such as Reaver/Theresa etc... Although using the same logic "Debug.CreateEntityByHero('CreatureVillagerReaver')" or Theresa, did not work. What I'm curious about though is, how does the game figures out the ID of the creature. Why doesn't it spawn the model by using the actual path to the corresponding .mdl file? Is there any logic on figuring out the NPC ID? 
+ 
+ 
+ [Updated on: Fri, 21 March 2014 07:43]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Finding a creature ID. 
+ Fri, 21 March 2014 10:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Schuldiner wrote on Fri, 21 March 2014 07:42 Thanks to this guide , I have managed to spawn creatures in game. It is quite simple, but until now I have only figured out Elise's ID which apparently is "CreatureVillagerElise", using BNK Browser I have found quite a few other NPCs that I would like to spawn such as Reaver/Theresa etc... Although using the same logic "Debug.CreateEntityByHero('CreatureVillagerReaver')" or Theresa, did not work. What I'm curious about though is, how does the game figures out the ID of the creature. Why doesn't it spawn the model by using the actual path to the corresponding .mdl file? Is there any logic on figuring out the NPC ID? 
+ 
+I believe they are defined in the globals.gdb. The global name, model, and other properties of the creature. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Finding a creature ID. 
+ Fri, 21 March 2014 11:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for the help, do you have any gdb editor in mind? I've already used Artofeel's posted editor found here , but it doesn't seem to read the file itself. The editor is on the same directory with the file by the way. 
+ 
+ 
+ [Updated on: Fri, 21 March 2014 11:38]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Finding a creature ID. 
+ Fri, 21 March 2014 23:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ guess you need this one 
+drag-and-drop .gdb file on .bat file 
+ 
+ 
+ 
+ Attachment: GDB_Dump.zip 
+ 
+ (Size: 13.41KB, Downloaded 2601 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Finding a creature ID. 
+ Sat, 22 March 2014 00:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ That did the job, thank you both! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ [Edited]Just a question. 
+
+ 
+ Next Topic: 
+ Need some help 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:00 PDT 2026 
+
+ Total time taken to generate the page: 0.05399 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

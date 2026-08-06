@@ -1,0 +1,427 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Job Example scripts 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Job Example scripts 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Job Example scripts 
+ Mon, 11 November 2013 09:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Pretty much all the job scripts use this setup. I think the jobcoordinator.lua picks them up based on file name. 
+ 
+These may be a little off. But they are just examples anyway. 
+ 
+jobexamplemanager.lua 
+ Toggle Spoiler 
+ 
+
+QuestManager.NewJobManagerThread("JobExampleManager")
+
+function JobExampleManager:Init()
+	Type = "STATIC"
+	Duration = 20
+	JobInstanceName = "JobExampleInstance"
+	
+	JobData = {}
+
+	JobData[1] = {}
+	JobData[1].Layer = "EX01_ActiveLayer"
+	JobData[1].Region = "Ravenscar"
+	JobData[1].QuickTravelPoint = "Travel_RVSPub"
+	JobData[1].AvailableFromChapter = Chapters.NewBeginning_start
+	
+	JobData[1].SignEntity = "EX01_Sign"
+	
+	JobData[2] = {}
+	JobData[2].Layer = "EX02_ActiveLayer"
+	JobData[2].Region = "Bloodstone"
+	JobData[2].QuickTravelPoint = "Travel_BloodstoneDocks"
+	JobData[2].AvailableFromChapter = Chapters.NewBeginning_start
+	
+	JobData[2].SignEntity = "EX02_Sign"
+
+end
+
+function JobExampleManager:Update()
+	
+	while self:WaitUntilNextCheck() do
+	
+ if JobCoordinator.CanStartJobOfType(Type) then
+ local job_to_start = self:GetRunnableJobKey()
+ if job_to_start then
+ self:StartJobInstance(job_to_start)
+ end
+ end
+	end
+end
+JobCoordinator.JobManagerThreads.JobBlacksmithManager = JobBlacksmithManager:new()
+QuestManager.AddQuestThread(JobCoordinator.JobManagerThreads.JobExampleManager)
+ 
+ 
+
+ 
+ 
+jobexampleinstance.lua 
+ Toggle Spoiler 
+ 
+module(...,package.seeall)
+
+QuestManager.NewJobInstanceThread("JobExampleInstance")
+
+function JobExampleInstance.Init()
+	
+	TestDuration = 30
+
+end
+
+function JobExampleInstance.Update()
+	
+	cprint("Job " .. _Name .. " Started in " .. JobData.Region .. ".")
+
+	local timer = QuestManager.NewTimer(TestDuration)
+	--This probably isn't right. But it should be close
+	while self:GetTime(timer) > 0 do
+ coroutine.yield()
+	end 
+
+	cprint("Job " .. _Name .. " in " .. JobData.Region .. " ended.")
+
+end
+ 
+ 
+
+ 
+ 
+Here are the possible job types as defined in the jobcoordinator 
+ Toggle Spoiler 
+ 
+0060 03060032 [016] loadk 3 6 ; "OVERALL"
+0064 04070032 [017] loadk 4 7 ; "STATIC"
+0068 05080032 [018] loadk 5 8 ; "MISSION"
+006C 06090032 [019] loadk 6 9 ; "GENERATED"
+0070 070A0032 [020] loadk 7 10 ; "JUDGEMENT"
+0074 080B0032 [021] loadk 8 11 ; "TEMPLATE_FETCH"
+0078 090C0032 [022] loadk 9 12 ; "TEMPLATE_ASSASSINATE"
+007C 0A0D0032 [023] loadk 10 13 ; "TEMPLATE_SHOP"
+0080 0B0E0032 [024] loadk 11 14 ; "TEMPLATE_COURIER"
+0084 0C0F0032 [025] loadk 12 15 ; "TEMPLATE_ESCORT"
+0088 0D100032 [026] loadk 13 16 ; "TEMPLATE_FETCH_PERSON"
+008C 0E110032 [027] loadk 14 17 ; "TEMPLATE_PAYMEMONEY"
+0090 0F120032 [028] loadk 15 18 ; "RELATIONSHIP_DATE"
+0094 10130032 [029] loadk 16 19 ; "RELATIONSHIP_GIFT"
+0098 11140032 [030] loadk 17 20 ; "RELATIONSHIP_FETCH"
+009C 12150032 [031] loadk 18 21 ; "RELATIONSHIP_COURIER"
+00A0 13160032 [032] loadk 19 22 ; "RELATIONSHIP_HOME"
+00A4 14170032 [033] loadk 20 23 ; "RULER_CREATURE_HUNTER"
+00A8 15180032 [034] loadk 21 24 ; "PROTEST"
+00AC 16190032 [035] loadk 22 25 ; "TEMPLATE_QDRAG_CRIMINAL"
+00B0 171A0032 [036] loadk 23 26 ; "TEMPLATE_QDRAG_SLAVE"
+00B4 02012A74 [037] setlist 2 21 1 ; index 1 to 21
+ 
+ 
+
+ 
+ 
+ 
+ [Updated on: Sun, 17 November 2013 20:53]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Job Example scripts 
+ Mon, 11 November 2013 12:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It appears to be referencing jobs leftover from Fable II. I wonder just how much of the code for those are there. 0_o 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Job Example scripts 
+ Mon, 11 November 2013 13:17 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Mon, 11 November 2013 12:18 It appears to be referencing jobs leftover from Fable II. I wonder just how much of the code for those are there. 0_o 
+ 
+I think it was all shuffled around. Most of the job code for Fable 2 is in the gameflow which was plain text. ;) 
+ 
+I know for a fact that the hero and henchmen trackers were pulled straight from the Fable 2 gameflow script into their own script for Fable 3. 
+ 
+Edit: 
+Uploaded some decompiled F2 scripts. LuaDec isn't perfect, but it's better than asm. 
+Also checked the assassination scripts, and they are handled differently. There is no JobCoordinator function for Fable 2. 
+ 
+ 
+ 
+ Attachment: qj001_jobwoodsman.txt 
+ 
+ (Size: 42.46KB, Downloaded 4194 times) 
+ 
+ 
+ Attachment: qr_archaeology.txt 
+ 
+ (Size: 8.81KB, Downloaded 2741 times) 
+ 
+ 
+ Attachment: qr_archaeologyglobal.txt 
+ 
+ (Size: 30.32KB, Downloaded 2691 times) 
+ 
+ 
+ 
+ [Updated on: Mon, 11 November 2013 18:16]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Quest template (qt000_template.lua) 
+
+ 
+ Next Topic: 
+ ScriptFunction clear 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:39 PDT 2026 
+
+ Total time taken to generate the page: 0.05381 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,242 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » [PC] Getting DLC on Steam version 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » [PC] Getting DLC on Steam version 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+    [PC] Getting DLC on Steam version 
+ Fri, 18 November 2016 10:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ HiddenKnowledge 
+ Messages: 1 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello everyone! 
+ 
+I've been looking through this forum, and I've seen several mentions that seem to imply that it may be possible to get the DLC to work using mods. 
+I have bought the Steam version of the game on Amazon and would love to do the same with the DLC, but I haven't found any way to buy it so far. 
+So I'm wondering: Is it possible to get the DLC to work in ANY way, without disabling the COOP multiplayer? 
+ 
+Once the DLC works for me, I want to create a bunch of mods for the game, but right now I'm too obsessed with trying to get the DLC to work. 
+I wish I could just buy the DLC and if anyone finds a place to buy it, please let me know! 
+But until then I'll be stuck trying to figure out how to make it work with mods, so I welcome any help! 
+ 
+I followed ZackTiro's Script Modding Setup Tutorial and then used the GameVersion.SetAllDLCsOn() function to attempt to turn on all DLC's but this froze my character in place. 
+I also tried giving myself the DLC items using the debug commands ( Debug.AddAllDLC1Items() , Debug.AddAllDLC2Items() ) but this resulted in the same unwillingness to move. 
+ 
+I'm looking forward to your answers, 
+ HiddenKnowledge 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [PC] Getting DLC on Steam version 
+ Mon, 21 November 2016 23:01 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ http://fable3mod.com/forums/index.php?t=msg&th=102&s tart=0 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ weapon morph mod/debug? 
+
+ 
+ Next Topic: 
+ Scarring and prevention 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:35 PDT 2026 
+
+ Total time taken to generate the page: 0.04966 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

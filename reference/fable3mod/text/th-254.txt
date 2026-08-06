@@ -1,0 +1,765 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Five Star Dog Potion 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Five Star Dog Potion (How do I get rid of this fetid object?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Five Star Dog Potion 
+ Tue, 08 March 2016 13:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So, I have all of the DLC working and loaded. What script do I need to add to get this unwanted heap out of my inventory? 
+Oh sure, it makes it easy to find everything and to get the Splade and Chickenbane upgrades, but half the fun of the game is discovery. 
+Please help. I can't go near the game with this item in place. With the mods (and no way of figuring out which weapons will be purchasable before reaching the location) there's very little reason to build a financial empire large enough to afford them. 
+ 
+On that subject, is Chickenbane a quest reward like Wolfsbane? 
+ 
+EDIT: * I can't move or delete this post myself for some reason. Somebody with the right authorisiation take care of that if you would * 
+ 
+ 
+ [Updated on: Tue, 08 March 2016 13:52]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Wed, 09 March 2016 04:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ maybe deleting DLC files (dlc_potions.bnk) will help, but I'm not tested it and maybe this file adding something else.. 
+so, code to remove this shit 
+ if Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, 'ObjectInventoryPotionDogStatsLevel5') > 0 then
+	Inventory.RemoveItemOfType(QuestManager.HeroEntity, 'ObjectInventoryPotionDogStatsLevel5')
+end 
+ 
+ 
+and alt version to reset dog training levels 
+ if Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, 'ObjectInventoryPotionDogStatsLevel5') > 0 then
+	Inventory.RemoveItemOfType(QuestManager.HeroEntity, 'ObjectInventoryPotionDogStatsLevel5')
+	DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_COMBAT, - DogStats.GetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_COMBAT))
+	DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_TREASURE_HUNTING, - DogStats.GetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_TREASURE_HUNTING))
+	DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_CHARISMA, - DogStats.GetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_CHARISMA))
+end 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Sun, 13 March 2016 18:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks, Arto. It works like a charm, and now my game is about 75% better 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Sat, 22 December 2018 09:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Something weird is going on. 
+I have the alt version of this script inserted, but it's not resetting Dog Stats. 
+Also, I believe the Demon Door (Brightwall, Mistpeak) unlock mod is causing my Quests Completed to get bumped by 10 periodically. 
+I'm attaching both Script files that I'm using. 
+ 
+ 
+ 
+ Attachment: MyScript01.lua 
+ 
+ (Size: 0.51KB, Downloaded 3370 times) 
+ 
+ 
+ Attachment: MyScript02.lua 
+ 
+ (Size: 3.73KB, Downloaded 3274 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Sun, 23 December 2018 02:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ scripts are OK 
+check you game\DLC installation 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Sun, 23 December 2018 09:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I checked and it's all okay. I couldn't figure it out so I just reinstalled everything. 
+It's all good now and thanks for getting back to me so soon. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Fri, 02 July 2021 00:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ SoundBird93 
+ Messages: 2 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm awere that this is unlikely that someone will riply me after so many time pass, but still 
+So where specific I should to write down this part of code? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Fri, 02 July 2021 01:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ SoundBird93 
+ Messages: 2 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Wed, 09 March 2016 04:10 maybe deleting DLC files (dlc_potions.bnk) will help, but I'm not tested it and maybe this file adding something else.. 
+so, code to remove this shit 
+ if Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, 'ObjectInventoryPotionDogStatsLevel5') > 0 then
+	Inventory.RemoveItemOfType(QuestManager.HeroEntity, 'ObjectInventoryPotionDogStatsLevel5')
+end 
+
+ 
+and alt version to reset dog training levels 
+ if Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, 'ObjectInventoryPotionDogStatsLevel5') > 0 then
+	Inventory.RemoveItemOfType(QuestManager.HeroEntity, 'ObjectInventoryPotionDogStatsLevel5')
+	DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_COMBAT, - DogStats.GetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_COMBAT))
+	DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_TREASURE_HUNTING, - DogStats.GetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_TREASURE_HUNTING))
+	DogStats.SetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_CHARISMA, - DogStats.GetTrainingLevel(GetDog(GetLocalHero()), EDogTrainingType.DOG_TRAINING_TYPE_CHARISMA))
+end 
+
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Tue, 28 December 2021 02:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ First thing is you'll need to make a folder for the mod files themselves. I personally use Fable 3\data\scripts\MyMod. 
+In there I have two files, MyScript01.lua and MyScript02.lua. 
+I slap the code into MyScript02.lua and it seems to work fine. 
+Be sure to use the indentation as indicated in Arto's code snippet. 
+ 
+You can make a blank text file to write it in then save it with the .lua extension instead of .txt. They MUST be lua files or they won't work. 
+Secondly, you'll need to edit dir.manifest (you can use a plain text editor for this as well) and add the address and name of the mod file(s) you're going to use to the end of the file. 
+For example: scripts\MyMod\MyScript02.lua 
+ 
+You're also going to need Script Injector. Make a folder in the base directory named DLC and put 10_ScriptInjector in there. 
+ 
+ 
+ 
+ Attachment: Fable3_ScriptInjector.zip 
+ 
+ (Size: 6.49KB, Downloaded 1664 times) 
+ 
+ 
+ 
+ [Updated on: Tue, 28 December 2021 02:15]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Five Star Dog Potion 
+ Wed, 23 October 2024 17:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ lucaris 
+ Messages: 1 Registered: October 2024 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ No matter what I do, I cannot make this work. Any other way to remove that blasted potion? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ BigBust Mod 
+
+ 
+ Next Topic: 
+ Quickly Change Your Japan Airlines Flight Date Call for Instant Help 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:29 PDT 2026 
+
+ Total time taken to generate the page: 0.07451 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

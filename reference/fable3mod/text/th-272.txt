@@ -1,0 +1,229 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Dlc on steam 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Dlc on steam 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Dlc on steam 
+ Wed, 15 March 2017 03:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Weecoco 
+ Messages: 3 Registered: March 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Does anyone know if there is a way to get the fable III dlc to work if it's been purchased through steam 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Dlc on steam 
+ Sat, 01 July 2017 18:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ There is. But you need to sort of jack about with a couple of files first. Read my reply on "how to use scripts with DLC installed". That should be all the info you need. Sure, there may be steps I've forgotten but I think all the important stuff is there. 
+The key issues are getting catspaw's GFWL emulator 15d (which you can find here) and a modded dir.manifest (also here). Considering you've aleady said you got it on Steam, there's one issue out of the way already. The GFWL and DVD versions aren't a problem either but they do present their own problems (I have the retail DVD version 1.0) but people here are generally cool with helping out. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ How to use scripts if dlcs are installed 
+
+ 
+ Next Topic: 
+ Hero's parent 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:42 PDT 2026 
+
+ Total time taken to generate the page: 0.05212 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

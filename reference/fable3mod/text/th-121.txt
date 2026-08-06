@@ -1,0 +1,560 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » A few unlisted Debug functions 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » A few unlisted Debug functions 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ A few unlisted Debug functions 
+ Fri, 15 November 2013 23:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I was a little drunk when I ran this in game... 
+ 
+ 
+	for key,value in pairs(Debug) do
+ GUI.DisplayMessageBox(key)
+ while (GUI.IsDisplayBoxActive()) do
+ coroutine.yield()
+ end
+	end
+ 
+ 
+ 
+Anyways, found a couple unlisted debug commands that were being loaded. As well as the console stuff that I couldn't get working. 
+I know SetDebugKeyboardInputEnabled is not in any scripts at least. Tried setting it to true, but it didn't do anything obvious. Might be linked to AddLuaDebugKeyFunc and AddConsoleKeyShortcut which we've seen and been unable to use. 
+ 
+Debug.PrintAllCFunctionNames 
+Debug.ScaleConsoleForTelevisionScreen 
+Debug.SetDebugKeyboardInputEnabled 
+Debug.MakeGameGoFast 
+Debug.StartMGSProfiler 
+Debug.EnterTradingRoom 
+Debug.EnterGiftingRoom 
+Debug.SetConsoleOffsetY 
+Debug.ScriptDebugHelpOn 
+Debug.PlayerDebugPage 
+Debug.RebindInput 
+Debug.SetConsoleFontSize 
+Debug.ShowAssertScreen 
+Debug.AddLuaDebugKeyFunc 
+Debug.ScaleConsoleForMonitor 
+Debug.SetConsoleOffsetX 
+Debug.AddConsoleKeyShortcut 
+ 
+I'll take a closer look sometime tomorrow... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: A few unlisted Debug functions 
+ Sat, 16 November 2013 06:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Sat, 16 November 2013 12:59 I was a little drunk when I ran this in game... 
+ 
+ 
+	for key,value in pairs(Debug) do
+ GUI.DisplayMessageBox(key)
+ while (GUI.IsDisplayBoxActive()) do
+ coroutine.yield()
+ end
+	end
+ 
+ 
+ 
+ 
+already play with this and I was sober, I will correct you a little 
+ 
+for key,value in pairs(Debug) do
+	GUI.DisplayMessageBox(tostring(key))
+	while (GUI.IsDisplayBoxActive()) do
+ coroutine.yield()
+	end
+	GUI.DisplayMessageBox(tostring(value))
+	while (GUI.IsDisplayBoxActive()) do
+ coroutine.yield()
+	end
+end
+ 
+ 
+ 
+and this also displays some things 
+ 
+for key,value in pairs(debug.getinfo(Debug.SetDebugKeyboardInputEnabled)) do
+	GUI.DisplayMessageBox(tostring(key))
+	while (GUI.IsDisplayBoxActive()) do
+ coroutine.yield()
+	end
+	GUI.DisplayMessageBox(tostring(value))
+	while (GUI.IsDisplayBoxActive()) do
+ coroutine.yield()
+	end
+end
+ 
+ 
+ 
+DisplayMessageBox is only display string, if parameter return integer you will see nothing 
+so, need to add 'tostring' 
+ 
+and we definitely need to get the console to work 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: A few unlisted Debug functions 
+ Sat, 16 November 2013 07:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Debug.MakeGameGoFast? Wonder how that works. Does it force everything to operate at an unnatural pace, or just help bump your framerate up? If it's the latter, I could use that... >:D 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: A few unlisted Debug functions 
+ Sat, 16 November 2013 09:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Sat, 16 November 2013 20:56 Debug.MakeGameGoFast? Wonder how that works. Does it force everything to operate at an unnatural pace, or just help bump your framerate up? If it's the latter, I could use that... >:D it probably doing something with 
+ Timing.SetWorldSecondsPerSecond(1.0, false) 
+ 
+where 1.0 is normal speed 
+< game go slow 
+> game go fast 
+AI will stuck if you change it 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: A few unlisted Debug functions 
+ Sat, 16 November 2013 22:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sat, 16 November 2013 06:29 
+DisplayMessageBox is only display string, if parameter return integer you will see nothing 
+so, need to add 'tostring' 
+ 
+and we definitely need to get the console to work 
+ 
+ 
+Good to know. Most of the code I write on a daily basis for work is IBM CL and SQL for an iseries. Everything else I've picked up as I go. 
+ 
+I've been poking at the console problem for a while now. I think we're running out of options to try. The only actual debug information I've gotten to come up is camera debug stuff and a few messed up hud panels. 
+ 
+Originally I was hoping they left in the io functions for lua so I could dump stuff to a file. But that doesn't look to be the case. And I haven't seen anything that lionhead added that would do it either. 
+ 
+I added Quasar's stuff to load new quests externally though so that I didn't have to rebuild a bank anytime I needed to make a change at least. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: A few unlisted Debug functions 
+ Tue, 19 November 2013 16:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I was tempted to go ask on the official forums to see if a dev would like to help us out on getting the console working. BUT, you have to have an xbox gamertag to sign in. And that ain't happening. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ postscriptsloaded.lua rewrite *WIP* 
+
+ 
+ Next Topic: 
+ Blocked game? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:42 PDT 2026 
+
+ Total time taken to generate the page: 0.05369 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

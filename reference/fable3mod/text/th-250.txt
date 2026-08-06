@@ -1,0 +1,537 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Script for All clothing and Tattoos? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Script for All clothing and Tattoos? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Script for All clothing and Tattoos? 
+ Wed, 14 October 2015 06:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ragnin 
+ Messages: 8 Registered: October 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've been trying to find scripts that adds all clothing and Tattoos. 
+ 
+I got all hairstyles and makeup using 
+Debug.AddAllInventoryItemsF2 
+Debug.AddAllInventoryItems 
+Debug.AddAllHairstyles 
+ 
+But 
+Debug.AddAllClothingSuits 
+Debug.AddAllClothingF2 
+ 
+does not seem to work for adding cloths. and could find no command to give all tattoos. 
+ 
+ 
+ [Updated on: Wed, 14 October 2015 06:52]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Script for All clothing and Tattoos? 
+ Wed, 14 October 2015 13:04 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ try 
+ local allObjects = {
+	'ObjectTattooSuitSE1',
+	'ObjectTattooSuitSE2',
+	'ObjectTattooSuitSE3'
+	--etc
+}
+
+for key,value in pairs(allObjects) do
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), value)
+ GUI.DisplayReceivedItem(value)
+	end
+end 
+ 
+ 
+and objects that I have found, some of then may not exist, so be careful 
+ Objects 
+ObjectTattooSuitSE1
+ObjectTattooSuitSE2
+ObjectTattooSuitSE3
+ObjectTattooSuitSE4
+ObjectTattooSuitSE5
+ObjectTattooSuitSE6
+ObjectTattooSuitSE7
+ObjectTattooSuitDweller
+ObjectTattooSuitGuild
+ObjectTattooSuitOldKingdom
+ObjectTattooSuitMilitary
+ObjectTattooSuitAuroran
+ObjectTattooSuitRoyal
+ObjectTattooSuitNature
+
+ObjectSuitAuroranF
+ObjectSuitAuroranM
+ObjectSuitChicken
+ObjectSuitGypsyF
+ObjectSuitGypsyM
+ObjectSuitKing
+ObjectSuitMasqueradeF
+ObjectSuitMasqueradeM
+ObjectSuitMilitaryM
+ObjectSuitPrince
+ObjectSuitPrincePractical
+ObjectSuitPrincess
+ObjectSuitPrincessPractical
+ObjectSuitPyjamasF
+ObjectSuitPyjamasM
+ObjectSuitQueen
+ObjectSuitRenegadeF
+ObjectSuitRenegadeM
+ObjectSuitSkillF
+ObjectSuitSkillM
+ObjectSuitStrengthF
+ObjectSuitStrengthM
+ObjectSuitWillF
+ObjectSuitWillM
+ObjectSuitCook
+ObjectSuitScotF
+ObjectSuitScotM
+ObjectSuitSandFury
+ObjectSuitDog
+ObjectSuitReaverIndM
+	
+ObjectSuitBandit
+ObjectSuitCultist
+ObjectSuitGypsyFemale
+ObjectSuitGypsyMale
+ObjectSuitHighwayman
+ObjectSuitLuciensGuard
+ObjectSuitMascot
+ObjectSuitMiddleClassFemale
+ObjectSuitMiddleClassMale
+ObjectSuitMonk
+ObjectSuitPoorFemale
+ObjectSuitPoorMale
+ObjectSuitPoshFemale
+ObjectSuitPoshMale
+ObjectSuitRanger
+ObjectSuitSpartan
+ObjectSuitHotDate
+ObjectSuitWhoreFemale
+ObjectSuitWhoreMale
+ObjectSuitWill
+ObjectSuitWizard
+ObjectSuitYearOut
+
+ObjectHairF3Pixie
+ObjectHairF3Afro
+ObjectHairF3Cornrows
+ObjectHairF3Standard
+ObjectHairF3ShortPonyTail
+ObjectHairF3ShortFringed
+ObjectHairF3Mohawk
+ObjectHairF3LongThick
+ObjectHairF3BaldDread
+ObjectHairF3Bob
+ObjectHairF3Long
+ObjectHairF3LongBun
+ObjectHairF3ShortBun
+ObjectHairF3TiedBun
+ObjectHairF3YoungHero
+ObjectHairFrankenbride
+ 
+
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Script for All clothing and Tattoos? 
+ Wed, 14 October 2015 19:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ragnin 
+ Messages: 8 Registered: October 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Didn't work. Even tried adding each piece by itself using 'ObjectClothingGlovesAuroranF' as an example. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Script for All clothing and Tattoos? 
+ Fri, 16 October 2015 06:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ then your script is broken 
+try to add 
+ GUI.DisplayMessageBox("My script is loaded!") 
+ 
+to the end of file 
+if msgbox is not showing up, then something wrong 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Script for All clothing and Tattoos? 
+ Fri, 16 October 2015 12:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ragnin 
+ Messages: 8 Registered: October 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Well don't I feel dumb. Screwed up putting in the lists. Forgot the "," at the end of each one. lol sorry about that. Though on the item list you provided didn't work. I had to add each piece of the suit individually. 
+ex. being 
+'ObjectTattooChestGuild' 
+'ObjectTattooArmLeftGuild' 
+'ObjectTattooArmRightGuild' 
+'ObjectTattooFaceGuild' 
+'ObjectTattooBackGuild' 
+'ObjectTattooLegLeftGuild' 
+'ObjectTattooLegRightGuild' 
+'ObjectTattooBackGuild2' 
+ 
+That gave me all the guild tattoos. Thank you for you help. 
+ 
+ 
+ [Updated on: Fri, 16 October 2015 12:04]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Modding Hero Weapon morphing requirements 
+
+ 
+ Next Topic: 
+ Debug commands 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:28 PDT 2026 
+
+ Total time taken to generate the page: 0.05285 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,1011 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » DLC xlive removal 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » DLC xlive removal 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ DLC xlive removal 
+ Sat, 26 October 2013 19:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This includes modified script activation for undertown DLC. And disables xlive for Traitor's Keep. 
+ 
+If it's missing anything let me know as I've done minimal testing. 
+ 
+ 
+ 
+ Attachment: mod9.zip 
+ 
+ (Size: 26.61KB, Downloaded 8202 times) 
+ 
+ 
+ 
+ [Updated on: Sat, 26 October 2013 19:30]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Tue, 18 February 2014 04:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi not sure if this is the right section. I have downloaded G4wl remover, successfully set up fakelive.ini: 
+ 
+[Xlive] 
+xuidl=0x10001000 
+xuidh=0x10001000 
+profile=Rab 
+ShowMessages=2 
+LoaderPatch=0 
+UseDLC=1 
+ 
+I have downloaded all free dlc and traitors keep dlc, copied them to data\dlc\content, merged the package info.xmb files 
+ 
+But no DLC ever shows up in game not even 1 of the free DLCs. I have tried various "dlc unlocker.bnk" files and still nothing. can someone help me please. Fable 3 runs perfect with no games for windows live and teh achievements work but just no DLC no matter what I do 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Wed, 19 February 2014 12:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ bobbythejobby wrote on Tue, 18 February 2014 04:49 Hi not sure if this is the right section. I have downloaded G4wl remover, successfully set up fakelive.ini: 
+ 
+[Xlive] 
+xuidl=0x10001000 
+xuidh=0x10001000 
+profile=Rab 
+ShowMessages=2 
+LoaderPatch=0 
+UseDLC=1 
+ 
+I have downloaded all free dlc and traitors keep dlc, copied them to data\dlc\content, merged the package info.xmb files 
+ 
+But no DLC ever shows up in game not even 1 of the free DLCs. I have tried various "dlc unlocker.bnk" files and still nothing. can someone help me please. Fable 3 runs perfect with no games for windows live and teh achievements work but just no DLC no matter what I do 
+ 
+I'm not sure offhand. But there may be some conflicts with the merging? 
+ 
+Try using UseDLC=2 and placing the the dlc's into seperate folders? 
+ 
+data\mod0 for undertown 
+data\mod1 for traitor keep 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Sun, 20 April 2014 07:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ RulezMac 
+ Messages: 1 Registered: April 2014 Location: Brazil
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Where can I get all DLCs? I'm aware GFWL ended so there's no way to buy them anymore. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Mon, 21 April 2014 08:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ RulezMac wrote on Sun, 20 April 2014 07:22 Where can I get all DLCs? I'm aware GFWL ended so there's no way to buy them anymore. 
+ 
+Torrent I would assume. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Fri, 24 October 2014 17:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I couldn't get this to work either using any xlive removal mod folder. But it did work when I replaced the files in the dlc2free.bnk file. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Mon, 16 March 2015 12:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ donkeymilk 
+ Messages: 4 Registered: February 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ http://download.xbox.com/content/4d53090a/4d53090a0ecf0000.c ab Understone Quest 245 MB 
+ http://download.xbox.com/content/4d53090a/4d53090a0ecf000e.c ab Traitor's Keep 978 MB 
+ http://download.xbox.com/content/4d53090a/4d53090a0ecf0010.c ab Inquisitor Pack 1.47 MB 
+ ============================================================ ========================= 
+ 
+ 
+ [Updated on: Mon, 16 March 2015 12:53]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Wed, 25 March 2015 05:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ version for Catspaw's GFWL emu 
+ 
+ donkeymilk , thanks for links! 
+but Inquisitor Pack is not needed, there is nothing inside 
+ 
+ 
+ 
+ Attachment: DLC_xlive_removal.zip 
+ 
+ (Size: 28.57KB, Downloaded 5088 times) 
+ 
+ 
+ 
+ [Updated on: Wed, 25 March 2015 05:30]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Mon, 20 July 2015 13:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ donkeymilk 
+ Messages: 4 Registered: February 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ You're welcome 
+He says ,months later 
+ 
+Hey u can get lots of other gfwl files for other games too. 
+The info is probably quite well known now. 
+There's a list with all the correct codes and links for various dlc and other stuff. 
+ 
+Someone posted some goodies here today(july 20 ,2015): 
+toto621's Traitor's Keep fixes 
++ Fabel 3 Golf Weapon Unlock. 
+ http://cs.rin.ru/forum/viewtopic.php?f=10&t=59454&start=90 
+ 
+I think u need his unlocker too ,which is somewhere among the posts on that site. 
+ 
+ 
+ 
+ [Updated on: Mon, 20 July 2015 13:51]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Wed, 23 September 2015 09:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ thanks for the link! I've found lots of great stuff over there! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Mon, 07 November 2016 10:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Alucard98 
+ Messages: 2 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Where do i put the dlc in the instalation? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Thu, 10 November 2016 10:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ look there 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Wed, 19 April 2017 22:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ ClarkBlueDragon 
+ Messages: 1 Registered: April 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi. Do you know where I Can find collector edition gfwl files (with Hunter's Lodge, new quest,etc. ? 
+I had it before but now that the Windows live service closed, I Can't get it back. Good job by the way with understone and traitor's keep. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC xlive removal 
+ Sun, 30 April 2017 22:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ try this code 
+ 
+--Allow Fake PreOrder Quests (2 quest in Brightwall village)
+Gameflow.AllowFakePreOrderTemplates = true
+
+-- Activate "Hunter house" in Mistpeak Valley
+if Layers.IsLayerActive("layer_MPV_PreLCE") then
+	Layers.DeactivateLayer("layer_MPV_PreLCE")
+end
+if not Layers.IsLayerActive("layer_MPV_PostLCE") then
+	Layers.ActivateLayer("layer_MPV_PostLCE")
+end 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Transfering a save to GFWL 
+
+ 
+ Next Topic: 
+ Xlive weapons updates remove 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:32 PDT 2026 
+
+ Total time taken to generate the page: 0.08488 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

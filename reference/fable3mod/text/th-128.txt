@@ -1,0 +1,415 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » Format Checklist 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » Format Checklist (Copied over from F2 Forum) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Format Checklist 
+ Thu, 21 November 2013 08:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Copied over from the Fable 2 forum. This may be woefully out of date: 
+ 
+ Models, textures, and related files. 
+ 
+ GMD 
+Game mesh data. Not the model, but information pertaining to the model. Most models have one. 
+ HKX 
+Related to models. Looks just like the HAVOK_SCENARIO files. Model physics? 
+ HPB 
+Related to models. 
+ MDL 
+Models. 
+ MOF 
+Skeletal morphs. Plain text. 
+ BNK-Particles 
+Effects data (effects.big? . 
+ TEX 
+Textures. Very likely to be DXTn. Swizzling is a possibility, compression is a definite. Compression is unknown. 
+ BGF 
+Related to GUI art, third party stuff. 
+ BSG 
+Related to GUI art, third party stuff. 
+ FAC 
+Related to GUI art. Lists of UVs. Plain text. 
+ DDS 
+Image container. 
+ 
+ Animation files. 
+ 
+ ANIMATION_DATA 
+Animation data. 
+ ANIMATION_TOC 
+Related to animation data. 
+ LOCO 
+Looks like animation data. The top looks to determine what animations are used and when. The bottom has what looks like a list of animations. 
+ 
+ Audio, language and related files. 
+Notes: No XMA2 codec exists. 
+ 
+ ADB 
+Audio. Compressed. 
+ WAV 
+Audio. XMA2. 
+ AMP 
+Related to audio, looks like settings. XML/plain text. 
+ CSV 
+Filehashes, one for audio files, the other for language files. Excel spreadsheet document. 
+ BIN 
+Lip sync data. 
+ BABEL 
+Related to region-specific text files. 
+ BFT 
+Related to region-specific fonts. 
+ 
+ Level files. 
+ 
+ AMA 
+Related to height field data. "ADMP". 
+ AMM 
+Related to height field data. "ADMP". 
+ AMR 
+Related to height field data. "ADMP". 
+ EHF 
+Related to height field data. "HeightFieldGraphicsFile". 
+ HDB 
+Related to height field data. 
+ GENV 
+Contains environment map data. 
+ GHF 
+Related to height field data. First 4 bytes are 1F8B0808, but I don't think this is header info. 
+ LMP 
+Might be related to height field data. Same header as the GHF files. The rest looks the same too. 
+ AI_CONFIG 
+Related to path finding data. XML/plain text. 
+ AIM 
+Related to path finding data. Kynogon Mesh. 
+ FDL 
+Related to path finding data. Kynogon FindNearest Data. 
+ PDL 
+Related to path finding data. Kynogon Spatial graph. 
+ PPD 
+Related to path finding data. 
+ MIST 
+Assuming it to determine where mist is. 
+ WATER 
+Assuming it to determine where water is. 
+ DAT 
+All named lightprobesdata.dat. Level lighting? 
+ ENGINE_DATA 
+Not a clue except for the header. "EngineResourceList". 
+ ENGINE_LEVEL 
+Stores links to other files such as heightmaps and flora models and has instancing data for flora. 
+ HAVOK_SCENARIO 
+Level physics? 
+ SAVE 
+XML/plain text. UIDs? 
+ TEXTURE_ATLAS 
+Guessing that these determine what textures are used where on the maps. 
+ 
+ Other files. 
+ 
+ BIK 
+Videos. Bink. Player available here . 
+ BNK 
+Compressed archives. Part of the Virtual File System (VFS) 
+ LUA 
+Scripts. There's one for nearly every component of the game. 
+ SBK 
+Shader data. ShaderBankFile. 
+ SWF 
+Pubgames. Flash 8/AS2. Decompiling produces FLA along with AS files, Javascript/plain text. 
+ XML 
+XML/plain text. These are for the pubgames. Some determine settings, others are in-game text. 
+ GDB 
+Global DataBase 
+ LIST 
+Plain text, each has a list of corresponding files. (Map lists have map files listed, GUI lists have GUI files listed, etc. and so on. 
+ MANIFEST 
+Plain text, list of files on the disc. 
+ TXT 
+Plain text. Some of these are lists, others look like they serve some purpose. 
+ 
+ Known. 
+ Not sure or incomplete. 
+ Unknown. 
+ 
+ 
+ [Updated on: Thu, 21 November 2013 08:39]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Format Checklist 
+ Thu, 21 November 2013 22:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Damn. There's a lot more known about the various formats than I thought. Hell, half of these I've never even seen before. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Format Checklist 
+ Fri, 22 November 2013 04:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Thu, 21 November 2013 22:15 Damn. There's a lot more known about the various formats than I thought. Hell, half of these I've never even seen before. 
+ 
+There's a bunch of stuff buried in the levels.bnk 
+ 
+This is also kinda out of date, since we know the TEX format. 
+ 
+I'll see if I can pull the updated information out of the raw forum data I have from an older backup of the F3 forum later. I was at work when I originally posted this. ;) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ ADB 
+
+	
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:46 PDT 2026 
+
+ Total time taken to generate the page: 0.05251 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

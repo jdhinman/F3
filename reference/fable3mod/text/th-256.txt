@@ -1,0 +1,746 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » GDB editors 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » GDB editors 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ GDB editors 
+ Tue, 15 March 2016 12:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ GDB Dump by sven (on old forum...) 
+to dump gdb files 
+you will need some HEX-editor to edit gdb 
+and this dump file -- it's something like a map 
+use: drag&drop files on .bat file and select dump method 
+ 
+GDBEditor by Keshire 
+to edit gdb files directly 
+use: should be placed in the same directory as gdb file 
+it's simple way to edit gdb files, but it's not showing all hashes, so something you can't edit with it 
+you can write string to find some element, but best way is use hash directly like #65D9C904 
+ 
+ Loopy is created weapons info list (see attachment Fable3WeaponModification.ods) you will need OpenOffice to open it 
+it may be very useful if you want mod weapons 
+ 
+ 
+ 
+ Attachment: GDB_Dump.zip 
+ 
+ (Size: 13.46KB, Downloaded 2788 times) 
+ 
+ 
+ Attachment: GDBEditor.zip 
+ 
+ (Size: 13.28KB, Downloaded 3043 times) 
+ 
+ 
+ Attachment: Fable3WeaponModification.ods 
+ 
+ (Size: 116.61KB, Downloaded 3349 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GDB editors 
+ Fri, 13 April 2018 20:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've started writing a new gdb tool. I've uploaded the source to github. 
+ 
+ https://github.com/Keshire/Fable-3-GDB-Tool 
+ 
+ 
+ [Updated on: Fri, 13 April 2018 23:47]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GDB editors 
+ Sat, 14 April 2018 19:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ v0.01 
+ 
+ https://i.imgur.com/iGyx3wF.png 
+ 
+Something that will need to be done is being able to load both multiple .gdb and .save files. They share objects and Strings between them all, including hierarchy (parents and children can be located in other files). That's one of the reasons that a lot of these objects are missing names (as seen from the screenshot above). 
+ 
+gdb dumper got around this by just reusing the name of a previous object that had a name if they share a template. "Position" = (x,y,z,parent) for example. 
+ 
+ 
+ 
+ Attachment: GDBEditor.zip 
+ 
+ (Size: 8.52KB, Downloaded 2398 times) 
+ 
+ 
+ 
+ [Updated on: Sat, 14 April 2018 20:27]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GDB editors 
+ Sun, 15 April 2018 15:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Getting there 
+ https://i.imgur.com/6OMsdPl.png 
+ 
+Once I get multiple file loading, and .save loading I'll put up a new version here. Or you can compile it yourself from github now. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GDB editors 
+ Wed, 18 April 2018 01:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Sun, 15 April 2018 07:59 .save files. They share objects and Strings between them all, including hierarchy that interesting 
+ 
+anyway, old version crash when I open globals.gdb 
+do I need others gdb files? 
+also I compiled new version with NET Framework, it's OK? 
+ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe GDBEditor.sln 
+ 
+it is also crash.. (when I open globals.gdb) 
+maybe I have mess with my NET Framework v4.0 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GDB editors 
+ Wed, 18 April 2018 13:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Wed, 18 April 2018 01:54 Keshire wrote on Sun, 15 April 2018 07:59 .save files. They share objects and Strings between them all, including hierarchy that interesting 
+ 
+ 
+I've always kinda suspected it, there's also probably a header file that we don't have. Because there's a lua FNVHash function used every once in awhile in the scripts and I doubt they want to load up whatever gdb thing they use to track down an object. 
+ 
+ Artofeel wrote on Wed, 18 April 2018 01:54 
+anyway, old version crash when I open globals.gdb 
+do I need others gdb files? 
+also I compiled new version with NET Framework, it's OK? 
+ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe GDBEditor.sln 
+ 
+it is also crash.. (when I open globals.gdb) 
+maybe I have mess with my NET Framework v4.0 
+ 
+That's always a possibility. I'll take a look and make sure it's not set to 32 bit or something. 
+ 
+Edit: yep, default to .net 4.6.1 and prefered 32bit. 
+ 
+Try this one. 
+ 
+ 
+ 
+ Attachment: Release.zip 
+ 
+ (Size: 18.03KB, Downloaded 2403 times) 
+ 
+ 
+ 
+ [Updated on: Wed, 18 April 2018 14:16]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GDB editors 
+ Wed, 18 April 2018 22:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ my bad 
+the file was READ ONLY :D 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GDB editors 
+ Mon, 23 April 2018 21:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ v0.02 
+ 
+Lazy loading hierarchy to prevent stack overflow on global.gdb from circular parenting.... 
+Opens multiple gdbs (does not cross reference objects or hashes yet) 
+.net 4.6.1 x64 
+ 
+ 
+ 
+ Attachment: GDBEditor.zip 
+ 
+ (Size: 8.88KB, Downloaded 2415 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GDB editors 
+ Fri, 27 April 2018 22:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ https://i.imgur.com/OYXHHzk.png 
+ 
+v0.03 
+.save loading into string list (see above image) 
+Cross referencing labels (not objects yet) 
+Object and label search filter (again, see above image) 
+.net 4.6.1 x64 
+ 
+I'm getting closer to the point where we can edit data. 
+Adding new items will be an issue until I know what the 2 bytes are for that seem to be separating everything into folders or categories. 
+ 
+ 
+ 
+ Attachment: GDBEditor.zip 
+ 
+ (Size: 10.27KB, Downloaded 2371 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ ChunkSpy for KoreVM Lua 
+
+ 
+ Next Topic: 
+ Updated Tools 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:31 PDT 2026 
+
+ Total time taken to generate the page: 0.10449 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

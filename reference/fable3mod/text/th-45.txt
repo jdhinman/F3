@@ -1,0 +1,1206 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Is it possible? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Is it possible? (Showing pistols whilst sheathed.) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Is it possible? 
+ Mon, 16 September 2013 18:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm wondering if it's possible to show pistols whilst they're sheathed on the Hero. It's apparent to me that it was intended for such a thing to happen, as the particle effects used on the aura of a pistol I'm wielding will show up on the left hand side in the position of a shoulder holster or something similar. The particle effects will always match the length of the pistol's barrel. I'm curious as to how one would go about showing the pistol, if this is possible. Shown below is a .png image with the Dragonstomper .48's flame aura appearing in the described area. 
+ 
+ 
+ 
+ 
+ 
+ Attachment: PistolEffect.png 
+ 
+ (Size: 566.80KB, Downloaded 4652 times) 
+ 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Mon, 16 September 2013 19:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Mon, 16 September 2013 18:58 I'm wondering if it's possible to show pistols whilst they're sheathed on the Hero. It's apparent to me that it was intended for such a thing to happen, as the particle effects used on the aura of a pistol I'm wielding will show up on the left hand side in the position of a shoulder holster or something similar. The particle effects will always match the length of the pistol's barrel. I'm curious as to how one would go about showing the pistol, if this is possible. Shown below is a .png image with the Dragonstomper .48's flame aura appearing in the described area. 
+ 
+ 
+ 
+Do any other guns show up when sheathed? 
+ 
+Should be possible though, the utils.lua has some stuff related. 
+ 
+ C:\Users\Keshire\Downloads\Games\FableIIILua\utils.txt (20 hits)
+	Line 62: 00A8 0001261E [034] setfield 0 19 1 ; UnsheatheCharacterWeapon
+	Line 65: 00B4 0001281E [037] setfield 0 20 1 ; SheatheCharacterWeapon
+	Line 322: const [19]: "UnsheatheCharacterWeapon"
+	Line 324: const [20]: "SheatheCharacterWeapon"
+	Line 1130: 15B7 04060886 [016] getfield_r1 4 4 6 ; SHEATHE_BACK
+	Line 1139: 15DB 04080C86 [025] getfield_r1 4 6 8 ; SHEATHE_RANGED_BACK
+	Line 1160: 162F 070D0E86 [046] getfield_r1 7 7 13 ; GetUnsheatheAnimName
+	Line 1183: 168B 09161286 [069] getfield_r1 9 9 22 ; UNSHEATHE_BOTH_WEAPONS
+	Line 1240: const [6]: "SHEATHE_BACK"
+	Line 1244: const [8]: "SHEATHE_RANGED_BACK"
+	Line 1254: const [13]: "GetUnsheatheAnimName"
+	Line 1272: const [22]: "UNSHEATHE_BOTH_WEAPONS"
+	Line 1342: 19E3 04090886 [035] getfield_r1 4 4 9 ; GetSlotToSheatheWeapon
+	Line 1350: 1A03 060C0C86 [043] getfield_r1 6 6 12 ; SHEATHE_WEAPON
+	Line 1370: 1A53 08121086 [063] getfield_r1 8 8 18 ; SHEATHE_BOTH_WEAPONS
+	Line 1372: 1A5B 0714271E [065] setfield 7 19 276 ; Anim "Sheathe"
+	Line 1439: const [9]: "GetSlotToSheatheWeapon"
+	Line 1445: const [12]: "SHEATHE_WEAPON"
+	Line 1457: const [18]: "SHEATHE_BOTH_WEAPONS"
+	Line 1461: const [20]: "Sheathe"
+ 
+ 
+ 
+ 
+ [Updated on: Mon, 16 September 2013 20:07]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Mon, 16 September 2013 20:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Huh. I'll have to look into that, then. Should I get something to work, I'll be sure to post the code and a screenshot of my success or hilarious failure. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Mon, 16 September 2013 23:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ this is in globals.gdb 
+I once made a pistol that was displayed in the sheath 
+you need to find "HideWhenSheathedOnFront" set to true 
+001C62E8 offset 
+and replace it to 0 (false) 
+but it will not appear on the belt, it will appear on the chest O_o 
+ 
+so I just changed the place of the sheathing of the fact that by using for the rifle 
+#08A1AB45 
+-> CarryingComponent #A3B2D002 
+--> AdditionalSheatheSlots #4C9A5D2A 
+---> Pistol #2C5DEB76 
+replace value hash 
+ DO 00061EE4 D 52226653 DummyName | Character.Carry.SheathWeaponFront 
+ 
+to 
+ DO 00061EE4 D DA0B5122 DummyName | Character.Carry.SheathRangedWeaponBack 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Tue, 17 September 2013 08:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Alrighty... TO THE HEX EDITOR.... when I feel up to dealing with it. Also, I'm gonna keep it on the front. Judging by where the effects go through that occasional glitch, it should look pretty freakin' sweet. 
+ 
+EDIT: Wait... Where is globals.gdb again? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Tue, 17 September 2013 08:14]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Tue, 17 September 2013 08:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Tue, 17 September 2013 08:13 Alrighty... TO THE HEX EDITOR.... when I feel up to dealing with it. Also, I'm gonna keep it on the front. Judging by where the effects go through that occasional glitch, it should look pretty freakin' sweet. 
+ 
+EDIT: Wait... Where is globals.gdb again? 
+ 
+I think it's in the levels bank. It's also updated for each DLC too. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Tue, 17 September 2013 08:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay. Thanks. ONWARD! 
+ 
+EDIT: Alright, that's weird. I'm not getting the 001C62E8 offset. I have 001C62E0, but not 001C62e8. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Tue, 17 September 2013 08:49]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Tue, 17 September 2013 23:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Tue, 17 September 2013 21:24 Alright, that's weird. I'm not getting the 001C62E8 offset. I have 001C62E0, but not 001C62e8. 
+on 001C62E0, I have "DefaultCarrySlot" 
+you're doing something wrong 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Wed, 18 September 2013 00:39 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ All I did is open up HxD and search for the line labeled with HideWhenSheathedOnFront. And there is literally no 001C62E8 offset that I can find anywhere. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Wed, 18 September 2013 05:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I seem to understand what you problem 
+on 001C62E0 offset you should see the following line 
+ C5 9D 1C 81 00 00 00 00 01 00 00 00 00 00 00 00 
+ 
+you need to replace 1 on the 9th number 
+0 1 2 3 4 5 6 7 8 9 A B C D E F 
+this will be the 001C62E 8 offset 
+as a result you should get 
+ C5 9D 1C 81 00 00 00 00 00 00 00 00 00 00 00 00 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Wed, 18 September 2013 08:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Alright, I'll give it a shot. 
+ 
+EDIT: Okay... this is what I've got for that line, as opposed to what you said I should have. 
+ 
+ C5 9D 1C 81 08 7C 9C 50 16 D8 13 9C 08 45 5B CC 
+ 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Wed, 18 September 2013 08:14]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Wed, 18 September 2013 09:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ You are not using latest DLC globals.gdb 
+this is original 
+so, you will need 001A8DE4 offset for it 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Wed, 18 September 2013 09:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ahh, okay. Thanks. 
+ 
+EDIT: Oh wait... Which number do I change to what on that line? I can't quite figure it out from your previous posts. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Wed, 18 September 2013 11:08]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Wed, 18 September 2013 22:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ five? 
+you know, you can go directly to a desired offset by pressing CTRL+G and paste 001A8DE4 
+just make sure that offset is relative to the begin of file 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Thu, 19 September 2013 04:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Does that trick work with HxD? And lemme rephrase my question. Which specific byte on that line do I need to change, and to what do I need to change it to? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Thu, 19 September 2013 04:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ yes, it work with HxD 
+you go on 001A8DE4 offset, and change 01 to 00 
+so, on 001A8DE0 you will see the following line 
+ 
+00 00 00 00 01 00 00 00 00 00 00 00 C5 9D 1C 81
+ 
+ 
+and changed 
+ 
+00 00 00 00 00 00 00 00 00 00 00 00 C5 9D 1C 81
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Is it possible? 
+ Thu, 19 September 2013 04:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Alrighty. Thanks. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+	
+ 
+ Next Topic: 
+ [Question]Add items to your character via a save editor. 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:20 PDT 2026 
+
+ Total time taken to generate the page: 0.05348 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,173 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » How do I edit the Princess model then import her back into Fable to play as?? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » How do I edit the Princess model then import her back into Fable to play as?? (I'm completely new to this but hoping it can be done) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+    How do I edit the Princess model then import her back into Fable to play as?? 
+ Mon, 17 January 2022 20:21 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ ThiriumAddict 
+ Messages: 1 Registered: January 2022 Location: Australia
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I want to alter the face of the princess, maybe even replace/add some hairstyles to the game (I planned on converting Sims 4 Maxis Match hairs since they look similar enough to Fable's clay hairs), make the body slimmer and add my own outfits (that part probably won't happen for a while). 
+ 
+I downloaded the BNK Utils .zip file from here and have Blender, GIMP and Fable 3, of course but I don't know where to start with doing this type of thing or if it's even possible to export the princess to alter her then import back into Fable to play as. 
+ 
+ Reaver's annoying sidekick
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Modding the Morality and Primality Values? 
+
+ 
+ Next Topic: 
+ Models, Textures and BNKs, oh my! 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:14 PDT 2026 
+
+ Total time taken to generate the page: 0.05079 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

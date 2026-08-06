@@ -1,0 +1,745 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Remove weapon? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Remove weapon? (Possible?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Remove weapon? 
+ Sat, 25 October 2014 17:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Is there a way to remove a weapon from the armory/inventory? Using cheats I got the Bloodstone Bludgeon and Gusket's Musket twice. I can't sell them because they don't show up in the pawnbroker. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Mon, 27 October 2014 06:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ITEM_NAME') > 1 then
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ITEM_NAME')
+end 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Mon, 27 October 2014 10:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It worked. I didn't think it was as easy as altering Inventory.AddItemOfType(GetLocalHero(), 'ITEM_NAME') 
+ to Inventory.RemoveItemOfType(GetLocalHero(), 'ITEM_NAME') 
+ Thanks so much! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Wed, 14 December 2016 03:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ok I have been trying, 
+ 
+ 
+if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordBaronSlayer') > 1 then
+Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordBaronSlayer')
+return nil
+end
+ 
+ 
+ 
+for Hours and will continue to try but if someone could help me, I would greatly appreciate i 
+ 
+ 
+ [Updated on: Wed, 14 December 2016 11:32]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Thu, 15 December 2016 10:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ why you need 
+ return nil 
+ 
+??? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Thu, 15 December 2016 14:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for the reply, I'm new at this but still doesn't work. I don't know why but the only things that seem to work are the debug commands 
+ 
+ 
+ [Updated on: Thu, 15 December 2016 19:12]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Sat, 17 December 2016 01:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I was putting it in the wrong order. I added all the weapons and removed the ones that you get from playing through, also limited edition weapons 
+ 
+ScriptActivation[ScriptCode.QU000].AbleToRun=function ()
+	Debug.GiveAllMeleeWeapons()
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordInquisitor')
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordChanneler')
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordShardborne')
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordBaronSlayer')
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordWolfsbane')
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendaryHammerChampion')
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendaryHammerAbsolver')
+	Debug.GiveAllRangedWeapons()
+	Inventory.RemoveItemOfType(GetLocalHero(), 'ObjectInventoryLegendaryPistolGnomewrecker')
+	Debug.AddAllClothing()
+	Debug.AddAllClothingF2()
+	Debug.AddAllClothingAccessories()
+	Debug.AddAllHairstyles()
+	Debug.AddAllClothingSuits()
+return nil
+end
+ 
+ 
+ 
+ 
+ [Updated on: Sat, 17 December 2016 01:31]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Sun, 18 December 2016 22:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ with this way of modding (ScriptActivation.lua) your can easily broke all your quests 
+probably Debug.GiveAllRangedWeapons() already broke it 
+and next line: Inventory.RemoveItemOfType don't even execute, as all that below 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Mon, 19 December 2016 21:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thats the only way I can get it to work, what would you suggest? Any input is most welcomed. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove weapon? 
+ Mon, 19 December 2016 23:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ remove all Debug commands 
+also add msgbox for debugging 
+like this to the end of script 
+ GUI.DisplayMessageBox("ScriptActivation.lua successfully loaded!")
+while (GUI.IsDisplayBoxActive()) do
+	coroutine.yield()
+end 
+ 
+so, if msgbox appears when game is loaded, then all ok 
+if not, then something wrong 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ I had a question about transferring Fable 3 saves 
+
+ 
+ Next Topic: 
+ Is there any chance we'll see advancements in modding this game? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:10 PDT 2026 
+
+ Total time taken to generate the page: 0.05487 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

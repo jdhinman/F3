@@ -1,0 +1,643 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Need some help 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Need some help 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Need some help 
+ Thu, 20 March 2014 06:39 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Dennis1984 
+ Messages: 4 Registered: March 2014 Location: Germany
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello fellow Fable 3 players, 
+ 
+I recently stumbled across this nice little forum and wanted to try some things myself. 
+I've read the tutorials on general scripting and on how to create banks and then tried around a bit. 
+Problem is that nothing seems to work out for me. But first of all some mentions: 
+- I have the xlive remover patch and edited the necessary file, so that every dlc has its own folder 
+- I made safety copies of the complete data folder as well as my saves 
+ 
+From what I could gather on informations first I created a new folder in my Fable 3 data folder named mod9 
+so that my changes would be the last loaded thus avoiding the annoying habit of the dlc's overwriting everything. 
+Next I downloaded the BNK Utilities (Browser and Creator) and extracted the package_info.xml as well as both 
+scriptactivation files (one .lua and one .txt) from one of the dlc .bnk's as well as a package_collection_info.xmb so 
+these are the only files I edited in any way. So I edited the contents of the two package files according to the bank creating tutorial. 
+Next I edited both of the scriptactivation files in different ways: 
+ 
+#1: ScriptActivation[ScriptCode.QU000].AbleToRun = function() 
+ Inventory.AddItemOfType(GetLocalHero(), ObjectInventoryLegendarySwordAvoLamentation) 
+ return nil 
+ end 
+ 
+#2: ScriptActivation[ScriptCode.QU000].AbleToRun = function() 
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordAvoLamentation') 
+ return nil 
+ end 
+ 
+#3: ScriptActivation[ScriptCode.QU000].AbleToRun = function() 
+ Inventory.AddItemOfType(GetLocalHero(), '0x00000C3D 0x0000002B ObjectInventoryLegendarySwordAvoLamentation') 
+ return nil 
+ end 
+ 
+#4: ScriptActivation[ScriptCode.QU000].AbleToRun = function() 
+ Inventory.AddItemOfType(GetLocalHero(), 0x00000C3D 0x0000002B ObjectInventoryLegendarySwordAvoLamentation) 
+ return nil 
+ end 
+ 
+#5: ScriptActivation[ScriptCode.QU000].AbleToRun = function() 
+ Debug.GiveHeroWeapon('ObjectInventoryLegendarySwordAvoLament ation') 
+ return nil 
+ end 
+ 
+#6: ScriptActivation[ScriptCode.QU000].AbleToRun = function() 
+ Debug.GiveHeroWeapon(ObjectInventoryLegendarySwordAvoLamenta tion) 
+ return nil 
+ end 
+ 
+Unfortunately all of the above did not work so I'm asking if one of you guys has any idea where I made a mistake 
+and eventually help me correct this mistake 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need some help 
+ Thu, 20 March 2014 22:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Dennis1984 wrote on Thu, 20 March 2014 18:39 
+#2: ScriptActivation[ScriptCode.QU000].AbleToRun = function() 
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordAvoLamentation') 
+ return nil 
+ end 
+ 
+this should work, if name of item is correct 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need some help 
+ Fri, 21 March 2014 10:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Dennis1984 
+ Messages: 4 Registered: March 2014 Location: Germany
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ first of all thank you Artofeel for the quick reply. 
+then the problem why the weapons doesn't show up in my sanctuary, must lie elsewhere. 
+Well back to work to figure this out 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need some help 
+ Fri, 21 March 2014 10:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It almost sounds like it's not being loaded at all. 
+ 
+If xlive is working the way it should then you should check folder structure inside the bank you created, and also make sure the packageUniqueId is unique. At least that's where I'd start. If you can at least break it, then you know it's being loaded at least. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need some help 
+ Fri, 21 March 2014 11:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ also, try to add 
+ GUI.DisplayReceivedItem('ObjectInventoryLegendarySwordAvoLamentation') 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need some help 
+ Fri, 21 March 2014 11:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Dennis1984 
+ Messages: 4 Registered: March 2014 Location: Germany
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ @Keshire 
+since I'm using the xlive remover from timeslip, xlive is no issue at all. for the folder structure Itried to exactly copy the structure and contents of the other dlc's and the packageunique id is also well unique^^ 
+But thanks for the tips 
+ 
+@Artofeel 
+just a small question. Where would I have to put that line? Before or after the Inventory.AddItemOfType commands? 
+And one last kind of a nooby question is, what does this line do? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need some help 
+ Fri, 21 March 2014 13:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ While I can't tell you where that line is supposed to go(though due to its nature, I'd assume after the inventory.additemoftype command), I can tell you what it does. It SHOULD produce a message informing you that Avo's Lamentation has been added to your inventory when the script is successful. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need some help 
+ Sat, 22 March 2014 07:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Dennis1984 
+ Messages: 4 Registered: March 2014 Location: Germany
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Oh my gosh! It finally worked, thank you all for your fast responses and support. 
+If you would excuse me now there are a lot of different things to try out^^. 
+I'm gonna break the shit out of that game. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Finding a creature ID. 
+
+ 
+ Next Topic: 
+ Rebel's Weapon & Tattoo Pack 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:59 PDT 2026 
+
+ Total time taken to generate the page: 0.05611 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,254 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Fable III DLC & XLive Emulator Configuration 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Fable III DLC & XLive Emulator Configuration (Need Help on how to properly Place DLC & Xlive Files.) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Fable III DLC & XLive Emulator Configuration 
+ Fri, 08 May 2015 03:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ JayTheGamer420 
+ Messages: 1 Registered: May 2015 Location: Somewhere in Ohio
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I started playing Fable 3 around the time that Fable Anniversary Came out and I have managed to find and download most of the DLC files for Fable 3 but the big trick which I have found very hard to accomplish is putting all the DLC files in the right directory's and getting to Xlive/Xliveless Emulator to work and enable the DLC files. Could Anyone give me a detailed tutorial on how to do this. 
+ 
+Downloadable Content I Have: 
+---------------------------------- 
+ 
+- Traitors Keep 
+- Understone Quest Pack 
+- Dog Breed Set 
+- Dog Outfit 
+- Industrial Knight Outfit 
+- Highlander Tattoo Set 
+- Yule Hat (Santa Hat) 
+- Dye Pack 
+- Hair Pack 
+ 
+----------------------------- 
+There is also a desktop Screenshot 
+of the folders with the dlc files 
+in them . 
+ 
+ 
+ 
+ Attachment: F3FDLCP.png 
+ 
+ (Size: 252.57KB, Downloaded 2792 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Fable III DLC & XLive Emulator Configuration 
+ Wed, 20 May 2015 01:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ here 
+and here 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Static Grass 
+
+ 
+ Next Topic: 
+ Extracting strings from the game 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:19 PDT 2026 
+
+ Total time taken to generate the page: 0.07293 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

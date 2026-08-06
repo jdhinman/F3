@@ -1,0 +1,377 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Jasper Voice Glitch 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Jasper Voice Glitch (How to avoid.) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Jasper Voice Glitch 
+ Wed, 22 October 2014 05:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This is not a modding topic but as there is no general Fable 3 discussion sub-forum I'll post it here. 
+ 
+I've posted this last year already, before the forum was renewed. I took a break from Fable 3 for about a year and so I got the glitch again because I forgot my own research of how to avoid this. But it also made me think again and I remembered what to do avoid it. 
+ 
+I don't know if this is the only way Jasper gets glitched but IIRC the way I get the glitch is when I get the legendary weapon upgrade tutorial triggered by a DLC weapon. Then it always glitches. The Sanctuary Dpad shortcuts vanish and Jasper can't be "press A'd" anymore because he gets stuck wanting to explain the upgrade functionality to you. And you have to go to the armory manually. That's why the shortcuts disappear. I avoid this by buying a legendary weapon or getting one from a chest first and then get a DLC weapon, either gift from DLC or quest item (Wolfsbane). 
+ 
+ 
+ [Updated on: Wed, 22 October 2014 05:24]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Jasper Voice Glitch 
+ Thu, 23 October 2014 09:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I remember Keshire did some script to fix this, but I have not try it 
+Actually I like this bug, since I'm pretty bored of Jasper bullshiting... 
+So, I don't really want to fix it :) 
+ 
+I attached Keshire script, I don't remember exactly that it is or not :( 
+ 
+ 
+ 
+ 
+ Attachment: weaponvisualchanges.lua 
+ 
+ (Size: 11.42KB, Downloaded 2990 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Jasper Voice Glitch 
+ Fri, 08 January 2021 19:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Persephonechiara 
+ Messages: 1 Registered: January 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Thu, 23 October 2014 09:31 I remember Keshire did some script to fix this, but I have not try it 
+Actually I like this bug, since I'm pretty bored of Jasper bullshiting... 
+So, I don't really want to fix it 
+ 
+I attached Keshire script, I don't remember exactly that it is or not 
+ 
+Hi there, I'm COMPLETELY NEW to F3 modding and I am running into OP's glitch. After downloading the script, how do I install it? I am totally stumped, PLEASE HELP. 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Jasper Voice Glitch 
+ Thu, 25 November 2021 13:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Persephonechiara wrote on Fri, 08 January 2021 19:37 Artofeel wrote on Thu, 23 October 2014 09:31 I remember Keshire did some script to fix this, but I have not try it 
+Actually I like this bug, since I'm pretty bored of Jasper bullshiting... 
+So, I don't really want to fix it 
+ 
+I attached Keshire script, I don't remember exactly that it is or not 
+ 
+Hi there, I'm COMPLETELY NEW to F3 modding and I am running into OP's glitch. After downloading the script, how do I install it? I am totally stumped, PLEASE HELP. 
+ 
+The script does nothing. It is part of the blacksmithing mod. - I got the bug again. And I prevented it again: Get a vanilla legendary weapon, get Wolfsbane then get any other DLC weapon. The Wheel of Misfortune reward weapons definitely cause this bug. Get them last! 
+ 
+ 
+ [Updated on: Tue, 14 December 2021 15:20]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ "A Marriage of Inconvenience" not showing up 
+
+ 
+ Next Topic: 
+ Modding the Morality and Primality Values? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:04 PDT 2026 
+
+ Total time taken to generate the page: 0.05484 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

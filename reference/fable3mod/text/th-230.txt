@@ -1,0 +1,1179 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » How to create a daemon door before opening state? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » How to create a daemon door before opening state? (How to create a daemon door before opening state?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ How to create a daemon door before opening state? 
+ Thu, 25 December 2014 10:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello. 
+ 
+So try to ask this question in today. 
+ 
+I opened the door Aurora daemon. 
+ 
+So came the evil inclination background. 
+ 
+Can I change a command to the script as a good disposition map? 
+ 
+Can you put back the door open to the state? 
+ 
+How to change that? .. 
+ 
+Sorry. We would appreciate us. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Sun, 28 December 2014 01:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ there is no different map for good\evil 
+in both cases the output will be ss_demondoor level 
+ 
+upd: 
+just saw that ss_demondoor map has two scenarios 
+so, you can activate it 
+ 
+good 
+ Layers.ActivateScenario("Fable3", "DemonDoors\\SS_DemonDoor", "defaultscenario") 
+ 
+evil 
+ Layers.ActivateScenario("Fable3", "DemonDoors\\SS_DemonDoor", "evilscenario") 
+ 
+ 
+ 
+ [Updated on: Sun, 28 December 2014 01:54]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Sun, 28 December 2014 09:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thank you. Although it works. 
+ 
+I used to put the commands taught me my DLC mod9. 
+ 
+Using this method is that right? 
+ 
+ 
+You can use this command while entering the 'daemon door "to work. 
+ 
+Has been changed to 'good map. 
+ 
+But then came out again enters a 'daemon door' and then 'evil Map' 
+ 
+To be undoing ... 
+ 
+Is there any way you can come out that you can continue to use the "good map" is? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Sun, 28 December 2014 12:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ try this 
+ if Layers.GetActiveScenarioForLevel("Fable3", "DemonDoors\\SS_DemonDoor") == evilscenario then
+	Layers.ActivateScenario("Fable3", "DemonDoors\\SS_DemonDoor", "defaultscenario")
+end 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Sun, 28 December 2014 22:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thank you. But ... 
+ 
+You can use this command in all regions 'daemon door' is gone, is strange. 
+ 
+ 
+ 
+I gave the command to teach in 'scriptactivation.lua' 
+ 
+'ScriptActivation [ScriptCode.QU000] .AbleToRun = function ( ' just below 
+ 
+Create been packed with mod9. 
+ 
+How is it that right? 
+ 
+Am I wrong about that? 
+ 
+ 
+ 
+Do not know how well I've done just prior to it once. 
+ 
+'Layers.ActivateScenari ("Fable3", "DemonDoors \\ SS_DemonDoor", "defaultscenario")' 
+'return true' 
+'end' 
+ 
+So I tried to use. 
+ 
+This use has not become more than a statement of all regions. 
+ 
+You can use this command while entering in Aurora 'daemon door' to nose dive into "good map" 
+ 
+But comes out will be reinstated. 
+ 
+ 
+ 
+You can use the commands taught me this time will be no change in the map rather strange. 
+ 
+Save even called several times and reported by 'mod9' re-packaging, but also not much. 
+ 
+Is it not? T_T 
+ 
+ 
+ [Updated on: Sun, 28 December 2014 22:42]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Mon, 29 December 2014 10:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ OK, got it 
+you use old way for modding 
+daemon doors is gone, because you broke main quests script (scriptactivation.lua) Try to not mod it, just use it for DLC unlock. You need to reload old save, if you saved game with broken scriptactivation.lua 
+so, try this instead 
+put command in my previous post to MyScript02.lua 
+ 
+ 
+ [Updated on: Mon, 29 December 2014 10:31]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Tue, 30 December 2014 00:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ We apologize for busy would continue to question.... 
+ 
+I tried to tell you, there is no change in the way ..! 
+ 
+I have to apply the existing 'mod0' and 'mod1' DLC. 
+ 
+If you are using the DLC here in the forum I think I saw this method does not apply. 
+ 
+It should not, because what does? 
+ 
+ 
+ 
+1. Fable III \ data \ scripts \ MyMod \ MyScript01.lua and MyScript02.lua Create 
+ 
+2. data \ dir.manifest open 
+ 
+3. 'scripts \ MyMod \ MyScript01.lua, scripts \ MyMod \ MyScript02.lua' Text plus 
+ 
+4. 'MyScript02.lua' Open 
+ 
+5. if Layers.GetActiveScenarioForLevel ("Fable3", "DemonDoors \\ SS_DemonDoor") == evilscenario then 
+ Layers.ActivateScenario ("Fable3", "DemonDoors \\ SS_DemonDoor", "defaultscenario") 
+ end 
+Text Plus 
+ 
+6. Game Start 
+ 
+ 
+ 
+That right to do so? 
+ 
+I'm sorry I'm too stupid T_T 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Tue, 30 December 2014 02:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ wind wrote on Tue, 30 December 2014 13:54 
+1. Fable III \ data \ scripts \ MyMod \ MyScript01.lua and MyScript02.lua Create 
+ 
+2. data \ dir.manifest open 
+ 
+3. 'scripts \ MyMod \ MyScript01.lua, scripts \ MyMod \ MyScript02.lua' Text plus 
+ 
+4. 'MyScript02.lua' Open 
+ 
+5. if Layers.GetActiveScenarioForLevel ("Fable3", "DemonDoors \\ SS_DemonDoor") == evilscenario then 
+ Layers.ActivateScenario ("Fable3", "DemonDoors \\ SS_DemonDoor", "defaultscenario") 
+ end 
+Text Plus 
+ 
+6. Game Start 
+ 
+so, you have tried this and it's did not work? 
+you downloaded ScriptInjector.zip and put mod2 folder to Fable3\Data, right? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Tue, 30 December 2014 05:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Attachments to download and put in Fable 3 \ Date \ Mod2 folder. 
+ 
+And I put the commands stored in the 'MyScript02'. 
+ 
+But why is not it working? ..... 
+ 
+Can I just give up? .......... 
+ 
+Have you ever happen to be in the game? 
+ 
+Handageona must be entered in the 'daemon door' 
+ 
+I handageona be located in a particular place? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Tue, 30 December 2014 11:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ and "Free Camera" test work? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Tue, 30 December 2014 15:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yes. 
+ 
+I put the camera instructions on MyScript01.lua. 
+ 
+But I did not feel the change of the camera in the game .... 
+ 
+Did I do something to make a mistake? 
+ 
+Save the file, what strange ..?? 
+ 
+A fable that you have incorrectly installed .. ???? 
+ 
+ 
+ [Updated on: Tue, 30 December 2014 15:08]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Wed, 31 December 2014 00:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ so "free camera" not work at all? 
+then what you have in mod3-mod9 folders? 
+ 
+also correct code: 
+ if Layers.GetActiveScenarioForLevel("Fable3", "DemonDoors\\SS_DemonDoor") == "EvilScenario" then
+	Layers.ActivateScenario("Fable3", "DemonDoors\\SS_DemonDoor", "defaultscenario")
+end 
+ 
+work for me 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Wed, 31 December 2014 04:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yes. The camera did not work. 
+ 
+I use my personal mod to the 'Mod9'. 
+ 
+Previous article in this' daemon door "phenomenon I said I was broken by applying taught me the command to 'Mod9' was saying. 
+ 
+'Mod9' Inside there is only 'Scriptactivation.lua'. 
+ 
+And when you are not using the script command, place and out of the 'Scriptactivation.lua' empty shell uses only 'Mod9'. 
+ 
+'Mod9' the load is completely impossible, Eliminating save. 
+ 
+ 
+ 
+Do not tell me, so should not 'Mod9'? 
+ 
+ 
+ [Updated on: Wed, 31 December 2014 04:36]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Wed, 31 December 2014 04:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ well... 
+try to rename mod9 to mod8 
+and mod2 to mod9 
+? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to create a daemon door before opening state? 
+ Wed, 31 December 2014 12:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ wind 
+ Messages: 10 Registered: December 2014 Location: 한국 서울
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Google Translate're also strangely washed over it! I'm sorry. 
+ 
+Thank you for the many answers. 
+ 
+'Daemon door "Maybe you should just give up a 
+ 
+The problems have no continuity know. 
+ 
+Just think fast haneunge new ^ - ^ 
+ 
+Thank you for your help! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ How do you edit a security catalogue file? 
+
+ 
+ Next Topic: 
+ Static Grass 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:17 PDT 2026 
+
+ Total time taken to generate the page: 0.05639 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

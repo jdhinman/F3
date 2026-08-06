@@ -1,0 +1,500 @@
+-- Decompiled using luadec 2.0 UNICODE by sztupy (http://winmo.sztupy.hu)
+-- Command line was: C:\Users\Keshire\Downloads\Games\Fable II\qr_archaeologyglobal.lua 
+
+QuestManager.NewQuestThread("QR_ArchaeologyGlobal")
+QR_ArchaeologyGlobal.Init = function(l_1_0)
+  Gameflow.ArchaeologyTable = {}
+  Gameflow.ArchaeologyTable[1] = {}
+  Gameflow.ArchaeologyTable[1].QuestCode = "QRARCH001"
+  Gameflow.ArchaeologyTable[1].ArtifactRegion = "BWSSlums"
+  Gameflow.ArchaeologyTable[1].GameflowActivation = ScriptEnum.DebugQC080
+  Gameflow.ArchaeologyTable[1].QuestUnlocked = true
+  Gameflow.ArchaeologyTable[2] = {}
+  Gameflow.ArchaeologyTable[2].QuestCode = "QRARCH002"
+  Gameflow.ArchaeologyTable[2].ArtifactRegion = "DunecrestNew"
+  Gameflow.ArchaeologyTable[2].GameflowActivation = ScriptEnum.DebugQC080
+  Gameflow.ArchaeologyTable[2].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[3] = {}
+  Gameflow.ArchaeologyTable[3].QuestCode = "QRARCH003"
+  Gameflow.ArchaeologyTable[3].ArtifactRegion = "BWSCemetary"
+  Gameflow.ArchaeologyTable[3].GameflowActivation = ScriptEnum.DebugQC080
+  Gameflow.ArchaeologyTable[3].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[4] = {}
+  Gameflow.ArchaeologyTable[4].QuestCode = "QRARCH004"
+  Gameflow.ArchaeologyTable[4].ArtifactRegion = "Ravenscar"
+  Gameflow.ArchaeologyTable[4].GameflowActivation = ScriptEnum.DebugQC160
+  Gameflow.ArchaeologyTable[4].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[5] = {}
+  Gameflow.ArchaeologyTable[5].QuestCode = "QRARCH005"
+  Gameflow.ArchaeologyTable[5].ArtifactRegion = "BowerLake"
+  Gameflow.ArchaeologyTable[5].GameflowActivation = ScriptEnum.DebugQC160
+  Gameflow.ArchaeologyTable[5].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[6] = {}
+  Gameflow.ArchaeologyTable[6].QuestCode = "QRARCH006"
+  Gameflow.ArchaeologyTable[6].ArtifactRegion = "Brightwood"
+  Gameflow.ArchaeologyTable[6].GameflowActivation = ScriptEnum.DebugQC160
+  Gameflow.ArchaeologyTable[6].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[7] = {}
+  Gameflow.ArchaeologyTable[7].QuestCode = "QRARCH007"
+  Gameflow.ArchaeologyTable[7].ArtifactRegion = "Caves\\Westcliff\\WestcliffExterior"
+  Gameflow.ArchaeologyTable[7].GameflowActivation = ScriptEnum.DebugQC160
+  Gameflow.ArchaeologyTable[7].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[8] = {}
+  Gameflow.ArchaeologyTable[8].QuestCode = "QRARCH008"
+  Gameflow.ArchaeologyTable[8].ArtifactRegion = "Westcliff"
+  Gameflow.ArchaeologyTable[8].GameflowActivation = ScriptEnum.DebugQC160
+  Gameflow.ArchaeologyTable[8].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[9] = {}
+  Gameflow.ArchaeologyTable[9].QuestCode = "QRARCH009"
+  Gameflow.ArchaeologyTable[9].ArtifactRegion = "Caves\\Dunecrest\\InnCave"
+  Gameflow.ArchaeologyTable[9].GameflowActivation = ScriptEnum.DebugQC160
+  Gameflow.ArchaeologyTable[9].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[10] = {}
+  Gameflow.ArchaeologyTable[10].QuestCode = "QRARCH010"
+  Gameflow.ArchaeologyTable[10].ArtifactRegion = "Wraithmarsh"
+  Gameflow.ArchaeologyTable[10].GameflowActivation = ScriptEnum.Sandbox
+  Gameflow.ArchaeologyTable[10].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[11] = {}
+  Gameflow.ArchaeologyTable[11].QuestCode = "QRARCH011"
+  Gameflow.ArchaeologyTable[11].ArtifactRegion = "Bloodstone"
+  Gameflow.ArchaeologyTable[11].GameflowActivation = ScriptEnum.Sandbox
+  Gameflow.ArchaeologyTable[11].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[12] = {}
+  Gameflow.ArchaeologyTable[12].QuestCode = "QRARCH012"
+  Gameflow.ArchaeologyTable[12].ArtifactRegion = "Caves\\Bowerlake\\ThagsCave"
+  Gameflow.ArchaeologyTable[12].GameflowActivation = ScriptEnum.Sandbox
+  Gameflow.ArchaeologyTable[12].QuestUnlocked = false
+  Gameflow.ArchaeologyTable[13] = {}
+  Gameflow.ArchaeologyTable[13].QuestCode = "QRARCH013"
+  Gameflow.ArchaeologyTable[13].ArtifactRegion = "Caves\\Bloodstone\\Bloodstone_Assault"
+  Gameflow.ArchaeologyTable[13].GameflowActivation = ScriptEnum.Sandbox
+  Gameflow.ArchaeologyTable[13].QuestUnlocked = false
+  l_1_0:StartNewEntityThread("QRARCH_Door_Tomb", QRARCH_Door_Tomb)
+  l_1_0.MissionSucceeded = false
+  l_1_0.MissionFailed = false
+  Gameflow.ArchaeologyIntroCutscene = ""
+  Gameflow.CreateAnArchaeologyQuest = false
+  Gameflow.TESTARCHAEOLOGYCREATE = false
+  Gameflow.ArchaeologyRenownReward = 0
+  Gameflow.FinalBellePrepared = false
+  l_1_0.FinishedQuestsGossipActivated = false
+  Gameflow.CurrentArchObjective = nil
+  l_1_0.GiveLetterLoop = ""
+  if Gameflow.ArchaeologyQuestIndex == nil then
+    Gameflow.ArchaeologyQuestIndex = 1
+    Gameflow.CurrentArchaeologyQuestName = "Quest_QRARCH001_Archaeology"
+    Gameflow.CurrentArchaeologyQuestCode = Gameflow.ArchaeologyTable[Gameflow.ArchaeologyQuestIndex].QuestCode
+    Gameflow.ArchaelologyQuestGiver = "QR_ArchaeologyQuestGiver"
+  end
+end
+
+QR_ArchaeologyGlobal.Update = function(l_2_0)
+  repeat
+    if Gameflow.ArchaeologyQuestHasStarted == true and Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex) > 0 then
+      if QuestTracker.IsPrimary(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName) then
+        Player.AddHUDSuggestionInventoryItemOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex, "D", 55)
+        GUI.ToggleElement("DPadDown", true)
+      end
+      local is_posted, message = MessageEvents.IsMessageSentBy(EMessageEventType.MESSAGE_EVENT_CARRIED_ITEM_USED, QuestManager.HeroEntity, l_2_0.my_LastMessageID_Hit)
+      if is_posted then
+        l_2_0.my_LastMessageID_Hit = message:GetID()
+        local item_record = GDB.GetRecord(message:GetExtraDataAsID())
+        local card_record = GDB.GetRecord("Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex)
+        if card_record:GetID() == item_record:GetID() then
+          local clue = Inventory.AddItemOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex)
+          GUI.DisplayReceivedItem(clue)
+          Inventory.RemoveItemOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex)
+        end
+      end
+      if not QuestTracker.IsPrimary(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName) then
+        Player.RemoveHUDSuggestionOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex)
+        GUI.ToggleElement("DPadDown", false)
+      end
+    end
+    if ScriptEnum.DebugQC080 <= Gameflow.PositionInGameflow then
+      Gameflow.ArchaeologyTable[1].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[2].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[3].QuestUnlocked = true
+    end
+    if ScriptEnum.DebugQC160 <= Gameflow.PositionInGameflow then
+      Gameflow.ArchaeologyTable[4].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[5].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[6].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[7].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[8].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[9].QuestUnlocked = true
+    end
+    if ScriptEnum.Sandbox <= Gameflow.PositionInGameflow then
+      Gameflow.ArchaeologyTable[10].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[11].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[12].QuestUnlocked = true
+      Gameflow.ArchaeologyTable[13].QuestUnlocked = true
+    end
+    if Gameflow.ArchaeologyQuestIndex == 14 and l_2_0.FinishedQuestsGossipActivated == false then
+      Gossip.DeactivateGossipItem("ScriptGossip", "QR_ArchaeologistAbout")
+      l_2_0.FinishedQuestsGossipActivated = true
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+QR_ArchaeologyGlobal.OnExit = function(l_3_0)
+end
+
+QuestManager.NewQuestThread("QR_ArchaeologyGlobalThread")
+QR_ArchaeologyGlobalThread.Update = function(l_4_0)
+end
+
+QuestManager.NewEntityThread("QR_ArchaeologyGlobalQuestGiver")
+QR_ArchaeologyGlobalQuestGiver.Init = function(l_5_0)
+  PhysicsCharacter.SetAsPushableByHero(l_5_0.Entity, false)
+  Health.SetCantDie(l_5_0.Entity, true)
+  ScriptFunction.SetCharacterCanRespondToExpressionsAndChangeOpinions(l_5_0.Entity, true, false)
+  ExperienceReward.SetToGenerateExperience(l_5_0.Entity, false)
+  Combat.SetCanFlee(l_5_0.Entity, false)
+  ScriptFunction.DisableSimBehaviours(l_5_0.Entity)
+  l_5_0.CurrentState = 0
+end
+
+QR_ArchaeologyGlobalQuestGiver.CustomUpdate = function(l_6_0)
+  Creature.SetNameTag(l_6_0.Entity, "TEXT_CHARACTER_NAME_ARCHAEOLOGY_QUEST_GIVER")
+  Villager.SetOccupationTag(l_6_0.Entity, "TEXT_CHARACTER_OCCUPATION_ARCHAEOLOGY")
+  repeat
+    if Gameflow.ArchaeologyQuestHasStarted == true then
+      if Gameflow.ArchaeologyQuestIndex == 13 and Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, "ArchaeologicalObject_" .. Gameflow.ArchaeologyQuestIndex) > 0 and Gameflow.FinalBellePrepared == false then
+        l_6_0.CurrentState = 2
+        Gameflow.FinalBellePrepared = true
+      end
+      if l_6_0.CurrentState == 0 and Gameflow.ArchaeologyQuestIndex == 1 then
+        QuestTracker.SetQuestGiver(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, l_6_0.Entity)
+        Gameflow.ArchaeologyIntroCutscene = "QArch_BelleIntro"
+        l_6_0.CurrentState = 1
+      elseif l_6_0.CurrentState == 0 and Gameflow.ArchaeologyQuestIndex > 1 then
+        QuestTracker.SetQuestGiver(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, l_6_0.Entity)
+        Gameflow.ArchaeologyIntroCutscene = "QArch_BelleSubsequentIntro"
+        l_6_0.CurrentState = 1
+      elseif l_6_0.CurrentState == 1 then
+        QuestTracker.SetObjectiveBreadcrumbMaxAreaDrawRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 4)
+        QuestTracker.SetObjectiveBreadcrumbLargeAreaDrawLength(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 19)
+        QuestTracker.SetObjectiveBreadcrumbAreaInitialAngle(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 1)
+        QuestTracker.SetObjectiveBreadcrumbRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 5)
+        l_6_0:ShowToasterAcceptBoxWithDialogueUntilCondition("TEXT_QUEST_QARCH_QUEST_GIVING_QUESTION", "TEXT_QUEST_QRARCH001_NAME", {IntroIC = Gameflow.ArchaeologyIntroCutscene, WaitAroundIC = "QArch_BelleNoQuestWaitAround_Targeted", WalkAwayIC = "QArch_WalkAway", ReturnIC = "QArch_Return"})
+        QuestTracker.SetAsActive(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestCode .. "_Archaeology", true)
+        QuestTracker.SetAsPrimary(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestCode .. "_Archaeology")
+        l_6_0:PlayCutscene({Cutscene = "QArch_BelleAcceptedQuest"})
+        Action.SetCurrentAction(l_6_0.Entity, ActionPlayAnim("GiveObjectInto"))
+        repeat
+          if Action.IsPerformingAnyAction(l_6_0.Entity) then
+            coroutine.yield()
+          else
+            l_6_0.ParentQuest.GiveLetterLoop = {Type = EScriptableAction.LOOP, Priority = EActionPriority.PRIORITY_INTERACTION, LoopAction = {Type = EScriptableAction.PLAY_ANIMATION, Anim = "GiveObjectFrame"}, OutOfAction = {Type = EScriptableAction.PLAY_ANIMATION, Anim = "GiveObjectOutOf"}, NumLoops = 0}
+            local loop_id = Action.SetCurrentAction(l_6_0.Entity, l_6_0.ParentQuest.GiveLetterLoop)
+            if Gameflow.ArchaeologyQuestIndex < 14 then
+              local clue = Inventory.AddItemOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex)
+              GUI.DisplayReceivedItem(clue)
+              Player.AddHUDSuggestionInventoryItemOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex, "D", 55)
+              GUI.ToggleElement("DPadDown", true)
+            end
+            l_6_0:WaitForTimeInSeconds(0.5)
+            Action.BreakSequence(l_6_0.Entity, loop_id)
+            Gameflow.ArchaeologyQuestAccepted = true
+            Gameflow.BelleHasGivenArchaeologyQuest = true
+            l_6_0:UpdateObjectiveTag("TEXT_QUEST_QARCH_OBJECTIVE_30")
+            Gameflow.CurrentArchObjective = "study"
+            QuestTracker.SetObjectiveLevel(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "", false)
+            QuestTracker.ClearAllObjectiveEntities(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName)
+            l_6_0.CurrentState = 2
+          elseif l_6_0.CurrentState == 2 then
+            l_6_0:PlayCutscene({Cutscene = "QArch_BelleOnQuestWaitAround", UntilCondition = function()
+            return Gameflow.FoundAnArtifact == true
+               end})
+            QuestTracker.SetObjectiveBreadcrumbMaxAreaDrawRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 4)
+            QuestTracker.SetObjectiveBreadcrumbLargeAreaDrawLength(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 19)
+            QuestTracker.SetObjectiveBreadcrumbAreaInitialAngle(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 1)
+            QuestTracker.SetObjectiveBreadcrumbRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 5)
+            if Gameflow.ArchaeologyQuestIndex == 13 then
+              QuestTracker.SetObjectiveBreadcrumbMaxAreaDrawRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 100)
+              QuestTracker.SetObjectiveBreadcrumbLargeAreaDrawLength(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 100)
+              QuestTracker.SetObjectiveBreadcrumbAreaInitialAngle(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 100)
+              QuestTracker.SetObjectiveBreadcrumbRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 5)
+            end
+            QuestTracker.SetObjectiveEntity(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, l_6_0.Entity, true)
+            l_6_0.CurrentState = 3
+          elseif l_6_0.CurrentState == 3 then
+            l_6_0:ShowToasterBoxWithDialogueUntilCondition("TEXT_QUEST_QRARCH001_NAME", "TEXT_QUEST_QARCH_HAND_OVER_QUESTION", {TargetedIC = "QArch_HaveArtefactWaitAround_Targeted"})
+            Inventory.RemoveAllItemsOfType(GetPlayerHero(), "ArchaeologicalObject_" .. Gameflow.ArchaeologyQuestIndex)
+            Gameflow.ArchaeologyQuestActive = false
+            if Gameflow.ArchaeologyQuestIndex < 14 then
+              QuestTracker.ClearQuestGiver(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName)
+              QR_ArchaeologyGlobal:CalculateReward()
+            end
+            Gameflow.ArchaeologyQuestIndex = Gameflow.ArchaeologyQuestIndex + 1
+            if Gameflow.ArchaeologyQuestIndex == 14 then
+              QuestTracker.ShowEpilogueScreen(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "TEXT_QUEST_QRARCH001_NAME", "TEXT_QUEST_EPILOGUE_QRARCH", Gameflow.ArchaeologyRenownReward, "QR_Archaeology_Epilogue_Screen_Image")
+              Stats.ModifyRenown(QuestManager.HeroEntity, Gameflow.ArchaeologyRenownReward)
+              l_6_0.CurrentState = 4
+            else
+              if Gameflow.ArchaeologyQuestIndex < 14 then
+                l_6_0:PlayCutscene({Cutscene = "QArch_BelleCompletedQuest"})
+                Stats.ModifyRenown(QuestManager.HeroEntity, Gameflow.ArchaeologyRenownReward)
+                l_6_0.CurrentState = 8
+                QuestTracker.SetAsCompleted(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, true)
+                QuestTracker.SetToAppearOnWorldMap(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, false)
+                QuestTracker.ShowEpilogueScreen(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "TEXT_QUEST_QRARCH001_NAME", "TEXT_QUEST_EPILOGUE_QRARCH", Gameflow.ArchaeologyRenownReward, "QR_Archaeology_Epilogue_Screen_Image")
+                Gameflow.ArchaeologyQuestHasStarted = false
+                Gameflow.NeedToResetArchaeologyQuest = true
+                QuestTracker.ClearQuestGiver(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName)
+                l_6_0:WaitForTimeInSeconds(2)
+                coroutine.yield()
+              elseif l_6_0.CurrentState == 4 then
+                l_6_0:PlayCutscene({Cutscene = "QArch_Belle_AllCompleted_One"})
+                ScriptFunction.StartScriptControlledMovement(l_6_0.Entity, l_6_0:GetPositionOfEntity("Belle_MoveTo_Marker_1", "marker"), false, ENavigationSpeed.NAV_SPEED_WALK)
+                l_6_0:WaitForTimeInSeconds(2)
+                ScriptFunction.SayLine(l_6_0.Entity, "TEXT_QUEST_IDLE_BELLE_10")
+                l_6_0:WaitForTimeInSeconds(1)
+                ScriptFunction.SayLine(l_6_0.Entity, "TEXT_QUEST_IDLE_BELLE_20")
+                l_6_0:WaitForTimeInSeconds(1)
+                ScriptFunction.SayLine(l_6_0.Entity, "TEXT_QUEST_IDLE_BELLE_30")
+                ScriptFunction.StartScriptControlledMovement(l_6_0.Entity, l_6_0:GetPositionOfEntity("Belle_MoveTo_Marker_2", "marker"), false, ENavigationSpeed.NAV_SPEED_WALK)
+                l_6_0:PlayCutscene({Cutscene = "QArch_Belle_AllCompleted_Two"})
+                l_6_0:UpdateObjectiveTag("TEXT_QUEST_QARCH_OBJECTIVE_60", "TEXT_QUEST_QARCH_OBJECTIVE_20")
+                Gameflow.OpenArchaeologistTomb = true
+                l_6_0.CurrentState = 5
+              elseif l_6_0.CurrentState == 5 then
+                l_6_0.ParentQuest.FinalTombThread = QR_FinalTombThread:new()
+                l_6_0.ParentQuest.FinalTombThread.ParentQuest = l_6_0.ParentQuest
+                l_6_0:StartNewThread(l_6_0.ParentQuest.FinalTombThread)
+                l_6_0:PlayCutscene({Cutscene = "QArch_Belle_AllCompleted_WaitAround", UntilCondition = function()
+                  return Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, "ObjectInventoryGiftGemAmethyst_TheArchonsDream") > 0
+                        end})
+                l_6_0:KillCutscene("QArch_Belle_AllCompleted_WaitAround")
+                l_6_0:AddScriptRules(EInteractiveCutsceneRule.CUTSCENE_RULE_NO_FAST_TRAVEL, EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+                l_6_0.CurrentState = 6
+              elseif l_6_0.CurrentState == 6 then
+                QuestTracker.SetObjectiveLevel(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "", false)
+                QuestTracker.ClearAllObjectiveEntities(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName)
+                QuestTracker.SetObjectiveEntity(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, l_6_0.Entity, true)
+                l_6_0:UpdateObjectiveTag("TEXT_QUEST_QARCH_OBJECTIVE_70", "TEXT_QUEST_QARCH_OBJECTIVE_60")
+                Physics.TeleportToPosition(l_6_0.Entity, l_6_0:GetPositionOfEntity("Belle_Entrance_Teleport", "marker"))
+                Layers.ActivateLayer("Belle Blocker")
+                l_6_0.CurrentState = 7
+              elseif l_6_0.CurrentState == 7 then
+                Trigger.SetToTriggerOnSpecificEntity(l_6_0:GetEntityWithName("Belle_Entrance_Trigger"), QuestManager.HeroEntity)
+                l_6_0:WaitFor(function()
+                  return IsDistanceBetweenThingsUnder(QuestManager.HeroEntity, self:GetEntityWithName("Belle_Entrance_Trigger", "marker"), 10)
+                        end)
+                ScriptFunction.StartScriptControlledMovement(l_6_0.Entity, l_6_0:GetPositionOfEntity("Shard Move To Marker_3", "marker"), false, ENavigationSpeed.NAV_SPEED_WALK)
+                l_6_0:WaitFor(function()
+                  return IsDistanceBetweenThingsUnder(self.Entity, self:GetEntityWithName("Shard Move To Marker_3", "marker"), 1)
+                        end)
+                l_6_0:PlayCutscene({Cutscene = "QArch_Belle_End"})
+                Health.SetCantDie(l_6_0.Entity, false)
+                l_6_0:ShowToasterAcceptBoxWithDialogueUntilConditionWithCombat("TEXT_QUEST_QARCH_HAND_OVER_QUESTION_2", "TEXT_QUEST_QRARCH001_NAME", {IntroIC = "QArch_Belle_End_WaitAround", WaitAroundIC = "QArch_Belle_End_WaitAround"}, function()
+                  return (Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, "ObjectInventoryGiftGemAmethyst_TheArchonsDream") ~= 0 and self.Entity ~= nil and not self.Entity:IsAlive())
+                        end)
+                Inventory.RemoveAllItemsOfType(GetPlayerHero(), "ObjectInventoryGiftGemAmethyst_TheArchonsDream")
+                l_6_0:PlayCutscene({Cutscene = "QArch_Belle_End_Give"})
+                Money.Modify(QuestManager.HeroEntity, 50000)
+                QR_ArchaeologyGlobal:CalculateReward()
+                Stats.ModifyRenown(QuestManager.HeroEntity, Gameflow.ArchaeologyRenownReward)
+                QuestTracker.SetAsCompleted(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, true)
+                QuestTracker.ShowEpilogueScreen(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "TEXT_QUEST_QRARCH001_NAME", "TEXT_QUEST_EPILOGUE_QRARCH_FINAL_GOOD", Gameflow.ArchaeologyRenownReward, "QR_Archaeology_Epilogue_Screen_Image")
+                l_6_0:RemoveScriptRules(EInteractiveCutsceneRule.CUTSCENE_RULE_NO_FAST_TRAVEL, EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+                Stats.ModifyMorality(QuestManager.HeroEntity, 50)
+                Gossip.ActivateGossipItem("ScriptGossip", "QR_ArchaeologistAfter")
+                Gameflow.ArchaeologyQuestHasStarted = false
+                Gameflow.NeedToResetArchaeologyQuest = true
+                Layers.DeactivateLayer("Belle Blocker")
+                l_6_0.Entity:Destroy()
+                Health.SetCantDie(l_6_0.Entity, true)
+                QuestTracker.ClearQuestGiver(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName)
+                ScriptFunction.SayLine(l_6_0.Entity, "TEXT_QUEST_IDLE_BELLE_20")
+                ScriptFunction.StartScriptControlledMovement(l_6_0.Entity, l_6_0:GetPositionOfEntity("Shard Move To Marker_2", "marker"), true, ENavigationSpeed.NAV_SPEED_WALK)
+                local thing_to_look_at = l_6_0:GetEntityWithName("MarkerNavigationSeed_2", "marker")
+                local other_thing_to_look_at = l_6_0:GetEntityWithName("Belle_Entrance_Trigger", "marker")
+                local orientation_one = thing_to_look_at:GetPosition() - l_6_0.Entity:GetPosition()
+                local orientation_two = other_thing_to_look_at:GetPosition() - l_6_0.Entity:GetPosition()
+                repeat
+                  l_6_0:WaitForTimeInSeconds(GetRandomNumber(10) + 20)
+                  ScriptFunction.StartScriptControlledMovement(l_6_0.Entity, l_6_0:GetPositionOfEntity("Shard Move To Marker_2", "marker"), true, ENavigationSpeed.NAV_SPEED_WALK)
+                  NavigatorControl.TurnToFaceDirection(l_6_0.Entity, orientation_two)
+                  ScriptFunction.SayLine(l_6_0.Entity, "TEXT_QUEST_IDLE_BELLE_10")
+                  l_6_0:WaitForTimeInSeconds(GetRandomNumber(10) + 10)
+                  ScriptFunction.SayLine(l_6_0.Entity, "TEXT_QUEST_IDLE_BELLE_20")
+                  NavigatorControl.TurnToFaceDirection(l_6_0.Entity, orientation_one)
+                  l_6_0:WaitForTimeInSeconds(GetRandomNumber(10) + 10)
+                  ScriptFunction.StartScriptControlledMovement(l_6_0.Entity, l_6_0:GetPositionOfEntity("MarkerNavigationSeed", "marker"), true, ENavigationSpeed.NAV_SPEED_WALK)
+                  ScriptFunction.SayLine(l_6_0.Entity, "TEXT_QUEST_IDLE_BELLE_30")
+                  coroutine.yield()
+                  do return end
+                  l_6_0.CurrentState = 0
+                end
+              end
+            end
+          end
+          if l_6_0.CurrentState == 8 then
+            l_6_0:PlayCutscene({Cutscene = "QArch_Belle_NotGotQuest_WaitAround", UntilCondition = function()
+            return Gameflow.ArchaeologyQuestHasStarted == true
+               end})
+            l_6_0:WaitForTimeInSeconds(2)
+            l_6_0.CurrentState = 0
+          end
+          coroutine.yield()
+          do return end
+           -- Warning: missing end command somewhere! Added here
+        end
+         -- Warning: missing end command somewhere! Added here
+      end
+       -- Warning: missing end command somewhere! Added here
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+QR_ArchaeologyGlobalQuestGiver.OnTerminated = function(l_7_0)
+  if MessageEvents.IsMessageSentTo(EMessageEventType.MESSAGE_EVENT_KILLED, l_7_0.Entity) then
+    QR_ArchaeologyGlobal:CalculateReward()
+    Stats.ModifyRenown(QuestManager.HeroEntity, Gameflow.ArchaeologyRenownReward)
+    ScriptFunction.StopAnyInteractiveCutscene(l_7_0.Entity)
+    QuestTracker.SetAsCompleted(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, true)
+    QuestTracker.ShowEpilogueScreen(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "TEXT_QUEST_QRARCH001_NAME", "TEXT_QUEST_EPILOGUE_QRARCH_FINAL_EVIL", Gameflow.ArchaeologyRenownReward, "QR_Archaeology_Epilogue_Screen_Image")
+    l_7_0:RemoveScriptRules(EInteractiveCutsceneRule.CUTSCENE_RULE_NO_FAST_TRAVEL, EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+    Gameflow.ArchaeologyQuestHasStarted = false
+    Gameflow.NeedToResetArchaeologyQuest = true
+    QuestTracker.ClearQuestGiver(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName)
+    Stats.ModifyMorality(QuestManager.HeroEntity, -50)
+    l_7_0:KillCutscene("QArch_Belle_End_WaitAround")
+    Layers.DeactivateLayer("Belle Blocker")
+    if l_7_0.OnScreenBox then
+      GUI.RemoveDisplayBox(l_7_0.OnScreenBox)
+    end
+  end
+end
+
+QuestManager.NewQuestThread("QR_FinalTombThread")
+QR_FinalTombThread.Update = function(l_8_0)
+  l_8_0.CurrentState = 0
+  repeat
+    if l_8_0.CurrentState == 0 then
+      CreatureGenerator.Trigger(l_8_0:GetEntityWithName("Shard_Generator", "marker"))
+      local spawned_creatures = GetAllCreaturesSpawnedBy(l_8_0:GetEntityWithName("Shard_Generator", "marker"))
+      for index,spawnee in ipairs(spawned_creatures) do
+        Combat.SetCanFight(spawnee, false)
+        CombatRegister:SetTargetAttackableStatus(spawnee, QuestManager.HeroEntity, false)
+        Faction.AddTemporaryEntityRelationship(spawnee, QuestManager.HeroEntity, EFactionStatus.FACTION_STATUS_NEUTRAL)
+        Targeted.SetAsTargetable(spawnee, false)
+        Shard.SetNewSpinSpeed(spawnee, 0, 1)
+      end
+      QuestTracker.SetObjectiveEntity(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, l_8_0:GetEntityWithName("ChestWooden", "object"), true)
+      Trigger.SetToTriggerOnSpecificEntity(l_8_0:GetEntityWithName("Shard Attack Trigger"), QuestManager.HeroEntity)
+      l_8_0.CurrentState = 1
+    elseif l_8_0.CurrentState == 1 and Trigger.IsSpecificTriggerEntityInsideTriggerVolume(l_8_0:GetEntityWithName("Shard Attack Trigger"), QuestManager.HeroEntity) then
+      Orchestra:SetTargetIntensity(4)
+      l_8_0.ParentQuest:SetLookAtCamera({source_entity = l_8_0:GetEntityWithName("Shard_Look_At_Position", "marker"), target_entity = l_8_0:GetEntityWithName("ChestWooden", "object")})
+      l_8_0:WaitForTimeInSeconds(3)
+      l_8_0.ParentQuest:ClearLookAtCamera()
+      do
+        local spawned_creatures = GetAllCreaturesSpawnedBy(l_8_0:GetEntityWithName("Shard_Generator", "marker"))
+        for index,spawnee in ipairs(spawned_creatures) do
+          Combat.SetCanFight(spawnee, true)
+          CombatRegister:SetTargetAttackableStatus(spawnee, QuestManager.HeroEntity, true)
+          Faction.RemoveTemporaryEntityRelationship(spawnee, QuestManager.HeroEntity)
+          Targeted.SetAsTargetable(spawnee, true)
+          Shard.SetNewSpinSpeed(spawnee, 20, 1)
+        end
+        l_8_0:WaitFor(function()
+        return Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, "ObjectInventoryGiftGemAmethyst_TheArchonsDream") > 0
+         end)
+        l_8_0.CurrentState = 2
+      end
+      do return end
+    if l_8_0.CurrentState == 2 then
+      end
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+QR_ArchaeologyGlobal.CalculateReward = function(l_9_0)
+  if Gameflow.ArchaeologyQuestIndex == 1 then
+    Gameflow.ArchaeologyRenownReward = 75
+  else
+    if Gameflow.ArchaeologyQuestIndex == 2 then
+      Gameflow.ArchaeologyRenownReward = 100
+    else
+      if Gameflow.ArchaeologyQuestIndex == 3 then
+        Gameflow.ArchaeologyRenownReward = 125
+      else
+        if Gameflow.ArchaeologyQuestIndex == 4 then
+          Gameflow.ArchaeologyRenownReward = 150
+        else
+          if Gameflow.ArchaeologyQuestIndex == 5 then
+            Gameflow.ArchaeologyRenownReward = 200
+          else
+            if Gameflow.ArchaeologyQuestIndex == 6 then
+              Gameflow.ArchaeologyRenownReward = 250
+            else
+              if Gameflow.ArchaeologyQuestIndex == 7 then
+                Gameflow.ArchaeologyRenownReward = 300
+              else
+                if Gameflow.ArchaeologyQuestIndex == 8 then
+                  Gameflow.ArchaeologyRenownReward = 350
+                else
+                  if Gameflow.ArchaeologyQuestIndex == 9 then
+                    Gameflow.ArchaeologyRenownReward = 450
+                  else
+                    if Gameflow.ArchaeologyQuestIndex == 10 then
+                      Gameflow.ArchaeologyRenownReward = 500
+                    else
+                      if Gameflow.ArchaeologyQuestIndex == 11 then
+                        Gameflow.ArchaeologyRenownReward = 550
+                      else
+                        if Gameflow.ArchaeologyQuestIndex == 12 then
+                          Gameflow.ArchaeologyRenownReward = 600
+                        else
+                          if Gameflow.ArchaeologyQuestIndex == 13 then
+                            Gameflow.ArchaeologyRenownReward = 700
+                          else
+                            if Gameflow.ArchaeologyQuestIndex == 14 then
+                              Gameflow.ArchaeologyRenownReward = 1000
+                            end
+                          end
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+
+QuestManager.NewEntityThread("QRARCH_Door_Tomb")
+QRARCH_Door_Tomb.Init = function(l_10_0)
+  l_10_0.CurrentState = 0
+end
+
+QRARCH_Door_Tomb.CustomUpdate = function(l_11_0)
+  repeat
+    if l_11_0.CurrentState == 0 then
+      LevelExit.SetAsActive(l_11_0.Entity, false)
+      l_11_0.CurrentState = 1
+    elseif l_11_0.CurrentState == 1 and Gameflow.OpenArchaeologistTomb then
+      LevelExit.SetAsActive(l_11_0.Entity, true)
+      l_11_0.CurrentState = 2
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+

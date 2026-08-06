@@ -1,0 +1,486 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Noob help with DLC unlocking 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Noob help with DLC unlocking (DLC) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Noob help with DLC unlocking 
+ Fri, 20 September 2013 22:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ danryuken87 
+ Messages: 2 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've been following the tutorials on this site and they have been great although I'm unable to find these files: dir.mainfest, startup.vsconfig . I was able to find Gamescripts_r.bnk easily and use 
+the extract tool but have no idea where the other 2 are located? 
+ 
+I tried checking the xlive dlc folder but had no luck. 
+ 
+I'm guessing I have missed a step somewhere. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Noob help with DLC unlocking 
+ Sat, 21 September 2013 07:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Dude, they're right in the main data folder. Default directory: C:\Program Files\Microsoft Games\Fable III\data 
+ 
+Seriously, not that hard to find. =/ 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Noob help with DLC unlocking 
+ Sat, 21 September 2013 12:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Sat, 21 September 2013 07:48 Dude, they're right in the main data folder. Default directory: C:\Program Files\Microsoft Games\Fable III\data 
+ 
+Seriously, not that hard to find. =/ 
+ 
+XD 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Noob help with DLC unlocking 
+ Sun, 22 September 2013 19:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ danryuken87 
+ Messages: 2 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ seems like I was searching startup.vsconfig which was how it was spelt on here instead of startup.vfsconfig. 
+ 
+I guess that's what I get for being lazy and using the search filter instead of looking for it myself 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Noob help with DLC unlocking 
+ Sun, 22 September 2013 20:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ danryuken87 wrote on Sun, 22 September 2013 19:27 seems like I was searching startup.vsconfig which was how it was spelt on here instead of startup.vfsconfig. 
+ 
+I guess that's what I get for being lazy and using the search filter instead of looking for it myself 
+ 
+Happens to the best of us. I derp all the time. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Noob help with DLC unlocking 
+ Sun, 22 September 2013 21:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Sun, 22 September 2013 20:44 danryuken87 wrote on Sun, 22 September 2013 19:27 seems like I was searching startup.vsconfig which was how it was spelt on here instead of startup.vfsconfig. 
+ 
+I guess that's what I get for being lazy and using the search filter instead of looking for it myself 
+ 
+Happens to the best of us. I derp all the time. 
+ 
+I prefer to herp, myself. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ [Question]Add items to your character via a save editor. 
+
+ 
+ Next Topic: 
+ translation Fable 3 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:23 PDT 2026 
+
+ Total time taken to generate the page: 0.05275 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

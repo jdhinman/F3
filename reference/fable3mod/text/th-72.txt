@@ -1,0 +1,722 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » TEX converter 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » TEX converter (batch (no GUI)) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ TEX converter 
+ Fri, 27 September 2013 03:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ batch utility to convert from TEX to DDS and back 
+ Download 
+ 
+make Shortcut (not copy) of "Fable3_TEX_convert.bat" to: 
+ %APPDATA%\Microsoft\Windows\SendTo 
+ 
+then Right Click -> SendTo -> select Shortcut 
+ 
+or drag-and-drop file(s) on "Fable3_TEX_convert.bat" 
+ 
+You can also change the resolution and format after converting to DDS 
+ 
+Resolutions: 
+ 8x8
+4x4
+16x16
+32x32
+64x64
+128x128
+256x256
+512x512
+1024x1024
+2048x2048
+4096x4096
+8192x8192
+
+4096x2048
+2048x1024
+1024x512
+512x256
+256x128
+128x64
+64x32
+
+2048x4096
+1024x2048
+512x1024
+256x512
+128x256
+64x128
+32x64 
+ 
+ 
+Formats: 
+ DXT1
+DXT3
+DXT5 
+ 
+ 
+used 
+ hexed 
+ 
+ 
+ [Updated on: Fri, 27 September 2013 03:33]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX converter 
+ Fri, 27 September 2013 15:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ jacody 
+ Messages: 5 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I keep getting an "insert error: too many values set" message no matter how I convert the textures. The actual texture is also horribly compressed, and the alpha channels are just a bunch of pixelated gibberish. 
+ 
+Any idea what I'm doing wrong? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX converter 
+ Fri, 27 September 2013 16:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Chances are you chose the wrong DXT setting. DXT-1 means no alpha, DXT-3 means that there is alpha, and DXT-5... I forget what that means. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX converter 
+ Fri, 27 September 2013 16:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ jacody 
+ Messages: 5 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks. I've got it working perfectly now. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX converter 
+ Mon, 14 October 2013 08:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for the tool! Messing with it right now. Pretty useful to get rid of scars! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX converter 
+ Thu, 17 September 2015 05:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ A couple of questions (that I hope to answer myself, but I'm throwing them out there on the off chance that someone actually KNOWS the answer AND gets back to me before I figure it out)... 
+ 
+Is there a pretty standard format to try? Maybe one standard for certain types of textures (e.g. hats or skirts)? 
+ 
+What program is preferable to edit the resulting files? Do I need Photoshop? Is it done in MS Paint? 
+ 
+I have some HUGE ideas, but I am falling short by not having figured out the modelling or texturing yet. I WILL get there, it's just a matter of time and education... 
+ 
+Thanks in advance! 
+TGS 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX converter 
+ Mon, 21 September 2015 16:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TheGeniusSavant wrote on Thu, 17 September 2015 05:49 A couple of questions (that I hope to answer myself, but I'm throwing them out there on the off chance that someone actually KNOWS the answer AND gets back to me before I figure it out)... 
+ 
+Is there a pretty standard format to try? Maybe one standard for certain types of textures (e.g. hats or skirts)? 
+ 
+What program is preferable to edit the resulting files? Do I need Photoshop? Is it done in MS Paint? 
+ 
+I have some HUGE ideas, but I am falling short by not having figured out the modelling or texturing yet. I WILL get there, it's just a matter of time and education... 
+ 
+Thanks in advance! 
+TGS 
+I'd recommend Gimp . 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX converter 
+ Mon, 21 September 2015 23:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks! I'll try it right now!!! 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX converter 
+ Tue, 22 September 2015 05:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Oh, my... 
+ 
+I didn't realize it was going to take hours and a Masters in computer science to get Gimp installed to the point I could use it for this (I jest, but only slightly)... 
+ 
+The DDS plugin I found requires all sorts of compiling software that I've never even heard of, including MinGW, which I can't seem to make work... 
+ 
+I'll have to work on all this if and when I'm really willing to invest the time and energy. 
+ 
+Thanks again for the idea, though! 
+TGS 
+ 
+EDIT: Turns out I only THOUGHT I'd downloaded the plugin... I'd downloaded the source files FOR the plugin (DUH!). I looked again and there was another link. Now, at least I can open the files. 
+ 
+I'm still having trouble with figuring out the right formats for the TEX2DDS conversion and I think I'm having issues with the Alpha channel as well... everything i try to mod turns out glowing (kinda like tattoos or the inlays on weapons, only NOT attractive!) 
+ 
+ 
+ [Updated on: Tue, 22 September 2015 12:54]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ WAV converter 
+
+ 
+ Next Topic: 
+ xlive 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:25 PDT 2026 
+
+ Total time taken to generate the page: 0.05207 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

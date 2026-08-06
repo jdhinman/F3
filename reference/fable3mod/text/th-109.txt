@@ -1,0 +1,305 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Override Assets issues 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Override Assets issues 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Override Assets issues 
+ Sat, 02 November 2013 07:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Could use some insight on what I might be doing wrong. I'm trying to pack some models into a bank, and while it's obvious the game knows what I'm trying to do, they still aren't showing up for whatever reason. hammer_head is untouched/retail. And the scripts run just fine. 
+ 
+DLC.bnk 
+ 
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_large\hammer_head_auroran_large.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_medium\hammer_head_auroran_medium.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_small\hammer_head_auroran_small.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_shaft_auroran\hammer_shaft_auroran.bak
+art\inventory\multimeshweapons\dotxsi\hammer_shaft_auroran\hammer_shaft_auroran.mdl
+package_info.xml
+scripts\miscellaneous\newgame.lua
+scripts\quests\qc190_castleassassin.lua
+scripts\quests\scriptactivation.lua
+ 
+ 
+ 
+ 
+Removing them from the bank obviously works. So what am I doing wrong here? Do I need to put them in a bank within the bank with a vfsstartup to force them into memory or something? 
+ 
+ala 
+ 
+<Bank Path="globals/globals_models.bnk" Mode="memory" />
+ 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Override Assets issues 
+ Sat, 02 November 2013 09:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Got it working. I'm not sure if I overdid it or not without fully testing but... 
+ 
+globals\globals_model_headers.bnk
+globals\globals_model_headers.bnk.dat
+globals\globals_models.bnk
+globals\globals_models.bnk.dat
+package_info.xml
+scripts\miscellaneous\newgame.lua
+scripts\quests\qc190_castleassassin.lua
+scripts\quests\scriptactivation.lua
+startup.vfsconfig
+ 
+ 
+ 
+<?xml version='1.0' encoding="utf-8"?>
+<VFSConfig ID="fable3">
+
+	<!-- Universal Banks -->
+	<Group Mountable="false">
+ <Bank ID="globals_model_headers" Path="globals/globals_model_headers.bnk" Mode="memory" />
+	</Group>
+
+	<!-- Globals Models and Textures -->
+	<Composite>
+ <Required><Ref ID="globals_model_headers" Mode="memory"/></Required>
+ <Required><Bank Path="globals/globals_models.bnk"/></Required>
+	</Composite>
+</VFSConfig>
+ 
+ 
+ 
+I also included the streaming file with the model 
+headers 
+ 
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_large\hammer_head_auroran_large.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_medium\hammer_head_auroran_medium.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_small\hammer_head_auroran_small.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_shaft_auroran\hammer_shaft_auroran.mdl
+ 
+ 
+models (.gmd is from streaming.bnk) 
+ 
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_large\hammer_head_auroran_large.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_medium\hammer_head_auroran_medium.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_head_auroran_small\hammer_head_auroran_small.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_shaft_auroran\hammer_shaft_auroran.bak
+art\inventory\multimeshweapons\dotxsi\hammer_shaft_auroran\hammer_shaft_auroran.mdl
+art\inventory\multimeshweapons\dotxsi\hammer_shaft_auroran\hammer_shaft_auroran.mdl.gmd
+ 
+ 
+ 
+I blanked out one of the submeshes on the shaft 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ DLC Unlocking discussion (merged) 
+
+ 
+ Next Topic: 
+ I'm curious 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:35 PDT 2026 
+
+ Total time taken to generate the page: 0.05332 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,419 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » I need help 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » I need help (Kidnapped) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ I need help 
+ Tue, 29 November 2016 22:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm stuck on the quest kidnapped, she is stuck on the island. my idea was to delete the part of the script that makes you let go of her hand while swimming, but I have no clue how to go about it. can someone please tell me what file it would be in? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: I need help 
+ Fri, 02 December 2016 03:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ cac289 wrote on Wed, 30 November 2016 11:20 my idea was to delete the part of the script that makes you let go of her hand while swimming you can't do that by scripts, it's hardcoded 
+I somehow make AI swim by adding proper animation and SwimmingComponent to them, but they don't swim probably because there is no NavMesh in water, so AI don't know where to go... 
+anyway.. HOW SHE GET TO THE ISLAND!? O_O 
+who is kidnapper here? 
+ 
+it's easy to fix by scripts by just teleport her to you from the island 
+but you need to know her ID 
+ 
+ Physics.TeleportToPosition(SHE_ID, CVector3(x, y, z)) 
+ 
+ 
+ Physics.TeleportToPosition(SHE_ID, QuestManager.HeroEntity:GetPosition()) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: I need help 
+ Sat, 03 December 2016 21:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ok I'll look into it if it happens again. Thanks for the reply. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: I need help 
+ Fri, 31 March 2017 23:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Daisy22 
+ Messages: 1 Registered: March 2017 Location: United Kingdom
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello all ! i need some assignment help,may i know how is possible it 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: I need help 
+ Sun, 16 April 2017 08:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ you were kidnapped? 
+ 
+ 
+ [Updated on: Sun, 16 April 2017 09:28]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Silver keys 
+
+ 
+ Next Topic: 
+ Note regarding spawning Fable II weapons 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:37 PDT 2026 
+
+ Total time taken to generate the page: 0.05507 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

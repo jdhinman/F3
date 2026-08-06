@@ -1,0 +1,530 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » MessageBox Extended 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » MessageBox Extended (to show LUA tables) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ MessageBox Extended 
+ Sun, 01 June 2014 22:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ this will show all table values (up to 4 entries) 
+ Toggle Spoiler 
+ 
+function MsgTab(text,sub,trash)
+	local nOfLines=24
+	local count=0
+	local nFunc=0
+	local valueStr=""
+	if sub == nil or sub < 1 or sub > 4 then sub=1 end
+	if trash == nil then trash=false end
+	if type(text) == "table" then
+ for key,value in pairs(text) do
+ if type(value) ~= "function" or trash then
+ if type(value) == "table" and sub > 1 then
+ for key2,value2 in pairs(value) do
+ if type(value2) ~= "function" or trash then
+ if type(value2) == "table" and sub > 2 then
+ for key3,value3 in pairs(value2) do
+ if type(value3) ~= "function" or trash then
+ if type(value3) == "table" and sub > 3 then
+ for key4,value4 in pairs(value3) do
+ if type(value4) ~= "function" or trash then
+ valueStr = valueStr .. "\n" .. tostring(key) .. "." .. tostring(key2) .. "." .. tostring(key3) .. "." .. tostring(key4) .. " = " .. tostring(value4)
+ count=0
+ for i in string.gmatch(valueStr, "\n") do
+ count = count+1
+ if count >= nOfLines then
+ if string.len(valueStr) > 0 then GUI.DisplayMessageBox(tostring(valueStr)) end
+ valueStr = ""
+ end
+ end
+ else
+ nFunc=nFunc+1
+ end
+ end
+ else
+ valueStr = valueStr .. "\n" .. tostring(key) .. "." .. tostring(key2) .. "." .. tostring(key3) .. " = " .. tostring(value3)
+ end
+ else
+ nFunc=nFunc+1
+ end
+ count=0
+ for i in string.gmatch(valueStr, "\n") do
+ count = count+1
+ if count >= nOfLines then
+ if string.len(valueStr) > 0 then GUI.DisplayMessageBox(tostring(valueStr)) end
+ valueStr = ""
+ end
+ end
+ end
+ else
+ valueStr = valueStr .. "\n" .. tostring(key) .. "." .. tostring(key2) .. " = " .. tostring(value2)
+ end
+ else
+ nFunc=nFunc+1
+ end
+ count=0
+ for i in string.gmatch(valueStr, "\n") do
+ count = count+1
+ if count >= nOfLines then
+ if string.len(valueStr) > 0 then GUI.DisplayMessageBox(tostring(valueStr)) end
+ valueStr = ""
+ end
+ end
+ end
+ else
+ valueStr = valueStr .. "\n" .. tostring(key) .. " = " .. tostring(value)
+ end
+ else
+ nFunc=nFunc+1
+ end
+ count=0
+ for i in string.gmatch(valueStr, "\n") do
+ count = count+1
+ if count >= nOfLines then
+ if string.len(valueStr) > 0 then GUI.DisplayMessageBox(tostring(valueStr)) end
+ valueStr = ""
+ end
+ end
+ end
+ if count < nOfLines then
+ if string.len(valueStr) > 0 then GUI.DisplayMessageBox(tostring(valueStr)) end
+ end
+ if nFunc > 0 then GUI.DisplayMessageBox(tostring(nFunc) .. " functions omitted") end
+ 
+	else
+ GUI.DisplayMessageBox(tostring(text))
+	end
+
+end
+ 
+
+ 
+where 
+ text is source entry 
+ sub sets the number of output data. If it equals 1 only shows the hash table, if it is 2 shows the data from the table, if it is equal to 3 shows the data which in the table which are located in the first table, if it is equal 4...you got it? %) 
+ trash if true show functions hash (default false) 
+looks quite messy but it works 
+ 
+as example: 
+ MsgTab(Gameflow,1,false) 
+ 
+same as 
+ MsgTab(Gameflow) 
+ 
+ 
+it also can show simple value 
+ MsgTab(Stats.GetFat(GetLocalHero())) 
+ 
+ 
+local nOfLines the number of rows that will be displayed at one time, it's tuned for 1280x720 resolution 
+ 
+ 
+ [Updated on: Sun, 01 June 2014 23:54]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: MessageBox Extended 
+ Tue, 03 June 2014 15:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ There has to be a way to dump all this information to an external file or something. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: MessageBox Extended 
+ Wed, 04 June 2014 11:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have tried but without success io.write 
+there is such function: 
+Debug.LogUsedResources() 
+that writes the file: UsedResources.txt in game folder, but seems this is internal function so no way to see how it works... 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: MessageBox Extended 
+ Thu, 05 June 2014 04:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Wed, 04 June 2014 11:41 I have tried but without success io.write 
+there is such function: 
+Debug.LogUsedResources( 
+that writes the file: UsedResources.txt in game folder, but seems this is internal function so no way to see how it works... 
+ 
+ 
+Ya, io is entirely locked out. I did a few minutes of research to see if pluto had anything usable, but I couldn't find anything substantial. 
+ 
+The gameface/anark gui scripting might have something though. When I was looking through them it looked like they may have some of the higher functions exposed to them. But I'm not sure. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: MessageBox Extended 
+ Tue, 18 November 2014 09:47 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ just tried to connect an external library for additional functions 
+ package.loadlib 
+ 
+and seems is not worked at all 
+game just crash 
+damn... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Rebel's Weapon & Tattoo Pack 
+
+ 
+ Next Topic: 
+ Where the heck are the fable 3 voice files stored?? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:01 PDT 2026 
+
+ Total time taken to generate the page: 0.05393 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

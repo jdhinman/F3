@@ -1,0 +1,598 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » [How to]... extract music from the installation ? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » [How to]... extract music from the installation ? (music) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ [How to]... extract music from the installation ? 
+ Thu, 16 January 2014 09:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bsk99 
+ Messages: 3 Registered: January 2014 Location: France
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi all, 
+I have read this forum and already download WAV converter but I don't understand how can I extract sound (BGM) from the installation directory ? 
+In first, my English is not perfect and I'm not to understand all I have read. 
+If I resume, I found in "C:\Program Files\Microsoft Games\Fable III\data\audio" folder, all soundtrack file in a bnk.dat format 
+When I rename it in ".wav" and I run with "Fable3_WAV_convert.bat" I can hear some part of music, but not correctly. 
+ 
+I would like to know if I need to change file before convert it or another thing I don't understand to do ? 
+ 
+Thank you in advance ! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [How to]... extract music from the installation ? 
+ Fri, 17 January 2014 00:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ first you need to extract *.bnk files form streaming.bnk audio folder 
+then you can extract bnk files in audio folder 
+use this tool 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [How to]... extract music from the installation ? 
+ Sun, 19 January 2014 03:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bsk99 
+ Messages: 3 Registered: January 2014 Location: France
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi, thank you for the answer. 
+I'm not sure to really understand. 
+ 
+With BNKBrowser, I open "..\Fable III\data\streaming.bnk" 
+I see an audio subfolder and 7 bnk.dat files. 
+If I extract, for example, music_region.bnk.dat, I have a new file with .bnk.dat extension. 
+if I use "Fable3_WAV_convert.bat" on this file, file is not convert. 
+ 
+I suppose I need to edit or transform .bnk.dat before ? 
+ 
+thank you 
+ 
+EDIT : yes !! If I rename my bnk.dat in .wav, and I convert it, I can hear music !! 
+thank you very much for your works !!!!!!! 
+ 
+EDIT2 : Do you know If we can extract all music files ? 
+I don't find lot of music... 
+ 
+ 
+ [Updated on: Sun, 19 January 2014 04:02]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [How to]... extract music from the installation ? 
+ Sun, 19 January 2014 22:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ bsk99 wrote on Sun, 19 January 2014 16:37 With BNKBrowser, I open "..\Fable III\data\streaming.bnk" 
+I see an audio subfolder and 7 bnk.dat files. 
+ooppss! 
+I have modifed my streaming.bnk and can't remember where these files were originally 
+try others .bnk files in data folder (probably audio_lod.bnk) 
+so, you must extract all files from .bnk audio folder and merge it with audio folder on disk 
+after, you must unpack .bnk files from audio folder 
+as a result you get .wav files 
+and them you must convert with "Fable3_WAV_convert.bat" 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [How to]... extract music from the installation ? 
+ Sun, 21 February 2016 03:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Parooman34 
+ Messages: 2 Registered: February 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello everyone,i'm new here and i have recently been interested in extracting Fable 3's music soundtrack 
+especially because i wanted that non-OST music that plays in some dungeons and it was in Fable 2 too, 
+After long efforts and a strong headcache,i've finally found a way. 
+With BNKbrowser i have extracted Music_Region.bnk.dat from Streaming.bnk,then i have opened Levels.bnk and extracted the Music_region.bnk 
+Now,i have opened Music_Region.bnk and i have extracted a dozen wav files 
+the names are as following 
+ 
+brightwood.wav (Mistpeak Valley theme and also Oakfield's\Brightwood's theme in Fable 2) 
+bowerstone_industrial.wav (Bowerstone industrial theme) 
+bowerstone_market.wav (Bowerstone Market theme) 
+ "c07 lh full mix 1 gain changes.wav " 
+"c14 shadelight_02.wav" (Shadelight theme) 
+"c15 vioandaccordon.wav" (appears to be the initial theme when you play as prince) 
+"c18 orchestra mix 3.wav" (Brightwall village theme) 
+"c23 choir mix 2.wav" (Ossuary theme) 
+Castle_regionmusic.wav (Bowerstone Castle music) 
+cavesgeneric01.wav (One of themes from Fable 2 that played in some dungeons) 
+demondoorelectronic_01.wav (Unknown) 
+demondoorharp_01.wav (Unknown) 
+demondoornasty.wav (Unknown) 
+driftwood.wav (Driftwood music) 
+enterrenegadecamp_01.wav (Music when you are in the proximity of the renegade camp) 
+escapecavehall_01.wav (Unknown) 
+ghosttown_01.wav (Sunset house exterior? 
+gui_room_01.wav (sanctuary music 2) 
+gui_room_02.wav (Sanctuary music) 
+hobbecave_nobeats.wav (Hobbe cave music) 
+millfields_01.wav (Millfields music,slightly altered music of "Bower lake" from Fable 2) 
+reavermansion_01.wav (Reaver's mansion theme) 
+sunsethousechess.wav (Chesty dreamworld music) 
+tombsgeneric_01.wav (one of Fable 2's dungeon themes recycled in Fable 3) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [How to]... extract music from the installation ? 
+ Sat, 27 August 2016 19:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bsk99 
+ Messages: 3 Registered: January 2014 Location: France
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi, 
+ 
+Thank you for this information ! 
+I'm very interested by this musics. 
+Are you able to share your work !? 
+ 
+Thank you !! 
+ 
+bsk99 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [How to]... extract music from the installation ? 
+ Mon, 12 March 2018 10:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Parooman34 
+ Messages: 2 Registered: February 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ yes, i can share tombsgeneric.wav for now as the old laptop that had the files is bust, no worries, i remember the process so i will extract the files in no time! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Weapon Upgrades 
+
+ 
+ Next Topic: 
+ Weapon Modifications 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:54 PDT 2026 
+
+ Total time taken to generate the page: 0.05477 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

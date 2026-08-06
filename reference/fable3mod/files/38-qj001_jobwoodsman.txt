@@ -1,0 +1,803 @@
+-- Decompiled using luadec 2.0 UNICODE by sztupy (http://winmo.sztupy.hu)
+-- Command line was: -l -l2 C:\Users\Keshire\Downloads\Games\Fable II\data\scripts\quests\qj001_jobwoodsman.lua 
+
+ -- DECOMPILER ERROR: Overwrote pending register. Missing locals? Creating them
+
+local l_0_2 = ...
+ -- DECOMPILER ERROR: Overwrote pending register. Missing locals? Creating them
+
+module(..., l_0_2)
+QuestManager.NewQuestThread("QJ001_JobWoodsman")
+QuestManager.NewEntityThread("QJ001_JobWoodsmanSign")
+ -- Warning: undefined locals caused missing assignments!
+
+-- Decompiled using luadec 2.0 UNICODE by sztupy (http://winmo.sztupy.hu)
+-- Command line was: C:\Users\Keshire\Downloads\Games\Fable II\data\scripts\quests\qj001_jobwoodsman.lua 
+
+local l_0_0 = module
+local l_0_1, l_0_2 = ..., ...
+l_0_2 = package
+l_0_2 = l_0_2.seeall
+l_0_0(l_0_1, l_0_2)
+l_0_0 = QuestManager
+l_0_0 = l_0_0.NewQuestThread
+l_0_1 = "QJ001_JobWoodsman"
+l_0_0(l_0_1)
+l_0_0 = QJ001_JobWoodsman
+l_0_1 = function(l_1_0)
+  l_1_0.MissionSucceeded = false
+  l_1_0.MissionFailed = false
+  l_1_0.QuestName = "QJ001_JobWoodsman"
+  l_1_0.JobWoodsman = {}
+  l_1_0.JobWoodsman[1] = {}
+  l_1_0.JobWoodsman[1].Sign = "QJ001_JobWoodsmanSign_Active_Ravenscar1"
+  l_1_0.JobWoodsman[1].SignExclusionZone = "QJ001_JobWoodsmanSign_ExclusionZone_Ravenscar1"
+  l_1_0.JobWoodsman[1].ChoppingBlock = "QJ001_ChoppingBlock_Ravenscar1"
+  l_1_0.JobWoodsman[1].DogChoppingMarker = "QJ001_DogChoppingMarker_Ravenscar1"
+  l_1_0.JobWoodsman[1].FinishedMarker = "QJ001_FinishedMarker_Ravenscar1"
+  l_1_0.JobWoodsman[1].DogFinishedMarker = "QJ001_DogFinishedMarker_Ravenscar1"
+  l_1_0.JobWoodsman[1].Camera = "QJ001_Camera_Ravenscar1"
+  l_1_0.JobWoodsman[1].CameraExclusionZone = "QJ001_Camera_ExclusionZone_Ravenscar1"
+  l_1_0.JobWoodsman[1].AxeLayer = "QJ001_JobWoodsman_Axe_Ravenscar1"
+  l_1_0.JobWoodsman[1].LayerName = "QJ001_JobWoodsman_Active_Ravenscar1"
+  l_1_0.JobWoodsman[1].VillageName = "RavenscarVillage"
+  l_1_0.JobWoodsman[2] = {}
+  l_1_0.JobWoodsman[2].Sign = "QJ001_JobWoodsmanSign_Active_Ravenscar2"
+  l_1_0.JobWoodsman[2].SignExclusionZone = "QJ001_JobWoodsmanSign_ExclusionZone_Ravenscar2"
+  l_1_0.JobWoodsman[2].ChoppingBlock = "QJ001_ChoppingBlock_Ravenscar2"
+  l_1_0.JobWoodsman[2].DogChoppingMarker = "QJ001_DogChoppingMarker_Ravenscar2"
+  l_1_0.JobWoodsman[2].FinishedMarker = "QJ001_FinishedMarker_Ravenscar2"
+  l_1_0.JobWoodsman[2].DogFinishedMarker = "QJ001_DogFinishedMarker_Ravenscar2"
+  l_1_0.JobWoodsman[2].Camera = "QJ001_Camera_Ravenscar2"
+  l_1_0.JobWoodsman[2].CameraExclusionZone = "QJ001_Camera_ExclusionZone_Ravenscar2"
+  l_1_0.JobWoodsman[2].AxeLayer = "QJ001_JobWoodsman_Axe_Ravenscar2"
+  l_1_0.JobWoodsman[2].LayerName = "QJ001_JobWoodsman_Active_Ravenscar2"
+  l_1_0.JobWoodsman[2].VillageName = "RavenscarVillage"
+  l_1_0.JobWoodsman[3] = {}
+  l_1_0.JobWoodsman[3].Sign = "QJ001_JobWoodsmanSign_Active_Brightwood1"
+  l_1_0.JobWoodsman[3].SignExclusionZone = "QJ001_JobWoodsmanSign_ExclusionZone_Brightwood1"
+  l_1_0.JobWoodsman[3].ChoppingBlock = "QJ001_ChoppingBlock_Brightwood1"
+  l_1_0.JobWoodsman[3].DogChoppingMarker = "QJ001_DogChoppingMarker_Brightwood1"
+  l_1_0.JobWoodsman[3].FinishedMarker = "QJ001_FinishedMarker_Brightwood1"
+  l_1_0.JobWoodsman[3].DogFinishedMarker = "QJ001_DogFinishedMarker_Brightwood1"
+  l_1_0.JobWoodsman[3].Camera = "QJ001_Camera_Brightwood1"
+  l_1_0.JobWoodsman[3].CameraExclusionZone = "QJ001_Camera_ExclusionZone_Brightwood1"
+  l_1_0.JobWoodsman[3].AxeLayer = "QJ001_JobWoodsman_Axe_Brightwood1"
+  l_1_0.JobWoodsman[3].LayerName = "QJ001_JobWoodsman_Active_Brightwood1"
+  l_1_0.JobWoodsman[3].VillageName = nil
+  l_1_0.GoodChopsCount = 0
+  l_1_0.GoodChopChainCount = 0
+  l_1_0.HighestGoodChopChain = 0
+  l_1_0.MoneyEarned = 0
+  if not Gameflow.TotalMoneyEarnedAsWoodsman then
+    Gameflow.TotalMoneyEarnedAsWoodsman = 0
+  end
+  l_1_0.CurrentChoppingLevel = 1
+  l_1_0.ChoppingLevel = 1
+  l_1_0.CurrentStarRating = "<star-1.img>"
+  l_1_0.CurrentAcceptanceTitle = "TEXT_QUEST_QJ001_LEVEL_1"
+  l_1_0.ThresholdLevel5 = 40000
+  l_1_0.ThresholdLevel4 = 10000
+  l_1_0.ThresholdLevel3 = 1000
+  l_1_0.ThresholdLevel2 = 100
+  l_1_0.NextThreshold = l_1_0.ThresholdLevel2
+  l_1_0.GoldUntilPromotion = l_1_0.NextThreshold - Gameflow.TotalMoneyEarnedAsWoodsman
+  QuestTracker.Register(QuestManager.HeroEntity, l_1_0.QuestName, "Quest_QJ001_JobWoodsman")
+  l_1_0:StartNewEntityThread("QJ001_JobWoodsmanSign_Active_Ravenscar1", QJ001_JobWoodsmanSign)
+  l_1_0:StartNewEntityThread("QJ001_JobWoodsmanSign_Active_Ravenscar2", QJ001_JobWoodsmanSign)
+  l_1_0:StartNewEntityThread("QJ001_JobWoodsmanSign_Active_Brightwood1", QJ001_JobWoodsmanSign)
+end
+
+l_0_0.Init = l_0_1
+l_0_0 = QJ001_JobWoodsman
+l_0_1 = function(l_2_0)
+  Layers.ActivateLayer("QJ001_JobWoodsman_Ravenscar1")
+  Layers.ActivateLayer("QJ001_JobWoodsman_Axe_Ravenscar1")
+  Layers.ActivateLayer("QJ001_JobWoodsman_Ravenscar2")
+  Layers.ActivateLayer("QJ001_JobWoodsman_Axe_Ravenscar2")
+  Layers.ActivateLayer("QJ001_JobWoodsman_Brightwood1")
+  Layers.ActivateLayer("QJ001_JobWoodsman_Axe_Brightwood1")
+  repeat
+    if not l_2_0.MissionSucceeded and not l_2_0.MissionFailed then
+      coroutine.yield()
+    elseif l_2_0.MissionSucceeded then
+      QuestTracker.SetAsCompleted(QuestManager.HeroEntity, l_2_0.QuestName)
+    else
+      QuestTracker.SetAsFailed(QuestManager.HeroEntity, l_2_0.QuestName)
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+l_0_0.Update = l_0_1
+l_0_0 = QJ001_JobWoodsman
+l_0_1 = function(l_3_0)
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Ravenscar1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Axe_Ravenscar1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Active_Ravenscar1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Inactive_Ravenscar1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Ravenscar2")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Axe_Ravenscar2")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Active_Ravenscar2")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Inactive_Ravenscar2")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Brightwood1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Axe_Brightwood1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Active_Brightwood1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Inactive_Brightwood1")
+end
+
+l_0_0.OnTerminated = l_0_1
+l_0_0 = QJ001_JobWoodsman
+l_0_1 = function(l_4_0)
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Ravenscar1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Axe_Ravenscar1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Active_Ravenscar1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Inactive_Ravenscar1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Ravenscar2")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Axe_Ravenscar2")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Active_Ravenscar2")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Inactive_Ravenscar2")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Brightwood1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Axe_Brightwood1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Active_Brightwood1")
+  Layers.DeactivateLayer("QJ001_JobWoodsman_Inactive_Brightwood1")
+end
+
+l_0_0.OnExit = l_0_1
+l_0_0 = QuestManager
+l_0_0 = l_0_0.NewEntityThread
+l_0_1 = "QJ001_JobWoodsmanSign"
+l_0_0(l_0_1)
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_5_0)
+  l_5_0.CurrentState = 0
+end
+
+l_0_0.Init = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_6_0)
+  local sign = l_6_0.Entity:GetName()
+  for i = 1, #l_6_0.ParentQuest.JobWoodsman do
+    if sign == l_6_0.ParentQuest.JobWoodsman[i].Sign then
+      local exclusion_zone = l_6_0.ParentQuest.JobWoodsman[i].SignExclusionZone
+      ScriptFunction.SetExclusionZoneAsActive(exclusion_zone, true)
+      QuestTracker.SetQuestGiver(QuestManager.HeroEntity, l_6_0.ParentQuest.JobWoodsman[i].LayerName, l_6_0.Entity)
+      QuestTracker.SetObjectiveBreadcrumbRadius(QuestManager.HeroEntity, l_6_0.ParentQuest.JobWoodsman[i].LayerName, 2)
+      l_6_0.VillageName = l_6_0.ParentQuest.JobWoodsman[i].VillageName
+      l_6_0.GameflowLayer = l_6_0.ParentQuest.JobWoodsman[i].LayerName
+  else
+    end
+  end
+  repeat
+     -- DECOMPILER ERROR: unhandled construct in 'if'
+
+    if l_6_0.CurrentState == 0 and Targeting.GetTarget(QuestManager.HeroEntity) == l_6_0.Entity and Targeted.IsHeroWithinInteractionDistance(l_6_0.Entity) then
+      l_6_0.Village = OwnedEntity.GetOwner(l_6_0.Entity)
+      l_6_0.ParentQuest.Player = QuestManager.HeroEntity
+      repeat
+        if Targeting.GetTarget(l_6_0.ParentQuest.Player) == l_6_0.Entity then
+          Gameflow.CurrentRunningJobs[l_6_0.GameflowLayer] = true
+          if VillageCrimeManager.IsTownAlarmActive(l_6_0.Village) then
+            GUI.DisplayInfoBox("TEXT_QUEST_QJ001_TOWN_ALARM_10")
+          else
+            if l_6_0.ParentQuest.CurrentChoppingLevel < Gameflow.JobDifficulty[l_6_0.GameflowLayer] then
+              local star_rating = "<star-2.img>"
+              if Gameflow.JobDifficulty[l_6_0.GameflowLayer] == 5 then
+                star_rating = "<star-5.img>"
+              else
+                if Gameflow.JobDifficulty[l_6_0.GameflowLayer] == 4 then
+                  star_rating = "<star-4.img>"
+                else
+                  if Gameflow.JobDifficulty[l_6_0.GameflowLayer] == 3 then
+                    star_rating = "<star-3.img>"
+                  end
+                end
+              end
+              GUI.DisplayInfoBox("TEXT_QUEST_QJ001_INEXPERIENCED_10", star_rating)
+            else
+              if l_6_0.ParentQuest.GoldUntilPromotion <= 0 and l_6_0:ShowAcceptanceBoxWithHelp("AcceptJob", l_6_0.ParentQuest.CurrentAcceptanceTitle, "TEXT_QUEST_QJ001_A_10", "TEXT_QUEST_QJ001_Y_10", "TEXT_QUEST_QJ001_MAIN_10", l_6_0, "TEXT_QUEST_QJ001_HELP_10", Gameflow.TotalMoneyEarnedAsWoodsman, 0) then
+                Player.StartInteractionMode(l_6_0.ParentQuest.Player)
+                l_6_0:InitialiseEntities()
+                l_6_0.CurrentState = 1
+                do return end
+                do return end
+                if l_6_0:ShowAcceptanceBoxWithHelp("AcceptJob", l_6_0.ParentQuest.CurrentAcceptanceTitle, "TEXT_QUEST_QJ001_A_10", "TEXT_QUEST_QJ001_Y_10", "TEXT_QUEST_QJ001_MAIN_10", l_6_0, "TEXT_QUEST_QJ001_HELP_10", Gameflow.TotalMoneyEarnedAsWoodsman, l_6_0.ParentQuest.GoldUntilPromotion) then
+                  Player.StartInteractionMode(l_6_0.ParentQuest.Player)
+                  l_6_0:InitialiseEntities()
+                  l_6_0.CurrentState = 1
+              end
+            end
+          end
+          coroutine.yield()
+        else
+          Gameflow.CurrentRunningJobs[l_6_0.GameflowLayer] = false
+          do return end
+          if l_6_0.CurrentState == 1 then
+            Gameflow.CurrentRunningJobs[l_6_0.GameflowLayer] = true
+            InteractiveCutsceneGroupMind:PauseAnyCrimeAI()
+            l_6_0:HolsterWeapons()
+            GUI.FadeScreenOut(2)
+            ExpressionPerformer.InterruptExpression(QuestManager.HeroEntity)
+            l_6_0:WaitFor(function()
+              return GUI.IsScreenFullyFaded()
+                  end)
+            l_6_0:SetUpDummiesAndTeleport()
+            l_6_0.ParentQuest.PromotionTextRemoved = false
+            l_6_0:WaitForTimeInSeconds(1)
+            l_6_0.ParentQuest.SkillStat = Stats.GetSkill(GetPlayerHero())
+            Stats.ModifySkill(GetPlayerHero(), -l_6_0.ParentQuest.SkillStat)
+            l_6_0:SetIdleAnim()
+            l_6_0:SetClothing()
+            Player.SetLookingDuringInteractionMode(l_6_0.ParentQuest.Player, true)
+            local camera_target = ScriptFunction.TrackDummy(l_6_0.ParentQuest.Player, "Character.Focal.Mouth")
+             -- DECOMPILER ERROR: Confused about usage of registers!
+
+             -- DECOMPILER ERROR: Confused about usage of registers!
+
+             -- DECOMPILER ERROR: Confused about usage of registers!
+
+             -- DECOMPILER ERROR: Confused about usage of registers!
+
+             -- DECOMPILER ERROR: Confused about usage of registers!
+
+            l_6_0.ParentQuest:SetFixedCamera({source_entity = l_6_0:GetEntityWithName(l_6_0.ParentQuest.Camera, "marker"), target_position = camera_target, fov = 42, target_offset = -0.40000000596046, dof_focus_entity = l_6_0.ParentQuest.Player, dof_close = 7})
+            {source_entity = l_6_0:GetEntityWithName(l_6_0.ParentQuest.Camera, "marker"), target_position = camera_target, fov = 42, target_offset = -0.40000000596046, dof_focus_entity = l_6_0.ParentQuest.Player, dof_close = 7}.lock_hero, {source_entity = l_6_0:GetEntityWithName(l_6_0.ParentQuest.Camera, "marker"), target_position = camera_target, fov = 42, target_offset = -0.40000000596046, dof_focus_entity = l_6_0.ParentQuest.Player, dof_close = 7}.pan_angle, {source_entity = l_6_0:GetEntityWithName(l_6_0.ParentQuest.Camera, "marker"), target_position = camera_target, fov = 42, target_offset = -0.40000000596046, dof_focus_entity = l_6_0.ParentQuest.Player, dof_close = 7}.dof_strength, {source_entity = l_6_0:GetEntityWithName(l_6_0.ParentQuest.Camera, "marker"), target_position = camera_target, fov = 42, target_offset = -0.40000000596046, dof_focus_entity = l_6_0.ParentQuest.Player, dof_close = 7}.dof_size, {source_entity = l_6_0:GetEntityWithName(l_6_0.ParentQuest.Camera, "marker"), target_position = camera_target, fov = 42, target_offset = -0.40000000596046, dof_focus_entity = l_6_0.ParentQuest.Player, dof_close = 7}.dof_far = false, 0, CameraValues.DOFStrength.MAX, 1, 10
+            GUI.FadeScreenIn(2)
+            l_6_0:WaitFor(function()
+              return GUI.IsScreenFullyFadedIn()
+                  end)
+            l_6_0.CurrentState = 2
+          elseif l_6_0.CurrentState == 2 then
+            Multiplayer.SetHenchmanGhostMode(true)
+            Multiplayer.SetHenchmanHiddenMode(true)
+            print("WOODSMAN - MINIGAME START!")
+            l_6_0.WoodsmanMusic = SoundTools.PlayMusic("MUSIC_QJ001_WOODSMAN_JOB")
+            l_6_0:UpdateThresholdCounter()
+            GUI.DisplayInfoBoxParams({Name = "JobInstructions", ShowYButton = false, DisplayBoxStyle = EDisplayBoxStyle.DBS_QUEST_ACCEPTANCE, ShowAButton = false}, "TEXT_QUEST_QJ001_CONTROLS_10")
+            l_6_0.Multiplier = 1
+            GUI.SetCounter("JobMultiplier", "TEXT_QUEST_QJ001_GOLD_MULTIPLIER", l_6_0.Multiplier)
+            GUI.SetCounter("CurrentGold", "TEXT_QUEST_QJ001_CURRENT_GOLD", Money.Get(QuestManager.HeroEntity))
+            local start_loop = {Type = EScriptableAction.LOOP, OverrideLooking = true, Priority = EActionPriority.PRIORITY_IDLE, CanBeOverridenBySamePriority = true, IntoAction = {Type = EScriptableAction.PLAY_ANIMATION, Anim = "WoodsmanPickUpAxe", HasMovement = false}, LoopAction = {Type = EScriptableAction.PLAY_ANIMATION, Anim = "WoodsmanHoldAxeLoop", HasMovement = false}, NumLoops = 0}
+            local idle_loop = {Type = EScriptableAction.LOOP, OverrideLooking = true, Priority = EActionPriority.PRIORITY_IDLE, CanBeOverridenBySamePriority = true, LoopAction = {Type = EScriptableAction.PLAY_ANIMATION, Anim = "WoodsmanHoldAxeLoop", HasMovement = false}, NumLoops = 0}
+            Action.SetCurrentAction(l_6_0.ParentQuest.Player, start_loop)
+            repeat
+              if not l_6_0.TimesUp and not l_6_0.HasQuit then
+                l_6_0.MiniGameRunning = true
+                l_6_0:SetDifficultyLevel()
+                repeat
+                  if l_6_0.MiniGameRunning and not l_6_0.HasQuit then
+                    print("WOODSMAN - Waiting for game to complete")
+                    repeat
+                      if GUI.IsExpressionMeterActive() then
+                        coroutine.yield()
+                      else
+                        l_6_0.MiniGameRunning = false
+                        coroutine.yield()
+                      end
+                    else
+                      if GUI.IsExpressionMeterCanceled() then
+                        l_6_0.HasQuit = true
+                        l_6_0.MiniGameRunning = false
+                      else
+                        if GUI.IsExpressionHitTarget() then
+                          l_6_0.ParentQuest.OldChoppingWoodEntity = l_6_0.ParentQuest.ChoppingWoodEntity
+                          l_6_0.ParentQuest.ChoppingWoodEntity = Debug.CreateEntityAtPosition("Chopping_Wood", "QJ001_ChoppingWood", l_6_0.ParentQuest.WoodOnFloorPosition)
+                          ScriptFunction.SetFacingVector(l_6_0.ParentQuest.ChoppingWoodEntity, l_6_0.ParentQuest.WoodOnFloorRotation)
+                          local move_log_into_pos_action = {Type = EScriptableAction.MOVE_OBJECT, Anim = "WoodsmanChop", Target = l_6_0.ParentQuest.ChoppingWoodEntity, OverrideLooking = true, CanBeOverridenBySamePriority = true}
+                          Action.SetCurrentAction(l_6_0.ParentQuest.Player, move_log_into_pos_action)
+                          local chop_log_action = {Type = EScriptableAction.PLAY_ANIMATION, Anim = "Split", HasMovement = false}
+                          Action.SetCurrentAction(l_6_0.ParentQuest.OldChoppingWoodEntity, chop_log_action)
+                          l_6_0.ParentQuest.GoodChopsCount = l_6_0.ParentQuest.GoodChopsCount + 1
+                          l_6_0:Success()
+                          l_6_0:UpdateChain()
+                          l_6_0:UpdateCounters()
+                          l_6_0:WaitForTimeInSeconds(1)
+                          if l_6_0.ParentQuest.OldChoppingWoodEntity:IsAlive() then
+                            l_6_0.ParentQuest.OldChoppingWoodEntity:Destroy()
+                          end
+                          local is_b_posted, message_b = MessageEvents.IsMessageSentBy(EMessageEventType.MESSAGE_EVENT_INTERACTED_B_BUTTON, l_6_0.ParentQuest.Player, l_6_0.ParentQuest.LastMessageID_InteractedBButton)
+                          repeat
+                            do
+                              if Action.IsPerformingAnyAction(l_6_0.ParentQuest.Player) and not l_6_0.HasQuit then
+                                local is_b_posted, message_b = MessageEvents.IsMessageSentBy(EMessageEventType.MESSAGE_EVENT_INTERACTED_B_BUTTON, l_6_0.ParentQuest.Player, l_6_0.ParentQuest.LastMessageID_InteractedBButton)
+                                if is_b_posted then
+                                  l_6_0.ParentQuest.LastMessageID_InteractedBButton = message_b:GetID()
+                                  print("WOODSMAN - PRESSED B")
+                                  l_6_0.HasQuit = true
+                                end
+                                coroutine.yield()
+                              end
+                              do return end
+                            else
+                              print("WOODSMAN - FAILED CHOP")
+                              Action.SetCurrentAction(l_6_0.ParentQuest.Player, ActionPlayAnim("WoodsmanChopFail", true, true))
+                              l_6_0.ParentQuest.GoodChopChainCount = 0
+                              l_6_0:UpdateCounters()
+                              l_6_0:Failure()
+                              local is_b_posted, message_b = MessageEvents.IsMessageSentBy(EMessageEventType.MESSAGE_EVENT_INTERACTED_B_BUTTON, l_6_0.ParentQuest.Player, l_6_0.ParentQuest.LastMessageID_InteractedBButton)
+                              repeat
+                                if Action.IsPerformingAnyAction(l_6_0.ParentQuest.Player) and not l_6_0.HasQuit then
+                                  local is_b_posted, message_b = MessageEvents.IsMessageSentBy(EMessageEventType.MESSAGE_EVENT_INTERACTED_B_BUTTON, l_6_0.ParentQuest.Player, l_6_0.ParentQuest.LastMessageID_InteractedBButton)
+                                  if is_b_posted then
+                                    l_6_0.ParentQuest.LastMessageID_InteractedBButton = message_b:GetID()
+                                    print("WOODSMAN - PRESSED B")
+                                    l_6_0.HasQuit = true
+                                  end
+                                  coroutine.yield()
+                              end
+                            end
+                          end
+                          Action.SetCurrentAction(l_6_0.ParentQuest.Player, idle_loop)
+                          coroutine.yield()
+                        else
+                          GUI.RemoveDisplayBox("JobInstructions")
+                          SoundTools.StopMusic(l_6_0.WoodsmanMusic)
+                          l_6_0:RemoveCounters()
+                          GUI.TurnOffExpressionMeter()
+                          Multiplayer.SetHenchmanHiddenMode(false)
+                          Multiplayer.SetHenchmanGhostMode(false)
+                          l_6_0:RemoveScriptRules(EInteractiveCutsceneRule.CUTSCENE_RULE_NO_WEAPONS, EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+                          l_6_0.CurrentState = 3
+                        end
+                      elseif l_6_0.CurrentState == 3 then
+                        GUI.FadeScreenOut(2)
+                        l_6_0:WaitFor(function()
+                          return GUI.IsScreenFullyFaded()
+                                    end)
+                        l_6_0.ParentQuest:SetDefaultCamera()
+                        Action.FinishAllActions(l_6_0.ParentQuest.Player)
+                        Player.SetLookingDuringInteractionMode(l_6_0.ParentQuest.Player, false)
+                        Stats.ModifySkill(GetPlayerHero(), l_6_0.ParentQuest.SkillStat)
+                        l_6_0:RemoveClothing()
+                        l_6_0:DestroyDummiesAndTeleport()
+                        l_6_0:WaitForTimeInSeconds(1)
+                        GUI.FadeScreenIn(2)
+                        l_6_0:WaitFor(function()
+                          return GUI.IsScreenFullyFadedIn()
+                                    end)
+                        Player.StopInteractionMode(l_6_0.ParentQuest.Player)
+                        InteractiveCutsceneGroupMind:RestartAnyCrimeAI()
+                        coroutine.yield()
+                        l_6_0.CurrentState = 4
+                      elseif l_6_0.CurrentState == 4 then
+                        l_6_0:GossipRating()
+                        l_6_0:LevelUp()
+                        l_6_0:DisplayScore()
+                        l_6_0.TimesUp = false
+                        l_6_0.HasQuit = false
+                        l_6_0.CounterActivated = false
+                        l_6_0.ParentQuest.GoodChopsCount = 0
+                        l_6_0.ParentQuest.GoodChopChainCount = 0
+                        l_6_0.ParentQuest.HighestGoodChopChain = 0
+                        l_6_0.ParentQuest.MoneyEarned = 0
+                        l_6_0.CurrentState = 0
+                        Gameflow.CurrentRunningJobs[l_6_0.ParentQuest.LayerName] = false
+                        AutoSaveGame(true, true)
+                      end
+                    end
+                    coroutine.yield()
+                    do return end
+                     -- Warning: missing end command somewhere! Added here
+                  end
+                   -- Warning: missing end command somewhere! Added here
+                end
+                 -- Warning: missing end command somewhere! Added here
+              end
+               -- Warning: missing end command somewhere! Added here
+            end
+             -- Warning: missing end command somewhere! Added here
+          end
+           -- Warning: missing end command somewhere! Added here
+        end
+         -- Warning: missing end command somewhere! Added here
+      end
+       -- Warning: missing end command somewhere! Added here
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+l_0_0.CustomUpdate = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_7_0)
+  l_7_0.ParentQuest.JobLocation = l_7_0.Entity:GetName()
+  for i = 1, #l_7_0.ParentQuest.JobWoodsman do
+    if l_7_0.ParentQuest.JobLocation == l_7_0.ParentQuest.JobWoodsman[i].Sign then
+      l_7_0.ParentQuest.SignExclusionZone = l_7_0.ParentQuest.JobWoodsman[i].SignExclusionZone
+      l_7_0.ParentQuest.ChoppingBlock = l_7_0:GetEntityWithName(l_7_0.ParentQuest.JobWoodsman[i].ChoppingBlock, "object")
+      l_7_0.ParentQuest.DogChoppingLocation = l_7_0.ParentQuest.JobWoodsman[i].DogChoppingMarker
+      l_7_0.ParentQuest.SignLocation = l_7_0.ParentQuest.JobWoodsman[i].FinishedMarker
+      l_7_0.ParentQuest.DogSignLocation = l_7_0.ParentQuest.JobWoodsman[i].DogFinishedMarker
+      l_7_0.ParentQuest.PropAxe = l_7_0.ParentQuest.JobWoodsman[i].AxeLayer
+      l_7_0.ParentQuest.LayerName = l_7_0.ParentQuest.JobWoodsman[i].LayerName
+      l_7_0.ParentQuest.Camera = l_7_0.ParentQuest.JobWoodsman[i].Camera
+      l_7_0.ParentQuest.CameraExclusionZone = l_7_0.ParentQuest.JobWoodsman[i].CameraExclusionZone
+  else
+    end
+  end
+  Gameflow.CurrentRunningJobs[l_7_0.ParentQuest.LayerName] = true
+end
+
+l_0_0.InitialiseEntities = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_8_0)
+  Carrying.SheatheCharacterWeapon(l_8_0.ParentQuest.Player, true, true)
+  l_8_0:AddScriptRules(EInteractiveCutsceneRule.CUTSCENE_RULE_NO_WEAPONS, EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+end
+
+l_0_0.HolsterWeapons = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_9_0)
+  ScriptFunction.SetExclusionZoneAsActive(l_9_0.ParentQuest.CameraExclusionZone, true)
+  if GraphicAppearance.HasDummyObject(l_9_0.ParentQuest.ChoppingBlock, DummyObjects.PROP_POINT) then
+    l_9_0.ParentQuest.WoodOnBlockPosition = GraphicAppearance.GetDummyObjectPosition(l_9_0.ParentQuest.ChoppingBlock, DummyObjects.PROP_POINT, 1)
+    l_9_0.ParentQuest.WoodOnBlockRotation = GraphicAppearance.GetDummyObjectFacingDirection(l_9_0.ParentQuest.ChoppingBlock, DummyObjects.PROP_POINT, 1)
+    l_9_0.ParentQuest.WoodOnFloorPosition = GraphicAppearance.GetDummyObjectPosition(l_9_0.ParentQuest.ChoppingBlock, DummyObjects.PROP_POINT, 2)
+    l_9_0.ParentQuest.WoodOnFloorRotation = GraphicAppearance.GetDummyObjectFacingDirection(l_9_0.ParentQuest.ChoppingBlock, DummyObjects.PROP_POINT, 2)
+  end
+  if GraphicAppearance.HasDummyObject(l_9_0.ParentQuest.ChoppingBlock, DummyObjects.ACTION_GENERIC) then
+    local dummy_pos = GraphicAppearance.GetDummyObjectPosition(l_9_0.ParentQuest.ChoppingBlock, DummyObjects.ACTION_GENERIC, 0)
+    local dummy_facing = GraphicAppearance.GetDummyObjectFacingDirection(l_9_0.ParentQuest.ChoppingBlock, DummyObjects.ACTION_GENERIC, 0)
+    Physics.TeleportToPosition(l_9_0.ParentQuest.Player, dummy_pos)
+    ScriptFunction.SetFacingVector(l_9_0.ParentQuest.Player, dummy_facing)
+  end
+  do
+    local axe = Debug.CreateEntityAt("Axe", "WoodsmanAxe", l_9_0.ParentQuest.Player:GetPosition())
+    Carrying.PutEntityInSlot(l_9_0.ParentQuest.Player, DummyObjects.HAND_RIGHT, axe)
+    l_9_0.ParentQuest.ChoppingWoodEntity = Debug.CreateEntityAtPosition("Chopping_Wood", "QJ001_ChoppingWood", l_9_0.ParentQuest.WoodOnBlockPosition)
+    ScriptFunction.SetFacingVector(l_9_0.ParentQuest.ChoppingWoodEntity, l_9_0.ParentQuest.WoodOnBlockRotation)
+    if not Gameflow.MonksQuestDogBusy and QuestManager.DogEntity:IsAlive() then
+      ScriptFunction.DogSetSitAndReact(true)
+      repeat
+        if not ScriptFunction.DogIsSittingAndReacting() then
+          coroutine.yield()
+        else
+          local dogmarker = l_9_0:GetEntityWithName(l_9_0.ParentQuest.DogChoppingLocation, "marker")
+          Physics.TeleportToPosition(QuestManager.DogEntity, dogmarker:GetPosition())
+          ScriptFunction.SetFacingVector(QuestManager.DogEntity, Physics.GetFacingVector(dogmarker))
+          ScriptFunction.DogSetFocusEntity(axe)
+        end
+        Layers.DeactivateLayer(l_9_0.ParentQuest.PropAxe)
+      end
+       -- Warning: missing end command somewhere! Added here
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+l_0_0.SetUpDummiesAndTeleport = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_10_0)
+  local idle_loop = {Type = EScriptableAction.LOOP, OverrideLooking = true, Priority = EActionPriority.PRIORITY_IDLE, CanBeOverridenBySamePriority = true, LoopAction = {Type = EScriptableAction.PLAY_ANIMATION, Anim = "WoodsmanIdle", HasMovement = false}, NumLoops = 0}
+  Action.SetCurrentAction(l_10_0.ParentQuest.Player, idle_loop)
+end
+
+l_0_0.SetIdleAnim = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_11_0)
+  worn_items = AppearanceModifierManager.GetAllClothingItems(l_11_0.ParentQuest.Player)
+  for i,item in ipairs(worn_items) do
+    local record = worn_items[i]:GetRecord()
+    local item_record = record:GetRecord("InventoryItemComponent")
+    local category = item_record:GetEnum("Category")
+    if category == EInventoryCategory.EIC_CLOTHING_GLOVES then
+      l_11_0.PreJobGloves = record:GetID()
+      for i,item in (for generator) do
+      end
+      l_11_0.PreJobGloves = nil
+    end
+    if not AppearanceModifierManager.IsWearingItemOfType(l_11_0.ParentQuest.Player, "ObjectClothingGlovesPoorM") then
+      l_11_0.JobGloves = Inventory.AddItemOfType(l_11_0.ParentQuest.Player, "ObjectClothingGlovesPoorM")
+      AppearanceModifierManager.AddAndReplaceItemOfType(l_11_0.ParentQuest.Player, "ObjectClothingGlovesPoorM")
+      l_11_0.GivenGloves = true
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+l_0_0.SetClothing = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_12_0)
+  GUI.SetLowFillColour(0, 200, 0)
+  GUI.SetMedFillColour(200, 200, 0)
+  GUI.SetHighFillColour(200, 0, 0)
+  GUI.SetFillColourPercentages(18, 28)
+  local pip_speed_multiplier = 0.0024999999441206
+  local sweet_spot_variance = math.floor(l_12_0.Multiplier / 3)
+  local sweet_spot_max = 36
+  if sweet_spot_variance > 4 then
+    sweet_spot_variance = 4
+  end
+  local sweet_spot_position = 50 + 8 * (GetRandomNumber(sweet_spot_variance * 2 + 1) - (sweet_spot_variance + 1))
+  if l_12_0.ParentQuest.ChoppingLevel == 1 then
+    GUI.TurnOnExpressionMeter()
+    GUI.TurnOnExpressionDynamicFill(10, sweet_spot_max, sweet_spot_position, 0.0060000000521541)
+    GUI.StartExpressionMeterPip((GetRandomNumber(2) - 1) * 100, 0.050000000745058 + pip_speed_multiplier * l_12_0.Multiplier, true)
+  else
+    if l_12_0.ParentQuest.ChoppingLevel == 2 then
+      GUI.TurnOnExpressionMeter()
+      GUI.TurnOnExpressionDynamicFill(10, sweet_spot_max, sweet_spot_position, 0.0060000000521541)
+      GUI.StartExpressionMeterPip((GetRandomNumber(2) - 1) * 100, 0.059999998658895 + pip_speed_multiplier * l_12_0.Multiplier, true)
+    else
+      if l_12_0.ParentQuest.ChoppingLevel == 3 then
+        GUI.TurnOnExpressionMeter()
+        GUI.TurnOnExpressionDynamicFill(10, sweet_spot_max, sweet_spot_position, 0.0060000000521541)
+        GUI.StartExpressionMeterPip((GetRandomNumber(2) - 1) * 100, 0.070000000298023 + pip_speed_multiplier * l_12_0.Multiplier, true)
+      else
+        if l_12_0.ParentQuest.ChoppingLevel == 4 then
+          GUI.TurnOnExpressionMeter()
+          GUI.TurnOnExpressionDynamicFill(10, sweet_spot_max, sweet_spot_position, 0.0060000000521541)
+          GUI.StartExpressionMeterPip((GetRandomNumber(2) - 1) * 100, 0.079999998211861 + pip_speed_multiplier * l_12_0.Multiplier, true)
+        else
+          if l_12_0.ParentQuest.ChoppingLevel == 5 then
+            GUI.TurnOnExpressionMeter()
+            GUI.TurnOnExpressionDynamicFill(10, sweet_spot_max, sweet_spot_position, 0.0060000000521541)
+            GUI.StartExpressionMeterPip((GetRandomNumber(2) - 1) * 100, 0.090000003576279 + pip_speed_multiplier * l_12_0.Multiplier, true)
+          end
+        end
+      end
+    end
+  end
+end
+
+l_0_0.SetDifficultyLevel = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_13_0)
+  print("WOODSMAN - PLACE A NEW LOG")
+  l_13_0:WaitForTimeInSeconds(0.69999998807907)
+  Debug.CreateEntityAtPosition("FX_Woodcutter_Strike", "effect", l_13_0.ParentQuest.WoodOnBlockPosition)
+end
+
+l_0_0.Success = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_14_0)
+  print("WOODSMAN - MISS PARTICLES")
+  l_14_0:WaitForFrames(0.69999998807907)
+  if not Gameflow.MonksQuestDogBusy then
+    ScriptFunction.DogDoSitAndReactResponse(EDogSitAndReactResponse.DOG_SIT_AND_REACT_RESPONSE_NEGATIVE)
+  end
+  l_14_0.Multiplier = 1
+  GUI.SetCounter("JobMultiplier", "TEXT_QUEST_QJ001_GOLD_MULTIPLIER", l_14_0.Multiplier)
+end
+
+l_0_0.Failure = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_15_0, l_15_1)
+  local frames_left = Timing.GetTickRate() * l_15_1
+  repeat
+    if frames_left > 0 then
+      frames_left = frames_left - 1
+      coroutine.yield()
+    else
+       -- Warning: missing end command somewhere! Added here
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+l_0_0.WaitForFrames = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_16_0)
+  l_16_0.ParentQuest.GoodChopChainCount = l_16_0.ParentQuest.GoodChopChainCount + 1
+  if l_16_0.ParentQuest.HighestGoodChopChain < l_16_0.ParentQuest.GoodChopChainCount then
+    l_16_0.ParentQuest.HighestGoodChopChain = l_16_0.ParentQuest.GoodChopChainCount
+  end
+  local NewMultiplier = math.floor(l_16_0.ParentQuest.GoodChopChainCount / 10) + 1
+  local multiplier_max = 15
+  if multiplier_max < NewMultiplier then
+    NewMultiplier = multiplier_max
+  end
+  if l_16_0.Multiplier < NewMultiplier then
+    l_16_0.Multiplier = NewMultiplier
+    if not Gameflow.MonksQuestDogBusy then
+      ScriptFunction.DogDoSitAndReactResponse(EDogSitAndReactResponse.DOG_SIT_AND_REACT_RESPONSE_POSITIVE)
+    end
+  end
+  l_16_0:UpdateMoney()
+  l_16_0.Multiplier = NewMultiplier
+  GUI.SetCounter("JobMultiplier", "TEXT_QUEST_QJ001_GOLD_MULTIPLIER", l_16_0.Multiplier)
+  if l_16_0.ParentQuest.HighestGoodChopChain == 10 and not Gameflow.UnlockedWorkhorseAchievement then
+    Stats.UnlockAchievement(QuestManager.HeroEntity, EAchievementType.ACHIEVEMENT_WORKHORSE)
+    Gameflow.UnlockedWorkhorseAchievement = true
+  end
+end
+
+l_0_0.UpdateChain = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_17_0)
+  local chop_rating = GUI.GetFillPercent() - 10
+  if chop_rating >= 5 then
+    chop_rating = 5 / chop_rating
+  else
+    chop_rating = 1
+  end
+  local base_amount = 3
+  local money_this_chop = math.ceil(base_amount * (l_17_0.ParentQuest.ChoppingLevel * l_17_0.ParentQuest.ChoppingLevel) * l_17_0.Multiplier * chop_rating)
+  l_17_0.ParentQuest.MoneyEarned = l_17_0.ParentQuest.MoneyEarned + money_this_chop
+  Money.Modify(QuestManager.HeroEntity, money_this_chop)
+  l_17_0.ParentQuest.GoldUntilPromotion = l_17_0.ParentQuest.NextThreshold - (l_17_0.ParentQuest.MoneyEarned + Gameflow.TotalMoneyEarnedAsWoodsman)
+  l_17_0:UpdateThresholdCounter()
+end
+
+l_0_0.UpdateMoney = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_18_0)
+  if l_18_0.ParentQuest.CurrentChoppingLevel < 5 then
+    if l_18_0.ParentQuest.GoldUntilPromotion > 0 then
+      GUI.SetCounter("MoneyRequiredForPromotion", "TEXT_QUEST_QJ001_COUNTER_MONEY_10", l_18_0.ParentQuest.GoldUntilPromotion)
+    else
+      if l_18_0.ParentQuest.PromotionTextRemoved ~= true then
+        GUI.SetCounter("MoneyRequiredForPromotion", "TEXT_QUEST_QJ001_COUNTER_MONEY_10", 0)
+        GUI.RemoveCounter("MoneyRequiredForPromotion")
+        GUI.RemoveDisplayBox("JobInstructions")
+        Sound.PlayEvent(QuestManager.HeroEntity, "MUSIC_EPILOGUE_FANFARE", "PROMOTION_SOUND")
+        GUI.DisplayInfoBoxParams({Name = "JobInstructions", ShowYButton = false, DisplayBoxStyle = EDisplayBoxStyle.DBS_QUEST_ACCEPTANCE, ShowAButton = false}, "TEXT_JOB_PROMOTED")
+        l_18_0.ParentQuest.PromotionTextRemoved = true
+      end
+    end
+  end
+  GUI.SetCounter("CurrentGold", "TEXT_QUEST_QJ001_CURRENT_GOLD", Money.Get(QuestManager.HeroEntity))
+end
+
+l_0_0.UpdateThresholdCounter = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_19_0)
+  if l_19_0.ParentQuest.GoodChopChainCount > 1 then
+    GUI.SetCounter("GoodChopChain", "TEXT_QUEST_QJ001_COUNTER_CHAIN_10", l_19_0.ParentQuest.GoodChopChainCount)
+    l_19_0.CounterActivated = true
+    print("WOODSMAN - COUNTER")
+  elseif l_19_0.CounterActivated and l_19_0.ParentQuest.GoodChopChainCount == 0 then
+    GUI.RemoveCounter("GoodChopChain")
+    l_19_0.CounterActivated = false
+    print("WOODSMAN - NO COUNTER")
+  end
+end
+
+l_0_0.UpdateCounters = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_20_0)
+  GUI.RemoveCounter("MoneyRequiredForPromotion")
+  if l_20_0.CounterActivated then
+    GUI.RemoveCounter("GoodChopChain")
+    print("WOODSMAN - END NO COUNTER")
+  end
+  GUI.RemoveCounter("JobMultiplier")
+  GUI.RemoveCounter("CurrentGold")
+end
+
+l_0_0.RemoveCounters = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_21_0)
+  if l_21_0.GivenGloves and AppearanceModifierManager.IsWearingItemOfType(l_21_0.ParentQuest.Player, "ObjectClothingGlovesPoorM") then
+    if l_21_0.PreJobGloves then
+      AppearanceModifierManager.AddAndReplaceItemOfRecordID(l_21_0.ParentQuest.Player, l_21_0.PreJobGloves)
+    else
+      AppearanceModifierManager.RemoveItemOfType(l_21_0.ParentQuest.Player, "ObjectClothingGlovesPoorM")
+    end
+    Inventory.RemoveItem(l_21_0.ParentQuest.Player, l_21_0.JobGloves)
+    l_21_0.GivenGloves = false
+  end
+end
+
+l_0_0.RemoveClothing = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_22_0)
+  ScriptFunction.SetExclusionZoneAsActive(l_22_0.ParentQuest.CameraExclusionZone, false)
+  local axe = Carrying.RemoveEntityFromSlot(l_22_0.ParentQuest.Player, DummyObjects.HAND_RIGHT)
+  if axe:IsAlive() then
+    axe:Destroy()
+  end
+  Layers.ActivateLayer(l_22_0.ParentQuest.PropAxe)
+  if l_22_0.ParentQuest.ChoppingWoodEntity and l_22_0.ParentQuest.ChoppingWoodEntity:IsAlive() then
+    l_22_0.ParentQuest.ChoppingWoodEntity:Destroy()
+  end
+  if l_22_0.ParentQuest.OldChoppingWoodEntity and l_22_0.ParentQuest.OldChoppingWoodEntity:IsAlive() then
+    l_22_0.ParentQuest.OldChoppingWoodEntity:Destroy()
+  end
+  l_22_0:MoveAndRotateEntityToMarkerNamed(l_22_0.ParentQuest.Player, l_22_0.ParentQuest.SignLocation, true)
+  if not Gameflow.MonksQuestDogBusy and QuestManager.DogEntity:IsAlive() then
+    local dogmarker = l_22_0:GetEntityWithName(l_22_0.ParentQuest.DogSignLocation, "marker")
+    Physics.TeleportToPosition(QuestManager.DogEntity, dogmarker:GetPosition())
+    ScriptFunction.SetFacingVector(QuestManager.DogEntity, Physics.GetFacingVector(dogmarker))
+    ScriptFunction.DogResetFocusEntity()
+    ScriptFunction.DogSetSitAndReact(false)
+  end
+end
+
+l_0_0.DestroyDummiesAndTeleport = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_23_0)
+  if GetTableSize(Gameflow.RepeatableQuestShutdown) > 0 then
+    for i,JobsShutdown in pairs(Gameflow.RepeatableQuestShutdown) do
+      if JobsShutdown == l_23_0.ParentQuest.LayerName then
+        Layers.DeactivateLayer(l_23_0.ParentQuest.LayerName)
+      end
+    end
+  end
+end
+
+l_0_0.IsJobStillActive = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_24_0)
+  if l_24_0.ParentQuest.GoodChopsCount > 6 then
+    Gossip.DeactivateGossipItem("JobsGossip", "Job_Woodcutter_DoneBad")
+    Gossip.ActivateGossipItem("JobsGossip", "Job_Woodcutter_DoneGood")
+  else
+    Gossip.DeactivateGossipItem("JobsGossip", "Job_Woodcutter_DoneGood")
+    Gossip.ActivateGossipItem("JobsGossip", "Job_Woodcutter_DoneBad")
+  end
+end
+
+l_0_0.GossipRating = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_25_0)
+  if l_25_0.VillageName then
+    ScriptFunction.AdjustVillageWealth(l_25_0.VillageName, l_25_0.ParentQuest.MoneyEarned * 0.0010000000474975)
+  end
+  Gameflow.TotalMoneyEarnedAsWoodsman = Gameflow.TotalMoneyEarnedAsWoodsman + l_25_0.ParentQuest.MoneyEarned
+  Stats.ModifyTrackedStat(GetPlayerHero(), ETrackedStatType.STAT_MONEY_MADE_JOB_WOODSMAN, l_25_0.ParentQuest.MoneyEarned)
+  if l_25_0.ParentQuest.ThresholdLevel5 <= Gameflow.TotalMoneyEarnedAsWoodsman then
+    l_25_0.ParentQuest.CurrentChoppingLevel = 5
+    l_25_0.ParentQuest.CurrentStarRating = "<star-5.img>"
+    l_25_0.ParentQuest.CurrentAcceptanceTitle = "TEXT_QUEST_QJ001_LEVEL_5"
+  else
+    if l_25_0.ParentQuest.ThresholdLevel4 <= Gameflow.TotalMoneyEarnedAsWoodsman then
+      l_25_0.ParentQuest.CurrentChoppingLevel = 4
+      l_25_0.ParentQuest.CurrentStarRating = "<star-4.img>"
+      l_25_0.ParentQuest.CurrentAcceptanceTitle = "TEXT_QUEST_QJ001_LEVEL_4"
+      l_25_0.ParentQuest.NextThreshold = l_25_0.ParentQuest.ThresholdLevel5
+    else
+      if l_25_0.ParentQuest.ThresholdLevel3 <= Gameflow.TotalMoneyEarnedAsWoodsman then
+        l_25_0.ParentQuest.CurrentChoppingLevel = 3
+        l_25_0.ParentQuest.CurrentStarRating = "<star-3.img>"
+        l_25_0.ParentQuest.CurrentAcceptanceTitle = "TEXT_QUEST_QJ001_LEVEL_3"
+        l_25_0.ParentQuest.NextThreshold = l_25_0.ParentQuest.ThresholdLevel4
+      else
+        if l_25_0.ParentQuest.ThresholdLevel2 <= Gameflow.TotalMoneyEarnedAsWoodsman then
+          l_25_0.ParentQuest.CurrentChoppingLevel = 2
+          l_25_0.ParentQuest.CurrentStarRating = "<star-2.img>"
+          l_25_0.ParentQuest.CurrentAcceptanceTitle = "TEXT_QUEST_QJ001_LEVEL_2"
+          l_25_0.ParentQuest.NextThreshold = l_25_0.ParentQuest.ThresholdLevel3
+        end
+      end
+    end
+  end
+  l_25_0.ParentQuest.GoldUntilPromotion = l_25_0.ParentQuest.NextThreshold - Gameflow.TotalMoneyEarnedAsWoodsman
+  if l_25_0.ParentQuest.ChoppingLevel < l_25_0.ParentQuest.CurrentChoppingLevel then
+    Stats.ModifyPurity(QuestManager.HeroEntity, 50)
+    l_25_0.ParentQuest.ChoppingLevel = l_25_0.ParentQuest.CurrentChoppingLevel
+    Gameflow.JobDifficulty[l_25_0.GameflowLayer] = l_25_0.ParentQuest.CurrentChoppingLevel
+    QuestTracker.SetRating(QuestManager.HeroEntity, l_25_0.GameflowLayer, Gameflow.JobDifficulty[l_25_0.GameflowLayer])
+    GUI.DisplayMessageBox("TEXT_QUEST_QJ001_PROMOTION_10", l_25_0.ParentQuest.CurrentStarRating)
+    print("WOODSMAN - PROMOTION")
+    coroutine.yield()
+  end
+  if l_25_0.ParentQuest.CurrentChoppingLevel == 5 and not Gameflow.UnlockedArtisanAchievement then
+    Stats.UnlockAchievement(QuestManager.HeroEntity, EAchievementType.ACHIEVEMENT_ARTISAN)
+    Gameflow.UnlockedArtisanAchievement = true
+  end
+end
+
+l_0_0.LevelUp = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_26_0)
+  local money_until_promotion = l_26_0.ParentQuest.NextThreshold - Gameflow.TotalMoneyEarnedAsWoodsman
+  if money_until_promotion < 0 then
+    money_until_promotion = 0
+  end
+  GUI.TurnOnMiniGameComplete("TEXT_QUEST_QJ001_COMPLETE_TITLE_10", "TEXT_QUEST_QJ001_CONTINUE_10")
+  GUI.AddAmountToMiniGameComplete("TEXT_QUEST_QJ001_GOLD_10", l_26_0.ParentQuest.MoneyEarned)
+  GUI.AddAmountToMiniGameComplete("TEXT_QUEST_QJ001_CHAIN_10", l_26_0.ParentQuest.HighestGoodChopChain)
+  GUI.AddAmountToMiniGameComplete("TEXT_QUEST_QJ001_CHOPS_10", l_26_0.ParentQuest.GoodChopsCount)
+  GUI.AddAmountToMiniGameComplete("TEXT_QUEST_QJ001_TOTAL_GOLD_10", Gameflow.TotalMoneyEarnedAsWoodsman)
+  GUI.AddAmountToMiniGameComplete("TEXT_QUEST_QJ001_GOLD_PROMOTION_10", money_until_promotion)
+end
+
+l_0_0.DisplayScore = l_0_1
+l_0_0 = QJ001_JobWoodsmanSign
+l_0_1 = function(l_27_0)
+  Gameflow.CurrentRunningJobs[l_27_0.GameflowLayer] = false
+end
+
+l_0_0.OnLevelUnload = l_0_1
+

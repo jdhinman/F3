@@ -1,0 +1,234 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Models, Textures and BNKs, oh my! 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Models, Textures and BNKs, oh my! (Just a casual enquiry) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Models, Textures and BNKs, oh my! 
+ Sun, 25 July 2021 12:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello there, now I apologise as this is only a little bit Fable-3-modding-related, but today I was having a tinker with some of the Fable 2 modding tools - specifically the BNK Extract and Mixer, plus seeing if the MDL plugin for Blender worked with the Fable 2 mdls (spoiler alert, it didn't but then I wasn't really expecting it to) 
+But it got me wondering if anyone has been able to make any progress on the files for Fable 2? 
+I had a stumbling block with the BNK Mixer, which just wouldn't work, as I was trying to recombine the models bank with the corresponding headers bank, assuming that'll have the effect I want... 
+Anyways, there is a FragmentLib file that is needed to properly use the BNK Mixer which may be where the problem is, so if anyone has that kicking around it'd be a great help 
+ 
+Hope everyone's keeping well and reasonably sane! 
+ 
+ 
+ [Updated on: Sun, 25 July 2021 12:10]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Models, Textures and BNKs, oh my! 
+ Mon, 14 February 2022 05:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Garanor1 
+ Messages: 3 Registered: February 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ did you manage to do anything with fable 3? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ How do I edit the Princess model then import her back into Fable to play as?? 
+
+ 
+ Next Topic: 
+ Damage and Monsters 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:10 PDT 2026 
+
+ Total time taken to generate the page: 0.05708 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

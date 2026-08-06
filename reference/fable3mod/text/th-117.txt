@@ -1,0 +1,433 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » HeroTrackers.lua 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » HeroTrackers.lua 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ HeroTrackers.lua 
+ Tue, 12 November 2013 08:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ There were only a few differences from Fable 2. These were initially part of Fable 2's gameflow script that happened to be plain text. ;) 
+ 
+This tracker is primarily for experience tracking and specialFX. The playerdeathtracker.lua is vastly different to Fable 2 because of the kingship and renown changes. 
+ 
+ 
+ 
+ Attachment: herotrackers.lua 
+ 
+ (Size: 9.87KB, Downloaded 3092 times) 
+ 
+ 
+ 
+ [Updated on: Tue, 12 November 2013 10:48]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: HeroTrackers.lua 
+ Fri, 24 October 2014 05:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've replaced the original script using the xlive patch modding method. But I can't seem to find any difference in the game. What exactly does this mod do? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: HeroTrackers.lua 
+ Wed, 29 October 2014 09:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Phnx wrote on Fri, 24 October 2014 05:14 I've replaced the original script using the xlive patch modding method. But I can't seem to find any difference in the game. What exactly does this mod do? 
+ 
+There are no changes. I rewrote it for others to change. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: HeroTrackers.lua 
+ Wed, 29 October 2014 09:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Aha, I see. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: HeroTrackers.lua 
+ Wed, 30 September 2015 06:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I read through it and I'm trying to come up with any useful ways to mod it. I suppose you might be able to give yourself a little more XP (but, honestly, you get so stinkin' much XP in this game that it's already very easy). On that note, you might try to give less XP... 
+ 
+But the most fun (I guess) mod I can imagine right now would be to figure out a way to mod: 
+ 
+ Toggle spoiler 
+ local xp_type = message:GetExtraDataAsNumber()
+
+ if xp_type == EExperienceType.EXPERIENCE_STRENGTH then
+ Debug.CreateEntityAt("FX_PotionEffect_Experience_Strength", "FX", QuestManager.HeroEntity:GetPosition())
+ elseif xp_type == EExperienceType.EXPERIENCE_SKILL then
+ Debug.CreateEntityAt("FX_PotionEffect_Experience_Skill", "FX", QuestManager.HeroEntity:GetPosition())
+ elseif xp_type == EExperienceType.EXPERIENCE_WILL then
+ Debug.CreateEntityAt("FX_PotionEffect_Experience_Will", "FX", QuestManager.HeroEntity:GetPosition())
+ end
+ 
+
+ 
+ 
+perhaps by swapping Debug.CreateEntityAt("FX_PotionEffect_Experience_Strength", "FX", QuestManager.HeroEntity:GetPosition()) 
+ , etc., with a fun animation sequence (similar to Keshire's vestigial F2 code). For "Strength", I might use "Thumbsup", "Flex", and/or "BloodLustRoar". 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Control scarring? 
+
+ 
+ Next Topic: 
+ How to create a sniper pistol? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:40 PDT 2026 
+
+ Total time taken to generate the page: 0.05465 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

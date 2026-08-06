@@ -1,0 +1,415 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Dlc purchased through steam 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Dlc purchased through steam 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Dlc purchased through steam 
+ Tue, 14 March 2017 17:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Weecoco 
+ Messages: 3 Registered: March 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I don't know how but I was able to purchase the fable 3 dlc through steam, I know it's real because it shows up in my library and everything 
+But refuses to show up in game I just wondered how do I get it to work I have removed GFWL for obvious reasons 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Dlc purchased through steam 
+ Sat, 18 March 2017 01:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ just put files in the right place 
+ http://fable3mod.com/forums/index.php?t=msg&th=234&s tart=0 
+and use this 
+ http://fable3mod.com/forums/index.php?t=msg&th=102&g oto=610&#msg_610 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Dlc purchased through steam 
+ Sat, 18 March 2017 05:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Weecoco 
+ Messages: 3 Registered: March 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ where does the dlc install by default i cant find it 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Dlc purchased through steam 
+ Sat, 18 March 2017 10:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ maybe? 
+%USERPROFILE%\AppData\Local\Microsoft\XLive\DLC 
+but steam probably install it somewhere else, I don't know 
+you can just download archives, look post above at my last link 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Dlc purchased through steam 
+ Wed, 21 June 2017 01:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Cleverlands 
+ Messages: 1 Registered: June 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sat, 18 March 2017 10:23 maybe? 
+%USERPROFILE%\AppData\Local\Microsoft\XLive\DLC 
+but steam probably install it somewhere else, I don't know 
+you can just download archives, look post above at my last link 
+ 
+That didn't work for me. 
+ 
+ These now famous anti snoring devices work like a charm.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ My Script file is failing to run 
+
+ 
+ Next Topic: 
+ How to use scripts if dlcs are installed 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:41 PDT 2026 
+
+ Total time taken to generate the page: 0.04939 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

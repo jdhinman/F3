@@ -1,0 +1,2125 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Lua decompiler? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Lua decompiler? (Is there one that works with Fable III Lua files?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Lua decompiler? 
+ Sat, 14 September 2013 18:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So, I tried to tinker around with some of the .lua files... But then I remembered my freeware hex editor sucks ass, and I'm not any good with Hex in the first place. I have some small measure of competence with Lua, but I have no means of reading the files IN Lua. So... Is there any good decompiler or similar program that will allow me to view quest scripts and the like in plaintext? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Sat, 14 September 2013 22:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ there is no working decompiler yet 
+but we have disassembler 
+you need lua 5 
+ lua.exe ChunkSpy_kvm.lua "scripts\ai\aisetupscript.lua" -o "scripts\ai\aisetupscript.txt" 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Sun, 15 September 2013 05:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ya a decompiler is problematic. This isn't vanilla LUA we're dealing with (Surpise surprise). It's primarily KoreVM with a bunch of other plugins added into it. Like LUA++ and Pluto. 
+ 
+We have a disassembler, but there's still a few quirks that need to be ironed out before someone can take that and turn it into a decompiler. Plus we need someone that's capable of that. And even if I had that skillset I'm really busy with work. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Sun, 15 September 2013 07:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Welp, thanks anyway, then. I guess I'll just have to either wait, or figure out what the fuck I'm doing with a hex editor. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Sun, 15 September 2013 11:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire 
+Can I post some of the decompiled scripts? Just for modding and for examples. 
+I'm not sure because of rule number 4 
+ Quote: Posting of original game files is strictly prohibited. 
+they certainly original, but re-written by my hands, so... 
+basically I decompiled scripts without functions, they are quite simple (if not consider a lot of copy-paste operation) 
+functions just starts my brain to blow up 
+btw, can you help me with two of them? 
+ 
+first 
+ai\combatstyles\uniquecombatstyles.lua 
+ 
+0450 0000000C [0268] getglobal 0 0 ; CombatStyles
+0454 00500086 [0269] getfield_r1 0 0 80 ; Dog
+0458 01000078 [0270] closure 1 0 ; 0 upvalues
+045C 0001BE1E [0271] setfield 0 95 1 ; TargetScoringFunction
+ 
+ 
+ 
+
+6DA6 ** function [0] definition (level 2)
+ ** start of function **
+ source name: (none)
+6DAA E3000000 line defined (227)
+6DAE FA000000 last line defined (250)
+6DB2 00 nups (0)
+6DB3 02 numparams (2)
+6DB4 00 is_vararg (0)
+6DB5 08 maxstacksize (8)
+ * code:
+6DB6 25000000 sizecode (37)
+6DBA 02000032 [01] loadk 2 0 ; 1
+6DBE 0301000C [02] getglobal 3 1 ; Dog
+6DC2 03020686 [03] getfield_r1 3 3 2 ; GetMaster
+6DC6 04030000 [04] getfield 4 0 3 ; Combatant
+6DCA 03020404 [05] call_i 3 2 2 
+6DCE 04040710 [06] self 4 3 260 ; "IsAlive"
+6DD2 0402047E [07] call_i_r1 4 2 2 
+6DD6 04000002 [08] test 4 0 ; to [10] if true
+6DDA 00120039 [09] jmp 19 ; to [29]
+6DDE 0405000C [10] getglobal 4 5 ; Carrying
+6DE2 04060886 [11] getfield_r1 4 4 6 ; IsCarryingRangedWeapon
+6DE6 0500060E [12] move 5 3 
+6DEA 04020404 [13] call_i 4 2 2 
+6DEE 0500001A [14] loadbool 5 0 0 ; false
+6DF2 0605000C [15] getglobal 6 5 ; Carrying
+6DF6 06070C86 [16] getfield_r1 6 6 7 ; IsAvailable
+6DFA 0700020E [17] move 7 1 
+6DFE 06020404 [18] call_i 6 2 2 
+6E02 06000002 [19] test 6 0 ; to [21] if true
+6E06 00040039 [20] jmp 5 ; to [26]
+6E0A 0605000C [21] getglobal 6 5 ; Carrying
+6E0E 06060C86 [22] getfield_r1 6 6 6 ; IsCarryingRangedWeapon
+6E12 0700020E [23] move 7 1 
+6E16 06020404 [24] call_i 6 2 2 
+6E1A 05000C0E [25] move 5 6 
+6E1E 01050808 [26] eq 1 4 5 ; to [28] if false
+6E22 00000039 [27] jmp 1 ; to [29]
+6E26 0208054C [28] mul 2 2 264 ; 5
+6E2A 0409000C [29] getglobal 4 9 ; GUI
+6E2E 040A0886 [30] getfield_r1 4 4 10 ; IsEntityOnScreen
+6E32 0500020E [31] move 5 1 
+6E36 04020404 [32] call_i 4 2 2 
+6E3A 04000002 [33] test 4 0 ; to [35] if true
+6E3E 00000039 [34] jmp 1 ; to [36]
+6E42 020B054C [35] mul 2 2 267 ; 3
+6E46 02000412 [36] return 2 2 
+6E4A 00000212 [37] return 0 1 
+ * constants:
+6E4E 0C000000 sizek (12)
+6E52 03 const type 3
+6E53 0000803F const [0]: (1)
+6E57 04 const type 4
+ const [1]: "Dog"
+6E60 04 const type 4
+ const [2]: "GetMaster"
+6E6F 04 const type 4
+ const [3]: "Combatant"
+6E7E 04 const type 4
+ const [4]: "IsAlive"
+6E8B 04 const type 4
+ const [5]: "Carrying"
+6E99 04 const type 4
+ const [6]: "IsCarryingRangedWeapon"
+6EB5 04 const type 4
+ const [7]: "IsAvailable"
+6EC6 03 const type 3
+6EC7 0000A040 const [8]: (5)
+6ECB 04 const type 4
+ const [9]: "GUI"
+6ED4 04 const type 4
+ const [10]: "IsEntityOnScreen"
+6EEA 03 const type 3
+6EEB 00004040 const [11]: (3)
+ * functions:
+6EEF 00000000 sizep (0)
+ * lines:
+6EF3 00000000 sizelineinfo (0)
+ [pc] (line)
+ * locals:
+6EF7 00000000 sizelocvars (0)
+ * upvalues:
+6EFB 00000000 sizeupvalues (0)
+ ** end of function **
+ 
+ 
+ 
+and second (not sure if that script used at all) 
+ai\combatstyles\fable2legacycombatstyles.lua 
+ 
+368C 02040620 [3483] settable_s 2 3 4 
+3690 03790132 [3484] loadk 3 377 ; "MoveFunction"
+3694 0400000C [3485] getglobal 4 0 ; CombatStyles
+3698 05680132 [3486] loadk 5 360 ; "LuciensSoldier"
+369C 04050814 [3487] gettable_s 4 4 5 
+36A0 05790132 [3488] loadk 5 377 ; "MoveFunction"
+36A4 04050814 [3489] gettable_s 4 4 5 
+...
+3620 0000000C [3456] getglobal 0 0 ; CombatStyles
+3624 01680132 [3457] loadk 1 360 ; "LuciensSoldier"
+3628 00010014 [3458] gettable_s 0 0 1 
+362C 01790132 [3459] loadk 1 377 ; "MoveFunction"
+3630 02000078 [3460] closure 2 0 ; 0 upvalues
+3634 00020220 [3461] settable_s 0 1 2
+ 
+ 
+ 
+6393 ** function [0] definition (level 2)
+ ** start of function **
+ source name: (none)
+6397 240B0000 line defined (2852)
+639B 420B0000 last line defined (2882)
+639F 00 nups (0)
+63A0 03 numparams (3)
+63A1 00 is_vararg (0)
+63A2 08 maxstacksize (8)
+ * code:
+63A3 30000000 sizecode (48)
+63A7 0302005C [01] newtable 3 0 2 ; array=0, hash=2
+63AB 0401000C [02] getglobal 4 1 ; ENavigationSpeed
+63AF 04020886 [03] getfield_r1 4 4 2 ; NAV_SPEED_SPRINT
+63B3 0304001E [04] setfield 3 0 4 ; speed
+63B7 0304071E [05] setfield 3 3 260 ; reset_constraints false
+63BB 02000002 [06] test 2 0 ; to [8] if true
+63BF 00050039 [07] jmp 6 ; to [14]
+63C3 04050110 [08] self 4 0 261 ; "SetNavigationConstraints"
+63C7 0601005C [09] newtable 6 0 1 ; array=0, hash=1
+63CB 07070000 [10] getfield 7 0 7 ; Target
+63CF 06070C1E [11] setfield 6 6 7 ; destination_target_entity
+63D3 04010604 [12] call_i 4 3 1 
+63D7 00000039 [13] jmp 1 ; to [15]
+63DB 0308071E [14] setfield 3 3 264 ; reset_constraints true
+63DF 04090000 [15] getfield 4 0 9 ; CombatInfo
+63E3 040A0886 [16] getfield_r1 4 4 10 ; Zone
+63E7 04000082 [17] test_r1 4 0 0 
+63EB 00080039 [18] jmp 9 ; to [28]
+63EF 04090000 [19] getfield 4 0 9 ; CombatInfo
+63F3 040A0886 [20] getfield_r1 4 4 10 ; Zone
+63F7 050B000C [21] getglobal 5 11 ; CombatZones
+63FB 050C0A86 [22] getfield_r1 5 5 12 ; None
+63FF 01050808 [23] eq 1 4 5 ; to [25] if false
+6403 00020039 [24] jmp 3 ; to [28]
+6407 0401000C [25] getglobal 4 1 ; ENavigationSpeed
+640B 040D0886 [26] getfield_r1 4 4 13 ; NAV_SPEED_WALK
+640F 0304001E [27] setfield 3 0 4 ; speed
+6413 040E0110 [28] self 4 0 270 ; "MoveToPositionNoWait"
+6417 0600020E [29] move 6 1 
+641B 0700060E [30] move 7 3 
+641F 04020804 [31] call_i 4 4 2 
+6423 04000002 [32] test 4 0 ; to [34] if true
+6427 000A0039 [33] jmp 11 ; to [45]
+642B 040F000C [34] getglobal 4 15 ; coroutine
+642F 04100886 [35] getfield_r1 4 4 16 ; yield
+6433 0401027E [36] call_i_r1 4 1 1 
+6437 0411000C [37] getglobal 4 17 ; Navigation
+643B 04120886 [38] getfield_r1 4 4 18 ; HasFailed
+643F 05130000 [39] getfield 5 0 19 ; Entity
+6443 04020404 [40] call_i 4 2 2 
+6447 04010002 [41] test 4 1 ; to [43] if false
+644B 00010039 [42] jmp 2 ; to [45]
+644F 0400021A [43] loadbool 4 1 0 ; true
+6453 04000412 [44] return 4 2 
+6457 0001281E [45] setfield 0 20 1 ; NavFailPos
+645B 0400001A [46] loadbool 4 0 0 ; false
+645F 04000412 [47] return 4 2 
+6463 00000212 [48] return 0 1 
+ * constants:
+6467 15000000 sizek (21)
+646B 04 const type 4
+ const [0]: "speed"
+6476 04 const type 4
+ const [1]: "ENavigationSpeed"
+648C 04 const type 4
+ const [2]: "NAV_SPEED_SPRINT"
+64A2 04 const type 4
+ const [3]: "reset_constraints"
+64B9 01 const type 1
+64BA 00 const [4]: (false)
+64BB 04 const type 4
+ const [5]: "SetNavigationConstraints"
+64D9 04 const type 4
+ const [6]: "destination_target_entity"
+64F8 04 const type 4
+ const [7]: "Target"
+6504 01 const type 1
+6505 01 const [8]: (true)
+6506 04 const type 4
+ const [9]: "CombatInfo"
+6516 04 const type 4
+ const [10]: "Zone"
+6520 04 const type 4
+ const [11]: "CombatZones"
+6531 04 const type 4
+ const [12]: "None"
+653B 04 const type 4
+ const [13]: "NAV_SPEED_WALK"
+654F 04 const type 4
+ const [14]: "MoveToPositionNoWait"
+6569 04 const type 4
+ const [15]: "coroutine"
+6578 04 const type 4
+ const [16]: "yield"
+6583 04 const type 4
+ const [17]: "Navigation"
+6593 04 const type 4
+ const [18]: "HasFailed"
+65A2 04 const type 4
+ const [19]: "Entity"
+65AE 04 const type 4
+ const [20]: "NavFailPos"
+ * functions:
+65BE 00000000 sizep (0)
+ * lines:
+65C2 00000000 sizelineinfo (0)
+ [pc] (line)
+ * locals:
+65C6 00000000 sizelocvars (0)
+ * upvalues:
+65CA 00000000 sizeupvalues (0)
+ ** end of function **
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Sun, 15 September 2013 13:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Quote: and second (not sure if that script used at all) 
+ai\combatstyles\fable2legacycombatstyles.lua 
+ 
+Pretty sure some of them are still used by Fable III enemies, but not all of them. 
+ 
+EDIT: Also, since there is no file labeled as being combat styles for the Hero, I think it's safe to assume that the Hero's combat style falls under uniquecombatstyles.lua, which makes sense when you consider that your finishing moves are unlocked as you increase in strength and stature, and as a result every set of finishing moves that you can have is unique to each combination of stats. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Sun, 15 September 2013 19:41]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Mon, 16 September 2013 06:21 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sun, 15 September 2013 11:56 Keshire 
+Can I post some of the decompiled scripts? Just for modding and for examples. 
+I'm not sure because of rule number 4 
+ 
+Have at it. chunkspy outputs are not original files. 
+I wouldn't even consider rewritten or decompiled scripts original files. 
+ 
+And editing the compiled scripts via hex editor will only take you so far. The only thing I would use it for is to circumvent the DLC checks. Anything else I'd rather just attempt to rewrite it myself. Definitely not for the faint of heart though. 
+ 
+There IS a fable 2 decompiler. Because it doesn't use KoreVM. It's good to take a look at the Fable 2 scripts if you have them handy because a lot of the scripts are the same between the two games. Just compiled between normal lua and koreVM lua. 
+ 
+ http://fable2mod.com/forums/forum.php?req=thread&postid= 249 
+ 
+Thankfully, Fable 3 doesn't have a problem with plaintext uncompiled LUA. Otherwise we'd really be screwed. 
+ 
+ 
+ [Updated on: Mon, 16 September 2013 06:28]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Mon, 16 September 2013 07:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yep. We're also kinda lucky that they actually put plaintext, uncompiled lua in copies of certain files. Like scriptactivation.lua. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Mon, 16 September 2013 09:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Mon, 16 September 2013 19:21 I wouldn't even consider rewritten or decompiled scripts original files. 
+Then here they are 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Mon, 16 September 2013 14:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+0450 0000000C [0268] getglobal 0 0 ; CombatStyles
+0454 00500086 [0269] getfield_r1 0 0 80 ; Dog
+0458 01000078 [0270] closure 1 0 ; 0 upvalues
+045C 0001BE1E [0271] setfield 0 95 1 ; TargetScoringFunction
+ 
+ 
+Should be CombatStyles.Dog:TargetScoringFunction() I think. 
+ 
+Which matches this that I know is right 
+ 
+000662 0016000C [376] getglobal 0 22 ; Gameflow
+000666 00230086 [377] getfield_r1 0 0 35 ; RoadToRule
+00066A 01590078 [378] closure 1 89 ; 0 upvalues
+00066E 0001D61E [379] setfield 0 107 1 ; UNLOCK_ALL_GATES
+ 
+ 
+Gameflow.RoadToRule:UNLOCK_ALL_GATES() 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Mon, 16 September 2013 23:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Tue, 17 September 2013 03:41 
+0450 0000000C [0268] getglobal 0 0 ; CombatStyles
+0454 00500086 [0269] getfield_r1 0 0 80 ; Dog
+0458 01000078 [0270] closure 1 0 ; 0 upvalues
+045C 0001BE1E [0271] setfield 0 95 1 ; TargetScoringFunction
+ 
+ 
+Should be CombatStyles.Dog:TargetScoringFunction() I think. 
+not like this? 
+ CombatStyles.Dog.TargetScoringFunction = function()
+
+end 
+ 
+anyway, this is simple, function code is complicated 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Tue, 17 September 2013 05:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Mon, 16 September 2013 23:31 Keshire wrote on Tue, 17 September 2013 03:41 
+0450 0000000C [0268] getglobal 0 0 ; CombatStyles
+0454 00500086 [0269] getfield_r1 0 0 80 ; Dog
+0458 01000078 [0270] closure 1 0 ; 0 upvalues
+045C 0001BE1E [0271] setfield 0 95 1 ; TargetScoringFunction
+ 
+ 
+Should be CombatStyles.Dog:TargetScoringFunction() I think. 
+not like this? 
+ CombatStyles.Dog.TargetScoringFunction = function()
+
+end 
+ 
+anyway, this is simple, function code is complicated 
+ 
+Nope there is only one function is that lua. The rest is just command after command, table after table. 
+ 
+5224 ** function [0] definition (level 2)
+ ** start of function **
+ source name: d:\\Pulse\\work\\f3-daily-build-PC\\Deploy\\Fable2_win32\\data\\scripts\\AI\\CombatStyles\\UniqueCombatStyles.lua
+524F E3000000 line defined (227)
+5253 FA000000 last line defined (250)
+5257 00 nups (0)
+5258 02 numparams (2)
+5259 00 is_vararg (0)
+525A 08 maxstacksize (8)
+ * code:
+525B 25000000 sizecode (37)
+525F 02000032 [01] loadk 2 0 ; 1
+5263 0301000C [02] getglobal 3 1 ; Dog
+5267 03020686 [03] getfield_r1 3 3 2 ; GetMaster
+526B 04030000 [04] getfield 4 0 3 ; Combatant
+526F 03020404 [05] call_i 3 2 2 
+5273 04040710 [06] self 4 3 260 ; "IsAlive"
+5277 0402047E [07] call_i_r1 4 2 2 
+527B 04000002 [08] test 4 0 ; to [10] if true
+527F 00120039 [09] jmp 19 ; to [29]
+5283 0405000C [10] getglobal 4 5 ; Carrying
+5287 04060886 [11] getfield_r1 4 4 6 ; IsCarryingRangedWeapon
+528B 0500060E [12] move 5 3 
+528F 04020404 [13] call_i 4 2 2 
+5293 0500001A [14] loadbool 5 0 0 ; false
+5297 0605000C [15] getglobal 6 5 ; Carrying
+529B 06070C86 [16] getfield_r1 6 6 7 ; IsAvailable
+529F 0700020E [17] move 7 1 
+52A3 06020404 [18] call_i 6 2 2 
+52A7 06000002 [19] test 6 0 ; to [21] if true
+52AB 00040039 [20] jmp 5 ; to [26]
+52AF 0605000C [21] getglobal 6 5 ; Carrying
+52B3 06060C86 [22] getfield_r1 6 6 6 ; IsCarryingRangedWeapon
+52B7 0700020E [23] move 7 1 
+52BB 06020404 [24] call_i 6 2 2 
+52BF 05000C0E [25] move 5 6 
+52C3 01050808 [26] eq 1 4 5 ; to [28] if false
+52C7 00000039 [27] jmp 1 ; to [29]
+52CB 0208054C [28] mul 2 2 264 ; 5
+52CF 0409000C [29] getglobal 4 9 ; GUI
+52D3 040A0886 [30] getfield_r1 4 4 10 ; IsEntityOnScreen
+52D7 0500020E [31] move 5 1 
+52DB 04020404 [32] call_i 4 2 2 
+52DF 04000002 [33] test 4 0 ; to [35] if true
+52E3 00000039 [34] jmp 1 ; to [36]
+52E7 020B054C [35] mul 2 2 267 ; 3
+52EB 02000412 [36] return 2 2 
+52EF 00000212 [37] return 0 1 
+ * constants:
+52F3 0C000000 sizek (12)
+52F7 03 const type 3
+52F8 0000803F const [0]: (1)
+52FC 04 const type 4
+ const [1]: "Dog"
+5305 04 const type 4
+ const [2]: "GetMaster"
+5314 04 const type 4
+ const [3]: "Combatant"
+5323 04 const type 4
+ const [4]: "IsAlive"
+5330 04 const type 4
+ const [5]: "Carrying"
+533E 04 const type 4
+ const [6]: "IsCarryingRangedWeapon"
+535A 04 const type 4
+ const [7]: "IsAvailable"
+536B 03 const type 3
+536C 0000A040 const [8]: (5)
+5370 04 const type 4
+ const [9]: "GUI"
+5379 04 const type 4
+ const [10]: "IsEntityOnScreen"
+538F 03 const type 3
+5390 00004040 const [11]: (3)
+ * functions:
+5394 00000000 sizep (0)
+ * lines:
+5398 25000000 sizelineinfo (37)
+ [pc] (line)
+539C E4000000 [01] (228)
+53A0 E5000000 [02] (229)
+53A4 E5000000 [03] (229)
+53A8 E5000000 [04] (229)
+53AC E5000000 [05] (229)
+53B0 E8000000 [06] (232)
+53B4 E8000000 [07] (232)
+53B8 E8000000 [08] (232)
+53BC E8000000 [09] (232)
+53C0 E9000000 [10] (233)
+53C4 E9000000 [11] (233)
+53C8 E9000000 [12] (233)
+53CC E9000000 [13] (233)
+53D0 EA000000 [14] (234)
+53D4 EB000000 [15] (235)
+53D8 EB000000 [16] (235)
+53DC EB000000 [17] (235)
+53E0 EB000000 [18] (235)
+53E4 EB000000 [19] (235)
+53E8 EB000000 [20] (235)
+53EC EC000000 [21] (236)
+53F0 EC000000 [22] (236)
+53F4 EC000000 [23] (236)
+53F8 EC000000 [24] (236)
+53FC EC000000 [25] (236)
+5400 EF000000 [26] (239)
+5404 EF000000 [27] (239)
+5408 F0000000 [28] (240)
+540C F5000000 [29] (245)
+5410 F5000000 [30] (245)
+5414 F5000000 [31] (245)
+5418 F5000000 [32] (245)
+541C F5000000 [33] (245)
+5420 F5000000 [34] (245)
+5424 F6000000 [35] (246)
+5428 F9000000 [36] (249)
+542C FA000000 [37] (250)
+ * locals:
+5430 06000000 sizelocvars (6)
+ local [0]: attacker_info
+5446 00000000 startpc (0)
+544A 24000000 endpc (36)
+ local [1]: target
+5459 00000000 startpc (0)
+545D 24000000 endpc (36)
+ local [2]: multiplier
+5470 01000000 startpc (1)
+5474 24000000 endpc (36)
+ local [3]: master
+5483 05000000 startpc (5)
+5487 24000000 endpc (36)
+ local [4]: master_ranged
+549D 0D000000 startpc (13)
+54A1 1C000000 endpc (28)
+ local [5]: target_ranged
+54B7 0E000000 startpc (14)
+54BB 1C000000 endpc (28)
+ * upvalues:
+54BF 00000000 sizeupvalues (0)
+ ** end of function **
+ 
+ 
+ 
+Also, if you didn't know already. The scripts in the other gamescript bank contain debug data for locals, and start/stop lines. 
+ 
+ 
+ [Updated on: Tue, 17 September 2013 05:21]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Tue, 17 September 2013 23:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Tue, 17 September 2013 18:20 Nope there is only one function is that lua. 
+and it should be in place 
+ CombatStyles.Dog.TargetScoringFunction = function()
+	<<function code>>
+end 
+ 
+or not? 
+ 
+ Keshire wrote on Tue, 17 September 2013 18:20 Also, if you didn't know already. The scripts in the other gamescript bank contain debug data for locals, and start/stop lines. 
+didn't know 
+was thinking what is different from gamescript_r and gamescript... 
+and the use of them? only more confusing information 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Wed, 18 September 2013 08:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Tue, 17 September 2013 23:58 Keshire wrote on Tue, 17 September 2013 18:20 Nope there is only one function is that lua. 
+and it should be in place 
+ CombatStyles.Dog.TargetScoringFunction = function()
+	<<function code>>
+end 
+ 
+or not? 
+ 
+ Keshire wrote on Tue, 17 September 2013 18:20 Also, if you didn't know already. The scripts in the other gamescript bank contain debug data for locals, and start/stop lines. 
+didn't know 
+was thinking what is different from gamescript_r and gamescript... 
+and the use of them? only more confusing information 
+ 
+You're right. My bad. 
+It should be this: 
+ 
+function CombatStyles.Dog:TargetScoringFunction(attacker_info, target)
+
+end
+ 
+ 
+ 
+There "shouldn't" be a difference between the script and script_r other than one contains compiler debug information. Which is REALLY helpful as it contains line information and local variables. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Tue, 12 November 2013 20:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+function CombatStyles.Dog:TargetScoringFunction(attacker_info, target)
+
+	local multiplier = 1.0
+	local master = Dog.GetMaster(attacker_info.Combatant)
+	if master:IsAlive() then
+ local master_ranged = Carrying.IsCarryingRangedWeapon(master)
+ local target_ranged = false
+ if Carrying.IsAvailable(target) then
+ target_ranged = Carrying.IsCarryingRangedWeapon(target)
+ end
+ if master_ranged ~= target_ranged then
+ multiplier = multiplier * 5
+ end
+	end
+	if GUI.IsEntityOnScreen(target) then
+ multiplier = multiplier * 3
+	end
+	return multiplier
+end
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Tue, 12 November 2013 21:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sun, 15 September 2013 11:56 
+ 
+and second (not sure if that script used at all) 
+ai\combatstyles\fable2legacycombatstyles.lua 
+ 
+368C 02040620 [3483] settable_s 2 3 4 
+3690 03790132 [3484] loadk 3 377 ; "MoveFunction"
+3694 0400000C [3485] getglobal 4 0 ; CombatStyles
+3698 05680132 [3486] loadk 5 360 ; "LuciensSoldier"
+369C 04050814 [3487] gettable_s 4 4 5 
+36A0 05790132 [3488] loadk 5 377 ; "MoveFunction"
+36A4 04050814 [3489] gettable_s 4 4 5 
+...
+3620 0000000C [3456] getglobal 0 0 ; CombatStyles
+3624 01680132 [3457] loadk 1 360 ; "LuciensSoldier"
+3628 00010014 [3458] gettable_s 0 0 1 
+362C 01790132 [3459] loadk 1 377 ; "MoveFunction"
+3630 02000078 [3460] closure 2 0 ; 0 upvalues
+3634 00020220 [3461] settable_s 0 1 2
+ 
+ 
+ 
+6393 ** function [0] definition (level 2)
+ ** start of function **
+ source name: (none)
+6397 240B0000 line defined (2852)
+639B 420B0000 last line defined (2882)
+639F 00 nups (0)
+63A0 03 numparams (3)
+63A1 00 is_vararg (0)
+63A2 08 maxstacksize (8)
+ * code:
+63A3 30000000 sizecode (48)
+63A7 0302005C [01] newtable 3 0 2 ; array=0, hash=2
+63AB 0401000C [02] getglobal 4 1 ; ENavigationSpeed
+63AF 04020886 [03] getfield_r1 4 4 2 ; NAV_SPEED_SPRINT
+63B3 0304001E [04] setfield 3 0 4 ; speed
+63B7 0304071E [05] setfield 3 3 260 ; reset_constraints false
+63BB 02000002 [06] test 2 0 ; to [8] if true
+63BF 00050039 [07] jmp 6 ; to [14]
+63C3 04050110 [08] self 4 0 261 ; "SetNavigationConstraints"
+63C7 0601005C [09] newtable 6 0 1 ; array=0, hash=1
+63CB 07070000 [10] getfield 7 0 7 ; Target
+63CF 06070C1E [11] setfield 6 6 7 ; destination_target_entity
+63D3 04010604 [12] call_i 4 3 1 
+63D7 00000039 [13] jmp 1 ; to [15]
+63DB 0308071E [14] setfield 3 3 264 ; reset_constraints true
+63DF 04090000 [15] getfield 4 0 9 ; CombatInfo
+63E3 040A0886 [16] getfield_r1 4 4 10 ; Zone
+63E7 04000082 [17] test_r1 4 0 0 
+63EB 00080039 [18] jmp 9 ; to [28]
+63EF 04090000 [19] getfield 4 0 9 ; CombatInfo
+63F3 040A0886 [20] getfield_r1 4 4 10 ; Zone
+63F7 050B000C [21] getglobal 5 11 ; CombatZones
+63FB 050C0A86 [22] getfield_r1 5 5 12 ; None
+63FF 01050808 [23] eq 1 4 5 ; to [25] if false
+6403 00020039 [24] jmp 3 ; to [28]
+6407 0401000C [25] getglobal 4 1 ; ENavigationSpeed
+640B 040D0886 [26] getfield_r1 4 4 13 ; NAV_SPEED_WALK
+640F 0304001E [27] setfield 3 0 4 ; speed
+6413 040E0110 [28] self 4 0 270 ; "MoveToPositionNoWait"
+6417 0600020E [29] move 6 1 
+641B 0700060E [30] move 7 3 
+641F 04020804 [31] call_i 4 4 2 
+6423 04000002 [32] test 4 0 ; to [34] if true
+6427 000A0039 [33] jmp 11 ; to [45]
+642B 040F000C [34] getglobal 4 15 ; coroutine
+642F 04100886 [35] getfield_r1 4 4 16 ; yield
+6433 0401027E [36] call_i_r1 4 1 1 
+6437 0411000C [37] getglobal 4 17 ; Navigation
+643B 04120886 [38] getfield_r1 4 4 18 ; HasFailed
+643F 05130000 [39] getfield 5 0 19 ; Entity
+6443 04020404 [40] call_i 4 2 2 
+6447 04010002 [41] test 4 1 ; to [43] if false
+644B 00010039 [42] jmp 2 ; to [45]
+644F 0400021A [43] loadbool 4 1 0 ; true
+6453 04000412 [44] return 4 2 
+6457 0001281E [45] setfield 0 20 1 ; NavFailPos
+645B 0400001A [46] loadbool 4 0 0 ; false
+645F 04000412 [47] return 4 2 
+6463 00000212 [48] return 0 1 
+ * constants:
+6467 15000000 sizek (21)
+646B 04 const type 4
+ const [0]: "speed"
+6476 04 const type 4
+ const [1]: "ENavigationSpeed"
+648C 04 const type 4
+ const [2]: "NAV_SPEED_SPRINT"
+64A2 04 const type 4
+ const [3]: "reset_constraints"
+64B9 01 const type 1
+64BA 00 const [4]: (false)
+64BB 04 const type 4
+ const [5]: "SetNavigationConstraints"
+64D9 04 const type 4
+ const [6]: "destination_target_entity"
+64F8 04 const type 4
+ const [7]: "Target"
+6504 01 const type 1
+6505 01 const [8]: (true)
+6506 04 const type 4
+ const [9]: "CombatInfo"
+6516 04 const type 4
+ const [10]: "Zone"
+6520 04 const type 4
+ const [11]: "CombatZones"
+6531 04 const type 4
+ const [12]: "None"
+653B 04 const type 4
+ const [13]: "NAV_SPEED_WALK"
+654F 04 const type 4
+ const [14]: "MoveToPositionNoWait"
+6569 04 const type 4
+ const [15]: "coroutine"
+6578 04 const type 4
+ const [16]: "yield"
+6583 04 const type 4
+ const [17]: "Navigation"
+6593 04 const type 4
+ const [18]: "HasFailed"
+65A2 04 const type 4
+ const [19]: "Entity"
+65AE 04 const type 4
+ const [20]: "NavFailPos"
+ * functions:
+65BE 00000000 sizep (0)
+ * lines:
+65C2 00000000 sizelineinfo (0)
+ [pc] (line)
+ * locals:
+65C6 00000000 sizelocvars (0)
+ * upvalues:
+65CA 00000000 sizeupvalues (0)
+ ** end of function **
+ 
+ 
+ 
+ 
+DecompiledFunction = function(self, dest_pos, face_target)
+ local params = {speed = ENavigationSpeed.NAV_SPEED_SPRINT, reset_constraints = false}
+ if face_target then
+ self:SetNavigationConstraints({destination_target_entity = self.Target})
+ else
+ params.reset_constraints = true
+ end
+ if self.CombatInfo.Zone and self.CombatInfo.Zone ~= CombatZones.None then
+ params.speed = ENavigationSpeed.NAV_SPEED_WALK
+ end
+ if self:MoveToPositionNoWait(dest_pos, params) then
+ coroutine.yield()
+ if not Navigation.HasFailed(self.Entity) then
+ return true
+ end
+ end
+ self.NavFailPos = dest_pos
+ return false
+end
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Wed, 13 November 2013 06:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ OSSOME 
+thanks! 
+it's loaded, but it seems to be not used at all 
+I place some MessageBox'es and no one is appear... 
+strange function 
+btw, works (loaded) in both ways 
+ 
+function CombatStyles.Dog:TargetScoringFunction(attacker_info, target)
+ 
+ 
+ 
+CombatStyles.Dog.TargetScoringFunction = function(attacker_info, target)
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Wed, 13 November 2013 07:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Wed, 13 November 2013 06:43 OSSOME 
+thanks! 
+it's loaded, but it seems to be not used at all 
+I place some MessageBox'es and no one is appear... 
+strange function 
+btw, works (loaded) in both ways 
+ 
+function CombatStyles.Dog:TargetScoringFunction(attacker_info, target)
+ 
+ 
+ 
+CombatStyles.Dog.TargetScoringFunction = function(attacker_info, target)
+ 
+ 
+ 
+ 
+Ya. Both syntax give the same thing. I just base it off how lionhead has done all their other stuff for consistency sake. 
+ 
+I'll take a look around and see if anything is loading it. You may be right though. Plus, I'm really not sure on the syntax of the rest. The assembly for it is pretty crazy with all the table stuff going on. I'll trust you have it right though because I don't want to figure it out. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Fri, 18 September 2015 06:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay, I'm looking at \data\scripts\miscellaneous\carriedactionusescripts\ oncarriedactionusedig.lua 
+ 
+I'm trying to figure out how I would modify it to jump straight from selecting "dig" to showing your loot (skipping the friggin' stupid-long animation every time). 
+ 
+I ran it through KoreVM LUA decompiler (thanks to Keshire! and it spit out the table, but I'm not familiar enough (yet) with how to read it. Can someone point me to an LUA tutorial that would explain how to convert that table into functions, or at least how to read it? 
+ 
+I can guess at bits and pieces (such as, it's pretty easy to see when it's making a logic call and doing if-then actions... I can understand what JMP [246] means, etc. 
+ 
+I'll attach the decompiled code here, in case anyone has time to look at it. 
+ 
+ 
+ 
+ Attachment: oncarriedactionusedig.txt 
+ 
+ (Size: 44.05KB, Downloaded 2374 times) 
+ 
+ 
+ 
+ [Updated on: Fri, 18 September 2015 06:42]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Fri, 18 September 2015 07:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I feel like I ought to be able to change 
+ 
+ 
+0677 08000002 [359] test 8 0 ; to [361] if true
+067B 00030039 [360] jmp 4 ; to [365]
+ 
+ 
+ 
+to 
+ 
+ 
+0677 08000002 [359] test 8 0 ; to [361] if true
+067B 00030039 [360] jmp 4 ; to [383]
+ 
+ 
+ 
+and delete 
+ 
+ 
+068F 0848000C [365] getglobal 8 72 ; CameraManager
+0693 08491086 [366] getfield_r1 8 8 73 ; SetCannedActionCameraMode
+0697 09000000 [367] getfield 9 0 0 ; EntityUsingItem
+069B 0A4A000C [368] getglobal 10 74 ; CannedActionCamera
+069F 0A4B1486 [369] getfield_r1 10 10 75 ; Types
+06A3 0A561486 [370] getfield_r1 10 10 86 ; CANNEDACTION_NONE
+06A7 08010604 [371] call_i 8 3 1 
+06AB 0817000C [372] getglobal 8 23 ; Player
+06AF 08181086 [373] getfield_r1 8 8 24 ; IsAvailable
+06B3 09000000 [374] getfield 9 0 0 ; EntityUsingItem
+06B7 08020404 [375] call_i 8 2 2 
+06BB 08000002 [376] test 8 0 ; to [378] if true
+06BF 00040039 [377] jmp 5 ; to [383]
+ 
+ 
+ 
+to get it to skip the animation. 
+ 
+Or do I have to leave the first section alone and change subsequent line numbers to reflect their new positions? Or do I have to figure out how to turn this into plaintext LUA code that is more easily modified? (I know... so many questions, so few answers... 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Lua decompiler? 
+ Fri, 18 September 2015 07:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Well... I dug a little deeper... I think this is the offending code... now to figure out how to disable it and either recompile it or rewrite it to work without... 
+ 
+ 
+039B 0606005C [176] newtable 6 0 6 ; array=0, hash=6
+039F 0738000C [177] getglobal 7 56 ; EScriptableAction
+03A3 07390E86 [178] getfield_r1 7 7 57 ; LOOP
+03A7 06076E1E [179] setfield 6 55 7 ; Type
+03AB 073B000C [180] getglobal 7 59 ; EActionPriority
+03AF 073C0E86 [181] getfield_r1 7 7 60 ; PRIORITY_INTERACTION
+03B3 0607741E [182] setfield 6 58 7 ; Priority
+03B7 0703005C [183] newtable 7 0 3 ; array=0, hash=3
+03BB 0838000C [184] getglobal 8 56 ; EScriptableAction
+03BF 083E1086 [185] getfield_r1 8 8 62 ; DIG
+03C3 07086E1E [186] setfield 7 55 8 ; Type
+03C7 07407F1E [187] setfield 7 63 320 ; Anim "DigInto"
+03CB 07033E1E [188] setfield 7 31 3 ; Spade
+03CF 06077A1E [189] setfield 6 61 7 ; IntoAction
+03D3 0703005C [190] newtable 7 0 3 ; array=0, hash=3
+03D7 0838000C [191] getglobal 8 56 ; EScriptableAction
+03DB 083E1086 [192] getfield_r1 8 8 62 ; DIG
+03DF 07086E1E [193] setfield 7 55 8 ; Type
+03E3 07427F1E [194] setfield 7 63 322 ; Anim "DigLoop"
+03E7 07033E1E [195] setfield 7 31 3 ; Spade
+03EB 0607821E [196] setfield 6 65 7 ; LoopAction
+03EF 0702005C [197] newtable 7 0 2 ; array=0, hash=2
+03F3 0838000C [198] getglobal 8 56 ; EScriptableAction
+03F7 08441086 [199] getfield_r1 8 8 68 ; PLAY_ANIMATION
+03FB 07086E1E [200] setfield 7 55 8 ; Type
+03FF 07057E1E [201] setfield 7 63 5 ; Anim
+0403 0607861E [202] setfield 6 67 7 ; OutOfAction
+0407 06468B1E [203] setfield 6 69 326 ; NumLoops 1
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Scripting Troubles 
+
+ 
+ Next Topic: 
+ Any way to add items via scripting to a savegame with DLC installed? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:18 PDT 2026 
+
+ Total time taken to generate the page: 0.05409 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

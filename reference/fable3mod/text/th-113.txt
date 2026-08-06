@@ -1,0 +1,697 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Question about scriptactivation 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Question about scriptactivation 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Question about scriptactivation 
+ Sat, 09 November 2013 07:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ thid 
+ Messages: 5 Registered: November 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I read the tutorial on forum about editing scriptactivation, after looking at Phnx post but can't realy find a way to make those functions to work. Following tutorial I change my scriptactivation.lua with those lines 
+ 
+ ScriptActivation[ScriptCode.QU000].AbleToRun = function()
+
+Debug.GiveAllMeleeWeapons()
+Debug.GiveAllRangedWeapons()
+Debug.GiveAllSpellGauntlets()
+Debug.AddAllInventoryItemsF2()
+Debug.AddAllInventoryItems()
+Debug.SetCombatFinishersTestMode([toggle:true])
+ScriptFunction.SetHeroAsASmoker()
+
+return nil
+end 
+ 
+ 
+but this doesn't work at all, could anyone give me some suggestions (webarchive don't have any posts only categorys 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about scriptactivation 
+ Sat, 09 November 2013 21:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I don't think debug commands are handled in the same way as functions, though I'm not entirely certain. Keshire had had a newgame lua uploaded with some debug commands for adding all dlc items, but that's gone. If it wasn't, I'd have taken a look at it as a reference to see how to trigger the debug commands. But I've never gotten the damn things to work in that manner. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about scriptactivation 
+ Sat, 09 November 2013 22:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ thid wrote on Sat, 09 November 2013 20:41 I read the tutorial on forum about editing scriptactivation, after looking at Phnx post but can't realy find a way to make those functions to work. Following tutorial I change my scriptactivation.lua with those lines 
+ 
+ ScriptActivation[ScriptCode.QU000].AbleToRun = function()
+
+Debug.GiveAllMeleeWeapons()
+Debug.GiveAllRangedWeapons()
+Debug.GiveAllSpellGauntlets()
+Debug.AddAllInventoryItemsF2()
+Debug.AddAllInventoryItems()
+Debug.SetCombatFinishersTestMode([toggle:true])
+ScriptFunction.SetHeroAsASmoker()
+
+return nil
+end 
+ 
+ 
+but this doesn't work at all, could anyone give me some suggestions (webarchive don't have any posts only categorys :( ) 
+ 
+ 
+This is old way of hijacking 
+better is use your own quest script, or just newgame.lua 
+and you have some errors 
+correct 
+ ScriptActivation[ScriptCode.QU000].AbleToRun = function()
+
+Debug.GiveAllMeleeWeapons()
+Debug.GiveAllRangedWeapons()
+Debug.GiveAllSpellGauntlets()
+Debug.AddAllInventoryItemsF2()
+Debug.AddAllInventoryItems()
+Debug.SetCombatFinishersTestMode(true)
+ScriptFunction.SetHeroAsASmoker()
+
+return true
+end 
+ 
+ 
+'([toggle:true])' just broke all script 
+and 'return true' looks more correct 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about scriptactivation 
+ Sun, 10 November 2013 05:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Don't use this as is. It doesn't set the bowerstone castle layer correctly, so you can never return to it. I just use it for testing. 
+Newgame.lua 
+ Toggle Spoiler 
+ 
+QuestManager.NewThread(GameflowThreadBase, "NewGameManager")
+	
+function NewGameManager:Init()
+
+end
+function NewGameManager:StateEnum()
+
+end
+function NewGameManager:InitialSetup()
+
+end
+function NewGameManager:Update()
+
+	while not GUILevel.IsLevelLoaded("PVP_GUI\\FrontEnd") do
+ coroutine.yield()
+	end 
+	
+	coroutine.yield()
+	
+	SetInitialHeroEntityName("CreatureHero")
+	GUIPlayer.ChangePlayerEntityType(GetLocalHero(), "CreatureHero")
+	
+	SetInitialWorldName("Fable3")
+	SetInitialLevelName("Albion\\BowerstoneCastle")
+	--SetInitialScenarioName("DefaultScenario")
+	SetInitialScenarioName("GOOD")
+	SetGameflowScriptEnum("QC180")
+	SetGameflowScriptState("THERESA")
+	SetLevelNameStartsWithACS("Albion\\BowerstoneCastle")
+	SetOpeningLoadingScreen(true)
+	
+	SetSavingAsAllowed(true)
+	TutorialManager.SetToPlayNewExpressionLearnedTutorials(true)
+	TutorialManager.SetTutorialsEnabled(true)
+	self:SetDefaultCamera()
+	
+	GameComponentSwitchManager.SwitchToMainGameFromRetailFrontEnd()
+	self:Terminate()
+	coroutine.yield()
+	
+end
+function NewGameManager:OnExit()
+	
+	-- Initiate Kesfunction --
+	GeneralScriptManager.AddScript(Kesfunction)
+	
+end
+
+QuestManager.AddQuestThread(NewGameManager:new(), QuestManager.UpdateLists.GUI)
+
+-- Testing stuff --
+Kesfunction = {}
+function Kesfunction:Init()
+end
+function Kesfunction:Update()
+
+	Gameflow.RoadToRule.UNLOCK_EVERYTHING(GetLocalHero())
+	Debug.AddAllDLC1Items()
+	Debug.AddAllDLC2Items()
+	Debug.AddDLCDogBreedPack()
+	Money.Add(GetLocalHero(), 10000000, 0)
+	self:Terminate()
+	coroutine.yield()
+	
+end
+function Kesfunction:OnExit()
+end
+ 
+ 
+
+ 
+ 
+ 
+ [Updated on: Sun, 10 November 2013 05:22]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about scriptactivation 
+ Sun, 10 November 2013 13:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ thid 
+ Messages: 5 Registered: November 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Quote: '([toggle:true] ' just broke all script 
+and 'return true' looks more correct 
+thx for this, I just notice the fail I made with this didn't do anything in lua for over 4 years and I totaly forgot syntax 
+ 
+Thank you Keshire for this reference script, it worked out for some testing 
+ 
+I have 1 more question, how much we can mod scripts? after googling I found a way to make own quest but is it possible to make key trigger events (like F+T = gender change)? 
+ 
+ 
+ [Updated on: Sun, 10 November 2013 13:57]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about scriptactivation 
+ Sun, 10 November 2013 14:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ thid wrote on Sun, 10 November 2013 13:57 Quote: '([toggle:true] ' just broke all script 
+and 'return true' looks more correct 
+thx for this, I just notice the fail I made with this didn't do anything in lua for over 4 years and I totaly forgot syntax 
+ 
+Thank you Keshire for this reference script, it worked out for some testing 
+ 
+I have 1 more question, how much we can mod scripts? after googling I found a way to make own quest but is it possible to make key trigger events (like F+T = gender change)? 
+ 
+Absolutely. If you can figure out where and when you want something to run. You can also start your own quest script. And Quasar did some stuff to make that easier, but I don't think I've uploaded that stuff yet. 
+ 
+The kicker is that we have barely any reference to how stuff 'should' run. Like activating and deactivating level layers, and suspending quests that could interfere. 
+ 
+Since you mention it. I think I might disassemble the job manager stuff and see if we can set up something like the courier stuff. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about scriptactivation 
+ Sun, 10 November 2013 22:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ thid wrote on Mon, 11 November 2013 02:57 I have 1 more question, how much we can mod scripts? after googling I found a way to make own quest but is it possible to make key trigger events (like F+T = gender change)? 
+well, I use timming 
+ 
+while true do
+	coroutine.yield()
+	
+	if mod_last_run == nil or mod_last_run + 120 < Timing.GetWorldFrame() then	
+ if GUI.IsScreenFading() then
+ -- some stuff wnen new level is loading, or player go to sanctuary
+ 
+ end
+
+ -- main code here
+ 
+ mod_last_run = Timing.GetWorldFrame()
+	end
+
+end
+ 
+ 
+put it in 'NewGameManager:Update()' I think, because I use it in my own quest script in 'Main' section 
+so, script repeated every 120 frames (2 seconds on 60fps) and if I need to do something heavy (something that will interfere to gameplay) I trigger it only when 'screen is fading' 
+ 
+I tried to do trigger on the button, like: 
+ 
+Debug.AddLuaDebugKeyFunc(EInputKey.KB_F9, Debug.ReloadCurrentLevel)
+ 
+ 
+but I did not succeed... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ I'm curious 
+
+ 
+ Next Topic: 
+ Quest template (qt000_template.lua) 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:37 PDT 2026 
+
+ Total time taken to generate the page: 0.05381 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

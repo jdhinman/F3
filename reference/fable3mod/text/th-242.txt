@@ -1,0 +1,1108 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Nude Female Hero by Ryuseiken 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Nude Female Hero by Ryuseiken 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Nude Female Hero by Ryuseiken 
+ Sat, 19 September 2015 01:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ here is nude mod by Ryuseiken v4.0 
+ original link 
+ 
+this is my Catspaw's GFWL emu port of it 
+is no longer need to modify bank files, it just replace two text files 
+data\dir.manifest 
+data\startup.vfsconfig 
+why? 
+since a change in hero textures after compositing is not possible, you need to replace them before 
+so, there is two new files 
+data\art\characters\heros\morphs\morphs_textures_nude.bnk 
+ data\art\characters\heros\morphs\morphs_textures_nude.bnk.da t 
+that need to be added to "dir.manifest" 
+and we need to change <Composite> section in "startup.vfsconfig" by new files 
+I have already made changes, so you need just backup your dir.manifest and startup.vfsconfig 
+ 
+Setup: 
+use Catspaw's GFWL emu 
+put folders from archive to Fable 3 game directory 
+..\Fable 3\data\* 
+..\Fable 3\DLC\* 
+ 
+ Download 
+ 
+ 
+ 
+ [Updated on: Sat, 19 September 2015 01:43]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sun, 20 September 2015 03:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I love it, Thanks! 
+ 
+I already have it installed the other way, so I won't need your version, but it looks great! (The only challenge I'm having is that they gave her a flat butt... but I'm trying to fix that as we speak! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sun, 20 September 2015 09:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TheGeniusSavant wrote on Sun, 20 September 2015 16:24 they gave her a flat butt... 
+you mean bug in texture color on legs? 
+it something with this files 
+ 
+art\characters\heros\unclothed female\pictures\ch_herofemale_morph_firstpass\diff_herofemale_legs_01.tex
+art\characters\heros\unclothed female\pictures\ch_herofemale_morph_firstpass\norm_herofemale_legs_01.tex
+art\characters\heros\unclothed female\pictures\ch_herofemale_morph_firstpass\spec_herofemale_legs_01.tex
+ 
+ 
+if you fix this, please share :) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sun, 20 September 2015 11:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ No... that's annoying, too... That is just that they didn't make a mod for all three files. 
+ 
+I'm saying it isn't sufficiently rounded... (not FAT enough! but I'm getting it tweaked with skeletalmorphs... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sun, 20 September 2015 12:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TheGeniusSavant wrote on Mon, 21 September 2015 00:40 I'm saying it isn't sufficiently rounded... (not FAT enough!) but I'm getting it tweaked with skeletalmorphs... 
+ohh this... 
+yeah is very easy can be fixed by modifying skeletalmorphs (I have already did it) but it only works if hero have fat\strong\tall value, so that why I'm searching for original coefficients to make it like permanent effect 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sun, 20 September 2015 12:21 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I agree! But I think original values are part of the .mdl files probably... IDK for sure. 
+ 
+I still haven't figured out how to open them, even with the Blender plugin. Not sure if I have files in the wrong places (or even some still packed in the banks) or what... 
+ 
+I would just use the fat scale in the meantime since it's so easy to manipulate in game... or in my case, since I have "stature" maxed, I'll just use "_tall". 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Mon, 21 September 2015 06:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I was just reading through the functions list again... thought you might find these interesting, Artofeel. 
+ 
+ ScriptFunction.RemoveAllClothingFromEntitiesInventory(entity ) 
+ScriptFunction.MakeEntityNaked(entity) 
+ 
+Of course, I have no idea how they work just yet, but I'm imagining they could be fun. I have to figure out what the options are for (entity). I believe that's where I've seen the function GetLocalHero() used often, but I would want to get nearest NPC... or something like that... I have no idea what the game syntax is for that (yet, as always ;) ) 
+ 
+EDIT: I've dug a little deeper and found some entries that MIGHT be suitable for (entity)... 
+ 
+GetEnemy() 
+GetEntityFromDatabaseObject(self,database_object) 
+GetEntityFromCharacterName(self,character_name) 
+GetClosestGuard() 
+GetPrimarySpouse() 
+GetPartner(self,entity) - might work while you're in the Expression menu? 
+GetConverser(self,num) - or is this the one for the expression menu? 
+GetLocalHeroTarget() - I'm not sure whether this only counts combat targets or if conversation targets count, too. 
+target - simply putting "target" in for "entity" might do the same as GetLocalHeroTarget() 
+GetClosestTo(self,position) 
+GetBard() 
+... I don't have time to finish digging right now.. :( 
+ 
+and at least one that might help identify entities: 
+ 
+InteractiveCutsceneGroupMind:GetCharacterList(self) 
+ 
+ 
+ 
+ 
+ 
+ [Updated on: Mon, 21 September 2015 07:22]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Fri, 25 September 2015 04:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TheGeniusSavant wrote on Mon, 21 September 2015 19:40 I believe that's where I've seen the function GetLocalHero( used often, but I would want to get nearest NPC... or something like that... 
+I think you cant undress NPC (if you mean that), because they dont have any clothes (I believe... but need to check models) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sat, 26 September 2015 18:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ You know what, now that you mention it, I think you're right... I wonder if you could trick the game into using hero models for the villagers. For example, instead of using the stock "dweller woman" model with morphs for fat and tall and strong (and others?), use the "unclothed female" hero model wearing the dweller woman outfit and THEN apply the NPC morphs. 
+ 
+I imagine that would be a LOT of work for little old me, but for an expert like you, it might not be so bad! 
+ 
+ 
+ [Updated on: Mon, 28 September 2015 01:42]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sun, 10 December 2017 04:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ RaxterXx 
+ Messages: 1 Registered: December 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi, someone know, how can in fix the the legs texture problem. thanks 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sat, 22 December 2018 11:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Delete this reply please. 
+ 
+ 
+ [Updated on: Sun, 23 December 2018 09:34]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Thu, 30 April 2020 16:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay, something's gone wrong and I think it's this mod. 
+Upon gaining Level 2 magic with 2-Star Magical Aura, the entire character model vanished. I had her running around topless at the time because of the leg texture thing. That, and the belt Nudepatcher PUTS ON EVERYTHING THEY DO looks bloody stupid. I woudln't mind if they'd put a harness on her top to hold the weapons but the belt thing is plain moronic, IMO. 
+What's going on? 
+ 
+EDIT: As I believe the error is now tied to my save (tried removing the mod and reloading, didn't work), I'm uploading my save folder as well just in case that helps to narrow things down. 
+(Had to split the file due to size restrictions). 
+ 
+This is the Hero2 save file; I think it's the right one. You'll need to download all three parts to check. It's no good just picking one of them, being a split archive. 
+ 
+As a precaution, I'm uploading an archive with my current dir.manifest and startup.vfsconfig. 
+ 
+ 
+ 
+ Attachment: srslywtf.png 
+ 
+ (Size: 249.83KB, Downloaded 2262 times) 
+ 
+ 
+ Attachment: 1122334400000000.7z.001 
+ 
+ (Size: 1.00MB, Downloaded 2319 times) 
+ 
+ 
+ Attachment: 1122334400000000.7z.002 
+ 
+ (Size: 1.00MB, Downloaded 2296 times) 
+ 
+ 
+ Attachment: 1122334400000000.7z.003 
+ 
+ (Size: 739.40KB, Downloaded 2330 times) 
+ 
+ 
+ Attachment: otherfiles.7z 
+ 
+ (Size: 8.15KB, Downloaded 2176 times) 
+ 
+ 
+ 
+ [Updated on: Mon, 04 May 2020 11:07]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sat, 09 May 2020 01:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm going to see if I can replicate it. 
+Probably has something to do with the Will Lines. 
+ 
+EDIT: Try as a I might, it seems to have been a save bork. 
+ 
+ 
+ [Updated on: Fri, 29 May 2020 13:25]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Wed, 10 March 2021 22:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So has anyone ever fixed those red legs? 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Nude Female Hero by Ryuseiken 
+ Sat, 17 April 2021 00:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I fixed it! https://www.nexusmods.com/fableIII/mods/5 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ I have reduced the grind 
+
+ 
+ Next Topic: 
+ Direction spell freeze fix and RoboDog sounds fix 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:23 PDT 2026 
+
+ Total time taken to generate the page: 0.05394 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

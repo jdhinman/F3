@@ -1,0 +1,298 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Help fixing broken quest? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Help fixing broken quest? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Help fixing broken quest? 
+ Thu, 24 May 2018 23:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Wicker 
+ Messages: 2 Registered: June 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello. I'm trying to do the quest "Kidnapped" but I can't interact with the quest giver. He's just silently standing there. It's still in my quest list, and I still get a golden trail to him, there's just no way to interact. I'm just wondering if there's any script I could use that could fix this? 
+ 
+The wiki on this quest seems to think the cause is either entering the orphanage or leaving industrial before completing the quest, which I did. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Help fixing broken quest? 
+ Fri, 25 May 2018 22:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Wicker 
+ Messages: 2 Registered: June 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Please? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Help fixing broken quest? 
+ Sun, 27 May 2018 05:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ did you try to go to hideout? 
+you may force to load level 
+ ScriptFunction.LoadLevelWithScenario('BWSIndustrialCave', 'defaultscenario') 
+ 
+but this probably not end good.. 
+better try to reload quest first 
+ QuestTracker.Deregister(QuestManager.HeroEntity "QO160_EliseElliot")
+QuestTracker.Register(QuestManager.HeroEntity "QO160_EliseElliot")
+QuestTracker.SetAsActive(QuestManager.HeroEntity "QO160_EliseElliot") 
+ 
+ 
+ 
+ [Updated on: Sun, 27 May 2018 06:13]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Fable Pc couch co-op? 
+
+ 
+ Next Topic: 
+ Change Dog Breed Pre-Sanctuary Access? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:51 PDT 2026 
+
+ Total time taken to generate the page: 0.05263 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

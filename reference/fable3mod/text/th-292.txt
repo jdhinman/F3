@@ -1,0 +1,450 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Blacksmithing Mod 0.2 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Blacksmithing Mod 0.2 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Blacksmithing Mod 0.2 
+ Sun, 05 April 2020 22:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So here we go, the 0.2 version of the blacksmithing mod. 
+ 
+Currently it takes the melee weapon in the sheathe and randomizes the augments every 3 successful hits in a row. The player will hold the weapon while blacksmithing now instead of magically morphing while still sheathed. 
+ 
+I've included a content.xbx for people that use an xlive remover that needs them. Just extract to a higher priority dlc folder. ie data/mod3 or DLC/04_KeshireDLC 
+ 
+ https://www.youtube.com/watch?v=bbOOq8hWkMA 
+ 
+ 
+ 
+ Attachment: Content.zip 
+ 
+ (Size: 31.08KB, Downloaded 2293 times) 
+ 
+ 
+ 
+ [Updated on: Fri, 10 April 2020 20:31]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing Mod 0.2 
+ Mon, 08 June 2020 02:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Beef Bowl 
+ Messages: 3 Registered: June 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ There's an issue with this that I, and at least one other person have encountered which is when opening the chest to get either level 2 or level 3 magic, and likely the rest too. Which is, your character, permanently, turns invisible for some reason. My guess as not even an amateur would be that it's due to the weaponvisualchanges.lua file under scripts\miscellaneous with the section 
+ 
+ 
+end
+function VisualChangeScripts.GauntletVisualChangeScript(applied_augments, weapon_entity)
+	local visual_changes = {}
+	return visual_changes
+end
+ 
+
+ 
+I've tested a little bit and noticed it occurs at the exact moment the model and/or texture should change, during the flash of light, it only occurs when opening the chests and if you are already at level 2 or 3 magic then you install, you aren't invisible. The exact level is likely meaningless. 
+So, as a total guess, I'd imagine there's some flaw in that section of the visual change which APPEARS to involve nothing at all currently. 
+ 
+EDIT: I should also mention a possible workaround that MAY break your save but all I can confirm is that it avoids the invisibility glitch, is installing the mod at the blacksmith, using it to get the desired result, then uninstalling before messing with gauntlets at all. 
+ 
+ 
+ [Updated on: Mon, 08 June 2020 11:06]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing Mod 0.2 
+ Sat, 19 December 2020 21:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ andy180084 
+ Messages: 1 Registered: December 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I can confirm that my character turned invisible when opening the level 3 magic chest 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing Mod 0.2 
+ Mon, 27 September 2021 16:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ urath0118 
+ Messages: 2 Registered: October 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ You only turn invisible with flames gauntlet. IMO not really a big deal since there are other spells. Not sure if this translates to others setups? tested on both Blacksmithing and Keshire's Lucien guard mod. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing Mod 0.2 
+ Thu, 09 December 2021 17:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This mod is awesome! Any way this could be used for the ranged weapon as well? 
+ 
+BTW - I have kind of solved the issue with the invisible character: 
+ 
+My character turns invisible using ice storm, vortex and force push gauntlets. You have to restore the original weaponlevels.lua . The modified one causes this bug. And use Inventory.AddItemOfType(GetLocalHero(), 'ITEM_NAME') 
+ to get working copies of the gauntlets into your inventory. 
+ 
+Replace ITEM_NAME with: 
+ 
+ObjectClothingSpellGauntletEnflame 
+ObjectClothingSpellGauntletLightning 
+ObjectClothingSpellGauntletSwords 
+ObjectClothingSpellGauntletVortex 
+ObjectClothingSpellGauntletIceStorm 
+ObjectClothingSpellGauntletForcePush 
+ 
+Example: 
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectClothingSpellGauntletForcePush') 
+ 
+ 
+ 
+ [Updated on: Tue, 14 December 2021 14:10]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Direction spell freeze fix and RoboDog sounds fix 
+
+ 
+ Next Topic: 
+ BigBust Mod 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:57 PDT 2026 
+
+ Total time taken to generate the page: 0.05510 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

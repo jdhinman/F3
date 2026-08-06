@@ -1,0 +1,419 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » So I made a body morph mod 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » So I made a body morph mod (I made a body morph mod, but im not quite sure it's working) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ So I made a body morph mod 
+ Sat, 18 December 2021 22:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Foxoverload 
+ Messages: 2 Registered: December 2021 Location: Brazil
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So I made a body morph mod, but im not quite sure it's working. It´s my first time trying to make a mod for Fable III, so please be patient with me. I changed the female hero body proportions on blender and followed every step i could find in this forum. Everything seems to be working properly, but due to the character design, I don't know if it really worked or i'm just imagining things. No crashes or anything. So, if anyone with knowledge in modding could test it for me and tell me if it's working... 
+PS: I'm not sure if there is any problem in sharing the file here. 
+PSS: English is not my first language, so, sorry if im not being clear. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: So I made a body morph mod 
+ Thu, 23 December 2021 15:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ There is no problem with posting the mod on here. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: So I made a body morph mod 
+ Thu, 23 December 2021 16:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Foxoverload 
+ Messages: 2 Registered: December 2021 Location: Brazil
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ That's the mod file. It's supposed to decrease the female hero waist size and leave no clipping or "holes" in the model. 
+ 
+ 
+ 
+ Attachment: 06_BetterFemaleBody.7z 
+ 
+ (Size: 212.13KB, Downloaded 1914 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: So I made a body morph mod 
+ Thu, 31 March 2022 18:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I hate to say it but no I don't think it works. I even tried a new save. There is already a nude mod though https://www.nexusmods.com/fableIII/mods/5 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: So I made a body morph mod 
+ Mon, 06 March 2023 06:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ If anyone sees this a successful female size adjuster was posted on the nexus. https://www.nexusmods.com/fableIII/mods/10 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ How to morph Hero Weapons via scripts? 
+
+ 
+ Next Topic: 
+ *DELETED* 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:13 PDT 2026 
+
+ Total time taken to generate the page: 0.05112 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

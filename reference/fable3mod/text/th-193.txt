@@ -1,0 +1,948 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Extracting models from the game 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Extracting models from the game 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Extracting models from the game 
+ Mon, 01 September 2014 00:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Jake_Daviau 
+ Messages: 7 Registered: September 2014 Location: Europe
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello, I tried to find and export 3d model files from Fable 3, I don't want to steal them or use them, I might try to mod the game a bit but that's a maybe, what I want to actually try is to load them up in blender (if possible) and just, well, study them, id like to see how they are made how many polygons they have how did they sculpt them etc. I study 3d graphics myself and I think such thing could help me become better myself. 
+ 
+I would be interested mostly in models of trees, some furniture and guns, specially pistols, also some character clothing maybe but I think finding those things there would be hard 
+ 
+all I managed to do was to open levels.bnk in bnk browser program and extract it and then search around in folders and other BNK files that I extracted but I cant find actual models 
+If anyone knows how precisely to extract such files from game files i would be thank full if you tell me. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Sat, 06 September 2014 01:04 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ look for MDL files 
+also you will need this 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Mon, 15 September 2014 08:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Jake_Daviau 
+ Messages: 7 Registered: September 2014 Location: Europe
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I just kind find anything interesting in those files, tried searching for things that would interest me like weapons, furniture, buildings flora like trees and ground plants and grass etc all in MDL ofcourse but i cant find any MDL files :/ they hid all of those things well 
+ 
+EDIT 1: 
+ 
+Also there are some files with weird extensions like for instance "occlusionwall.mdl.gmd" which of those extensions actually work? 
+ 
+ 
+ [Updated on: Mon, 15 September 2014 08:14]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Mon, 29 September 2014 05:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Jake_Daviau 
+ Messages: 7 Registered: September 2014 Location: Europe
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Can someone help me out with this i cannot find anything, where could i find meshes of plants like ground vegetation, grasses poppies and such, also trees would be interesting to look at but i fail to find any models somehow :/ it seems there are few levels of compression maybe, like there are BNK files inside other BNK files and such 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Wed, 01 October 2014 06:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ you really looked at the whole globals_models.bnk file? 
+I'm sure that's all there 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Fri, 03 October 2014 11:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Jake_Daviau 
+ Messages: 7 Registered: September 2014 Location: Europe
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ i think i was searching in wrong files then, my bad, however i tried searching in globals_models file but it has additional extension, it is not an BNK archive it is a .DAT file, though it does have BNK in the file name the actual file extension is .DAT and BNK browser do not work with it, perhaps i would need to unpack the DAT file somehow or change the extension somehow, i tried to just edit it out and to change it to BNK file but BNK browser cant read that either 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Sat, 04 October 2014 10:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ look for globals_models.bnk in streaming.bnk (if I remember correct) 
+unpack it and place in same folder as globals_models.bnk.dat 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Mon, 06 October 2014 12:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Jake_Daviau 
+ Messages: 7 Registered: September 2014 Location: Europe
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thank you it worked and i managed to find all the MDL files, i unpacked few already to take a look. 
+ 
+I do have other issue unfortunately, apparently i cant install MDL plugin into Blender from link provided here, i tried many things and it just wont work, perhaps my version of Blender is incompatible, my current blender version is 2.69. 
+ 
+Is there a way to open those files or maybe there's some converting program that would allow to change MDL files to other ones that blender could open or import? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Thu, 16 October 2014 04:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Jake_Daviau 
+ Messages: 7 Registered: September 2014 Location: Europe
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Anyone know how to get this ( http://fable3mod.com/forums/index.php?t=msg&th=98&st art=0 working with my blender, what version is it for, the poster of it just says it is for the latest version but i don't know which version was the latest at this point of time, mine might be never and maybe that's why it does not work for me. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Thu, 16 October 2014 17:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm using it with Blender v. 2.69. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Fri, 17 October 2014 12:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Version is 2.68 
+It's perfectly visible in window title on the screenshot 
+I'm sorry but I can't test it 
+About four years don't use Blender... 
+ 
+ 
+ [Updated on: Fri, 17 October 2014 12:16]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Sat, 18 October 2014 09:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hey, I've been following this thread for a while now. I'm no good at modelling but I really hope to see some modded models someday. I'd especially like the mercenary hotpants to show the actual legs rather than the tights, with skin morphing. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Fri, 24 October 2014 13:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Jake_Daviau 
+ Messages: 7 Registered: September 2014 Location: Europe
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thank you Artofeel, i downloaded and installed earlier version, 2.68 and the plug in works with it, however, there are few issues,most things i try to import work fine, they are imported and in blender, but some objects give out some error messages and wont import like some ground flora like flowers, poppies and such, and other objects will crash blender outright like if i tried importing mannequin blender crashed, but i can check out other objects okay, thanks 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Extracting models from the game 
+ Thu, 24 September 2015 08:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm right there with you! Also, I'd LOVE to be able to fix the informal skirt... the way it clings is just DUMB!!! 
+ 
+Hopefully, I'll get there one day... but now that I re-read this thread, perhaps I need to downgrade to 2.68. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Built-in level editor 
+
+ 
+ Next Topic: 
+ [How to] Extract loading screen posters 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:02 PDT 2026 
+
+ Total time taken to generate the page: 0.09177 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

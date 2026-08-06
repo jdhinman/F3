@@ -1,0 +1,327 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » ScriptFunction clear 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » ScriptFunction clear 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ ScriptFunction clear 
+ Mon, 11 November 2013 13:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ thid 
+ Messages: 5 Registered: November 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ is there anyway to clear values set by some of the functions? for example ScriptFunction.SetHeroAsBlowingBubbles( . Lets say we make quest that in part of it we use this function from debug, is there any way to clear value it change? ScriptFunction.SetHeroAsBlowingBubbles(false), ScriptFunction.SetHeroAsBlowingBubbles(0), ScriptFunction.SetHeroAsBlowingBubbles( .clear( and other stuffs don't work. Also I didn't find any function to reset such things in debugmenu.lua 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ScriptFunction clear 
+ Mon, 11 November 2013 14:01 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ thid wrote on Mon, 11 November 2013 13:43 is there anyway to clear values set by some of the functions? for example ScriptFunction.SetHeroAsBlowingBubbles( . Lets say we make quest that in part of it we use this function from debug, is there any way to clear value it change? ScriptFunction.SetHeroAsBlowingBubbles(false), ScriptFunction.SetHeroAsBlowingBubbles(0), ScriptFunction.SetHeroAsBlowingBubbles( .clear( and other stuffs don't work. Also I didn't find any function to reset such things in debugmenu.lua 
+ 
+As far as I can tell it's permanent. XD 
+ 
+ 
+034D10 ** function [273] definition (level 2)
+ ** start of function **
+ source name: d:\\Pulse\\work\\f3-daily-build-PC\\Deploy\\Fable2_win32\\data\\scripts\\Quests\\MiscFunctions.lua
+034D3B 08130000 line defined (4872)
+034D3F 11130000 last line defined (4881)
+034D43 00 nups (0)
+034D44 00 numparams (0)
+034D45 00 is_vararg (0)
+034D46 07 maxstacksize (7)
+ * code:
+034D47 16000000 sizecode (22)
+034D4B 0000000C [01] getglobal 0 0 ; GetLocalHero
+034D4F 0002027E [02] call_i_r1 0 1 2 
+034D53 00000002 [03] test 0 0 ; to [5] if true
+034D57 00100039 [04] jmp 17 ; to [22]
+034D5B 01010110 [05] self 1 0 257 ; "IsAlive"
+034D5F 0102047E [06] call_i_r1 1 2 2 
+034D63 01000002 [07] test 1 0 ; to [9] if true
+034D67 000C0039 [08] jmp 13 ; to [22]
+034D6B 0102000C [09] getglobal 1 2 ; Debug
+034D6F 01030286 [10] getfield_r1 1 1 3 ; CreateEntityByHero
+034D73 02040032 [11] loadk 2 4 ; "Pipe_Test_Bubbles"
+034D77 01020404 [12] call_i 1 2 2 
+034D7B 0205000C [13] getglobal 2 5 ; ObjectAttachment
+034D7F 02060486 [14] getfield_r1 2 2 6 ; AddEntity
+034D83 0300000E [15] move 3 0 
+034D87 0400020E [16] move 4 1 
+034D8B 05070032 [17] loadk 5 7 ; "Character.Carry.Mouth"
+034D8F 06080032 [18] loadk 6 8 ; 0
+034D93 02010A04 [19] call_i 2 5 1 
+034D97 02090310 [20] self 2 1 265 ; "SetAsLevelSaving"
+034D9B 0201047E [21] call_i_r1 2 2 1 
+034D9F 00000212 [22] return 0 1 
+ * constants:
+034DA3 0A000000 sizek (10)
+034DA7 04 const type 4
+ const [0]: "GetLocalHero"
+034DB9 04 const type 4
+ const [1]: "IsAlive"
+034DC6 04 const type 4
+ const [2]: "Debug"
+034DD1 04 const type 4
+ const [3]: "CreateEntityByHero"
+034DE9 04 const type 4
+ const [4]: "Pipe_Test_Bubbles"
+034E00 04 const type 4
+ const [5]: "ObjectAttachment"
+034E16 04 const type 4
+ const [6]: "AddEntity"
+034E25 04 const type 4
+ const [7]: "Character.Carry.Mouth"
+034E40 03 const type 3
+034E41 00000000 const [8]: (0)
+034E45 04 const type 4
+ const [9]: "SetAsLevelSaving"
+ * functions:
+034E5B 00000000 sizep (0)
+ * lines:
+034E5F 16000000 sizelineinfo (22)
+ [pc] (line)
+034E63 0A130000 [01] (4874)
+034E67 0A130000 [02] (4874)
+034E6B 0B130000 [03] (4875)
+034E6F 0B130000 [04] (4875)
+034E73 0B130000 [05] (4875)
+034E77 0B130000 [06] (4875)
+034E7B 0B130000 [07] (4875)
+034E7F 0B130000 [08] (4875)
+034E83 0C130000 [09] (4876)
+034E87 0C130000 [10] (4876)
+034E8B 0C130000 [11] (4876)
+034E8F 0C130000 [12] (4876)
+034E93 0D130000 [13] (4877)
+034E97 0D130000 [14] (4877)
+034E9B 0D130000 [15] (4877)
+034E9F 0D130000 [16] (4877)
+034EA3 0D130000 [17] (4877)
+034EA7 0D130000 [18] (4877)
+034EAB 0D130000 [19] (4877)
+034EAF 0E130000 [20] (4878)
+034EB3 0E130000 [21] (4878)
+034EB7 11130000 [22] (4881)
+ * locals:
+034EBB 02000000 sizelocvars (2)
+ local [0]: hero
+034EC8 02000000 startpc (2)
+034ECC 15000000 endpc (21)
+ local [1]: bubble_blower
+034EE2 0C000000 startpc (12)
+034EE6 15000000 endpc (21)
+ * upvalues:
+034EEA 00000000 sizeupvalues (0)
+ ** end of function **
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Job Example scripts 
+
+ 
+ Next Topic: 
+ postscriptsloaded.lua rewrite *WIP* 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:39 PDT 2026 
+
+ Total time taken to generate the page: 0.05130 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

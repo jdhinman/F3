@@ -1,0 +1,202 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Help with .lua script changing 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Help with .lua script changing (`) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Help with .lua script changing 
+ Mon, 16 December 2013 19:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ jimjam2 
+ Messages: 1 Registered: December 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So I decided to play Fable 3 again and noticed this script stuff which sounds good. 
+ 
+I followed Keshire's tutorial on script editing to the letter and got everything working with the following code: 
+ Quote: ScriptActivation[ScriptCode.QU000].AbleToRun = function( 
+ 
+ 
+ 
+Debug.GiveAllMeleeWeapons( 
+Debug.GiveAllRangedWeapons( 
+Debug.GiveAllSpellGauntlets( 
+Debug.AddAllInventoryItemsF2( 
+Debug.AddAllInventoryItems( 
+Debug.AddAllClothingF2( 
+Debug.AddAllClothingAccessories( 
+Debug.AddAllClothingSuits( 
+Debug.AddAllDLC1Items( 
+Debug.AddAllDLC2Items( 
+Debug.AddDLCDogBreedPack( 
+ 
+return nil 
+ 
+end 
+ 
+ 
+It all works fine and show up ingame, but if I save my game, then reload it the doors in Sanctuary are locked (tried starting a new game but it hangs with modified scripts). I added a modded scripts folder made no changes to the dir.mainifest or startup files, the save worked (with saving and loading) fine, no locked doors but also no effect from the script, nothing was changed. 
+So I modded the dir.manifest file with the suggested changes from the tutorial. O loaded up the savegame and the changes from the script were present but if I saved the game and loaded it, the doors were locked! 
+ 
+So I think it's either because of changes to the dir.manifest file or because of the activation of scripts. Even removing any and all changes I made to the files and/or replacing them with the original/vanilla copies, I still get the locked doors issue, so it must be corrupting the save game somehow. 
+ 
+Fell like i've tried everything, could anyone give me a hand with this? 
+ 
+Any help is appreciated, thanks a lot! 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Help!! 
+
+ 
+ Next Topic: 
+ Can you fix a broken door/window? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:52 PDT 2026 
+
+ Total time taken to generate the page: 0.05340 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

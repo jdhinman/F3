@@ -1,0 +1,529 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » [Edited]Just a question. 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » [Edited]Just a question. (Concerning xlive.dll) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ [Edited]Just a question. 
+ Tue, 18 March 2014 02:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Just to get straight into the topic, I have a problem with xlive.dll, whenever I toggle some settings on/off they just reset when I restart the game. For example, when I turn the tutorials off, they remain off for my current session, but if I restart the game they turn back on again. Is there any workaround to that or do I have to keep toggling them on/off every time I launch the game? Another thing about xlive is the avatar, how can I set one? Either a custom one or from the default gfwl avatars? 
+ 
+Edit: I've tried almost everything and I'm all out of ideas. First of all I've created a save via gfwl because this saves any changed settings and I ported it over xlive. No luck. Settings did reset again. I've tried using a save editor and disabling anything that has "Tutorial" on it. Still nothing. I've tried copying the settings from one save to another via the save editor, nothing. The only thing that changes is the choice between difficulties but ONLY when you choose your difficulty setting at the beginning of the game. Following that logic, I've tried making a new game and changing the settings to the desired ones along with the difficulty, yet again nothing. It's so annoying because you have to toggle the settings every time you start the game, I'm desperately looking for a solution on this issue. I'm guessing that I somehow have to alter the default settings, but there isn't such a file anywhere, the only settings files that I have seen were the controls.xml and videooptions.xml. I'm giving up on this hoping someone will read this thread and offer a solution or a logical explanation to why this is happening. 
+ 
+Oh and greetings by the way. ^_^ I guess it's kinda late for that seeing that the forum is a bit inactive. 
+ 
+ 
+ [Updated on: Wed, 19 March 2014 06:40]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Edited]Just a question. 
+ Wed, 19 March 2014 12:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ cjchris 
+ Messages: 7 Registered: March 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Would these be game settings? Display audio etc? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Edited]Just a question. 
+ Thu, 20 March 2014 02:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Exactly. It kinda makes sense though, as only the video settings are saved, there is a file for that at %appdata%\Roaming\Lionhead Studios\Fable 3\VideoOptions.xml, and also another one for controls, although there aren't any settings file for the other options such as audio, general, etc... But the thing is that gfwl should store the other options somewhere. Although I literally have no idea. 
+ 
+Here's the deal though, it seems that Controls.xml are stored on different folders on each profile based on its xuid header. But that's only for controls, I was expecting to find the other settings on that folder but it seemed as a dead end also. 
+ 
+ 
+ [Updated on: Thu, 20 March 2014 02:53]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Edited]Just a question. 
+ Thu, 20 March 2014 09:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ cjchris 
+ Messages: 7 Registered: March 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Mine saved from changing them in game. Try running the game as administrator each time and see what happens. 
+I couldn't find the settings file for this either but I didn't look particularly hard for it will have a look later. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Edited]Just a question. 
+ Thu, 20 March 2014 12:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Are you sure that you did this with timeslip's fake xlive? That didn't seem to work for me. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Edited]Just a question. 
+ Thu, 20 March 2014 22:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ confirm 
+Some game settings are not saved when using timeslip xlive remover 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Edited]Just a question. 
+ Fri, 21 March 2014 00:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Q_Q, I guess there's nothing I can do about it. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Debug commands 
+
+ 
+ Next Topic: 
+ Finding a creature ID. 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:58 PDT 2026 
+
+ Total time taken to generate the page: 0.05850 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

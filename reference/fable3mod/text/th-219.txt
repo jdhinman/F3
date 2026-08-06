@@ -1,0 +1,2890 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Some questions about unlocking some things 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Some questions about unlocking some things (Completionist here) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Some questions about unlocking some things 
+ Thu, 23 October 2014 03:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ First: how unlock the dlc? And somebody knows where to find them? 
+I have Fable 3 (PC), but since the dlc are no longer available, I wish to find them. I know that in fact there is only 3 (or 2 on PC if I understood correctly) packages and buying more DLC only unlocked files in them. I saw a forum about that but saw no clear answer. (I would prefer unlocking the dlc than giving myself the items) 
+ 
+Second: how get the "Fable Coin Golf" Items. I saw a table with all the items (pas tebin.com/Kf7Kj6ZF) but not the ones from "Fable Coin Golf". (And I will try to figure out how get the items) 
+ 
+Third: Is there a way to morph your weapons into a specific type (Organic, Bone, ... and the text match up? 
+ 
+PS: I am not a mod writer nor a developper. Also, English is not my native language (though, I think mastering it with a good enough level). So explain things step byt step, please. Thanks. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 03 November 2014 01:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ok, found fable3 on amazon. But somebody knows how unlock the Golf weapons? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 03 November 2014 08:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Use this method. The item codes are: ObjectInventoryLegendarySwordDonorKebab
+ObjectInventoryLegendarySwordThundaraga
+ObjectInventoryLegendaryHammerHammerOfTheWhale 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 10 November 2014 10:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ The method doesn't work. Maybe because I have the DLCs. 
+If it would work, I'll miss only 6 items now: The highlander set (2 clothins+ the tattoo) 
+the dye pack 
+Five star dog potion 
+and the hair pack. 
+ 
+If somebody could say me the item code or how to find it.(Found the DLCs folder with the highlander ouftit but didn't see anything near what you input for the rest), plus if somebody knows how to make it work. 
+ 
+ 
+ [Updated on: Mon, 10 November 2014 10:39]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 10 November 2014 10:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ AddAllDLC1Items 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 10 November 2014 10:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks, but still don't know how to make that works. 
+ 
+PS: I have also the game on Steam but I don't think that's the cause. 
+ 
+ 
+ [Updated on: Mon, 10 November 2014 10:45]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 10 November 2014 12:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ok, I write everything I have done, so say if I made a mistake (it's my first modding) 
+ 
+1)Launch BNK Browser 
+2)Open gamescripts_r.bnk 
+3)Extract all in D:\Steam\SteamApps\common\Fable 3\data\scripts 
+4)Replaced D:\Steam\SteamApps\common\Fable 3\data\dir.manifest with this http://pastebin.com/raw.php?i=y4LCrBv8 
+5)Deleted scripts\quests\scriptactivation.lua 
+6)Changed scripts\quests\scriptactivation.txt en .lua 
+7)Changed ScriptActivation[ScriptCode.QU000].AbleToRun=nil 
+ in scripts\quests\scriptactivation.lua 
+into 
+ ScriptActivation[ScriptCode.QU000].AbleToRun = function ()
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryLegendarySwordShardborne)
+Inventory.AddItemOfType(GetLocalHero(),ObjectTattooSuitSE1)
+Inventory.AddItemOfType(GetLocalHero(),ObjectTattooSuitSE2)
+Inventory.AddItemOfType(GetLocalHero(),ObjectTattooSuitSE3)
+Inventory.AddItemOfType(GetLocalHero(),ObjectTattooSuitSE4)
+Inventory.AddItemOfType(GetLocalHero(),ObjectTattooSuitSE5)
+Inventory.AddItemOfType(GetLocalHero(),ObjectTattooSuitSE7)
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryLegendaryHammerChampion)
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryLegendarySwordChanneler)
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryLegendaryHammerAbsolver)
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryLegendarySwordInquisitor)
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryLegendarySwordDonorKebab)
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryLegendarySwordThundaraga)
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryLegendaryHammerHammerOfTheWhale)
+Inventory.AddItemOfType(GetLocalHero(),ObjectInventoryPotionDogSetter)
+return nil
+end 
+ 
+8)Deleted <Bank Path="gamescripts_r.bnk" Mode="memory"/> 
+ in Fable 3\data\startup.vfsconfig 
+9)(Not asked but did it anyways when I saw that doesn't work) Launch BNK creator, Add folder Fable 3\data\scripts, create Fable 3\data\gamescripts_r.bnk 
+10) Launch the game. 
+ 
+PS: If step 9 was wrong, somebody could send gamescripts_r.bnk? I saved the wrong file and no longer have any back up. 
+Thanks. 
+ 
+ 
+ [Updated on: Mon, 10 November 2014 12:55]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 10 November 2014 16:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ That method doesn't work if you use DLC. 
+ 
+There are scriptactivation.lua files in dlc_freeforall.bnk and dlc2free.bnk . Funny they named it like that when actually it's not free and those archives contain all the DLC content you have to pay for. 
+ 
+Anyway, if you use both DLC 1 and 2 you need to use the scriptactivation.lua from dlc2free.bnk . DLC 1 overrides vanilla Fable 3 and DLC 2 overrides DLC 1. 
+ 
+If you don't want to extract dlc2free.bnk and then repack everything every time you want to use scriptactivation.lua you can use step 8. from the guide on startup.vfsconfig in dlc_freeforall.bnk and dlc2free.bnk . That means extract dlc_freeforall.bnk delete <Bank Path="scriptsandgui.bnk" Mode="memory"/> in startup.vfsconfig . Do the same with dlc2free.bnk . Then repack both DLC files with the changed startup.vfsconfig files. Extract gamescripts_r.bnk , then scriptsandgui.bnk from dlc_freeforall.bnk , then scriptsandgui.bnk from dlc2free.bnk into D:\Steam\SteamApps\common\Fable 3\data\scripts . 
+ 
+Then use my dir.manifest . 
+ 
+ 
+ 
+ Attachment: dir.manifest 
+ 
+ (Size: 62.11KB, Downloaded 3667 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 10 November 2014 18:36 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Done but still not working. I even extracted all the bnk that you talked, changed them and repack them. Should I begin a new game? Or disconnect from the Live? If you want that I upload the files so you can see them, I'll do it. 
+ 
+ 
+ [Updated on: Mon, 10 November 2014 18:38]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 11 November 2014 04:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I send my files here. I continued to look for what I did wrong but didn't see anything. The first three are in D:\Steam\SteamApps\common\Fable 3\ 
+The next one in C:\Users\***\AppData\Local\Microsoft\XLive\DLC\4d53090a\0000 0002\b7d5fe3d720f347ce446785c3f55488c8e7ff201\Content 
+The last one is in 00000002\d7fcb87dc6790538cc5ee45ec44ec782603b8acb\Content 
+If you find what's the problem, thanks a lot. 
+ 
+ 
+ 
+ Attachment: startup.vfsconfig 
+ 
+ (Size: 2.36KB, Downloaded 3256 times) 
+ 
+ 
+ Attachment: gamescripts_r.bnk 
+ 
+ (Size: 15.95KB, Downloaded 3131 times) 
+ 
+ 
+ Attachment: dir.manifest 
+ 
+ (Size: 62.11KB, Downloaded 3356 times) 
+ 
+ 
+ Attachment: dlc_freeforall.bnk 
+ 
+ (Size: 6.59KB, Downloaded 3154 times) 
+ 
+ 
+ Attachment: dlc2free.bnk 
+ 
+ (Size: 22.37KB, Downloaded 3154 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 11 November 2014 04:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I don't know, but maybe you just need to add new <package> to last DLC package_collection_info.xmb with modded *.bnk ? 
+like: 
+ Toggle Spoiler 
+ 
+<package>
+	<bankName>
+ MyMod.bnk
+	</bankName>
+	<premiumContentMask>
+ 1
+	</premiumContentMask>
+	<contentsDescription>
+ MyFable3Mod
+	</contentsDescription>
+	<isRequired>
+ False
+	</isRequired>
+	<dependencies>
+ 
+	</dependencies>
+	<mountOrder>
+ 9900
+	</mountOrder>
+	<canIgnoreMountOrder>
+ True
+	</canIgnoreMountOrder>
+	<name>
+ FableIII_MyMOD
+	</name>
+	<needsRestart>
+ False
+	</needsRestart>
+	<installContentMask>
+ 0
+	</installContentMask>
+	<packageUniqueId>
+ 99
+	</packageUniqueId>
+	<version>
+ 1.0
+	</version>
+	<deployment_folder>
+ dlc2paid\
+	</deployment_folder>
+</package>
+ 
+ 
+
+ 
+and put MyMod.bnk with last DLC folder 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 11 November 2014 05:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ What should I put in MyMod.bnk? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 11 November 2014 06:21 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ any moded stuff? 
+just keep file structure 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 11 November 2014 06:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I used this method . It's not question about adding a MyMod.bnk but to change directly the files. (As I said, it's my first time modding, so I might have got that Wrong) 
+ 
+PS: Sorry for my English 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 11 November 2014 10:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Firstly, bnk files always have bnk.dat files. Without them you cannot open bnk files, or rather, bnk files are used to open bnk.dat files. They are always BOTH changed. For me to check your DLC files you'd have to upload the bnk.dat files too. Don't do that. They are too big! 
+ 
+Secondly, do not repack scriptsandgui.bnk and scriptsandgui.bnk.dat from both DLC 2 archives! I forgot to tell you to either delete them, or better, rename them and keep them just in case. Sorry! Make absolutely sure the game does not load the DLC scripts from the archives. That's why you also have to delete the entries from both startup.vfsconfig in the DLC archives. Also delete or rename gamescripts_r.bnk and gamescripts_r.bnk.dat . Make absolutely sure that the game does not load the scripts from that archive either! All the scripts must be loaded from the extracted scripts folder and dir.manifest must contain all the paths to every single scripts file. I made sure of that in my dir.manifest file. I checked your startup.vfsconfig and you are using my dir.manifest . Everything's correct there. 
+ 
+Thirdly, make sure your scripts folder is set up correct. The correct paths are: 
+ 
+Fable 3\data\scripts\ai 
+Fable 3\data\scripts\camera 
+etc. 
+ 
+ 
+ [Updated on: Tue, 11 November 2014 10:21]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 11 November 2014 14:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Still not working . I'll try first without DLC, then first DLC, etc. But not now. Thanks anyway. 
+ 
+ 
+ [Updated on: Tue, 11 November 2014 14:53]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Sun, 16 November 2014 11:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay, I have a big problem: I reinstalled the game without any DLCs, made the method as said, but still nothing. The problem must be the code or that I don't do enough in game. I just launch the game and I am just after giving the goods to the Dweller Camp. 
+The code is: ScriptActivation[ScriptCode.QU000].AbleToRun=function ()
+
+Inventory.AddItemOfType(GetLocalHero(), ObjectInventoryLegendarySwordInquisitor)
+Inventory.AddItemOfType(GetLocalHero(), ObjectInventoryLegendarySwordSouldrinker)
+return nil
+end 
+ 
+ 
+Could anybody test it if it works? 
+ 
+ 
+ [Updated on: Sun, 16 November 2014 11:34]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 17 November 2014 01:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ovnidemon wrote on Mon, 17 November 2014 00:29 Could anybody test it if it works? 
+it's not correct 
+you forget add ' on item 
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordInquisitor')
+Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordSouldrinker') 
+ 
+but it's still messy 
+you will get item every time when game is loading 
+so very correct code is: 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordInquisitor') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordInquisitor')
+	GUI.DisplayReceivedItem('ObjectInventoryLegendarySwordInquisitor')
+end
+if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordSouldrinker') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryLegendarySwordSouldrinker')
+	GUI.DisplayReceivedItem('ObjectInventoryLegendarySwordSouldrinker')
+end 
+ 
+ 
+also congratulations, you broke every quest 
+now you need to start a new game 
+this is why modding game with ScriptActivation.lua is not recommended 
+because if you write something wrong, scipt execution is stoped and every quest code will not be activated 
+if you still want use this way, add this at the end of file 
+ GUI.DisplayMessageBox("All OK") 
+ 
+this will display MessageBox 
+so if it's displayed then everything is fine 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 17 November 2014 02:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ok, thanks a lot. I thought that the ' wasn't necessary, that was only to indicated wich part of the code is to change . 
+Also, restarting the game doesn't bother me, it was only a test save. This evening, I test all that. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 17 November 2014 03:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ btw, for those who are experiencing difficulties in getting all weapons (since it requires a visit to the worlds of other players) 
+ Toggle Spoiler 
+local allLegendaryWeapons = {
+	'ObjectInventoryLegendaryHammerAbsolver',
+	'ObjectInventoryLegendaryHammerAnwarGlory',
+	'ObjectInventoryLegendaryHammerAuroraShield',
+	'ObjectInventoryLegendaryHammerBloodstoneBludgeon',
+	'ObjectInventoryLegendaryHammerChampion',
+	'ObjectInventoryLegendaryHammerDragonboneHammer',
+	'ObjectInventoryLegendaryHammerFaerie',
+	'ObjectInventoryLegendaryHammerHammerOfTheWhale',
+	'ObjectInventoryLegendaryHammerJackHammer',
+	'ObjectInventoryLegendaryHammerLunariumPounder',
+	'ObjectInventoryLegendaryHammerMalletsMallet',
+	'ObjectInventoryLegendaryHammerScytheHammer',
+	'ObjectInventoryLegendaryHammerSorrowsFist',
+	'ObjectInventoryLegendaryHammerTenderiser',
+	'ObjectInventoryLegendaryHammerTenderiser',
+	'ObjectInventoryLegendaryHammerTrollblight',
+	'ObjectInventoryLegendaryHammerTwatter',
+	'ObjectInventoryLegendaryHammerWillmageddon',
+	'ObjectInventoryLegendaryPistolBarnumificator',
+	'ObjectInventoryLegendaryPistolBlackDragon',
+	'ObjectInventoryLegendaryPistolBloodcraver',
+	'ObjectInventoryLegendaryPistolBonesmasher',
+	'ObjectInventoryLegendaryPistolBriarsBlaster',
+	'ObjectInventoryLegendaryPistolChickenbane',
+	'ObjectInventoryLegendaryPistolDeadNed',
+	'ObjectInventoryLegendaryPistolDesertFury',
+	'ObjectInventoryLegendaryPistolDragonstomper',
+	'ObjectInventoryLegendaryPistolFullMonty',
+	'ObjectInventoryLegendaryPistolGnomewrecker',
+	'ObjectInventoryLegendaryPistolHolyVengeance',
+	'ObjectInventoryLegendaryPistolIceMaiden',
+	'ObjectInventoryLegendaryPistolMiriansMutilatogeorge r',
+	'ObjectInventoryLegendaryPistolPerforator',
+	'ObjectInventoryLegendaryPistolSailorGeriShooter',
+	'ObjectInventoryLegendaryRifleArkwrightFlintlock',
+	'ObjectInventoryLegendaryRifleDefender',
+	'ObjectInventoryLegendaryRifleDirtyHarriet',
+	'ObjectInventoryLegendaryRifleEqualiser',
+	'ObjectInventoryLegendaryRifleEthelbertBoner',
+	'ObjectInventoryLegendaryRifleFacemelter',
+	'ObjectInventoryLegendaryRifleGusketMusket',
+	'ObjectInventoryLegendaryRifleHeroCompanion',
+	'ObjectInventoryLegendaryRifleMarksman',
+	'ObjectInventoryLegendaryRifleMolynator',
+	'ObjectInventoryLegendaryRifleMoneyShot',
+	'ObjectInventoryLegendaryRifleSakerFlintlock',
+	'ObjectInventoryLegendaryRifleScattershot',
+	'ObjectInventoryLegendaryRifleSimmonsShotgun',
+	'ObjectInventoryLegendaryRifleSkormJustice',
+	'ObjectInventoryLegendaryRifleSwiftIrregular',
+	'ObjectInventoryLegendarySwordAvoLamentation',
+	'ObjectInventoryLegendarySwordBaronSlayer',
+	'ObjectInventoryLegendarySwordBeadleCutlass',
+	'ObjectInventoryLegendarySwordCasanova',
+	'ObjectInventoryLegendarySwordChanneler',
+	'ObjectInventoryLegendarySwordDonorKebab',
+	'ObjectInventoryLegendarySwordFishknife',
+	'ObjectInventoryLegendarySwordInquisitor',
+	'ObjectInventoryLegendarySwordMerchantsBodyguard',
+	'ObjectInventoryLegendarySwordMogoShafter',
+	'ObjectInventoryLegendarySwordMrStabby',
+	'ObjectInventoryLegendarySwordPorkSword',
+	'ObjectInventoryLegendarySwordShardborne',
+	'ObjectInventoryLegendarySwordSlimquick',
+	'ObjectInventoryLegendarySwordSouldrinker',
+	'ObjectInventoryLegendarySwordSwingingSword',
+	'ObjectInventoryLegendarySwordThundaraga',
+	'ObjectInventoryLegendarySwordThunderblade',
+	'ObjectInventoryLegendarySwordWolfsbane'
+}
+
+for key,value in pairs(allLegendaryWeapons) do
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), value)
+ GUI.DisplayReceivedItem(value)
+	end
+end
+ 
+
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 17 November 2014 17:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Finally, I get everything from free DLC. Thanks a lot. ScriptActivation[ScriptCode.QU000].AbleToRun = function ()
+	local testDLC = {
+	'ObjectInventoryLegendarySwordThundaraga',
+	'ObjectInventoryLegendaryHammerHammerOfTheWhale',
+	'ObjectInventoryLegendarySwordDonorKebab',
+	'ObjectInventoryLegendarySwordInquisitor',
+	'ObjectInventoryLegendaryHammerAbsolver',
+	'ObjectInventoryLegendarySwordChanneler',
+	'ObjectInventoryLegendaryHammerChampion',
+	'ObjectInventoryLegendarySwordShardborne'
+	}
+
+	for key,value in pairs(testDLC) do
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), value)
+ GUI.DisplayReceivedItem(value)
+ end
+	end
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogSetter') == 0 then
+ Debug.AddAllDLC1Items()
+ Debug.AddAllSpecialEditionTattoos()
+ Inventory.RemoveItemOfType(GetLocalHero(), 'ITEM_NAME')
+	end
+
+return nil
+end 
+ 
+ 
+One last step, and I am offcialy done, is to remove the weapons that will be dupplicate (Full Monty, Dead Ned, Black Dragon, Gusket, Bloodstone, Harriet, Money shot and Marksman 500). I already found the way to remove them (the RemoveItemLine, one for each item) but I have no idea of their codes. Just say me where I can find them, So I won't bother you anymore. 
+And, again, thanks a lot. 
+ 
+ 
+ [Updated on: Mon, 17 November 2014 17:26]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 18 November 2014 00:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ovnidemon wrote on Tue, 18 November 2014 06:24 Just say me where I can find them, So I won't bother you anymore. In previous post maybe? :) 
+ 
+and there is something wrong 
+ Ovnidemon wrote on Tue, 18 November 2014 06:24 
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogSetter') == 0 then 
+ Debug.AddAllDLC1Items() 
+ Debug.AddAllSpecialEditionTattoos() 
+ Inventory.RemoveItemOfType(GetLocalHero(), 'ITEM_NAME') 
+	end 
+end 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 18 November 2014 09:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Tue, 18 November 2014 00:26 Ovnidemon wrote on Tue, 18 November 2014 06:24 Just say me where I can find them, So I won't bother you anymore. In previous post maybe? 
+ *Hide in shame* 
+ 
+ Quote: and there is something wrong 
+ Ovnidemon wrote on Tue, 18 November 2014 06:24 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogSetter') == 0 then
+ Debug.AddAllDLC1Items()
+ Debug.AddAllSpecialEditionTattoos()
+ [color=red][b]Inventory.RemoveItemOfType(GetLocalHero(), 'ITEM_NAME')[/b][/color]
+	end
+end 
+ 
+It was just to show where I was going to put it (though, to be clearer, I hould have put it in comment) 
+So here is the final code 
+ Toggle Spoiler ScriptActivation[ScriptCode.QU000].AbleToRun = function ()
+
+	Gameflow.AllowFakePreOrderTemplates = true
+
+	local freeDLC = {
+	'ObjectInventoryLegendarySwordThundaraga',
+	'ObjectInventoryLegendaryHammerHammerOfTheWhale',
+	'ObjectInventoryLegendarySwordDonorKebab',
+	'ObjectInventoryLegendarySwordInquisitor',
+	'ObjectInventoryLegendaryHammerAbsolver',
+	'ObjectInventoryLegendarySwordChanneler',
+	'ObjectInventoryLegendaryHammerChampion',
+	'ObjectInventoryLegendarySwordShardborne'
+	}
+
+	for key,value in pairs(freeDLC) do
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), value)
+ GUI.DisplayReceivedItem(value)
+ end
+	end
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogSetter') == 0 then
+ Debug.AddAllDLC1Items()
+ Debug.AddAllSpecialEditionTattoos()
+ local doubleWeapons= {
+ 'ObjectInventoryLegendaryPistolDeadNed',
+ 'ObjectInventoryLegendaryPistolFullMonty',
+ 'ObjectInventoryLegendaryPistolBlackDragon',
+ 'ObjectInventoryLegendaryRifleGusketMusket',
+ 'ObjectInventoryLegendaryRifleMoneyShot',
+ 'ObjectInventoryLegendaryRifleDirtyHarriet',
+ 'ObjectInventoryLegendaryRifleMarksman',
+ 'ObjectInventoryLegendaryHammerBloodstoneBludgeon'
+ }
+ for key,value in pairs(doubleWeapons) do
+ Inventory.RemoveItemOfType(GetLocalHero(), value)
+ end
+	end
+
+return nil
+end 
+
+ 
+ 
+Again, thanks a lot for having taken time for me. 
+ 
+ 
+ 
+ [Updated on: Tue, 18 November 2014 09:23]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 18 November 2014 09:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ovnidemon wrote on Tue, 18 November 2014 22:09 So here is the final code 
+and again there is something wrong? 
+your code for remove duplicate weapons will only work if ObjectInventoryPotionDogSetter == 0 
+you need to put it outside this check 
+or you just want to run it only once? Then OK. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 18 November 2014 10:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ No, everything is fine, it was just to show it to eventual people looking to do the same. 
+Yes, I just want to run it once (when I receive DLC1Items). The potionSetter condition is just that I chose one of the DLC item and said that if we didn't have it, we received all the DLC items and removed the ones that we can received normally. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Fri, 28 November 2014 10:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Sorry but I got a new problem: I tried to morph my weapons using the codes here , but it only remove all my weapons and I have only the two weapons equipped with the base morph. 
+Here is what I wrote 
+ ScriptActivation[ScriptCode.QU000].AbleToRun=function ()
+
+Debug.SetPrimaryMesh(0)
+Debug.SetSecondaryMesh(0)
+return nil
+end 
+ 
+The only time where I got a morph was with Debug.SetPrimaryMesh(-1) but it was random and still got every others weapons removed. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Fri, 28 November 2014 11:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ easy way is look at function it's self 
+is in miscfunctions.lua 
+it's pretty simple, is just pickup number and set string value 
+so I rewrite all you need 
+ Toggle Spoiler 
+Gameflow.WeaponMeshOverride = true
+Gameflow.PrimaryMeshOverride = "PrimaryMeshAuroran"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshCrystal"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshEvil1"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshEvil2"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshGood1"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshGood2"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshIntricate"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshOrganic"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshReaver"
+Gameflow.PrimaryMeshOverride = "PrimaryMeshBase"
+Gameflow.SecondaryMeshOverride = "SecondaryMeshAuroran"
+Gameflow.SecondaryMeshOverride = "SecondaryMeshSpell"
+Gameflow.SecondaryMeshOverride = "SecondaryMeshBone"
+Gameflow.SecondaryMeshOverride = "SecondaryMeshRoyal"
+Gameflow.SecondaryMeshOverride = "SecondaryMeshBase"
+Gameflow.PrimaryMeshSize = "SizeSmall"
+Gameflow.PrimaryMeshSize = "SizeMedium"
+Gameflow.PrimaryMeshSize = "SizeLarge"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourMetallicRed"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourSilver"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourMetallicBlack"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourMetallicGreen"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourSteel"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourGold"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourMetallicPurple"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourCopper"
+Gameflow.PrimaryColour = "PrimaryBackgroundColourMetallicBronze"
+Gameflow.ForegroundColour = "PrimaryForegroundColourMetallicRed"
+Gameflow.ForegroundColour = "PrimaryForegroundColourSilver"
+Gameflow.ForegroundColour = "PrimaryForegroundColourMetallicBlack"
+Gameflow.ForegroundColour = "PrimaryForegroundColourMetallicGreen"
+Gameflow.ForegroundColour = "PrimaryForegroundColourSteel"
+Gameflow.ForegroundColour = "PrimaryForegroundColourGold"
+Gameflow.ForegroundColour = "PrimaryForegroundColourMetallicPurple"
+Gameflow.ForegroundColour = "PrimaryForegroundColourCopper"
+Gameflow.ForegroundColour = "PrimaryForegroundColourMetallicBronze"
+Gameflow.ParticleEffect = "LIGHTNING"
+Gameflow.ParticleEffect = "FIRE"
+Gameflow.ParticleEffect = "SHADOW"
+Gameflow.ParticleEffect = "HOLY"
+Gameflow.ParticleEffect = "BLOOD"
+Gameflow.ParticleEffect = "ETHEREAL"
+Gameflow.ParticleEffect = "GOLDEN"
+Gameflow.ParticleEffect = "POISON"
+ 
+
+ 
+pickup one type for one parameter 
+and keep Gameflow.WeaponMeshOverride equal true 
+ 
+if you use realtime modding, you need go to sanctuary and then back, only then changes will appear 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Fri, 28 November 2014 12:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ovnidemon 
+ Messages: 19 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks again, it works now . 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Wed, 02 September 2015 19:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So, I'm using this Toggle Spoiler 
+	local allLegendaryWeapons = { 
+ 'ObjectInventoryLegendaryHammerAbsolver', 
+ 'ObjectInventoryLegendaryHammerAnwarGlory', 
+ 'ObjectInventoryLegendaryHammerAuroraShield', 
+ 'ObjectInventoryLegendaryHammerBloodstoneBludgeon', 
+ 'ObjectInventoryLegendaryHammerChampion', 
+ 'ObjectInventoryLegendaryHammerDragonboneHammer', 
+ 'ObjectInventoryLegendaryHammerFaerie', 
+ 'ObjectInventoryLegendaryHammerHammerOfTheWhale', 
+ 'ObjectInventoryLegendaryHammerJackHammer', 
+ 'ObjectInventoryLegendaryHammerLunariumPounder', 
+ 'ObjectInventoryLegendaryHammerMalletsMallet', 
+ 'ObjectInventoryLegendaryHammerScytheHammer', 
+ 'ObjectInventoryLegendaryHammerSorrowsFist', 
+ 'ObjectInventoryLegendaryHammerTenderiser', 
+ 'ObjectInventoryLegendaryHammerTrollblight', 
+ 'ObjectInventoryLegendaryHammerTwatter', 
+ 'ObjectInventoryLegendaryHammerWillmageddon', 
+ 'ObjectInventoryLegendaryPistolBarnumificator', 
+ 'ObjectInventoryLegendaryPistolBlackDragon', 
+ 'ObjectInventoryLegendaryPistolBloodcraver', 
+ 'ObjectInventoryLegendaryPistolBriarsBlaster', 
+ 'ObjectInventoryLegendaryPistolChickenbane', 
+ 'ObjectInventoryLegendaryPistolDeadNed', 
+ 'ObjectInventoryLegendaryPistolDesertFury', 
+ 'ObjectInventoryLegendaryPistolDragonstomper', 
+ 'ObjectInventoryLegendaryPistolFullMonty', 
+ 'ObjectInventoryLegendaryPistolGnomewrecker', 
+ 'ObjectInventoryLegendaryPistolHolyVengeance', 
+ 'ObjectInventoryLegendaryPistolIceMaiden', 
+ 'ObjectInventoryLegendaryPistolMiriansMutilator', 
+ 'ObjectInventoryLegendaryPistolPerforator', 
+ 'ObjectInventoryLegendaryPistolSailorGeriShooter', 
+ 'ObjectInventoryLegendaryRifleArkwrightFlintlock', 
+ 'ObjectInventoryLegendaryRifleDefender', 
+ 'ObjectInventoryLegendaryRifleDirtyHarriet', 
+ 'ObjectInventoryLegendaryRifleEqualiser', 
+ 'ObjectInventoryLegendaryRifleEthelbertBoner', 
+ 'ObjectInventoryLegendaryRifleFacemelter', 
+ 'ObjectInventoryLegendaryRifleGusketMusket', 
+ 'ObjectInventoryLegendaryRifleHeroCompanion', 
+ 'ObjectInventoryLegendaryRifleMarksman', 
+ 'ObjectInventoryLegendaryRifleMolynator', 
+ 'ObjectInventoryLegendaryRifleMoneyShot', 
+ 'ObjectInventoryLegendaryRifleSakerFlintlock', 
+ 'ObjectInventoryLegendaryRifleScattershot', 
+ 'ObjectInventoryLegendaryRifleSimmonsShotgun', 
+ 'ObjectInventoryLegendaryRifleSkormJustice', 
+ 'ObjectInventoryLegendaryRifleSwiftIrregular', 
+ 'ObjectInventoryLegendarySwordAvoLamentation', 
+ 'ObjectInventoryLegendarySwordBaronSlayer', 
+ 'ObjectInventoryLegendarySwordBeadleCutlass', 
+ 'ObjectInventoryLegendarySwordCasanova', 
+ 'ObjectInventoryLegendarySwordChanneler', 
+ 'ObjectInventoryLegendarySwordDonorKebab', 
+ 'ObjectInventoryLegendarySwordFishknife', 
+ 'ObjectInventoryLegendarySwordInquisitor', 
+ 'ObjectInventoryLegendarySwordMerchantsBodyguard', 
+ 'ObjectInventoryLegendarySwordMogoShafter', 
+ 'ObjectInventoryLegendarySwordMrStabby', 
+ 'ObjectInventoryLegendarySwordPorkSword', 
+ 'ObjectInventoryLegendarySwordShardborne', 
+ 'ObjectInventoryLegendarySwordSlimquick', 
+ 'ObjectInventoryLegendarySwordSouldrinker', 
+ 'ObjectInventoryLegendarySwordSwingingSword', 
+ 'ObjectInventoryLegendarySwordThundaraga', 
+ 'ObjectInventoryLegendarySwordThunderblade', 
+ 'ObjectInventoryLegendarySwordWolfsbane' 
+	} 
+ 
+	for key,value in pairs(allLegendaryWeapons) do 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero( , value) == 0 then 
+ Inventory.AddItemOfType(GetLocalHero( , value) 
+ GUI.DisplayReceivedItem(value) 
+ end 
+	end 
+return nil 
+end 
+
+ 
+and having problems. 
+Namely, I know I have to start a new game, that's not the problem. This is: 
+MC starts with a sword and rifle on her back and the Fireball gauntlet equipped. Game runs fine until you're sent to the Road to Rule. Then it just hangs on the flash to white part. 
+I've followed the instructions exactly to this point (well, as much as I could) but got confused by this: 
+ Quote: Extract gamescripts_r.bnk, then scriptsandgui.bnk from dlc_freeforall.bnk, then scriptsandgui.bnk from dlc2free.bnk into D:\Steam\SteamApps\common\Fable 3\data\scripts. 
+The first part is easy, I have the scripts folder in the data folder. What's confusing me is the next part - extract the same file from two different archives and place them into the same folder? Won't they just overwrite each other? Or am I completely misunderstanding this (and if I am, please tell me what he meant by that line) ? I'm using catspaw's xlive remover 15d as well. 
+ 
+ 
+ [Updated on: Wed, 02 September 2015 19:54]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Fri, 11 September 2015 21:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Can't edit my previous post for some reason. 
+Anyway, I figgered it out. Turns out that if you save after achieving the desired effect, shut the game down and remove your mod and reload the game will proceed like nothing happened. Even the weapons on her back and gauntlet go poof. After Jasper opens the door to the armoury and you pick a weapon, go right back in and pick something else if you like. All the weapons you modded in are present once that section is open. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Thu, 24 September 2015 07:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Mon, 17 November 2014 06:19 btw, for those who are experiencing difficulties in getting all weapons (since it requires a visit to the worlds of other players) 
+ Toggle Spoiler [code] 
+local allLegendaryWeapons = { 
+	'ObjectInventoryLegendaryHammerAbsolver', 
+ --etc, 
+ } 
+ 
+for key,value in pairs(allLegendaryWeapons) do 
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero( , value) == 0 then 
+ Inventory.AddItemOfType(GetLocalHero( , value) 
+ GUI.DisplayReceivedItem(value) 
+	end 
+end 
+
+ 
+ 
+I presume that I can also use something like this to delete multiples? 
+ 
+ Toggle Spoiler 
+local allLegendaryWeapons = {
+	'ObjectInventoryLegendaryHammerAbsolver',
+ --etc.,
+ }
+
+for key,value in pairs(allLegendaryWeapons) do
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) > 1 then
+ Inventory.RemoveItemOfType(GetLocalHero(), value)
+ GUI.DisplayGaveItem(value)
+	end
+end
+[/spoiler] 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Thu, 24 September 2015 14:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ The answer is "yes". 
+ 
+But I just use 
+ 
+ GUI.DisplayReceivedItem(item_name) 
+ 
+ 
+since it's only code activation feedback, anyway... 
+ 
+Some of my items I had to input one by one to make them work, but hey... at least I didn't have to restart my game over and over since I was using Artofeel's live script injection method! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Sat, 10 December 2016 18:39 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay, so I have a duplicate Really Sharp Pair Of Scissors. I tried inserting the code as above, but I still have two. Do I have to start a new game for the thing to take effect? For the record, this is my mod script (and I've removed entries that I know are fixed rewards - like the Black Dragon from the Mercenary Camp Shooting Range): 
+ local allLegendaryWeapons = {
+	'ObjectInventoryLegendaryHammerAnwarGlory',
+	'ObjectInventoryLegendaryHammerAuroraShield',
+	'ObjectInventoryLegendaryHammerDragonboneHammer',
+	'ObjectInventoryLegendaryHammerFaerie',
+	'ObjectInventoryLegendaryHammerHammerOfTheWhale',
+	'ObjectInventoryLegendaryHammerJackHammer',
+	'ObjectInventoryLegendaryHammerLunariumPounder',
+	'ObjectInventoryLegendaryHammerMalletsMallet',
+	'ObjectInventoryLegendaryHammerScytheHammer',
+	'ObjectInventoryLegendaryHammerSorrowsFist',
+	'ObjectInventoryLegendaryHammerTenderiser',
+	'ObjectInventoryLegendaryHammerTrollblight',
+	'ObjectInventoryLegendaryHammerTwatter',
+	'ObjectInventoryLegendaryHammerWillmageddon',
+	'ObjectInventoryLegendaryPistolBarnumificator',
+	'ObjectInventoryLegendaryPistolBloodcraver',
+	'ObjectInventoryLegendaryPistolBriarsBlaster',
+	'ObjectInventoryLegendaryPistolChickenbane',
+	'ObjectInventoryLegendaryPistolDesertFury',
+	'ObjectInventoryLegendaryPistolFullMonty',
+	'ObjectInventoryLegendaryPistolHolyVengeance',
+	'ObjectInventoryLegendaryPistolIceMaiden',
+	'ObjectInventoryLegendaryPistolMiriansMutilator',
+	'ObjectInventoryLegendaryPistolPerforator',
+	'ObjectInventoryLegendaryPistolSailorGeriShooter',
+	'ObjectInventoryLegendaryRifleArkwrightFlintlock',
+	'ObjectInventoryLegendaryRifleDefender',
+	'ObjectInventoryLegendaryRifleEqualiser',
+	'ObjectInventoryLegendaryRifleEthelbertBoner',
+	'ObjectInventoryLegendaryRifleFacemelter',
+	'ObjectInventoryLegendaryRifleHeroCompanion',
+	'ObjectInventoryLegendaryRifleMolynator',
+	'ObjectInventoryLegendaryRifleSakerFlintlock',
+	'ObjectInventoryLegendaryRifleScattershot',
+	'ObjectInventoryLegendaryRifleSimmonsShotgun',
+	'ObjectInventoryLegendaryRifleSkormJustice',
+	'ObjectInventoryLegendaryRifleSwiftIrregular',
+	'ObjectInventoryLegendarySwordAvoLamentation',
+	'ObjectInventoryLegendarySwordBeadleCutlass',
+	'ObjectInventoryLegendarySwordCasanova',
+	'ObjectInventoryLegendarySwordDonorKebab',
+	'ObjectInventoryLegendarySwordFishknife',
+	'ObjectInventoryLegendarySwordMerchantsBodyguard',
+	'ObjectInventoryLegendarySwordMogoShafter',
+	'ObjectInventoryLegendarySwordMrStabby',
+	'ObjectInventoryLegendarySwordPorkSword',
+	'ObjectInventoryLegendarySwordSlimquick',
+	'ObjectInventoryLegendarySwordSouldrinker',
+	'ObjectInventoryLegendarySwordSwingingSword',
+	'ObjectInventoryLegendarySwordThundaraga',
+	'ObjectInventoryLegendarySwordThunderblade'
+	}
+
+	for key,value in pairs(allLegendaryWeapons) do
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), value)
+ end
+ 
+	for key,value in pairs(allLegendaryWeapons) do
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) > 1 then
+ Inventory.RemoveItemOfType(GetLocalHero(), value)
+ end
+	end 
+ 
+In the event that I don't have to start a new game, what can be done to rectify the clone issue? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Mon, 12 December 2016 01:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ so it's ObjectInventoryLegendarySwordFishknife 
+probably your script runs only one time 
+it's loop through names but not numbers 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Sat, 10 October 2020 12:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Unknown404 
+ Messages: 1 Registered: October 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello 
+ 
+I was wondering if some kind soul could create a single .rar or .zip folder with the modded files necessary to get the Coin Golf items: 
+ 
+ObjectInventoryLegendarySwordDonorKebab 
+ObjectInventoryLegendarySwordThundaraga 
+ObjectInventoryLegendaryHammerHammerOfTheWhale 
+ 
+This would be for someone with all the DLC's installed, but the 3 items being unobtainable due to Coin Golf game no longer being available. 
+As I understand it from reading the comments, it would mean that you have to modify the freedlc2.bnk file/folders as it over-rules the vanilla game and DLC1? 
+ 
+I am quite simply not able to do it myself so I was simply wondering if someone could mod the files necessary and then just zip it up so I and anyone else like me can just 'extract' the file/folder into the game directory and it should now then have the missing items. 
+ 
+Essentially I am just asking for someone to make it easy 1-2-3 steps max instead of 10-20 steps of modding, which easily leads to some error getting caused along the way. 
+ 
+My hope is for it to look something like this: 
+ 
+Step 1) 'Download this zip file' 
+Step 2) Extract content into your Fable game directory: (ex: C:\Games\Fable 3) 
+Step 3) Start up the game make sure you have gotten the items! 
+Step 4) If you have the items make sure to save the game! 
+ 
+Thank you for reading my comment! & Bless you if you actually are able to help! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Some questions about unlocking some things 
+ Tue, 09 March 2021 00:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yup. There is a readme inside please read it. I have no idea if their instructions are absolutely necessary but I understand why they suggest them even if it will mean you have to fight the first boss without them. PS don't buy any gauntlets on the road to rule if you don't want unremovable duplicates (at least not easily removable). Weapon dupes should be sellable at pawn shops. 
+ 
+Yes, this post is a duplicate of one I put elsewhere on this forum. Multiple chains end the same place. 
+ 
+ 
+ 
+ Attachment: All Items Unlocker.7z 
+ 
+ (Size: 16.67KB, Downloaded 2284 times) 
+ 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Godwin estate bugfix request... 
+
+ 
+ Next Topic: 
+ GFWL Weapon Augments 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:08 PDT 2026 
+
+ Total time taken to generate the page: 0.05746 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

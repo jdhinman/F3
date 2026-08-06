@@ -1,0 +1,243 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » ENGINE_LEVEL - LevelGraphicsFile Format 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » ENGINE_LEVEL - LevelGraphicsFile Format 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ ENGINE_LEVEL - LevelGraphicsFile Format 
+ Thu, 21 November 2013 08:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TodX:1228533313 
+Here's what I have so far on the engine_level/LevelGraphicsFile format. This format will not properly work in HW as it seems to cut off the strings after 10 chars and thus screws the rest of the format, and in the process sucks up a ton of cpu and mem (a 2.2kb file sucked up 1.4gb ram). There may also be additional file types that I have not yet run into. 
+ 
+This file seems to have links to a number of other files used for loading/rendering the level. This includes heightmaps and flora models. The flora models are followed by what looks like instancing data to spawn instances with. 
+ 
+ 
+#include "standard-types.hsl"
+
+#pragma byteorder(big_endian)
+#pragma maxarray(65536) // max that hw 5.1 will allow
+#pragma maxstring(512)
+
+typedef struct Coord3D
+{
+	float	X;
+	float	Y;
+	float	Z;
+} Coord3D;
+
+typedef struct LGFFloraInstance
+{
+	Coord3D	Coord;
+	float	Unknown1;	// these two floats seem to always be very small, very close to 0
+	float	Unknown2;	// they could be used for rotation maybe? though that's usually done with quaternions
+} LGFCoordEntry;
+
+typedef struct LGFUnknownBBEntry	// looks like it might be bounding box, but not sure
+{
+	DWORD	Start;
+	DWORD	End;
+	Coord3D	StartCoord;
+	Coord3D	EndCoord;
+} LGFUnknownBBEntry;
+
+typedef struct LGFFileEntry
+{
+	DWORD	Type;
+	zstring	FileName;
+	
+	switch (Type)
+	{
+ case 0x4:
+ DWORD	Unknown1;
+ DWORD	Unknown2;
+ break;
+ case 0x5:	break;
+ case 0x15:
+ char	Unknowns1[11];
+ DWORD	CoordCount;
+ float	Unknowns2[11];
+ char	Unknowns3Null[24];
+ LGFFloraInstance	Coords[CoordCount];
+ DWORD	UnknownBBCount; // I think these might be bounding boxes, but not sure
+ LGFUnknownBBEntry	UnknwonBBs[UnknownBBCount];
+ break;
+ case 0x20:	break;
+ default:	break;
+	}
+	
+} LGFFileEntry;
+
+typedef struct LevelGraphicsFile
+{
+	char	LevelGraphicsFileTag[17];	// = "LevelGraphicsFile"
+	DWORD	Unknown1;
+	DWORD	FileCount;
+	LGFFileEntry	Files[FileCount];
+	
+} LevelGraphicsFile;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ BIN 
+
+ 
+ Next Topic: 
+ GENV File Format 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:48 PDT 2026 
+
+ Total time taken to generate the page: 0.05409 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

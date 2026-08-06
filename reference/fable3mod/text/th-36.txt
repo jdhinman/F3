@@ -1,0 +1,813 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » Question about the MDL format 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » Question about the MDL format 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Question about the MDL format 
+ Tue, 10 September 2013 09:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Are the MDL files for Fable III related in any way aside from the file extension to the Autodesk MDL format? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Tue, 10 September 2013 09:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Superficially. I wrote a blender script to import static models into blender that I still need to upload. But I was having problems with the math to figure out bone rotations to grab animated models. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Tue, 10 September 2013 10:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ But, were I to use that script, would I be able to import a normal Autodesk MDL as well as a Fable III MDL? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Tue, 10 September 2013 13:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Tue, 10 September 2013 10:22 But, were I to use that script, would I be able to import a normal Autodesk MDL as well as a Fable III MDL? 
+ 
+Nope. There's enough differences that that would not be possible. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Tue, 10 September 2013 14:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Damn. That sucks, I was kinda hoping I could use your work with that plugin to make an Autodesk plugin for Blender. Oh well, I can still take a crack at making an export plugin once you've uploaded your work. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Tue, 10 September 2013 22:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ maybe this is DotXSI format? 
+ Quote: art\characters\fable 3 characters\children\ dotxsi \au_fchild_hat_01\au_fchild_hat_01.mdl 
+somebody tried to add a header ? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Tue, 10 September 2013 23:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ If it's a DotXSI format, then this SHOULD help in being able to import and export the models. 
+ 
+ Link to code from an XSI import/export plugin, hopefully works. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Sat, 02 November 2013 11:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Tue, 10 September 2013 23:02 If it's a DotXSI format, then this SHOULD help in being able to import and export the models. 
+ 
+ Link to code from an XSI import/export plugin, hopefully works. 
+ 
+XSI itself is plain text ascii. They used their own in-house plugin to export from dotxsi to their binary model format. .MDL is pretty much just a generic extension for models. Kind of like how .bsp is the generic format for quake/unreal levels. 
+ 
+Once I figure out what the unknowns do, and which data is used and not used, I can write an exporter for blender to get models back into Fable 3. There's really only a few things left that I need to make that possible. 
+ 
+The bulk of my work right now consists of figuring out what the second Verts[nVerts][8] stucture does. And then I still need to check if Unknown2 is used. If it is, I need to figure out what it's doing. 
+ 
+After that, it's material/texture stuff. But that should be vastly easier to deal with. 
+ 
+ 
+ 
+ [Updated on: Fri, 22 November 2013 06:53]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Sat, 02 November 2013 17:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ That bit having to do with illumination might be glow strength. v1/2/3 is probably handled by the game's quality settings so that it knows what texture resolution to use for given settings. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Sat, 02 November 2013 18:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Sat, 02 November 2013 17:49 That bit having to do with illumination might be glow strength. v1/2/3 is probably handled by the game's quality settings so that it knows what texture resolution to use for given settings. 
+ 
+Nah, there's a texture that controls that. 
+ 
+Material28
+DiffuseMap art\inventory\multimeshweapons\pictures\hammer_head_auroran_medium\hammer_head_auroran_medium_diff.tex
+SpecularMap art\inventory\multimeshweapons\pictures\hammer_head_auroran_medium\hammer_head_auroran_medium_spec.tex
+NomralMap art\inventory\multimeshweapons\pictures\hammer_head_auroran_medium\hammer_head_auroran_medium_norm.tex
+EnvironmentMap art\inventory\multimeshweapons\pictures\_sharedtextures\rifle_barrel_base_env.tex
+IlluminationMap art\inventory\multimeshweapons\pictures\hammer_head_auroran_medium\hammer_head_auroran_medium_illum.tex
+ 
+ 
+ 
+ 
+I this has more to do with self lit mesh. So that it doesn't need a lightsource to see the texture. At least from what I saw. I've had a ton of problems testing changes so I'm not too sure. 
+ 
+Interestingly enough, Fable 3 will completely skip over files it doesn't like and use the retail/earlier DLC version instead. It's caused me quite a few headaches today. 
+ 
+The second array is 8 floats. And it's per vertex, so I doubt it's doing anything quality wise (I think the steaming.bnk handles that with .gmd). 
+My best guess is that normals and possibly smoothing groups are being stored there. Since Blender can't import normals I'll have to write the exporter and just guess which ones they are until I get it right... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about the MDL format 
+ Sun, 03 November 2013 20:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Sat, 02 November 2013 11:14 
+And then I still need to check if Unknown2 is used. If it is, I need to figure out what it's doing. 
+ 
+ 
+I still have some checking to do, but it looks like that unknown is total verts used for faces. I found a couple easy ones that made it obvious. 3 verts per face = unknown2. 
+ 
+	
+ 00000396 uint32 nTris 2 02000000 4	
+ 00000400 uint32 Unknown2 6 06000000 4	
+ 00000404 uint32 nVerts 4 04000000 4
+
+ 00000601 uint16 Tris[nTris][3] 12 
+ 
+ 
+ 
+ 00000379 uint32 nTris 80 50000000 4	
+ 00000383 uint32 Unknown2 240 F0000000 4	
+ 00000387 uint32 nVerts 90 5A000000 4	
+
+ 00005071 uint16 Tris[nTris][3] 480	
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ TEX 
+
+ 
+ Next Topic: 
+ BIN 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:17 PDT 2026 
+
+ Total time taken to generate the page: 0.05648 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

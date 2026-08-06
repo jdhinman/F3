@@ -1,0 +1,421 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Stuck in the sanctuary before Page mission in Bowerstone 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Stuck in the sanctuary before Page mission in Bowerstone 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Stuck in the sanctuary before Page mission in Bowerstone 
+ Thu, 07 May 2020 00:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Adrian Vino 
+ Messages: 3 Registered: May 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have problem with changing clothes, when I go to the sanctuary before the quest from Page in the Bowerstone Mansion, I got stuck just after press the button to change clothes. Jasper gone, I can't get out of the sanctuary, even can't get out of the dress room. Is there a script or a way to prefent this from happening? 
+Note: Fixing it would be much better.. Thank you... 
+ 
+ 
+ [Updated on: Thu, 07 May 2020 03:39]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Stuck in the sanctuary before Page mission in Bowerstone 
+ Thu, 07 May 2020 05:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It could be as simple as the method you used to mod your game. 
+Did you directly modify scripts or go the DLC and/or custom scripts way? 
+It mightn't actually be possible to fix it during a game in progress. I ran into a problem with a character model that just upped and disappeared for no adequately explorable reason. SO I think certain pieces of data are tied to saved games. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Stuck in the sanctuary before Page mission in Bowerstone 
+ Mon, 11 May 2020 12:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Adrian Vino 
+ Messages: 3 Registered: May 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ No, I didn't mods the games yet, or am I in the wrong place for discussion? 
+I'm asking about how to fix a glitch that happen in Fable 3 when the Hero couldn't exit the changing room? 
+Please guide me to the right place for asking about glitch in the games.. thank you.. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Stuck in the sanctuary before Page mission in Bowerstone 
+ Mon, 11 May 2020 13:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This is really odd. Stuff like that generally only happens with a modded version. Vanilla Fable 3 is actually pretty robust. 
+Can't leave the dressing room not even with the Esc key? 
+ 
+What you could try is this (I see no alternative): 
+Make a backup of your save games (C:\Users\Username\Saved Games\Lionhead Studios\Fable 3) and copy them elsewhere. 
+Delete your profile's save folder (probably a bunch of numbers or it might actually be a name). This is to prevent cross-contamination. 
+Play up to that point to see if it happens again. 
+ 
+Sometimes save files just bork for no reason whatsoever. 
+ 
+ 
+ [Updated on: Mon, 11 May 2020 13:26]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Stuck in the sanctuary before Page mission in Bowerstone 
+ Mon, 11 May 2020 13:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Adrian Vino 
+ Messages: 3 Registered: May 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Oh i see, sorry for my bad english.. Yes, the Fable 3 is modded by someone else when downloaded from the internet.. 
+The Fable 3 is include with DLC and the games too can't play online.. 
+I'm already play it twice now, and still get this glitch again.. 
+Ah yes, there's a problem with the butler too, because he usually spoken when I'm going near an object, but now he is just keep silent.. 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ weapon augment quests 
+
+ 
+ Next Topic: 
+ Problem with scripting for furniture items 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:59 PDT 2026 
+
+ Total time taken to generate the page: 0.05295 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

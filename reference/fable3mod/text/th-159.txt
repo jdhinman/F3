@@ -1,0 +1,242 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Question about gamescripts.bnk 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Question about gamescripts.bnk 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Question about gamescripts.bnk 
+ Wed, 19 February 2014 09:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CubicMaestro 
+ Messages: 1 Registered: February 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello everyone, 
+ 
+I recently installed Fable 3 again only to see that my saves were gone Thanks GFWL for that. 
+But since I wanted to still go at it again I decided to edit the files so that I got all the Legendary Weapons again in my sanctuary. 
+After reading the helpful tutorial I still have one question left and that is that at the end of the tutorial the first note says that 
+existing DLCs will overwrite all changes made to the original files. So I wanted to know if there are any DLC specific files that I can change to correct this little problem 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Question about gamescripts.bnk 
+ Wed, 19 February 2014 12:39 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ CubicMaestro wrote on Wed, 19 February 2014 09:40 Hello everyone, 
+ 
+I recently installed Fable 3 again only to see that my saves were gone Thanks GFWL for that. 
+But since I wanted to still go at it again I decided to edit the files so that I got all the Legendary Weapons again in my sanctuary. 
+After reading the helpful tutorial I still have one question left and that is that at the end of the tutorial the first note says that 
+existing DLCs will overwrite all changes made to the original files. So I wanted to know if there are any DLC specific files that I can change to correct this little problem 
+ 
+The DLC's modify some of the base files. That's why they overwrite them. If you are looking to change a specific file, check the traitor's keep banks first, then the undertown banks. 
+ 
+If you're using the xlive remover, you can set the config to UseDLC=2 to have multiple folders for mods. So anything you modify you can create a new bank for and throw it into data/mod10 or something to load it last. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Remove Blood Mod? 
+
+ 
+ Next Topic: 
+ Game crashes after following script activation 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:56 PDT 2026 
+
+ Total time taken to generate the page: 0.05682 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

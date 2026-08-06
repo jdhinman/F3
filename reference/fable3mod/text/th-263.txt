@@ -1,0 +1,489 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Problem with scripting for furniture items 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Problem with scripting for furniture items (furniture scripting) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Problem with scripting for furniture items 
+ Mon, 28 November 2016 07:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ JdMclovin 
+ Messages: 7 Registered: November 2016 Location: NYC USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have no problems with scripts for doing things such as opening the Mistpeak Demon Door and for adding in Legendary weapons. However, I've ran into a problem with scripting for furniture. What I want to do is start the character off with some high end furniture to add into the homes, to jump start the economy of Brightwall early in the game. That would cut down on the ridiculous grinding (purchasing of goods over and over, redecorating homes with progressively better furniture over and over, etc), until the higher end furniture starts to appear in the furniture store(s). 
+The furniture names look like this.... 
+DoubleBedLevel5 
+BedsideTableLevel5 
+ComfyChairLevel5 
+ 
+As you can see, the names are not prefixed with the usual "ObjectInventory....." in the naming. I was actually expecting to see something like "ObjectInventoryFurniture...", but that's not the case here. 
+ 
+So, Here is the script I setup (as a quick test) and it failed to work.... 
+ local fillFurnitureItems = {
+	'DoubleBedLevel5',
+	'BedsideTableLevel5',
+	'ComfyChairLevel5',
+	'DeskTableLevel5',
+	}
+	for key,value in pairs(fillFurnitureItems) do
+ while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), value)) < 5)
+ do
+ Inventory.AddItemOfType(GetLocalHero(), value)
+ end
+	end 
+ 
+If anybody has any suggestions, I'd appreciate it. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Problem with scripting for furniture items 
+ Fri, 02 December 2016 03:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ probably they don't have scripts names, so.. 
+this is not working? 
+ ScriptFunction.SetWealthValueForAllVillagesOnLevel(100) 
+ 
+it should boost economy to max for all towns 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Problem with scripting for furniture items 
+ Fri, 02 December 2016 06:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ JdMclovin 
+ Messages: 7 Registered: November 2016 Location: NYC USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Fri, 02 December 2016 06:25 probably they don't have scripts names, so.. 
+this is not working? 
+ ScriptFunction.SetWealthValueForAllVillagesOnLevel(100) 
+ 
+ 
+it should boost economy to max for all towns 
+During the time delay for my question to be approved by the moderator, I was able to make furniture items add in. All I did was change to a script that added each item one at time (another script example I had seen on this site). I just gave myself 100's of every luxury item, all rugs and collectible paintings. 
+This is a small portion of my script... 
+ while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'BedsideTableLevel5')) < 200)
+	do
+	Inventory.AddItemOfType(GetLocalHero(), 'BedsideTableLevel5')
+end
+while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'BookcaseLevel5')) < 200)
+	do
+	Inventory.AddItemOfType(GetLocalHero(), 'BookcaseLevel5')
+end
+while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ChildBedLevel5')) < 200)
+	do
+	Inventory.AddItemOfType(GetLocalHero(), 'ChildBedLevel5')
+end
+while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ClosetLevel5')) < 200)
+	do
+	Inventory.AddItemOfType(GetLocalHero(), 'ClosetLevel5')
+end
+while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ComfyChairLevel5')) < 400)
+	do
+	Inventory.AddItemOfType(GetLocalHero(), 'ComfyChairLevel5')
+end
+....
+....
+....
+ 
+ 
+ 
+So, I would go into town, buy goods from everyone, then upgrade all homes to have luxury items. Leaving the rent prices at "Normal", the furniture upgrades were yielding 2x-4x the rent at times. This is good when you are playing a good character and don't wish to upset the villagers with higher rents, in order to have more money for the end game. 
+ 
+During a playthru with all homes using luxury furniture, I didn't really keep up with going into each town and buying goods to keep the economy maintained. I repaired all homes whenever the Sanctuary map indicated something needed repair. So, at the point I became "King" and went to spot check homes in various towns, quite a bit of furniture was downgraded to either "Decorative" or "Average", while some remained all "Luxury". Really, at this point, it no longer mattered as I had amassed plenty of gold from the initial luxury upgrade to everything. 
+ 
+But, I think I'll try your suggestion to force the village wealth. Since their wealth is dynamic in the game, I think I'll have to figure out how to make the other scripting method work (the one that would repeat every xx seconds). Currently, I simply use a modified DLCfree.bnk that I temporarily replace in "Traitors" keep DLC folder. 
+ 
+EDIT: I have the script injector working now. Added in ScriptFunction.SetWealthValueForAllVillagesOnLevel(100) and vendors are saying things like "sure the prices are high, but you're the richest you've ever been". Also, the furniture available in the store upgraded to mostly luxury, and a couple homes changed from worn to luxury furniture all on their own, after a few game days. 
+ 
+ 
+ [Updated on: Sat, 03 December 2016 05:43]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Problem with scripting for furniture items 
+ Mon, 05 December 2016 16:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Quote: During the time delay for my question to be approved by the moderator 
+ 
+Ya, I can probably turn that off. It was originally on because there were more bot posts than actual posts. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Problem with scripting for furniture items 
+ Sun, 07 June 2020 19:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ RighteousRahl 
+ Messages: 1 Registered: June 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ For those who are looking for all of the luxury furniture names here it is: 
+ 
+BedsideTableLevel5 
+BookcaseLevel5 
+ChildBedLevel5 
+ClosetLevel5 
+ComfyChairLevel5 
+DoubleBedLevel5 
+LightFixingLevel5 
+DeskTableLevel5 
+TableLevel5 
+CupboardLevel5 
+DresserLevel5 
+DrawersLevel5 
+SinkLevel3 
+StoveLevel3 
+ 
+Hope that helps, and as for the rugs i have no idea yet. 
+ 
+ 
+ [Updated on: Sun, 07 June 2020 19:27]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Stuck in the sanctuary before Page mission in Bowerstone 
+
+ 
+ Next Topic: 
+ Need help with major bug 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:36 PDT 2026 
+
+ Total time taken to generate the page: 0.09483 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

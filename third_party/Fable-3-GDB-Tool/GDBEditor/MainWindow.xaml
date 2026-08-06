@@ -1,0 +1,34 @@
+﻿<Window x:Class="GDBEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GDB Editor" Height="450" Width="800">
+    <DockPanel x:Name="Panel">
+        <Menu x:Name="Menu" DockPanel.Dock="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid VerticalAlignment="Top"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="_File" Margin="0,0,742,0">
+                <MenuItem Header="_Open" Click="Open_Click" />
+            </MenuItem>
+            <MenuItem Grid.Column="2" HorizontalAlignment="Right">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Button x:Name="searchbtn" Content="Search" Click="Button_Click" Padding="2" />
+                        <TextBox x:Name="textbox" Width="288" Padding="2" />
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </Menu>
+        <StatusBar x:Name="_statusbar" VerticalAlignment="Bottom" DockPanel.Dock="Bottom"/>
+        <TreeView x:Name="trv" TreeViewItem.Expanded="TreeViewItem_Expanded" MouseLeftButtonUp="TreeViewItem_LeftClick"  MouseRightButtonUp="TreeViewItem_RightClick" DockPanel.Dock="Top">
+            <TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Save" Click="Button_Save"/>
+                    <MenuItem Header="Edit" Click="Button_Edit"/>
+                </ContextMenu>
+            </TreeView.ContextMenu>
+        </TreeView>
+    </DockPanel>
+</Window>

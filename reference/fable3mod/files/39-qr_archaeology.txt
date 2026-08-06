@@ -1,0 +1,157 @@
+-- Decompiled using luadec 2.0 UNICODE by sztupy (http://winmo.sztupy.hu)
+-- Command line was: C:\Users\Keshire\Downloads\Games\Fable II\qr_archaeology.lua 
+
+QuestManager.NewQuestThread("QR_Archaeology")
+QR_Archaeology.Init = function(l_1_0)
+  l_1_0.MissionSucceeded = false
+  l_1_0.MissionFailed = false
+  Gameflow.ArchaeologyQuestActive = true
+  Gameflow.ArchaeologyQuestIndex = 1
+  Gameflow.CurrentArchaeologyQuestName = "Quest_QRARCH001_Archaeology"
+  Gameflow.CurrentArchaeologyQuestCode = Gameflow.ArchaeologyTable[Gameflow.ArchaeologyQuestIndex].QuestCode
+  Gameflow.ArchaelologyQuestGiver = "QR_ArchaeologyQuestGiver"
+  l_1_0:StartNewEntityThread(Gameflow.ArchaelologyQuestGiver, QR_ArchaeologyGlobalQuestGiver)
+  Gameflow.ArchaelologyQuestGiverRegion = ""
+  Gameflow.ArchaelologyQuestGiver = nil
+  Gameflow.FoundAnArtifact = false
+  Gameflow.HasArchaeologyQuestStarted = false
+  Gameflow.NeedToResetArchaeologyQuest = false
+  Gameflow.BelleHasGivenArchaeologyQuest = false
+  Gameflow.SpotLayerSwitchedOn = false
+end
+
+QR_Archaeology.Update = function(l_2_0)
+  repeat
+    if Gameflow.ArchaeologyQuestIndex < 14 and Gameflow.HasArchaeologyQuestStarted == false and Gameflow.ArchaeologyTable[Gameflow.ArchaeologyQuestIndex].QuestUnlocked == true and Gameflow.AreOptionalsLocked == false then
+      l_2_0:CreateQuestDetails()
+      Gameflow.HasArchaeologyQuestStarted = true
+      Gameflow.CreateAnArchaeologyQuest = false
+      QuestTracker.SetObjectiveBreadcrumbRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 5)
+      if not Layers.IsLayerActive("QR_ArchaeologyGlobal") then
+        Layers.ActivateLayer("QR_ArchaeologyGlobal")
+        Gossip.ActivateGossipItem("ScriptGossip", "QR_ArchaeologistAbout")
+      end
+    end
+    if Gameflow.NeedToResetArchaeologyQuest == true then
+      Gameflow.HasArchaeologyQuestStarted = false
+      Gameflow.CreateAnArchaeologyQuest = false
+      Gameflow.ArchaelologyQuestGiver = nil
+      Gameflow.NeedToResetArchaeologyQuest = false
+      Gameflow.FoundAnArtifact = false
+      Gameflow.BelleHasGivenArchaeologyQuest = false
+      Gameflow.TESTARCHAEOLOGYCREATE = false
+      Gameflow.ArchaeologyQuestAccepted = false
+      Gameflow.SpotLayerSwitchedOn = false
+    end
+    if Gameflow.HasArchaeologyQuestStarted == true and not IsLevelLoaded(Gameflow.ArchaelologyQuestGiverRegion) and Gameflow.BelleHasGivenArchaeologyQuest == false then
+      QuestTracker.SetObjectiveLevel(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, Gameflow.ArchaelologyQuestGiverRegion, "Travel_FairfaxGardens")
+    end
+    if Gameflow.HasArchaeologyQuestStarted == true and Gameflow.BelleHasGivenArchaeologyQuest == true and Gameflow.ArchaeologyQuestAccepted == true and Gameflow.SpotLayerSwitchedOn == false then
+      l_2_0:StartNewEntityThread(Gameflow.CurrentArchaeologyQuestCode .. "_Spot", QR_Arch_Spot)
+      Layers.ActivateLayer(Gameflow.CurrentArchaeologyQuestCode .. "_Archaeology")
+      Gameflow.SpotLayerSwitchedOn = true
+    end
+    if Gameflow.NeedToResetArchaeologyQuest == false and Gameflow.HasArchaeologyQuestStarted == true and Gameflow.BelleHasGivenArchaeologyQuest == true and Gameflow.FoundAnArtifact == false and not IsLevelLoaded(Gameflow.ArchaeologyTable[Gameflow.ArchaeologyQuestIndex].ArtifactRegion) and Gameflow.CurrentArchObjective == "follow" then
+      QuestTracker.SetObjectiveLevel(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "", false)
+      QuestTracker.ClearAllObjectiveEntities(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName)
+      QuestTracker.SetObjectiveTag(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "TEXT_QUEST_QARCH_OBJECTIVE_30")
+      Player.AddHUDSuggestionInventoryItemOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex, "D", 55)
+      GUI.ToggleElement("DPadDown", true)
+      Gameflow.CurrentArchObjective = "study"
+    end
+     -- DECOMPILER ERROR: unhandled construct in 'if'
+
+    if Gameflow.NeedToResetArchaeologyQuest == false and Gameflow.HasArchaeologyQuestStarted == true and Gameflow.BelleHasGivenArchaeologyQuest == true and l_2_0.CurrentState == 0 and Gameflow.FoundAnArtifact and not IsLevelLoaded(Gameflow.ArchaelologyQuestGiverRegion) then
+      QuestTracker.SetObjectiveLevel(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, Gameflow.ArchaelologyQuestGiverRegion, "Travel_FairfaxGardens")
+      l_2_0.CurrentState = 1
+      do return end
+    if l_2_0.CurrentState == 1 then
+      end
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+QR_Archaeology.OnExit = function(l_3_0)
+  Gameflow.OpenArchaeologistTomb = nil
+end
+
+QuestManager.NewEntityThread("QR_Arch_Spot")
+QR_Arch_Spot.Init = function(l_4_0)
+  l_4_0.CurrentState = 0
+end
+
+QR_Arch_Spot.CustomUpdate = function(l_5_0)
+  repeat
+    if Gameflow.CurrentArchObjective == "study" then
+      if Gameflow.DogDead == nil or Gameflow.DogDead == false then
+        l_5_0:UpdateObjectiveTag("TEXT_QUEST_QARCH_OBJECTIVE_40", "TEXT_QUEST_QARCH_OBJECTIVE_30")
+      else
+        l_5_0:UpdateObjectiveTag("TEXT_QUEST_QARCH_OBJECTIVE_FIND_ARTIFACT", "TEXT_QUEST_QARCH_OBJECTIVE_30")
+        QuestTracker.SetObjectiveBreadcrumbMaxAreaDrawRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 100)
+        QuestTracker.SetObjectiveBreadcrumbLargeAreaDrawLength(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 100)
+        QuestTracker.SetObjectiveBreadcrumbAreaInitialAngle(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 100)
+        QuestTracker.SetObjectiveBreadcrumbRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 2)
+        QuestTracker.SetObjectiveEntity(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, l_5_0.Entity, true)
+      end
+      Player.RemoveHUDSuggestionOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex)
+      Gameflow.CurrentArchObjective = "follow"
+    end
+     -- DECOMPILER ERROR: unhandled construct in 'if'
+
+    if l_5_0.CurrentState == 0 and Gameflow.BelleHasGivenArchaeologyQuest == true then
+      if Gameflow.DogDead ~= nil and Gameflow.DogDead == true then
+        DiggingSpot.SetAsDiggableWithoutDog(l_5_0.Entity, true)
+      end
+      l_5_0.CurrentState = 1
+      do return end
+       -- DECOMPILER ERROR: unhandled construct in 'if'
+
+      if l_5_0.CurrentState == 1 and Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, "ArchaeologicalObject_" .. Gameflow.ArchaeologyQuestIndex) > 0 then
+        if not IsLevelLoaded(Gameflow.ArchaelologyQuestGiverRegion) then
+          QuestTracker.SetObjectiveBreadcrumbRadius(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, 5)
+          QuestTracker.SetObjectiveLevel(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, Gameflow.ArchaelologyQuestGiverRegion, "Travel_FairfaxGardens")
+        end
+        QuestTracker.SetObjectiveTag(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "TEXT_QUEST_QARCH_OBJECTIVE_20")
+        if Gameflow.ArchaeologyQuestIndex == 13 then
+          Layers.DeactivateLayer(Gameflow.CurrentArchaeologyQuestCode .. "_Archaeology")
+          Layers.DeactivateLayer("QR_ArchaeologyGlobal")
+          Layers.ActivateLayer("QR_ArchaeologyGlobal_End")
+        end
+        Inventory.RemoveAllItemsOfType(GetPlayerHero(), "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex)
+        Player.RemoveHUDSuggestionOfType(QuestManager.HeroEntity, "Archaeology_Clue_" .. Gameflow.ArchaeologyQuestIndex)
+        GUI.ToggleElement("DPadDown", false)
+        Gameflow.FoundAnArtifact = true
+        l_5_0.CurrentState = 2
+        do return end
+        if l_5_0.CurrentState == 2 then
+          l_5_0.Entity:Destroy()
+        end
+      end
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+QR_Arch_Spot.OnTerminated = function(l_6_0)
+  if MessageEvents.IsMessageSentTo(EMessageEventType.MESSAGE_EVENT_KILLED, l_6_0.Entity) then
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+QR_Archaeology.CreateQuestDetails = function(l_7_0)
+  Gameflow.CurrentArchaeologyQuestCode = Gameflow.ArchaeologyTable[Gameflow.ArchaeologyQuestIndex].QuestCode
+  Gameflow.CurrentArchaeologyQuestName = Gameflow.CurrentArchaeologyQuestCode .. "_Archaeology"
+  l_7_0.QuestName = Gameflow.CurrentArchaeologyQuestName
+  Gameflow.ArchaelologyQuestGiverRegion = "FairfaxCastleGardens"
+  Gameflow.ArchaelologyQuestGiver = "QR_ArchaeologyQuestGiver"
+  Gameflow.ArchaeologyQuestHasStarted = true
+  QuestTracker.Register(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName, "Quest_" .. Gameflow.CurrentArchaeologyQuestName)
+  QuestTracker.Unlock(QuestManager.HeroEntity, Gameflow.CurrentArchaeologyQuestName)
+end
+
+

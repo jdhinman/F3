@@ -1,0 +1,360 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Can you fix a broken door/window? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Can you fix a broken door/window? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Can you fix a broken door/window? 
+ Sun, 12 January 2014 21:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Once I did a quest where you would go to a pub with bandits in it. They shot at me and broke a window in doing so. The window never got fixed and stayed that way forever. It just looked ridiculous! Is there a way (through scripts maybe) to fix broken windows/doors? 
+Same goes for the armours in the castle, once you break them the servants go on cleaning a sweet bit of nothing/air. 
+ 
+ 
+ [Updated on: Mon, 13 January 2014 15:40]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Can you fix a broken door/window? 
+ Fri, 17 January 2014 00:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Phnx wrote on Mon, 13 January 2014 10:24 Is there a way (through scripts maybe) to fix broken windows/doors? 
+you can reload level by 
+ Debug.ReloadCurrentLevel() 
+ 
+but it reload all and may break quests markers 
+ 
+afaik sometimes it repaired itself 
+ 
+ Phnx wrote on Mon, 13 January 2014 10:24 Same goes for the armours in the castle, once you break them the servants go on cleaning a sweet bit of nothing/air. 
+probably they stay destroyed forever...and you can fixed them only by reloading level 
+ 
+ 
+ [Updated on: Fri, 17 January 2014 00:54]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Can you fix a broken door/window? 
+ Fri, 17 January 2014 07:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hmm, well thank you kindly, Sir. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Can you fix a broken door/window? 
+ Fri, 17 January 2014 19:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Actually, by buying the property and paying for repairs, you can restore the window to its former glory, as doing this reloads the property, and changes certain details, depending on what the damage level was previously. 
+ 
+EDIT: As for the suits of armor... Yeah, I got nothin'. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Fri, 17 January 2014 19:58]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Help with .lua script changing 
+
+ 
+ Next Topic: 
+ Remove Blood Mod? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:53 PDT 2026 
+
+ Total time taken to generate the page: 0.05472 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

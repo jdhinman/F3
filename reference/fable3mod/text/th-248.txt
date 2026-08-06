@@ -1,0 +1,639 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Xlive weapons updates remove 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Xlive weapons updates remove (no multiplayer requirements) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Xlive weapons updates remove 
+ Tue, 13 October 2015 05:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This mod will replace xlive requirements for weapons update with local equivalent 
+also it replace update result if is affect on multiplayer game only 
+ 
+it's only affect on new weapons, so you will need to BUY WEAPONS AGAIN if you have it alredy 
+It ONLY for Traitor's Keep DLC! 
+It replace globals.gdb so is not compatible with other mods that replace it 
+ 
+Setup: 
+use Catspaw's GFWL emu 
+put DLC folder to Fable 3 game directory 
+ 
+ offsets for manually modding 
+ globals.gdb 
+ 
+ObjectInventoryLegendaryPistolBarnumificator 
+ offset: 00114DF8
+9F18DC1B > E9242696 
+ 
+ 
+ObjectInventoryLegendaryRifleHeroCompanion 
+ offset: 00231318
+7CECBA2B > BE372342
+
+offset: 0023131C
+FF0B5E3D > 40A72537 
+ 
+ 
+ObjectInventoryLegendaryRifleScattershot 
+ offset: 00147610
+DFEEFD7A > DFE78030 
+ 
+ 
+ObjectInventoryLegendarySwordMerchantsBodyguard 
+ offset: 00166808
+B28A322B > C6ADA885
+
+offset: 00166810
+CA73E5FB > 6D80722F 
+ 
+
+ 
+ 
+ 
+ 
+ Attachment: xlive_weapons_updates_remove.zip 
+ 
+ (Size: 2.94MB, Downloaded 4788 times) 
+ 
+ 
+ 
+ [Updated on: Tue, 13 October 2015 21:53]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Xlive weapons updates remove 
+ Wed, 07 June 2017 11:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for this, but I've run into a problem. 
+It's started spewing out Weapons with blank fields for names and the Descriptions are like so: 
+ 
+INV_ITEM_WEAPON_WHALE_DESC 
+INV_ITEM_WEAPON_DONOR_DESC 
+INV_ITEM_WEAPON_THUNDARAGA_DESC 
+ 
+I'm sure I'm using Catspaw's GFWL Emu. 
+I have all the DLC installed in the DLC folder. 
+This is my Fable 3\DLC folder currently: 
+ 
+10_ScriptInjector 
+11_xlive_weapons_updates_remove 
+Inquisitor_Pack 
+Traitor's_Keep 
+Understone_Quest_+_Free_DLC 
+ 
+Everything but the 11_xlive_weapons_updates_remove is working properly. Any ideas? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Xlive weapons updates remove 
+ Fri, 09 June 2017 23:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Traitor's Keep is working? 
+ squark wrote on Wed, 07 June 2017 23:24 
+Inquisitor_Pack 
+Traitor's_Keep 
+Understone_Quest_+_Free_DLC 
+anyway, try to rename this to 
+01_InquisitorPack 
+02_Understone 
+03_TraitorsKeep 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Xlive weapons updates remove 
+ Sat, 10 June 2017 10:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I tried that and... same error. 
+It's a bit weird. 
+ 
+I might have to find somewhere to download the Golf Weapons pack (thought I already had that) but I really don't want to create an account on a forum just for that. 
+ 
+ 
+ [Updated on: Sat, 10 June 2017 10:39]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Xlive weapons updates remove 
+ Mon, 12 June 2017 06:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ squark wrote on Sat, 10 June 2017 22:31 I tried that and... same error. 
+It's a bit weird. did you buy weapon again? 
+remember it's only affects on new items 
+ squark wrote on Sat, 10 June 2017 22:31 I might have to find somewhere to download the Golf Weapons pack (thought I already had that) but I really don't want to create an account on a forum just for that. Golf Weapons pack? What kind of weapons are there? It's probably already in game, you just only need to add them to your inventory by scripts. 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Xlive weapons updates remove 
+ Wed, 14 June 2017 09:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Well... I've never seen any of them in any of the shops. 
+The Golf Weapons pack (Thundaraga, Hammer of the Whale and Donna's Kebab) was a reward for the Fable Coin Golf thing that was only available of Windows phones IIRC. 
+So... I guess it's already in the script files though I've already tried to add them via scripting, but they don't show up even though the rest of them do. 
+ 
+local mostLegendaries = {
+ 'ObjectInventoryLegendaryHammerFaerie', <- this shows up fine
+ ...
+ 'ObjectInventoryLegendaryHammerHammerOfTheWhale', <- this doesn't
+ 'ObjectInventoryLegendarySwordDonorKebab', <- this doesn't either
+ 'ObjectInventoryLegendarySwordThundaraga', <- nor does this
+ ...
+ }
+ 
+ for key,value in pairs(mostLegendaries) do
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), value)
+ GUI.DisplayReceivedItem(value)
+	end
+	
+ for key,value in pairs(mostLegendaries) do
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), value) > 1 then
+ Inventory.RemoveItemOfType(GetLocalHero(), value)
+	end
+ end
+ 
+ 
+ 
+I'll see if any of the shops have them for sale. Brightwall's blacksmith is a big pile of nope. 
+I'm guessing neither Bowerstone nor Aurora's selling any of them. 
+ 
+Damn... 
+ 
+ 
+ [Updated on: Wed, 14 June 2017 10:07]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Xlive weapons updates remove 
+ Wed, 14 June 2017 23:01 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ squark wrote on Wed, 14 June 2017 21:34 Well... I've never seen any of them in any of the shops. you can add them by scripts 
+ 
+ squark wrote on Wed, 14 June 2017 21:34 The Golf Weapons pack (Thundaraga, Hammer of the Whale and Donna's Kebab) 
++ 
+ squark wrote on Wed, 07 June 2017 23:24 INV_ITEM_WEAPON_WHALE_DESC 
+INV_ITEM_WEAPON_DONOR_DESC 
+INV_ITEM_WEAPON_THUNDARAGA_DESC 
+It's not just a coincidence 
+something completely fucked up 
+did you try new game with right DLC order? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ DLC xlive removal 
+
+ 
+ Next Topic: 
+ Camera mod 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:26 PDT 2026 
+
+ Total time taken to generate the page: 0.05535 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

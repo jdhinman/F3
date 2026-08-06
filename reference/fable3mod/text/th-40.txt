@@ -1,0 +1,357 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Note regarding spawning Fable II weapons 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Note regarding spawning Fable II weapons 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Note regarding spawning Fable II weapons 
+ Fri, 13 September 2013 14:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It appears that though an accurately typed script for spawning a common weapon(a Master Cutlass, for example) will execute properly, the weapon itself will not appear in your armoury. I assume that this is because the Armoury only recognizes weapons deemed to be Legendary by Fable III's standards, i.e. any weapon whose name in the game data starts with ObjectInventoryLegendary. 
+ 
+If I'm right in that regard, then that identifier for the weapon probably has to be changed. So instead of "ObjectInventory_L_Cutlass_Master" it would probably be changed to "ObjectInventoryLegendarySwordMastercutlass". 
+ 
+I would check to see if I'm right about that, but I don't know where the item names are stored, or even if changing them would do anything at all. Still, I figured this might be an object of interest for some of you. 
+ 
+EDIT: Actually, I think my modding environment was just borked. I screwed my save file over trying to fix it, and now I'm just trying again on a clean install entirely. 
+ 
+EDIT2: Okay, after doing everything PROPERLY, I have found that, though Jasper will recognise that a new weapon is in your inventory, the Armoury will not display it. It appears that, unless it is recognised as a Hero or Legendary weapon, it cannot show in your Armoury, though it technically exists within your inventory. 
+ 
+EDIT3: Okay, just tried spawning Fable II clothing... Apparently there's a different system in place for recognizing the difference between Fable II and Fable III items, as Fable II clothing, despite having the same system of identification nomenclature, still won't show up in the Sanctuary. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Sat, 14 September 2013 19:09]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Note regarding spawning Fable II weapons 
+ Thu, 11 February 2016 15:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ NathanHatesSteam 
+ Messages: 1 Registered: February 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ did you or anyone else get any further with this? like did you manage to force equip any of the items or make them show up in the armory 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Note regarding spawning Fable II weapons 
+ Sun, 09 October 2016 11:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I personally gave up due to lack of knowledge on the subject, no clue if anyone else ever got anywhere with it. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Note regarding spawning Fable II weapons 
+ Tue, 25 April 2017 11:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Zopiahh 
+ Messages: 1 Registered: April 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ If you use Debug.GiveHeroWeapon('ObjectInventory_L_Longsword_Spartan' then your character will equip the Energy Sword, but it still doesn't show up in the Armory. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ I need help 
+
+ 
+ Next Topic: 
+ My Script file is failing to run 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:18 PDT 2026 
+
+ Total time taken to generate the page: 0.06272 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

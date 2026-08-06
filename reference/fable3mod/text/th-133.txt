@@ -1,0 +1,228 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » LOCO File Format 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » LOCO File Format 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ LOCO File Format 
+ Thu, 21 November 2013 08:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TodX:1229266302 
+Here's a basic layout of the data structure of the locomotion.loco file. 
+ 
+ 
+
+#include "standard-types.hsl"
+
+#pragma byteorder(big_endian)
+#pragma maxarray(65536) // max that hw 5.1 will allow
+#pragma maxstring(512)
+
+typedef struct LocoEntry1Coords
+{
+	DWORD	Unknown;
+	float	X;
+	float	Y;
+	float	Z;
+} LocoEntry1Coords;
+
+typedef struct LocoEntry1
+{
+	DWORD	Unknown0;
+	char	Name[16];
+	DWORD	Unknown1;	// always == 0x0820 ?
+	DWORD	Unknowns2[94];
+	LocoEntry1Coords	Coords[16];
+} LocoEntry1;
+
+typedef struct LocoEntry2
+{
+	DWORD	Unknowns1[6];
+	float	Unknowns2[94];
+} LocoEntry2;
+
+typedef struct LOCO // environment map
+{
+	DWORD	Unknown1;
+	DWORD	Unknown2;
+	DWORD	LocoEntry1Size;
+	DWORD	LocoEntry2Size;
+	DWORD	Unknown3;
+	DWORD	Entry1Count;
+	DWORD	Entry2Count;
+	DWORD	Entry3Count;
+	DWORD	StringsSectionSize;
+	DWORD	Unknown7;
+	
+	LocoEntry1	Entries1[Entry1Count];
+	LocoEntry2	Entries2[Entry2Count];
+	DWORD	Entries3[Entry3Count];
+	char	StringsSection[StringsSectionSize];
+	
+} LOCO;
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ GENV File Format 
+
+ 
+ Next Topic: 
+ GDB Format 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:49 PDT 2026 
+
+ Total time taken to generate the page: 0.05229 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

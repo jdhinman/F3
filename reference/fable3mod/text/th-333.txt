@@ -1,0 +1,246 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » How to morph Hero Weapons via scripts? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » How to morph Hero Weapons via scripts? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ How to morph Hero Weapons via scripts? 
+ Tue, 16 August 2022 08:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ WinniDex 
+ Messages: 2 Registered: August 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello everyone, 
+ 
+I know I'm very late to the party, but I still play Fable 3 occasionally. 
+I really like the game, but every playthrough it bothers me, that you can't have the same body type for all four Hero Weapons. 
+ 
+I've already experimented with the script injector and the debug commands on the Hero Weapons. 
+It worked, but broke the weapons texts and the weapon room. The Hero Weapons were transformed into normal weapons with a placeholder name and blank augmentation slots. 
+ 
+ So my question is, if there is any way to choose the weapon morphs for all my Hero Weapons, so that they have the same design, without breaking them. 
+I've also looked at the Save Editor but couldn't find the weapons there. Also I don't know how to properly use the editor because I couldn't find a documentation. 
+ 
+I hope someone sees this and can help me. Thanks in advance! 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to morph Hero Weapons via scripts? 
+ Mon, 06 March 2023 06:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ https://github.com/CatchLightning/How-to-edit-Fable-3 
+ 
+My github has the info on how to mod the game. Scripts are a bit past me but one can adjust non hero weapons to be whatever one likes. I can help walk you through it too. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Fable 3 DLCs 
+
+ 
+ Next Topic: 
+ So I made a body morph mod 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:20 PDT 2026 
+
+ Total time taken to generate the page: 0.10361 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

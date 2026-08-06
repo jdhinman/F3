@@ -1,0 +1,1200 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Improved script injection method 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Improved script injection method (Console workaround) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Improved script injection method 
+ Sun, 16 November 2014 06:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This method allows you to make changes to the script without relaunching the game 
+ 
+Setup: 
+use Catspaw's GFWL emu 
+Put DLC folder to Fable 3 game directory 
+create folders: data\scripts\MyMod 
+create text files MyScript01.lua and MyScript02.lua inside "data\scripts\MyMod" directory 
+open dir.manifest (inside "data" directory) with notepad and add: 
+ scripts\MyMod\MyScript01.lua
+scripts\MyMod\MyScript02.lua 
+ 
+ 
+MyScript01.lua is executed once per 60 frames (one second on 60fps rendering) 
+MyScript02.lua is executed only when screen is fading 
+ 
+now make little test 
+start game 
+alt+tab 
+write in MyScript01.lua 
+ Debug.SetUseFreeCamera(true) 
+ 
+alt+tab to game 
+now you can fly around 
+then alt+tab to notepad and replace TRUE to FALSE 
+ Debug.SetUseFreeCamera(false) 
+ 
+alt+tab to game, camera should go back to normal :) 
+ 
+ 
+For modders: 
+I used DEMO001 quest code, so if you used it too, you need to replaced it 
+ 
+ 
+ 
+ Attachment: ScriptInjector.zip 
+ 
+ (Size: 6.49KB, Downloaded 5144 times) 
+ 
+ 
+ 
+ [Updated on: Wed, 25 March 2015 05:06]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Thu, 24 September 2015 14:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've written a nifty little script into myScript02 
+ 
+ Toggle spoiler 
+while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionHealth')) < 100)
+	do
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionHealth')
+end
+
+while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionSlowTime')) < 100)
+	do
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionSlowTime')
+end
+
+while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDeadRising')) < 100)
+	do
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDeadRising')
+end
+ 
+
+ 
+ 
+It tops you up to 100 potions of each type every time the screen fades to black... (since I'm so filthy rich, it's only an annoyance to have to go buy potions... never mind that I'm virtually invincible at this point, anyway...) 
+ 
+ 
+ [Updated on: Thu, 24 September 2015 14:03]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Fri, 25 September 2015 03:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yeah... got tired of the kiddos sending me all over Albion looking for Toy Bows and Porcelain Dolls... so I added this... I <3 LUA!!! 
+ 
+ Toggle spoiler 
+local fillGiftItems = {
+	'ObjectInventoryGiftChessboard',
+	'ObjectInventoryGiftChocolates',
+	'ObjectInventoryGiftFlowers',
+	'ObjectInventoryGiftGoblet',
+	'ObjectInventoryGiftHandMirror',
+	'ObjectInventoryGiftJewellery',
+	'ObjectInventoryGiftPerfume',
+	'ObjectInventoryGiftFruitBowlSilver',
+	'ObjectInventoryGiftRing',
+	'ObjectInventoryGiftToyBow',
+	'ObjectInventoryGiftToyGun',
+	'ObjectInventoryGiftToyHorse',
+	'ObjectInventoryGiftToyPorcelainDoll',
+	'ObjectInventoryGiftToyRagDoll',
+	'ObjectInventoryGiftToySword',
+	'ObjectInventoryGiftToyTeddyBear',
+	'ObjectInventoryGiftGemAmethyst',
+	'ObjectInventoryGiftGemDiamond',
+	'ObjectInventoryGiftGemEmerald',
+	'ObjectInventoryGiftGemJet',
+	'ObjectInventoryGiftGemRuby',
+	'ObjectInventoryGiftGemPearl',
+	'ObjectInventoryGiftGemTopaz'
+	}
+
+	for key,value in pairs(fillGiftItems) do
+ while ((Inventory.GetNumberOfItemsOfType(GetLocalHero(), value)) < 5)
+ do
+ Inventory.AddItemOfType(GetLocalHero(), value)
+ end
+	end
+
+ 
+
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Thu, 25 May 2017 08:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Thatoneperson 
+ Messages: 2 Registered: May 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ For some reason I had to change the lines 
+ 
+RunScript("scripts\\MyMod\\MyScript02.lua") 
+RunScript("scripts\\MyMod\\MyScript01.lua") 
+ 
+to 
+ 
+RunScript("MyMod/MyScript01.lua") 
+RunScript("MyMod/MyScript02.lua") 
+ 
+Before this started working. 
+I'm not sure if it's something unique to my installation, but I thought I would share in case it helps anyone else. 
+ 
+ 
+ [Updated on: Wed, 04 October 2017 12:06]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Sat, 03 February 2018 23:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ SaintLucifer1776 
+ Messages: 2 Registered: January 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I spent the last two hours getting this down as I personally didn't feel like hunting for anything. It gives you all cosmetics, clothing, normal furniture,collectible paintings, weapons, spells, gifts, and 100 potions (Admittedly I stole the code for the gifts and potions from TheGeniusSavant). Wait until you've at least gotten to be able to use all modes of weapons normally before using it, otherwise I've heard your game will freeze if you try to enter the road to rule for the first time if you have all weapons. 
+ 
+In hindsight, I should have put this as MyScript02 as I have multiples of gauntlets in my armory. What that means for spell weaving is anyone's guess. Other than that, it should have no problems. 
+ 
+On another note, thank you guys so much for keeping this forum up and running with great information as I don't know what I'd do without it for modding this game! Hopefully we can do similar, if not greater stuff with Fable 4 whenever that's released. 
+ 
+ 
+ 
+ Attachment: MyScript01.lua 
+ 
+ (Size: 32.43KB, Downloaded 6501 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Tue, 04 December 2018 17:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ JdMclovin 
+ Messages: 7 Registered: November 2016 Location: NYC USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Revisiting Fable iii after a long break. I used this script injector with no problems under the Windows 8 o/s. The script injector doesn't seem to work with Win 10 x64 Home (insider build 1501). I did try the syntax change mentioned a few posts before. Is there anything that needs to change to get it working in Win 10 x64? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Tue, 04 December 2018 22:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ probably this version of Catspaw's GFWL emu doesn't work on win10 
+did you try to update it? 
+ 
+ 
+ [Updated on: Tue, 04 December 2018 22:06]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Wed, 05 December 2018 13:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ JdMclovin 
+ Messages: 7 Registered: November 2016 Location: NYC USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've tried catspaw xlive 15A, 15B, 15C, and 15D. 
+It's strange, The entries I have in MyScript01.lua are working, where I set wealth to 100 and building condition to "normal" for a village I visit. 
+However, MyScript02.lua isn't working where I used to run scripts to open Mistpeak Demon door and other things. 
+Example for Mistpeak demon door.. 
+ 
+if not Layers.IsLayerActive("QD030_MistpeakValleyDemonDoorTransition") then
+	QuestTracker.SetAsCompleted(GetLocalHero(), "QD030_MistpeakValleyDemonDoor")
+	Layers.ActivateLayer("QD030_MistpeakValleyDemonDoorTransition")
+end
+ 
+
+The above won't work in either of the .lua files. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Sat, 08 December 2018 00:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ so 15D is the latest version, don't tracked it for a long time.. 
+I have win7, can't help you with win10 
+there is high probability that something with the game paths (or rights) 
+did you try different installation folder? (if you install Fable to Program Files ofc) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Sat, 08 December 2018 18:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ JdMclovin 
+ Messages: 7 Registered: November 2016 Location: NYC USA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ ok...figured out the problem. I had modded levels.bnk to where I removed the intro movies on game startup. In doing so, it prevented any scripting from working in the injector, such as scripts I had mentioned in prior post. I reset levels.bnk to original and then scripting in the injector was working again. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Mon, 30 March 2020 13:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ XanWasting 
+ Messages: 8 Registered: March 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I can't get the scipt injector file :< 
+it redirects me to a blank page with address ww.fable3mod.net/forums/index.php?t=getfile&id=89& 
+Does someone have a copy please? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Mon, 30 March 2020 23:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ it's working for me 
+here the mirror 
+www.mediafire.com/file/ryrd4hxk9fhqjgs 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Tue, 31 March 2020 02:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ XanWasting 
+ Messages: 8 Registered: March 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thank you, this link works. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Tue, 02 June 2020 21:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Dischord 
+ Messages: 1 Registered: June 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I am brand new to modding games so I'm not sure if I understood where the files are supposed to be placed. I set it up GameFiles/data/scripts/MyMod/then the myscripts 01 and 02.lua. Its not working for me so I definitely did something wrong, I have the GFWL emu and I copy pasted the script injector into the GameFiles folder. Where am I supposed to place the lua folders so that they work for me? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Wed, 03 June 2020 18:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Dischord wrote on Wed, 03 June 2020 05:22 I am brand new to modding games so I'm not sure if I understood where the files are supposed to be placed. I set it up GameFiles/data/scripts/MyMod/then the myscripts 01 and 02.lua. Its not working for me so I definitely did something wrong, I have the GFWL emu and I copy pasted the script injector into the GameFiles folder. Where am I supposed to place the lua folders so that they work for me? 
+Take out any spaces in your lua filenames so that they look like this: 
+MyScript01.lua 
+MyScript02.lua 
+They're in the right place, though. 
+Hang on. Where did your game come from that it has a "Gamefiles" folder? Mine doesn't. (Probably unimportant) 
+ 
+You probably missed this, but you're going to have to edit dir.manifest to add these two lines 
+scripts\MyMod\MyScript01.lua 
+scripts\MyMod\MyScript02.lua 
+Put them right at the end of the file and save it. 
+ 
+dir.manifest is found in the /data/ folder. It's actually just a plain text file that tells the game what files to load and where they are. 
+ 
+Does your version come with the DLC? 
+If it does (and it honestly should), there should be a "DLC" folder somewhere. Put the Script Injector in there. Not loose files, in a folder that the game will load; something like "10_ScriptInjector". 
+Also, the gfwl emu can go in there as well. 
+ 
+Inside, the folders should contain a content.xbx file and a Content folder which should have three more files in it. 
+The xlive.ini and xlive.dll files should go in the base folder (Which would be your Gamefiles folder). 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Improved script injection method 
+ Tue, 09 June 2020 10:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ FalseZen 
+ Messages: 1 Registered: August 2017 Location: Mesa, Az 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This is helpful Squark, thanks! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Need help with major bug 
+
+ 
+ Next Topic: 
+ [Mod Request]Dragging villagers to work 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:14 PDT 2026 
+
+ Total time taken to generate the page: 0.05294 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

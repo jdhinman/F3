@@ -1,0 +1,182 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Fable 3, PC mods, how to add new custom weapons please ? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Fable 3, PC mods, how to add new custom weapons please ? (Custom Weapons) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+    Fable 3, PC mods, how to add new custom weapons please ? 
+ Tue, 16 December 2025 05:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Translucidia 
+ Messages: 7 Registered: July 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello everyone, 
+ 
+I'm looking to add a new custom weapon in Fable 3 on PC, without replacing the existing weapons. I already have a 3D model ready, and I'd like to know how to add it into the game so it appears in my inventory, in the armory. 
+ 
+When I say "new weapon," just copy existing weapons and adding my model to my new sword is enough! Could someone help me? It's a small dream I've never managed to achieve, and it would be so cool! Thank you! 
+ 
+OR MAYBE? If I have two copies of the same weapon in my inventory and I want to change the model of just one of them without affecting the other, maybe that's possible, and it would be simpler and faster? 
+ 
+Could someone guide me with a step-by-step tutorial or some tips for adding a new sword to get started? Thank you! 
+ 
+I have Discord. 
+ 
+Is it possible ? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Modify Your Avianca Airlines Flight Date Fast with Expert Phone Support 
+
+ 
+ Next Topic: 
+ Fable 3, Equip weapons not in game ? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:27 PDT 2026 
+
+ Total time taken to generate the page: 0.05363 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

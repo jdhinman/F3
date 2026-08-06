@@ -1,0 +1,269 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » GHF Fable 2 and 3 heightfield / heightmap files 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » GHF Fable 2 and 3 heightfield / heightmap files (Analysis of ghf heightfield files) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ GHF Fable 2 and 3 heightfield / heightmap files 
+ Mon, 23 August 2021 01:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Also posted on Fable2mod but reposted here due to similarity of file formats. 
+ 
+So, after 11 years of tinkering and bimbling around and pestering coders who had long since moved on from this, I've managed to get something sensible out of the ghf heightfield files. 
+ 
+Focusing on the Brightwood ghf (ch3heightfieldabandfarm_id_926492ed.ghf) I could not see any discernible pattern in the data. So on a whim I decided to open it in 7zip and voila: export360/data/worlds/albion/brightwood/heightfields/ch3heig htfieldabandfarm_id_926492ed.ghf about 8Mb. 
+ 
+First 14 bytes of nowt, then two integers of 769 (suspiciously like image dimensions) followed by a repeating pattern of 14 bytes throughout the file neatly organised into two columns. 
+ 
+ 
+ 
+*Cracks knuckles and opens Photoshop, 5 minutes later...:* 
+ 
+I renamed the extracted ghf file as a raw and with the following settings: 
+ 
+Dimensions 
+Width: 769 
+Height: 769 
+ 
+Channels 
+Count: 14 
+Interleaved: ✓ 
+Depth: 8-bits 
+ 
+Header Size: 20 bytes 
+ 
+ 
+ 
+ 
+ 
+Ok, so not perfect, but usable and a massive step in the right direction, another 11 years and it'll be about there! 
+ 
+I can probably work with this for what I need to do, and I will get onto the Fable 3 ones once I've done these. 
+ 
+ 
+ [Updated on: Mon, 23 August 2021 01:57]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: GHF Fable 2 and 3 heightfield / heightmap files 
+ Tue, 07 September 2021 00:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So there is a crossover of landscape data from Fables 2 & 3 as I've been able to extract heightmaps from the Fable 3 .ghfs in virtually the same way as the Fable 2 ones. 
+ 
+The channels are not in the same order and there is no greyscale weirdness with the actual heightmap though which suggests byte-flipping the Fable 2 files might fix that. 
+ 
+Also, Fable 2 .ghf headers are 20-bytes whereas Fable 3 ones are 28-bytes. 
+ 
+Brightwall Village for your viewing pleasure: 
+ 
+ 
+ 
+ 
+ [Updated on: Tue, 07 September 2021 00:45]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ GDB Format 
+
+ 
+ Next Topic: 
+ ADB 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:11 PDT 2026 
+
+ Total time taken to generate the page: 0.05533 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

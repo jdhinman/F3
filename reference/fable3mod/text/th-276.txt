@@ -1,0 +1,359 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Help with Pre-order hunter lodge 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Help with Pre-order hunter lodge (Im a noob who needs assistance lol) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Help with Pre-order hunter lodge 
+ Sun, 07 January 2018 08:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ epca394 
+ Messages: 6 Registered: January 2018 Location: Florida
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ im new to fable 3 modding, after returning to my fable 3 game after 3 years, I was horrified to find I couldn't log into GFWL, during my search for solutions I stumbled into here, and immediately followed the very helpful tutorial's on getting xlive and dlc working, which everything so far works fine... 
+ 
+The image here is from another discussion where someone gave a solution, only issue is, I have no Idea what to do with this 
+ 
+A little help for a noob please? 
+ 
+ 
+ 
+ 
+ 
+ Attachment: fable3.PNG 
+ 
+ (Size: 30.61KB, Downloaded 3401 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Help with Pre-order hunter lodge 
+ Tue, 23 January 2018 17:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ epca394 
+ Messages: 6 Registered: January 2018 Location: Florida
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ never mind I figured it out myself, I'd delete my post here, but I dont think I can... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Help with Pre-order hunter lodge 
+ Mon, 19 March 2018 12:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ BoredDuck 
+ Messages: 1 Registered: March 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Care to explain how? I have no idea what I'm doing and after much searching I'm more confused about modding in the DLCs than when I started. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Help with Pre-order hunter lodge 
+ Sun, 01 April 2018 22:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ BoredDuck wrote on Mon, 19 March 2018 12:52 Care to explain how? I have no idea what I'm doing and after much searching I'm more confused about modding in the DLCs than when I started. 
+ 
+For the hunter lodge no modding is required. You just have to put the dlc into the DLC folder specified by whichever gfwl emulator you are using. Somewhere in between dweller and brightwall quests you'll receive the hunter's lodge deed automatically as a gift (along with a bunch of other dlc items). Or anytime after those quests. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Blacksmithing mod WIP 
+
+ 
+ Next Topic: 
+ Fable Pc couch co-op? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:44 PDT 2026 
+
+ Total time taken to generate the page: 0.05853 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

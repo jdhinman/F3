@@ -1,0 +1,240 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Creating banks 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Creating banks 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Creating banks 
+ Sat, 26 October 2013 19:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Tools needed obviously 
+ 
+ 
+ 
+ 
+ 
+You'll need two package definitions. One for Fable and one for xLive. 
+.\Fable III\data\mod9\Content 
+ 
+package.bnk
+package.bnk.dat
+package_collection_info.xmb
+ 
+ 
+ 
+package_collection_info.xmb 
+ 
+<?xml version="1.0" ?>
+<packageCollection>
+	<XContent_AllowProfileTransfer>
+ true
+	</XContent_AllowProfileTransfer>
+	<XContent_PublisherFlags>
+ 0xFFFFFFFF
+	</XContent_PublisherFlags>
+	<XContent_PubBitFlags>
+ FFFFFFFF
+	</XContent_PubBitFlags>
+	<isLanguagePack>
+ False
+	</isLanguagePack>
+	<XContent_AllowDeviceTransfer>
+ true
+	</XContent_AllowDeviceTransfer>
+	<XContent_title>
+ Fable III
+	</XContent_title>
+	<package>
+ <bankName>
+ package.bnk
+ </bankName>
+ <isRequired>
+ True
+ </isRequired>
+ <name>
+ FableIII
+ </name>
+	</package>
+</packageCollection>
+ 
+ 
+ 
+package_info.xml as seen in the screenshot is included in the bank. 
+ 
+<?xml version="1.0" ?>
+<package>
+	<bankName>
+ package.bnk
+	</bankName>
+	<isRequired>
+ True
+	</isRequired>
+	<packageUniqueId>
+ 99
+	</packageUniqueId>
+</package>
+ 
+ 
+ 
+I beleive packageUniqueId HAS to be unique. Otherwise it might overwrite another bank. 
+ 
+ 
+ [Updated on: Sat, 26 October 2013 19:25]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Air Mauritius Birth Date Correction | What You Need to Know (2026) 
+
+ 
+ Next Topic: 
+ Quasar's fable 3 function listing 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:32 PDT 2026 
+
+ Total time taken to generate the page: 0.08200 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

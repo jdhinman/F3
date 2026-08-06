@@ -1,0 +1,442 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Graphic enhancements 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Graphic enhancements (little tweak) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Graphic enhancements 
+ Wed, 18 September 2013 07:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ If you have a 64 bit system, and at least 4GB RAM, then you can load all textures and models into memory 
+what does it do? 
+have you noticed that when you load a new level, all the models and textures loaded in real time? 
+it is annoying and not always used high quality textures 
+ 
+so, first you need to patch Fable3.exe with Large Address Aware (or manually with CFF Explorer , or something else) 
+this will allow the game to use up 4GB RAM 
+and then open the "data\startup.vfsconfig" and appends: Mode="memory" 
+ <Composite>
+	<Required><Ref ID="globals_model_headers" Mode="memory"/></Required>
+	<Required><Bank Path="globals/globals_models.bnk"/></Required>
+</Composite>
+
+<Composite>
+	<Required><Bank Path="globals/globals_texture_headers.bnk" Mode="memory"/></Required>
+	<Required><Bank Path="globals/globals_textures.bnk"/></Required>
+</Composite> 
+ 
+like this 
+ <Composite>
+	<Required><Ref ID="globals_model_headers" Mode="memory"/></Required>
+	<Required><Bank Path="globals/globals_models.bnk" Mode="memory"/></Required>
+</Composite>
+
+<Composite>
+	<Required><Bank Path="globals/globals_texture_headers.bnk" Mode="memory"/></Required>
+	<Required><Bank Path="globals/globals_textures.bnk" Mode="memory"/></Required>
+</Composite> 
+ 
+done 
+Fable will use around 3,2GB, so make sure you have enough memory for system 
+also, you will get little slow startup, since data need to be loaded into memory 
+ 
+ 
+ [Updated on: Wed, 18 September 2013 07:20]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Graphic enhancements 
+ Wed, 18 September 2013 08:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Huh, that's interesting. I wonder if the fact that the textures and models are loaded from the start rather than in real time would speed up my gameplay. As it stands, until I can get a new PSU and graphics card, I'm running rather slow, only able to get full speed in a select few areas. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Graphic enhancements 
+ Wed, 18 September 2013 08:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm wondering how the streaming banks are related to that. Those might be low poly/resolution stuff that is loaded into memory for streaming purpose I think. Never really messed with them. 
+ 
+	<Bank Path="globals/globals_streaming.bnk" Mode="memory"/>
+	<Bank Path="art/gui/gui_streaming.bnk" Mode="memory"/>
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Graphic enhancements 
+ Thu, 10 September 2015 10:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Well... I'm not getting it to work. After I modify startup.vfsconfig (per your instructions), The game refuses to run. 
+ 
+Memory SHOULDN'T be a problem... I have 8Gb. 
+ 
+Oh, well... for now, I'll just live with the original setup. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Graphic enhancements 
+ Thu, 10 September 2015 11:01 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ nevermind... I found the problem... when I pasted, it left off the end quotes!!! 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+	
+ 
+ Next Topic: 
+ Additional animations for hero 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:21 PDT 2026 
+
+ Total time taken to generate the page: 0.06868 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

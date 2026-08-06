@@ -1,0 +1,1177 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Removing Animations 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Removing Animations (Not a full-blown Mod yet, more of a tweak) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Removing Animations 
+ Mon, 21 September 2015 02:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ For right now, this tweak requires a basic working knowledge of unpacking and repacking BNK files. I use Timeslip 's BnkBrowser and BnkCreator . I encourage a workflow similar to the one recommended in http:// fable3mod.com/forums/index.php?t=tree&th=94&start=0& amp; amp; amp; (creating a separate work space outside your game directory, backing up your BNK files, etc. 
+ 
+First, Unpack levels.bnk into your_workshop_directory\levels using BNK Browser. 
+ 
+Next, Use BNK Browser to unpack EACH of Fable2_anims.bnk and Fable2_lmanims.bnk into your_workshop_directory\Fable2_anims and your_workshop_directory\Fable2_lmanims respectively. 
+ 
+-- As far as I can tell, these two BNK files are redundant. I believe _lmanims is completely unused. 
+ 
+Navigate into both anims.bnk to (for example) C:\Users\Matthew\Documents\My Games\Fable 3\ 
+ fable2_anims.bnk\animation\characters\heroes\exports\hero\in teraction 
+ fable2_lmanims.bnk\animation\characters\heroes\exports\hero\ interaction 
+ 
+Remove the following files from both directories: 
+dig_into.csa 
+dig_loop.csa 
+dig_outof.csa 
+ 
+-- I chose to copy/paste them into another directory for easy reinsertion in case of failure. I believe you can just delete them, especially if you have a backup of the BNK files. 
+ 
+That's the hard part! 
+ 
+Now use BNK Creator, Add Folder your_workshop_directory\Fable2_anims then create Fable2_anims.bnk in your_workshop_directory\levels it will ask to overwrite the files there - you want to do it. It also creates and overwrites Fable2_anims.bnk.dat for you there. 
+ 
+Open another instance of BNK Creator, and repeat all the above with Fable2_lmanims (just in case it's NOT completely unused! 
+ 
+Finally, Open another BNK Creator and pack your_workshop_directory\levels into your game's data directory (mine is C:\Program Files (x86)\Microsoft Games\Fable III\data) 
+ 
+Now when you go to dig, 
+Your character will just kinda jerk... 
+and your loot will appear!!! 
+ 
+(This is because the game executes several commands before the animations start. It changes the camera angle and equips a spade, as well as some behind-the-scenes work. Then, "after" the (non-)animations, it unequips the spade and frees the camera, etc. I'll keep working on learning LUA so I can get those functions removed, too. It literally happens so fast, I can't get a screenshot with the spade out!!! 
+ 
+ 
+-- If only I knew how to get the stupid "accept" dialogue to go away now! I mean, there's only one option - "accept". Why do I need to be given a choice if there's no choice? Just show me my loot for 2 seconds while you let me walk around, then have it disappear into my inventory! [/rant] 
+ 
+ 
+-- For any not confident enough to do all the unpacking/repacking, I'll try to figure out how to write a batch file for it. Maybe one of the gods of Fable3mod like Artofeel or Keshire will explain it to me ;) 
+ 
+ 
+ 
+ Attachment: DigMod01.PNG 
+ 
+ (Size: 189.24KB, Downloaded 7351 times) 
+ 
+ 
+ Attachment: DigMod02.PNG 
+ 
+ (Size: 354.01KB, Downloaded 7566 times) 
+ 
+ 
+ 
+ [Updated on: Tue, 13 October 2015 08:53] by Moderator
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Mon, 21 September 2015 03:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Now I'm eyeing the following files (also located in %workbench%\fable2_*anims.bnk\animation\characters\heroes\ex ports\hero\interaction): 
+ 
+pull_big_floor_lever.csa 
+sarcophagus_open.csa 
+a_hero_m_n_interaction_chest_open_new_chest.csa 
+a_hero_m_n_interaction_chest_open_new_hero.csa 
+ 
+I think I'll try them one at a time and post results (except I'm not sure when I'll get to pull another lever or open another sarcophagus! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Mon, 21 September 2015 04:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm also drooling over a way to shorten things in the \expressions. 
+ 
+The problem here is that I think deleting CSA files would relinquish you to the default button press length, rather than being able to get the "perfect" expression. I'll try it first with some of the expressions I seldom use (read "the evil ones") and see how it goes... stay tuned for updates on that. With any luck, I'll figure out how to whittle them down to their minimum time suck... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Mon, 21 September 2015 06:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay, I experimented with "fart", one of my little-cared-for expressions. 
+ 
+I found the following general types of files for expressions (syntax varies, which makes searching difficult): 
+ 
+_out_success - this is pretty obviously the extra end animation when you hold the button just right 
+_out_fail - I'm assuming this is the end animation when you hold too long... not all have it 
+_out - this one is for if you don't hold the button long enough... I presume it is used if there's no _out_fail 
+_loop - this is the animation that repeats while you are holding the button 
+_in - this is the animation to transition you from the expressions menu into the _loop animation 
+ 
+For a dirty trick to shorten the expressions, remove all _out, _out_fail, and _out_success. This gave me a flash-frame of black screen after, but WAY less than having to watch the whole end animation. 
+ 
+If you just don't like seeing a particular animation (but don't mind doing AND hearing it) you can remove the _in and _loop files, too... then you just get to watch the two characters stand there (frozen in an extremely awkward pose) while you hold the button and listen to the expression (in my case a really nasty fart... eww... . I recommend not doing this except in extreme circumstances (and will be adding the fart_loop files back in ASAP! 
+ 
+ 
+ [Updated on: Mon, 21 September 2015 06:03]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Mon, 21 September 2015 09:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I searched both expressions folders for "out" "success" and "fail" (separately) and deleted the files that I wanted. Now ALL my expressions end when I let go of the button! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Mon, 21 September 2015 09:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I just found out how important it is to make sure that the .bnk.dat files are in the right places. I believe you need to move them out of \levels (unpacked BNK directory) into your %game%\data directory, THEN create levels.bnk and levels.bnk.dat in %game%\data 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Mon, 21 September 2015 11:01 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I tried the chest files, but it still played animation... I'm not sure if I made a mistake repacking the BNK or if there's another file I need to delete. 
+ 
+EDIT: I forgot to remove the files from BOTH fable2_*anims.bnk !!! Either the game uses the one in _lmanims for its primary, or it has some kind of redundancy built in to look in _lmanims if it's missing in _anims. At any rate, I've taken them out of _lmanims now, too, so we'll see how that did the next time I find a new chest ;) 
+ 
+ 
+ [Updated on: Tue, 22 September 2015 05:58]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Thu, 24 September 2015 14:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This is awkward, just talking to myself... I hope someone else gets some use out of this information. 
+ 
+I still haven't gotten the chest animation to go away. There must be some other source for the animation. 
+ 
+EDIT: In fable2_*anims.bnk\\art\characters\heros\unclothed male\exports there's a file a_woodenchest_open.csa 
+ 
+Maybe that's the last one... We'll find out next time I meet a fresh chest. 
+ 
+EDIT2: Nope... Still shows chest animation... Maybe it's buried in one of the other BNKs? Or maybe it's not canned... maybe it's scripted... Hopefully, one of these days, I'll figure out how to decompile the LUA myself so I can tweak the functions! 
+ 
+ 
+ [Updated on: Fri, 25 September 2015 03:32]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Fri, 25 September 2015 04:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ probably is better to replace it in globals.gdb 
+ 
+T# 0000020B HO 0028DD8C HV 906202FF DTO 0028EB78 DT 0004 DO 000C3234 D DEA1FED3 DigOutofSuccess | NULL
+T# 0000021B HO 0028DDCC HV 966D647E DTO 0028EBB8 DT 0004 DO 000C3274 D DEA1FED3 DigOutof | NULL
+T# 0000027F HO 0028DF5C HV B61FE3B1 DTO 0028ED48 DT 0004 DO 000C3404 D B0F90F74 DigLoop | NULL
+T# 000002D3 HO 0028E0AC HV D0B7C85E DTO 0028EE98 DT 0004 DO 000C3554 D DEA1FED3 DigOutofFail | NULL
+T# 0000031C HO 0028E1D0 HV E4681F99 DTO 0028EFBC DT 0004 DO 000C3678 D AE19AFCC DigInto | NULL
+
+T# 0000026B HO 0028DF0C HV B2B98C08 DTO 0028ECF8 DT 0004 DO 000C33B4 D F33E3CD6 OpenChest | NULL
+ 
+ 
+by empty animation (5D672ED4) 
+ 
+T# 0000020B HO 0028DD8C HV 906202FF DTO 0028EB78 DT 0004 DO 000C3234 D 5D672ED4 DigOutofSuccess | NULL
+T# 0000021B HO 0028DDCC HV 966D647E DTO 0028EBB8 DT 0004 DO 000C3274 D 5D672ED4 DigOutof | NULL
+T# 0000027F HO 0028DF5C HV B61FE3B1 DTO 0028ED48 DT 0004 DO 000C3404 D 5D672ED4 DigLoop | NULL
+T# 000002D3 HO 0028E0AC HV D0B7C85E DTO 0028EE98 DT 0004 DO 000C3554 D 5D672ED4 DigOutofFail | NULL
+T# 0000031C HO 0028E1D0 HV E4681F99 DTO 0028EFBC DT 0004 DO 000C3678 D 5D672ED4 DigInto | NULL
+
+T# 0000026B HO 0028DF0C HV B2B98C08 DTO 0028ECF8 DT 0004 DO 000C33B4 D 5D672ED4 OpenChest | NULL
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Mon, 28 September 2015 02:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Kind sir, 
+ 
+Once again, you have reminded me that you are the man and I am a total N00b. I have no idea how you even got globals.gdb to look like that... I downloaded a Hex editor (CI Hex Viewer) and was able to find DigOutOfSuccess, but the other codes before it are still entirely foreign to me... *sigh* 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Mon, 28 September 2015 10:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ yeah we (I'm and Keshire) forgot to put GDB tools on forum... 
+so use GDB Dump 
+also sometimes GDB Editor is useful (but not this time...) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Tue, 29 September 2015 10:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So, shall I presume I just save it back in plain text as globals.gdb over the old one (after saving a copy, of course!) and it will work? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Tue, 29 September 2015 10:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I see things like the following that really pique my interest, too... but I don't know how to read them well enough to figure out exactly what they mean... 
+ 
+ Toggle Spoiler 
+O# 00000051 OH 002FEA6F TP 00078468 TO 00000640 UW 000A NO 00 GraphicAppearanceAnimatedMeshComponent
+
+ T# 00000000 HO 0028D098 HV 0C17DB4E DTO 0028D0AC DT 0004 DO 00000644 D 811C9DC5 ModelFile | 
+
+ T# 00000001 HO 0028D09C HV 0EC30A25 DTO 0028D0B0 DT 0000 DO 00000648 D 00000001 ShadowCaster
+
+ T# 00000002 HO 0028D0A0 HV 5F6317D5 DTO 0028D0B4 DT 0006 DO 0000064C D 54DB872E parent
+
+ T# 00000003 HO 0028D0A4 HV 64234AF2 DTO 0028D0B8 DT 0004 DO 00000650 D 6EF935F8 RetargetSkeletonFile | NULL
+
+ T# 00000004 HO 0028D0A8 HV C3D06E3A DTO 0028D0BC DT 0004 DO 00000654 D D216358F SkeletonFile | NULL
+ 
+
+ 
+ 
+And CERTAINLY not how to modify them... 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove "Dig" Animation 
+ Tue, 29 September 2015 12:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ yea, modifying .gdb files can easily break you mind, so be careful ;) 
+ 
+ T# 0000020B HO 0028DD8C HV 906202FF DTO 0028EB78 DT 0004 DO 000C3234 D DEA1FED3 DigOutofSuccess | NULL 
+ 
+'DO 000C3234' mean offset in hex 
+so you need to go to this position in hex editor and then replace D3FEA1DE (DEA1FED3) to D42E675D (5D672ED4) 
+YES you need to "reverse" hash 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Removing Animations 
+ Tue, 19 May 2020 03:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ ahh20011983 
+ Messages: 1 Registered: May 2020 Location: Egypt
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ thank you very mush it works for me 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Removing Animations 
+ Thu, 04 June 2020 04:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Now if only someone could stop the dog borking. 
+I've found myself immersed in the world when suddenly "BORK!". Bloody dog. Dog companions were the WORST thing to happen to Fable. 
+I love RL doggos because they're at least intelligent. For the most part. 
+ 
+ 
+ [Updated on: Thu, 04 June 2020 04:01]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Camera mod 
+
+ 
+ Next Topic: 
+ I have reduced the grind 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:24 PDT 2026 
+
+ Total time taken to generate the page: 0.09884 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

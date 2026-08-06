@@ -1,0 +1,270 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » ADB 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » ADB 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ ADB 
+ Thu, 21 November 2013 08:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ JohnDoe:1226673400 
+Audio. Quote: typedef struct ADB
+{
+	char	Header[12]; //LhCoMpReSsEd always
+	DWORD	Unknown; //number of files?
+
+} ADB;
+
+typedef struct ADBEntry
+{
+	DWORD	sizeDecompressed; 
+	DWORD	sizeCompressed; 
+
+} ADBEntry; 
+Zlib compressed. After Decompression file assumes ADB header. except header becomes "LhBiNaRy####" and the unknown DWORD appears to be the same value. Quoted from Silver from another forum, link . There's other useful info in that thread too. 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ADB 
+ Mon, 14 February 2022 07:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ zallobannouwo 
+ Messages: 1 Registered: February 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/stromectol-kaufen-ohne-rezept-ivermectin-3-6 -12-mg-gunstig-apotheke-tabletten-bestellen/#stromectol 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/accutane-kaufen-ohne-rezept-isotretinoin-5-1 0-20-30-40-mg-apotheke-gunstig-tabletten-bestellen/#accutane 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/baclofen-kaufen-ohne-rezept-lioresal-10-25-m g-bestellen-gunstig-apotheke-tabletten/#baclofen 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/bupropion-kaufen-ohne-rezept-zyban-150-300-m g-tabletten-apotheke-gunstig-bestellen/#bupropion 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/citalopram-kaufen-ohne-rezept-5-10-20-30-40- mg-bestellen-gunstig-tabletten-apotheke/#citalopram 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/clomid-kaufen-ohne-rezept-clomifen-clomiphen e-25-50-100-mg-bestellen-gunstig-tabletten-apotheke/#clomid 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/cytotec-kaufen-ohne-rezept-misoprostol-100-2 00-mcg-bestellen-apotheke-gunstig-tabletten/#cytotec 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/dulcolax-kaufen-ohne-rezept-bisacodyl-5-mg-a potheke-gunstig-tabletten-bestellen/#dulcolax 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/nitrofurantoin-kaufen-ohne-rezept-50-100-mg- bestellen-apotheke-gunstig-tabletten/#nitrofurantoin 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/orlistat-kaufen-ohne-rezept-xenical-60-120-m g-apotheke-tabletten-gunstig-bestellen/#orlistat 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/propranolol-kaufen-ohne-rezept-inderal-20-40 -80-mg-tabletten-bestellen-gunstig-apotheke/#propranolol 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/tamoxifen-kaufen-ohne-rezept-nolvadex-10-20- mg-bestellen-apotheke-gunstig-tabletten/#tamoxifen 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/vermox-kaufen-ohne-rezept-mebendazol-100-mg- tabletten-gunstig-bestellen-apotheke/#vermox 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/azithromycin-kaufen-ohne-rezept-zithromax-10 0-250-500-mg-bestellen-tabletten-gunstig-apotheke/#azithromy cin 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/meloxicam-kaufen-ohne-rezept-mobic-7-5-15-mg -apotheke-tabletten-bestellen-gunstig/#meloxicam 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/lasix-kaufen-ohne-rezept-furosemid-40-100-mg -gunstig-apotheke-bestellen-tabletten/#lasix 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/maxalt-kaufen-ohne-rezept-rizatriptan-10-mg- gunstig-apotheke-tabletten-bestellen/#maxalt 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/etoricoxib-kaufen-ohne-rezept-arcoxia-60-90- 120-mg-bestellen-apotheke-tabletten-gunstig/#etoricoxib 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/keppra-kaufen-ohne-rezept-levetiracetam-250- 500-mg-bestellen-tabletten-apotheke-gunstig/#keppra 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/seroquel-kaufen-ohne-rezept-quetiapin-25-50- 100-200-300-mg-gunstig-apotheke-bestellen-tabletten/#seroque l 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/modafinil-kaufen-ohne-rezept-provigil-100-20 0-mg-tabletten-gunstig-bestellen-apotheke/#modafinil 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/tadalafil-kaufen-ohne-rezept-cialis-2-5-5-10 -20-mg-tabletten-gunstig-apotheke-bestellen/#tadalafil 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/vardenafil-kaufen-ohne-rezept-levitra-10-20- mg-tabletten-gunstig-apotheke-bestellen/#vardenafil 
+ https://www.restoration-design.com/support/restoration-desig n-support/topic/sildenafil-kaufen-ohne-rezept-viagra-25-50-7 5-100-mg-bestellen-apotheke-gunstig-tabletten/#sildenafil 
+ 
+ 
+ 
+ [Updated on: Mon, 14 February 2022 07:59]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ GHF Fable 2 and 3 heightfield / heightmap files 
+
+ 
+ Next Topic: 
+ Format Checklist 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:46 PDT 2026 
+
+ Total time taken to generate the page: 0.09827 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

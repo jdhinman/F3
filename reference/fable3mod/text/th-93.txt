@@ -1,0 +1,325 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Debug commands 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Debug commands (Repost) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Debug commands 
+ Tue, 15 October 2013 22:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hey. I'm mostly lurking but I had saved the threads on my hard disk so I thought I'd post them for everyone still interested in modding Fable III. 
+ 
+ Keshire wrote on Tue, 07 June 2011 14:34 This should basically give you everything in the game. (Apart from npc weapons and DLC). You'll need to find the names for npc weapons and use the Inventory.AddItemOfType function. 
+ 
+From the weaponinventory.lua Debug.GiveAllMeleeWeapons()
+Debug.GiveAllRangedWeapons()
+Debug.GiveAllSpellGauntlets()
+Debug.AddAllInventoryItemsF2()
+Debug.AddAllInventoryItems() 
+ 
+ 
+ Keshire wrote on Fri, 29 October 2010 12:14 Gotta love Medusa Mode 
+ 
+Gameversion stuff seems really dumb to be leaving open to LUA. "Gameflow.SetMedusaMode=[toggle:true]", "Toggle Medusa Mode (kill enemy on sight)"
+
+"Gameflow.SetSuperMedusaMode=[toggle:true]", "Toggle Super Medusa Mode (kill enemies, inc. scripted, on sight)"
+
+"Debug.SetCombatFinishersTestMode([toggle:true])", "Force finishers on every hit on/off"
+
+"Action.SetCanVaultAnywhere(GetLocalHero(), [toggle:true])", "Toggle 'CanVaultAnywhere' Flag"
+
+ "ScriptFunction.SetHeroAsASmoker()", "Give Hero a Bad Habit"
+ "ScriptFunction.SetHeroAsACigarSmoker()", "Give Hero a REALLY Bad Habit"
+ "ScriptFunction.SetHeroAsBlowingBubbles()", "I'm forever blowing bubbles"
+ "ScriptFunction.SetDogAsBlowingBubbles([toggle:true])", "Toggle set Dog as a bubble blower"
+ "ScriptFunction.SetDogAsASmoker()", "Give the dog a Bad Habit"
+
+ "Debug.MarryEveryone()", "Marry All eligible people on the level"
+ "Debug.ToggleCanCatchBigamist()", "Toggle if your spouse(s) can catch you interacting with other spouses"
+
+ "GameVersion.SetAllDLCsOn()", "Set have all DLCs"
+ "GameVersion.SetAllDLCsOff()", "Set dont have any DLCs"
+ "GameVersion.SetAllDLCsPremium()", "Set all DLCs premium"
+ "GameVersion.SetAllDLCsFree()", "Set all DLCs free" 
+ 
+ 
+Weapon Morphing Debug "", "Weapon Morphing"
+ "Debug.SetPrimaryMesh(-1)", "Toggle Weapon Look Hacking"
+ "Debug.SetPrimaryMesh(0)", "Set Primary Weapon Mesh Auroran"
+ "Debug.SetPrimaryMesh(1)", "Set Primary Weapon Mesh Crystal"
+ "Debug.SetPrimaryMesh(2)", "Set Primary Weapon Mesh Evil1"
+ "Debug.SetPrimaryMesh(3)", "Set Primary Weapon Mesh Evil2"
+ "Debug.SetPrimaryMesh(4)", "Set Primary Weapon Mesh Good1"
+ "Debug.SetPrimaryMesh(5)", "Set Primary Weapon Mesh Good2"
+ "Debug.SetPrimaryMesh(6)", "Set Primary Weapon Mesh Intricate"
+ "Debug.SetPrimaryMesh(7)", "Set Primary Weapon Mesh Organic"
+ "Debug.SetPrimaryMesh(8)", "Set Primary Weapon Mesh Reaver"
+ "Debug.SetPrimaryMesh(9)", "Set Primary Weapon Mesh Base"
+ "Debug.SetSecondaryMesh(0)", "Set Secondary Weapon Mesh Auroran"
+ "Debug.SetSecondaryMesh(1)", "Set Secondary Weapon Mesh Spell"
+ "Debug.SetSecondaryMesh(2)", "Set Secondary Weapon Mesh Bone"
+ "Debug.SetSecondaryMesh(3)", "Set Secondary Weapon Mesh Royal"
+ "Debug.SetSecondaryMesh(4)", "Set Secondary Weapon Mesh Base"
+ "Debug.SetPrimaryColour(0)", "Set Primary Dye Metallic Red"
+ "Debug.SetPrimaryColour(1)", "Set Primary Dye Silver"
+ "Debug.SetPrimaryColour(2)", "Set Primary Dye Metallic Black"
+ "Debug.SetPrimaryColour(3)", "Set Primary Dye Metallic Green"
+ "Debug.SetPrimaryColour(4)", "Set Primary Dye Steel"
+ "Debug.SetPrimaryColour(5)", "Set Primary Dye Gold"
+ "Debug.SetPrimaryColour(6)", "Set Primary Dye Metallic Purple"
+ "Debug.SetPrimaryColour(7)", "Set Primary Dye Copper"
+ "Debug.SetPrimaryColour(8)", "Set Primary Dye Bronze"
+ "Debug.SetPrimaryColour(-1)", "Remove Primary Dyes"
+ "Debug.SetForegroundColour(0)", "Set Foreground Dye Metallic Red"
+ "Debug.SetForegroundColour(1)", "Set Foreground Dye Silver"
+ "Debug.SetForegroundColour(2)", "Set Foreground Dye Metallic Black"
+ "Debug.SetForegroundColour(3)", "Set Foreground Dye Metallic Green"
+ "Debug.SetForegroundColour(4)", "Set Foreground Dye Steel"
+ "Debug.SetForegroundColour(5)", "Set Foreground Dye Gold"
+ "Debug.SetForegroundColour(6)", "Set Foreground Dye Metallic Purple"
+ "Debug.SetForegroundColour(7)", "Set Foreground Dye Copper"
+ "Debug.SetForegroundColour(8)", "Set Foreground Dye Bronze"
+ "Debug.SetForegroundColour(-1)", "Remove Foreground Dyes"
+ "Debug.SetParticleEffect(0)", "Set Lightning Particle Effect"
+ "Debug.SetParticleEffect(1)", "Set Fire Particle Effect"
+ "Debug.SetParticleEffect(2)", "Set Shadow Particle Effect"
+ "Debug.SetParticleEffect(3)", "Set Holy Particle Effect"
+ "Debug.SetParticleEffect(4)", "Set Blood Particle Effect"
+ "Debug.SetParticleEffect(5)", "Set Ethereal Particle Effect"
+ "Debug.SetParticleEffect(6)", "Set Golden Particle Effect"
+ "Debug.SetParticleEffect(7)", "Set Poison Particle Effect"
+ "Debug.SetParticleEffect(-1)", "Remove All Particle Effects"
+ "Debug.SetWeaponSize(0)", "Set Weapon Size Small"
+ "Debug.SetWeaponSize(1)", "Set Weapon Size Medium"
+ "Debug.SetWeaponSize(2)", "Set Weapon Size Large"
+ "Debug.WieldWeapon(0)", "Wield Sword"
+ "Debug.WieldWeapon(1)", "Wield Hammer"
+ "Debug.WieldWeapon(2)", "Wield Pistol"
+ "Debug.WieldWeapon(3)", "Wield Rifle" 
+ 
+ 
+ afkfurby wrote on Mon, 13 June 2011 12:20 Debug.SetUseFreeCamera(true) -- Freecam for Keyboard
+Debug.SetFreeCamController(true) -- Freecam for Xbox controller
+
+Debug.CreateEntityByHero('CreatureVillagerChildFemaleBase') -- create child next to hero 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Mon, 16 November 2015 02:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Leafone 
+ Messages: 2 Registered: November 2015 Location: Odessa
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Weird thing: when I try to morph weapon with those scripts(any) it just dissappeares and I get weapon with no morphs at all. 
+Even more, all my weapons in Sanctuary just dissappear(both melee and ranged). 
+How to use it properly? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Script for All clothing and Tattoos? 
+
+ 
+ Next Topic: 
+ Newbie in Need for DLC 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:26 PDT 2026 
+
+ Total time taken to generate the page: 0.05443 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

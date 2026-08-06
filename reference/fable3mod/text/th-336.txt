@@ -1,0 +1,171 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Where to find creature names/ script function (?) names 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Where to find creature names/ script function (?) names 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Where to find creature names/ script function (?) names 
+ Mon, 08 May 2023 02:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ XanWasting 
+ Messages: 8 Registered: March 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I write this hoping the forum and it's wise men aren't dead yet and could share some wisdom. 
+Is there a method for pulling all the different item/ creature/ script method names? f.e. I'd like to spawn an eco-warrior villager, maybe even with some specific traits. But even though we have the script injector, and there is a debug command specifically for adding villagers, their entity names (f.e. CreatureVillagerChildFemaleBase , which is one of the very few provided by LiohHead) are hidden as far as I can tell. I know we have an Item list here on forum, so can someone tell me how were item names for it pulled from the game, and if it's possible to do so with NPC types as well? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ *DELETED* 
+
+ 
+ Next Topic: 
+ How to mod Fable 3's Textures 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:22 PDT 2026 
+
+ Total time taken to generate the page: 0.10378 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

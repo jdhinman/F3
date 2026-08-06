@@ -1,0 +1,187 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » BIN 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » BIN 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ BIN 
+ Thu, 21 November 2013 08:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ JohnDoe:1229083644 
+#include "standard-types.hsl" 
+ 
+#pragma byteorder(big_endian) 
+ 
+typedef struct BIN //Lipsync data 
+{ 
+ DWORD Count; 
+ DWORD Unknown[Count]; 
+} BIN;[/m] 
+ 
+ No laughing! 
+I'm guessing each of the unknowns calls a certain phoneme animation, so not really "unknown", just didn't know what to call it. I could probably work most of these out if I knew a piece of dialogue from a specific part of the game, so as to know which file it is. 
+ 
+God knows I need more practice, but for now hopefully these simpler things will do. 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Question about the MDL format 
+
+ 
+ Next Topic: 
+ ENGINE_LEVEL - LevelGraphicsFile Format 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:47 PDT 2026 
+
+ Total time taken to generate the page: 0.05073 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

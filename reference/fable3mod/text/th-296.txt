@@ -1,0 +1,302 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Need help with major bug 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Need help with major bug (Invisible character) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Need help with major bug 
+ Sun, 07 June 2020 11:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Beef Bowl 
+ Messages: 3 Registered: June 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It seems to be unrelated to my save, though restarting and reloading the save keeps the bug anyway. After opening the level 2 magic chest, my character is invisible, except weapons. I'd imagine that this could fix at level 3 magic, however that's a big chunk of the game to be broken. 
+ 
+I use a torrented repack version (I do own the game but it's broken as hecc) and that could be the cause. Is there some way to fix this through altering files or? 
+ 
+Edit: Got further now, (without upgrading magic) and it seems upgrading to level 3 also causes this. For some reason, level 1 did not. Also opening melee and ranged upgrades doesn't have the same effect, and it occurs at the exact moment the flash covers my character, and as it fades, he's invisible. If I remember correctly I believe that the gauntlet model or texture changes in that moment. 
+ 
+ 
+ [Updated on: Sun, 07 June 2020 18:24]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need help with major bug 
+ Sun, 07 June 2020 18:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Beef Bowl wrote on Sun, 07 June 2020 19:15 It seems to be unrelated to my save, though restarting and reloading the save keeps the bug anyway. After opening the level 2 magic chest, my character is invisible, except weapons. I'd imagine that this could fix at level 3 magic, however that's a big chunk of the game to be broken. 
+ 
+I use a torrented repack version (I do own the game but it's broken as hecc) and that could be the cause. Is there some way to fix this through altering files or? 
+ 
+Edit: Got further now, (without upgrading magic) and it seems upgrading to level 3 also causes this. For some reason, level 1 did not. Also opening melee and ranged upgrades doesn't have the same effect, and it occurs at the exact moment the flash covers my character, and as it fades, he's invisible. If I remember correctly I believe that the gauntlet model or texture changes in that moment. 
+I can't say for sure what worked for me will work for you. 
+I got this as well when I was using Keshire's Blacksmithing mod. It really shouldn't have been interfering but it seems to have been. 
+I removed it and started over. Played up until opening the level 2 Magic chest and made a backup of my saves. 
+Opening it up and fearing the worst... Nothing out-of-the-ordinary happened. Now, to repeat the process with the level 3 Magic chest. 
+ 
+Still okay. I chalked it down to a save bork. Check what mods you're running. Get to that point again, make a backup and start changing your mod setup. There's got to be something not quite right in there. 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Need help with major bug 
+ Mon, 08 June 2020 02:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Beef Bowl 
+ Messages: 3 Registered: June 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I am in fact running that mod. And, clearly you are an absolute legend. Because that was the problem. I deleted the DLC folder, opened the chest, perfectly fine. My guess is an issue in a certain file I'll mention on the post there. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Problem with scripting for furniture items 
+
+ 
+ Next Topic: 
+ Improved script injection method 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:00 PDT 2026 
+
+ Total time taken to generate the page: 0.05360 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

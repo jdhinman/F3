@@ -1,0 +1,1222 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Additional animations for hero 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Additional animations for hero 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Additional animations for hero 
+ Sun, 17 November 2013 01:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Since I probably will never finish the work on my mod, perhaps it would be better to split it into parts 
+this part about hero animations 
+amazing how many unused animations in the game, it probably migrated from the second part 
+This mode uses some, such as running at an angle, downhill\uphill, various spreads on 45\90\180 degrees, around obstacles, etc. 
+Also now you can move when aiming ranged weapons. 
+ 
+install: 
+use Catspaw's GFWL emu 
+extract archive and place DLC folder in Fable 3 game folder 
+ 
+ 
+ 
+ Attachment: Additional_animations_mod.zip 
+ 
+ (Size: 22.33KB, Downloaded 4299 times) 
+ 
+ 
+ 
+ [Updated on: Wed, 25 March 2015 04:55]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Mon, 02 June 2014 01:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ updated 
+some fixes 
+and now fully worked left, right and forward around obstacles animations 
+also now is all packed and ready to use 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Sat, 13 September 2014 21:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kree 
+ Messages: 1 Registered: September 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Great mod thanks alot! 
+Had to remove some null characters at the end of the lua file but that's probably just cause I'm going the long way by putting the file into the gamescripts_r.bnk 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Fri, 10 October 2014 03:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hey, firstly thanks for this mod and also the other one! Secondly, is there any kind of preparation I need to make to get this to work? Because simply putting the mod3 folder into the data folder doesn't seem to do anything for me. Also, I'm using DLC so maybe I need to put it into one of the DLC folders because the game gives priority to newer content?! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Sat, 11 October 2014 23:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ mod0 DLC1 (Understone and all others) 
+mod1 DLC2 (Traitors Keep) 
+mod2-mod9 any mods 
+ 
+mod1 will overwrite mod0 
+mod2 will overwrite mod1 
+etc 
+ 
+of course you will need timeslip GFWL remover first 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Sun, 12 October 2014 04:04 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ah, I see. Thank you! 
+ 
+ 
+ [Updated on: Tue, 21 October 2014 17:35]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Tue, 21 October 2014 17:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've incorporated the mod into gamescripts_r.bnk and everything works fine so far. But there are a few issues. I'm playing the female hero and when she's moving slowly she makes very small steps and waddles at a certain speed. She also seems to "walk on ice". There's a kind of gliding effect. I'm playing with a controller. And another thing is she plays the same idle animation over and over again when she's standing still and doesn't alternate between idles anymore. 
+ 
+OK. I'm a do-it-yourself kinda guy so I figured it out. I fixed the gliding by changing the first couple of values back to the originals and the idle pose alternation by changing 
+ 
+ HeroLocomotionStateIdleIdle.FeetMatchPoseTolerance = 0.8 back to HeroLocomotionStateIdleIdle.FootMatchCompareTolerance = 0.8 
+ 
+ 
+ [Updated on: Thu, 23 October 2014 07:52]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Thu, 23 October 2014 09:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Phnx wrote on Wed, 22 October 2014 06:35 I'm playing the female hero and when she's moving slowly she makes very small steps and waddles at a certain speed. She also seems to "walk on ice". There's a kind of gliding effect. 
+did you use walk mod tweak? 
+try to modify acceleration to ~0.5 
+I use different animations for moving\running and I was too lazy to test it on the vanilla... 
+ 
+ Phnx wrote on Wed, 22 October 2014 06:35 And another thing is she plays the same idle animation over and over again when she's standing still and doesn't alternate between idles anymore. 
+ 
+OK. I'm a do-it-yourself kinda guy so I figured it out. I fixed the gliding by changing the first couple of values back to the originals and the idle pose alternation by changing 
+ 
+ HeroLocomotionStateIdleIdle.FeetMatchPoseTolerance = 0.8 back to HeroLocomotionStateIdleIdle.FootMatchCompareTolerance = 0.8 
+Yes, I suspect that there some bug with idle animation :( 
+FeetMatchPoseTolerance vs FootMatchCompareTolerance ? 
+yea...I remember I was experimenting with this...and forgot that it was the original... 
+OK, I fixed it 
+Thanks 
+ 
+ 
+ [Updated on: Thu, 23 October 2014 09:26]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Fri, 24 October 2014 06:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I was also wondering why you added Debug.ReloadHeroLocomotionStates( to the end of the file. It's not in the vanilla file. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Mon, 27 October 2014 06:21 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I suspect that some of the stats written to the save file 
+Maybe I'm wrong 
+In any case, this function does not cause an error, so.. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Mon, 27 October 2014 10:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ah, OK. Thanks for the info. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Sun, 16 November 2014 10:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ UPDATE 
+ - now you can move when aiming ranged weapons (added strafe animation) 
+ - added different animation for run, depending on hero fatness 
+ - fixed some typos 
+ - some tunning 
+ 
+* different animation for run will be switched between old one and new, but only when game is reloading (seams like change animation is not possible when game is load) 
+** when moving with aiming ranged weapon, try to not move forward and then left, it cause a bug, legs will go to left but torso still be directed to the right... 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Tue, 17 February 2015 11:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ donkeymilk 
+ Messages: 4 Registered: February 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for the mod. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Wed, 25 March 2015 04:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ updated archive for Catspaw's GFWL emu support 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Fri, 11 September 2015 07:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for the mod! For some reason, I can strafe when aiming (targeted, using RMB) but not when firing normally. I'm going to try to fix it myself, but I'm REALLY new to this whole thing! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Thu, 17 September 2015 10:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Well... getting less new to the whole modding thing as fast as I can. I think I figured this out. I believe it has something to do with the target selection for flourishes (you know - how you can target the guy behind you). Now that I am familiar with the mod, it integrates quite smoothly, and I don't find myself wishing for any more! 
+ 
+Thanks again for putting this together! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Sat, 19 September 2015 01:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TheGeniusSavant wrote on Fri, 11 September 2015 20:46 but not when firing normally. 
+in normal behavior, you can't move when firing because is playing animation sequence 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Additional animations for hero 
+ Sun, 20 September 2015 03:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Roger. That's (kinda) what I said. 
+ 
+Thanks for your response, though! I was beginning to think this forum was COMPLETELY dead! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Graphic enhancements 
+
+ 
+ Next Topic: 
+ Intro disable 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:44 PDT 2026 
+
+ Total time taken to generate the page: 0.05302 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,639 @@
+-- Decompiled using luadec 2.0 UNICODE by sztupy (http://winmo.sztupy.hu)
+-- Command line was: C:\Users\Keshire\Downloads\Games\Fable II\data\scripts\miscellaneous\saveload\postscriptsloaded.lua 
+
+AddFunctionsInTableToPermanentsTables(Fable2Scripts, "F2S")
+AddFunctionsInTableToPermanentsTables(BaseObjects, "BO")
+WatchDog = {}
+WatchDog.MonksQuest_AbbotStuck = {}
+WatchDog.MonksQuest_AbbotStuck.Update = function()
+  repeat
+    if ScriptEnum.DebugQC100 <= Gameflow.PositionInGameflow then
+      return 
+    else
+      local current_region = ScriptFunction.GetLevelName()
+      if current_region == "ravenscar" then
+        local abbot = Debug.GetEntityWithName("QC080_Abbot")
+        if abbot and abbot:IsAlive() then
+          local abbot_thread_instance = QuestManager.EntitiesWithQuestThread[GetIDFromEntity(abbot)]
+          if abbot_thread_instance and abbot_thread_instance.CurrentState ~= nil and abbot_thread_instance.CurrentState > 0 and ScriptFunction.IsPerformingInteractiveCutscene("QC080_MonksIdle") then
+            ScriptFunction.StopInteractiveCutscene("QC080_MonksIdle")
+          end
+          if abbot_thread_instance and abbot_thread_instance.CurrentState ~= nil and abbot_thread_instance.CurrentState == 2 then
+            local cutscene_record = GDB.GetRecord("QC080_AbbotIntroRenownLowBeforeMonksLeave")
+            local group_mind = GroupMindManager:GetCutsceneGroupMind(cutscene_record:GetID())
+            if group_mind then
+              local required_characters = {}
+              for k,v in pairs(group_mind.Characters) do
+                required_characters[v] = true
+              end
+              for k,v in pairs(group_mind.GroupMembers) do
+                if required_characters[group_mind.EntityRoles[v.Entity:GetName()]] then
+                  required_characters[group_mind.EntityRoles[v.Entity:GetName()]] = nil
+                end
+              end
+              if GetNumElements(required_characters) ~= 0 and group_mind.FrameBegan then
+                local curr_frame = Timing.GetWorldFrame()
+                if (curr_frame - group_mind.FrameBegan) / Timing.GetTickRate() >= 10 then
+                  ScriptFunction.StopInteractiveCutscene("QC080_AbbotIntroRenownLowBeforeMonksLeave")
+                  for k,v in pairs(abbot_thread_instance.ParentThread.ChildThreads) do
+                    if v.Entity:GetName() == "QC080_StartingMonk" or v.Entity:GetName() == "QC080_StartingMonk1" then
+                      PhysicsCharacter.SetAsPushableByHero(v.Entity, true)
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.DLCChest = {}
+WatchDog.DLCChest.Update = function()
+  if Stats.IsCollectorsEdition(GetPlayerHero()) and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectInventory_L_Longsword_Spartan") == 0 and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectClothingHatSpartanM") == 0 and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectClothingCoatSpartanM") == 0 and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectClothingTrousersSpartanM") == 0 and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectClothingBootsSpartanM") == 0 and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectClothingGlovesSpartanM") == 0 and Gameflow.OnlineArmour == "Given" then
+    Gameflow.OnlineArmour = "NotGiven"
+  end
+  if Gameflow.OnlineMascotHat == "Given" and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectClothingHatMascotM") == 0 then
+    Gameflow.OnlineMascotHat = "NotGiven"
+  end
+  if Gameflow.OnlineMascotCoat == "Given" and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectClothingCoatMascotM") == 0 then
+    Gameflow.OnlineMascotCoat = "NotGiven"
+  end
+  if Gameflow.OnlineMascotBoots == "Given" and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectClothingBootsMascotM") == 0 then
+    Gameflow.OnlineMascotBoots = "NotGiven"
+  end
+  if Gameflow.OnlineBook == "Given" and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectInventoryBookExpressionFakeout") == 0 then
+    Gameflow.OnlineBook = "NotGiven"
+  end
+  if Gameflow.OnlineDoll == "Given" and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectInventoryGiftToyDollHero") == 0 then
+    Gameflow.OnlineDoll = "NotGiven"
+  end
+  if Gameflow.OnlineDye == "Given" and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectInventoryDyeClothingRarePink") == 0 then
+    Gameflow.OnlineDye = "NotGiven"
+  end
+  if Gameflow.OnlineFaceTattoo == "Given" and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectTattooFaceLionhead") == 0 then
+    Gameflow.OnlineFaceTattoo = "NotGiven"
+  end
+  if Gameflow.OnlineTorsoTattoo == "Given" and Inventory.GetNumberOfItemsOfType(GetPlayerHero(), "ObjectTattooTorsoLionhead") == 0 then
+    Gameflow.OnlineTorsoTattoo = "NotGiven"
+  end
+end
+
+WatchDog.AssassinationBaby = {}
+WatchDog.AssassinationBaby.Update = function()
+  repeat
+     -- DECOMPILER ERROR: unhandled construct in 'if'
+
+    if Gameflow.TargetNPC and Gameflow.TargetNPC:IsAlive() and Age.GetAgeGroup(Gameflow.TargetNPC) <= EAgeGroup.EAGE_GROUP_CHILD then
+      Gameflow.EmergencyAssassinationFail = true
+    end
+    return 
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.CampInitiationBreakers = {}
+WatchDog.CampInitiationBreakers.Update = function()
+  local dangling_look_at_patched = false
+  do
+    local hammer_top_box_patched = false
+    repeat
+      if ScriptEnum.DebugQC140 < Gameflow.PositionInGameflow then
+        return 
+      end
+      if QC130_TheCampInitiation then
+        if dangling_look_at_patched and hammer_top_box_patched then
+          return 
+        end
+        if not dangling_look_at_patched and QC130_TheCampInitiation.QC130_Comm and QC130_TheCampInitiation.QC130_Comm.OnTerminated then
+          QC130_TheCampInitiation.QC130_Comm.OnTerminated = function(l_1_0)
+        CameraManager.ScriptLookAtSet = false
+        CameraManager.ClearLookAtAlert(QuestManager.HeroEntity)
+        Player.RemoveScriptRules(GetPlayerHero(), EInteractiveCutsceneRule.CUTSCENE_RULE_NO_HERO_MOVE, "ET_QC130_CommQC130_Comm", EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_LOOK_AT)
+        CameraManager.SetCameraOverride(QuestManager.HeroEntity, ECameraMode.CAMERA_MODE_DEFAULT, EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_LOOK_AT)
+         end
+          dangling_look_at_patched = true
+        end
+        if not hammer_top_box_patched and QC130_TheCampInitiation.QC130_Hammer then
+          QC130_TheCampInitiation.QC130_Hammer.OnLevelUnload = function(l_2_0)
+        l_2_0.box_showing = false
+         end
+          hammer_top_box_patched = true
+        end
+      end
+      coroutine.yield()
+      do return end
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.TrollScriptRules = {}
+WatchDog.TrollScriptRules.Update = function()
+  local pause_key = nil
+  repeat
+    if ScriptEnum.DebugQC110 < Gameflow.PositionInGameflow then
+      return 
+    else
+      if Gameflow.PositionInGameflow == ScriptEnum.DebugQC110 and IsLevelLoaded("bowerlake") then
+        local troll_marker = Debug.GetEntityWithName("QC100_DiaryTriggerMarker")
+        if troll_marker and troll_marker:IsAlive() then
+          local marker_thread_instance = QuestManager.EntitiesWithQuestThread[GetIDFromEntity(troll_marker)]
+          if marker_thread_instance then
+            if marker_thread_instance.CurrentState > 0 and marker_thread_instance.TrollExists and pause_key == nil then
+              pause_key = Player.DisableFullPauseMenu(QuestManager.HeroEntity)
+            end
+            if marker_thread_instance.CurrentState >= 4 then
+              if pause_key ~= nil then
+                Player.ReEnableFullPauseMenu(QuestManager.HeroEntity, pause_key)
+              end
+              return 
+            end
+          end
+        end
+      end
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.ClearingScriptRulesOnTheDead = {}
+WatchDog.ClearingScriptRulesOnTheDead.Update = function()
+  Player.RemoveAllScriptRules(GetPlayerHero(), "ET_QRSC_MickeyQRSC_Mickey", EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+  Player.RemoveAllScriptRules(GetPlayerHero(), "ET_QR_SlaveReleaseQuestGiverQRSR_Sheriff", EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+  Player.RemoveAllScriptRules(GetPlayerHero(), "ET_QR_AssassinationGlobalQuestGiverQR_AssassinationQuestGiver", EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+end
+
+WatchDog.JobExpirationLockingPlayer = {}
+WatchDog.JobExpirationLockingPlayer.Update = function()
+  local jobs = {"QJ001_JobWoodsman", "QJ002_JobBlacksmith", "QJ003_JobBartender"}
+  local patched = {}
+  for _,job_name in pairs(jobs) do
+    patched[job_name] = false
+  end
+  local all_patched = true
+  for _,job_name in pairs(jobs) do
+    if _G[job_name] and _G[job_name][job_name .. "Sign"] and _G[job_name][job_name .. "Sign"].OnTerminated == nil then
+      local t_table = _G[job_name][job_name .. "Sign"]
+      t_table.OnTerminated = function(l_1_0)
+        if l_1_0.CurrentState > 0 then
+          Player.StopInteractionMode(l_1_0.ParentQuest.Player)
+          Gameflow.CurrentRunningJobs[l_1_0.ParentQuest.LayerName] = false
+        end
+         end
+      patched[job_name] = true
+    end
+    if patched[job_name] == false then
+      all_patched = false
+    end
+  end
+  if all_patched then
+    return 
+  end
+  coroutine.yield()
+end
+end
+
+WatchDog.CrucibleChestLeavesPlayerInInteractionMode = {}
+WatchDog.CrucibleChestLeavesPlayerInInteractionMode.Update = function()
+  repeat
+    if QO180_CrucibleRevisited then
+      local quest = QuestManager.GetQuestInstanceWithName("QO180_CrucibleRevisited")
+      if Inventory.GetNumberOfItemsOfType(QuestManager.HeroEntity, "ObjectInventory_Legend_Axe") <= 0 then
+        quest.GotChestReward = not quest or quest.WatchDogPatchApplied
+        quest.WatchDogPatchApplied = true
+      end
+      coroutine.yield()
+      do return end
+       -- Warning: missing end command somewhere! Added here
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.PirateKingSculptorOutOfSync = {}
+WatchDog.PirateKingSculptorOutOfSync.Update = function()
+  repeat
+    if ScriptEnum.DebugQC200 < Gameflow.PositionInGameflow then
+      return 
+    else
+      local current_region = ScriptFunction.GetLevelName()
+      if current_region == "bloodstone" and Gameflow.PositionInGameflow == ScriptEnum.DebugQC200 then
+        local reaver = Debug.GetEntityWithName("QC180_Reaver")
+        local sculptor = Debug.GetEntityWithName("QC180_Sculptor")
+        if reaver and reaver:IsAlive() and sculptor and sculptor:IsAlive() then
+          local reaver_thread_instance = QuestManager.EntitiesWithQuestThread[GetIDFromEntity(reaver)]
+          local sculptor_thread_instance = QuestManager.EntitiesWithQuestThread[GetIDFromEntity(sculptor)]
+          if reaver_thread_instance and sculptor_thread_instance == nil then
+            return 
+          end
+          if reaver_thread_instance and sculptor_thread_instance and reaver_thread_instance.CurrentState ~= nil and sculptor_thread_instance.CurrentState ~= nil then
+            if reaver_thread_instance.CurrentState == 3 and sculptor_thread_instance.CurrentState == 2 and ScriptFunction.IsPerformingInteractiveCutscene("QC180_ReaverIntro_2") then
+              ScriptFunction.StopInteractiveCutscene("QC180_ReaverIntro_2")
+            end
+            if reaver_thread_instance.CurrentState > 3 or sculptor_thread_instance.CurrentState > 2 then
+              return 
+            end
+          end
+        end
+      end
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.RescueMyBabyLingeringTopBox = {}
+WatchDog.RescueMyBabyLingeringTopBox.Update = function()
+  repeat
+    if QuestTracker.IsRegistered(GetPlayerHero(), "QO020_RescueMyBaby") and QuestTracker.IsCompleted(GetPlayerHero(), "QO020_RescueMyBaby") then
+      GUI.RemoveDisplayBox("QO020_Charles_SkipBox")
+      GUI.RemoveDisplayBox("QO020_Granny_SkipBox")
+      return 
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.PirateKingPartTwoLockedOutside = {}
+WatchDog.PirateKingPartTwoLockedOutside.Update = function()
+  do
+    local door_opened = false
+    repeat
+      if ScriptEnum.DebugQC200 < Gameflow.PositionInGameflow then
+        return 
+      else
+        local current_region = ScriptFunction.GetLevelName()
+        if current_region == "bloodstone" and Gameflow.PositionInGameflow == ScriptEnum.DebugQC200 then
+          local reaver = Debug.GetEntityWithName("QC180_Reaver")
+          if reaver and reaver:IsAlive() then
+            local reaver_thread_instance = QuestManager.EntitiesWithQuestThread[GetIDFromEntity(reaver)]
+            if reaver_thread_instance and reaver_thread_instance.CurrentState and reaver_thread_instance.CurrentState >= 6 and reaver_thread_instance.CurrentState <= 7 then
+              if door_opened then
+                local trigger = Debug.GetEntityWithName("QC180_ReaversStudyTriggerInterior")
+                local trigger_exterior = Debug.GetEntityWithName("QC180_ReaversStudyTriggerExterior")
+                if trigger and trigger:IsAlive() and trigger_exterior and trigger_exterior:IsAlive() then
+                  local trigger_exterior_thread_instance = QuestManager.EntitiesWithQuestThread[GetIDFromEntity(trigger_exterior)]
+                  if trigger_exterior_thread_instance and Trigger.IsTriggerEntityInsideTriggerVolume(trigger) then
+                    local door = Debug.GetEntityWithName("ESA_Door_Large_Peephole_Placeholder")
+                    if door then
+                      Layers.ActivateLayer("QC180_ReaverStudyDoor")
+                      Door.SetOpen(door, false, false)
+                      Door.SetLocked(door, true)
+                    end
+                    trigger_exterior_thread_instance.ParentQuest.TriggerExteriorFireCount = 1
+                    trigger_exterior_thread_instance.ParentQuest.TriggerInteriorFireCount = 2
+                    trigger_exterior_thread_instance.CurrentState = 1
+                    return 
+                  else
+                    local trigger = Debug.GetEntityWithName("QC180_ReaversStudyTriggerExterior")
+                    if Trigger.IsTriggerEntityInsideTriggerVolume(trigger) then
+                      local door = Debug.GetEntityWithName("ESA_Door_Large_Peephole_Placeholder")
+                      if door then
+                        Layers.DeactivateLayer("QC180_ReaverStudyDoor")
+                        Door.SetLocked(door, false)
+                        Door.SetOpen(door, true, false)
+                      end
+                      door_opened = true
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+      coroutine.yield()
+      do return end
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.PirateKingPartThreeLockedOutside = {}
+WatchDog.PirateKingPartThreeLockedOutside.Update = function()
+  do
+    local door_opened = false
+    repeat
+      if ScriptEnum.DebugQC220 < Gameflow.PositionInGameflow then
+        return 
+      else
+        local current_region = ScriptFunction.GetLevelName()
+        if current_region == "bloodstone" and Gameflow.PositionInGameflow == ScriptEnum.DebugQC220 then
+          local reaver = Debug.GetEntityWithName("QC200_Reaver")
+          if reaver and reaver:IsAlive() then
+            local reaver_thread_instance = QuestManager.EntitiesWithQuestThread[GetIDFromEntity(reaver)]
+            if reaver_thread_instance and reaver_thread_instance.ParentQuest.ReaverCurrentState and reaver_thread_instance.ParentQuest.ReaverCurrentState >= 1 then
+              if door_opened then
+                local trigger = Debug.GetEntityWithName("QC180_ReaversStudyTriggerInterior")
+                if trigger and trigger:IsAlive() and Trigger.IsTriggerEntityInsideTriggerVolume(trigger) then
+                  local door = Debug.GetEntityWithName("ESA_Door_Large_Peephole_Placeholder")
+                  if door then
+                    Layers.ActivateLayer("QC180_ReaverStudyDoor")
+                    Door.SetOpen(door, false, false)
+                    Door.SetLocked(door, true)
+                  end
+                  return 
+                else
+                  local trigger = Debug.GetEntityWithName("QC180_ReaversStudyTriggerExterior")
+                  if Trigger.IsTriggerEntityInsideTriggerVolume(trigger) then
+                    local door = Debug.GetEntityWithName("ESA_Door_Large_Peephole_Placeholder")
+                    if door then
+                      Layers.DeactivateLayer("QC180_ReaverStudyDoor")
+                      Door.SetLocked(door, false)
+                      Door.SetOpen(door, true, false)
+                    end
+                    door_opened = true
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+      coroutine.yield()
+      do return end
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.ThagFastTravelCrash = {}
+WatchDog.ThagFastTravelCrash.Update = function()
+  repeat
+    if ScriptEnum.DebugQC075 < Gameflow.PositionInGameflow then
+      return 
+    else
+      local current_region = ScriptFunction.GetLevelName()
+      if current_region == "bowerlake" and Gameflow.PositionInGameflow == ScriptEnum.DebugQC075 then
+        local quest = QuestManager.GetQuestInstanceWithName("QC070_Thag")
+        if quest and quest.ThagKilled then
+          FastTravel.SetBlockedTextTag("TEXT_QUEST_TRAVEL_DENIED_QC070")
+          if quest.MissionSucceeded then
+            FastTravel.SetBlockedTextTag("")
+            return 
+          end
+        end
+      end
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.BrightwoodFarm_BreakableDoor = {}
+WatchDog.BrightwoodFarm_BreakableDoor.Update = function()
+  repeat
+    do
+      local current_region = ScriptFunction.GetLevelName()
+      if current_region == "brightwood" then
+        local door = Debug.GetEntityWithName("KF_Door_Farmhouse")
+        if door and door:IsAlive() then
+          door:SetAsLevelSaving()
+          Health.SetAsInvulnerable(door, true)
+          Breakable.SetBreakOnCollide(door, false)
+          return 
+        end
+      end
+      coroutine.yield()
+    end
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.RoadToWestcliffHammerInit = {}
+WatchDog.RoadToWestcliffHammerInit.Update = function()
+  repeat
+    if ScriptEnum.DebugQC120 < Gameflow.PositionInGameflow then
+      return 
+    end
+    if QC110_RoadToWestcliff and QC110_RoadToWestcliff.QC110_Hammer and QC110_RoadToWestcliff.QC110_Hammer.Init then
+      QC110_RoadToWestcliff.QC110_Hammer.Init = function(l_1_0)
+      l_1_0.CurrentState = 0
+      l_1_0.LeavingLevel = false
+      l_1_0.ToldBalverineStory = false
+      Hittable.SetEntityAsHittableByEntity(l_1_0.Entity, QuestManager.HeroEntity, false)
+      end
+      return 
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.PirateKingOnExit = {}
+WatchDog.PirateKingOnExit.Update = function()
+  repeat
+    if ScriptEnum.DebugQC200 < Gameflow.PositionInGameflow then
+      return 
+    end
+    if QC180_ThePirateKing and QC180_ThePirateKing.QC180_ThePirateKing.OnExit then
+      QC180_ThePirateKing.QC180_ThePirateKing.OnExit = function(l_1_0)
+      Layers.DeactivateLayer("QC180_ThePirateKing")
+      Layers.DeactivateLayer("QC180_Painter")
+      Layers.DeactivateLayer("QC180_Sculptor")
+      Player.RemoveAllScriptRules(QuestManager.HeroEntity, "ET_" .. "QC180_Reaver" .. "QC180_Reaver", EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS)
+      end
+      return 
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.IntroBardOnLevelUnload = {}
+WatchDog.IntroBardOnLevelUnload.Update = function()
+  repeat
+    if QuestTracker.IsRegistered(GetPlayerHero(), "QO130_IntroToBard") and QuestTracker.IsCompleted(GetPlayerHero(), "QO130_IntroToBard") then
+      return 
+    end
+    if QO130_IntroToBard and QO130_IntroToBard.QO130_BardEntity then
+      QO130_IntroToBard.QO130_BardEntity.OnLevelUnload = function(l_1_0)
+      l_1_0.ParentQuest:ClearLookAtCamera()
+      end
+      return 
+    end
+    coroutine.yield()
+    do return end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+WatchDog.AddFunctionReplacementWatchDog = function(l_18_0)
+  local name = nil
+  for watch_dog_name,watch_dog_table in pairs(WatchDog) do
+    if watch_dog_table == l_18_0 then
+      name = watch_dog_name
+  else
+    end
+  end
+  if name then
+    name = "WatchDog_" .. name
+    l_18_0._Name = name
+    local already_running = false
+    local l = GeneralScriptManager.CurrentlyRunningScripts
+    repeat
+      if l then
+        if l.value._Name == name then
+          already_running = true
+        else
+          l = l.next
+        end
+      elseif not already_running then
+        GeneralScriptManager.AddScript(l_18_0)
+      else
+        Debug.Error("Could not find item in WatchDog table")
+      end
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+ApplyWatchDogsWithVersionGreaterThan = function(l_19_0)
+  if l_19_0 == 0 then
+    l_19_0 = 1
+    GeneralScriptManager.AddScript(WatchDog.MonksQuest_AbbotStuck)
+    GeneralScriptManager.AddScript(WatchDog.DLCChest)
+    GeneralScriptManager.AddScript(WatchDog.AssassinationBaby)
+    GeneralScriptManager.AddScript(WatchDog.TrollScriptRules)
+    GeneralScriptManager.AddScript(WatchDog.ClearingScriptRulesOnTheDead)
+    GeneralScriptManager.AddScript(WatchDog.PirateKingSculptorOutOfSync)
+    GeneralScriptManager.AddScript(WatchDog.PirateKingPartTwoLockedOutside)
+    GeneralScriptManager.AddScript(WatchDog.PirateKingPartThreeLockedOutside)
+    GeneralScriptManager.AddScript(WatchDog.RescueMyBabyLingeringTopBox)
+    GeneralScriptManager.AddScript(WatchDog.ThagFastTravelCrash)
+    GeneralScriptManager.AddScript(WatchDog.BrightwoodFarm_BreakableDoor)
+  end
+  WatchDog.AddFunctionReplacementWatchDog(WatchDog.JobExpirationLockingPlayer)
+  WatchDog.AddFunctionReplacementWatchDog(WatchDog.CampInitiationBreakers)
+  WatchDog.AddFunctionReplacementWatchDog(WatchDog.RoadToWestcliffHammerInit)
+  WatchDog.AddFunctionReplacementWatchDog(WatchDog.PirateKingOnExit)
+  WatchDog.AddFunctionReplacementWatchDog(WatchDog.IntroBardOnLevelUnload)
+  WatchDog.AddFunctionReplacementWatchDog(WatchDog.CrucibleChestLeavesPlayerInInteractionMode)
+  return l_19_0
+end
+
+AddFunctionsInTableToPermanentsTables(WatchDog, "WatchDog")
+SpecialChest.OnLevelLoad = function(l_20_0)
+  Chest.SnapToClosed(l_20_0.Entity)
+end
+
+QuestThreadBase.ClearScriptRules = function(l_21_0, l_21_1)
+  if not l_21_1 then
+    l_21_1 = EInteractiveCutsceneRuleScope.CUTSCENE_RULE_SCOPE_ALWAYS
+  end
+  if l_21_0.Entity then
+    local name = l_21_0.Entity:GetName()
+    Player.RemoveAllScriptRules(GetPlayerHero(), "ET_" .. l_21_0._Name .. name, l_21_1)
+  else
+    Player.RemoveAllScriptRules(GetPlayerHero(), "QT_" .. l_21_0._Name, l_21_1)
+  end
+end
+
+AIManager.LoadFromSave = function(l_22_0, l_22_1)
+  GroupMindManager = l_22_1.GroupMindMan
+  GroupMindManager:OnLoadedFromSaveGame()
+  CombatRegister:LoadFromSave(l_22_1.CombatReg)
+  if l_22_1.AIMan ~= nil then
+    l_22_0.DisabledSimBehaviourNames = l_22_1.AIMan.DisabledSimBehaviourNames
+    l_22_0.EntitiesThatCanRunMoveAwayFromAreaBehaviour = l_22_1.AIMan.EntitiesThatCanRunMoveAwayFromAreaBehaviour
+    for id,save_entity_info in pairs(l_22_1.AIMan.Entities) do
+      local entity = save_entity_info.DirectSaveData.Entity
+      if entity and entity:IsAlive() then
+        local entity_info = l_22_0:GetEntityBehaviourGroups(entity)
+        for k,v in pairs(save_entity_info.DirectSaveData) do
+          entity_info[k] = v
+        end
+        entity_info.BehaviourGroups.CurrentBehaviourHasFinished = save_entity_info.CurrentBehaviourHasFinished
+        if save_entity_info.CurrentBehaviourGroupName ~= nil then
+          for k,v in ipairs(entity_info.BehaviourGroups) do
+            if v.Name == save_entity_info.CurrentBehaviourGroupName then
+              entity_info.BehaviourGroups.CurrentBehaviourGroup = v
+          else
+            end
+          end
+          if entity_info.BehaviourGroups.CurrentBehaviourGroup ~= nil and save_entity_info.CurrentBehaviourName ~= nil then
+            for k,v in ipairs(entity_info.BehaviourGroups.CurrentBehaviourGroup) do
+              if v.Name == save_entity_info.CurrentBehaviourName then
+                entity_info.BehaviourGroups.CurrentBehaviour = v
+                entity_info.BehaviourGroups.CurrentBehaviour.BehaviourInstance:LoadFromSaveTable(save_entity_info.CurrentBehaviourSaveTable)
+            else
+              end
+            end
+            local is_barnum = entity:GetName() == "QO010_Barnum"
+            if save_entity_info.ExitingBehaviourName ~= nil and (not is_barnum or save_entity_info.ExitingBehaviourName ~= save_entity_info.CurrentBehaviourName) then
+              for k1,behaviour_group in ipairs(entity_info.BehaviourGroups) do
+                for k2,v2 in ipairs(behaviour_group) do
+                  if v2.Name == save_entity_info.ExitingBehaviourName then
+                    local exiting_behaviour = v2
+                    exiting_behaviour.BehaviourInstance:LoadFromSaveTable(save_entity_info.ExitingBehaviourSaveTable)
+                    exiting_behaviour.BehaviourInstance:RunFastExitFunctions()
+                    for k1,behaviour_group in (for generator) do
+                    end
+                  end
+                end
+              end
+              l_22_0.Entities[id] = entity_info
+            end
+          end
+        end
+         -- Warning: missing end command somewhere! Added here
+      end
+       -- Warning: missing end command somewhere! Added here
+    end
+     -- Warning: missing end command somewhere! Added here
+  end
+end
+
+AIManager.DoSleepFixUp = function(l_23_0)
+  local search = SearchTools.StartNewSearch("creature")
+  SearchTools.FilterWithEC(search, Villager.GetECType())
+  local villagers = SearchTools.GetSearchResults(search)
+  for i,entity in pairs(villagers) do
+    if Action.IsAvailable(entity) then
+      Action.FinishAllActions(entity)
+    end
+    local id = GetIDFromEntity(entity)
+    if l_23_0.Entities[id] then
+      if l_23_0.Entities[id].BehaviourGroups.ExitingBehaviour and l_23_0.Entities[id].BehaviourGroups.ExitingBehaviour.Name ~= "BehaviourCutscenePerformAction" then
+        l_23_0.Entities[id].BehaviourGroups.ExitingBehaviour.BehaviourInstance:RunFastExitFunctions()
+        l_23_0.Entities[id].BehaviourGroups.ExitingBehaviour.BehaviourInstance:Terminate()
+        l_23_0.Entities[id].BehaviourGroups.ExitingBehaviour = nil
+        l_23_0.Entities[id].BehaviourGroups.CurrentBehaviourGroup = nil
+        l_23_0.Entities[id].BehaviourGroups.CurrentBehaviourHasFinished = true
+      end
+      if l_23_0.Entities[id].BehaviourGroups.CurrentBehaviour and l_23_0.Entities[id].BehaviourGroups.CurrentBehaviour.Name ~= "BehaviourCutscenePerformAction" then
+        l_23_0.Entities[id].BehaviourGroups.CurrentBehaviour.BehaviourInstance:RunFastExitFunctions()
+        l_23_0.Entities[id].BehaviourGroups.CurrentBehaviour.BehaviourInstance:Terminate()
+        l_23_0.Entities[id].BehaviourGroups.CurrentBehaviour = nil
+        l_23_0.Entities[id].BehaviourGroups.CurrentBehaviourGroup = nil
+        Brain.SetCurrentlyActiveBehaviourGroupIndex(entity, -1)
+        l_23_0.Entities[id].BehaviourGroups.CurrentBehaviourHasFinished = true
+      end
+      for i,group in ipairs(l_23_0.Entities[id].BehaviourGroups) do
+        for j,behaviour in ipairs(group) do
+          behaviour.FrameLastRan = -5000
+        end
+      end
+    end
+  end
+  l_23_0.SleepFixUp = true
+end
+
+

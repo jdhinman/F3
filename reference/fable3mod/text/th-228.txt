@@ -1,0 +1,228 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Where the heck are the fable 3 voice files stored?? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Where the heck are the fable 3 voice files stored?? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Where the heck are the fable 3 voice files stored?? 
+ Sun, 14 December 2014 08:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have just managed to find out how to successfully extract the audio from fable 3 bnk files. The problem is I want to extract the crawlers voice acting files. The only file I could find was Creature_Nightcrawler.bnk but it only has sound effects no voice acting. Ive extracted loads of audio bnk's and they are all just music and sound effects. Where are the voice acting files stored?????? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Where the heck are the fable 3 voice files stored?? 
+ Mon, 15 December 2014 15:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Found them! There in a seperate folder in speech.bnk 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ MessageBox Extended 
+
+ 
+ Next Topic: 
+ How to Traitor's Keep: Throne of Blood Unlocking? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:15 PDT 2026 
+
+ Total time taken to generate the page: 0.05535 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

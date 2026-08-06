@@ -1,0 +1,862 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » Blender 2.82 Model Importer 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » Blender 2.82 Model Importer 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Blender 2.82 Model Importer 
+ Mon, 21 October 2013 20:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Updated to newest blender version. Posted plugin to github 
+ https://github.com/Keshire/Blender-io_mesh_mdl 
+ 
+Skeletons are imported and skin weights are assigned now. 
+ 
+Still a lot of unknown data so no exporting from blender to F3 yet. 
+ 
+ 
+ 
+ 
+ Attachment: mdl.hsl 
+ 
+ (Size: 5.95KB, Downloaded 3577 times) 
+ 
+ 
+ 
+ [Updated on: Mon, 24 February 2020 07:52]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender scripts for mdl models 
+ Wed, 30 October 2013 12:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ The plugin is a little out of date but not too bad. Wasn't able to load in uv mapping. I'll get it fixed as soon as I can and then start working on importing bones again. 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender scripts for mdl models 
+ Wed, 30 October 2013 21:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ see first post: 
+updated to newest blender version. Still no bones, so animated models are imported as static meshes still. I'm also not sure about normals or smoothing groups. I'll get it worked out eventually though. 
+ 
+ 
+ [Updated on: Wed, 30 October 2013 21:26]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender scripts for mdl models 
+ Fri, 01 November 2013 07:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Updated Hexworkshop structures. See first post. 
+ 
+I started working on an exporter to get models into Fable 3. It's not in a usable condition though until I find out some more of the unknowns. 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender scripts for mdl models 
+ Sat, 02 November 2013 18:47 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Cleaned up the material import using some new information I got while writing the exporter. It's just an internal change, so no need to re-download unless you want to work with the source. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender scripts for mdl models 
+ Sat, 02 January 2016 01:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi Keshire, 
+ 
+I've just started working with your import script (thank you so much for sharing it by the way! and just wanted to mention that when I import any model, it always has "flipped normals". Also, whenever I try to import another model after clearing the scene, it always re-imports the first model of the session - this might not be down to the script though, I shall investigate. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender 2.82 Model Importer 
+ Mon, 24 February 2020 07:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Updated to Blender 2.82, let me know if there's any problems with flipped normals. I might be pulled the normals list wrong. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender 2.82 Model Importer 
+ Thu, 21 May 2020 03:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Great stuff, I just popped in here to see if anything was going on and it was 
+ 
+Everything appears as it should, an unexpected bonus is that nested in the scene collection info are all the relevant texture names too! Maybe I didn't notice this before? 
+ 
+Thanks again for this superb tool, now if I can get my head around the TEX converter I'll be a very happy bunny. 
+ 
+ 
+ [Updated on: Thu, 21 May 2020 03:14]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender 2.82 Model Importer 
+ Sat, 14 August 2021 11:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Just thought I'd share some architecture with you all 
+ 
+ 
+ 
+Also, a "Ravenscar" Farmhouse from Fable 2 - 2 sub-meshes exported as .obj using HexWorkshop and Model Researcher by Lazov/Mr Game Viewer: 
+ 
+ 
+ 
+I know it's about 13 years too late but I have been looking through the mdl files as exported from the Fable 2 BNK explorer tool and have been able to spot the "important" stuff, i.e; vertices (3x pairs of half-floats) and faces (SHORTs directly following on from the vertex arrays). I'm not 100% on the rest of the data contained within the 20-byte arrays, nor the groups of data before each vertex chunk and after the last faces chunk, but I'm pleased with how quick I managed to spot the patterns to find the verts and faces, so maybe the rest will emerge in due course. As I understand it, it should be 2x SHORTs for UV coords, and there are always 2x bytes of 00 directly after the vertex coords which leaves 8-bytes unaccounted for. Apologies if necessary for posting this here but the Fable 2 modding forum seems a bit, how shall I put this politely, quiet lately...? ;) 
+ 
+Sample array from Brightwood Tower exterior.mdl: 
+ 
+Vertex Coords↓ ---- Nowt↓ -- UVs somewhere in this lot?↓ 
+---------------------------------------------↓ - ↓ - ↓ - ↓ -(most likely) 
+ CC D3 48 9B 4B 12 00 00 CC 05 E4 6D 34 73 39 E9 C0 C8 37 94 
+ 
+Did anyone make any more progress with this, or even get as far as a working Fable 2 mdl import script for anything (blender? or did there not seem much point since Fable 2 wasn't "moddable"? 
+ 
+ 
+ [Updated on: Wed, 18 August 2021 04:10]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender 2.82 Model Importer 
+ Mon, 14 February 2022 02:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Garanor1 
+ Messages: 3 Registered: February 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ How does one go about getting these models and textures like this? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender 2.82 Model Importer 
+ Mon, 14 February 2022 04:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So the first model (the Brightwall house) was imported into Blender using the importer in this thread. 
+ 
+The textures were added by converting the .tex files with Artofeel's converter which can be found here: http:// fable3mod.com/forums/index.php?t=msg&th=72&start=0&a mp;a mp;a mp; 
+ 
+The importer and tex converter do not work with the equivalent Fable 2 files, despite their apparent similarity, due to compression/encryption and differences in structure. 
+ 
+The Ravenscar/Oakfield farmhouse mdl (and others) were generated using this handy tool: http://mr.game-viewer.org/ and looking at the hex code for the individual model files. 
+ 
+The texture files for Fable 2 are compressed/encrypted and I can't make any more progress with them with my current skillset(! so I am adapting Fable 3 or Fable TLC/Anniversary ones where necessary. 
+ 
+ 
+ [Updated on: Mon, 14 February 2022 04:39]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blender 2.82 Model Importer 
+ Mon, 14 February 2022 05:31 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Garanor1 
+ Messages: 3 Registered: February 2022 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've spent the last god knows how many hours trying to decompile or use BNK browser for fable 3's model files/textures/audios etc and ran into so many issues that i went crazy 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ GDB Editor v0.3 
+
+ 
+ Next Topic: 
+ Quickly Change Your Qatar Airways Flight Date Call for Instant Help 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:28 PDT 2026 
+
+ Total time taken to generate the page: 0.05472 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

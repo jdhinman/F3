@@ -1,0 +1,173 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Child will not stop following me after Debug.Follow() 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Child will not stop following me after Debug.Follow() 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Child will not stop following me after Debug.Follow() 
+ Tue, 05 March 2024 10:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ stono20 
+ Messages: 2 Registered: June 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So to start off, I'm really new to modding Fable. I don't know lua that well, so maybe it's just me being new but I used the Debug.Follow() line and it works of course, but then a child ran in front of me while I was disabling it, and now she has been following me nonstop. I have tried the command again and she doesn't stop following me. I've tried "Debug.Follow(); Debug.HandHold()" to maybe let go of her hand, but she doesn't even hold it. I tried "Debug.MakeChildGrowUpThroughTime()" I'm pretty sure that's for the hero's child only, but I just wanted to be sure. I've tried "Debug.DestroyAllCreatureEntities(false)" and that is the only one that technically works, but it gets rid of every other NPC too, at least on the current level, I haven't really tested it out. It got rid of my dog too so I didn't want to chance any autosaves with traveling. 
+ 
+Is there any hope for this save, or will I just have a child following me around who seemingly loops her screams nonstop? 
+ 
+ 
+ [Updated on: Tue, 05 March 2024 11:23]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ canadapleasure 
+
+ 
+ Next Topic: 
+ Asking for codes 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:24 PDT 2026 
+
+ Total time taken to generate the page: 0.05460 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

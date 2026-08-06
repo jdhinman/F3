@@ -1,0 +1,319 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Scripting Troubles 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Scripting Troubles (Hit a roadblock attempting to change my hero's hair color before access to the sanctuary is possible.) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+    Scripting Troubles 
+ Mon, 30 December 2013 14:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ HidetheKitchenKnives 
+ Messages: 3 Registered: December 2013 Location: Over there
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm not sure how likely this is to be seen let alone answered, but I'm running out of ideas. So, let's give it a shot. 
+ 
+Hola! I've lurked about this place for a little while and found all the info and whatnot to be quite useful. Thanks so much for all the tools and effort you lot have put into it. It's been very much appreciated. Until now, I haven't run into any problems. 
+ 
+I'm looking to start a new game and I'd like my hero's appearance to be fairly consistent throughout the game. I'd like her to have black hair in the beginning scenes before you have access to the sanctuary since that's the color it's going to be for the rest of the game. I've almost managed to pull it off using the following code: 
+ 
+ ScriptActivation[ScriptCode.QU000].AbleToRun=function ()
+
+Debug.SetHeroWearingItemOfType('ObjectMakeupStandard2', true)
+Debug.SetHeroWearingItemOfType('ObjectHairF3Long', true)
+Debug.SetHeroWornItemDyeColour('ObjectHairF3Long', true, 0,0,0,1)
+return true
+end 
+ 
+ 
+ Which gives me this result: 
+ 
+ 
+ 
+ 
+So close. Yet so far. The problem is I can't seem to find a way to change the highlight color. I'm not really familiar with lua, so I can't even make an educated guess as to what to try next. 
+ 
+I've done some wild guessing, like 'SetHeroWornItemDye2Colour' or 'SetHeroWornItemDyeColour2' or adding another set of RGB values, but no joy. 
+ 
+Would anyone here happen to know how I can make this happen? Should I be going about this another way entirely? Is it possible to access the sanctuary this early in the game through scripting that won't bork quest progression or anything? 
+ 
+Anything anyone can tell me would be immensely appreciated. Thanks for your time. :3 
+ 
+ 
+ 
+ Attachment: UndyedHighlights.png 
+ 
+ (Size: 823.61KB, Downloaded 3533 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Scripting Troubles 
+ Fri, 11 September 2015 21:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm wondering something like this, too. Except I want to change the colour of the undies. AFAIK, royalty-related colours are White, Sky/Royal Blue and vivid red shades. I don't think they include a poo-brown shade. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Scripting Troubles 
+ Sat, 12 September 2015 01:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I believe that the undies are part of the textures for the hero. I have the nude mod that replaces those textures with "skin", so I imagine you could mod the skin to have whatever colour ;) undies you'd like... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Stop my game settings from being lost 
+
+ 
+ Next Topic: 
+ Lua decompiler? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:53 PDT 2026 
+
+ Total time taken to generate the page: 0.05323 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

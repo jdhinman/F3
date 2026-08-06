@@ -1,0 +1,483 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » postscriptsloaded.lua rewrite *WIP* 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » postscriptsloaded.lua rewrite *WIP* 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ postscriptsloaded.lua rewrite *WIP* 
+ Wed, 13 November 2013 12:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm only doing this because it's one of the bigger scripts and I keep hearing that that is where some long standing bugs are. 
+ 
+This going to be pretty time consuming, and I'm sure I'll need multiple people to look it over. 
+ 
+ 
+ 
+ Attachment: postscriptsloadedF2.txt 
+ 
+ (Size: 28.25KB, Downloaded 2886 times) 
+ 
+ 
+ Attachment: postscriptsloaded.txt 
+ 
+ (Size: 1.62MB, Downloaded 6293 times) 
+ 
+ 
+ Attachment: postscriptsloaded.lua 
+ 
+ (Size: 20.85KB, Downloaded 2967 times) 
+ 
+ 
+ 
+ [Updated on: Fri, 15 November 2013 11:22]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: postscriptsloaded.lua rewrite *WIP* 
+ Fri, 15 November 2013 00:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Great! 
+so, we only can decompile the original script, not DLC? 
+it's sad, because the original works pretty fine... 
+ 
+I'm sorry that I can't help you right now 
+as soon as I will have free time, I'll try to help 
+ 
+ 
+ [Updated on: Fri, 15 November 2013 00:47]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: postscriptsloaded.lua rewrite *WIP* 
+ Fri, 15 November 2013 04:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Fri, 15 November 2013 00:43 Great! 
+so, we only can decompile the original script, not DLC? 
+it's sad, because the original works pretty fine... 
+ 
+I'm sorry that I can't help you right now 
+as soon as I will have free time, I'll try to help 
+ 
+No debug script for the dlcs. The debug scripts make things vastly easier because of line numbers and locals. We can go back in and make the DLC changes after we get the retail version knocked out. 
+ 
+Edit: 
+I can't imagine this is working the way it should... 
+ 
+WatchDog.AddChickenChaserCallBack._Name = "WatchDog_WatchDog.AddChickenChaserCallBack"
+ 
+ 
+ 
+ 
+ 
+ [Updated on: Fri, 15 November 2013 10:32]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: postscriptsloaded.lua rewrite *WIP* 
+ Fri, 15 November 2013 13:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Fri, 15 November 2013 05:43 
+I can't imagine this is working the way it should... 
+ 
+WatchDog.AddChickenChaserCallBack._Name = "WatchDog_WatchDog.AddChickenChaserCallBack"
+ 
+ 
+ 
+ 
+What... the... fuck!? 
+ 
+If I'm reading this right, they're trying to use a variable to list a function, and said variable is longer than the original function! 
+ 
+If I'm not reading this right, then it appears to be some highly redundant code. Either way, what drugs were they on? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: postscriptsloaded.lua rewrite *WIP* 
+ Fri, 15 November 2013 15:21 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Fri, 15 November 2013 13:28 Keshire wrote on Fri, 15 November 2013 05:43 
+I can't imagine this is working the way it should... 
+ 
+WatchDog.AddChickenChaserCallBack._Name = "WatchDog_WatchDog.AddChickenChaserCallBack"
+ 
+ 
+ 
+ 
+What... the... fuck!? 
+ 
+If I'm reading this right, they're trying to use a variable to list a function, and said variable is longer than the original function! 
+ 
+If I'm not reading this right, then it appears to be some highly redundant code. Either way, what drugs were they on? 
+ 
+Ya. There's some crazy things going on. 
+It looks like this is meant to be overriding the base function with a replacement function. 
+ 
+Any function that gets defined in WatchDog gets re-tagged as WatchDog_function, replacing the normal function that runs. 
+ 
+ name = "WatchDog_" .. name
+ watch_dog._Name = name
+ 
+ 
+ 
+That AddChickenChaserCallBack sticks out because if it was the same as the others it should have been WatchDog_AddChickenChaserCallBack. 
+Obviously I haven't done all the functions yet. I just have them listed out. 
+ 
+ 
+ [Updated on: Fri, 15 November 2013 15:22]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ ScriptFunction clear 
+
+ 
+ Next Topic: 
+ A few unlisted Debug functions 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:41 PDT 2026 
+
+ Total time taken to generate the page: 0.07647 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,429 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Formats » TEX 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Formats  » TEX 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ TEX 
+ Sun, 22 September 2013 09:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm having some issues with the "tex2dds2tex" tool as posted on the previous incarnation of the forum. 
+ 
+I've had some success converting the Fable 2 minimaps that, for some bizarre reason, are located in the Fable 3 global_textures.bnk file. Although the output DDS files are distorted and muddled - swizzling...? I've uploaded an example below. 
+ 
+Has anyone else had any joy with the TEX files? 
+ 
+ 
+ 
+ 
+ 
+ Attachment: BloodstoneDDS.jpg 
+ 
+ (Size: 326.15KB, Downloaded 3894 times) 
+ 
+ 
+ 
+ [Updated on: Mon, 23 September 2013 09:28]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX 
+ Mon, 23 September 2013 22:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ it happens when you specify an incorrect resolution 
+try 128x128 or 256x256 or 1024x1024 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX 
+ Wed, 25 September 2013 10:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for the reply Artofeel, only problem is that the tex2dds2tex utility only seems to export at 512x152 and 1024x1024. Even the 256x256 option exports at 512x512. 
+ 
+Does anyone know if the most current version of the Tex2Dds2Tex program is the alpha version, 0.0.1? 
+ 
+It does work on most .tex files although and I really hate to sound ungrateful as it's far more than I could achieve at present! 
+ 
+I wonder if Mr Todx could make a reappearance and provide us with the source code so that work on this utility could continue...? 
+ 
+Re: 1024x1024 - Exporting at this resolution does provide a different result though; I get 11 mipmaps that are all black, each of decreasing resolution. The preview in Windows Explorer shows up as bottom half black and top half a vertically compressed version of the image which appears to be a little less distorted than the example I posted above. 
+ 
+ 
+ [Updated on: Wed, 25 September 2013 11:04]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX 
+ Fri, 27 September 2013 03:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ it also maybe DXT5 (with interpolated alpha) format 
+and tex2dds2tex does not support it at all 
+so I wrote this tool 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: TEX 
+ Fri, 27 September 2013 11:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CultOfByron 
+ Messages: 11 Registered: August 2013 Location: Ilkley, West Yorkshire
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Well, that seems to have very much done the trick! 
+ 
+Some of the minimaps are of different resolutions but they appear to be dxt5 as you say and I'm getting some very interesting results. 
+ 
+Thank you so much Artofeel, extremely grateful! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+	
+ 
+ Next Topic: 
+ Question about the MDL format 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:24 PDT 2026 
+
+ Total time taken to generate the page: 0.05352 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

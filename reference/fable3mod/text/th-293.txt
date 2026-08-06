@@ -1,0 +1,201 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » GDB Editor v0.3 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » GDB Editor v0.3 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ GDB Editor v0.3 
+ Fri, 10 April 2020 20:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Github Link 
+ 
+ https://github.com/Keshire/Fable-3-GDB-Tool/releases/downloa d/v0.3/GDBEditor.zip 
+ 
+Search/Edit/Save enhancements and bug fixes. 
+Added Status bar to display some debug meta data 
+Re-Linking entries, and label inheritance. 
+ 
+RightClick on a selected node to Either Save(at root), Re-Link(a node), or Edit(a parameter node) 
+ 
+Re-linking a node requires the HASH (not name, or fnvhash) of the node you want. The hash of a node is displayed in the status bar when you select the node. Eventually I'll add in a copy/paste to make this easier. 
+ 
+Just a note, this isn't for the weak of heart. The GDB is a custom built database that we still know very little about. The records in it can be accessed by name from lua like so: 
+ 
+ 
+see blacksmith mod for full code example. 
+ 
+	--Get the current Augments so we can iterate them
+	local applied_augments = Augmentable.GetCurrentAugments(self.Weapon)
+	for k,v in ipairs(applied_augments) do
+ local new_aug = nil
+ local augment_record = GDB.GetRecord(v)
+ local effects_record = augment_record:GetRecord("VisualChangeEffects")
+**snip**
+
+local AugmentableComponent = self.Weapon:GetRecord("AugmentableComponent")
+for i=1, AugmentableComponent:GetNumSubRecords(), 1 do
+ local Augmentables = AugmentableComponent:GetSubRecordAtIndex(i)
+
+**snip**
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Updated Tools 
+
+ 
+ Next Topic: 
+ Blender 2.82 Model Importer 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:58 PDT 2026 
+
+ Total time taken to generate the page: 0.06441 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

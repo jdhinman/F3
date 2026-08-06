@@ -1,0 +1,803 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » BlackDemon's BNK Utils 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » BlackDemon's BNK Utils 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ BlackDemon's BNK Utils 
+ Mon, 09 September 2013 18:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ These are tools to extract, list, and create banks. 
+ 
+As a side note: 
+Creating banks requires a bit of finesse because they require DLC package definition files to be included. I'll list out the workflow in a different post. 
+ 
+ 
+ 
+ Attachment: BNKUtils.zip 
+ 
+ (Size: 89.99KB, Downloaded 7851 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Tue, 24 September 2013 14:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ jacody 
+ Messages: 5 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This is amazing, but it seems that it can't extract any model or texture data. Are you working on a way to do that, or...? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Tue, 24 September 2013 18:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ jacody wrote on Tue, 24 September 2013 14:52 This is amazing, but it seems that it can't extract any model or texture data. Are you working on a way to do that, or...? 
+ 
+It should extract the model(mdl) and texture(tex) files. But there's not much you can do with them until I get a chance to upload the tex2dds converter, and the blender plugin. 
+ 
+Be aware though, that you need to pull the actual model/texture banks out of the levels.bnk 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Wed, 25 September 2013 18:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ jacody 
+ Messages: 5 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Tue, 24 September 2013 18:00 jacody wrote on Tue, 24 September 2013 14:52 This is amazing, but it seems that it can't extract any model or texture data. Are you working on a way to do that, or...? 
+ 
+It should extract the model(mdl) and texture(tex) files. But there's not much you can do with them until I get a chance to upload the tex2dds converter, and the blender plugin. 
+ 
+Be aware though, that you need to pull the actual model/texture banks out of the levels.bnk 
+ 
+ 
+ 
+ 
+I tried to extract the model DAT files without knowing exactly "how" the game organized/used different file types, so thanks for correcting me. 
+ 
+As an aside to further help anyone else trying to figure this out, you have to extract the levels BNK into the core Fable III data folder (the one that you extract everything from originally.) After that, you can extract the models and textures by using BlackDemon's files to access the folder you just made. The file path is levels>globals>globals_models (and "_textures"), and THEN you can extract them. Afterwards, you'll have to wait for BlackDemon to finish his Blender plugin unless you feel like making your own. 
+ 
+ 
+ [Updated on: Wed, 25 September 2013 18:47]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Wed, 25 September 2013 18:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ jacody wrote on Wed, 25 September 2013 18:30 Afterwards, you'll have to wait for BlackDemon to finish his Blender plugin unless you feel like making your own. 
+ 
+Keshire's blender plugin. 
+ 
+I just need some time to dig them out of an archive of old forum data. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Wed, 25 September 2013 19:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ jacody 
+ Messages: 5 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Wed, 25 September 2013 18:51 jacody wrote on Wed, 25 September 2013 18:30 Afterwards, you'll have to wait for BlackDemon to finish his Blender plugin unless you feel like making your own. 
+ 
+Keshire's blender plugin. 
+ 
+I just need some time to dig them out of an archive of old forum data. 
+ 
+Oh crap I'm sorry! I saw your username and somehow wrote that anyway! Massive brain fart right there! 
+ 
+And hey, take all the time you need. It's been a while since Fable 3 actually came out, and the modding scene seemed virtually nonexistant. Finding out that something is actually going on here is an awesome surprise, and I think I can wait a little longer to get started modding. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Sun, 14 December 2014 06:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have been trying for 3 days to extract creature_nightcrawler.bnk with these utilities. They dont work when I extract the nightcrawler.bnk(2700kb) It just creates another nightcrawler.bnk file at 1kb. How to I extract creature audio???? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Thu, 17 September 2015 04:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire, 
+ 
+Did you ever find that Blender plugin? All I've seen is a Blender EXPORT plugin, but no Blender IMPORT plugin. 
+ 
+EDIT: Dum de dum dum... Never mind, I guess I broke rule #1... I apologize!!! I'm almost POSITIVE I had looked through all the tools for an mdl tool and not found one, but my mind is NOT what it used to be... sorry... 
+ 
+Regards, 
+TGS 
+ 
+ 
+ [Updated on: Thu, 17 September 2015 04:08]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Wed, 14 December 2016 01:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So for some reason my tool isn't working, no matter what I do it just extracts empty files 
+ 
+------------Edit fixed it, apparently I had the file in the wrong dir 
+ 
+ 
+ [Updated on: Wed, 14 December 2016 11:30]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Fri, 17 March 2017 14:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ bobbythejobby 
+ Messages: 14 Registered: February 2014 Location: Scotland
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ All the .wav audio files I extract using this tool from speech.bnk always come out corrupted/unplayable. How do you extract them properly? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: BlackDemon's BNK Utils 
+ Sat, 18 March 2017 10:17 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ you need to convert them 
+use this 
+ http://fable3mod.com/forums/index.php?t=msg&th=68&st art=0 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ xlive 
+
+ 
+ Next Topic: 
+ ChunkSpy for KoreVM Lua 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:16 PDT 2026 
+
+ Total time taken to generate the page: 0.05627 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

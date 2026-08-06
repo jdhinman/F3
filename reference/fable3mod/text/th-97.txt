@@ -1,0 +1,495 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Intro disable 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Intro disable 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Intro disable 
+ Mon, 21 October 2013 20:39 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This was originally posted on the old forum and was not created by me. 
+ 
+ 
+ 
+ Attachment: nointro.zip 
+ 
+ (Size: 69.18KB, Downloaded 5005 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+    Re: Intro disable 
+ Thu, 10 September 2015 10:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Got it to work, eventually... Thanks for reposting! 
+ 
+I had to move ALL the files into the game's data directory (for my machine it is C:\Program Files (x86)\Microsoft Games\Fable III\data and edit the nointro.bat to read as follows: 
+ 
+_____________________________________ 
+@echo Furby's Fable3 No-Intro Fix 
+@echo -------------------------- 
+@echo injecting microsoft_logo.bik 
+bnktool -i levels.bnk art\videos\microsoft_logo.bik microsoft_logo.bik 
+@echo done.. 
+@echo injecting lionhead_logo.bik 
+bnktool -i levels.bnk art\videos\lionhead_logo.bik lionhead_logo.bik 
+@echo done.. 
+@echo ... 
+@echo You're now intro free 
+pause 
+__________________________________________ 
+ 
+ 
+Then open an ADMIN command prompt, navigate to the game's data directory, and type 'nointro' (without the quotation marks, of course). 
+ 
+This worked on Windows 10. 
+ 
+Thanks again for posting! 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Intro disable 
+ Sun, 13 September 2015 14:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Disregard. Fucked up, sorry.. Works for me now (with slight direction modification). 
+ 
+ 
+ [Updated on: Sun, 13 September 2015 14:12]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Intro disable 
+ Mon, 14 September 2015 03:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I also had to modify the .bat to direct to my fable 3 directory and I believe I had to run it from administrator command prompt, but it works swimmingly. 
+ 
+I'm looking into ways to shorten/remove some of the other animations (especially DIG). I'll post in a different thread if I make any progress. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Intro disable 
+ Sun, 20 September 2015 15:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ That would be really good of you. It's too long winded, and the dog is retarded. 
+What I mean is you could be digging something up and all through the dig anim, he's barking at something else. I really wish they hadn't foisted a dog on us in this game. I love dogs IRL, but this one is just a moron. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Intro disable 
+ Mon, 21 September 2015 01:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've found the files (yes, 3 separate files! in, loop, out) for dig in both Fable2_anims.bnk and Fable2_lmanims.bnk. They are .csa (which I believe stands for C ut S cene A nimation) files. I'm still digging around for ways to disable them, but even after I decompile the .lua using Keshire's tool, it's still pretty foreign to me. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Additional animations for hero 
+
+ 
+ Next Topic: 
+ Walk Mod 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:28 PDT 2026 
+
+ Total time taken to generate the page: 0.05222 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

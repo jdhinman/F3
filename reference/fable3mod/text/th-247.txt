@@ -1,0 +1,176 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Modding Hero Weapon morphing requirements 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Modding Hero Weapon morphing requirements 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Modding Hero Weapon morphing requirements 
+ Mon, 05 October 2015 00:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ragnin 
+ Messages: 8 Registered: October 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Is there a way to script mod the prerequisites for the hero weapon morphing? Mostly I'm looking for a way to complete the ones that require Co-Op play which is no really possible anymore. So I was wondering if there was a way to script my character into already having played 20 minutes or so of coop. Alternatively a way to set which upgrade morphs which weapons get would also work, though I would prefer the first method as it feels less cheaty for me. 
+ 
+Co-Op Play (Your ability to meet other Heroes has had an effect on the pattern of your weapon. 
+Hammer: Organic 
+Sword: Organic 
+Pistol: Scaled 
+Rifle: Onyx 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ How to create a sniper pistol? 
+
+ 
+ Next Topic: 
+ Script for All clothing and Tattoos? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:26 PDT 2026 
+
+ Total time taken to generate the page: 0.05936 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

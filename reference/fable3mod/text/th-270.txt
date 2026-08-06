@@ -1,0 +1,238 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Silver keys 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Silver keys (Silver keys script) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Silver keys 
+ Thu, 02 March 2017 08:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ c.a.r.e. 
+ Messages: 1 Registered: March 2017 Location: mexico
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hi im kind of new to moding and i couldnt find any information of this topic, is there a way to get all silver keys with a script? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Silver keys 
+ Sat, 18 March 2017 01:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ while Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventorySilverKey') < 10 do
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventorySilverKey')
+end 
+ 
+ 
+ while Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryGoldKey') < 5 do
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryGoldKey')
+end 
+ 
+ 
+ 
+ 
+ [Updated on: Sat, 18 March 2017 01:42]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Is there any chance we'll see advancements in modding this game? 
+
+ 
+ Next Topic: 
+ I need help 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:41 PDT 2026 
+
+ Total time taken to generate the page: 0.05522 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

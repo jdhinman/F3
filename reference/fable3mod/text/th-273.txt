@@ -1,0 +1,257 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » How to use scripts if dlcs are installed 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » How to use scripts if dlcs are installed 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ How to use scripts if dlcs are installed 
+ Fri, 05 May 2017 03:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ vipul700 
+ Messages: 1 Registered: May 2017 Location: India
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have installed fable 3 with all dlcs 
+but i cannot able to unlock weapons or anything else through scripts 
+can anyone give me step by step instructions how to use scripts in fable 3 with dlcs installed 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: How to use scripts if dlcs are installed 
+ Sat, 01 July 2017 11:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ First and foremost, you'll need a couple more files. 
+You'll need a modified dir.manifest (should be easy enoguh to find) and catspaw's GFWL emulator (labelled 15d, also linked on this forum). 
+Overwrite the existing dir.manifest in the data folder (or rename it for safety reasons) and place the GFWL emulator files in the main game folder. 
+Create a folder in the data\scripts folder called MyMod (or anything you like) and in it create as many mod files as you want - generally one or two is best. 
+These can be text files, but once you're finished writing the mods, you'll want to change the extension to .lua. 
+At the end of the new dir.manifest, insert this line (you can open it in Notepad or any text editor) if it doesn't already exist: 
+scripts\MyMod(or whatever you called it)\MyScript01.lua 
+ 
+And more, if you have more mod scripts for the game to run, ie: scripts\MyMod\MyScript02.lua and so on... 
+You'll also need to find the ScriptInjector and the DLC_xlive_removal. 
+ 
+Lastly, find the DLC links on this forum and give them their own folders like this: 
+01_Understone 
+02_TraitorsKeep 
+10_ScriptInjector 
+90_DLC_xlive_removal 
+Place the correspondng DLC packs into these folders within a folder labelled DLC in the main folder. 
+ 
+This next bit isn't needed, but it's something I've done: 
+A small tip - if you have about 6GB+ RAM available, you can safely modify the startup.vsconfig file as well. 
+You can have it load everything BUT the audio.lod into memory (it's unadvisable, there's lots of little enviromental audio effects there) by doing the following: 
+For every line (expect for <Bank Path="audio_lod.bnk"/>) that doesn't have a Mode="memory" before the /> in it, add it. Here's an example: 
+modify lines like this: <Required><Bank Path="globals/globals_textures.bnk"</Required> 
+to look like this: <Required><Bank Path="globals/globals_textures.bnk" Mode="memory"/></Required> 
+Be warned, it can increase load times and cause animation lag in larger population zones like Brightwall. 
+ 
+ I hope I haven't forgotten anything. 
+ For mod scripting help, just look around the forum. Just about anything you could want is here already. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Dlc purchased through steam 
+
+ 
+ Next Topic: 
+ Dlc on steam 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:43 PDT 2026 
+
+ Total time taken to generate the page: 0.06365 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

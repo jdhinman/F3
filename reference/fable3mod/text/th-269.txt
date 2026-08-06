@@ -1,0 +1,1357 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Hero's parent 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Hero's parent (Can it be changed?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Hero's parent 
+ Mon, 13 February 2017 14:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Is there a way to make the game think the hero's parent was female instead of male? It would be awesome to hear 'Hero Queen' and 'Mother' . 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Thu, 16 February 2017 22:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I don't know why you need this... but 
+open globals.gdb with HEX editor 
+goto 001E4DF8 and change 2 to 1 
+02 00 00 00 > 01 00 00 00 
+ 
+or use GDBEditor 
+check 'Extrapolate parent\child' option 
+use #08A1AB45 hash 
+and goto GenderComponent > Gender 
+change 2 to 1 
+ 
+also, female hash: #65D9C904 
+ 
+ 
+ [Updated on: Thu, 16 February 2017 22:31]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Sat, 18 February 2017 14:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for the info. Umm, my question was poorly worded. (after applying the changes, it's now impossible to play as a male 
+ 
+So, what I'm looking for is this: 
+ 
+The game always defaults the Hero of Brighwall's parent to male. For instance, when you first spar with Walter, he says something like, "Do you remember when I used to tell you stories about your father, the Hero King?" 
+ 
+What I'd like to do is have the game default the Hero of Brightwall's parent to female. So I hear, "...stories about your mother, the Hero Queen." 
+ 
+ 
+Sorry for the confusion. 
+ 
+ 
+ [Updated on: Sat, 18 February 2017 14:11]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Sun, 19 February 2017 22:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ ...you are asking the impossible 
+you can't change something like that 
+there is simply no voice sounds for "Hero Queen mother" (I think) 
+what the point anyway? just to hear? :) 
+ 
+ 
+ [Updated on: Sun, 19 February 2017 22:08]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Thu, 23 February 2017 11:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Actually supposedly there is VO for this. 
+ 
+ https://www.gamefaqs.com/boards/971431-fable-iii/66471460 
+ https://www.gamefaqs.com/boards/971431-fable-iii/57548404 
+ https://www.gamefaqs.com/xbox360/971431-fable-iii/answers/23 5974-why-does-it-say-the-previous-hero-was-my-mother-and-in- fable-2-my-character-was 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Thu, 23 February 2017 23:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ yeah.. find someone 
+ language\speech\text\butler\gui\treasure\guild\seal\trophy\received\01\father
+language\speech\text\butler\gui\treasure\guild\seal\trophy\received\01\mother 
+ 
+so, it's based on Fable 2 save? 
+then it is POSSIBLE but I don't know if you need to change something is savegame or maybe some thing in globals.gdb (but it's hard to find that, too many "parent") 
+or of course we can use brute-force and find all the sounds, if someone find them all (that actually impossible for normal human), I can make mods (father\mother) :) 
+ 
+ 
+ [Updated on: Thu, 23 February 2017 23:58]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Fri, 24 February 2017 16:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I guess I'm the abnormal human. I've been digging around in the files and found all the sounds, I think. I also found a field, 'HerosParent'. The quests that mention the gender of the Hero's parent appear to be checking for the value of this field. (based on Chunky spy's decompiled script). 
+ 
+Fable 3 on the xbox also carried over the Fable 2 hero's morality. The flags in the mausoleum reflect that morality. 
+ 
+For myself, I just renamed the speech, lipsync and cutscenes to hear 'Mother' and 'Hero Queen'. Yes, I'm crazy 
+ 
+I doubt the subtitles say 'Mother' etc, but since I never bother with that, it doesn't matter to me. It also misses the written objective of the quests, things like 'Find your Father's Music Box for Sabine' instead of 'Mother's Music box'. 
+ 
+I can get a list together of the sounds if you want it. 
+ 
+ 
+ [Updated on: Fri, 24 February 2017 16:53]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Fri, 24 February 2017 21:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ yea, I forget to check scripts 
+this is easy 
+ Gameflow.HerosParent = ScriptFunction.GetFable2HeroEndString() 
+ 
+so, try this 
+ Gameflow.HerosParent = 1
+Gameflow.HerosParent = 2 
+ 
+1 should be father and 2 is mother? 
+I don't check it, please report 
+ 
+first you can check original value with msgbox: Gameflow.HerosParent 
+ 
+and yes, plz post voices file list :) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Sun, 26 February 2017 17:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ok, 1 is father and 2 is mother. The code works perfectly for the first line, when sparring with Walter. But when the second line is supposed to run, the game freezes. Music still plays, and Walter moves his head around. -- Walter is supposed to deliver the second line when you leave the castle. 
+ 
+I placed the code in 'myscript 02' and 'myscript 01' -- I'm using the script injector method. If there's some other code, I'm happy to test it. 
+ 
+Also, I'll get the voices file list together and post in a couple of days. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Sun, 26 February 2017 23:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ fierymarigold wrote on Mon, 27 February 2017 06:19 Ok, 1 is father and 2 is mother. did you check original value with msgbox? 
+probably it's not just integer 1 or 2 
+I can't check it right now 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Tue, 28 February 2017 05:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+The original value is _Father 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Wed, 01 March 2017 21:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ then try this 
+ Gameflow.HerosParent = "_Mother" 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Thu, 02 March 2017 19:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ok, that resulted in a blank field. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Fri, 03 March 2017 01:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ wrong brackets? 
+ Gameflow.HerosParent = '_Mother' 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Mon, 06 March 2017 17:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ugg, yea that was stupid of me. Anyway, Gameflow.HerosParent = '_Mother' returns _Mother in the message box. 
+ 
+So far it only fails when you pick up the Guild Seal, when you fight bats on your way out, and the first two lines in the sanctuary. All of these lines are spoken by either Jasper or Walter and are in quest QC015 Escape. The strange thing is Teresa has a line which I think is in this quest and it works fine. 
+ 
+By fails I mean it plays Father instead of Mother. Once you're through this part of the game, it works fine, so far. But I've only tested past meeting Sabine. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Mon, 06 March 2017 23:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ hmmm, seems there is some code left 
+try to add this 
+ Gameflow.Fable2HeroEndGender = '_Mother' 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Wed, 08 March 2017 17:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ fierymarigold 
+ Messages: 10 Registered: October 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Woo hoo! Everything works perfectly with these two lines of code 
+ 
+Gameflow.HerosParent = '_Mother' 
+ 
+Gameflow.Fable2HeroEndGender = '_Mother' 
+ 
+ 
+Artofeel, thank you for your help! 
+ 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Fri, 25 August 2017 19:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ neriek 
+ Messages: 1 Registered: August 2017 Location: Australia
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ fierymarigold wrote on Thu, 09 March 2017 11:22 Woo hoo! Everything works perfectly with these two lines of code 
+ 
+Gameflow.HerosParent = '_Mother' 
+ 
+Gameflow.Fable2HeroEndGender = '_Mother' 
+ 
+ 
+Artofeel, thank you for your help! 
+ 
+ 
+Sorry to bump such an old topic and as my first post here, but it seemed better than making a new one.. I've been wracking my brain trying to get this to work and have no idea if I've even done it correctly but I've checked the tutorial and as far as I know I have. 
+ 
+This is all I've added to scriptactivation.lua I can't help feeling that it looks wrong though. 
+ ScriptActivation[ScriptCode.QU000].AbleToRun = function ()
+
+--Code can be added here.
+--[[ e.g. Inventory.AddItemOfType(GetLocalHero(), 'YourItemFromFromTheItemList')]]
+Gameflow.HerosParent = ScriptFunction.GetFable2HeroEndString()
+Gameflow.HerosParent = '_Mother'
+Gameflow.Fable2HeroEndGender = '_Mother'
+
+return nil
+end 
+ 
+Any help at all would be appreciated! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Hero's parent 
+ Wed, 04 October 2017 12:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Thatoneperson 
+ Messages: 2 Registered: May 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ neriek wrote on Fri, 25 August 2017 19:19 Sorry to bump such an old topic and as my first post here, but it seemed better than making a new one.. I've been wracking my brain trying to get this to work and have no idea if I've even done it correctly but I've checked the tutorial and as far as I know I have. 
+ 
+This is all I've added to scriptactivation.lua I can't help feeling that it looks wrong though. 
+ ScriptActivation[ScriptCode.QU000].AbleToRun = function ()
+
+--Code can be added here.
+--[[ e.g. Inventory.AddItemOfType(GetLocalHero(), 'YourItemFromFromTheItemList')]]
+Gameflow.HerosParent = ScriptFunction.GetFable2HeroEndString()
+Gameflow.HerosParent = '_Mother'
+Gameflow.Fable2HeroEndGender = '_Mother'
+
+return nil
+end 
+ 
+Any help at all would be appreciated! 
+ 
+I don't think Gameflow.HerosParent = ScriptFunction.GetFable2HeroEndString() 
+ is needed. I'm not sure what that would do, or if your script changes are being loaded. 
+I know when I used ZackTiro's Script Modding Setup Tutorial it was annoying to get working. 
+ 
+ 
+I'm using a slightly altered version of Improved script injection method I changed to work better for me. It adds the use of scriptactivation.lua, but for me it's easier to use. It's probably not needed, but whatever. 
+ 
+After switching back so it sould work with ZackTiro's Script Modding Setup Tutorial...I have. 
+ ScriptActivation[ScriptCode.QU000].AbleToRun = function ()
+
+Gameflow.HerosParent = '_Mother'
+Gameflow.Fable2HeroEndGender = '_Mother'
+
+return nil
+end 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Dlc on steam 
+
+ 
+ Next Topic: 
+ Disable morphing (body/skin) 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:40 PDT 2026 
+
+ Total time taken to generate the page: 0.05639 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

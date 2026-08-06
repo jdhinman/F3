@@ -1,0 +1,399 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Change Dog Breed Pre-Sanctuary Access? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Change Dog Breed Pre-Sanctuary Access? (+ the answer to a question I asked years ago on the off chance someone wants to know...) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Change Dog Breed Pre-Sanctuary Access? 
+ Tue, 04 September 2018 21:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ HidetheKitchenKnives 
+ Messages: 3 Registered: December 2013 Location: Over there
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Not sure if an answer is possible as I'm super late to the party again, but here we go. Is there some way I can turn my hero's dog into a doberman before I get access to the sanctuary? 
+ 
+I tried swapping the model outright, but that just got me an invisible dog. I've been looking into a scripting option, but I understand very little of what I'm looking at. Is there a way to script giving the dog the doberman potion? Or accessing the sanctuary early so I can change it that way? Or just some kind of SetBreed thing? 
+ 
+I know it's a small thing and you're without the sanctuary for such a short segment of the game. I just like consistency. 
+ 
+Any help with this would be appreciated. 
+ 
+ -----------------------------------------------
+
+ 
+On an unrelated note, last time I was here, I had a question concerning dye color and using scripts to change hair/clothing colors pre-sanctuary (surprise!). I actually figured out the answer to that one. It works really well and I find it better than dying things via the sanctuary as the use of RGB values allows for any color you want instead of just the available dyes. Again, really late, but here's how if anyone is interested: 
+ 
+ Debug.SetHeroWornItemDyeColour('ObjectClothingTrousersPrincessPracticalF', true, 166, 121, 210, 0.05)
+Debug.SetHeroWornItemDyeColour('ObjectClothingTrousersPrincessPracticalF', false, 255, 155, 0, 0.65) 
+
+ 
+You need the object ID of the clothing/hair your hero is currently wearing which goes between the single quotes. In this example it's the Practical Princess Skirt. In this instance "true" means "Main Dye Color" and "false" means "Trim Dye Color". Following that are the RGB values in order. Thus on the first line, "166" is the RED value, "121" is the GREEN value, and "210" is the BLUE value giving us a nice purple not possible with the current dyes. The last number, "0.05" controls the lightness and darkness of the color. The lower the number, the darker the color. You can use negative values. 
+ 
+And that's it. You can add these lines with your changes to Artofeel's Script Injector mod (MyScript01.lua or MyScript02.lua) as is and they'll function. ZackTiro's method will work too. 
+ 
+ Here's an ingame example of some color changes done with this method. 
+ 
+
+ 
+Also, I've tweaked several of the make up textures as well as some of the color masks for the clothes to look nicer (excluding the gold accents from being dye-able on the Elegant Princess Bodice for instance). I can upload those too if anyone wants 'em. 
+ 
+ 
+ 
+ Attachment: Fable3 2018-09-04 22-13-20-06.png 
+ 
+ (Size: 931.92KB, Downloaded 3156 times) 
+ 
+ 
+ 
+ [Updated on: Tue, 04 September 2018 21:42]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Change Dog Breed Pre-Sanctuary Access? 
+ Mon, 10 September 2018 20:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ There's obviously a way to do it. It should be some bit of scripting that the sanctuary already has in it's script I assume. 
+ 
+Probably in the gui or guild lua script. Maybe GUI_Dog:StateEnum(self) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Change Dog Breed Pre-Sanctuary Access? 
+ Tue, 11 September 2018 04:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ HidetheKitchenKnives 
+ Messages: 3 Registered: December 2013 Location: Over there
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ First off, thanks for the response. I wasn't expecting, but I was hoping someone might still be around. :3 
+ 
+ 
+I've come across a couple things poking through the scripts you suggested plus a couple others: 
+ 
+guildnew.lua has GUI_Dogbed in it after GUI_Dog:StateEnum. 
+ 
+3dguienums.lua has GUI_SIDE_MENU_ENTRY_DOG_BREEDS in it which is one of like three mentions of breeds I've found. 
+ 
+guildcallbackfunctions.lua has IsDogAlreadySideMenuBreed and GUI_AllDogBreedPotions. 
+ 
+guildroomssingle.lua has TUTORIAL_DOG_CHANGE_BREED and Dog_Breed_Changed. 
+ 
+guildutilityfunctions.lua has stuff about training the dog, but that's about it. 
+ 
+There is a mention of the dog as a collie in miscfuntions.lua like CreatureDogACSColie, ReplacementACSCollie, and DogCollet. 
+ 
+ 
+The thing is I have no idea what to do with that information or if any of it is even relevant to what I'm trying to accomplish. I'm not sure where else to look either. I'm not seeing any other gui/sanctuary related scripts except under the gameface folder which seem to have more to do with the actual UI rather than the workings of the Sanctuary. :/ 
+ 
+ 
+ [Updated on: Tue, 11 September 2018 04:33]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Change Dog Breed Pre-Sanctuary Access? 
+ Sat, 22 December 2018 09:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Never mind. Wrong post. Also, can't delete this post for some reason. 
+ 
+ 
+ [Updated on: Sat, 22 December 2018 09:29]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Help fixing broken quest? 
+
+ 
+ Next Topic: 
+ Forcing an outfit to be worn 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:53 PDT 2026 
+
+ Total time taken to generate the page: 0.05308 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

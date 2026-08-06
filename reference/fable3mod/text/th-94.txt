@@ -1,0 +1,1099 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Disable morphing (body/skin) 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Disable morphing (body/skin) (Repost) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Disable morphing (body/skin) 
+ Tue, 15 October 2013 22:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Something else I have on my hard disk. 
+ 
+ Quote: Fable III	Instructions For Dissabling Body Morphing (Only Female Heroine) 
+ 
+Table of contents 
+1.	Introduction 
+2.	Extracting .BNK Archives 
+	2.1	Levels.bnk 
+	2.2	Skeletalmorphs.bnk 
+3.	Modding morph_textures 
+4.	Repacking .BNK Archives 
+	4.1.	Skeletalmorphs.bnk 
+	4.2.	Levels.bnk 
+	4.3.	Final touch 
+ 
+1.	Introduction 
+ 
+Hi, in this little guide I 'll show you a way how you can dissable the body morphing for the female heroine. So when your heroine becomes strong, she doesn 't appear beefed up. If she gets more accurate, she doesn 't appear tall. And if she eats much, she doesn 't appear fat. 
+ 
+Please take in mind the those changes are for appearances only. The gameworld and all its npc 's will still think that you 're beefed up, tall and/or fat. So this will also cause some glitches, though not gamebreaking ones for as far as I 've tested the game with it yet. 
+ 
+For example when your heroine is a tall girl and she wants to kiss her husband, who would probably be one head length smaller than she. He will still think you 're a big girl, so it shall appear that he is looking in the air while your heroine is sucking his throat instead of kissing him. 
+ 
+So use it at own risk. 
+ 
+The tool I 'll use here is Timeslip 's BnkBrowser and -Creator. The way I 'll use it might be a bit of a detour, but until now it 's still the way I feel most comfortable with. 
+ 
+You can download Timeslip 's BnkBrowser and BnkCreator at following url: 
+ http://fable3mod.com/forums/index.php?t=msg&th=71&st art=0&S=ffc9bb93970a9b645dea14377ff60035 
+ 
+2.	Extracting .BNK Archives 
+ 
+First of all, to make things clearer for my guide, I 'm going to make a new folder named "WorkBench". There I will do my modding after I 've extracted the .BNK archives to it. 
+ 
+2.2.	Levels.bnk 
+Start the BnkBrowser and open "levels.bnk". 
+(C: \Program Files (x86)\Microsoft Games\Fable III\data) 
+ 
+Extract all to a new folder named "levels" and place that folder in "WorkBench". 
+ 
+2.2.	Skeletalmorphs.bnk 
+Search for "skeletalmorphs.bnk" and "skeletalmorphs.bnk.dat" and copy those to the same directory (to the desktop or the C:\ root for example). 
+ 
+You can find "skeletalmorphs.bnk" in "levels" (...\WorkBench\levels). 
+You can find "skeletalmorphs.bnk.dat" in Fable III 's datafolder. 
+(C:\Program Files (x86)\Microsoft Games\Fable III\data) 
+ 
+Start the BnkBrowser and open "skeletalmorphs.bnk". 
+ 
+Extract all to a new folder named 'skeletalmorphs" and place that folder in "WorkBench". 
+3.	Modding skeletalmorphs 
+ 
+Before we start modding, I recommend that you create a backup copy of following original files: 
+levels.bnk, levels.bnk.dat, skeletalmorphs.bnk, skeletalmorphs.bnk.dat 
+(or at least a backup of the original skeletalmorphs.bnk and skeletalmorphs.bnk.dat) 
+ 
+That way you don 't have to reïnstall the whole game if you want to reverse the game back to its original state. 
+ 
+Open the map "heros" in "skeletalmorphs" (...\WorkBench\skeletalmorphs\art\characters\heros). 
+You 'll notice two maps there: "unclothed female" and "unclothed male". 
+ 
+Now delete "unclothed female" with all its contents. 
+ 
+You can always try to delete the "unclothed male" and see what happens. It will probably does the same changes, but then for the male hero. But I 've never tried it myself because I always choose the female heroine at the start of the game. So I won 't encourage you. 
+ 
+Well anyhow, that 's all there is to modify so lets get to repacking the BNK 's. 
+ 
+4.	Repacking .BNK Archives 
+ 
+4.1.	Skeletalmorphs.bnk 
+Start the BnkCreator, add the modified 'skeletalmorphs" 
+and create the new "skeletalmorphs.bnk". 
+ 
+Grab the fresh created "skeletalmorphs.bnk" and move it to "levels". Allow the overwrite. 
+ 
+4.2.	Levels.bnk 
+Start the BnkCreator, add the modified "levels" and create the new "levels.bnk". 
+ 
+4.3.	Final touch 
+Grab the fresh created "levels.bnk", "levels.bnk.dat" and "skeletalmorphs.bnk.dat" and move those to their assigned destinations. Allow the overwrites. 
+ 
+levels.bnk 	C: \Program Files (x86)\Microsoft Games\Fable III\data 
+levels.bnk.dat 	C: \Program Files (x86)\Microsoft Games\Fable III\data 
+skeletalmorphs.bnk.dat		C: \Program Files (x86)\Microsoft Games\Fable III\data 
+ 
+After you 've done these changes, your heroine 's body will stay as small and skinny as from the start of the game. Though the animations and hero stats will stay in their original state. 
+ 
+So far goes this mod, hope you enjoy it. 
+ 
+Superdemus 
+ 
+ 
+PS: 
+Check out my other guide in which I 'll explain how you can get rid of the skin morphing like becoming pale and getting bodypaint over your whole face, or become ugly and greyskinned depending on the good or evil deeds you perform. 
+ 
+ Quote: Fable III	Instructions For Dissabling Skin Morphing 
+ 
+Table of contents 
+1.	Introduction 
+2.	Extracting .BNK Archives 
+	2.1	Levels.bnk 
+	2.2	Morphs_textures.bnk 
+3.	Modding morph_textures 
+4.	Repacking .BNK Archives 
+	4.1.	Morphs_textures.bnk 
+	4.2.	Levels.bnk 
+	4.3.	Final touch 
+ 
+1.	Introduction 
+ 
+Hi, in this little guide I 'll show you a way how you can dissable the skin morphing.So you don 't see any weird facepaint after doing a lot of good deeds, or you won 't be ugly and grey after doing a lot of bad deeds. In the end it 's up to you what you 'd like to dissable. 
+ 
+The tool I 'll use here is Timeslip 's BnkBrowser and -Creator. The way I 'll use it might be a bit of a detour, but until now it 's still the way I feel most comfortable with. 
+ 
+You can download Timeslip 's BnkBrowser and BnkCreator at following url: 
+ http://fable3mod.com/forums/index.php?t=msg&th=71&st art=0&S=ffc9bb93970a9b645dea14377ff60035 
+ 
+2.	Extracting .BNK Archives 
+ 
+First of all, to make things clearer for my guide, I 'm going to make a new folder named "WorkBench". There I will do my modding after I 've extracted the .BNK archives to it. 
+ 
+2.2.	Levels.bnk 
+Start the BnkBrowser and open "levels.bnk". 
+(C: \Program Files (x86)\Microsoft Games\Fable III\data) 
+ 
+Extract all to a new folder named "levels" and place that folder in "WorkBench". 
+ 
+2.2.	Morphs_textures.bnk 
+Search for "morphs_textures.bnk" and "morphs_textures.bnk.dat" and copy those to the same directory (to the desktop or the C:\ root for example). 
+ 
+You can find "morphs_textures.bnk" in "levels" (...\WorkBench\levels\art\characters\heros\morphs). 
+You can find "morphs_textures.bnk.dat" in Fable III 's datafolder. 
+(C:\Program Files (x86)\Microsoft Games\Fable III\data\art\characters\heros\morphs) 
+ 
+Start the BnkBrowser and open "morphs_textures.bnk". 
+ 
+Extract all to a new folder named 'morphs_textures" and place that folder in "WorkBench". 
+ 
+3.	Modding morph_textures 
+ 
+When you open the map with the hero 's diffuse maps, you 'll see a lot of .tex files for the hero 's face, torso and legs. (...\WorkBench\morphs_textures\art\characters\heros\morphs\d iffuse) 
+ 
+At the next page you can see how the .tex files in each folder are sorted. 
+ 
+"blend_morality3_primal0.tex" is the standard texture in each folder used for your hero when you start a new game. You have to overwrite all the other .tex with this one (by copy&rename the standard .tex) so you can fool game by providing it with the same texture, each time you morph ingame. 
+This might take some of your time, but it is a waterproof solution. 
+Devilish	blend_morality0_primal0.tex 
+	blend_morality0_primal1.tex 
+	blend_morality0_primal2.tex 
+	blend_morality0_primal3.tex 
+	blend_morality0_primal4.tex 
+	blend_morality0_primal5.tex 
+	blend_morality0_primal6.tex 
+Demonic	blend_morality1_primal0.tex 
+	blend_morality1_primal1.tex 
+	blend_morality1_primal2.tex 
+	blend_morality1_primal3.tex 
+	blend_morality1_primal4.tex 
+	blend_morality1_primal5.tex 
+	blend_morality1_primal6.tex 
+Evil	blend_morality2_primal0.tex 
+	blend_morality2_primal1.tex 
+	blend_morality2_primal2.tex 
+	blend_morality2_primal3.tex 
+	blend_morality2_primal4.tex 
+	blend_morality2_primal5.tex 
+	blend_morality2_primal6.tex 
+Neutral	(standard texture) blend_morality3_primal0.tex 
+	blend_morality3_primal1.tex 
+	blend_morality3_primal2.tex 
+	blend_morality3_primal3.tex 
+	blend_morality3_primal4.tex 
+	blend_morality3_primal5.tex 
+	blend_morality3_primal6.tex 
+Good	blend_morality4_primal0.tex 
+	blend_morality4_primal1.tex 
+	blend_morality4_primal2.tex 
+	blend_morality4_primal3.tex 
+	blend_morality4_primal4.tex 
+	blend_morality4_primal5.tex 
+	blend_morality4_primal6.tex 
+Knightly	blend_morality5_primal0.tex 
+	blend_morality5_primal1.tex 
+	blend_morality5_primal2.tex 
+	blend_morality5_primal3.tex 
+	blend_morality5_primal4.tex 
+	blend_morality5_primal5.tex 
+	blend_morality5_primal6.tex 
+Holy	blend_morality6_primal0.tex 
+	blend_morality6_primal1.tex 
+	blend_morality6_primal2.tex 
+	blend_morality6_primal3.tex 
+	blend_morality6_primal4.tex 
+	blend_morality6_primal5.tex 
+	blend_morality6_primal6.tex 
+You 'll also notice extra .tex files. 
+(evil_01.tex, evil_02.tex, good_01.tex, good_02.tex, neutral_01.tex and neutral_02.tex.) 
+Best that you overwrite those too. 
+ 
+Asside from the diffuse textures you might also find some interesting files in the normal map. 
+ (...\WorkBench\morphs_textures\art\characters\heros\morphs\n ormal) 
+ 
+strength0.tex (standard) 
+strength1.tex 
+strength2.tex 
+strength3.tex 
+strength4.tex 
+ 
+Those normals define how detailed the muscles of your hero are. So for example, if you don 't want your female heroine to have a sixpack after getting stronger, best to overwrite all the normals with the standard one (strength0.tex). 
+ 
+4.	Repacking .BNK Archives 
+ 
+Before we start repacking, I recommend that you create a backup copy of following original files: 
+levels.bnk, levels.bnk.dat, morphs_textures.bnk, morphs_textures.bnk.dat 
+(or at least the original .tex files) 
+ 
+That way you don 't have to reïnstall the whole game if you want to reverse the game back to its original state. 
+ 
+4.1.	Morphs_textures.bnk 
+Start the BnkCreator, add the modified 'morphs_textures" 
+and create the new "morphs_textures.bnk". 
+ 
+Grab the fresh created "morphs_textures.bnk" and move it to "levels". Allow the overwrite. 
+ 
+4.2.	Levels.bnk 
+Start the BnkCreator, add the modified "levels" and create the new "levels.bnk". 
+ 
+4.3.	Final touch 
+Grab the fresh created "levels.bnk", "levels.bnk.dat" and "morphs_textures.bnk.dat" and move those to their assigned destinations. Allow the overwrites. 
+ 
+levels.bnk 	C: \Program Files (x86)\Microsoft Games\Fable III\data 
+levels.bnk.dat		C: \Program Files (x86)\Microsoft Games\Fable III\data 
+ 
+morphs_textures.bnk.dat 
+	C:\ Program Files (x86)\Microsoft Games\Fable III\data\globals 
+ 
+After you 've done these changes, your hero 's skin will stay as young and neutral as from the start of the game. The wings, glowing clothes and all the rest will stay. 
+ 
+So far goes this mod, Hope you enjoy it. 
+ 
+Superdemus 
+ 
+ 
+PS: 
+Check out my other guide in which I 'll explain how you can get rid of the body morphing like getting tall, fat, or beefed up. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Fri, 06 March 2015 23:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Bluey5 
+ Messages: 2 Registered: March 2015 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Is there a way so that you only change getting stronger? Or is this just the only way...? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Fri, 06 March 2015 23:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Bluey5 
+ Messages: 2 Registered: March 2015 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ also, that's a dead link 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Wed, 25 March 2015 05:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Bluey5 wrote on Sat, 07 March 2015 12:32 also, that's a dead link 
+link? if you mean BnkBrowser and BnkCreator then 
+ http://fable3mod.com/forums/index.php?t=msg&th=34&st art=0 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Mon, 14 September 2015 06:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Looks like overwriting the strength1.tex through strentgh5.tex files with the strength0.tex is probably all the texture mods you want to do for that... but then you also want to make sure you've somehow handled the strong morph (.mof) file if you don't want her shape to change, either... I presume you could use 0,0,0 and 1,1,1 values for everything... I imagine that's the starting point. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Tue, 15 September 2015 07:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Good day, all! 
+ 
+I am running with these instructions and modifying the skeletalmorphs to make a couple of mods. I'm almost happy with one to give the female hero HUGE "tracts of land" (Monty Python and the Holy Grail)! We're talking selectable size from basically normal up to K or L cups using the "fat" morph, so you can just eat a few slices of mutton (or drink a few beers) and get bigger, or eat a few carrots, celery stalks, etc. to go down a cup size. 
+ 
+I'll post it when I get it done. 
+ 
+The next one I'm considering is taking "tall" and making her turn into Barbie! (THAT'S going to be a labor of love!!! 
+ 
+This would be a LOT easier if I could make changes on the fly, rather than having to restart the game after each change! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+    Re: Disable morphing (body/skin) 
+ Thu, 17 September 2015 03:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay... after a little more playing, I can answer this better. You'll certainly want to overwrite the strength textures in the second repack of levels.bnk, but instead of DELETING unclothed female, delve into the file structure. 
+ 
+\skeletalmorphs\art\characters\heros\unclothed female\rigdata\ch_herofemale is completely unused (as far as I can tell) so you could just delete it. (I'm pretty sure that's a vestigial FII folder. 
+ 
+C:\Users\Matthew\Documents\My Games\Fable 3\skeletalmorphs\art\characters\heros\unclothed female\rigdata\morphs is where all the action is. 
+ 
+These are plain text files that "morph" your character's "bone" structure. 
+ 
+*female_tall makes your heroine about 20% bigger in most dimensions (and tweaks a few joints to make them look nicer at their new sizes). 
+ 
+*female_fat makes her about 30% THICKER (but not much taller, if any) while shrinking her breast "bones" (and tweaks a few joints to make them look right at their new sizes). 
+ 
+*female_strong makes her about 3% (THREE per cent) bigger in many dimensions but accentuates the "muscles" even further (Biceps, Triceps, Forearms, Neck, Quads, Calves). "Strong" also shrinks her breasts . 
+ 
+To prevent her from looking "beefy" you can just rename female_strong. I would just append _orig to make it female_strong_orig. This will prevent the program from "seeing" the file, but allow you to put it back later if you change your mind. 
+ 
+Finish the job by repacking the two banks (in the right order, trust me, it doesn't work backwards . As the OP noted, you can have some collision challenges after this kind of change (e.g. I modded out her hips at one point and she kept putting her hands through her hips because the engine still expects them to be where they ought to be... I've also made other changes that caused trouble with my feet not touching the floor or my hair cascading over my "shoulders" 5 inches above them... . 
+ 
+I'm playing with this a LOT right now, so if you have a specific look you're going for, I may be able to give you some pointers on where to start tweaking (or at least how some of the variables appear to work). 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Thu, 17 September 2015 10:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Mod was coming along swimmingly, then I THOUGHT I hit a snag... ALL the skirts/dresses looked JACKED UP!!! I must have spent a good three or four hours trying to tweak hips, thighs, even the entries for "Chicken_Tail" and "Pouch_Front" before I just said "to heck with it" and deleted the morph all together (reset my character to just her tall/strong proportions I've earned... 
+ 
+Turns out THE SKIRTS STILL LOOK JACKED UP!!! SO... I'm going to go back and tweak away at skeletalmorphs, secure in the fact that NOTHING I do in there will fix the stupid skirts... 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Sat, 19 September 2015 01:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ TheGeniusSavant wrote on Thu, 17 September 2015 23:33 ALL the skirts/dresses looked JACKED UP!!! 
+yeah... I spend a lot of time to tuned up this, but nothing work... 
+and beware with modifying, you can esaly broke interact animations 
+also I'm still looking for the original coefficients 
+I believe there are somewhere in globals.gdb 
+if someone find it, let me know plz 
+ 
+btw, TheGeniusSavant thanks you for pointing nude mod 
+ 
+ 
+ [Updated on: Sat, 19 September 2015 01:41]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Sun, 20 September 2015 03:28 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yeah... I keep LOTS of backups in case I break something! ;) 
+ 
+And you're welcome! That's what this forum is all about, helping each other! I just wish I understood HOW to MAKE that mod... so I could do some of my OWN!!! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Mon, 16 November 2015 11:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Leafone 
+ Messages: 2 Registered: November 2015 Location: Odessa
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ For some reason my glowing cloths & wings dissappeared. 
+Still, she is small and pretty. 
+Just wondering, can I have wings and shining back. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Disable morphing (body/skin) 
+ Sun, 03 December 2017 16:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ G.I.R 
+ Messages: 1 Registered: December 2017 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hey, sorry for reviving a old/dead thread but I need help and would be very appreciative if anyone would be willing to lend me a hand, I followed your instructions to the letter but it just made my heroine's textures disappear and she is completely blue. 
+(I had a back up of the originals so it doesn't matter too much. But I did triple check and make sure I copied and renamed the texture correctly and put in in the correct places, and I repackaged all the files and put them in the correct directories listed above). 
+But I don't know what I did wrong, I didn't mess with the body morphing because that doesn't bother me but I am trying to change the skin so it is just the neutral/default skin you start with. 
+I hate looking like some porcelain doll from being too good. lol 
+Jokes aside I would really appreciate some help from anyone who would give me some of their time and help me figure out what I am doing wrong. 
+Thank you in advance to anyone who gives me their help and time. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Hero's parent 
+
+ 
+ Next Topic: 
+ Death Mod? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:27 PDT 2026 
+
+ Total time taken to generate the page: 0.05351 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

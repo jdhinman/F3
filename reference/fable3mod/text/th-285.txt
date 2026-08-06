@@ -1,0 +1,4101 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » ALL weapons available? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » ALL weapons available? (All weapons available mod; is there one?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ ALL weapons available? 
+ Tue, 10 July 2018 03:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Forgive my extreme lateness to these forums, but I must ask this: 
+ 
+Is there a mod in existence that will allow me access to every single weapon, including the pre-order bonus weapons, and every single one that can be bought at a store, and unlocked in a chest? 
+ 
+Basically, I am a PC gamer, and the game is the Steam version; I have all the DLCs, including Understone, Traitor's Keep, along with the clothing and weapon DLCs, but even with that, the game feels incomplete. If I am lucky, I can get 1/3 of them all WITHOUT playing Multiplayer. And has we all know, next to nobody plays this game nowadays, and fewer still have the DLCs, so they can't join or be joined. 
+ 
+I wouldn't mind if I have to buy them in a store, or if I get them all as wrapped gifts, as long as I get them all. The Blacksmith's store's space gets wasted, as you can easily triple his inventory with the amount of space he has. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 11 July 2018 01:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ you can get all weapons by scripts 
+ http://fable3mod.com/forums/index.php?t=msg&th=219&g oto=544&#msg_544 
+ 
+ 
+ [Updated on: Wed, 11 July 2018 01:24]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 08 March 2021 23:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yup. There is a readme inside please read it. I have no idea if their instructions are absolutely necessary but I understand why they suggest them even if it will mean you have to fight the first boss without them. PS don't buy any gauntlets on the road to rule if you don't want unremovable duplicates (at least not easily removable). Weapon dupes should be sellable at pawn shops. 
+ 
+ 
+ 
+ Attachment: All Items Unlocker.7z 
+ 
+ (Size: 16.67KB, Downloaded 3428 times) 
+ 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 10 March 2021 12:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Wed, 11 July 2018 01:23 you can get all weapons by scripts 
+ http://fable3mod.com/forums/index.php?t=msg&th=219&g oto=544&#msg_544 
+Wow, why didn't I get an email for your reply? Wow. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Thu, 11 March 2021 05:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ CatchLightning wrote on Mon, 08 March 2021 23:32 Yup. There is a readme inside please read it. I have no idea if their instructions are absolutely necessary but I understand why they suggest them even if it will mean you have to fight the first boss without them. PS don't buy any gauntlets on the road to rule if you don't want unremovable duplicates (at least not easily removable). Weapon dupes should be sellable at pawn shops. 
+Thank you so much. Will try it out when I can. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Thu, 11 March 2021 09:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay so I've done more testing. It seemed to work fine once I completed the Brightwall Academy trial. Otherwise my female protagonist was stuck with a beard. 
+ 
+ 
+Also be aware that the pre order weapons can't be sold to pawn shops so if you end up with dupes you are stuck with them without those lua scripts. 
+ 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Thu, 18 March 2021 19:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ CatchLightning wrote on Thu, 11 March 2021 09:55 Okay so I've done more testing. It seemed to work fine once I completed the Brightwall Academy trial. Otherwise my female protagonist was stuck with a beard. 
+ 
+ 
+Also be aware that the pre order weapons can't be sold to pawn shops so if you end up with dupes you are stuck with them without those lua scripts. 
+ 
+Okay, I am REALLY confused. The instructions in the WinRar aren't very clear. 
+ 
+Can you give me a step-by-step instruction? 
+(Basically, yes, I need you to hold my hand. 
+ 
+I followed the instructions, and yet... how do I access the weapons? 
+I have just defeated Saker, and now I am in the middle of Brightwall. 
+ 
+ 
+ [Updated on: Thu, 18 March 2021 21:21]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 23 March 2021 20:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Rick O'Shay wrote on Fri, 19 March 2021 02:41 CatchLightning wrote on Thu, 11 March 2021 09:55 Okay so I've done more testing. It seemed to work fine once I completed the Brightwall Academy trial. Otherwise my female protagonist was stuck with a beard. 
+ 
+ 
+Also be aware that the pre order weapons can't be sold to pawn shops so if you end up with dupes you are stuck with them without those lua scripts. 
+ 
+Okay, I am REALLY confused. The instructions in the WinRar aren't very clear. 
+ 
+Can you give me a step-by-step instruction? 
+(Basically, yes, I need you to hold my hand. 
+ 
+I followed the instructions, and yet... how do I access the weapons? 
+I have just defeated Saker, and now I am in the middle of Brightwall. Well, you should have access to Sanctuary at this point. If Jasper has opened the weapons room (which he ought to have) then that's how you access the weapons. 
+If I recall correctly, this script fires message boxes about each weapon added to your Armoury. 
+ 
+ 
+ 
+ [Updated on: Tue, 23 March 2021 20:13]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 23 March 2021 20:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yeah, I got to that point. Then quit the game. 
+ 
+And then I put in the Unlock folder, restarted the game, and nothing changed. 
+ 
+Then, I put in the other folder, restarted, and again, nothing. 
+ 
+ 
+ [Updated on: Tue, 23 March 2021 20:17]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 23 March 2021 23:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I honestly have no idea what's unclear. 
+ 
+Just put the unlock files you want in where it says to. Load up. For me I knew it worked by putting me in the magicians outfit every time. Not sure why that is. 
+ 
+Then save your game. Quit and put the files it says to back in their place. 
+ 
+ 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 23 March 2021 23:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Literally just copy this folder (or whichever variant you prefer) under to the one with the exact same name "Traitors_Keep" 
+ 
+Say yes to any overwrites. Load and save. You'll be in the magicians outfit. 
+ 
+Then copy the "Traitors_Keep" under Originals and then say yes to overwrites. Then you are done. If it didn't work your install is weird. Or you may need someone better with computers to help you in person or by remote desktop (with the current situation). 
+ 
+ 
+ 
+ Attachment: Screenshot_20210324-014233_Dropbox.jpg 
+ 
+ (Size: 129.31KB, Downloaded 2226 times) 
+ 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 24 March 2021 14:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Is it possibly because I downloaded this, that the All Weapons folder isn't working? 
+ 
+ https://steamcommunity.com/app/105400/discussions/0/16285380 05528399439/ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 24 March 2021 15:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I don't know. And I'm kind of done helping. Everyone normally just uses the fitgirl repack as far as I know. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 24 March 2021 15:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ah ha! 
+I think I may have finally figured out my mistake. 
+ 
+But first, I must ask, is it REALLY necessary to wait until AFTER defeating Saker before getting my arsenal? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 24 March 2021 17:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Rick O'Shay wrote on Thu, 18 March 2021 21:41 CatchLightning wrote on Thu, 11 March 2021 09:55 Okay so I've done more testing. It seemed to work fine once I completed the Brightwall Academy trial. Otherwise my female protagonist was stuck with a beard. 
+ 
+No as I already said so. But it will leave you with unsellable duplicate pre order weapons. If you don't wait. This isn't an issue more than inconvenience. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Wed, 24 March 2021 17:52]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 24 March 2021 18:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ah ha! 
+It all works now! 
+Yes! I knew I was on the right track when my latest New Game started me off with a sick beard and weapons while in bed with my PJs. 
+ 
+Oh man, I have waited so long for a mod like this. 
+ 
+If I were a girl, I'd kiss you for this! 
+ 
+Thank you so much, my dear friend. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 24 March 2021 18:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm glad it worked. The nexus link in my signature will link you to my other work. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 20:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ CatchLightning wrote on Wed, 24 March 2021 18:38 I'm glad it worked. The nexus link in my signature will link you to my other work. 
+I love it so far. 
+Needs a few updates. 
+ 
+One example, the sword that once belonged to Thunder from Fable 1, it has a serious typo attached to it. It calls for a Fire Spell, when it really means "shock". 
+ 
+ https://fable.fandom.com/wiki/Thundaraga 
+ 
+EDIT: I just realised that mistook Thundaraga with the Thunderblade. Nevertheless, the typo is there, even the wiki says it. 
+ 
+P.S. Please, do chase the orgy requirements. I REALLY don't want to fuck other dudes, nor be forced to have an orgy with even 1 dude present, besides the Prince. As of right now, there are only 2 female hookers, and plus my wife, and so, I am 1 woman short. 
+ 
+ 
+ [Updated on: Mon, 29 March 2021 20:43]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 20:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yeah. Thunderaga's already fixed in the latest version as of March 28, 2021 version 2.3 
+ 
+BTW it was a dev mistake not mine. 
+ 
+Just update your mod by overwriting. 
+ 
+I'm also working on normalizing still but I've hit some snags. I'm waiting for a friend of mine to get on vacation so I can have a fresh pair of eyes on it. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 20:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ah, crap, I edited too late. 
+You already replied. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 20:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So, if adding in more female hookers, or replacing the male ones with females is impossible, perhaps the "orgy" augment can be replaced with "threesome", requiring only 2 people. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 20:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It's okay. Someone finally admitted directly they don't want to fuck dudes. Everyone else is being all roundabout. 
+ 
+So I'll let you pick what they are replaced by. I'd say sex with women but it seems too easy and has overlaps. 
+ 
+Also the Swinging Sword actually requires all the women be different women but I can't easily make it say that (I might be able to remvoe it though). 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 20:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Orgy already is replaced with threesome in my mod. Also would you like to name the branchname where gay sex is removed? It'd be version 2.4.$ 
+ 
+where dollarsign is a name that is Nexus Safe For Work mode friendly. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Mon, 29 March 2021 20:57]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 20:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ CatchLightning wrote on Mon, 29 March 2021 20:49 It's okay. Someone finally admitted directly they don't want to fuck dudes. Everyone else is being all roundabout. 
+ 
+So I'll let you pick what they are replaced by. I'd say sex with women but it seems too easy and has overlaps. 
+ 
+Also the Swinging Sword actually requires all the women be different women but I can't easily make it say that (I might be able to remvoe it though). 
+. 
+. 
+Not enough people these days appreciate direct honesty. 
+ 
+I am no modder, so I can only think of two ways out; either editing the weapon requirements or increasing the number of female hookers.... hmm, I wonder, is it possible to disable the drain on your wife's affection? I know that if you have two wives living in the same region, they will hunt each other down, and their "affection health" will start quickly draining. I think that's stupid; I am the King, and thus I should be able to have a harem if I wish. 
+ 
+There are other weapons that demand I fuck men, different men, so... maybe Man's Best Friend can be changed to "give charity to 10 different beggars"? 
+ 
+"Orgy" be replaced with "threesome" or "foursome", as two female hookers, plus my wife and myself makes 4. 
+ 
+ 
+ [Updated on: Mon, 29 March 2021 21:00]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 21:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So the orgy requirement already is replaced with a threesome. The trick is to use your wife and a flirty female npc. Neither has to be bisexual. No more sleeping with whores. Use sex invite on either one and lead the other one to bed by holding their hand. The option will change from sex to group sex if it's done right. 
+ 
+It's honestly my first mod and this game isn't kind to modding. Changing hooker count may well be impossible for me. I can't change text yet only swap it with other text. BUT if you read the changelog in my mod it tells you all reduced and changed requirements. 
+ 
+Also you gotta answer what the branch should be named. And sadly donating to beggars seems to be a bugged or incomplete/non-implemented challenge. I tried it for spend money and it worked inconsistently. Some kind of ultra-libertarian proof that donating to the homeless helps no one (they definitely can't get their shit together even when I give them 3600 gold, probably spending it all on alcohol) and buying a house helps everyone by improving the economy. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 21:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I understand. 
+Years ago, I gave up on this game, since people told me it was "unmoddable". 
+ 
+For your first mod, I must congratulate you, as you've single-handedly revived this game's replay value. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+    Re: ALL weapons available? 
+ Mon, 29 March 2021 21:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Why thank you. 
+ 
+No input on homosexual removal replacement or names? 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 22:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ CatchLightning wrote on Mon, 29 March 2021 21:09 So the orgy requirement already is replaced with a threesome. The trick is to use your wife and a flirty female npc. Neither has to be bisexual. No more sleeping with whores. Use sex invite on either one and lead the other one to bed by holding their hand. The option will change from sex to group sex if it's done right. 
+ 
+It's honestly my first mod and this game isn't kind to modding. Changing hooker count may well be impossible for me. I can't change text yet only swap it with other text. BUT if you read the changelog in my mod it tells you all reduced and changed requirements. 
+ 
+Also you gotta answer what the branch should be named. And sadly donating to beggars seems to be a bugged or incomplete/non-implemented challenge. I tried it for spend money and it worked inconsistently. Some kind of ultra-libertarian proof that donating to the homeless helps no one (they definitely can't get their shit together even when I give them 3600 gold, probably spending it all on alcohol) and buying a house helps everyone by improving the economy. 
+So, you enabled the Sex Invite to other people? I thought that option only came with whores. 
+ 
+Well, the Orgy requirements that is called "Loose Morals" I think can remain with that name. Or, it can renamed "Harem". 
+ 
+As for Man's Best Friend.... I still dunno. 
+ 
+ 
+ [Updated on: Mon, 29 March 2021 22:13]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 29 March 2021 23:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Please reread everything I have written but read it more carefully. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Tue, 30 March 2021 07:55]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 30 March 2021 08:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Okay, so, we're down to the last question? 
+ 
+And that question is renaming and repurposing the demand to fuck 10 different dudes? 
+Or did I miss something? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 30 March 2021 08:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yes. Except that one had always been able to do sex invite with flirty and promiscuous NPCs who are attracted to your sex (and in love with you I think, I'm unsure if it works with best friends as long as their prefered is involved). I didn't add that. 
+ 
+Still I need to figure out how to gangbang my character's wife without needing a bisexual dude in there. Who knew Elise was so adventurous? 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Tue, 30 March 2021 09:07]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 31 March 2021 11:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ CatchLightning wrote on Tue, 30 March 2021 08:53 Yes. Except that one had always been able to do sex invite with flirty and promiscuous NPCs who are attracted to your sex (and in love with you I think, I'm unsure if it works with best friends as long as their prefered is involved). I didn't add that. 
+ 
+Still I need to figure out how to gangbang my character's wife without needing a bisexual dude in there. Who knew Elise was so adventurous? 
+. 
+. 
+Maybe there can be TWO levels on one weapon, like say, with The Swinging Sword, we have "have sex with 10 women" as it is, and then replace the "have sex with men" part replaced with "have sex with 20 women". 
+Or, replaced with "have sex 50 times", no gender requirement. 
+ 
+There are 2 female whores, in addition to the 2 male ones. So, if "have sex with 4 people" has been replaced with 3 or 2, then you don't need another male at all, just you, Elise, and the 2 female whores. 
+ 
+As for the Sex Invite, I've only known it to appear with whores, and even then, ONLY when they are in "Neutral" mode. 
+ 
+ 
+ [Updated on: Wed, 31 March 2021 11:04]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 31 March 2021 11:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Make a straight or bi promiscuous or flirty NPC love you and you can take them to your bed by the hand. When your wife is amorous as shown on the world map you can use sex invite. Then when you've got NPC by the hand and wife by the bed the option changes. 
+ 
+I've never used a whore in game and never will. Nor is it necessary now. If you can't understand that I can't help you. 
+ 
+Two levels is lame. But so is gaining extra guild seals on weapons. I may straight rework it all. 
+ 
+But also I want Elise to participate in a gangbang. Just because I play the game as stupidly as possible. And I may test if a male listed as a best friend who is flirty or promiscuous would join in. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 31 March 2021 14:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ CatchLightning wrote on Wed, 31 March 2021 11:22 Make a straight or bi promiscuous or flirty NPC love you and you can take them to your bed by the hand. When your wife is amorous as shown on the world map you can use sex invite. Then when you've got NPC by the hand and wife by the bed the option changes. 
+ 
+I've never used a whore in game and never will. Nor is it necessary now. If you can't understand that I can't help you. 
+ 
+Two levels is lame. But so is gaining extra guild seals on weapons. I may straight rework it all. 
+ 
+But also I want Elise to participate in a gangbang. Just because I play the game as stupidly as possible. And I may test if a male listed as a best friend who is flirty or promiscuous would join in. 
+Huh, I shall test that out. 
+ 
+I didn't think I was offending you; and I wasn't misunderstanding you. 
+ 
+Well, I don't know how else to augment The Swinging Sword that doesn't involve something sexual. 
+As for The Swinging Sword, 
+There is, 
+Ladykiller = Fuck 10 women 
+and, 
+Man's Best Friend: Fuck 10 men, 
+So, 
+I know you don't want to change "10 men" to, say, "30 women", but I was thinking that if you changed it, it could be titled, "Well Polished Spear", and the reward would be an increase in damage. 
+ 
+Eww. No man penetrates my woman but me. 
+ 
+ 
+ [Updated on: Wed, 31 March 2021 15:34]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Fri, 02 April 2021 20:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Other than Fireball and Shock, the other spells are criminally underrepresented on the Augments. 
+ 
+I was thinking, there is the Ice Maiden pistol; why not replace the 'fuck 10 men' (Seduction) requirement with 'kill 50 enemies with the Ice Storm spell', with a name like "Ice Queen"? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Fri, 02 April 2021 23:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I wish I could. It's easy enough to transplant requirements but not make new ones. It ought to be possible but something fucky is going on with spells. Most script relating to spell x just has an error message where spell is defined. Even though it still works in game. The program I use might be extracting the info wrong. If I can get into it by hex it might work but still be a journey. Still let me try it. That does sound cool if I can get ice to work. I could transplant stun as a result. Or replace swinging sword sex with men with use Blades spell. So you are penetrating men with your long thing gladii. 
+ 
+I'd also like to remove +guild seal bonuses but as my vision grows grander the need for branches grows too. And this makes extra work unless I can automate the process through a hex editor. And I'm not a coder. This does remind me I've actually done this all before editing a version for Borderlands 2. I should get to posting that mod too. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Sat, 03 April 2021 00:36]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sat, 03 April 2021 18:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Fair enough. 
+ 
+It's a shame how most of Fable 3's prizes consist of Guild Seals and Cash, both of which become obsolete before the game is even half-over. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sun, 04 April 2021 21:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm thinking of a total rework at this point. Iterative makes more sense in case I get bored and abandon this work. 
+ 
+Normalization is easier than I initially expected. And I have made decent progress. 
+ 
+I'm going to first release a branch as 2.4 with all weapons being sellable and 2.4.gae also including replacing sex with men with use Blades spell to kill 30 enemies, maybe I can make it kill men with your gladii? 
+ 
+Then I can make either 2.5 or 3.0 include normalizaiton. $.5 often demarks major updates but +1.0 indicates total updates. It's a big change despite minimal under the hood changes. It'd also have a .gae branch (If gangbangs work I may leave have sex with men in my own copy) if not gayness would be junked in favor of mass appeal. Removing any branching. I'd also need to ensure Swinging Sword doesn't need sex with different men too meaning I'd need to transplant the Ice Queen's one. 
+ 
+Then if I were to rework Augment Rewards. Which is possible but that is extensive and would be combined and definitely as a new version like 4.0 or even as a separate mod under 
+ Fable 3 Total Weapon Rework 1.0 
+ 
+ tl;dr look for a version with the suffix .gae soon to no longer bang men. 
+2.5 or 3.0 will be the name with normalization 
+Any future remixing would be either 4.0 or a new 1.0 as a total rework. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 05 April 2021 18:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Rick O'Shay 
+ Messages: 20 Registered: July 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ There is enough room for more mannequins in the game's three weapon shops. 
+And the weapons being sold should be based on location, rather than random, if you know what I mean. 
+ 
+Like, weapons that focus on killing mercenaries or wolves, or earning money, should be sold at Brightwall, and weapons that are Auroran should be sold only in Aurora. 
+ 
+Simmon's Shotgun should be dug up from his grave, and the Swift Irregular either sold in the fort, or in the chest with the Bonesmasher. 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 05 April 2021 21:00 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Well that's not something I can do. What I can do is say that the unlocker works and the developers at Lionhead need to pull their heads out of that lion's ass. 
+ 
+PS: version 2.4 is up. 
+ 
+But version 2.4.gae is still in progress. I was working on normalizing and ensuring all weapons could be sold first. And selling weapons being made possible was laughably easy. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+ Next Page 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ Pages (2): [1   2    ›    » ]   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Now you too can make sheathed weapons invisible 
+
+ 
+ Next Topic: 
+ "A Marriage of Inconvenience" not showing up 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:52 PDT 2026 
+
+ Total time taken to generate the page: 0.05751 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » ALL weapons available? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » ALL weapons available? (All weapons available mod; is there one?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sun, 11 April 2021 22:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Version 2.4.1 with requirement to have sex with men removal is now available. Also available are versions without that and a version with preference for men if one might want. But the first one is likely to be the future main branch. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sun, 27 June 2021 22:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ stono20 
+ Messages: 2 Registered: June 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Rick O'Shay wrote on Wed, 24 March 2021 18:06 Ah ha! 
+It all works now! 
+Yes! I knew I was on the right track when my latest New Game started me off with a sick beard and weapons while in bed with my PJs. 
+ 
+Oh man, I have waited so long for a mod like this. 
+ 
+If I were a girl, I'd kiss you for this! 
+ 
+Thank you so much, my dear friend. 
+Could you share what you did? Because I agree, the instructions don't make much sense and I can't get it to work, I have my DLC files named as yours were, being 01_Understone etc 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Mon, 28 June 2021 00:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Please go to my mod pages and read the docs pages on the Unlocker and Rebalance Mods. Follow the nexus link in my signature. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 27 July 2021 19:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Sorry for the bump. I'm new to this, so bear with me. When using scripts that grant you DLC weapons after a certain point in the game, does this bypass needing any DLC files? And if so, does that also mean that, (with the exception of Understone and Traitor's Keep obviously), I can actually go back to using a modified version of GFWL/play online with others and still spawn/use DLC weapons like the Channeler? To make things easier, the only items I'm requesting are as follows (bear in mind they are not all DLC items): 
+-DLC- 
+The Channeler 
+The "free" Yule Hat 
+Black Dye 
+ 
+-Vanilla- 
+Facemelter 
+Long Hairstyle (NOT the Long Thick version) 
+Eyes of the Beholder Makeup 
+ 
+The first three items are DLC, no doubt. The last three are achievable without adding scripts, though I want to preface by saying Facemelter is heavily RNG at best because its spawn rate is dependent on the few weapon shops you have available in the game. The OP here can attest that the space in weapon shops ARE wasted, so it baffles the mind why we can only buy 4 different weapons, with one being a rifle. If you get unlucky, you either have to start on a new save, which is very impractical, or trade online. I mean, I don't mind trading with others online, if and only if you can play online with others in a base game but using scripts to add DLC items that are not locked to Understone or Traitor's Keep. The Long Hairstyle is bit of a doozy to get, as well, but I hear it can be traded online so it rebounds to my previous sentence. 
+ 
+I just want to know if you need the DLC files for the scripts to register/spawn DLC items, and if I can just make a script of sorts to add all six of the items I mentioned. I'm someone who doesn't care about the DLCs as much, so I don't mind a base game world, but I do love the Channeler and other things. If it's apparent that the DLC files are required for the scripts to spawn DLC items, then I'll have to live with the fact I can't play online ever again. At that point, I'd just make a simple script for the Facemelter. I'd really appreciate any feedback on this. 
+ 
+PS, I don't mind my hand being held for any step-by-step process, but I am not opposed to getting my hands dirty either. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 27 July 2021 21:17 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ No it won't give you the weapons if the files aren't present. 
+ 
+It is possible to change weapon appearances and modifications though with modding. 
+ 
+Thus you could pick another weapon and change it so its appearance, damage, name, and mods would be this of Facemelter. Check my github for details. I will answer any questions in detail because this is one of the hardest mod types I have done for this game. It took me a long time to figure out along with the help of seshxhunter. 
+ 
+For only weapon cosmetic changes you have to make the change. Save it. Close the app. Then reopen the app and check if it took. It won't save if you don't do this. 
+ 
+You can change damage by copying the weapon level table from another weapon. BASE damage can be no more than 32 because its a 32 bit game I suspect. 
+ 
+The name can be changed just in your weapons room. 
+ 
+Lastly I bet the GFWL unlocker would work. 
+ 
+If mods work for your game maybe I'll make a version of my mod for the base game only. 
+ 
+ 
+ https://github.com/CatchLightning 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Tue, 27 July 2021 21:18]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 27 July 2021 22:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Shame. But you've given me some hope. If I have to "reskin" the base game weapons into something else, I could, but there's still the issue of wanting to use certain dyes and then the issue with the free DLC, like the Yule Hat. Guess there's no choice, I have to play offline because of that fact. Although, on that subject, can you reskin clothing items, as well? Could you change one helmet to look like the Yule Hat and it'll function the same way as doing it for weapons? Facemelter is not a DLC weapon, it is in the base game, but the weapon is still hard to obtain if you don't find it in any of the weapon shops. As far as the Channeler goes, I could reskin something like the "Avo's Lamentation", which is a poor-man's Channeler, and fiddle with the stats on that, too. I was going to message you on Nexus under the assumption you don't frequent this site or the posts as much, but you're here, and I appreciate it. 
+ 
+We can try something different, though. If I want to play online with others, which means no GFWL remover and playing on the base game, could I also reskin clothing to look like DLC items? The Black Dye sounds like it can remedied with Grey to be honest, so I can make that compromise. I need to make a script for the Facemelter, because it's better to spawn that in instead of having to restart my game over and over until a shop sells one, or if we work this out and I can play online, I'll find someone to trade with. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Tue, 27 July 2021 23:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'd try my modding process to "make" a Facemelter. The weapon doesn't need to be anything like the original. Hell you can turn a hammer into a rifle like I accidentally did in one release. 
+ 
+The modding process will permanently change the rifle you choose into a Facemelter with a different spawn name. 
+ 
+By the way every weapon will NEVER spawn in your game. You can't reroll weapons. They may spawn in different shops but it will be the same two dozen weapons. All weapons are decided once and assigned to your profile permanently. Including legendaries. The most legendary weapons you can roll is three by getting the third opening a "second" player's chest with 50 golden keys using your "first" character. 
+Though it'll give you less work the more cosmetically similar. You have to trade for the rest which was a terrible game decision. And I'm sure Microsoft nonsense. 
+ 
+And if you want to mix and match parts in a way the base game lacks you need multiple variants of your mod to swap in before each relevant chest is opened on the Road to Rule. 
+ 
+I don't believe one could reskin clothing like that because you don't have the mod files. 
+ 
+I'm not very familiar with scripts and never used Lua myself. I get notifications whenever someone posts here but Nexus doesn't notify me. I still respond to all comments and questions. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Tue, 27 July 2021 23:16]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 28 July 2021 10:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm afraid to say there's little point. I can't for the life of me remember how I was able to obtain a Channeler while having the ability to play online last year. I'm moronic for ever uninstalling the game in the first place at that point, too. If I can't somehow get it normally while retaining the ability to play online, then I'm better off just using scripts while accessing all the DLC, which requires the GFWL remover anyway. I'll look into this more, I must have done something to make this happen because it literally was last year that I was able to achieve this. You already made it clear that you need the DLC files to even mod DLC-related items, so if something doesn't end up working out, I'm just gonna have to grit my teeth and play offline and enjoy the full experience. Again, a script at that point to compensate the lack of trading with others will be an option I'd rather implement. Thanks for the assistance. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 28 July 2021 16:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ You need the Pre-order dlcs. I don't know if they disable GFWL. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 28 July 2021 17:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ That would be the Inquisitor's Pack, wouldn't it? No other way to get them. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 28 July 2021 17:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yes. Unless maybe it got traded to you years ago? 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 28 July 2021 17:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Pre-order weapons cannot be traded. But you make an excellent point. Perhaps GFWL ignores it. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Wed, 28 July 2021 17:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Only one real way to find out. Throw it on the wiki if it works. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sat, 07 August 2021 01:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ @CatchLightning Would you happen to know where to place the files for the "Direction Spell Freeze Fix" if you're not using the GFWL emu or the cracked version of the game? If you've done this, of course. I went through the lengthy process of getting Fable 3 to play with the modified GFWL to play online with others, and I also managed to get the workaround to have online for Traitor's Keep as well. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sat, 07 August 2021 11:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ No. But I am very impressed with your work and would like you to coordinate with me to distribute your version that maintains online. I suspect the fix may already be a part of the main files I modified from some work I did with SeshxHunter. Since these files are part of a greater group which affect how weapons work. 
+ 
+Try installing my mod in your version and tell me if it works and doesn't break online. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sat, 07 August 2021 14:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Way ahead of you. Believe it or not, your unlocker was actually rudimentary to getting a similar workaround to having Understone playable for online. Also, said method paves the way for installing the fix that prevents magic from crashing or freezing your game after a fixed amount of hours, around the 50 mark. I will post what he did but mind you, I do NOT want Understone but I don't mind using your unlocker if for some reason I can't get certain weapons based on bad luck or lack of DLC. Understone to me felt like a pathetic DLC that really had no purpose but real estate management if you really needed it. Traitors Keep is different. It feels and looks like an actual expansion. I think your unlocker doesn't affect people's ability to play online but I can test it out. I'll post what the person said on the Steam forum. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sat, 07 August 2021 14:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ https://steamcommunity.com/sharedfiles/filedetails/?id=24418 06130 
+ 
+Scroll down to the comments and not even that far in from a user named Hao they mention something about using the unlocker for Understone. I haven't tried it and I assume he suggests the spell freeze fix because it coincides with the edited collection.mb file that it needs to put into. I dunno. I really don't want to add Understone stuff in my directory unless that fix really needs it. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sat, 07 August 2021 16:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I read all the details. And saw that I was linked to as well 
+ 
+But this is very much an elaborate setup. If someone made a zip with the relevant changes that could overwrite the game files that would be ideal. 
+ 
+Whether they can get it working with all dlc remains to be seen. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sat, 07 August 2021 17:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ GrinnTheValesti 
+ Messages: 10 Registered: July 2021 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ In any case, my only concern is getting the fix applied. I need to find out if I can just make the relevant folders and put the files in there or if I have to place them in the same directory in TK. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ALL weapons available? 
+ Sat, 07 August 2021 17:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I couldn't tell you. I used a crack with all DLC preinstalled. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ Pages (2): [  «    ‹    1   2]   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Now you too can make sheathed weapons invisible 
+
+ 
+ Next Topic: 
+ "A Marriage of Inconvenience" not showing up 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:53 PDT 2026 
+
+ Total time taken to generate the page: 0.05490 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

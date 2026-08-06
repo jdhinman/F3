@@ -1,0 +1,376 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Blocked game? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Blocked game? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Blocked game? 
+ Fri, 22 November 2013 08:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ thid 
+ Messages: 5 Registered: November 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So while playing around with Debug commands and testing out thinks I run in to strange problem, all doors in sanctuary are closed also I can't do any quest. 
+ 
+ Debug.SetCombatFinishersTestMode(true)
+Debug.SetHeroMorality(-1000.0)
+Debug.SetHeroPurity(-1000)
+Debug.SetHeroTan(1.0) 
+ 
+ 
+game broke after using this, any ideas how to fix this and why it broke ? 
+ 
+ 
+ [Updated on: Fri, 22 November 2013 08:20]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blocked game? 
+ Fri, 22 November 2013 09:17 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ thid wrote on Fri, 22 November 2013 08:20 So while playing around with Debug commands and testing out thinks I run in to strange problem, all doors in sanctuary are closed also I can't do any quest. 
+ 
+ Debug.SetCombatFinishersTestMode(true)
+Debug.SetHeroMorality(-1000.0)
+Debug.SetHeroPurity(-1000)
+Debug.SetHeroTan(1.0) 
+ 
+ 
+game broke after using this, any ideas how to fix this and why it broke ? 
+ 
+This is why you always backup saved games before running commands. Basically all scripts have stopped running because it can't get past those commands. There is no fix that I'm aware of. 
+ 
+Lionhead's lua implementation is really bad at recovering from stuff like this. There's a few existing bugs where this can happen naturally. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blocked game? 
+ Fri, 22 November 2013 11:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ thid 
+ Messages: 5 Registered: November 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ ok but how to avoid it? or what part of script did broke everything ? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blocked game? 
+ Fri, 22 November 2013 23:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ thid wrote on Sat, 23 November 2013 00:07 ok but how to avoid it? or what part of script did broke everything ? 
+some debug functions doesn't work and break everything that execute after 
+to avoid this, just put message box to the end of your script 
+ 
+GUI.DisplayMessageBox("OK")
+while (GUI.IsDisplayBoxActive()) do
+	coroutine.yield()
+end
+ 
+ 
+so, if everething ok, you will see message, then script is loaded 
+if no message is appear, then something wrong 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ A few unlisted Debug functions 
+
+ 
+ Next Topic: 
+ Activate saves, trade all weapons etc. 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:50 PDT 2026 
+
+ Total time taken to generate the page: 0.11422 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

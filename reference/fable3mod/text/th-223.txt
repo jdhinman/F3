@@ -1,0 +1,490 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Control scarring? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Control scarring? (Possible?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Control scarring? 
+ Mon, 27 October 2014 19:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I hope it's OK to create another topic for this separate question. 
+ 
+Is there a way of controlling which scars (burns or cuts) the hero receives and on which body parts they appear? 
+ 
+In functions.txt from this forum I only found Debug.AddHeroFaceScar()
+Debug.AddHeroRandomScar() 
+. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Control scarring? 
+ Wed, 29 October 2014 09:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Phnx wrote on Mon, 27 October 2014 19:05 I hope it's OK to create another topic for this separate question. 
+ 
+Is there a way of controlling which scars (burns or cuts) the hero receives and on which body parts they appear? 
+ 
+In functions.txt from this forum I only found Debug.AddHeroFaceScar()
+Debug.AddHeroRandomScar() 
+. 
+ 
+I believe it's controlled by one of the hero tracker scripts, probably the death tracker? But otherwise I'm not sure. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Control scarring? 
+ Wed, 29 October 2014 09:21 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ OK. Thanks. I'm going to check a game saved with a scar in the save game editor. Maybe I can fool around there. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Control scarring? 
+ Wed, 29 October 2014 13:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Check playerdeathtracker.lua 
+there are something like this 
+ Morph.AddScar(GetLocalHero(), EBodyArea.EBA_BODY) 
+ 
+but I'm not sure is this correct code or not 
+ 
+also, random remove 
+ Morph.RemoveRandomScar(GetLocalHero()) 
+ 
+tested and worked 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Control scarring? 
+ Wed, 19 November 2014 07:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ yea this is worked 
+ Morph.AddScar(GetLocalHero(), EBodyArea.EBA_FACE)
+Morph.AddScar(GetLocalHero(), EBodyArea.EBA_LEGS)
+Morph.AddScar(GetLocalHero(), EBodyArea.EBA_BODY) 
+ 
+but others EBodyArea don't used and don't work at all 
+also there is only one scar for one area... 
+so you just need to "dead" three times and you will be "full of scars" ...shame to lionhead 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Control scarring? 
+ Tue, 29 September 2015 19:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yes! Works like a charm. I never cease to be amazed by you, Artofeel! I'm hoping to learn even 1/10th what you know! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ [How to] Extract loading screen posters 
+
+ 
+ Next Topic: 
+ HeroTrackers.lua 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:13 PDT 2026 
+
+ Total time taken to generate the page: 0.05315 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

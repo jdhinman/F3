@@ -1,0 +1,584 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Remove Blood Mod? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Remove Blood Mod? (Is it possible to turn off blood?) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Remove Blood Mod? 
+ Thu, 23 January 2014 01:01 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ centhena 
+ Messages: 2 Registered: January 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I was wondering, is it possible to somehow turn off all the blood, gore, and splatter during combat? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove Blood Mod? 
+ Fri, 24 January 2014 19:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It might be possible to replace the blood textures with alpha, but I doubt you can do much beyond that. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove Blood Mod? 
+ Sun, 26 January 2014 00:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ probably... 
+every weapon has 'DrawsBlood' component 
+it's is boolean value 
+there three TRUE value in globals.gdb, so you may try to change them to FALSE (0) 
+ 
+this is from latest DLC 
+ 
+ T# 0000000D HO 00280100 HV E1DBBC56 DTO 00280144 DT 0000 DO 0000E5C4 D 00000001 DrawsBlood
+ 
+ T# 00000003 HO 0028AB60 HV E1DBBC56 DTO 0028AB7C DT 0000 DO 00147C68 D 00000001 DrawsBlood
+
+ T# 00000002 HO 002A9200 HV E1DBBC56 DTO 002A920C DT 0000 DO 001E87FC D 00000001 DrawsBlood
+ 
+ 
+ 
+to 
+ 
+ 
+ T# 0000000D HO 00280100 HV E1DBBC56 DTO 00280144 DT 0000 DO 0000E5C4 D 00000000 DrawsBlood
+ 
+ T# 00000003 HO 0028AB60 HV E1DBBC56 DTO 0028AB7C DT 0000 DO 00147C68 D 00000000 DrawsBlood
+
+ T# 00000002 HO 002A9200 HV E1DBBC56 DTO 002A920C DT 0000 DO 001E87FC D 00000000 DrawsBlood
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove Blood Mod? 
+ Sun, 26 January 2014 03:05 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ centhena 
+ Messages: 2 Registered: January 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sun, 26 January 2014 00:16 probably... 
+every weapon has 'DrawsBlood' component 
+it's is boolean value 
+there three TRUE value in globals.gdb, so you may try to change them to FALSE (0) 
+ 
+this is from latest DLC 
+ 
+ T# 0000000D HO 00280100 HV E1DBBC56 DTO 00280144 DT 0000 DO 0000E5C4 D 00000001 DrawsBlood
+ 
+ T# 00000003 HO 0028AB60 HV E1DBBC56 DTO 0028AB7C DT 0000 DO 00147C68 D 00000001 DrawsBlood
+
+ T# 00000002 HO 002A9200 HV E1DBBC56 DTO 002A920C DT 0000 DO 001E87FC D 00000001 DrawsBlood
+ 
+ 
+ 
+to 
+ 
+ 
+ T# 0000000D HO 00280100 HV E1DBBC56 DTO 00280144 DT 0000 DO 0000E5C4 D 00000000 DrawsBlood
+ 
+ T# 00000003 HO 0028AB60 HV E1DBBC56 DTO 0028AB7C DT 0000 DO 00147C68 D 00000000 DrawsBlood
+
+ T# 00000002 HO 002A9200 HV E1DBBC56 DTO 002A920C DT 0000 DO 001E87FC D 00000000 DrawsBlood
+ 
+ 
+ 
+ 
+Thank you very much! Now all I have to do is learn how to do that. I'll post back if that works or not when I figure it out, in case anyone else wants to turn theirs off too. 
+ 
+ 
+ [Updated on: Sun, 26 January 2014 13:21]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove Blood Mod? 
+ Mon, 27 January 2014 05:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ You will need a GDB editor if you want to easily make that change. It should be in the ./globals/global.gdb I think. 
+ 
+As soon as I get a chance I'll put up the GDB tools into the tools forum. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove Blood Mod? 
+ Mon, 27 January 2014 22:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Mon, 27 January 2014 18:43 You will need a GDB editor if you want to easily make that change. 
+It doesn't work actually... 
+It doesn't see some offsets, I forget to tell you about this bug 
+this is offsets for 'DrawsBlood' 
+ 
+#0649B35E 
+#92078C76 
+#DB0E8B1F 
+ 
+The easiest way is to open global.gdb in the HEX-editor and go to offset: 0000E5C4 and change 1 to 0, then do the same on 00147C68 and 001E87FC offsets 
+ 
+ 
+ [Updated on: Mon, 27 January 2014 22:27]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Remove Blood Mod? 
+ Mon, 03 February 2014 01:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ just checked 
+yep, that method remove all blood :) 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Can you fix a broken door/window? 
+
+ 
+ Next Topic: 
+ Question about gamescripts.bnk 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:55 PDT 2026 
+
+ Total time taken to generate the page: 0.05312 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

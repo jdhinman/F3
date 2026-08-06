@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding="utf-8"?>
+<VFSConfig ID="fable3">
+
+	<!--  Universal Banks -->
+	<Group Mountable="false">
+		<Bank ID="globals_model_headers" Path="globals/globals_model_headers.bnk" Mode="memory" />
+	</Group>
+
+	<!--  Global Banks -->
+	<Bank Path="globals/globals_streaming.bnk" Mode="memory"/>
+	<Bank Path="globals/globals_splines.bnk" Mode="memory"/>
+	<Bank Path="art/gui/gui_streaming.bnk" Mode="memory"/>
+	<Bank Path="skeletalmorphs.bnk" Mode="memory"/>
+
+	<!--  DVD Banks -->
+	<Bank Path="guiscripts.bnk" Mode="memory"/>
+	<Bank Path="audio_lod.bnk"/>
+	<Bank Path="envthemes.bnk" Mode="memory"/>
+
+	<!-- Globals Models and Textures -->
+	<Composite>
+		<Required><Ref ID="globals_model_headers" Mode="memory"/></Required>
+		<Required><Bank Path="globals/globals_models.bnk"/></Required>
+	</Composite>
+
+	<Composite>
+		<Required><Bank Path="globals/globals_texture_headers.bnk" Mode="memory"/></Required>
+		<Required><Bank Path="globals/globals_textures.bnk"/></Required>
+	</Composite>
+
+	<!-- GUI Models and Textures -->
+	<Composite>
+		<Required><Ref ID="globals_model_headers" Mode="memory"/></Required>
+		<Required><Bank Path="art/gui/gui_models.bnk"/></Required>
+	</Composite>
+
+	<Composite>
+		<Required><Bank Path="art/gui/gui_texture_headers.bnk" Mode="memory"/></Required>
+		<Required><Bank Path="art/gui/gui_textures.bnk"/></Required>
+	</Composite>
+
+	<Composite>
+		<Required><Bank Path="art/gui_memmount/gui_memmount_texture_headers.bnk" Mode="memory"/></Required>
+		<Required><Bank Path="art/gui_memmount/gui_memmount_textures.bnk" Mode="memory"/></Required>
+	</Composite>
+
+	<!-- Morph Textures -->
+	<Composite>
+		<Required><Bank Path="art/characters/heros/morphs/morphs_texture_headers.bnk" Mode="memory"/></Required>
+		<Required><Bank Path="art/characters/heros/morphs/morphs_textures.bnk"/></Required>
+	</Composite>
+
+	<!-- Morph Textures -->
+	<Composite>
+		<Required><Bank Path="art/creatures/pet/morphs/morphs_texture_headers.bnk" Mode="memory"/></Required>
+		<Required><Bank Path="art/creatures/pet/morphs/morphs_textures.bnk"/></Required>
+	</Composite>
+
+	<!-- Environment Theme Textures -->
+	<Composite>
+		<Required><Bank Path="newenvironmentthemes/textures/textures_texture_headers.bnk" Mode="memory"/></Required>
+		<Required><Bank Path="newenvironmentthemes/textures/textures_textures.bnk"/></Required>
+	</Composite>
+
+</VFSConfig>

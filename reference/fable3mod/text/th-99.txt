@@ -1,0 +1,374 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » ChunkSpy for KoreVM Lua 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » ChunkSpy for KoreVM Lua 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ ChunkSpy for KoreVM Lua 
+ Mon, 21 October 2013 20:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I've uploaded TodX's chunkspy alteration for disassebling KoreVM lua scripts, and well as a handy batch script that shows how to use it. Alternatively you can drag and drop compiled lua scripts onto the batch file to get the text output too. 
+ 
+I've also uploaded the lua source files with the added KoreVM opcodes. It's nowhere near usable as I was just adding them for when I eventually got around to trying to write a decompiler. 
+ 
+ 
+ 
+ Attachment: ChunkSpy_KVM.zip 
+ 
+ (Size: 219.33KB, Downloaded 3171 times) 
+ 
+ 
+ Attachment: kvm_opcodes.zip 
+ 
+ (Size: 4.74KB, Downloaded 2661 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ChunkSpy for KoreVM Lua 
+ Thu, 29 March 2018 00:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Wow, it's been a while since I've poked at Fable 3. 
+ 
+On a whim I've started updating a newer version of Chunkspy to handle KoreVM lua instructions. 
+I'll also be updating the output so it's more readable and intuitive. 
+ 
+ 
+ 
+ Attachment: ChunkSpy51-0.9.9-KVM.lua.zip 
+ 
+ (Size: 19.56KB, Downloaded 2293 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ChunkSpy for KoreVM Lua 
+ Sun, 08 April 2018 23:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ cool! 
+I may came back to modding F3 too, if you made GDBEditor add new items :) 
+it's really one of the most annoying thing, when you need to find what you can safely replace on map.. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: ChunkSpy for KoreVM Lua 
+ Mon, 09 April 2018 10:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sun, 08 April 2018 23:34 cool! 
+I may came back to modding F3 too, if you made GDBEditor add new items 
+it's really one of the most annoying thing, when you need to find what you can safely replace on map.. 
+ 
+I'll take a look at it. May end up writing the thing from scratch. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ BlackDemon's BNK Utils 
+
+ 
+ Next Topic: 
+ GDB editors 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:29 PDT 2026 
+
+ Total time taken to generate the page: 0.05146 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,470 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » I have reduced the grind 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » I have reduced the grind (Here's an edited bnk that reduces the grind) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+    I have reduced the grind 
+ Tue, 09 March 2021 00:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Here's an edited copy of a post I made elsewhere in the forum but it's so extensive I wanted to make a mod post for it. 
+ 
+I have changed all the weapons in the game by reducing almost all requirements by about 3-10 times. Kills are now down to 32 from 150 (gotta love hex). Florishes hits down to 15 from 200. Florish kills down to 5 from 50. Some weapons I kept the same like Mirian's Mutiator because I felt 5 of each interrelated task is quite feasible. Here's the file. Just replace the file (after backing up the original) in the DLC2 Traitors Keep Content sub-folder. My location is "D:\Fable 3\DLC\traitors_keep\Content". I actually reduced the file size from 24kB to 21kB by shaving off so many zeroes I think. I've tested on my game (not even a new save just the one I was using) and it works just fine. It does not change the text in-game so it will still say 150 kills or whatever but it does affect the progress bar (if I can fix the text later I'll upload that too) but for now just trust it requires "less" of the same task usually. 
+ 
+Fun notes: 
+1. Reaver Industries Perorator required 700 units of evil (how the system tracks morality I don't know but I think it's logarithmic? and the average weapon requires like 300 (already too much) so it takes forever in the base game. 
+2. I picked 32 kills because its close to the 30 kills you'll get in your average medium long mission in the game so it still requires some commitment for at least one quest but no longer grinding each weapon. 
+ 
+I hope to later normalize all weapons in the game's damage including the Hero weapons so weapon choice becomes stylistic instead of gameplay biased. I'm still figuring this out, I can't figure out where Hero weapons data is stored because this .ods I found here on the forum doesn't record their locations. I provided it too (I haven't updated it's values to match mine though sorry). I also have a github on my profile with the mod and the tools you need to edit it. 
+ 
+I have no idea if file locations (especially DLC ones) are affected by my use of a repack recently made available (in the year 2020) but I own this game on Xbox 360 so its reasonably legal for me to have it. 
+ 
+You can edit it yourself with the instructions found here in their original form but I have a copy on my github in my profile (sorry the link is longform) http://fable3mod.com/forums/index.php?t=msg&goto=872&amp ;amp ;amp ;amp ;#msg_872 
+Image links are dead maybe I'll make my own later. The ods is also found at the top of that page 
+ 
+TL;dr is overwrite your dlc2free.bnk with mine after backing your original up (save a copy of it somewhere else outside Fable 3's directory) and my location to store it was D:\Fable 3\DLC\traitors_keep\Content 
+the ods is for posterity and for someone who knows how to edit this themself and I have no idea what the blue column is for in said ods 
+ 
+ 
+And you know what here's a direct github link too just unzip the zip and follow the readmes https://github.com/CatchLightning/Fable-3-Modifications/rele ases/tag/v1.0 
+ 
+ 
+ 
+ Attachment: dlc2free.bnk 
+ 
+ (Size: 20.48KB, Downloaded 2173 times) 
+ 
+ 
+ Attachment: Fable3WeaponModification.ods 
+ 
+ (Size: 116.61KB, Downloaded 2181 times) 
+ 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Tue, 09 March 2021 00:57]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: I have reduced the grind 
+ Tue, 09 March 2021 01:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Future plans include normalizing all weapons' damage to make your weapon choice stylistic (including the Hero weapons). But I'm still figuring this out. Since Hero weapons aren't modified by what I did it's "nearly" every weapon. 
+ 
+Also be aware I purposely left some challenges including all of Mirian's Mutilator unchanged because I felt they were not unfair or could easily be co-completed. 
+ 
+I haven't yet found a fix for gifting weapons or things to other players via Games for Windows Live for those challenges so I left them alone for now. If I change those or apply any missed passes it'll be a v1.1 or something. Let me know if you think a challenge is too easy or still too hard. In relation to this be aware getting the upgrade for evil expressions had to be universally changed and since so many weapons had it as a challenge I set it to one from fifty as it was before. 
+ 
+Finally I have no idea why there's a smiley face in my first post but I can't fix it now. It should have been a closed parenthesis. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ [Updated on: Tue, 09 March 2021 01:25]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: I have reduced the grind 
+ Tue, 09 March 2021 01:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Quote: TL;dr is overwrite your dlc2free.bnk with mine after backing your original up (save a copy of it somewhere else outside Fable 3's directory) and my location to store it was D:\Fable 3\DLC\traitors_keep\Content 
+Correction: my location to store the replacement, not the backup was D:\Fable 3\DLC\traitors_keep\Content 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Updates and a call for Assisstance 
+ Tue, 09 March 2021 21:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I am now also working with an r/Fable community member whose name I will provide once I have their explicit permission to bring the community my weapon damage normalizations, which will make all weapons of the same type do the same damage so none is better than any other. 
+ 
+I'd really love to find someone with some sort of coding knowledge to automate processes that can be automated. I suspect weapon damages can be automated. Due to how I'm scaling the augments' requirements and the weird way directories work for them I suspect it'd be more difficult to automate than do it by data entry so this process will likely take around a week. 
+ 
+A current major issue is finding out where damage data for the hero weapons is stored because I could not find documentation on this. If anyone knows where they are or has some knowledge with hex that can help I'd love their help too. 
+ 
+Fixes coming soon with version 1.1 to fix those weapons I missed in first pass such as the Faerie Hammer of the Moon King. 
+ 
+I believe the mods will be mutually incompatible so users will have to decide between either mod or using an integrated mod I will develop. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Updates and a call for Assisstance 
+ Wed, 10 March 2021 20:55 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CatchLightning 
+ Messages: 47 Registered: March 2021 Location: Southern United States
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Version 2.0 is up on the nexus now without major flaws and a notice about contingency on the unlocker. 
+ 
+ My name not Jeff 
+My mod: https://www.nexusmods.com/fableIII/mods/4 
+ 
+My github for modding instructions: https://github.com/CatchLightning 
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Removing Animations 
+
+ 
+ Next Topic: 
+ Nude Female Hero by Ryuseiken 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:06 PDT 2026 
+
+ Total time taken to generate the page: 0.05521 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

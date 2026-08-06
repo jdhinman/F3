@@ -1,0 +1,302 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » [How to] Extract loading screen posters 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » [How to] Extract loading screen posters 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ [How to] Extract loading screen posters 
+ Fri, 12 September 2014 23:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ CreasyTLT 
+ Messages: 1 Registered: September 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Hello! 
+ 
+I have never modded a game in my life, se reading this forum is hard, there is not so much information for such inexpirienced user like me, so I need some help, please. 
+ 
+For a long time I was trying to get my hands on loading screens posters, like this ones imgur[dot]com/a/jC2ld#9 
+ 
+Could please comeone help to me extract them from the game, if this is even possible? I think BlackDemon's BNK Utils is related, thought I tried A LOT and couldnt extract anything from the game. 
+ 
+Please, help me to get these posters 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [How to] Extract loading screen posters 
+ Mon, 15 September 2014 08:32 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ they should be in 
+art\gui\gui_textures.bnk.dat 
+or 
+globals\globals_textures.bnk.dat 
+first you need to extract .bnk files from streaming.bnk 
+then place .bnk in .dat files folder 
+then you can open it with BlackDemon's BNK Utils 
+after you find posters, probably you need to convert them to DDS format with this tool 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [How to] Extract loading screen posters 
+ Thu, 24 September 2015 08:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Did you ever find anything? I've always wondered why, after you become Queen (/King), it still shows posters of Logan! I think it would be cool to make some "For Queen and Country" posters (or something) to put up there, instead... 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Extracting models from the game 
+
+ 
+ Next Topic: 
+ Control scarring? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:04 PDT 2026 
+
+ Total time taken to generate the page: 0.05325 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

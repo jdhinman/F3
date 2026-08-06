@@ -1,0 +1,223 @@
+#include "standard-types.hsl"
+#pragma byteorder(little_endian)
+#pragma maxarray(4096)
+
+
+#pragma hide()
+#pragma show()
+typedef struct AnimatedVertex {
+	//Not sure why the bones are before the z coord...
+	halffloat 	floats[4]; 		//xyz and ??
+	ubyte				Bone[4];			//Supports 4 bones
+	ubyte				Weight[4];		//Adds up to 255
+	halffloat		UV[2];
+}AnimatedVertex;
+
+typedef	struct Block {
+			dword				Hash; //Hash
+			dword				BlockSize;
+			float				Unknown[BlockSize/4];
+}MatDataBlock;
+
+typedef struct Strings {
+			dword		Hash;
+			dword		StringBlockSize;
+			struct MatDataBlock_ {
+			zstring		texture1;
+			zstring		texture2;
+			zstring		texture3;
+			zstring		texture4;
+			zstring		texture5;
+			zstring		texture6;
+			
+			float		Unknown;
+			float		Unknown;
+			};
+			
+}MatStringBlock;
+
+typedef struct MaterialBlock {
+
+	//Ya, I know. This is stupid. But it works!
+	dword		type;	
+	
+	switch (type) 
+	{
+	case 1:
+		MatStringBlock	Strings;
+		break;
+	case 2:
+		MatStringBlock	Strings;
+		MatDataBlock	MatDataBlock;
+		break;
+	case 7:
+		MatDataBlock	MatDataBlock;
+		MatStringBlock	Strings;
+		MatDataBlock	Diffuse;
+		MatDataBlock	Specular;
+		MatDataBlock	Normal;
+		MatDataBlock	Environment;
+		MatDataBlock	Illumination;
+		break;
+	case 11:
+		//Skeletal Meshes use this
+		MatDataBlock	MatDataBlock;
+		MatDataBlock	MatDataBlock;
+		MatStringBlock	Strings;
+		MatDataBlock	MatDataBlock;
+		MatDataBlock	MatDataBlock;
+		MatDataBlock	MatDataBlock;
+		MatDataBlock	MatDataBlock;
+		MatDataBlock	MatDataBlock;
+		MatDataBlock	MatDataBlock;
+		MatDataBlock	MatDataBlock;
+		MatDataBlock	MatDataBlock;	
+		break;
+	default:
+		break;
+	};
+}MaterialBlock;
+
+//Static
+typedef struct Element_s {
+	dword		Unknown5; //0xFFFFFFFF <- I've seen this change.
+	byte		Unknown;
+	
+	dword		Triangles;
+	dword		TrianglesStart; //Pointer
+
+	//Not needed (Can be null)
+	float		Unknown[6]; //Origin??
+	
+	//dword		Unknown; //This doesn't exist in static meshes.
+}Element_s;
+
+//Animated
+typedef struct Element_a {
+	dword		Unknown5; //0xFFFFFFFF <- I've seen this change.
+	byte		Unknown;
+	
+	dword		Triangles;
+	dword		TrianglesStart; //Pointer
+
+	float		Unknown[6]; //Origin??
+	
+	dword		Unknown; //Element Number??
+}Element_a;
+
+typedef struct UnknownArray2 {
+	dword		Unknown8;
+	dword		Unknown9[Unknown8];
+}UnknownArray2;
+
+typedef struct Material {
+	dword						Unknown; //Only seen it used on grass
+	zstring						Name;
+	dword						CDAB3412; //Always 0xCDAB3412
+	//MaterialBlock				mDefination;
+}Material;
+
+typedef struct StaticMesh {
+	zstring							SubmeshName;
+	
+	byte							Unknown;
+	dword							MeshID;
+	dword							MaterialID;
+
+	
+	dword							nTris;
+	dword							tVerts; //nTris*3
+	dword							nVerts;
+
+	//Not needed (Can be null)
+	float							Origin[10];
+	
+	dword							nElements;
+	Element_s						Elements[nElements];
+	
+	halffloat						Verts[nVerts][6]; 	//x,y,z,?,u,v unknown has something to do with illumination? Setting it to 1.0 is fine
+	
+	
+	//v1/2/3 seem to control texture? v4 always 0x0
+	halffloat						Verts[nVerts][8]; 	//I'm not even sure these are floats...
+	word							Tris[nTris][3]; 	//v1,v2,v3
+
+	ubyte							Padding[4];
+}StaticMesh;
+
+typedef struct AnimatedMesh {
+	byte							Unknown;
+	dword							Unknown[2]; //Mesh|Material
+
+	dword							nTris;
+	dword							tVerts; //nTris*3
+	dword							nVerts;
+	
+	dword							nElements;
+	Element_a					Elements[nElements];	//This looks to be splitting the submesh into seperate elements.
+
+	dword							nUnknown7;
+	UnknownArray2			Array[nUnknown7];	//This looks to be an index of bones used for each element. I bet their sorted by Hash....
+
+	AnimatedVertex		Verts[nVerts];	//XYZ, UNK, Bone, Weight, U, V
+	dword							Unknown[nVerts][4];	//This will probably be Normals??
+
+	ubyte							Pad;	//come on now... wtf is this shit??
+	word							Tris[nTris][3];
+	ubyte							Padding[4];
+}AnimatedMesh;
+
+typedef struct Plane {
+	byte		Unknown[6];
+
+	dword		nTris;
+	dword		tVerts; //nTris*3
+	dword		nVerts;
+	
+	float				Verts[nVerts][13]; 	//wtf... has to be a matrix or something... Plus uv/normals??
+	word				Tris[nTris][3]; 	//v1,v2,v3
+}Plane;
+
+typedef struct MDL {
+	dword					FNVHash;								//Possibly a FNVHash; Same as in header (Start of each LOD)
+	byte					pad[8];									//I assume this is padding since it' always null
+
+	byte					nFlags;													//I'm not quite sure what this is doing.
+	dword					Unknown[nFlags][2];							//Probably [FNVHash]|[Bone]
+	
+	//Skeleton Stuff
+	dword					nBones1;
+	dword					SkeletonHierarchy[nBones1][2];	//Probably [FNVHash]|[Hierarchy]
+	dword					nBones2;
+	float					SkeletonOrigin[nBones2][11];		//Probably [Matrix]
+	
+	//Model Origin
+	//This isn't needed (can be null)
+	float					RootOrigin[10];	//I beleive this Matrix is the same as what's used in the seperated header
+
+	//The number of Materials, Meshes, and Animated Meshes, etc etc
+	dword					nMaterials;						//Textures
+	dword					nSubmeshes;						//Meshes
+	dword					nSkelSubmeshes;				//Animated Meshes
+	dword					nPlanes;							//Like grass...
+	dword					nUnk;									//This may be another mesh type... Haven't seen it yet though.
+	dword					nWTF;									//Mostly buildings use this. Probably collision
+
+	ubyte					pad;									//Haven't seen this used for anything, assume it's padding
+
+	//I think these may be dummies?
+	dword					nNodes;
+	zstring					strings[nNodes];
+	
+	//I haven't seen any Models that use both a regular and animated mesh. But this is lionhead so you never 'really' know....
+	//Material				Materials[nMaterials]; //Texture Block; Each texture is defined by a type.
+	//StaticMesh			mesh[nSubmeshes];
+	//AnimatedMesh			mesh[nSkelSubmeshes];
+	//Plane					mesh[nPlanes];
+	
+	//Logically there should only ever be one of these.... LOGICALLY
+	//float					NoIdea[nWTF][TotalVerts][2]; //For every vert in all the meshes, there's a float[2] at the end of the file.
+	
+	//Lower levels of detail use a different format.
+	//LOD					LevelOfDetail[Listed in Seperated Header];
+}Header;

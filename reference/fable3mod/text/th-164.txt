@@ -1,0 +1,719 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Debug commands 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Debug commands (Getting them to work) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Debug commands 
+ Tue, 18 March 2014 04:54 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ cjchris 
+ Messages: 7 Registered: March 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Whenever I try and get debug commands to work it breaks the script and nothing works, using the scriptactivation lua with: 
+Debug.GiveAllMeleeWeapons 
+GUI.DisplayMessageBox("OK") 
+while (GUI.IsDisplayBoxActive( do 
+	coroutine.yield( 
+end 
+return true 
+end 
+I found a workaround for some things by coding for each item etc. and that's rather laborious and very untidy and is no good for debug commands that don't have such a workaround. is there a particular sub routine I have to call on to enable Debug. as a function or add it as a global? 
+I've been out of programming for a long time and very much out of practice. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Tue, 18 March 2014 11:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Debug.GiveAllMeleeWeapons
+GUI.DisplayMessageBox("OK")
+while (GUI.IsDisplayBoxActive()) do
+coroutine.yield()
+end
+return true
+end 
+ 
+I'm assuming you found this code from here . You don't really need all of this unless you are trying to test something. Anyway, the correct order should be like this: 
+ 
+ GUI.DisplayMessageBox("OK")
+while (GUI.IsDisplayBoxActive()) do
+Debug.GiveAllMeleeWeapons
+coroutine.yield()
+end
+return true
+end 
+ 
+Correct me if I'm mistaken, I suck at coding. Anyway, if you are using that scriptactivation.lua method try replacing everything with: 
+ 
+ ScriptActivation[ScriptCode.QU000].AbleToRun=function ()
+	Debug.AddDLCDogBreedPack()
+	Debug.AddAllDLC1Items() (use these only if you have purchased the dlc)
+	Debug.AddAllDLC2Items()
+	Debug.GiveAllMeleeWeapons()
+	Debug.GiveAllRangedWeapons()
+	Debug.AddAllClothing()
+	Debug.AddAllClothingF2()
+	Debug.AddAllClothingAccessories()
+	Debug.AddAllHairstyles()
+	Debug.AddAllSpecialEditionTattoos()
+	Debug.AddAllClothingSuits()
+return nil
+end 
+ 
+ 
+ 
+ [Updated on: Tue, 18 March 2014 11:45]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Tue, 18 March 2014 11:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ cjchris 
+ Messages: 7 Registered: March 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ The gui part is to show whether or not the script is working, if it goes first it will be executed first before the script is broken and I'm using it as a safeguard to tell me if the code before it runs or not. will try the debug commands again later, but whenever I use a debug command the script stops at the debug command and goes no further. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Tue, 18 March 2014 12:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Silly me, I kind of rushed there. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Tue, 18 March 2014 21:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Debug.GiveAllMeleeWeapons 
+ or Debug.GiveAllMeleeWeapons() 
+? 
+ 
+If that's not a typo then that's probably the issue. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Tue, 18 March 2014 23:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Schuldiner 
+ Messages: 12 Registered: September 2013 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ /facepalm, I did not see that coming. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Wed, 19 March 2014 03:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ cjchris 
+ Messages: 7 Registered: March 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Was a typo in the forum not the script activation page was writing from memory rather copying and pasting. 
+Will paste up the text in my LUA later. I'm sure it's something small I'm forgetting to add and others having a dry run is the better way to run. 
+OK so I tried these copied and pasted straight from debug menu file taking them out of parenthesis 
+ 
+ScriptActivation[ScriptCode.QU000].AbleToRun=function()
+Debug.GiveHeroWeapon('ObjectInventory_L_Longsword_Spartan')
+Debug.GiveAllMeleeWeapons()
+Debug.GiveAllRangedWeapons()
+Debug.GiveAllSpellGauntlets()
+GUI.DisplayMessageBox("OK")
+while (GUI.IsDisplayBoxActive()) do
+	coroutine.yield()
+return nil
+end
+ 
+ 
+ 
+then the gui window, only just realised the halo weapon was the only line to execute that arrived in game but the rest broke. 
+ 
+ 
+ [Updated on: Wed, 19 March 2014 04:31]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Wed, 19 March 2014 05:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ cjchris wrote on Wed, 19 March 2014 03:03 Was a typo in the forum not the script activation page was writing from memory rather copying and pasting. 
+Will paste up the text in my LUA later. I'm sure it's something small I'm forgetting to add and others having a dry run is the better way to run. 
+OK so I tried these copied and pasted straight from debug menu file taking them out of parenthesis 
+ 
+ScriptActivation[ScriptCode.QU000].AbleToRun=function()
+Debug.GiveHeroWeapon('ObjectInventory_L_Longsword_Spartan')
+Debug.GiveAllMeleeWeapons()
+Debug.GiveAllRangedWeapons()
+Debug.GiveAllSpellGauntlets()
+GUI.DisplayMessageBox("OK")
+while (GUI.IsDisplayBoxActive()) do
+	coroutine.yield()
+return nil
+end
+ 
+ 
+ 
+then the gui window, only just realised the halo weapon was the only line to execute that arrived in game but the rest broke. 
+ 
+I think there's been problems with the giveall commands in the past too. From what I can remember it causes problems if you try and give yourself everything at the beginning of the game that are normally quest given. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Debug commands 
+ Wed, 19 March 2014 07:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ cjchris 
+ Messages: 7 Registered: March 2014 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ That would make sense as I was at the very first flit switch when activating these. Line by line worked fine at adding quest items though like the baron sword and ranged weapons. I'll have a play and find out anyway. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Game crashes after following script activation 
+
+ 
+ Next Topic: 
+ [Edited]Just a question. 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:58 PDT 2026 
+
+ Total time taken to generate the page: 0.05310 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

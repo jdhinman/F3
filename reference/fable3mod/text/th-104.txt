@@ -1,0 +1,4562 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » DLC Unlocking discussion (merged) 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » DLC Unlocking discussion (merged) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ DLC Unlocking discussion (merged) 
+ Sun, 08 September 2013 18:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It's been awhile since I've said anything on this topic. But I'll lay out quickly how Fable handles DLC checks. 
+ 
+This is the Traitor's Keep quest script. The DLC is started by speaking to a steward in the castle which then starts the castle assassion cutscene. 
+qc190_castleassassin.lua 
+ 
+Here is the notable output that checks for DLC purchsed 
+The interesting thing is that changing one byte (IE - [XXX] test; to [XXX] if true) with a hex editor will skip the DLC checking entirely. I've done it before so I know it works. 
+ Toggle Spoiler 
+ 
+3790 ** function [19] definition (level 2)
+ ** start of function **
+ source name: (none)
+3794 25020000 line defined (549)
+3798 EE020000 last line defined (750)
+379C 00 nups (0)
+379D 01 numparams (1)
+379E 00 is_vararg (0)
+379F 0A maxstacksize (10)
+ * code:
+37A0 89020000 sizecode (649)
+37A4 01000000 [001] getfield 1 0 0 ; ParentQuest
+37A8 01010286 [002] getfield_r1 1 1 1 ; InitialState
+37AC 02000000 [003] getfield 2 0 0 ; ParentQuest
+37B0 02020486 [004] getfield_r1 2 2 2 ; States
+37B4 02030486 [005] getfield_r1 2 2 3 ; OLD_QUARTER_ACS
+37B8 00010468 [006] le 0 2 1 ; to [8] if true
+37BC 00020039 [007] jmp 3 ; to [11]
+37C0 01040110 [008] self 1 0 260 ; "SetState"
+37C4 03050032 [009] loadk 3 5 ; "ASSASSIN_OUTRO"
+37C8 01010604 [010] call_i 1 3 1 
+37CC 0106000C [011] getglobal 1 6 ; IsLevelLoaded
+37D0 02070032 [012] loadk 2 7 ; "Albion\\CastleBattle"
+37D4 01020404 [013] call_i 1 2 2 
+37D8 01000002 [014] test 1 0 ; to [16] if true
+37DC 00060039 [015] jmp 7 ; to [23]
+37E0 01000000 [016] getfield 1 0 0 ; ParentQuest
+37E4 01080286 [017] getfield_r1 1 1 8 ; TeleportCharactersToPort
+37E8 01010082 [018] test_r1 1 0 1 
+37EC 00020039 [019] jmp 3 ; to [23]
+37F0 01040110 [020] self 1 0 260 ; "SetState"
+37F4 03090032 [021] loadk 3 9 ; "ASSASSIN_INTRO_A"
+37F8 01010604 [022] call_i 1 3 1 
+37FC 010A000C [023] getglobal 1 10 ; PhysicsCharacter
+3800 010B0286 [024] getfield_r1 1 1 11 ; SetAsPushableByHero
+3804 020C0000 [025] getfield 2 0 12 ; Entity
+3808 0300001A [026] loadbool 3 0 0 ; false
+380C 01010604 [027] call_i 1 3 1 
+3810 010D000C [028] getglobal 1 13 ; Health
+3814 010E0286 [029] getfield_r1 1 1 14 ; SetAsInvulnerable
+3818 020C0000 [030] getfield 2 0 12 ; Entity
+381C 0300021A [031] loadbool 3 1 0 ; true
+3820 01010604 [032] call_i 1 3 1 
+3824 010F000C [033] getglobal 1 15 ; Hittable
+3828 01100286 [034] getfield_r1 1 1 16 ; SetEntityAsOnlyHittableByEntity
+382C 020C0000 [035] getfield 2 0 12 ; Entity
+3830 030C0000 [036] getfield 3 0 12 ; Entity
+3834 0400021A [037] loadbool 4 1 0 ; true
+3838 01010804 [038] call_i 1 4 1 
+383C 0111000C [039] getglobal 1 17 ; coroutine
+3840 01120286 [040] getfield_r1 1 1 18 ; yield
+3844 0101027E [041] call_i_r1 1 1 1 
+3848 01130110 [042] self 1 0 275 ; "IsState"
+384C 03140032 [043] loadk 3 20 ; "SETUP"
+3850 01020604 [044] call_i 1 3 2 
+3854 01000002 [045] test 1 0 ; to [47] if true
+3858 000B0039 [046] jmp 12 ; to [59]
+385C 0115000C [047] getglobal 1 21 ; QuestTracker
+3860 01160286 [048] getfield_r1 1 1 22 ; SetQuestGiver
+3864 0217000C [049] getglobal 2 23 ; GetLocalHero
+3868 0202027E [050] call_i_r1 2 1 2 
+386C 03000000 [051] getfield 3 0 0 ; ParentQuest
+3870 03180686 [052] getfield_r1 3 3 24 ; QuestName
+3874 040C0000 [053] getfield 4 0 12 ; Entity
+3878 01010804 [054] call_i 1 4 1 
+387C 01040110 [055] self 1 0 260 ; "SetState"
+3880 03190032 [056] loadk 3 25 ; "GIVE_GIFTS"
+3884 01010604 [057] call_i 1 3 1 
+3888 00EBFF38 [058] jmp -20 ; to [39]
+388C 01130110 [059] self 1 0 275 ; "IsState"
+3890 03190032 [060] loadk 3 25 ; "GIVE_GIFTS"
+3894 01020604 [061] call_i 1 3 2 
+3898 01000002 [062] test 1 0 ; to [64] if true
+389C 00030039 [063] jmp 4 ; to [68]
+38A0 01040110 [064] self 1 0 260 ; "SetState"
+38A4 031A0032 [065] loadk 3 26 ; "DLC_CHECK"
+38A8 01010604 [066] call_i 1 3 1 
+38AC 00E2FF38 [067] jmp -29 ; to [39]
+38B0 01130110 [068] self 1 0 275 ; "IsState"
+38B4 031A0032 [069] loadk 3 26 ; "DLC_CHECK"
+38B8 01020604 [070] call_i 1 3 2 
+38BC 01000002 [071] test 1 0 ; to [73] if true
+38C0 00130039 [072] jmp 20 ; to [93]
+38C4 011B000C [073] getglobal 1 27 ; ScriptFunction
+38C8 011C0286 [074] getfield_r1 1 1 28 ; IsDLC2Premium
+38CC 0102027E [075] call_i_r1 1 1 2 
+38D0 01000002 [076] test 1 0 ; to [78] if true
+38D4 000A0039 [077] jmp 11 ; to [89]
+38D8 011D0000 [078] getfield 1 0 29 ; BeenThroughDLCPurchasing
+38DC 01010082 [079] test_r1 1 0 1 
+38E0 00030039 [080] jmp 4 ; to [85]
+38E4 01040110 [081] self 1 0 260 ; "SetState"
+38E8 031E0032 [082] loadk 3 30 ; "BEGIN_QUEST_INTERACT_DLC"
+38EC 01010604 [083] call_i 1 3 1 
+38F0 00D1FF38 [084] jmp -46 ; to [39]
+38F4 01040110 [085] self 1 0 260 ; "SetState"
+38F8 031F0032 [086] loadk 3 31 ; "BEGIN_QUEST_INTERACT_BOUGHT_DLC"
+38FC 01010604 [087] call_i 1 3 1 
+3900 00CDFF38 [088] jmp -50 ; to [39]
+3904 01040110 [089] self 1 0 260 ; "SetState"
+3908 03200032 [090] loadk 3 32 ; "OFFER_DLC_PURCHASE_CUTSCENE"
+390C 01010604 [091] call_i 1 3 1 
+3910 00C9FF38 [092] jmp -54 ; to [39]
+3914 01130110 [093] self 1 0 275 ; "IsState"
+3918 031E0032 [094] loadk 3 30 ; "BEGIN_QUEST_INTERACT_DLC"
+391C 01020604 [095] call_i 1 3 2 
+3920 01000002 [096] test 1 0 ; to [98] if true
+3924 00130039 [097] jmp 20 ; to [118]
+3928 01210110 [098] self 1 0 289 ; "ShowToasterBox"
+392C 0305005C [099] newtable 3 0 5 ; array=0, hash=5
+3930 03234588 [100] setfield_r1 3 34 291 ; box_text "TEXT_DLC2_QUEST_QC190_TOASTER_ACCEPT"
+3934 0325491E [101] setfield 3 36 293 ; box_title "TEXT_QUEST_QC190_NAME"
+3938 03274D1E [102] setfield 3 38 295 ; accept_radius 3
+393C 04000000 [103] getfield 4 0 0 ; ParentQuest
+3940 04180886 [104] getfield_r1 4 4 24 ; QuestName
+3944 0304501E [105] setfield 3 40 4 ; quest_name
+3948 0403005C [106] newtable 4 0 3 ; array=0, hash=3
+394C 042B5588 [107] setfield_r1 4 42 299 ; intro_scene "QC190_HobsonGiftIntroDLC"
+3950 042D591E [108] setfield 4 44 301 ; wait_around_scene "QC190_HobsonQuestAcceptWaitaround"
+3954 042F5D1E [109] setfield 4 46 303 ; TriggerArea "QC190_QuestStartTrigger"
+3958 0304521E [110] setfield 3 41 4 ; cutscene_table
+395C 01020604 [111] call_i 1 3 2 
+3960 01000002 [112] test 1 0 ; to [114] if true
+3964 00B4FF38 [113] jmp -75 ; to [39]
+3968 01040110 [114] self 1 0 260 ; "SetState"
+396C 03300032 [115] loadk 3 48 ; "BEGIN_QUEST_SETUP"
+3970 01010604 [116] call_i 1 3 1 
+3974 00B0FF38 [117] jmp -79 ; to [39]
+3978 01130110 [118] self 1 0 275 ; "IsState"
+397C 031F0032 [119] loadk 3 31 ; "BEGIN_QUEST_INTERACT_BOUGHT_DLC"
+3980 01020604 [120] call_i 1 3 2 
+3984 01000002 [121] test 1 0 ; to [123] if true
+3988 00130039 [122] jmp 20 ; to [143]
+398C 01210110 [123] self 1 0 289 ; "ShowToasterBox"
+3990 0305005C [124] newtable 3 0 5 ; array=0, hash=5
+3994 03234588 [125] setfield_r1 3 34 291 ; box_text "TEXT_DLC2_QUEST_QC190_TOASTER_ACCEPT"
+3998 0325491E [126] setfield 3 36 293 ; box_title "TEXT_QUEST_QC190_NAME"
+399C 03274D1E [127] setfield 3 38 295 ; accept_radius 3
+39A0 04000000 [128] getfield 4 0 0 ; ParentQuest
+39A4 04180886 [129] getfield_r1 4 4 24 ; QuestName
+39A8 0304501E [130] setfield 3 40 4 ; quest_name
+39AC 0403005C [131] newtable 4 0 3 ; array=0, hash=3
+39B0 04315588 [132] setfield_r1 4 42 305 ; intro_scene "QC190_HobsonDLCBought"
+39B4 042D591E [133] setfield 4 44 301 ; wait_around_scene "QC190_HobsonQuestAcceptWaitaround"
+39B8 042F5D1E [134] setfield 4 46 303 ; TriggerArea "QC190_QuestStartTrigger"
+39BC 0304521E [135] setfield 3 41 4 ; cutscene_table
+39C0 01020604 [136] call_i 1 3 2 
+39C4 01000002 [137] test 1 0 ; to [139] if true
+39C8 009BFF38 [138] jmp -100 ; to [39]
+39CC 01040110 [139] self 1 0 260 ; "SetState"
+39D0 03300032 [140] loadk 3 48 ; "BEGIN_QUEST_SETUP"
+39D4 01010604 [141] call_i 1 3 1 
+39D8 0097FF38 [142] jmp -104 ; to [39]
+39DC 01130110 [143] self 1 0 275 ; "IsState"
+39E0 03300032 [144] loadk 3 48 ; "BEGIN_QUEST_SETUP"
+39E4 01020604 [145] call_i 1 3 2 
+39E8 01000002 [146] test 1 0 ; to [148] if true
+39EC 00290039 [147] jmp 42 ; to [190]
+39F0 01000000 [148] getfield 1 0 0 ; ParentQuest
+39F4 01336588 [149] setfield_r1 1 50 307 ; QuestAccepted true
+39F8 0115000C [150] getglobal 1 21 ; QuestTracker
+39FC 01340286 [151] getfield_r1 1 1 52 ; SetAsActive
+3A00 0235000C [152] getglobal 2 53 ; QuestManager
+3A04 02360486 [153] getfield_r1 2 2 54 ; HeroEntity
+3A08 03000000 [154] getfield 3 0 0 ; ParentQuest
+3A0C 03180686 [155] getfield_r1 3 3 24 ; QuestName
+3A10 0400021A [156] loadbool 4 1 0 ; true
+3A14 01010804 [157] call_i 1 4 1 
+3A18 0137000C [158] getglobal 1 55 ; Layers
+3A1C 01380286 [159] getfield_r1 1 1 56 ; DeactivateLayer
+3A20 02390032 [160] loadk 2 57 ; "QC190_CastleAssassinMapLayer"
+3A24 01010404 [161] call_i 1 2 1 
+3A28 011B000C [162] getglobal 1 27 ; ScriptFunction
+3A2C 013A0286 [163] getfield_r1 1 1 58 ; StopCutscene
+3A30 0203005C [164] newtable 2 0 3 ; array=0, hash=3
+3A34 030C0000 [165] getfield 3 0 12 ; Entity
+3A38 0203761E [166] setfield 2 59 3 ; entity
+3A3C 023D791E [167] setfield 2 60 317 ; wait false
+3A40 023D7D1E [168] setfield 2 62 317 ; let_dialogue_finish false
+3A44 01010404 [169] call_i 1 2 1 
+3A48 013F0110 [170] self 1 0 319 ; "PlayCutscene"
+3A4C 0301005C [171] newtable 3 0 1 ; array=0, hash=1
+3A50 03418188 [172] setfield_r1 3 64 321 ; Cutscene "QC190_HobsonQuestAccepted"
+3A54 01010604 [173] call_i 1 3 1 
+3A58 0142000C [174] getglobal 1 66 ; Timing
+3A5C 01430286 [175] getfield_r1 1 1 67 ; Wait
+3A60 02440032 [176] loadk 2 68 ; 0.75
+3A64 01010404 [177] call_i 1 2 1 
+3A68 0145000C [178] getglobal 1 69 ; GUI
+3A6C 01460286 [179] getfield_r1 1 1 70 ; FadeScreenOut
+3A70 02470032 [180] loadk 2 71 ; 2
+3A74 01010404 [181] call_i 1 2 1 
+3A78 0142000C [182] getglobal 1 66 ; Timing
+3A7C 01430286 [183] getfield_r1 1 1 67 ; Wait
+3A80 02470032 [184] loadk 2 71 ; 2
+3A84 01010404 [185] call_i 1 2 1 
+3A88 01040110 [186] self 1 0 260 ; "SetState"
+3A8C 03480032 [187] loadk 3 72 ; "BEGIN_QUEST"
+3A90 01010604 [188] call_i 1 3 1 
+3A94 0068FF38 [189] jmp -151 ; to [39]
+3A98 01130110 [190] self 1 0 275 ; "IsState"
+3A9C 03200032 [191] loadk 3 32 ; "OFFER_DLC_PURCHASE_CUTSCENE"
+3AA0 01020604 [192] call_i 1 3 2 
+3AA4 01000002 [193] test 1 0 ; to [195] if true
+3AA8 00120039 [194] jmp 19 ; to [214]
+3AAC 01210110 [195] self 1 0 289 ; "ShowToasterBox"
+3AB0 0305005C [196] newtable 3 0 5 ; array=0, hash=5
+3AB4 03494588 [197] setfield_r1 3 34 329 ; box_text "TEXT_QUEST_QC190_TOASTER_PURCHASE"
+3AB8 0325491E [198] setfield 3 36 293 ; box_title "TEXT_QUEST_QC190_NAME"
+3ABC 03274D1E [199] setfield 3 38 295 ; accept_radius 3
+3AC0 04000000 [200] getfield 4 0 0 ; ParentQuest
+3AC4 04180886 [201] getfield_r1 4 4 24 ; QuestName
+3AC8 0304501E [202] setfield 3 40 4 ; quest_name
+3ACC 0402005C [203] newtable 4 0 2 ; array=0, hash=2
+3AD0 044A5588 [204] setfield_r1 4 42 330 ; intro_scene "QC190_HobsonGiftIntroNoDLC"
+3AD4 044B591E [205] setfield 4 44 331 ; wait_around_scene "QC190_HobsonPurchaseDLCWaitaround"
+3AD8 0304521E [206] setfield 3 41 4 ; cutscene_table
+3ADC 01020604 [207] call_i 1 3 2 
+3AE0 01000002 [208] test 1 0 ; to [210] if true
+3AE4 0054FF38 [209] jmp -171 ; to [39]
+3AE8 01040110 [210] self 1 0 260 ; "SetState"
+3AEC 034C0032 [211] loadk 3 76 ; "OFFER_DLC_PURCHASE"
+3AF0 01010604 [212] call_i 1 3 1 
+3AF4 0050FF38 [213] jmp -175 ; to [39]
+3AF8 01130110 [214] self 1 0 275 ; "IsState"
+3AFC 034C0032 [215] loadk 3 76 ; "OFFER_DLC_PURCHASE"
+3B00 01020604 [216] call_i 1 3 2 
+3B04 01000002 [217] test 1 0 ; to [219] if true
+3B08 00330039 [218] jmp 52 ; to [271]
+3B0C 011B000C [219] getglobal 1 27 ; ScriptFunction
+3B10 013A0286 [220] getfield_r1 1 1 58 ; StopCutscene
+3B14 0203005C [221] newtable 2 0 3 ; array=0, hash=3
+3B18 030C0000 [222] getfield 3 0 12 ; Entity
+3B1C 0203761E [223] setfield 2 59 3 ; entity
+3B20 023D791E [224] setfield 2 60 317 ; wait false
+3B24 023D7D1E [225] setfield 2 62 317 ; let_dialogue_finish false
+3B28 01010404 [226] call_i 1 2 1 
+3B2C 014D000C [227] getglobal 1 77 ; Network
+3B30 014E0286 [228] getfield_r1 1 1 78 ; IsSignedInLive
+3B34 0102027E [229] call_i_r1 1 1 2 
+3B38 01010002 [230] test 1 1 ; to [232] if false
+3B3C 00190039 [231] jmp 26 ; to [258]
+3B40 0145000C [232] getglobal 1 69 ; GUI
+3B44 014F0286 [233] getfield_r1 1 1 79 ; DisplayMessageBox
+3B48 02500032 [234] loadk 2 80 ; "TEXT_DLC2_SIGN_IN_TO_PURCHASE"
+3B4C 01010404 [235] call_i 1 2 1 
+3B50 0145000C [236] getglobal 1 69 ; GUI
+3B54 01510286 [237] getfield_r1 1 1 81 ; IsAnyMenuOpen
+3B58 0102027E [238] call_i_r1 1 1 2 
+3B5C 01010002 [239] test 1 1 ; to [241] if false
+3B60 00030039 [240] jmp 4 ; to [245]
+3B64 0111000C [241] getglobal 1 17 ; coroutine
+3B68 01120286 [242] getfield_r1 1 1 18 ; yield
+3B6C 0101027E [243] call_i_r1 1 1 1 
+3B70 00F6FF38 [244] jmp -9 ; to [236]
+3B74 0145000C [245] getglobal 1 69 ; GUI
+3B78 01510286 [246] getfield_r1 1 1 81 ; IsAnyMenuOpen
+3B7C 0102027E [247] call_i_r1 1 1 2 
+3B80 01000002 [248] test 1 0 ; to [250] if true
+3B84 00030039 [249] jmp 4 ; to [254]
+3B88 0111000C [250] getglobal 1 17 ; coroutine
+3B8C 01120286 [251] getfield_r1 1 1 18 ; yield
+3B90 0101027E [252] call_i_r1 1 1 1 
+3B94 00F6FF38 [253] jmp -9 ; to [245]
+3B98 01040110 [254] self 1 0 260 ; "SetState"
+3B9C 03200032 [255] loadk 3 32 ; "OFFER_DLC_PURCHASE_CUTSCENE"
+3BA0 01010604 [256] call_i 1 3 1 
+3BA4 0024FF38 [257] jmp -219 ; to [39]
+3BA8 0152000C [258] getglobal 1 82 ; InGameStore
+3BAC 01530286 [259] getfield_r1 1 1 83 ; DownloadOfferByOfferId
+3BB0 02540032 [260] loadk 2 84 ; "0CCF009F"
+3BB4 01010404 [261] call_i 1 2 1 
+3BB8 00333B1E [262] setfield 0 29 307 ; BeenThroughDLCPurchasing true
+3BBC 0142000C [263] getglobal 1 66 ; Timing
+3BC0 01430286 [264] getfield_r1 1 1 67 ; Wait
+3BC4 02470032 [265] loadk 2 71 ; 2
+3BC8 01010404 [266] call_i 1 2 1 
+3BCC 01040110 [267] self 1 0 260 ; "SetState"
+3BD0 031A0032 [268] loadk 3 26 ; "DLC_CHECK"
+3BD4 01010604 [269] call_i 1 3 1 
+3BD8 0017FF38 [270] jmp -232 ; to [39]
+3BDC 01130110 [271] self 1 0 275 ; "IsState"
+3BE0 034C0032 [272] loadk 3 76 ; "OFFER_DLC_PURCHASE"
+3BE4 01020604 [273] call_i 1 3 2 
+3BE8 01000002 [274] test 1 0 ; to [276] if true
+3BEC 00000039 [275] jmp 1 ; to [277]
+3BF0 0011FF38 [276] jmp -238 ; to [39]
+3BF4 01130110 [277] self 1 0 275 ; "IsState"
+3BF8 03480032 [278] loadk 3 72 ; "BEGIN_QUEST"
+3BFC 01020604 [279] call_i 1 3 2 
+3C00 01000002 [280] test 1 0 ; to [282] if true
+3C04 001F0039 [281] jmp 32 ; to [314]
+3C08 0155000C [282] getglobal 1 85 ; SetLevelDisplayName
+3C0C 02070032 [283] loadk 2 7 ; "Albion\\CastleBattle"
+3C10 03560032 [284] loadk 3 86 ; "TEXT_LEVEL_ALBION_BOWERSTONECASTLE"
+3C14 01010604 [285] call_i 1 3 1 
+3C18 0157000C [286] getglobal 1 87 ; Gameflow
+3C1C 01580286 [287] getfield_r1 1 1 88 ; Judgements
+3C20 01590286 [288] getfield_r1 1 1 89 ; EvilDecoration
+3C24 01000082 [289] test_r1 1 0 0 
+3C28 00060039 [290] jmp 7 ; to [298]
+3C2C 0137000C [291] getglobal 1 55 ; Layers
+3C30 015A0286 [292] getfield_r1 1 1 90 ; ActivateScenario
+3C34 025B0032 [293] loadk 2 91 ; "Fable3"
+3C38 03070032 [294] loadk 3 7 ; "Albion\\CastleBattle"
+3C3C 045C0032 [295] loadk 4 92 ; "Episode1ScenarioEvil"
+3C40 01010804 [296] call_i 1 4 1 
+3C44 00050039 [297] jmp 6 ; to [304]
+3C48 0137000C [298] getglobal 1 55 ; Layers
+3C4C 015A0286 [299] getfield_r1 1 1 90 ; ActivateScenario
+3C50 025B0032 [300] loadk 2 91 ; "Fable3"
+3C54 03070032 [301] loadk 3 7 ; "Albion\\CastleBattle"
+3C58 045D0032 [302] loadk 4 93 ; "Episode1Scenario"
+3C5C 01010804 [303] call_i 1 4 1 
+3C60 015E000C [304] getglobal 1 94 ; cprint
+3C64 025F0032 [305] loadk 2 95 ; "Activating scenario: Fable3, Albion\\CastleBattle, Episode1Scenario"
+3C68 01010404 [306] call_i 1 2 1 
+3C6C 0160000C [307] getglobal 1 96 ; Debug
+3C70 01610286 [308] getfield_r1 1 1 97 ; LoadLevel
+3C74 025B0032 [309] loadk 2 91 ; "Fable3"
+3C78 03070032 [310] loadk 3 7 ; "Albion\\CastleBattle"
+3C7C 04620032 [311] loadk 4 98 ; "QC190_ThroneRoomTeleportMarker"
+3C80 01010804 [312] call_i 1 4 1 
+3C84 00ECFE38 [313] jmp -275 ; to [39]
+3C88 01130110 [314] self 1 0 275 ; "IsState"
+3C8C 03090032 [315] loadk 3 9 ; "ASSASSIN_INTRO_A"
+3C90 01020604 [316] call_i 1 3 2 
+3C94 01000002 [317] test 1 0 ; to [319] if true
+3C98 00430039 [318] jmp 68 ; to [387]
+3C9C 01630110 [319] self 1 0 355 ; "GetEntityWithName"
+3CA0 03640032 [320] loadk 3 100 ; "BCGarden_Courtyard"
+3CA4 01020604 [321] call_i 1 3 2 
+3CA8 01000002 [322] test 1 0 ; to [324] if true
+3CAC 000C0039 [323] jmp 13 ; to [337]
+3CB0 02650310 [324] self 2 1 357 ; "IsAlive"
+3CB4 0202047E [325] call_i_r1 2 2 2 
+3CB8 02000002 [326] test 2 0 ; to [328] if true
+3CBC 00080039 [327] jmp 9 ; to [337]
+3CC0 0266000C [328] getglobal 2 102 ; GraphicAppearance
+3CC4 02670486 [329] getfield_r1 2 2 103 ; StartPreloadingMeshes
+3CC8 0300020E [330] move 3 1 
+3CCC 02010404 [331] call_i 2 2 1 
+3CD0 0266000C [332] getglobal 2 102 ; GraphicAppearance
+3CD4 02680486 [333] getfield_r1 2 2 104 ; SetAsAlwaysInView
+3CD8 0300020E [334] move 3 1 
+3CDC 0400021A [335] loadbool 4 1 0 ; true
+3CE0 02010604 [336] call_i 2 3 1 
+3CE4 0269000C [337] getglobal 2 105 ; EnvironmentTheme
+3CE8 026A0486 [338] getfield_r1 2 2 106 ; BlendToEnvironmentTheme
+3CEC 036B0032 [339] loadk 3 107 ; "DLC2_BowerstoneOldQuarter_ThroneRoom"
+3CF0 046C0032 [340] loadk 4 108 ; 1
+3CF4 056D0032 [341] loadk 5 109 ; 0
+3CF8 02010804 [342] call_i 2 4 1 
+3CFC 023F0110 [343] self 2 0 319 ; "PlayCutscene"
+3D00 0401005C [344] newtable 4 0 1 ; array=0, hash=1
+3D04 046E8188 [345] setfield_r1 4 64 366 ; Cutscene "QC190_AssassinIntroA"
+3D08 02010604 [346] call_i 2 3 1 
+3D0C 0269000C [347] getglobal 2 105 ; EnvironmentTheme
+3D10 026A0486 [348] getfield_r1 2 2 106 ; BlendToEnvironmentTheme
+3D14 036B0032 [349] loadk 3 107 ; "DLC2_BowerstoneOldQuarter_ThroneRoom"
+3D18 046D0032 [350] loadk 4 109 ; 0
+3D1C 056D0032 [351] loadk 5 109 ; 0
+3D20 02010804 [352] call_i 2 4 1 
+3D24 02630110 [353] self 2 0 355 ; "GetEntityWithName"
+3D28 046F0032 [354] loadk 4 111 ; "QC190_HobsonACSTalkMarker"
+3D2C 02020604 [355] call_i 2 3 2 
+3D30 02000002 [356] test 2 0 ; to [358] if true
+3D34 00080039 [357] jmp 9 ; to [367]
+3D38 03650510 [358] self 3 2 357 ; "IsAlive"
+3D3C 0302047E [359] call_i_r1 3 2 2 
+3D40 03000002 [360] test 3 0 ; to [362] if true
+3D44 00040039 [361] jmp 5 ; to [367]
+3D48 0370000C [362] getglobal 3 112 ; Talk
+3D4C 03710686 [363] getfield_r1 3 3 113 ; StopTalking
+3D50 0400040E [364] move 4 2 
+3D54 05720032 [365] loadk 5 114 ; 5000
+3D58 03010604 [366] call_i 3 3 1 
+3D5C 0342000C [367] getglobal 3 66 ; Timing
+3D60 03430686 [368] getfield_r1 3 3 67 ; Wait
+3D64 04470032 [369] loadk 4 71 ; 2
+3D68 03010404 [370] call_i 3 2 1 
+3D6C 03000000 [371] getfield 3 0 0 ; ParentQuest
+3D70 0333E788 [372] setfield_r1 3 115 307 ; StartAssassinIntroB true
+3D74 0342000C [373] getglobal 3 66 ; Timing
+3D78 03740686 [374] getfield_r1 3 3 116 ; SetTimeOfDay
+3D7C 04750032 [375] loadk 4 117 ; 22
+3D80 03010404 [376] call_i 3 2 1 
+3D84 0369000C [377] getglobal 3 105 ; EnvironmentTheme
+3D88 036A0686 [378] getfield_r1 3 3 106 ; BlendToEnvironmentTheme
+3D8C 04760032 [379] loadk 4 118 ; "DLC2_BowerstoneOldQuarter_Night"
+3D90 056C0032 [380] loadk 5 108 ; 1
+3D94 066D0032 [381] loadk 6 109 ; 0
+3D98 03010804 [382] call_i 3 4 1 
+3D9C 03040110 [383] self 3 0 260 ; "SetState"
+3DA0 05770032 [384] loadk 5 119 ; "ASSASSIN_INTRO_B"
+3DA4 03010604 [385] call_i 3 3 1 
+3DA8 00A3FE38 [386] jmp -348 ; to [39]
+3DAC 01130110 [387] self 1 0 275 ; "IsState"
+3DB0 03770032 [388] loadk 3 119 ; "ASSASSIN_INTRO_B"
+3DB4 01020604 [389] call_i 1 3 2 
+3DB8 01000002 [390] test 1 0 ; to [392] if true
+3DBC 00070039 [391] jmp 8 ; to [400]
+3DC0 01000000 [392] getfield 1 0 0 ; ParentQuest
+3DC4 01780286 [393] getfield_r1 1 1 120 ; StartAssassinIntroC
+3DC8 01000082 [394] test_r1 1 0 0 
+3DCC 009AFE38 [395] jmp -357 ; to [39]
+3DD0 01040110 [396] self 1 0 260 ; "SetState"
+3DD4 03790032 [397] loadk 3 121 ; "ASSASSIN_INTRO_C"
+3DD8 01010604 [398] call_i 1 3 1 
+3DDC 0096FE38 [399] jmp -361 ; to [39]
+3DE0 01130110 [400] self 1 0 275 ; "IsState"
+3DE4 03790032 [401] loadk 3 121 ; "ASSASSIN_INTRO_C"
+3DE8 01020604 [402] call_i 1 3 2 
+3DEC 01000002 [403] test 1 0 ; to [405] if true
+3DF0 00340039 [404] jmp 53 ; to [458]
+3DF4 01630110 [405] self 1 0 355 ; "GetEntityWithName"
+3DF8 03640032 [406] loadk 3 100 ; "BCGarden_Courtyard"
+3DFC 01020604 [407] call_i 1 3 2 
+3E00 01000002 [408] test 1 0 ; to [410] if true
+3E04 00080039 [409] jmp 9 ; to [419]
+3E08 02650310 [410] self 2 1 357 ; "IsAlive"
+3E0C 0202047E [411] call_i_r1 2 2 2 
+3E10 02000002 [412] test 2 0 ; to [414] if true
+3E14 00040039 [413] jmp 5 ; to [419]
+3E18 0266000C [414] getglobal 2 102 ; GraphicAppearance
+3E1C 02680486 [415] getfield_r1 2 2 104 ; SetAsAlwaysInView
+3E20 0300020E [416] move 3 1 
+3E24 0400001A [417] loadbool 4 0 0 ; false
+3E28 02010604 [418] call_i 2 3 1 
+3E2C 0269000C [419] getglobal 2 105 ; EnvironmentTheme
+3E30 026A0486 [420] getfield_r1 2 2 106 ; BlendToEnvironmentTheme
+3E34 03760032 [421] loadk 3 118 ; "DLC2_BowerstoneOldQuarter_Night"
+3E38 046D0032 [422] loadk 4 109 ; 0
+3E3C 056D0032 [423] loadk 5 109 ; 0
+3E40 02010804 [424] call_i 2 4 1 
+3E44 0269000C [425] getglobal 2 105 ; EnvironmentTheme
+3E48 026A0486 [426] getfield_r1 2 2 106 ; BlendToEnvironmentTheme
+3E4C 036B0032 [427] loadk 3 107 ; "DLC2_BowerstoneOldQuarter_ThroneRoom"
+3E50 046C0032 [428] loadk 4 108 ; 1
+3E54 056D0032 [429] loadk 5 109 ; 0
+3E58 02010804 [430] call_i 2 4 1 
+3E5C 023F0110 [431] self 2 0 319 ; "PlayCutscene"
+3E60 0401005C [432] newtable 4 0 1 ; array=0, hash=1
+3E64 047A8188 [433] setfield_r1 4 64 378 ; Cutscene "QC190_AssassinIntroC"
+3E68 02010604 [434] call_i 2 3 1 
+3E6C 027B0110 [435] self 2 0 379 ; "GetAllEntitiesWithNameIncluding"
+3E70 047C0032 [436] loadk 4 124 ; "QC190_BloodSplat"
+3E74 02020604 [437] call_i 2 3 2 
+3E78 037D000C [438] getglobal 3 125 ; ipairs
+3E7C 0400040E [439] move 4 2 
+3E80 03040404 [440] call_i 3 2 4 
+3E84 00010039 [441] jmp 2 ; to [444]
+3E88 087E0F10 [442] self 8 7 382 ; "Destroy"
+3E8C 0801047E [443] call_i_r1 8 2 1 
+3E90 0302001C [444] tforloop 3 2 ; to [446] if exit
+3E94 00FBFF38 [445] jmp -4 ; to [442]
+3E98 037F000C [446] getglobal 3 127 ; Orchestra
+3E9C 033D0189 [447] setfield_r1 3 128 317 ; Enabled false
+3EA0 0369000C [448] getglobal 3 105 ; EnvironmentTheme
+3EA4 036A0686 [449] getfield_r1 3 3 106 ; BlendToEnvironmentTheme
+3EA8 046B0032 [450] loadk 4 107 ; "DLC2_BowerstoneOldQuarter_ThroneRoom"
+3EAC 056D0032 [451] loadk 5 109 ; 0
+3EB0 066D0032 [452] loadk 6 109 ; 0
+3EB4 03010804 [453] call_i 3 4 1 
+3EB8 03040110 [454] self 3 0 260 ; "SetState"
+3EBC 05810032 [455] loadk 5 129 ; "ASSASSIN_FIGHT"
+3EC0 03010604 [456] call_i 3 3 1 
+3EC4 005CFE38 [457] jmp -419 ; to [39]
+3EC8 01130110 [458] self 1 0 275 ; "IsState"
+3ECC 03810032 [459] loadk 3 129 ; "ASSASSIN_FIGHT"
+3ED0 01020604 [460] call_i 1 3 2 
+3ED4 01000002 [461] test 1 0 ; to [463] if true
+3ED8 00770039 [462] jmp 120 ; to [583]
+3EDC 011B000C [463] getglobal 1 27 ; ScriptFunction
+3EE0 01820286 [464] getfield_r1 1 1 130 ; MoveAndRotateEntityToMarkerNamed
+3EE4 020C0000 [465] getfield 2 0 12 ; Entity
+3EE8 03830032 [466] loadk 3 131 ; "QC190_HobsonCowerMarker"
+3EEC 0400021A [467] loadbool 4 1 0 ; true
+3EF0 0500021A [468] loadbool 5 1 0 ; true
+3EF4 0600021A [469] loadbool 6 1 0 ; true
+3EF8 01010C04 [470] call_i 1 6 1 
+3EFC 0184000C [471] getglobal 1 132 ; GetRemoteHero
+3F00 0102027E [472] call_i_r1 1 1 2 
+3F04 01000002 [473] test 1 0 ; to [475] if true
+3F08 00170039 [474] jmp 24 ; to [499]
+3F0C 02650310 [475] self 2 1 357 ; "IsAlive"
+3F10 0202047E [476] call_i_r1 2 2 2 
+3F14 02000002 [477] test 2 0 ; to [479] if true
+3F18 00130039 [478] jmp 20 ; to [499]
+3F1C 021B000C [479] getglobal 2 27 ; ScriptFunction
+3F20 02820486 [480] getfield_r1 2 2 130 ; MoveAndRotateEntityToMarkerNamed
+3F24 0384000C [481] getglobal 3 132 ; GetRemoteHero
+3F28 0302027E [482] call_i_r1 3 1 2 
+3F2C 04850032 [483] loadk 4 133 ; "QC190_HobsonAssassinEndMarker"
+3F30 02010604 [484] call_i 2 3 1 
+3F34 0286000C [485] getglobal 2 134 ; GetRemoteHeroDog
+3F38 0202027E [486] call_i_r1 2 1 2 
+3F3C 02000002 [487] test 2 0 ; to [489] if true
+3F40 00090039 [488] jmp 10 ; to [499]
+3F44 03650510 [489] self 3 2 357 ; "IsAlive"
+3F48 0302047E [490] call_i_r1 3 2 2 
+3F4C 03000002 [491] test 3 0 ; to [493] if true
+3F50 00050039 [492] jmp 6 ; to [499]
+3F54 031B000C [493] getglobal 3 27 ; ScriptFunction
+3F58 03820686 [494] getfield_r1 3 3 130 ; MoveAndRotateEntityToMarkerNamed
+3F5C 0486000C [495] getglobal 4 134 ; GetRemoteHeroDog
+3F60 0402027E [496] call_i_r1 4 1 2 
+3F64 05850032 [497] loadk 5 133 ; "QC190_HobsonAssassinEndMarker"
+3F68 03010604 [498] call_i 3 3 1 
+3F6C 02000000 [499] getfield 2 0 0 ; ParentQuest
+3F70 02330F89 [500] setfield_r1 2 135 307 ; StartAssassinCombat true
+3F74 0288000C [501] getglobal 2 136 ; Action
+3F78 02890486 [502] getfield_r1 2 2 137 ; FinishAllActions
+3F7C 030C0000 [503] getfield 3 0 12 ; Entity
+3F80 02010404 [504] call_i 2 2 1 
+3F84 0257000C [505] getglobal 2 87 ; Gameflow
+3F88 02580486 [506] getfield_r1 2 2 88 ; Judgements
+3F8C 02590486 [507] getfield_r1 2 2 89 ; EvilDecoration
+3F90 02000082 [508] test_r1 2 0 0 
+3F94 00050039 [509] jmp 6 ; to [516]
+3F98 02630110 [510] self 2 0 355 ; "GetEntityWithName"
+3F9C 048B0032 [511] loadk 4 139 ; "BC_Throne_Evil"
+3FA0 058C0032 [512] loadk 5 140 ; "object"
+3FA4 02020804 [513] call_i 2 4 2 
+3FA8 0002141F [514] setfield 0 138 2 ; Throne
+3FAC 00040039 [515] jmp 5 ; to [521]
+3FB0 02630110 [516] self 2 0 355 ; "GetEntityWithName"
+3FB4 048D0032 [517] loadk 4 141 ; "BC_Throne_Good"
+3FB8 058C0032 [518] loadk 5 140 ; "object"
+3FBC 02020804 [519] call_i 2 4 2 
+3FC0 0002141F [520] setfield 0 138 2 ; Throne
+3FC4 028A0000 [521] getfield 2 0 138 ; Throne
+3FC8 02000082 [522] test_r1 2 0 0 
+3FCC 002F0039 [523] jmp 48 ; to [572]
+3FD0 028A0000 [524] getfield 2 0 138 ; Throne
+3FD4 02650510 [525] self 2 2 357 ; "IsAlive"
+3FD8 0202047E [526] call_i_r1 2 2 2 
+3FDC 02000002 [527] test 2 0 ; to [529] if true
+3FE0 002A0039 [528] jmp 43 ; to [572]
+3FE4 028E000C [529] getglobal 2 142 ; Physics
+3FE8 028F0486 [530] getfield_r1 2 2 143 ; SetCanCollideWithEntity
+3FEC 030C0000 [531] getfield 3 0 12 ; Entity
+3FF0 048A0000 [532] getfield 4 0 138 ; Throne
+3FF4 0500001A [533] loadbool 5 0 0 ; false
+3FF8 02010804 [534] call_i 2 4 1 
+3FFC 0211000C [535] getglobal 2 17 ; coroutine
+4000 02120486 [536] getfield_r1 2 2 18 ; yield
+4004 0201027E [537] call_i_r1 2 1 1 
+4008 0266000C [538] getglobal 2 102 ; GraphicAppearance
+400C 02900486 [539] getfield_r1 2 2 144 ; HasDummyObject
+4010 038A0000 [540] getfield 3 0 138 ; Throne
+4014 04910032 [541] loadk 4 145 ; "Prop.Action.Generic"
+4018 056D0032 [542] loadk 5 109 ; 0
+401C 02020804 [543] call_i 2 4 2 
+4020 02000002 [544] test 2 0 ; to [546] if true
+4024 00160039 [545] jmp 23 ; to [569]
+4028 0266000C [546] getglobal 2 102 ; GraphicAppearance
+402C 02920486 [547] getfield_r1 2 2 146 ; GetDummyObjectFacingDirection
+4030 038A0000 [548] getfield 3 0 138 ; Throne
+4034 04910032 [549] loadk 4 145 ; "Prop.Action.Generic"
+4038 056D0032 [550] loadk 5 109 ; 0
+403C 02020804 [551] call_i 2 4 2 
+4040 038E000C [552] getglobal 3 142 ; Physics
+4044 03930686 [553] getfield_r1 3 3 147 ; SetFacingVector
+4048 040C0000 [554] getfield 4 0 12 ; Entity
+404C 0500040E [555] move 5 2 
+4050 03010604 [556] call_i 3 3 1 
+4054 0366000C [557] getglobal 3 102 ; GraphicAppearance
+4058 03950686 [558] getfield_r1 3 3 149 ; GetDummyObjectPosition
+405C 048A0000 [559] getfield 4 0 138 ; Throne
+4060 05910032 [560] loadk 5 145 ; "Prop.Action.Generic"
+4064 066D0032 [561] loadk 6 109 ; 0
+4068 03020804 [562] call_i 3 4 2 
+406C 03940036 [563] setglobal 3 148 ; dummy
+4070 038E000C [564] getglobal 3 142 ; Physics
+4074 03960686 [565] getfield_r1 3 3 150 ; TeleportToPosition
+4078 040C0000 [566] getfield 4 0 12 ; Entity
+407C 0594000C [567] getglobal 5 148 ; dummy
+4080 03010604 [568] call_i 3 3 1 
+4084 0211000C [569] getglobal 2 17 ; coroutine
+4088 02120486 [570] getfield_r1 2 2 18 ; yield
+408C 0201027E [571] call_i_r1 2 1 1 
+4090 0297000C [572] getglobal 2 151 ; ModeManager
+4094 02980486 [573] getfield_r1 2 2 152 ; AddModeByEnumWithAnimGroupName
+4098 030C0000 [574] getfield 3 0 12 ; Entity
+409C 0499000C [575] getglobal 4 153 ; EEntityModeType
+40A0 049A0886 [576] getfield_r1 4 4 154 ; EM_CUTSCENE_CUSTOM_POSE
+40A4 059B0032 [577] loadk 5 155 ; "HobsonCowering"
+40A8 02010804 [578] call_i 2 4 1 
+40AC 02040110 [579] self 2 0 260 ; "SetState"
+40B0 04050032 [580] loadk 4 5 ; "ASSASSIN_OUTRO"
+40B4 02010604 [581] call_i 2 3 1 
+40B8 00DFFD38 [582] jmp -544 ; to [39]
+40BC 01130110 [583] self 1 0 275 ; "IsState"
+40C0 03050032 [584] loadk 3 5 ; "ASSASSIN_OUTRO"
+40C4 01020604 [585] call_i 1 3 2 
+40C8 01000002 [586] test 1 0 ; to [588] if true
+40CC 00210039 [587] jmp 34 ; to [622]
+40D0 01000000 [588] getfield 1 0 0 ; ParentQuest
+40D4 019C0286 [589] getfield_r1 1 1 156 ; AssassinDefeated
+40D8 01000082 [590] test_r1 1 0 0 
+40DC 00D6FD38 [591] jmp -553 ; to [39]
+40E0 0188000C [592] getglobal 1 136 ; Action
+40E4 01890286 [593] getfield_r1 1 1 137 ; FinishAllActions
+40E8 020C0000 [594] getfield 2 0 12 ; Entity
+40EC 01010404 [595] call_i 1 2 1 
+40F0 0197000C [596] getglobal 1 151 ; ModeManager
+40F4 019D0286 [597] getfield_r1 1 1 157 ; RemoveMode
+40F8 020C0000 [598] getfield 2 0 12 ; Entity
+40FC 0399000C [599] getglobal 3 153 ; EEntityModeType
+4100 039A0686 [600] getfield_r1 3 3 154 ; EM_CUTSCENE_CUSTOM_POSE
+4104 01010604 [601] call_i 1 3 1 
+4108 0169000C [602] getglobal 1 105 ; EnvironmentTheme
+410C 016A0286 [603] getfield_r1 1 1 106 ; BlendToEnvironmentTheme
+4110 026B0032 [604] loadk 2 107 ; "DLC2_BowerstoneOldQuarter_ThroneRoom"
+4114 036C0032 [605] loadk 3 108 ; 1
+4118 046D0032 [606] loadk 4 109 ; 0
+411C 01010804 [607] call_i 1 4 1 
+4120 013F0110 [608] self 1 0 319 ; "PlayCutscene"
+4124 0301005C [609] newtable 3 0 1 ; array=0, hash=1
+4128 039E8188 [610] setfield_r1 3 64 414 ; Cutscene "QC190_AssassinDying"
+412C 01010604 [611] call_i 1 3 1 
+4130 0169000C [612] getglobal 1 105 ; EnvironmentTheme
+4134 016A0286 [613] getfield_r1 1 1 106 ; BlendToEnvironmentTheme
+4138 026B0032 [614] loadk 2 107 ; "DLC2_BowerstoneOldQuarter_ThroneRoom"
+413C 036D0032 [615] loadk 3 109 ; 0
+4140 046D0032 [616] loadk 4 109 ; 0
+4144 01010804 [617] call_i 1 4 1 
+4148 01040110 [618] self 1 0 260 ; "SetState"
+414C 039F0032 [619] loadk 3 159 ; "MOVE_TO_PORT"
+4150 01010604 [620] call_i 1 3 1 
+4154 00B8FD38 [621] jmp -583 ; to [39]
+4158 01130110 [622] self 1 0 275 ; "IsState"
+415C 039F0032 [623] loadk 3 159 ; "MOVE_TO_PORT"
+4160 01020604 [624] call_i 1 3 2 
+4164 01000002 [625] test 1 0 ; to [627] if true
+4168 000F0039 [626] jmp 16 ; to [643]
+416C 01000000 [627] getfield 1 0 0 ; ParentQuest
+4170 01A00286 [628] getfield_r1 1 1 160 ; TeleportHobsonToPort
+4174 01000082 [629] test_r1 1 0 0 
+4178 00AFFD38 [630] jmp -592 ; to [39]
+417C 011B000C [631] getglobal 1 27 ; ScriptFunction
+4180 01820286 [632] getfield_r1 1 1 130 ; MoveAndRotateEntityToMarkerNamed
+4184 020C0000 [633] getfield 2 0 12 ; Entity
+4188 03A10032 [634] loadk 3 161 ; "QC190_HobsonPortTeleportMarker"
+418C 0400021A [635] loadbool 4 1 0 ; true
+4190 0500021A [636] loadbool 5 1 0 ; true
+4194 0600021A [637] loadbool 6 1 0 ; true
+4198 01010C04 [638] call_i 1 6 1 
+419C 01040110 [639] self 1 0 260 ; "SetState"
+41A0 03A20032 [640] loadk 3 162 ; "END"
+41A4 01010604 [641] call_i 1 3 1 
+41A8 00A3FD38 [642] jmp -604 ; to [39]
+41AC 01130110 [643] self 1 0 275 ; "IsState"
+41B0 03A20032 [644] loadk 3 162 ; "END"
+41B4 01020604 [645] call_i 1 3 2 
+41B8 01000002 [646] test 1 0 ; to [648] if true
+41BC 009EFD38 [647] jmp -609 ; to [39]
+41C0 009DFD38 [648] jmp -610 ; to [39]
+41C4 00000212 [649] return 0 1 
+ * constants:
+41C8 A3000000 sizek (163)
+41CC 04 const type 4
+ const [0]: "ParentQuest"
+41DD 04 const type 4
+ const [1]: "InitialState"
+41EF 04 const type 4
+ const [2]: "States"
+41FB 04 const type 4
+ const [3]: "OLD_QUARTER_ACS"
+4210 04 const type 4
+ const [4]: "SetState"
+421E 04 const type 4
+ const [5]: "ASSASSIN_OUTRO"
+4232 04 const type 4
+ const [6]: "IsLevelLoaded"
+4245 04 const type 4
+ const [7]: "Albion\\CastleBattle"
+425E 04 const type 4
+ const [8]: "TeleportCharactersToPort"
+427C 04 const type 4
+ const [9]: "ASSASSIN_INTRO_A"
+4292 04 const type 4
+ const [10]: "PhysicsCharacter"
+42A8 04 const type 4
+ const [11]: "SetAsPushableByHero"
+42C1 04 const type 4
+ const [12]: "Entity"
+42CD 04 const type 4
+ const [13]: "Health"
+42D9 04 const type 4
+ const [14]: "SetAsInvulnerable"
+42F0 04 const type 4
+ const [15]: "Hittable"
+42FE 04 const type 4
+ const [16]: "SetEntityAsOnlyHittableByEntity"
+4323 04 const type 4
+ const [17]: "coroutine"
+4332 04 const type 4
+ const [18]: "yield"
+433D 04 const type 4
+ const [19]: "IsState"
+434A 04 const type 4
+ const [20]: "SETUP"
+4355 04 const type 4
+ const [21]: "QuestTracker"
+4367 04 const type 4
+ const [22]: "SetQuestGiver"
+437A 04 const type 4
+ const [23]: "GetLocalHero"
+438C 04 const type 4
+ const [24]: "QuestName"
+439B 04 const type 4
+ const [25]: "GIVE_GIFTS"
+43AB 04 const type 4
+ const [26]: "DLC_CHECK"
+43BA 04 const type 4
+ const [27]: "ScriptFunction"
+43CE 04 const type 4
+ const [28]: "IsDLC2Premium"
+43E1 04 const type 4
+ const [29]: "BeenThroughDLCPurchasing"
+43FF 04 const type 4
+ const [30]: "BEGIN_QUEST_INTERACT_DLC"
+441D 04 const type 4
+ const [31]: "BEGIN_QUEST_INTERACT_BOUGHT_DLC"
+4442 04 const type 4
+ const [32]: "OFFER_DLC_PURCHASE_CUTSCENE"
+4463 04 const type 4
+ const [33]: "ShowToasterBox"
+4477 04 const type 4
+ const [34]: "box_text"
+4485 04 const type 4
+ const [35]: "TEXT_DLC2_QUEST_QC190_TOASTER_ACCEPT"
+44AF 04 const type 4
+ const [36]: "box_title"
+44BE 04 const type 4
+ const [37]: "TEXT_QUEST_QC190_NAME"
+44D9 04 const type 4
+ const [38]: "accept_radius"
+44EC 03 const type 3
+44ED 00004040 const [39]: (3)
+44F1 04 const type 4
+ const [40]: "quest_name"
+4501 04 const type 4
+ const [41]: "cutscene_table"
+4515 04 const type 4
+ const [42]: "intro_scene"
+4526 04 const type 4
+ const [43]: "QC190_HobsonGiftIntroDLC"
+4544 04 const type 4
+ const [44]: "wait_around_scene"
+455B 04 const type 4
+ const [45]: "QC190_HobsonQuestAcceptWaitaround"
+4582 04 const type 4
+ const [46]: "TriggerArea"
+4593 04 const type 4
+ const [47]: "QC190_QuestStartTrigger"
+45B0 04 const type 4
+ const [48]: "BEGIN_QUEST_SETUP"
+45C7 04 const type 4
+ const [49]: "QC190_HobsonDLCBought"
+45E2 04 const type 4
+ const [50]: "QuestAccepted"
+45F5 01 const type 1
+45F6 01 const [51]: (true)
+45F7 04 const type 4
+ const [52]: "SetAsActive"
+4608 04 const type 4
+ const [53]: "QuestManager"
+461A 04 const type 4
+ const [54]: "HeroEntity"
+462A 04 const type 4
+ const [55]: "Layers"
+4636 04 const type 4
+ const [56]: "DeactivateLayer"
+464B 04 const type 4
+ const [57]: "QC190_CastleAssassinMapLayer"
+466D 04 const type 4
+ const [58]: "StopCutscene"
+467F 04 const type 4
+ const [59]: "entity"
+468B 04 const type 4
+ const [60]: "wait"
+4695 01 const type 1
+4696 00 const [61]: (false)
+4697 04 const type 4
+ const [62]: "let_dialogue_finish"
+46B0 04 const type 4
+ const [63]: "PlayCutscene"
+46C2 04 const type 4
+ const [64]: "Cutscene"
+46D0 04 const type 4
+ const [65]: "QC190_HobsonQuestAccepted"
+46EF 04 const type 4
+ const [66]: "Timing"
+46FB 04 const type 4
+ const [67]: "Wait"
+4705 03 const type 3
+4706 0000403F const [68]: (0.75)
+470A 04 const type 4
+ const [69]: "GUI"
+4713 04 const type 4
+ const [70]: "FadeScreenOut"
+4726 03 const type 3
+4727 00000040 const [71]: (2)
+472B 04 const type 4
+ const [72]: "BEGIN_QUEST"
+473C 04 const type 4
+ const [73]: "TEXT_QUEST_QC190_TOASTER_PURCHASE"
+4763 04 const type 4
+ const [74]: "QC190_HobsonGiftIntroNoDLC"
+4783 04 const type 4
+ const [75]: "QC190_HobsonPurchaseDLCWaitaround"
+47AA 04 const type 4
+ const [76]: "OFFER_DLC_PURCHASE"
+47C2 04 const type 4
+ const [77]: "Network"
+47CF 04 const type 4
+ const [78]: "IsSignedInLive"
+47E3 04 const type 4
+ const [79]: "DisplayMessageBox"
+47FA 04 const type 4
+ const [80]: "TEXT_DLC2_SIGN_IN_TO_PURCHASE"
+481D 04 const type 4
+ const [81]: "IsAnyMenuOpen"
+4830 04 const type 4
+ const [82]: "InGameStore"
+4841 04 const type 4
+ const [83]: "DownloadOfferByOfferId"
+485D 04 const type 4
+ const [84]: "0CCF009F"
+486B 04 const type 4
+ const [85]: "SetLevelDisplayName"
+4884 04 const type 4
+ const [86]: "TEXT_LEVEL_ALBION_BOWERSTONECASTLE"
+48AC 04 const type 4
+ const [87]: "Gameflow"
+48BA 04 const type 4
+ const [88]: "Judgements"
+48CA 04 const type 4
+ const [89]: "EvilDecoration"
+48DE 04 const type 4
+ const [90]: "ActivateScenario"
+48F4 04 const type 4
+ const [91]: "Fable3"
+4900 04 const type 4
+ const [92]: "Episode1ScenarioEvil"
+491A 04 const type 4
+ const [93]: "Episode1Scenario"
+4930 04 const type 4
+ const [94]: "cprint"
+493C 04 const type 4
+ const [95]: "Activating scenario: Fable3, Albion\\CastleBattle, Episode1Scenario"
+4984 04 const type 4
+ const [96]: "Debug"
+498F 04 const type 4
+ const [97]: "LoadLevel"
+499E 04 const type 4
+ const [98]: "QC190_ThroneRoomTeleportMarker"
+49C2 04 const type 4
+ const [99]: "GetEntityWithName"
+49D9 04 const type 4
+ const [100]: "BCGarden_Courtyard"
+49F1 04 const type 4
+ const [101]: "IsAlive"
+49FE 04 const type 4
+ const [102]: "GraphicAppearance"
+4A15 04 const type 4
+ const [103]: "StartPreloadingMeshes"
+4A30 04 const type 4
+ const [104]: "SetAsAlwaysInView"
+4A47 04 const type 4
+ const [105]: "EnvironmentTheme"
+4A5D 04 const type 4
+ const [106]: "BlendToEnvironmentTheme"
+4A7A 04 const type 4
+ const [107]: "DLC2_BowerstoneOldQuarter_ThroneRoom"
+4AA4 03 const type 3
+4AA5 0000803F const [108]: (1)
+4AA9 03 const type 3
+4AAA 00000000 const [109]: (0)
+4AAE 04 const type 4
+ const [110]: "QC190_AssassinIntroA"
+4AC8 04 const type 4
+ const [111]: "QC190_HobsonACSTalkMarker"
+4AE7 04 const type 4
+ const [112]: "Talk"
+4AF1 04 const type 4
+ const [113]: "StopTalking"
+4B02 03 const type 3
+4B03 00409C45 const [114]: (5000)
+4B07 04 const type 4
+ const [115]: "StartAssassinIntroB"
+4B20 04 const type 4
+ const [116]: "SetTimeOfDay"
+4B32 03 const type 3
+4B33 0000B041 const [117]: (22)
+4B37 04 const type 4
+ const [118]: "DLC2_BowerstoneOldQuarter_Night"
+4B5C 04 const type 4
+ const [119]: "ASSASSIN_INTRO_B"
+4B72 04 const type 4
+ const [120]: "StartAssassinIntroC"
+4B8B 04 const type 4
+ const [121]: "ASSASSIN_INTRO_C"
+4BA1 04 const type 4
+ const [122]: "QC190_AssassinIntroC"
+4BBB 04 const type 4
+ const [123]: "GetAllEntitiesWithNameIncluding"
+4BE0 04 const type 4
+ const [124]: "QC190_BloodSplat"
+4BF6 04 const type 4
+ const [125]: "ipairs"
+4C02 04 const type 4
+ const [126]: "Destroy"
+4C0F 04 const type 4
+ const [127]: "Orchestra"
+4C1E 04 const type 4
+ const [128]: "Enabled"
+4C2B 04 const type 4
+ const [129]: "ASSASSIN_FIGHT"
+4C3F 04 const type 4
+ const [130]: "MoveAndRotateEntityToMarkerNamed"
+4C65 04 const type 4
+ const [131]: "QC190_HobsonCowerMarker"
+4C82 04 const type 4
+ const [132]: "GetRemoteHero"
+4C95 04 const type 4
+ const [133]: "QC190_HobsonAssassinEndMarker"
+4CB8 04 const type 4
+ const [134]: "GetRemoteHeroDog"
+4CCE 04 const type 4
+ const [135]: "StartAssassinCombat"
+4CE7 04 const type 4
+ const [136]: "Action"
+4CF3 04 const type 4
+ const [137]: "FinishAllActions"
+4D09 04 const type 4
+ const [138]: "Throne"
+4D15 04 const type 4
+ const [139]: "BC_Throne_Evil"
+4D29 04 const type 4
+ const [140]: "object"
+4D35 04 const type 4
+ const [141]: "BC_Throne_Good"
+4D49 04 const type 4
+ const [142]: "Physics"
+4D56 04 const type 4
+ const [143]: "SetCanCollideWithEntity"
+4D73 04 const type 4
+ const [144]: "HasDummyObject"
+4D87 04 const type 4
+ const [145]: "Prop.Action.Generic"
+4DA0 04 const type 4
+ const [146]: "GetDummyObjectFacingDirection"
+4DC3 04 const type 4
+ const [147]: "SetFacingVector"
+4DD8 04 const type 4
+ const [148]: "dummy"
+4DE3 04 const type 4
+ const [149]: "GetDummyObjectPosition"
+4DFF 04 const type 4
+ const [150]: "TeleportToPosition"
+4E17 04 const type 4
+ const [151]: "ModeManager"
+4E28 04 const type 4
+ const [152]: "AddModeByEnumWithAnimGroupName"
+4E4C 04 const type 4
+ const [153]: "EEntityModeType"
+4E61 04 const type 4
+ const [154]: "EM_CUTSCENE_CUSTOM_POSE"
+4E7E 04 const type 4
+ const [155]: "HobsonCowering"
+4E92 04 const type 4
+ const [156]: "AssassinDefeated"
+4EA8 04 const type 4
+ const [157]: "RemoveMode"
+4EB8 04 const type 4
+ const [158]: "QC190_AssassinDying"
+4ED1 04 const type 4
+ const [159]: "MOVE_TO_PORT"
+4EE3 04 const type 4
+ const [160]: "TeleportHobsonToPort"
+4EFD 04 const type 4
+ const [161]: "QC190_HobsonPortTeleportMarker"
+4F21 04 const type 4
+ const [162]: "END"
+ * functions:
+4F2A 00000000 sizep (0)
+ * lines:
+4F2E 00000000 sizelineinfo (0)
+ [pc] (line)
+ * locals:
+4F32 00000000 sizelocvars (0)
+ * upvalues:
+4F36 00000000 sizeupvalues (0)
+ ** end of function **
+ 
+ 
+
+ 
+ 
+If you write a custom script that you want to be reliant on DLC checks. You'd follow this same flow. Not that you would too, but whatever. 
+This is for reference only. 
+ 
+ 
+ [Updated on: Sat, 26 October 2013 19:37]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Sun, 08 September 2013 18:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Would it be safe to assume that the same check works on all the DLC, including weapons and various articles of clothing? Or is it just the quest packs? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Sun, 08 September 2013 19:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Sun, 08 September 2013 18:24 Would it be safe to assume that the same check works on all the DLC, including weapons and various articles of clothing? Or is it just the quest packs? 
+ 
+Got me. I just give it all to myself via script commands. 
+ 
+	Debug.AddAllDLC1Items()
+	Debug.AddAllDLC2Items()
+ 
+ 
+ 
+ 
+ [Updated on: Sat, 26 October 2013 19:39]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Mon, 09 September 2013 07:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Sun, 08 September 2013 19:42 asmcint wrote on Sun, 08 September 2013 18:24 Would it be safe to assume that the same check works on all the DLC, including weapons and various articles of clothing? Or is it just the quest packs? 
+ 
+Got me. I just give it all to myself via script commands. 
+	Debug.AddAllDLC1Items( 
+	Debug.AddAllDLC2Items( 
+ 
+ 
+ 
+ 
+Huh. Gonna have to remember that one. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Sat, 26 October 2013 19:39] by Moderator
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Mon, 09 September 2013 11:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Mon, 09 September 2013 07:33 
+ 
+Huh. Gonna have to remember that one. 
+ 
+Yep. They should all show up in guild hall once you unlock it. 
+I'm not sure when they would unlock under normal circumstances. 
+ 
+That newgame lua I posted basically starts you as a male, with the main game completed and good alignment. It made it easier to test quest changes obviously. With games for windows live being removed in the future I'm curious how the DLC stuff is going to be handled in retail version(Steam). 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Mon, 09 September 2013 11:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Huh. So what would I have to remove/change from that to have it just start a normal new game with the DLC available? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Mon, 09 September 2013 12:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Mon, 09 September 2013 11:58 Huh. So what would I have to remove/change from that to have it just start a normal new game with the DLC available? 
+ 
+Well the quickest way would be to not use that newgame script (It's just for testing~!), and instead use the script activation hacks listed in the old forum. 
+ 
+Then you just need to plug in the debug unlocks and you are good to go. 
+ 
+ 
+ [Updated on: Mon, 09 September 2013 12:16]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Mon, 09 September 2013 15:03 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So... Does the old forum even exist, then? Because otherwise I won't be able to find what you're talking about. :/ 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Mon, 09 September 2013 18:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Mon, 09 September 2013 15:03 So... Does the old forum even exist, then? Because otherwise I won't be able to find what you're talking about. :/ 
+ 
+kind of, maybe... Apart from the internet archive website, I have a backup of all the posts. 
+ 
+Edit: http://fable3mod.com/forums/index.php?t=msg&th=33&st art=0& 
+ 
+ 
+ 
+ [Updated on: Mon, 09 September 2013 18:39]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Mon, 09 September 2013 20:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Alright, final question. What specifically should I change about the byte of data in order to skip the DLC check? Should I just change the number for the test byte to one that doesn't exist yet in the listings? Or is there something else I need to do? 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Paid DLC Checks 
+ Mon, 09 September 2013 22:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Mon, 09 September 2013 20:19 Alright, final question. What specifically should I change about the byte of data in order to skip the DLC check? Should I just change the number for the test byte to one that doesn't exist yet in the listings? Or is there something else I need to do? 
+ 
+It's actually a pretty easy change once you figure out which statement to do. 
+ 
+The first column is the offset. The second is the data. 
+ 
+ 
+38D0 01000002 [076] test 1 0 ; to [78] if true
+38D4 000A0039 [077] jmp 11 ; to [89]
+38D8 011D0000 [078] getfield 1 0 29 ; BeenThroughDLCPurchasing
+38DC 01010082 [079] test_r1 1 0 1 
+38E0 00030039 [080] jmp 4 ; to [85]
+38E4 01040110 [081] self 1 0 260 ; "SetState"
+38E8 031E0032 [082] loadk 3 30 ; "BEGIN_QUEST_INTERACT_DLC"
+38EC 01010604 [083] call_i 1 3 1 
+38F0 00D1FF38 [084] jmp -46 ; to [39]
+38F4 01040110 [085] self 1 0 260 ; "SetState"
+38F8 031F0032 [086] loadk 3 31 ; "BEGIN_QUEST_INTERACT_BOUGHT_DLC"
+38FC 01010604 [087] call_i 1 3 1 
+3900 00CDFF38 [088] jmp -50 ; to [39]
+3904 01040110 [089] self 1 0 260 ; "SetState"
+3908 03200032 [090] loadk 3 32 ; "OFFER_DLC_PURCHASE_CUTSCENE"
+390C 01010604 [091] call_i 1 3 1 
+ 
+ 
+ 
+You'd open it up in a hex editor and change, say, offset 0x38D0 to 01 01 0002. You'd wind up with this if you disassembled it again: 
+ 
+38D0 01010002 [076] test 1 1 ; to [78] if false
+ 
+ 
+ 
+Which completely reverses that statement. This is some decently high level hacking here. I don't condone doing it accept as a learning experience once you've bought the DLC. Yada yada legal mumbo jumbo. 
+ 
+The second part is being able to repack it into a working bank. It should work if you just stick it back into the DLC bank it came from. But then you have to deal with backups and stuff. I used timeslips mod stuff and stuck it in a higher folder. I'll put that tutorial up at some point in the future if someone else doesn't do it first. 
+ 
+ 
+ [Updated on: Mon, 09 September 2013 22:22]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+    DLC Unlocking help 
+ Mon, 14 October 2013 09:49 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I was trying to figure out how to unlock the DLC files for Traitor's Keep using the "Paid DLC Checks" post. I was able to get everything sorted to the point of disassembling qc190_castleassassin.lua using chunkspy. Got the line the bottom post told to edit, and saved it. I need to know if I have to reassemble the .txt SpyChunk makes, or can I just rename the .txt to a .lua and call it a day. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC Unlocking help 
+ Tue, 15 October 2013 21:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Fable III reads plaintext LUA the same way it reads the compiled shit. You ought to be just fine in saving the text as a .lua file and calling it a day. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC Unlocking help 
+ Wed, 16 October 2013 05:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ StellKilo wrote on Mon, 14 October 2013 09:49 I was trying to figure out how to unlock the DLC files for Traitor's Keep using the "Paid DLC Checks" post. I was able to get everything sorted to the point of disassembling qc190_castleassassin.lua using chunkspy. Got the line the bottom post told to edit, and saved it. I need to know if I have to reassemble the .txt SpyChunk makes, or can I just rename the .txt to a .lua and call it a day. 
+ 
+So I'm assuming you changed the assembly output file? It's not quite that easy. You have to use a hex editor and make the change in the compiled lua. The assembly output at least tells you the offset you need to go to though. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: DLC Unlocking help 
+ Sun, 20 October 2013 20:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Wed, 16 October 2013 05:34 StellKilo wrote on Mon, 14 October 2013 09:49 I was trying to figure out how to unlock the DLC files for Traitor's Keep using the "Paid DLC Checks" post. I was able to get everything sorted to the point of disassembling qc190_castleassassin.lua using chunkspy. Got the line the bottom post told to edit, and saved it. I need to know if I have to reassemble the .txt SpyChunk makes, or can I just rename the .txt to a .lua and call it a day. 
+ 
+So I'm assuming you changed the assembly output file? It's not quite that easy. You have to use a hex editor and make the change in the compiled lua. The assembly output at least tells you the offset you need to go to though. 
+ 
+ 
+This was my problem, thank you. I thought you just remade the bnk's with the decompiled lua instead. Would explain why my game would screw up after reloading my save. Thanks man. 
+ 
+EDIT: 
+Another problem. Now When I get to Ravenscar keep, I cannot move. Weird. 
+ 
+ 
+ [Updated on: Mon, 21 October 2013 11:46]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+    Cannot move character [Need help] 
+ Mon, 21 October 2013 12:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have used the post http://fable3mod.com/forums/index.php?t=msg&th=28&st art=0& to trick the DLC check in Traitors Keep, it worked so far, but once I get off the boat to Ravenscar Keep, my character is completely frozen. I cannot move, yet I can hold CTRL and go into first person, and look around. Any idea how to fix this / the cause of this? 
+I read a fix is to have someone join you in co-op, but I have no one to do this with. If anyone could help me with this, that'd be awesome. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Mon, 21 October 2013 20:37 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ StellKilo wrote on Mon, 21 October 2013 12:20 I have used the post http://fable3mod.com/forums/index.php?t=msg&th=28&st art=0& to trick the DLC check in Traitors Keep, it worked so far, but once I get off the boat to Ravenscar Keep, my character is completely frozen. I cannot move, yet I can hold CTRL and go into first person, and look around. Any idea how to fix this / the cause of this? 
+I read a fix is to have someone join you in co-op, but I have no one to do this with. If anyone could help me with this, that'd be awesome. 
+ 
+It looks like there might be a script failure. It happens to me too. But I skipped straight the end of the game and there's all kinds of things that are borked. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Understone 
+ Tue, 22 October 2013 06:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Does this quest show up if you haven't purchased it? Traitor's Keep at least has an NPC that offers to sell the DLC. I've had it working before but for the life of me I can't remember what I originally did. 
+ 
+I know the pack is showing up because I've given myself all the content in the pack. 
+And I could have swore 'The Voice' shows up in your quest list no matter what? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Tue, 22 October 2013 13:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ As an aside. And to make sure everything was being loaded for myself. This opens up the path to Undertown. 
+ 
+	Layers.DeactivateLayer("Layer_QO100_FactorySim") 
+	Layers.DeactivateLayer("Layer_Understone_Locked") 
+	Layers.ActivateLayer("Layer_Understone_Open") 
+ 
+But without activating the quest it looks like the villager simulation never starts (no shops), and of course no story and such. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Tue, 22 October 2013 19:16 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Mon, 21 October 2013 20:37 StellKilo wrote on Mon, 21 October 2013 12:20 I have used the post http://fable3mod.com/forums/index.php?t=msg&th=28&st art=0& to trick the DLC check in Traitors Keep, it worked so far, but once I get off the boat to Ravenscar Keep, my character is completely frozen. I cannot move, yet I can hold CTRL and go into first person, and look around. Any idea how to fix this / the cause of this? 
+I read a fix is to have someone join you in co-op, but I have no one to do this with. If anyone could help me with this, that'd be awesome. 
+ 
+It looks like there might be a script failure. It happens to me too. But I skipped straight the end of the game and there's all kinds of things that are borked. 
+ 
+Bah. So is it tied with a savegame, or just the dlc files? I don't know if I have the patience to start another game from start to finish. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Tue, 22 October 2013 19:22 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ StellKilo wrote on Tue, 22 October 2013 19:16 Keshire wrote on Mon, 21 October 2013 20:37 StellKilo wrote on Mon, 21 October 2013 12:20 I have used the post http://fable3mod.com/forums/index.php?t=msg&th=28&st art=0& to trick the DLC check in Traitors Keep, it worked so far, but once I get off the boat to Ravenscar Keep, my character is completely frozen. I cannot move, yet I can hold CTRL and go into first person, and look around. Any idea how to fix this / the cause of this? 
+I read a fix is to have someone join you in co-op, but I have no one to do this with. If anyone could help me with this, that'd be awesome. 
+ 
+It looks like there might be a script failure. It happens to me too. But I skipped straight the end of the game and there's all kinds of things that are borked. 
+ 
+Bah. So is it tied with a savegame, or just the dlc files? I don't know if I have the patience to start another game from start to finish. 
+ 
+It might be the way we circumvented the script. I started midway and played a couple of hours just to be sure. Still stuck. I'll probably play with the script and see if I can pinpoint where it might be causing it. Might first guess though would be that the script states aren't getting set correctly, and then you never get released from the cutscene. Someone better at lua than I am could probably write up a quick debugger. 
+ 
+ 
+ [Updated on: Tue, 22 October 2013 19:24]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Wed, 23 October 2013 12:41 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Tue, 22 October 2013 19:22 StellKilo wrote on Tue, 22 October 2013 19:16 Keshire wrote on Mon, 21 October 2013 20:37 StellKilo wrote on Mon, 21 October 2013 12:20 I have used the post http://fable3mod.com/forums/index.php?t=msg&th=28&st art=0& to trick the DLC check in Traitors Keep, it worked so far, but once I get off the boat to Ravenscar Keep, my character is completely frozen. I cannot move, yet I can hold CTRL and go into first person, and look around. Any idea how to fix this / the cause of this? 
+I read a fix is to have someone join you in co-op, but I have no one to do this with. If anyone could help me with this, that'd be awesome. 
+ 
+It looks like there might be a script failure. It happens to me too. But I skipped straight the end of the game and there's all kinds of things that are borked. 
+ 
+Bah. So is it tied with a savegame, or just the dlc files? I don't know if I have the patience to start another game from start to finish. 
+ 
+It might be the way we circumvented the script. I started midway and played a couple of hours just to be sure. Still stuck. I'll probably play with the script and see if I can pinpoint where it might be causing it. Might first guess though would be that the script states aren't getting set correctly, and then you never get released from the cutscene. Someone better at lua than I am could probably write up a quick debugger. 
+ 
+Oh, does this happen with everyone's game by trying to bypass the dlc check? You sound like you've heard about it before. 
+By the way, thank you for the quick replies and the help you've been giving me. I have a very small understanding on how the DLC check worked, maybe I could find out how to fix this myself. 
+ 
+Another thing about the not being able to move was I couldn't return to sanctuary at all. Pressing ESC acted like it was an important cutscene (like you said) and would bring up the pause menu. I was able to go into the Game management and hit load, I was able to move in the load room, but upon returning I still could not move. 
+ 
+Edit: Any idea what's the event name of stopping a character from moving / allowing a character to move during a cutscene? 
+ 
+ 
+ 
+ [Updated on: Wed, 23 October 2013 14:24]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Thu, 24 October 2013 00:11 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I don't understand why you are trying to changing something in the quest script... 
+is enough to change the following function in a scriptactivation.txt and rename it to .lua 
+ 
+function ScriptFunction.IsDLC2Premium()
+	
+	-- this is for debug purposes. The only reason this will get set is if you have it in your mystartup.lua
+	if DLC2ScriptsDontCareAboutThePackage then
+ return true
+	end
+	
+	return PackageManager.IsPackagePremium("FableIII_DLC2_Paid")
+	
+end
+ 
+ 
+to 
+ 
+function ScriptFunction.IsDLC2Premium()
+	
+	return true
+	
+end
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Thu, 24 October 2013 02:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ need to change "AbleToRun function" in scriptactivation.lua 
+ 
+ScriptActivation[ScriptCode.QO100].AbleToRun = function()
+	--// check to see if we're the premium package before unlocking
+	if PackageManager.IsPackagePremium("FableIII_DayOne_UnderstoneQuestPack") then
+ return true
+	end
+end
+ 
+ 
+just remove it 
+ 
+ScriptActivation[ScriptCode.QO100].AbleToRun = nil
+ 
+ 
+ 
+this also need to be done for "Shooting Range" 
+QV070_RenegadeShootingRangeDLC 
+QV030_ReaverMansionOwnership 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Thu, 24 October 2013 07:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Thu, 24 October 2013 00:11 I don't understand why you are trying to changing something in the quest script... 
+is enough to change the following function in a scriptactivation.txt and rename it to .lua 
+ 
+function ScriptFunction.IsDLC2Premium()
+	
+	-- this is for debug purposes. The only reason this will get set is if you have it in your mystartup.lua
+	if DLC2ScriptsDontCareAboutThePackage then
+ return true
+	end
+	
+	return PackageManager.IsPackagePremium("FableIII_DLC2_Paid")
+	
+end
+ 
+ 
+to 
+ 
+function ScriptFunction.IsDLC2Premium()
+	
+	return true
+	
+end
+ 
+ 
+ 
+I feel kinda stupid for not thinking of overwriting that to begin with. I mean it says the function right there... 
+ 
+38C4 011B000C [073] getglobal 1 27 ; ScriptFunction
+38C8 011C0286 [074] getfield_r1 1 1 28 ; IsDLC2Premium
+38CC 0102027E [075] call_i_r1 1 1 2 
+38D0 01000002 [076] test 1 0 ; to [78] if true
+ 
+ 
+ 
+Edit: 
+I'm not sure that's all that needs to be done. It looks like it's still asking for purchase with just that. 
+ 
+ 
+ [Updated on: Thu, 24 October 2013 14:29]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Thu, 24 October 2013 14:19 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Thu, 24 October 2013 02:26 need to change "AbleToRun function" in scriptactivation.lua 
+ 
+ScriptActivation[ScriptCode.QO100].AbleToRun = function()
+	--// check to see if we're the premium package before unlocking
+	if PackageManager.IsPackagePremium("FableIII_DayOne_UnderstoneQuestPack") then
+ return true
+	end
+end
+ 
+ 
+just remove it 
+ 
+ScriptActivation[ScriptCode.QO100].AbleToRun = nil
+ 
+ 
+ 
+this also need to be done for "Shooting Range" 
+QV070_RenegadeShootingRangeDLC 
+QV030_ReaverMansionOwnership 
+ 
+Did that work for you? I've tried it and it's still not showing up? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Thu, 24 October 2013 15:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm still not sure the solution is in the scriptactivation.lua 
+ 
+But this change should be better than messing with the DLC check state. Since it skips it. 
+ 
+ 
+38A0 01040110 [064] self 1 0 260 ; "SetState"
+38A4 031A0032 [065] loadk 3 26 ; "DLC_CHECK"
+38A8 01010604 [066] call_i 1 3 1 
+ 
+ 
+ 
+38A0 01040110 [064] self 1 0 260 ; "SetState"
+38A4 031E0032 [065] loadk 3 30 ; "BEGIN_QUEST_INTERACT_DLC"
+38A8 01010604 [066] call_i 1 3 1 
+ 
+ 
+ 
+There still seems like there's a problem with not being able to move though after this function runs and then it loads the ravenscar level. It's supposed to advance gameflow at that point and load the next script. 
+ 
+00E4 0005000C [049] getglobal 0 5 ; QC190_CastleAssassin
+00E8 010D0078 [050] closure 1 13 ; 0 upvalues
+00EC 0001261E [051] setfield 0 19 1 ; State_END_Main
+
+2ADB ** function [13] definition (level 2)
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Thu, 24 October 2013 23:12 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ works fine for me 
+did you use "fresh" hero? 
+I have checked it on "non DLC" hero 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Thu, 24 October 2013 23:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ also works fine for me, like this 
+ 
+ 
+ [Updated on: Thu, 24 October 2013 23:16]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Fri, 25 October 2013 07:13 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Thu, 24 October 2013 23:12 works fine for me 
+did you use "fresh" hero? 
+I have checked it on "non DLC" hero 
+ 
+Yep, I start a new game every time via a modified newgame.lua 
+ 
+By non-DLC hero, do you mean without Understone and Traitor's Keep? Because that's what I'm trying to Access, the Undertown and Traitor's Keep quests while removing the xlive checks. The rest of the DLC and LE content is free and doesn't need to be circumvented. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Fri, 25 October 2013 09:27 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Fri, 25 October 2013 20:13 
+By non-DLC hero, do you mean without Understone and Traitor's Keep? 
+yes, just main game 
+I tried both cases, with Traitor's Keep and without it. Everything is working. 
+Perhaps the problem in your newgame.lua 
+can you show it? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Fri, 25 October 2013 19:29 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Fri, 25 October 2013 09:27 Keshire wrote on Fri, 25 October 2013 20:13 
+By non-DLC hero, do you mean without Understone and Traitor's Keep? 
+yes, just main game 
+I tried both cases, with Traitor's Keep and without it. Everything is working. 
+Perhaps the problem in your newgame.lua 
+can you show it? 
+ 
+Always a possibility. 
+ 
+I usually start at the end cutscene. But I've also started at the coronation, because the end cutscene doesn't set the bowerstone castle layer correctly. But it's mostly for testing anyway. 
+ Toggle Spoiler 
+ 
+QuestManager.NewThread(GameflowThreadBase, "NewGameManager")
+	
+function NewGameManager:Init()
+
+end
+function NewGameManager:StateEnum()
+
+end
+function NewGameManager:InitialSetup()
+
+end
+function NewGameManager:Update()
+
+	while not GUILevel.IsLevelLoaded("PVP_GUI\\FrontEnd") do
+ coroutine.yield()
+	end 
+	
+	coroutine.yield()
+	
+	SetInitialHeroEntityName("CreatureHero")
+	GUIPlayer.ChangePlayerEntityType(GetLocalHero(), "CreatureHero")
+	
+	SetInitialWorldName("Fable3")
+	SetInitialLevelName("Albion\\BowerstoneCastle")
+	--SetInitialScenarioName("DefaultScenario")
+	SetInitialScenarioName("GOOD")
+	SetGameflowScriptEnum("QC180")
+	SetGameflowScriptState("THERESA")
+	SetLevelNameStartsWithACS("Albion\\BowerstoneCastle")
+	SetOpeningLoadingScreen(true)
+	
+	SetSavingAsAllowed(true)
+ TutorialManager.SetToPlayNewExpressionLearnedTutorials(true)
+	TutorialManager.SetTutorialsEnabled(true)
+	self:SetDefaultCamera()
+	
+ GameComponentSwitchManager.SwitchToMainGameFromRetailFrontEn d()
+	self:Terminate()
+	coroutine.yield()
+	
+end
+function NewGameManager:OnExit()
+	
+	-- Initiate Kes functions --
+	GeneralScriptManager.AddScript(Kesfunction)
+	
+end
+
+QuestManager.AddQuestThread(NewGameManager:new(), QuestManager.UpdateLists.GUI)
+
+-- Testing stuff --
+Kesfunction = {}
+function Kesfunction:Init()
+end
+function Kesfunction:Update()
+
+	--ScriptFunction.FinishActiveCutscenes()
+	Gameflow.RoadToRule.UNLOCK_EVERYTHING(GetLocalHero())
+	Debug.AddAllDLC1Items()
+	Debug.AddAllDLC2Items()
+	--QO100_UndergroundTown:State_ACCEPTED_SkipTo()
+	Money.Add(GetLocalHero(), 10000000, 0)
+	--Layers.DeactivateLayer("Layer_QO100_FactorySim")
+	--Layers.DeactivateLayer("Layer_Understone_Locked")
+	--Layers.ActivateLayer("Layer_Understone_Open")
+	
+	
+	self:Terminate()
+	coroutine.yield()
+	
+end
+function Kesfunction:OnExit()
+end
+ 
+ 
+
+ 
+ 
+ 
+ 
+ Attachment: newgame.lua 
+ 
+ (Size: 1.81KB, Downloaded 2941 times) 
+ 
+ 
+ Attachment: mod9.zip 
+ 
+ (Size: 27.85KB, Downloaded 2063 times) 
+ 
+ 
+ 
+ [Updated on: Fri, 25 October 2013 19:32]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Fri, 25 October 2013 23:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ haha 
+your scriptactivation.lua in 'miscellaneous' folder, instead of 'quests' 
+everything worked here 
+only Traitor's Keep quest is not showing up in quests list, but it worked 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Sat, 26 October 2013 05:25 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Fri, 25 October 2013 23:46 haha 
+your scriptactivation.lua in 'miscellaneous' folder, instead of 'quests' 
+everything worked here 
+only Traitor's Keep quest is not showing up in quests list, but it worked 
+I could just erase the forum again and no one would be the wiser... 
+ 
+OK. With that it solved all my problems. I can also move at the start of ravenscar within Traitor's Keep. 
+Traitor's Keep doesn't show up in the quest list until you accept it. I'm still pretty sure you need to make it skip the DLC check to get past the purchase offer though. 
+ 
+ 
+ [Updated on: Sat, 26 October 2013 21:07]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Sat, 26 October 2013 07:53 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Sat, 26 October 2013 18:25 Traitor's Keep doesn't show up in the quest list until you accept it. 
+Problem is probably in your method of starting. With my non-DLC hero it's displayed. 
+ Keshire wrote on Sat, 26 October 2013 18:25 I'm still pretty sure you need to make it skip the DLC check to get past the purchase offer though. 
+What for? After all, the quest is starts, what do you need else? items? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Sat, 26 October 2013 11:44 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Thu, 24 October 2013 23:14 also works fine for me, like this 
+ 
+Not really sure what file I'm looking in for this line. Plus you're talking about the Bowerstone DLC, I need Traitor's (But reading that whole post, Keshire was able to get Traitor's keep to work... 
+I'm sorry if I'm a moron, I'm going to look around for whatever line you mean 
+ 
+Edit: I have no idea how to get rid of that winking smiley thing next to Work... , I'm trying to close that parenthesis, but that ass keeps winking at me. 
+ 
+ 
+ [Updated on: Sat, 26 October 2013 11:46]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Sat, 26 October 2013 12:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ StellKilo wrote on Sun, 27 October 2013 00:44 Not really sure what file I'm looking in for this line. Plus you're talking about the Bowerstone DLC, I need Traitor's (But reading that whole post, Keshire was able to get Traitor's keep to work... ) 
+I'm sorry if I'm a moron, I'm going to look around for whatever line you mean :? for Traitor's Keep, you need this 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Cannot move character [Need help] 
+ Sat, 26 October 2013 12:52 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sat, 26 October 2013 12:45 StellKilo wrote on Sun, 27 October 2013 00:44 Not really sure what file I'm looking in for this line. Plus you're talking about the Bowerstone DLC, I need Traitor's (But reading that whole post, Keshire was able to get Traitor's keep to work... 
+I'm sorry if I'm a moron, I'm going to look around for whatever line you mean for Traitor's Keep, you need this 
+ 
+I feel really dumb . 
+Do you mean Vanilla questscriptactivation or Traitor's keep's one? 
+ 
+ Edit: Many thanks! That did it! It even unstuck my character's save at Ravenscar, and the cutscene picked right up! Thanks a bunch man! 
+ Edit 2: Though I have another problem Reading about, you get the soldier outfit for free, as a gift almost immediatly, yet I have not gotten this. Any idea how to get it? Same goes for the clockwork dog. 
+ 
+ 
+ [Updated on: Sat, 26 October 2013 17:27]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Sat, 26 October 2013 19:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sat, 26 October 2013 07:53 Keshire wrote on Sat, 26 October 2013 18:25 I'm still pretty sure you need to make it skip the DLC check to get past the purchase offer though. 
+What for? After all, the quest is starts, what do you need else? items? 
+ 
+What I'm mostly concerned about is this part: 
+ 
+38D8 011D0000 [078] getfield 1 0 29 ; BeenThroughDLCPurchasing
+38DC 01010082 [079] test_r1 1 0 1 
+38E0 00030039 [080] jmp 4 ; to [85]
+
+38F4 01040110 [085] self 1 0 260 ; "SetState"
+38F8 031F0032 [086] loadk 3 31 ; "BEGIN_QUEST_INTERACT_BOUGHT_DLC"
+38FC 01010604 [087] call_i 1 3 1 
+ 
+ 
+ 
+I'd rather skip it entirely just to make sure we cover all our bases. 
+ 
+ 
+ StellKilo wrote on Sat, 26 October 2013 12:52 Edit 2: Though I have another problem Reading about, you get the soldier outfit for free, as a gift almost immediatly, yet I have not gotten this. Any idea how to get it? Same goes for the clockwork dog. 
+ 
+I thought it was something you picked up along the way during the quest? Like in a chest or something? 
+ 
+ 
+ [Updated on: Sat, 26 October 2013 19:50]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Sun, 27 October 2013 07:59 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ Keshire wrote on Sat, 26 October 2013 19:34 I thought it was something you picked up along the way during the quest? Like in a chest or something? 
+That's what I thought too, which is why I ignored the fact that I didn't get it. I like to collect sets in this game, and the only I'm missing at the moment is that, so I checked on the wiki. It says you get it straight away from the dlc loading (which I didn't). Plus, I already beat Traitor's Keep . 
+ 
+ 
+ [Updated on: Sun, 27 October 2013 08:00]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+ Next Page 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ Pages (2): [1   2    ›    » ]   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ translation Fable 3 
+
+ 
+ Next Topic: 
+ Override Assets issues 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:33 PDT 2026 
+
+ Total time taken to generate the page: 0.16486 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » DLC Unlocking discussion (merged) 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » DLC Unlocking discussion (merged) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Sun, 27 October 2013 10:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ StellKilo wrote on Sun, 27 October 2013 19:59 
+ Keshire wrote on Sat, 26 October 2013 19:34 I thought it was something you picked up along the way during the quest? Like in a chest or something? 
+That's what I thought too, which is why I ignored the fact that I didn't get it. I like to collect sets in this game, and the only I'm missing at the moment is that, so I checked on the wiki. It says you get it straight away from the dlc loading (which I didn't). Plus, I already beat Traitor's Keep . 
+it's something in 
+scripts\miscellaneous\dlc2_unlocks.lua 
+but the easiest way to get it: 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+end
+
+if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+end 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Sun, 27 October 2013 10:26 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sun, 27 October 2013 10:14 StellKilo wrote on Sun, 27 October 2013 19:59 
+ Keshire wrote on Sat, 26 October 2013 19:34 I thought it was something you picked up along the way during the quest? Like in a chest or something? 
+That's what I thought too, which is why I ignored the fact that I didn't get it. I like to collect sets in this game, and the only I'm missing at the moment is that, so I checked on the wiki. It says you get it straight away from the dlc loading (which I didn't). Plus, I already beat Traitor's Keep . 
+it's something in 
+scripts\miscellaneous\dlc2_unlocks.lua 
+but the easiest way to get it: 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+end
+
+if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+end 
+ 
+Where would I put this? I'm not the greatest with this scripting . 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Sun, 27 October 2013 20:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ StellKilo wrote on Sun, 27 October 2013 10:26 Artofeel wrote on Sun, 27 October 2013 10:14 StellKilo wrote on Sun, 27 October 2013 19:59 
+ Keshire wrote on Sat, 26 October 2013 19:34 I thought it was something you picked up along the way during the quest? Like in a chest or something? 
+That's what I thought too, which is why I ignored the fact that I didn't get it. I like to collect sets in this game, and the only I'm missing at the moment is that, so I checked on the wiki. It says you get it straight away from the dlc loading (which I didn't). Plus, I already beat Traitor's Keep . 
+it's something in 
+scripts\miscellaneous\dlc2_unlocks.lua 
+but the easiest way to get it: 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+end
+
+if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+end 
+ 
+Where would I put this? I'm not the greatest with this scripting . 
+ 
+Since you're using GFWL, how are you modifying scripts? just injecting them back into the traitor's keep DLC? 
+ 
+Because personally, I'd just overwrite the entire scripts\miscellaneous\dlc2_unlocks.lua with 
+ 
+ 
+function dlc2_unlock()
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+	end
+
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+	end
+end
+ 
+ 
+ 
+Because the rest of the script just looks to be dealing with GFWL offer GUI crap. 
+ 
+There's actually quite a bit more to it though if you check out weaponinventory.lua 
+That contains these functions. 
+ 
+Debug.AddAllDLC1Items()
+Debug.AddAllDLC2Items()
+Debug.AddDLCDogBreedPack()
+ 
+ 
+ 
+ 
+ [Updated on: Sun, 27 October 2013 20:14]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Mon, 28 October 2013 13:40 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Sun, 27 October 2013 20:07 StellKilo wrote on Sun, 27 October 2013 10:26 Artofeel wrote on Sun, 27 October 2013 10:14 StellKilo wrote on Sun, 27 October 2013 19:59 
+ Keshire wrote on Sat, 26 October 2013 19:34 I thought it was something you picked up along the way during the quest? Like in a chest or something? 
+That's what I thought too, which is why I ignored the fact that I didn't get it. I like to collect sets in this game, and the only I'm missing at the moment is that, so I checked on the wiki. It says you get it straight away from the dlc loading (which I didn't). Plus, I already beat Traitor's Keep . 
+it's something in 
+scripts\miscellaneous\dlc2_unlocks.lua 
+but the easiest way to get it: 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+end
+
+if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+end 
+ 
+Where would I put this? I'm not the greatest with this scripting . 
+ 
+Since you're using GFWL, how are you modifying scripts? just injecting them back into the traitor's keep DLC? 
+ 
+Because personally, I'd just overwrite the entire scripts\miscellaneous\dlc2_unlocks.lua with 
+ 
+ 
+function dlc2_unlock()
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+	end
+
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+	end
+end
+ 
+ 
+ 
+Because the rest of the script just looks to be dealing with GFWL offer GUI crap. 
+ 
+There's actually quite a bit more to it though if you check out weaponinventory.lua 
+That contains these functions. 
+ 
+Debug.AddAllDLC1Items()
+Debug.AddAllDLC2Items()
+Debug.AddDLCDogBreedPack()
+ 
+ 
+ 
+Yeah, I'm rebuilding the bnks as I go along. It does work with GFWL though, which I guess is an accomplishment (or something). 
+ 
+By overwrite the scripts, do you mean to decompile the lua with ChunkSpy, then take the TXT and overwrite everything, then rename the .txt to a .lua and rebuild the bnk with that? (cause last time I did it that way, my whole game started falling apart 
+ 
+Off topic : I question the shortcut for the winking smiley being the right parenthesis symbol... 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Mon, 28 October 2013 14:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ StellKilo wrote on Mon, 28 October 2013 13:40 Keshire wrote on Sun, 27 October 2013 20:07 StellKilo wrote on Sun, 27 October 2013 10:26 Artofeel wrote on Sun, 27 October 2013 10:14 StellKilo wrote on Sun, 27 October 2013 19:59 
+ Keshire wrote on Sat, 26 October 2013 19:34 I thought it was something you picked up along the way during the quest? Like in a chest or something? 
+That's what I thought too, which is why I ignored the fact that I didn't get it. I like to collect sets in this game, and the only I'm missing at the moment is that, so I checked on the wiki. It says you get it straight away from the dlc loading (which I didn't). Plus, I already beat Traitor's Keep . 
+it's something in 
+scripts\miscellaneous\dlc2_unlocks.lua 
+but the easiest way to get it: 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+end
+
+if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+end 
+ 
+Where would I put this? I'm not the greatest with this scripting . 
+ 
+Since you're using GFWL, how are you modifying scripts? just injecting them back into the traitor's keep DLC? 
+ 
+Because personally, I'd just overwrite the entire scripts\miscellaneous\dlc2_unlocks.lua with 
+ 
+ 
+function dlc2_unlock()
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+	end
+
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+	end
+end
+ 
+ 
+ 
+Because the rest of the script just looks to be dealing with GFWL offer GUI crap. 
+ 
+There's actually quite a bit more to it though if you check out weaponinventory.lua 
+That contains these functions. 
+ 
+Debug.AddAllDLC1Items()
+Debug.AddAllDLC2Items()
+Debug.AddDLCDogBreedPack()
+ 
+ 
+ 
+Yeah, I'm rebuilding the bnks as I go along. It does work with GFWL though, which I guess is an accomplishment (or something). 
+ 
+By overwrite the scripts, do you mean to decompile the lua with ChunkSpy, then take the TXT and overwrite everything, then rename the .txt to a .lua and rebuild the bnk with that? (cause last time I did it that way, my whole game started falling apart 
+ 
+Off topic : I question the shortcut for the winking smiley being the right parenthesis symbol... 
+ 
+ 
+Smiley's borked. XD 
+ 
+Don't even bother with chunkspy. Just paste that function into a text file called dlc2_unlocks.lua and replace the one in traitor's keep. Also of note is anything you place in the traitor's keep banks will overwrite the base game and undertownDLC. But man that'd be a pain the ass. We need to find a way to remove the GFWL while still allowing multiplayer. 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Understone 
+ Tue, 29 October 2013 13:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ StellKilo 
+ Messages: 12 Registered: October 2013 Location: United States
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Mon, 28 October 2013 14:10 StellKilo wrote on Mon, 28 October 2013 13:40 Keshire wrote on Sun, 27 October 2013 20:07 StellKilo wrote on Sun, 27 October 2013 10:26 Artofeel wrote on Sun, 27 October 2013 10:14 StellKilo wrote on Sun, 27 October 2013 19:59 
+ Keshire wrote on Sat, 26 October 2013 19:34 I thought it was something you picked up along the way during the quest? Like in a chest or something? 
+That's what I thought too, which is why I ignored the fact that I didn't get it. I like to collect sets in this game, and the only I'm missing at the moment is that, so I checked on the wiki. It says you get it straight away from the dlc loading (which I didn't). Plus, I already beat Traitor's Keep . 
+it's something in 
+scripts\miscellaneous\dlc2_unlocks.lua 
+but the easiest way to get it: 
+ if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+end
+
+if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+	Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+end 
+ 
+Where would I put this? I'm not the greatest with this scripting . 
+ 
+Since you're using GFWL, how are you modifying scripts? just injecting them back into the traitor's keep DLC? 
+ 
+Because personally, I'd just overwrite the entire scripts\miscellaneous\dlc2_unlocks.lua with 
+ 
+ 
+function dlc2_unlock()
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectSuitSoldier') == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectSuitSoldier')
+	end
+
+	if Inventory.GetNumberOfItemsOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork') == 0 then
+ Inventory.AddItemOfType(GetLocalHero(), 'ObjectInventoryPotionDogClockwork')
+	end
+end
+ 
+ 
+ 
+Because the rest of the script just looks to be dealing with GFWL offer GUI crap. 
+ 
+There's actually quite a bit more to it though if you check out weaponinventory.lua 
+That contains these functions. 
+ 
+Debug.AddAllDLC1Items()
+Debug.AddAllDLC2Items()
+Debug.AddDLCDogBreedPack()
+ 
+ 
+ 
+Yeah, I'm rebuilding the bnks as I go along. It does work with GFWL though, which I guess is an accomplishment (or something). 
+ 
+By overwrite the scripts, do you mean to decompile the lua with ChunkSpy, then take the TXT and overwrite everything, then rename the .txt to a .lua and rebuild the bnk with that? (cause last time I did it that way, my whole game started falling apart 
+ 
+Off topic : I question the shortcut for the winking smiley being the right parenthesis symbol... 
+ 
+ 
+Smiley's borked. XD 
+ 
+Don't even bother with chunkspy. Just paste that function into a text file called dlc2_unlocks.lua and replace the one in traitor's keep. Also of note is anything you place in the traitor's keep banks will overwrite the base game and undertownDLC. But man that'd be a pain the ass. We need to find a way to remove the GFWL while still allowing multiplayer. 
+ 
+ 
+Teknogods were able to make a multiplayer hack program that would ignore GFWL with Resident Evil 5. I just searched their site for Fable III, but seeing how the game was a flunk to most people, I don't think they believe it's a "valuable" game to spend that much time on. 
+ 
+I'm trying out that script in second, got the bnk rebuilding as I type. 
+Edit: Nope, didn't work. Though I just did traitor's keep's script. Not really a big deal if I can't get those, it would just feel more interesting to have them collected. Thanks 
+ 
+ 
+ 
+ [Updated on: Tue, 29 October 2013 13:30]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ Pages (2): [  «    ‹    1   2]   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ translation Fable 3 
+
+ 
+ Next Topic: 
+ Override Assets issues 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:34 PDT 2026 
+
+ Total time taken to generate the page: 0.05171 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

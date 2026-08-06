@@ -1,0 +1,736 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Quasar's quest script loader 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Quasar's quest script loader 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Quasar's quest script loader 
+ Sat, 16 November 2013 22:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm not going to upload the script activator assistant, because it's better for people to dig into the files themselves for stuff like this. 
+ 
+The core of this goes into scriptactivation.lua (So if you have DLC you'll need to extract it from there and either add it back in or create a new mod for it) 
+ 
+data/dir.manifest 
+ 
+scripts\mods.txt
+scripts\mods\keshire_Mod_Activation.lua
+scripts\quests\QV999_Mod.lua
+ 
+ 
+ 
+ 
+data/scripts/quests/scriptactivation.lua 
+ 
+--LoadFileAsString defaults to data\scripts\miscellaneous
+--And that's just silly, so let's bring it up one level
+local mods = string.gsub(LoadFileAsString("..\\mods.txt"),"\n","")
+
+--Base folder for this is scripts\mods
+for modinfo in mods:gmatch("[^%:]+") do
+	if (not modinfo:match("%-%-")) then
+ local d=modinfo:match("[^%#]+%#$"):gsub("%#$","")
+ local f=assert(loadfile("data\\scripts\\mods\\"..d))
+ f()
+	end
+end
+ 
+ 
+ 
+data/scripts/mods.txt (The #: is needed for each file) 
+ 
+keshire_Mod_Activation.lua#:
+ 
+ 
+ 
+data/scripts/mods/keshire_Mod_Activation.lua 
+ 
+local f=1;
+for i in ipairs(ScriptCode) do
+	f=f+1
+end
+ScriptCode["QV999"]=f
+
+-- QO810 Test
+ScriptActivation[ScriptCode.QV999] = {}
+ScriptActivation[ScriptCode.QV999].name = "QV999_Mod"
+ScriptActivation[ScriptCode.QV999].display_name = "Keshire Testing"
+ScriptActivation[ScriptCode.QV999].start_chap = Chapters.Start
+ScriptActivation[ScriptCode.QV999].end_chap = Chapters.End
+ScriptActivation[ScriptCode.QV999].states = 
+{
+	"START"
+}
+ScriptActivation[ScriptCode.QV999].AbleToRun = nil
+ 
+ 
+ 
+data/scripts/quests/QV999_Mod.lua (There's a quest template you can use for this) 
+ Toggle Spoiler 
+ 
+module(...,package.seeall)
+
+QuestManager.NewQuestQuestThread("QV999_Mod")
+
+function QV999_Mod:Init()
+
+end
+
+function QV999_Mod:State_START_SkipTo()
+
+end
+
+function QV999_Mod:State_START_Main()
+
+	Money.Add(GetLocalHero(), 1, 0)
+	--GroupMindManager:FinishActiveCutscenes()
+	Camera.DrawDebug = true
+	ConversationGroupMind.DrawDebug = true
+	Natal.SetDrawDebug(true)
+	Debug.SetEnableEntityDrawDebugInfo(true)
+	Debug.ScriptDebugHelpOn()
+	Debug.SetDrawDebugPage('test')
+	Debug.SetDrawDebugPage('input')
+	Debug.SetDrawDebugPage('layers')
+	Debug.SetConsoleFontSize(18)
+	Debug.SetConsoleOffsetX(32)
+	Debug.SetConsoleOffsetY(32)
+	Debug.SetDrawBuildVersion(true)
+	Debug.SetDrawGUI(true)
+	Debug.SetDrawGUIScreenNamesAndStates(true)
+	
+	--[[
+	for key,value in pairs(Debug) do
+ GUI.DisplayMessageBox("Key: "..tostring(key).." Value: "..tostring(value))
+ while (GUI.IsDisplayBoxActive()) do
+ coroutine.yield()
+ end
+	end
+	Money.Add(GetLocalHero(), 1, 0)
+	]]--
+	Money.Add(GetLocalHero(), 1, 0)
+	Gameflow.RoadToRule.UNLOCK_EVERYTHING(GetLocalHero())
+	Debug.AddDLCDogBreedPack()
+	Debug.AddAllDLC1Items()
+	Debug.AddAllDLC2Items()
+	Money.Add(GetLocalHero(), 10000000, 0)
+	coroutine.yield()
+end
+
+function QV999_Mod:OnExit()
+
+end
+ 
+ 
+
+ 
+ 
+ 
+ [Updated on: Sat, 16 November 2013 22:32]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Quasar's quest script loader 
+ Fri, 24 October 2014 10:43 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have a couple of questions: 
+ 
+Where in the scriptactivation.lua do I put this. Do I just add it to the end? 
+ 
+ --LoadFileAsString defaults to data\scripts\miscellaneous
+--And that's just silly, so let's bring it up one level
+local mods = string.gsub(LoadFileAsString("..\\mods.txt"),"\n","")
+
+--Base folder for this is scripts\mods
+for modinfo in mods:gmatch("[^%:]+") do
+	if (not modinfo:match("%-%-")) then
+ local d=modinfo:match("[^%#]+%#$"):gsub("%#$","")
+ local f=assert(loadfile("data\\scripts\\mods\\"..d))
+ f()
+	end
+end
+ 
+ 
+ 
+Do I need to add anything to this or is it functional like this? 
+ 
+ keshire_Mod_Activation.lua#: 
+ 
+ 
+I'm guessing keshire_Mod_Activation.lua makes the game recognize the quest. 
+ 
+And QV999_Mod.lua is the actual quest where I can determine what happens. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Quasar's quest script loader 
+ Wed, 29 October 2014 09:09 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Phnx wrote on Fri, 24 October 2014 10:43 I have a couple of questions: 
+ 
+Where in the scriptactivation.lua do I put this. Do I just add it to the end? 
+ 
+ --LoadFileAsString defaults to data\scripts\miscellaneous
+--And that's just silly, so let's bring it up one level
+local mods = string.gsub(LoadFileAsString("..\\mods.txt"),"\n","")
+
+--Base folder for this is scripts\mods
+for modinfo in mods:gmatch("[^%:]+") do
+	if (not modinfo:match("%-%-")) then
+ local d=modinfo:match("[^%#]+%#$"):gsub("%#$","")
+ local f=assert(loadfile("data\\scripts\\mods\\"..d))
+ f()
+	end
+end
+ 
+ 
+ 
+Do I need to add anything to this or is it functional like this? 
+ 
+ keshire_Mod_Activation.lua#: 
+ 
+ 
+I'm guessing keshire_Mod_Activation.lua makes the game recognize the quest. 
+ 
+And QV999_Mod.lua is the actual quest where I can determine what happens. 
+ 
+Yes, yes, and yes. 
+ 
+This is all basically a way to add new stuff without doing any funky stuff with other existing quests. 
+ 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Quasar's quest script loader 
+ Wed, 29 October 2014 09:15 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ OK. Thank you! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Quasar's quest script loader 
+ Thu, 30 October 2014 00:10 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I have run into a bit of an issue. I don't want the game to exec commands every time I load a saved game so I tried deleting QV999_Mod.lua which bugged my game. Then I changed the content to module(...,package.seeall)
+
+QuestManager.NewQuestQuestThread("QV999_Mod")
+
+function QV999_Mod:Init()
+
+end
+
+function QV999_Mod:State_START_SkipTo()
+
+end
+
+function QV999_Mod:State_START_Main()
+
+end
+
+function QV999_Mod:OnExit()
+
+end 
+ and the game runs fine, except I found out that trying to delete the QV999_Mod.lua wasn't necessary at all because the game no longer execs new commands put into the file. Is this normal? Is there something I can do to make execution of commands work again? What I don't understand is that the game still loads the lua and the code must be correct or the game gets bugged as well. But then why aren't new commands executed?! 
+ 
+ 
+ [Updated on: Thu, 30 October 2014 00:15]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Quasar's quest script loader 
+ Thu, 30 October 2014 15:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Phnx wrote on Thu, 30 October 2014 00:10 I have run into a bit of an issue. I don't want the game to exec commands every time I load a saved game so I tried deleting QV999_Mod.lua which bugged my game. Then I changed the content to module(...,package.seeall)
+
+QuestManager.NewQuestQuestThread("QV999_Mod")
+
+function QV999_Mod:Init()
+
+end
+
+function QV999_Mod:State_START_SkipTo()
+
+end
+
+function QV999_Mod:State_START_Main()
+
+end
+
+function QV999_Mod:OnExit()
+
+end 
+ and the game runs fine, except I found out that trying to delete the QV999_Mod.lua wasn't necessary at all because the game no longer execs new commands put into the file. Is this normal? Is there something I can do to make execution of commands work again? What I don't understand is that the game still loads the lua and the code must be correct or the game gets bugged as well. But then why aren't new commands executed?! 
+ 
+Without a loop the quest completed. 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Quasar's quest script loader 
+ Fri, 31 October 2014 08:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thank you for the clarification. Even calling myself a scripting-noob would be an exaggeration so I'll stick to the scriptactivation method. I don't feel comfortable adding a quest to the game that's only used once when I can't create a loop, too. I managed to make the game run all the scripts from an extracted scripts folder with DLC. So there's no hassle of constantly repacking the dlc files when I want to make changes to scriptactivation.lua. Also, happy Halloween! 
+ 
+ 
+ [Updated on: Fri, 31 October 2014 10:27]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Quasar's fable 3 function listing 
+
+ 
+ Next Topic: 
+ Decompiled Lua Scripts 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:43 PDT 2026 
+
+ Total time taken to generate the page: 0.05380 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,467 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Mods » Heroine morph mod 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Mods  » Heroine morph mod 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Heroine morph mod 
+ Tue, 13 October 2015 06:48 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ This mod tune morph coefficients for heroine 
+It's only works if the SHOOTING SKILLS FULLY TRAINED 
+ 
+Setup: 
+use Catspaw's GFWL emu 
+put DLC folder to Fable 3 game directory 
+use this to add code that train shooting skills to full (or train it just shooting without this cheat) 
+ Toggle Spoiler 
+if Experience.Get(QuestManager.HeroEntity, EExperienceType.EXPERIENCE_SKILL) < 252500 then
+	Experience.Modify(QuestManager.HeroEntity, EExperienceType.EXPERIENCE_SKILL, (252500 - Experience.Get(QuestManager.HeroEntity, EExperienceType.EXPERIENCE_SKILL)), false)
+	Debug.SetHeroSkill(1.0)
+end 
+
+ 
+ screenshots 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ Attachment: f3_femaleMorphMod_fat1.jpg 
+ 
+ (Size: 199.92KB, Downloaded 24268 times) 
+ 
+ 
+ Attachment: f3_femaleMorphMod_fat2.jpg 
+ 
+ (Size: 224.39KB, Downloaded 25718 times) 
+ 
+ 
+ Attachment: f3_femaleMorphMod_thin1.jpg 
+ 
+ (Size: 184.20KB, Downloaded 23757 times) 
+ 
+ 
+ Attachment: f3_femaleMorphMod_thin3.jpg 
+ 
+ (Size: 219.84KB, Downloaded 23725 times) 
+ 
+ 
+ Attachment: femaleMorphMod.zip 
+ 
+ (Size: 6.13KB, Downloaded 4053 times) 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Heroine morph mod 
+ Wed, 14 October 2015 07:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Ragnin 
+ Messages: 8 Registered: October 2015 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Curious as to what this mod does. Is it just changing how the hero looks when thin and fat? 
+Also unrelated but how would I use 
+ 
+ Toggle Spoiler if Experience.Get(QuestManager.HeroEntity, EExperienceType.EXPERIENCE_SKILL) < 252500 then 
+	Experience.Modify(QuestManager.HeroEntity, EExperienceType.EXPERIENCE_SKILL, (252500 - Experience.Get(QuestManager.HeroEntity, EExperienceType.EXPERIENCE_SKILL) , false) 
+	Debug.SetHeroSkill(1.0) 
+end
+
+ 
+to also max out magic aura and strength? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Heroine morph mod 
+ Wed, 14 October 2015 13:06 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ragnin wrote on Wed, 14 October 2015 20:06 Curious as to what this mod does. Is it just changing how the hero looks when thin and fat? 
+yes 
+ Ragnin wrote on Wed, 14 October 2015 20:06 Also unrelated but how would I use 
+to also max out magic aura and strength? 
+just replace 
+EXPERIENCE_SKILL 
+with 
+EXPERIENCE_STRENGTH 
+or 
+EXPERIENCE_WILL 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Heroine morph mod 
+ Sun, 18 October 2015 15:14 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks, Artofeel! I hope I have time to look at these soon! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Heroine morph mod 
+ Sun, 18 October 2015 15:17 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Yes, it changes the Morphs (the "bone" positions and densities) like I was planning to do with my big breast mod (in another thread). It's pretty fun to get in there and play with. I'll try and explain it on my thread if you'd like. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Walk Mod 
+
+ 
+ Next Topic: 
+ Transfering a save to GFWL 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:27 PDT 2026 
+
+ Total time taken to generate the page: 0.05160 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

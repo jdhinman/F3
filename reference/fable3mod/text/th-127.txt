@@ -1,0 +1,657 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Blacksmithing mod WIP 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Blacksmithing mod WIP 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Blacksmithing mod WIP 
+ Sun, 17 November 2013 21:23 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I was thinking of reworking some of the jobs so they are more than just for money. I'm staring with the Blacksmithing job. 
+ 
+Ideally I want to modify the multimesh weapons dynamically based on the blacksmithing minigame. 
+ 
+To start off with, each color should signify a weapon part: shaft, blade, etc 
+ 
+I'll add on mechanics after that prototype is complete. 
+ 
+jobblacksmithinstance.lua (Complete) 
+jobblacksmithmanager.lua (Complete) 
+ 
+I'm hoping I don't have to touch jobcommonscript.lua 
+ 
+ 
+ 
+ Attachment: jobblacksmithinstance.lua 
+ 
+ (Size: 0.33KB, Downloaded 2985 times) 
+ 
+ 
+ Attachment: jobblacksmithmanager.lua 
+ 
+ (Size: 16.07KB, Downloaded 2969 times) 
+ 
+ 
+ 
+ [Updated on: Sun, 01 April 2018 22:02]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing mod WIP 
+ Mon, 18 November 2013 21:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Sun, 17 November 2013 22:23 
+Ideally I want to modify the multimesh weapons dynamically based on the blacksmithing minigame. 
+ 
+To start off with, each color should signify a weapon part: shaft, blade, etc 
+ 
+I'll add on mechanics after that prototype is complete. 
+ 
+ 
+... 
+ 
+ 
+ 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing mod WIP 
+ Tue, 19 November 2013 16:56 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm trying to find the mistake in that manager script. I must have misspelled something in there somewhere, because it's not making it through the script correctly. It's so close though. This would be a breeze if I could debug it properly... 
+ 
+Edit: 
+Got most of the typo's fixed I think. Game doesn't hang anymore. Goes on to next round. 
+ 
+Doesn't look like the multiplier is being updated and successful hit isn't animating. 
+ 
+Miss hit and idles are working. 
+ 
+Edit: 
+Rearranged some code to make better sense. Added my usual code commenting expressing my thoughts. 
+ 
+I'm at a loss on why the success hit and money aren't working. If someone wants to go through it and take a quick look I'd appreciate it. 
+ 
+ 
+ [Updated on: Tue, 19 November 2013 21:28]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing mod WIP 
+ Fri, 07 March 2014 08:18 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I haven't had time to continue this, and the script is still kind of wonky. 
+ 
+But if anyone else wants to experiment with the concept. Here is what I had in mind: 
+ 
+in the HeroJobController:RespondToHitBlacksmith() 
+ function, you'd get the button that was pressed, and use that to modify the active weapon morph on every hit. I think the easiest way is to just iterate through the morphs for each weapon part since I believe they are an array. 
+ 
+If you don't care about money or round failure stuff, that can probably be completely removed. 
+ 
+ 
+ [Updated on: Fri, 07 March 2014 08:34]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing mod WIP 
+ Fri, 07 March 2014 10:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Fri, 07 March 2014 09:18 
+If you don't care about money or round failure stuff, that can probably be completely removed. 
+ 
+Your current version does that partway, by accident. For a perfect round, you don't get paid, and the gold multiplier never increases. I'd try to get the weapon morph bit working myself, but I've only ever been good at copying and pasting code together in a horrendous abomination against all things sensible and holy. 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing mod WIP 
+ Fri, 07 March 2014 17:33 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ asmcint wrote on Fri, 07 March 2014 10:02 Keshire wrote on Fri, 07 March 2014 09:18 
+If you don't care about money or round failure stuff, that can probably be completely removed. 
+ 
+Your current version does that partway, by accident. For a perfect round, you don't get paid, and the gold multiplier never increases. I'd try to get the weapon morph bit working myself, but I've only ever been good at copying and pasting code together in a horrendous abomination against all things sensible and holy. 
+ 
+That's the best kind of code. You have to round it off with a glass of whiskey while writing it though. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing mod WIP 
+ Fri, 07 March 2014 18:50 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ asmcint 
+ Messages: 48 Registered: September 2013 Location: U.S.A.
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Huh. Guess I'll have to try that in 2, now that I think about it, years when I'm actually old enough to drink. Who knows, maybe XKCD was right, and the Ballmer Peak exists. 
+ 
+ 
+ 
+ To whomever designed the map of Mistpeak Valley to look so much more simple than the actual level is: May the Archangel Michael descend from the heavens and plant his boot squarely between your legs for your asshattery.
+
+ [Updated on: Fri, 07 March 2014 19:14]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Blacksmithing mod WIP 
+ Sun, 01 April 2018 22:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Keshire wrote on Tue, 19 November 2013 16:56 I'm trying to find the mistake in that manager script. I must have misspelled something in there somewhere, because it's not making it through the script correctly. It's so close though. This would be a breeze if I could debug it properly... 
+ 
+I'm at a loss on why the success hit and money aren't working. If someone wants to go through it and take a quick look I'd appreciate it. 
+ 
+It's a little late, but at least not never. 
+ 
+I fixed it. It was one subtle greater than/less than sign that was flipped causing it to never make it out of the idle animation. The completed scripts are in the first post. 
+ 
+I'm also working on the lute hero manager with the intent of adding all the online achievements to it. 
+ 
+Haven't decided if I'll do anything to the pie making job. 
+ 
+ 
+ [Updated on: Sun, 01 April 2018 22:07]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ How to extract speech file ? 
+
+ 
+ Next Topic: 
+ Help with Pre-order hunter lodge 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:03:45 PDT 2026 
+
+ Total time taken to generate the page: 0.05683 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

@@ -1,0 +1,377 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Weapon Upgrades 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Weapon Upgrades (Help writing Catpaw script) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Weapon Upgrades 
+ Thu, 18 January 2018 18:02 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ I8AB2Day 
+ Messages: 2 Registered: January 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I got scripts working, so the setup is already done. What I need help with is writing the script for upgrading the weapons. 
+From what I can tell, the script needs to look like this: 
+ ScriptFunction.AddUpgradeStatToWeapon({amount_to_add = 2000, text_tag = "MORTAR_RANGE_SCORE"}) 
+ 
+I keep reading about this globals.gdb file, which has information on the text_tag 
+values in the ScriptTag section, but that file does not exist, so that is where I am stuck. 
+Also, I am unsure if simply throwing that line of code into my Catpaw MyScript01.lua is the right thing to do. 
+My best guess is to put that code in, run into the weapon room, and be amazed as all the weapons I look at 
+that have that specific text_tag are suddenly finished. Does the amount need to be exact? Should I use MyScript02? 
+When I used the Mistpeak demon door script provided int he forum, it had a lot more then just one line 
+written in the script, and it worked as described, so I am wondering why this is only one line, and if it will work. 
+If needed, Discord is available, and when the issue is resolved, this post will be edited. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Weapon Upgrades 
+ Sat, 27 January 2018 05:07 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I8AB2Day wrote on Fri, 19 January 2018 07:02 but that file does not exist, so that is where I am stuck. you need to extract it from... I don't remember from which game archive :D 
+ I8AB2Day wrote on Fri, 19 January 2018 07:02 Also, I am unsure if simply throwing that line of code into my Catpaw MyScript01.lua is the right thing to do. 
+My best guess is to put that code in, run into the weapon room, and be amazed as all the weapons I look at 
+that have that specific text_tag are suddenly finished. Does the amount need to be exact? Should I use MyScript02? doesn't matter, as far as I remember it works only when the player takes this weapon 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Weapon Upgrades 
+ Sat, 27 January 2018 05:24 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ I8AB2Day 
+ Messages: 2 Registered: January 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Artofeel wrote on Sat, 27 January 2018 05:07 I8AB2Day wrote on Fri, 19 January 2018 07:02 but that file does not exist, so that is where I am stuck. you need to extract it from... I don't remember from which game archive 
+ I8AB2Day wrote on Fri, 19 January 2018 07:02 Also, I am unsure if simply throwing that line of code into my Catpaw MyScript01.lua is the right thing to do. 
+My best guess is to put that code in, run into the weapon room, and be amazed as all the weapons I look at 
+that have that specific text_tag are suddenly finished. Does the amount need to be exact? Should I use MyScript02? doesn't matter, as far as I remember it works only when the player takes this weapon 
+I am not sure if you attempting to be funny, but I still have no clue where the globals.gdb file is located. 
+You've made if very clear that you have no read my entire post, so I will refrain from simply throwing scripts out there randomly into MyScript01.lua and MyScript02.lua for now. 
+ 
+ 
+ [Updated on: Sat, 27 January 2018 05:25]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Weapon Upgrades 
+ Wed, 31 January 2018 19:46 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Keshire 
+ Messages: 137 Registered: August 2013 
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I8AB2Day wrote on Sat, 27 January 2018 05:24 but I still have no clue where the globals.gdb file is located. 
+ 
+There's no need to get snippy. Fable 3 wasn't built to be modded so you have to be prepared to do some hunting and a little legwork to get things done. 
+ 
+ http://fable3mod.com/forums/index.php?t=msg&th=45&go to=84&#msg_84 
+ Keshire wrote on Tue, 17 September 2013 08:19 asmcint wrote on Tue, 17 September 2013 08:13 Alrighty... TO THE HEX EDITOR.... when I feel up to dealing with it. Also, I'm gonna keep it on the front. Judging by where the effects go through that occasional glitch, it should look pretty freakin' sweet. 
+ 
+EDIT: Wait... Where is globals.gdb again? 
+ 
+I think it's in the levels bank. It's also updated for each DLC too. 
+ 
+Editor 
+ http://fable3mod.com/forums/index.php?t=msg&th=256&s tart=0& 
+ 
+ 
+ [Updated on: Wed, 31 January 2018 19:48]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Enemy randomization 
+
+ 
+ Next Topic: 
+ [How to]... extract music from the installation ? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:46 PDT 2026 
+
+ Total time taken to generate the page: 0.06321 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

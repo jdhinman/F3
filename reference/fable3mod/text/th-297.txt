@@ -1,0 +1,311 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » [Mod Request]Dragging villagers to work 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » [Mod Request]Dragging villagers to work 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ [Mod Request]Dragging villagers to work 
+ Sat, 20 June 2020 13:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Considering this can only come about as a result of clearing about 2/3 of the game (after you take the crown), it's a little late for it to have any sort of meaningful bonus. 
+Can someone please mod this requirement to make it possible to complete earlier? 
+ 
+Also, I noticed Ben Finn's sword has a unique appearance. Is this possible? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Mod Request]Dragging villagers to work 
+ Sat, 18 July 2020 23:20 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I had something like this 
+ if JobCoordinator.JobManagerThreads.QDRAG_CriminalManager.JobData.QDRAG_CRIMINAL_BSI010.AvailableFromChapter ~= "BowerstoneAndBalverines_Part_1_RenownBreak" then
+	JobCoordinator.JobManagerThreads.QDRAG_CriminalManager.JobData.QDRAG_CRIMINAL_BSI010.AvailableFromChapter = "BowerstoneAndBalverines_Part_1_RenownBreak"
+end
+if JobCoordinator.JobManagerThreads.QDRAG_CriminalManager.JobData.QDRAG_CRIMINAL_NMF010.AvailableFromChapter ~= "BowerstoneAndBalverines_Part_2" then
+	JobCoordinator.JobManagerThreads.QDRAG_CriminalManager.JobData.QDRAG_CRIMINAL_NMF010.AvailableFromChapter = "BowerstoneAndBalverines_Part_2"
+end
+if JobCoordinator.JobManagerThreads.QDRAG_SlaveManager.JobData.QDRAG_SLAVE_BSI010.AvailableFromChapter ~= "BowerstoneAndBalverines_Part_1_RenownBreak" then
+	JobCoordinator.JobManagerThreads.QDRAG_SlaveManager.JobData.QDRAG_SLAVE_BSI010.AvailableFromChapter = "BowerstoneAndBalverines_Part_1_RenownBreak"
+end
+if JobCoordinator.JobManagerThreads.QDRAG_SlaveManager.JobData.QDRAG_SLAVE_BLD010.AvailableFromChapter ~= "Ruling_Part1" then
+	JobCoordinator.JobManagerThreads.QDRAG_SlaveManager.JobData.QDRAG_SLAVE_BLD010.AvailableFromChapter = "Ruling_Part1"
+end
+if JobCoordinator.JobManagerThreads.QDRAG_SlaveManager.JobData.QDRAG_SLAVE_NMF010.AvailableFromChapter ~= "Ruling_Part1" then
+	JobCoordinator.JobManagerThreads.QDRAG_SlaveManager.JobData.QDRAG_SLAVE_NMF010.AvailableFromChapter = "Ruling_Part1"
+end
+if JobCoordinator.JobManagerThreads.QDRAG_SlaveManager.JobData.QDRAG_SLAVE_MPV010.AvailableFromChapter ~= "Ruling_Part1" then
+	JobCoordinator.JobManagerThreads.QDRAG_SlaveManager.JobData.QDRAG_SLAVE_MPV010.AvailableFromChapter = "Ruling_Part1"
+end
+if tostring(Layers.GetActiveScenarioForLevel("Fable3", "Albion\\newmillfields")) == "Scenario_LakeDrainedPinesCut" then
+	Layers.DeactivateLayer("QDRAG_CRIMINAL_NMF010_Main")
+end 
+ 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: [Mod Request]Dragging villagers to work 
+ Sun, 19 July 2020 02:34 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ squark 
+ Messages: 45 Registered: February 2015 Location: Ireland
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ You are just incredible. Thank you so much! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Improved script injection method 
+
+ 
+ Next Topic: 
+ Weapon Augments and ScriptTag 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:05:00 PDT 2026 
+
+ Total time taken to generate the page: 0.05133 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

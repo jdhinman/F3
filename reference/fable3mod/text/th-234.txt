@@ -1,0 +1,432 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Tools » xlive 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Tools  » xlive (GFWL emulator) 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ xlive 
+ Wed, 25 March 2015 04:30 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Since the timeslip GFWL remover does not always work correctly, I recommend using Catspaw's GFWL emu , also it can save game option :) 
+I attached to this post last working version. 
+Right now it's 15d 
+ 
+how to place DLC correctly? 
+put files in: 
+ ..\Fable 3\DLC\01_Understone\content\*.*
+..\Fable 3\DLC\01_Understone\content.xbx
+..\Fable 3\DLC\02_TraitorsKeep\content\*.*
+..\Fable 3\DLC\02_TraitorsKeep\content.xbx 
+ 
+if you dont have content.xbx file then create one by copying the following text 
+Understone DLC 
+ Toggle Spoiler [All]
+Premium=No
+TitleID=0x4D53090A
+ContentPackageType=0x00000002
+LicenseBits=0x00000000
+BaseVersion=0x00000000
+UpdateVersion=0x00000000
+ThumbnailImage=icon.png
+OfferingID=0xECF0000
+AdminFriendlyName="Fable III PC DLC1"
+TitleName="Fable III"
+PurchaseOnceOnly=Yes
+ContentFlags=0xC0
+ContentID=B7D5FE3D720F347CE446785C3F55488C8E7FF201
+Platform=0x10
+BitFlags=0xFFFFFFFF
+ActivationDate=01/01/2010
+DefaultDisplayName="Fable III PC DLC1"
+OfferRegions.0=103,0,0,TaxNotApplicable
+OfferingType=Content
+EndDate=12/31/2999
+DisplayInDash=Yes
+Version=0x00000001
+DashDisplayName.0=EN,"Fable III PC DLC1"
+DashDescription.0=EN,"Understone Quest" 
+
+ 
+ 
+Traitors Keep DLC 
+ Toggle Spoiler [All]
+Premium=No
+TitleID=0x4D53090A
+ContentPackageType=0x00000002
+LicenseBits=0x00000000
+BaseVersion=0x00000000
+UpdateVersion=0x00000000
+ThumbnailImage=icon.png
+OfferingID=0xECF0000
+AdminFriendlyName="Fable III Traitors Keep PC DLC"
+TitleName="Fable III"
+PurchaseOnceOnly=Yes
+ContentFlags=0xC0
+ContentID=D7FCB87DC6790538CC5EE45EC44EC782603B8ACB
+Platform=0x10
+BitFlags=0xFFFFFFFF
+ActivationDate=01/01/2010
+DefaultDisplayName="Fable III Traitors Keep PC DLC"
+OfferRegions.0=103,0,0,TaxNotApplicable
+OfferingType=Content
+EndDate=12/31/2999
+DisplayInDash=Yes
+Version=0x00000001
+DashDisplayName.0=EN,"Fable III Traitors Keep PC DLC"
+DashDescription.0=EN,"Traitors Keep Quest" 
+
+ 
+ 
+Actually I wrote this "content.xbx" by myself and for those who want to add mods, there is only two main values that need to change, is NAMEs (maybe is not needed) and ContentID (definitely NEED) 
+so, how to get ContentID for you own mod? 
+you can just write random numbers, but easiest way is calculate SHA-1 hash of "yourMod.bnk.dat" 
+also remember to specify it in "package_collection_info.xmb" too, with prefix 0x 
+ 
+ 
+ 
+ 
+ Attachment: 15d.7z 
+ 
+ (Size: 134.85KB, Downloaded 11987 times) 
+ 
+ 
+ 
+ [Updated on: Wed, 25 March 2015 04:37]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: xlive 
+ Tue, 22 September 2015 06:45 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheGeniusSavant 
+ Messages: 68 Registered: September 2015 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Thanks for hooking me up with this, Artofeel! It cleared up TONS of problems I was having! 
+ 
+For folks who have already started a game and don't want to lose their progress, it's too easy to go into the new xlive.ini and change your 16 digit code to match your existing character's code C:\Users\%User%\Saved Games\Lionhead Studios\Fable 3\################\hero1autosave_*.bin 
+ 
+As advertised, this emu allows you to save your settings, too! 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: xlive 
+ Sun, 04 December 2016 18:08 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Kallix289 
+ Messages: 14 Registered: November 2016 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ It freezes when I change the XID 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: xlive 
+ Tue, 06 December 2016 23:35 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Artofeel 
+ Messages: 195 Registered: August 2013 Location: Russia
+ 
+ 
+ Senior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ cac289 wrote on Mon, 05 December 2016 07:08 It freezes when I change the XID 
+did you used timeslip SaveGame Editor to convert your save game? 
+if not -- do it. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ TEX converter 
+
+ 
+ Next Topic: 
+ BlackDemon's BNK Utils 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:19 PDT 2026 
+
+ Total time taken to generate the page: 0.05400 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

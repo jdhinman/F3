@@ -1,0 +1,234 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Influencing Villager Personality 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Influencing Villager Personality 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Influencing Villager Personality 
+ Wed, 01 April 2020 03:57 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ XanWasting 
+ Messages: 8 Registered: March 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I want to set villager's sexual orientation. I skimmed through the debugmenu.txt, and while I did find a promising command that allows targeting of a specific villager, I couldn't find anything influencing villager personalities, there were 2 commands that 'drew debug pages' with personalities, but as far as I can tell it does nothing (visible). 
+ 
+So I guess my real question is: is debugmenu.txt containing all of the working commands? or are there some others that I could use to turn people gay with? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Influencing Villager Personality 
+ Thu, 02 April 2020 13:51 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ XanWasting 
+ Messages: 8 Registered: March 2020 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Ok, so the command I had in mind goes: 
+ OpinionReaction.ResetCurrentRelationshipStage(Targeting.GetTarget(GetLocalHero()), GetLocalHero(), ERelationshipStages.ERS_LOVE) 
+
+which is supposed to make 'targeted' villager love you, I think. 
+except it doesn't work, or I'm using it wrong. Someone capable of making an autopsy of this line and explain how does it work? 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Remove enemies. 
+
+ 
+ Next Topic: 
+ weapon augment quests 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:56 PDT 2026 
+
+ Total time taken to generate the page: 0.06614 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 

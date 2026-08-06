@@ -1,0 +1,289 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ Fable3mod: Modding Discussion » Modding the Morality and Primality Values? 
+ 
+ 
+ 
+ 
+	
+	
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Forum Search: 
+ 
+ 
+  
+ 
+ 
+
+ 
+ 
+ Fable3mod 
+ 
+ Discussions for modifying Fable 3 
+
+ 
+
+ 
+ 
+ 
+ 
+ Members Search Help 
+ Register 
+ Login Home 
+ 
+
+ 
+ Home  » Modding Forums  » Modding Discussion  » Modding the Morality and Primality Values? 
+ 
+ 
+ 
+ 
+ Show: 
+ Today's Messages 
+ :: Show Polls 
+ :: Message Navigator 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+ 
+ 
+ 
+ 
+ Modding the Morality and Primality Values? 
+ Thu, 08 March 2018 19:42 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ TheNicklao 
+ Messages: 1 Registered: March 2018 
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ So I realised that manually manipulating the values in-game (aka. actually doing things in-game to change the values) was a pain and so I was wondering if there was some script I could use that change the values. I don't feel like killing villagers and destroying the world through ruler quests just to not run around being a smurf and thus I was wondering. Thanks in advance. 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Modding the Morality and Primality Values? 
+ Mon, 12 March 2018 23:38 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ RyanBurnsRed 
+ Messages: 2 Registered: March 2018 Location: Atlanta, GA
+ 
+ 
+ Junior Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ I'm also interested in knowing this too if anyone can help 
+ 
+ 
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Re: Modding the Morality and Primality Values? 
+ Mon, 13 December 2021 08:58 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ Phnx 
+ Messages: 39 Registered: September 2013 
+ 
+ 
+ Member
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Use Timeslip's save editor. 
+ 
+An easy method using lots of money, I suggest getting 10 million gold coins, you can buy all the property you can and set the rent according to the primality value you want. High rent means high primality, low rent means low primality. Transfer all your personal gold, about 5-6 million is needed, to the royal treasury to get the highest morality. Transfer the same amount back to your personal treasury to get the lowest morality. 
+ 
+ 
+ [Updated on: Wed, 15 December 2021 02:22]
+ Report message to a moderator 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+   
+   
+
+ 
+
+ 
+ 
+ Previous Topic: 
+ Jasper Voice Glitch 
+
+ 
+ Next Topic: 
+ How do I edit the Princess model then import her back into Fable to play as?? 
+
+ 
+
+ Goto Forum: 
+ 
+ 
+ 
+ 
+ - Public Forums   Announcements   General Discussion - Modding Forums   Modding Discussion   Mods   Tools   Formats 
+   
+ 
+ 
+ -=] Back to Top [=-
+
+ [ Syndicate this forum (XML) ] [ ] [ ]
+
+ Current Time: Wed Aug 05 18:04:47 PDT 2026 
+
+ Total time taken to generate the page: 0.05213 seconds
+
+ 
+ 
+
+ 
+ .:: 
+ Contact 
+ :: 
+ Home 
+ ::. 
+ Powered by: FUDforum 3.0.9. Copyright ©2001-2018 FUDforum Bulletin Board Software 
+
+ 
