@@ -70,7 +70,7 @@ function DEMO001_ScriptInjector:State_START_Main()
     while true do
         coroutine.yield()
         if mod_last_run == nil or mod_last_run + 60 < Timing.GetWorldFrame() then
-            RunScript("scripts\MyMod\MyScript01.lua")
+            RunScript("scripts\\MyMod\\MyScript01.lua")
             mod_last_run = Timing.GetWorldFrame()
         end
         ...
