@@ -16,6 +16,7 @@ tags:
 | | |
 |---|---|
 | [[Prior Art]] | What already exists. Read before building anything |
+| [[Lua Scripting]] | How new code runs, and why this platform was chosen |
 | [[Child System]] | The target feature, and why it is harder than one number |
 | [[Open Questions]] | The work queue. Currently everything |
 

@@ -65,6 +65,9 @@ the same as a working grown-up character.
   Live. Only prior owners can install it.
 - **GFWL is dead.** Single-player needs a stub GFWL DLL. DLC and achievements need further work.
 - Nexus 403s automated fetches, so tool downloads have to be done by hand.
+- **fable3mod.com / .net has a broken TLS certificate** and answers only over plain HTTP. WebFetch
+  force-upgrades to HTTPS and fails; use ``curl.exe -s -L`` over ``http://``. Same failure mode the
+  Anniversary project hit on fabletlcmod.com. The key threads are from 2013-2014. -> [[Lua Scripting]]
 
 ## What has NOT been checked
 
@@ -78,4 +81,4 @@ Everything. Specifically:
 
 ## Related
 
-- [[Child System]] · [[Open Questions]]
+- [[Lua Scripting]] · [[Child System]] · [[Open Questions]]

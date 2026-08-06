@@ -22,15 +22,47 @@ demonstrated player demand, and there is a decent chance someone has already tri
 
 ## Where the data reportedly lives
 
-Community reports point at `globals.gdb`:
+Traced to its source: **Artofeel** on the fable3mod forums, 2014-02-18, in a thread about making
+children killable. Retrieved 2026-08-05. Paraphrasing closely:
 
-- an **`AgeComponent`** on the child entity
-- a quoted "main children offset" of **`101BF01F`**
-- the described fix is to set Age above **18**
-- a hex-editor route is offered as an alternative to the GDB editor
+- *"killable children is hardcoded with AGE parameter"*
+- set age for all children above 18 and *"they will be killable and they no more will be children"*
+- GDB route: edit `globals.gdb`, main children offset **`101BF01F`**, find **`AgeComponent`**, change
+  `Age` to **> 18** - or to **0**, which yields a month-old baby
+- hex route: offset **`0019176C`**, change the value to **> 12 (hex)**, or to 0
+- *"this offsets for latest DLC"*
+- **"this effects only for new children's, not to already exist"**
 
-**[UNKNOWN]** whether that offset is stable across game versions, and whether "Age > 18" is a
-threshold the engine actually branches on or just a number someone changed.
+Three things in that are load-bearing:
+
+1. **Age is not cosmetic.** The author says being a child is *hardcoded against the AGE parameter*,
+   and that crossing 18 stops them being children. That is a real category boundary, not a label.
+2. **It only affects newly created children.** Existing saves keep their existing children unchanged,
+   which shapes any mod's testing plan and its user instructions.
+3. **The offsets are version-specific** - quoted as being for the latest DLC. They will not be
+   trusted until re-derived locally.
+
+> [!warning] The author never tested the consequences
+> The same post says outright *"I never tested!!"* about what happens afterwards. So we have a
+> located field and a stated threshold, and **no evidence at all** about whether the result is a
+> functioning adult.
+
+**[UNKNOWN]** whether the two quoted offsets are the same field reached two ways, or two different
+things. They are not obviously related.
+
+## The Lua angle, which changes the plan
+
+[[Lua Scripting|The decompiled script list]] contains two files aimed straight at this:
+
+- **`scripts\miscellaneous\agegroupenum.lua`** - the age-group enumeration
+- **`scripts\miscellaneous\playerfamily.lua`** - the player's family logic, in readable Lua
+
+That is potentially far better than poking a byte at a fixed offset. If age groups are an enum the
+Lua layer reads, and family behaviour is Lua we can read and replace, then "grow up" may be
+expressible **as a script** rather than as a hex edit - version-independent, hot-reloadable, and
+reviewable.
+
+**Read those two files before designing anything.**
 
 ## The hard question nobody has answered
 
