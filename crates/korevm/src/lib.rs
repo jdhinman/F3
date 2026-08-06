@@ -4,7 +4,9 @@
 //! Notes/KoreVM.md; the four deviations that break stock tooling are the 7-bit opcode
 //! field, the 87-opcode instruction set, chunk format 2, and 4-byte lua_Number.
 
+pub mod ast;
 pub mod chunk;
+pub mod decompile;
 pub mod disasm;
 pub mod opcodes;
 

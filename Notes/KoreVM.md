@@ -148,6 +148,98 @@ after collapsing the specialised forms it is close to stock Lua 5.1's core set. 
 struct family would have demanded - typed slots with no Lua-source equivalent - simply does not
 arise.
 
+## The decompiler exists  **[VERIFIED]** 2026-08-06
+
+> [!success] The thing the community said it lacked
+> `crates/korevm` decompiles KoreVM bytecode back to Lua source. `koredec` is the tool.
+
+Run over the whole corpus:
+
+| Measure | Result |
+|---|---|
+| files that emit **valid Lua 5.1** | **797 / 797** |
+| files with **nothing unrecovered** | **745 / 797** (93.5%) |
+| notes (one per unrecovered construct) | **135**, across 52 files |
+| source lines emitted | ~348,000 |
+
+Validity is machine-checked, not eyeballed: `tools/syntax-check.py` runs every emitted file
+through a real Lua 5.1 parser (`lupa.lua51` -> `loadstring`). This is what turned the work
+from guesswork into measurement - the first end-to-end run scored 556/796, and each fix was
+verified by the number moving.
+
+### The ground truth nobody had used
+
+Fable III ships **`scripts/quests/scriptactivation.txt` as plaintext right next to the
+compiled `scriptactivation.lua`** - 2,971 lines of original Lionhead source against its own
+bytecode. Forum lore mentioned these plaintext survivors; comparing them to decompiler output
+is the check that lore never got around to.
+
+Decompiled against original, comparing what must not differ (`tools/ground-truth.py`):
+
+| | original | output | missing | extra |
+|---|---|---|---|---|
+| string literals | 1,629 | 1,629 | 0 | 0 |
+| identifiers | 3,092 | 3,092 | 0 | 0 |
+
+**Exact.** The single apparent divergence is not a decompiler bug: the source writes
+`"Optional\SkormRuins"` with one backslash where every sibling line writes `\\`. Lua 5.1
+silently drops an unrecognised escape, so the compiled constant really is
+`OptionalSkormRuins`, and the decompiler reproduces the bytecode rather than the typo. A
+Lionhead source bug, preserved in the shipped data and recovered fifteen years later.
+
+### What the debug data bought
+
+The prediction held. Because `gamescripts.bnk` retains `locvars`, `lineinfo` and `upvalues`,
+output carries **real local names**, not `local_1` algebra:
+
+```lua
+function BarGroupMind:Update()
+    if not self.OpenedDoors and (OwnerEntity.IsAvailable(self.EntityAttachedTo) and Building.CanAutoCloseDoors(self.EntityAttachedTo)) then
+        local num_doors = OwnerEntity.GetNumberOfOwnedEntitiesOfType(self.EntityAttachedTo, EObjectType.OBJECT_DOOR)
+        if 0 < num_doors then
+            local i = 1
+            while i <= num_doors do
+                local door = OwnerEntity.GetOwnedEntityByIndexOfType(self.EntityAttachedTo, i, EObjectType.OBJECT_DOOR)
+                if door ~= nil and door:IsAlive() then
+                    Door.SetLocked(door, false)
+                    ...
+```
+
+The debug data does more than name things. It **disambiguates structure**: `if a and b then X end`
+and `if a then if b then X end end` compile to identical bytecode, and the only way to tell them
+apart is that a local declared between the two tests proves a real block boundary, because a local
+cannot be declared inside an expression. `locvars` is what makes that call.
+
+### The five bugs worth remembering
+
+Each was found by the syntax gate, not by reading output:
+
+1. **`return` and `break` must end their block.** Lua rejects code after them, and the compiler
+   emits it freely. Source that does this writes `do return false end` - the classic idiom for
+   disabling a function - so restore that form. This alone was most of the 240 initial failures.
+2. **A tail call is followed by a `RETURN` the source never wrote.** Emitting both yields
+   `return f(x)` twice.
+3. **A `while` test absorbed into the enclosing `if`.** Condition chains must stop at a loop
+   header, or `while i <= n do` vanishes into `if ... and i <= n then` and the loop is gone.
+   This was a *silent* wrong answer, not a crash.
+4. **A `while true` body starts at its own header**, so loop detection re-fires on it and nests
+   the loop inside itself against an earlier back edge.
+5. **Multiple back edges to one header are normal.** The compiler retargets the end of a nested
+   `if` straight at the loop top rather than letting control fall through, so those are
+   continuations, not defects. Treating them as errors produced 5,340 spurious notes.
+
+Points 3-5 are all the same underlying fact: **the compiler chains jumps**, retargeting a branch
+at the end of whatever chain follows. Resolving jump chains before comparing targets is required,
+not an optimisation.
+
+### What is left
+
+The 135 remaining notes fall into five shapes, all control flow rather than decoding:
+`and`/`or` in expression position that contains statements (66), jumps leaving their block (34),
+conditions branching past their block end (24), and unstructured forward jumps (11). Each is
+marked in the output at the pc where it happens. **The decompiler never guesses silently** - a
+note is an admission, and its absence is what 745 of 797 files earn.
+
 ## Why the existing decompiler falls short, and what a real one needs
 
 Keshire's [[Prior Art|Fable3LUADecompiler]] (MIT, forked into `third_party/`) was adapted from a Call
@@ -170,6 +262,10 @@ solved by the four numbers above. What is missing is the standard decompiler bac
 
 None of that is novel research. It is the well-trodden path taken by `unluac`, `luadec` and every
 Lua decompiler, applied to a documented instruction set.
+
+**All five steps are now implemented** in `crates/korevm/src/decompile.rs`. See
+[[#The decompiler exists VERIFIED 2026-08-06|the results above]]. Keshire's diagnosis was right:
+the work was entirely control-flow reconstruction, and decoding never came up again.
 
 ## Chunk header: two more deviations, found by measurement  **[VERIFIED]**
 
@@ -294,9 +390,10 @@ debug information. Which is REALLY helpful as it contains line information and l
 **This install ships both banks**, and the non-`_r` one is 1.37 MB larger.
 → [[Formats|the install census]]
 
-**[INFERRED]** decompiling `gamescripts.bnk` rather than `gamescripts_r.bnk` should produce output
-with real local names and line numbers, which is the difference between readable source and algebra.
-**Test this before writing any decompiler code** - it may change what the decompiler needs to do.
+**[VERIFIED]** decompiling `gamescripts.bnk` rather than `gamescripts_r.bnk` produces output with
+real local names, which is the difference between readable source and algebra. It also turned out
+to decide questions of *structure*, not just naming - see
+[[#What the debug data bought|above]].
 
 ## Two shortcuts worth taking first
 

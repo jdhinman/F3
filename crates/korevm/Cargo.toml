@@ -10,4 +10,8 @@ description = "Reader and disassembler for Fable III KoreVM Lua bytecode"
 name = "koredis"
 path = "src/bin/koredis.rs"
 
+[[bin]]
+name = "koredec"
+path = "src/bin/koredec.rs"
+
 [dependencies]
