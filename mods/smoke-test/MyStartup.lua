@@ -1,25 +1,30 @@
 -- Smoke test: prove that a user script runs at all.
 --
 -- Install: copy to  <install>\data\scripts\startup\MyStartup.lua
--- No edit to dir.manifest is needed. The shipped scripts\startup\startup.lua ends with
+-- No edit to dir.manifest is needed; it already declares scripts\startup\mystartup.lua,
+-- and the shipped scripts\startup\startup.lua ends with
 --   AddOptionalStartupScript("MyStartup.lua")
--- and dir.manifest already declares scripts\startup\mystartup.lua, which does not exist.
+-- That line is present in gamescripts_r.bnk, which is the bank startup.vfsconfig actually
+-- mounts, so the hook is in the code the retail game runs.
 --
--- Success looks like: f3mod-smoke.txt appears next to Fable3.exe. If it does not, nothing
--- below this line is worth debugging yet; the hook itself is the thing under test.
---
--- Every call here was read out of the game's own decompiled scripts, so the names are
--- the engine's, not guesses.
+-- Three independent signals, because the first attempt at this test had only one and it
+-- was the weakest of them.
 
--- The game's working directory is unknown, and a diagnostic that might have written its
--- output somewhere we did not look is worthless. Write to every candidate; whichever
--- succeeds also tells us what the working directory is.
--- ABS_PATH is the one certain answer. Edit it to your install if it differs.
+-- 1. THE APPLICATION NAME. The primary signal, and the only one that needs nothing but a
+--    function the shipped startup.lua itself calls four lines earlier. startup.lua sets
+--    the name to "Fable III"; this runs later, so it wins. Check the window title and the
+--    taskbar entry.
+if SetApplicationName then
+    SetApplicationName("Fable III [F3MOD]")
+end
+
+-- 2. A LOG FILE. Secondary, and no longer trusted: `io` appears exactly once in 797
+--    shipped scripts, in a file with a hardcoded d:\Dev\ path, so it may well be a
+--    development-only library. Guarded so its absence costs nothing.
 local ABS_PATH = "C:\\Games\\Fable 3\\f3mod-smoke.txt"
 local LOGS = { "f3mod-smoke.txt", "data\\f3mod-smoke.txt", "..\\f3mod-smoke.txt", ABS_PATH }
 
 local function log(message)
-    -- io is available: gameface\qbtext.lua calls io.open in the shipped scripts.
     if io and io.open then
         for i = 1, #LOGS do
             local f = io.open(LOGS[i], "a")
@@ -29,27 +34,27 @@ local function log(message)
             end
         end
     end
-    -- cprint is the game's own console convention, 1690 uses across the corpus.
+    -- 3. THE CONSOLE. cprint is the game's own convention, 1690 uses across the corpus.
+    --    Only visible with the debug console open.
     if cprint then cprint("[f3mod] " .. message) end
 end
 
 log("MyStartup.lua ran")
-
--- GetPlatform and GetApplicationName are both called by the shipped startup.lua, so they
--- exist this early. Anything hero-related does not: there is no hero at startup.
 if GetApplicationName then log("application: " .. tostring(GetApplicationName())) end
 if GetPlatform then log("platform: " .. tostring(GetPlatform())) end
+log("io available: " .. tostring(io ~= nil))
 
--- Defer anything that needs a world. GeneralScriptManager.CallFunction is how the shipped
--- StartupConsoleScript.lua defers its own work until after the hero exists.
+-- Defer anything needing a world. GeneralScriptManager.CallFunction is how the shipped
+-- StartupConsoleScript.lua defers its own work until after the hero exists. Renaming again
+-- from inside the deferred callback distinguishes "startup ran" from "the scheduler is
+-- also reachable", which are different amounts of good news.
 if GeneralScriptManager and GeneralScriptManager.CallFunction then
     GeneralScriptManager.CallFunction(function()
-        local hero = GetLocalHero and GetLocalHero()
-        if hero then
-            log("hero exists: " .. tostring(hero:GetName()))
-        else
-            log("deferred callback ran, but no hero")
+        if SetApplicationName then
+            SetApplicationName("Fable III [F3MOD-LIVE]")
         end
+        local hero = GetLocalHero and GetLocalHero()
+        log(hero and ("hero exists: " .. tostring(hero:GetName())) or "callback ran, no hero")
     end)
     log("deferred callback registered")
 else

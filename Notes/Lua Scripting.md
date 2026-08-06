@@ -44,10 +44,33 @@ So the retail build ships a **declared, empty, sanctioned slot for a user script
 `data\scripts\startup\MyStartup.lua` into place should be enough, with no edit to
 `dir.manifest` and none of the `DEMO001` quest-code collision the community injector warns about.
 
-**[UNKNOWN]** whether the retail loader honours it - `AddOptionalStartupScript` may be compiled
-out of a release build, and `startup.lua` also calls `SetEnableFullDebugMenu(true)` and
-`SetUseRetailFrontEnd(false)`, which suggests the bank may hold the development startup rather
-than the one retail runs. **This is the first thing to test, and it is a five-minute test.**
+### Tested. First attempt produced nothing.  **[VERIFIED]** 2026-08-06
+
+`MyStartup.lua` was installed to `data\scripts\startup\` and the game launched. **No log file
+appeared.** What that does and does not tell us:
+
+**Ruled out - the hook is in the code retail runs.** `startup.vfsconfig` mounts
+`gamescripts_r.bnk`, not `gamescripts.bnk`, so retail runs the **stripped** bank. Extracting it
+(770 entries, 0 failures) and decompiling its `startup.lua` gives content identical to the debug
+bank's, `AddOptionalStartupScript("MyStartup.lua")` included. So the earlier worry that the bank
+held a development-only startup is wrong: **the hook is present in the bank the game mounts.**
+
+**Ruled out - the path.** Both banks store their scripts under the `scripts\` prefix, so
+`data\scripts\startup\MyStartup.lua` is the right location and the manifest's `scripts_r\`
+entries are vestigial. **Ruled out - the DLC layer**: the four DLC folders carry banks but no
+scripts and no manifest.
+
+**The likely fault is the test, not the hook.** The only output channel it used was `io.open`,
+and `io` appears **once** in 797 shipped scripts, in `gameface\qbtext.lua`, against a hardcoded
+`d:\Dev\Fable3\...` path. That is a development-only library as far as the evidence goes. A
+script that ran perfectly would have produced exactly the observed result.
+
+**Second attempt** uses `SetApplicationName("Fable III [F3MOD]")` as the primary signal -
+`startup.lua` calls that same function four lines earlier to set the name to `Fable III`, so it
+demonstrably exists and our call runs later and wins. Observable in the window title. → `mods/`
+
+Still **[UNKNOWN]**: whether `AddOptionalStartupScript` is a no-op in a release build, and
+whether the VFS serves loose files at all on this install.
 
 ### Hot reload is real, and quests are excluded
 
@@ -194,9 +217,38 @@ and local variables."* The forum's conclusion that retail ships only the strippe
 source paths, line numbers, local names. That is why decompiled output carries real variable names.
 → [[KoreVM]]
 
-**But not uniformly.** 33 of 797 chunks were compiled stripped even in the debug bank, and they are
-almost all under `scripts/gameface/` - the Scaleform UI layer. Those decompile with synthesised
-local names and are flagged as such in the output.
+**But not uniformly, and the exception explains itself.** 33 chunks in `gamescripts.bnk` carry no
+debug data at all. Diffing the two banks:
+
+| | entries |
+|---|---|
+| `gamescripts.bnk` (debug) | 803 |
+| `gamescripts_r.bnk` (retail, the one mounted) | 770 |
+| difference | **33** |
+
+The 33 files missing from the retail bank are **exactly** the 33 with no debug data, and all 33 are
+under `scripts/gameface/`. They are duplicates: retail's UI scripts come from **`guiscripts.bnk`**,
+which `startup.vfsconfig` mounts separately. The gameface copies inside `gamescripts.bnk` are
+leftovers from a different build path, which is why they alone were compiled stripped.
+
+### `guiscripts.bnk`, a third corpus  **[VERIFIED]** 2026-08-06
+
+157 entries, 0 extraction failures, 4.97 MB: the Anark Gameface UI middleware (`.bgf`, `.bsg`,
+`.fac`) plus **55 `.lua` files**. Of those:
+
+- **33 are compiled** and decompile to valid Lua, stripped, with synthesised local names.
+- **22 are plaintext, uncompiled Lua source**, shipped as-is. All 22 parse as valid Lua 5.1.
+
+That is the "plaintext survivors" the forum mentioned, and there are far more of them here than the
+6 `.txt` files in `gamescripts.bnk`. They also reveal a third loading mechanism - `dofile` (12 uses)
+against a `g_GUIScriptDirectory` global (10 uses):
+
+```lua
+function self:onInitialize()
+    dofile(g_GUIScriptDirectory .. "HUD\\ScreenCenterToggle.lua")
+    self:onInitializeReal()
+end
+```
 
 **Some plaintext survived.** *"They actually put plaintext, uncompiled lua in copies of certain
 files. Like `scriptactivation.lua`."* Worth hunting for every such file in the install; each one is
