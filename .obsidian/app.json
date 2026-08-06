@@ -1,0 +1,13 @@
+{
+  "showInlineTitle": true,
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "attachmentFolderPath": "reference",
+  "alwaysUpdateLinks": true,
+  "showLineNumber": true,
+  "readableLineLength": true,
+  "strictLineBreaks": false,
+  "showUnsupportedFiles": true,
+  "defaultViewMode": "preview",
+  "promptDelete": true
+}

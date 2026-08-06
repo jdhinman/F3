@@ -1,0 +1,30 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    { "query": "tag:#finding",     "color": { "a": 1, "rgb": 16007990 } },
+    { "query": "tag:#format",      "color": { "a": 1, "rgb": 3050327  } },
+    { "query": "tag:#wiki-mirror", "color": { "a": 1, "rgb": 7048739  } },
+    { "query": "tag:#tools",       "color": { "a": 1, "rgb": 16750592 } },
+    { "query": "tag:#moc",         "color": { "a": 1, "rgb": 16766720 } },
+    { "query": "tag:#open",        "color": { "a": 1, "rgb": 15548997 } },
+    { "query": "tag:#meta",        "color": { "a": 1, "rgb": 9807270  } }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": -0.3,
+  "nodeSizeMultiplier": 1.3,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.42,
+  "repelStrength": 12,
+  "linkStrength": 0.6,
+  "linkDistance": 190,
+  "scale": 0.7,
+  "close": false
+}

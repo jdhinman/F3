@@ -1,0 +1,18 @@
+# Pristine copies of the game's own data. Never committed: verbatim copyrighted
+# game content, and large. Regenerate from the install.
+backup/
+
+# Build output
+target/
+
+# Unlicensed upstreams: local study references only, never redistributed.
+third_party/_reference/
+
+# Obsidian per-machine state (config IS committed; workspace/cache is not)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/*/data.json
+
+# scratch
+*.tmp

@@ -1,0 +1,7 @@
+{
+  "_comment": [
+    "Semantic index tuning. third_party/ and backup/ are excluded by the indexer's defaults.",
+    "Add exclusions here if reference/ ever holds two forms of the same source, as the",
+    "Anniversary vault did with its raw wiki .txt alongside the converted .md."
+  ]
+}
