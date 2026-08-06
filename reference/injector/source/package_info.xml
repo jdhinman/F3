@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<package>
+	<bankName>
+		ScriptInjector.bnk
+	</bankName>
+	<premiumContentMask>
+		0
+	</premiumContentMask>
+	<contentsDescription>
+		Fable III Script Injector
+	</contentsDescription>
+	<isRequired>
+		False
+	</isRequired>
+	<dependencies>
+		
+	</dependencies>
+	<mountOrder>
+		9150
+	</mountOrder>
+	<canIgnoreMountOrder>
+		True
+	</canIgnoreMountOrder>
+	<name>
+		FableIII_ScriptInjector
+	</name>
+	<needsRestart>
+		False
+	</needsRestart>
+	<installContentMask>
+		0
+	</installContentMask>
+	<packageUniqueId>
+		93
+	</packageUniqueId>
+	<version>
+		1.0
+	</version>
+	<deployment_folder>
+		ScriptInjector\
+	</deployment_folder>
+</package>

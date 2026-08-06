@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/korevm"]
+members = ["crates/korevm", "crates/bnk"]
 
 [workspace.package]
 version = "0.1.0"

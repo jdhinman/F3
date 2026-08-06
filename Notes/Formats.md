@@ -139,6 +139,29 @@ compressed data - so chunk *n* starts at `offset + n*32768`, and only the final 
 **Hashes** are **FNV-1** over the lowercased path: basis `2166136261`, prime `16777619`, multiply
 then XOR.
 
+### Writing banks  **[VERIFIED]** 2026-08-06
+
+`crates/bnk` reads and writes banks; `bnkpack` builds one from a directory, `bnkinfo` dumps an
+index including the fields whose meaning is unknown.
+
+Two details the spec above did not capture, read off the community's DLC bank and now reproduced:
+
+- **Payload entries are 16-byte aligned**, and the payload is padded to a 16-byte boundary at the
+  end. Their four entries sit at 0, 688, 1504, 4272 - each the previous end rounded up to 16.
+- **The seventh metadata word is the alignment.** It is `16` on every entry. The other six are zero
+  there, so `DEFAULT_META` is `[0, 0, 0, 0, 0, 0, 16]`. The writer carries all seven through
+  verbatim on a repack rather than guessing at the unknown ones.
+
+The proof is a round-trip against a bank the game actually loads: unpack the community
+`ScriptInjector.bnk`, repack it with `bnkpack`, and the **payload is byte-for-byte identical**,
+with every decoded index field matching. The index bytes themselves differ, because the index is
+zlib-compressed and the compressor is not the same one - which is expected and does not matter,
+since the reader inflates it.
+
+The writer emits only the uncompressed-entry form (`compressedFlag = 0`), which is what the DLC
+bank uses. That avoids having to reproduce the game's chunked-zlib payload layout, where each chunk
+occupies a fixed 32,768-byte slot.
+
 ### It works, end to end  **[VERIFIED]**
 
 `tools/bnk-extract.ps1` implements the above.

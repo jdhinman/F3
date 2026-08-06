@@ -1,0 +1,18 @@
+[package]
+name = "bnk"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Reader and writer for Fable III BNK banks"
+
+[[bin]]
+name = "bnkinfo"
+path = "src/bin/bnkinfo.rs"
+
+[[bin]]
+name = "bnkpack"
+path = "src/bin/bnkpack.rs"
+
+[dependencies]
+flate2 = "1"
