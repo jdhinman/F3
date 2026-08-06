@@ -20,6 +20,7 @@ tags:
 | [[Preservation]] | What is already lost, what is at risk, and what to capture first |
 | [[Formats]] | Every file format, and the first verified facts from a real install |
 | [[KoreVM]] | **The VM fully specified.** Encoding, all 87 opcodes, chunk and proto layout |
+| [[Script Corpus]] | **All 803 scripts extracted.** The AI, lifesim and economy architecture |
 | [[Child System]] | The target feature, and why it is harder than one number |
 | [[Open Questions]] | The work queue. Currently everything |
 

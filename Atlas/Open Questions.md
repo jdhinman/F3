@@ -46,6 +46,15 @@ naively will fight over it. That is the same problem the Anniversary project sol
 
 ## The decompiler - the community asked for a dev, this is the work
 
+**Write the KoreVM decompiler back end.** Everything it needs now exists: the spec is complete, and
+803 scripts with debug symbols are extractable. Order of work: lower the 87 specialised opcodes to
+Lua 5.1's core set, build a CFG, structure it into if/while/for/repeat and short-circuit and/or,
+rebuild expressions by symbolic execution over registers, then name locals from the debug data.
+Validate against `ai/aibase.lua`. -> [[KoreVM]] [[Script Corpus]]
+
+**Start with `miscellaneous/`.** Roughly 258 files, many plain enum tables that should decompile
+even with an imperfect back end, and they name everything else in the corpus.
+
 **Does `gamescripts.bnk` (non-`_r`) carry compiler debug data?** It is 1.37 MB larger than the
 stripped bank. If yes, decompiled output gets real local names and line numbers, which changes what
 the decompiler must reconstruct. **Test before writing any decompiler code.** -> [[KoreVM]]
