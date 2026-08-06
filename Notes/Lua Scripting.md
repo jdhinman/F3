@@ -80,6 +80,53 @@ dramatically change the behavior of the AI in battle."*
 ourselves, or whether we depend on that 2013 archive. Establish this first - a self-serve decompile
 is worth far more than a 13-year-old zip.
 
+## KoreVM, and the fact that makes everything possible
+
+Fable 3's scripts ship compiled for **KoreVM**, which is not stock Lua. From the fable3mod
+"Lua decompiler?" thread:
+
+> *"This isn't vanilla LUA we're dealing with. It's primarily KoreVM with a bunch of other plugins
+> added into it. Like **LUA++ and Pluto**."*
+
+and
+
+> *"KoreVM made things worse by completely rearranging the opcodes and bitwise of lua."*
+
+**Reading** the shipped scripts is therefore hard. **Writing** new ones is not:
+
+> *"Thankfully, Fable 3 doesn't have a problem with plaintext uncompiled LUA. Otherwise we'd really
+> be screwed."*
+
+> [!success] Arbitrary code execution is already available
+> The engine **compiles plain-text Lua at runtime**. The injector drops `.lua` source into
+> `data\scripts\` and it runs. We do not need to compile to KoreVM bytecode, and we do not need a
+> decompiler to *write* code - only to *read* the game's own.
+>
+> That is the whole ballgame for "run our own code", and it was solved by the community in 2014.
+
+### The reading problem, and four ways around it
+
+| Route | State |
+|---|---|
+| **Disassembler** - `ChunkSpy_kvm.lua`, run as `lua.exe ChunkSpy_kvm.lua <script.lua> -o out.txt` | **works** |
+| **Decompiler** - Keshire's `Fable3LUADecompiler` | partial. Good at widgets and menus, poor at large functional blocks. *"no one experienced has come in to write the new decompiler that's needed"* |
+| **`functions.txt`** - 15,104 signatures with parameter names, by source file | **captured**. → [[Preservation]] |
+| **Fable 2's scripts** - Fable 2 does *not* use KoreVM and **has** a working decompiler, and *"a lot of the scripts are the same between the two games"* | **a Rosetta stone.** Read F2's readable source to understand F3's compiled equivalent |
+
+That last one is the underused lever. [[Prior Art|Archon's Toolbox and the Fable2Modding repo]] exist
+precisely because Fable 2's Lua is tractable.
+
+### Two more useful details
+
+**`script` vs `script_r`.** *"There shouldn't be a difference between the script and script_r other
+than one contains compiler debug information. Which is REALLY helpful as it contains line information
+and local variables."* Retail ships `_r`, the stripped one - which is why decompiling our own install
+is the hard path.
+
+**Some plaintext survived.** *"They actually put plaintext, uncompiled lua in copies of certain
+files. Like `scriptactivation.lua`."* Worth hunting for every such file in the install; each one is
+free documentation.
+
 ## Why this beats the Anniversary position
 
 | | Anniversary | Fable III |
