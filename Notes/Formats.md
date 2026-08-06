@@ -90,7 +90,74 @@ is the 64 KB block cap rather than corruption.
 
 `tools/bnk-inflate.ps1` implements this.
 
-### The payload is a different structure  **[UNKNOWN]**
+### The BNK format, complete  **[VERIFIED]** 2026-08-05
+
+Recovered by decompiling **BlackDemon's `BnkBrowser.exe`** - it is managed .NET, so `ilspycmd` turns
+it back into readable C#, and its `OpenArchive` and `Extract` methods are the specification. No
+guessing required, and no need to run an unknown 2013 binary.
+
+**Everything is big-endian.**
+
+**Index file (`x.bnk`):**
+
+```
+BE32   total file size          (ignored by the reader)
+BE32   version                  (4)
+byte   compressedFlag           non-zero -> entries use the 5-field form
+repeat to EOF:
+    BE32  chunkCompressedLen
+    BE32  chunkUncompressedLen  (summed for the total)
+    bytes[chunkCompressedLen]
+```
+
+> [!warning] The trap that cost the most time
+> Those chunk payloads **concatenate into a single zlib stream**. They are not independent streams.
+> Treating each as its own stream caps recovery at the first 64 KB and silently loses everything
+> after it.
+
+**Inflated index:**
+
+```
+BE32   (ignored)
+BE32   fileCount
+per file, if compressedFlag:
+    BE32 hash, BE32 offset, BE32 realSize, BE32 size, BE32 numChunks
+    skip numChunks * 4
+per file, otherwise:
+    BE32 hash, BE32 offset, BE32 size
+then per file:
+    BE32 pathLen
+    bytes[pathLen-1]  path
+    byte 0
+    7 x BE32          metadata
+```
+
+**Payload (`x.bnk.dat`):** seek to `offset`. Uncompressed entries are `size` bytes verbatim.
+Compressed entries hold `numChunks` zlib streams, **each occupying a fixed 32,768-byte slot** in the
+compressed data - so chunk *n* starts at `offset + n*32768`, and only the final chunk is short.
+
+**Hashes** are **FNV-1** over the lowercased path: basis `2166136261`, prime `16777619`, multiply
+then XOR.
+
+### It works, end to end  **[VERIFIED]**
+
+`tools/bnk-extract.ps1` implements the above.
+
+| Bank | Entries | Result |
+|---|---|---|
+| `guiscripts.bnk` | 157 | index inflates to 14,454 B exactly |
+| `gamescripts.bnk` | **803** | **803 files extracted, 0 failed, 16.3 MB** |
+
+**803 entries against the 804 files listed in [[Preservation|`functions.txt`]]** - independent
+confirmation that the extraction is complete rather than partial.
+
+Of 797 `.lua` files, a 400-file sample was **400/400 valid Lua chunks**, and **367 carried a `source`
+string**, so the debug data survives extraction. → [[KoreVM]]
+
+This supersedes the earlier scanning approach, which recovered ~31 of 803 and produced a misleading
+"47 scripts" inventory.
+
+### Superseded: the payload is a different structure  **[UNKNOWN]**
 
 `.bnk.dat` does **not** use the block format - it begins with a zlib stream at offset 0 with no block
 header. Running the block reader over it yields less data than went in, which is impossible and

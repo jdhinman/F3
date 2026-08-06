@@ -57,12 +57,10 @@ CFG construction, structuring, and expression rebuilding. Not novel research. ->
 **Which LuaPlus version is KoreVM derived from?** The struct and specialised opcodes are LuaPlus.
 Pinning the version gives reference semantics for every opcode for free.
 
-**Finish the BNK index record layout, then extract payloads by offset.** Index compression is solved
-(block format, zlib at offset 17, data at 19). The payload is a different structure and must not be
-extracted by scanning - scanning recovers ~31 of 804 scripts. Records look like a 4-byte filename
-hash plus BE32 offset/size fields, stride alternating 20 and 28 bytes. BNK Utils already does this
-correctly and is captured. **This blocks the decompiler**, which needs real chunks to work on.
--> [[Formats]]
+~~**Finish the BNK index record layout**~~ **CLOSED 2026-08-05.** Recovered by decompiling
+BnkBrowser.exe with ilspycmd - it is managed .NET, so its OpenArchive and Extract methods are the
+specification. ``tools/bnk-extract.ps1`` extracts **803 of 803 entries from gamescripts.bnk, 0
+failed**, matching the 804 files in functions.txt. The decompiler is unblocked. -> [[Formats]]
 
 ## Preservation - do this before building
 
