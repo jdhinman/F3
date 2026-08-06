@@ -192,6 +192,39 @@ only 31-47 distinct scripts from `gamescripts`, against **804 script files** lis
 > **PowerShell variables are case-insensitive.** A `$out` accumulator silently aliases the `-Out`
 > parameter and becomes a string, so every `.Write()` fails at runtime. Name it something else.
 
+## Save games  **[VERIFIED]** 2026-08-06
+
+Saves live in `%USERPROFILE%\Saved Games\Lionhead Studios\Fable 3\<XUID>\`. Under Catspaw's
+GFWL emulator the XUID comes from `xlive.ini`, which on this install is the default
+`1122334400000000` with profile `Player1`.
+
+Nine `.bin` files per slot, and three slots (`hero2autosave`, `hero2save1`, `hero2save2`):
+
+| File | Size, one slot |
+|---|---|
+| `_mainsave.bin` | ~400-550 KB |
+| `_failquestmainsave.bin` | ~650 KB |
+| `_herosave.bin`, `_failquestherosave.bin` | ~27-29 KB |
+| `_chaptersave.bin` | 4 KB |
+| `_leaderboardstatssave.bin` | 7 KB |
+| `_checksumsave.bin`, `_entityuid.bin`, `_saveuid.bin` | 12-16 B |
+
+**The container is the same chunked zlib as a BNK index**, with no outer header at all - the file
+begins with the first chunk:
+
+```
+repeat to EOF:
+    BE32  compressedLen
+    BE32  uncompressedLen   (65536 except the last)
+    bytes[compressedLen]
+```
+
+and, exactly as with BNK indexes, **the chunk payloads concatenate into one zlib stream**.
+`hero2save1_mainsave.bin` is 30 chunks over 412,707 of its 412,715 bytes and inflates to
+**1,921,883 bytes, matching the declared total exactly**. The 8 trailing bytes are a footer.
+
+Having already paid for that lesson on the index made this a ten-minute job rather than a day.
+
 ## The container story
 
 **Everything lives in a Virtual File System.** `.bnk` files are *"compressed archives. Part of the
