@@ -100,6 +100,42 @@ Two more things the survey settled:
   children.
 - Observed gender values: female = 1, male = 2.
 
+## THE EXPERIMENT RAN. The scalar is authoritative.  **[VERIFIED]** 2026-08-06
+
+Performed live in retail, on `QC020_GypsyIntroBeggarsGirl` (child, scalar 10):
+`Age.SetAge(child, 25)` - one call, nothing else - and the immediate re-read plus the HUD
+inspector both showed:
+
+```
+QC020  ADULT  F  age 25
+```
+
+**The age group followed the scalar.** `GetAgeGroup` flipped from CHILD(1) to ADULT(2)
+with no `SetAgeGroup` call. The scalar is the authoritative field; the group is derived
+from it, with the boundary between 10 and 25 - consistent with Artofeel's ">18" claim,
+now confirmed on a live retail install for the first time.
+
+**The model did not change.** The entity stands there as a visibly unchanged child while
+the engine classifies her as an adult. Exactly the split predicted from source: category
+drives AI and engine behaviour, appearance is the separate character-record system
+(`GraphicAppearanceMorph.SetCharacterRecord`).
+
+So the growth recipe is two calls, both now proven or identified:
+
+```lua
+Age.SetAge(child, 20)                                   -- proven: flips the category
+GraphicAppearanceMorph.SetCharacterRecord(child, "...") -- the remaining piece: the body
+```
+
+What remains unknown: which character record to pass (the adult villager records need
+enumerating), whether behaviour visibly changes for her AI (watch her), and persistence
+across a save/load.
+
+> [!warning] The test subject is a quest NPC
+> She should be set back to 10 through the same menu before moving on. The warning that
+> quest children should not be aged stands; this was a quick reversible probe, not a
+> conversion.
+
 ## Read from the game's own source  **[VERIFIED]** 2026-08-06
 
 Everything below this line is read out of the decompiled scripts, not inferred from a symbol
