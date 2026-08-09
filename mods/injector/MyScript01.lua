@@ -18,7 +18,7 @@
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 23
+local VERSION = 24
 
 -- Rescue, kept forever: the free camera eats all input in retail if it is ever on.
 if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
@@ -135,6 +135,27 @@ function F3MOD.menu(hero)
     if ask("Refill health?") and Health ~= nil and has(Health, "FillHealth") then
         Health.FillHealth(hero)
     end
+    -- THE AGE EXPERIMENT. Operates on the last person the inspector saw, since the dog
+    -- occupies the target slot while the menu is open. Setting the scalar and immediately
+    -- re-reading both fields answers the standing question: does the group follow the
+    -- scalar, or are they independent?
+    local subj = F3MOD.target
+    if subj ~= nil and subj:IsAlive() and has(Age, "IsAvailable") and Age.IsAvailable(subj)
+        and has(Age, "GetAge") and has(Age, "SetAge") then
+        local now = Age.GetAge(subj)
+        if ask("Set age scalar of " .. shortname(subj) .. " (now " .. tostring(now) .. ")?") then
+            local wanted = ask_amount("Set age", 0, 100, 1, now)
+            if wanted ~= nil then
+                Age.SetAge(subj, wanted)
+                local g = has(Age, "GetAgeGroup") and Age.GetAgeGroup(subj) or "?"
+                box("F3MOD: set scalar to " .. tostring(wanted)
+                    .. ". Re-read: scalar=" .. tostring(Age.GetAge(subj))
+                    .. " group=" .. tostring(AGE_NAME[g] or g)
+                    .. "
+If the group did not move, they are independent fields.")
+            end
+        end
+    end
     if ask("HUD inspector " .. (F3MOD.inspect and "is ON. Turn it OFF?" or "is OFF. Turn it ON?")) then
         F3MOD.inspect = not F3MOD.inspect
     end
@@ -147,6 +168,7 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     function w:Update()
         local last_id = nil
         local menu_cool = 0
+        local refresh = 0
 
         while true do
             local hero = GetLocalHero and GetLocalHero()
@@ -165,9 +187,14 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
                             F3MOD.menu(hero)
                         end
                     elseif F3MOD.inspect and has(GUI, "SetCounter") then
+                        F3MOD.target = t
                         local id = tostring(t:GetName())
-                        if id ~= last_id then
+                        -- Refresh once a second even without a change, so edits made
+                        -- through the menu show up without retargeting.
+                        refresh = refresh + 1
+                        if id ~= last_id or refresh >= 60 then
                             last_id = id
+                            refresh = 0
                             local label, num = hudline(t)
                             GUI.SetCounter("F3MODInspector", label, num)
                         end
@@ -185,5 +212,5 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
-box("F3MOD v23. Menu gains numeric input: set your gold to an exact figure with the"
-    .. " betting spinner. Dog = menu.")
+box("F3MOD v24. Look at someone, then open the dog menu: you can now set THEIR age"
+    .. " scalar with the spinner. The box reports whether the age group followed.")
