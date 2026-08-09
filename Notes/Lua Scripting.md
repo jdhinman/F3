@@ -36,6 +36,32 @@ DLC/10_ScriptInjector  (package_info.xml: mountOrder 9150, above the base game)
 per 60 frames. No bank rebuild to iterate, no relaunch. That is the edit-and-see loop the
 project came here for.
 
+### Live editing, no restart  **[VERIFIED]** 2026-08-06
+
+Confirmed in game: edit `data\scripts\MyMod\MyScript01.lua`, save, and the new code runs
+within about a second. Two separate edits landed while the game stayed running.
+
+The mechanism is that the injector quest `RunScript`s the file every 60 frames, and
+`RunScript` re-reads it each time rather than caching like `require` does. Globals persist
+between runs because it is all one Lua state, which gives the working pattern:
+
+```lua
+local VERSION = 4
+if F3MOD_VERSION ~= VERSION then
+    ...                      -- fires once per edit
+    F3MOD_VERSION = VERSION  -- set AFTER the work, so a bad moment just retries
+end
+```
+
+Setting the flag after the work matters. The first attempt set it first and spent its one
+shot during a cutscene, where nothing was visible. Gate on
+`GUI.IsScreenFading()` and `GUI.IsAnyMenuOpen()` and it retries until the player can see.
+
+> [!warning] An error in the mod file can take the injector down
+> `RunScript` is called from inside the quest coroutine, and `GeneralScriptManager.Update`
+> re-raises whatever comes back. `pcall` appears in **no** shipped script, so its presence is
+> unverified and it cannot be relied on as a net. Nil-check everything.
+
 ### Three things the run settled
 
 **`io` does not exist in retail.** The probe tried four paths through `io.open` and wrote
