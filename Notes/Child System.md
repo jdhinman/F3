@@ -54,6 +54,37 @@ Three things in that are load-bearing:
 **[UNKNOWN]** whether the two quoted offsets are the same field reached two ways, or two different
 things. They are not obviously related.
 
+## First reading off a live child NPC  **[VERIFIED]** 2026-08-06
+
+Observed in game with the inspector, targeting a child in the Mistpeak dweller camp:
+
+```
+TARGET: QC020_GypsyIntroBeggarsGirl  age=CHILD(1) scalar=10  gender=1  family=false
+```
+
+**The two-value age model is confirmed on a real entity**, not just inferred from source.
+`Age.GetAgeGroup` returns the ordinal group (1 = `EAGE_GROUP_CHILD`) and `Age.GetAge`
+returns a separate scalar, here **10**.
+
+10 is a plausible age in years for that character, which supports reading the scalar as an
+age in years rather than an index into the band. If that is right, Artofeel's forum claim
+that setting age above 18 stops something being a child is about **the scalar**, and the
+open question becomes whether the engine derives the group from it or keeps them
+independent. Two experiments settle it, and they must be run in this order:
+
+1. `Age.SetAge(e, 25)` alone, then re-read `GetAgeGroup`. If the group follows, the scalar
+   is authoritative and the whole feature may be one call.
+2. `Age.SetAgeGroup(e, EAGE_GROUP_ADULT)` alone, then re-read `GetAge`. If the scalar does
+   not follow, they are independent and both need setting.
+
+**[UNKNOWN]** and important: whether either changes the mesh. The prediction from source is
+that AI unlocks and appearance does not.
+
+> [!warning] Not on a quest NPC
+> `QC020_GypsyIntroBeggarsGirl` is quest-owned. Aging her risks the quest that references
+> her. The experiment wants a throwaway entity - `Debug.CreateInstantFamily` makes its own,
+> and both `Debug.*` creators are confirmed present in retail.
+
 ## Read from the game's own source  **[VERIFIED]** 2026-08-06
 
 Everything below this line is read out of the decompiled scripts, not inferred from a symbol

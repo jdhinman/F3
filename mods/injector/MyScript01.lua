@@ -1,36 +1,38 @@
 -- Live-edit harness + entity inspector.
 --
--- Settled by v8: Debug.DrawText is inert in retail. The HUD script drew 122 frames and
--- nothing appeared, so the symbol survived the release build but the renderer did not.
--- Confirmed working channels are GUI.DisplayMessageBox (modal) and the per-frame
--- scheduler, GeneralScriptManager.AddScript, which v8 proved runs every tick.
+-- Channel status, all settled in game:
+--   GUI.DisplayMessageBox     WORKS - modal, arbitrary strings. The only text channel.
+--   per-frame AddScript       WORKS - 122 frames confirmed
+--   GUI.ShowTopBoxMessage     INERT - nothing rendered. Probably wants a localised id.
+--   Debug.DrawText            INERT - symbol survives retail, renderer does not
+--   SetApplicationName, io    inert / absent
 --
--- This version does two things:
---   1. tests GUI.ShowTopBoxMessage, the last candidate for non-modal text
---   2. ships the entity inspector: look at someone, get their stats
+-- So every report costs a modal box, which is far too intrusive to fire on every target
+-- change. Two fixes tried here, in order of preference:
+--   1. a hotkey, so reports happen on demand. Debug.AddLuaDebugKeyFunc has 46 shipped
+--      call sites but the forum could never get it working; Debug.SetDebugKeyboardInputEnabled
+--      is called by no shipped script and is the obvious missing step, so try it first.
+--   2. failing that, auto-report only for CHILD entities, which are rare and are the
+--      thing actually being researched.
 --
--- The inspector reports only when the target CHANGES, so it cannot spam.
---
--- CAREFUL: errors propagate into the quest coroutine and GeneralScriptManager re-raises
--- them. pcall is in no shipped script. Nil-check everything.
+-- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 9
+local VERSION = 11
 
 local function has(t, k)
     return t ~= nil and t[k] ~= nil
 end
 
-local function say(text)
-    -- Prefer the non-modal banner if it renders raw strings; fall back to the modal box,
-    -- which is proven. ShowTopBoxMessage(text, seconds, bool) per the shipped call sites.
-    if has(GUI, "ShowTopBoxMessage") then
-        GUI.ShowTopBoxMessage(text, 6, true)
+local function box(text)
+    if has(GUI, "DisplayMessageBox") then
+        GUI.DisplayMessageBox(text)
     end
 end
 
-local function describe(e)
-    local parts = "TARGET: " .. tostring(e:GetName())
+local hero = GetLocalHero and GetLocalHero()
 
+local function describe(e)
+    local out = "TARGET: " .. tostring(e:GetName())
     if has(Age, "IsAvailable") and Age.IsAvailable(e) and has(Age, "GetAgeGroup") then
         local g = Age.GetAgeGroup(e)
         local name = "?"
@@ -41,43 +43,69 @@ local function describe(e)
             elseif g == EAgeGroup.EAGE_GROUP_ELDER then name = "ELDER"
             elseif g == EAgeGroup.EAGE_GROUP_NONE then name = "NONE" end
         end
-        parts = parts .. "  age=" .. name .. "(" .. tostring(g) .. ")"
+        out = out .. "  age=" .. name .. "(" .. tostring(g) .. ")"
         if has(Age, "GetAge") then
-            parts = parts .. " scalar=" .. tostring(Age.GetAge(e))
+            out = out .. " scalar=" .. tostring(Age.GetAge(e))
         end
     end
-
     if has(Gender, "Get") then
-        parts = parts .. "  gender=" .. tostring(Gender.Get(e))
+        out = out .. "  gender=" .. tostring(Gender.Get(e))
     end
-    if has(PlayerFamily, "IsFamilyMember") then
-        parts = parts .. "  family=" .. tostring(PlayerFamily.IsFamilyMember(GetLocalHero(), e))
+    if has(Villager, "IsAvailable") and Villager.IsAvailable(e) then
+        out = out .. "  villager=yes"
     end
-    return parts
+    if has(PlayerFamily, "IsFamilyMember") and hero then
+        out = out .. "  family=" .. tostring(PlayerFamily.IsFamilyMember(hero, e))
+    end
+    return out
 end
 
--- ------------------------------------------------------------------ one-shot per edit ---
+local function inspect()
+    if hero == nil or not has(Targeting, "GetTarget") then return end
+    local t = Targeting.GetTarget(hero)
+    if t ~= nil and t:IsAlive() then
+        box(describe(t))
+    else
+        box("F3MOD: nothing targeted")
+    end
+end
+
+-- ------------------------------------------------------------------- hotkey attempt ---
+-- KB_I is not bound by any shipped script, so it cannot collide.
+if F3MOD_KEY_V ~= VERSION and has(Debug, "AddLuaDebugKeyFunc") and EInputKey ~= nil then
+    if has(Debug, "SetDebugKeyboardInputEnabled") then
+        Debug.SetDebugKeyboardInputEnabled(true)
+    end
+    Debug.AddLuaDebugKeyFunc(EInputKey.KB_I, inspect)
+    F3MOD_KEY_V = VERSION
+end
+
+-- ------------------------------------------------------------------------ announce ---
 if F3MOD_VERSION ~= VERSION then
-    local hero = GetLocalHero and GetLocalHero()
-    local visible = hero
+    local watchable = hero
         and not (GUI ~= nil and GUI.IsScreenFading ~= nil and GUI.IsScreenFading())
         and not (GUI ~= nil and GUI.IsAnyMenuOpen ~= nil and GUI.IsAnyMenuOpen())
-    if visible then
-        say("F3MOD v9 - top box test. Inspector armed: target someone.")
+    if watchable then
+        box("F3MOD v11. Press I with someone targeted to inspect them."
+            .. "  Children auto-report. Top box is dead, so boxes are all we have.")
         F3MOD_VERSION = VERSION
     end
 end
 
--- ---------------------------------------------------------------------- the inspector ---
--- Runs once per second off the injector. Reports only on change.
-local hero = GetLocalHero and GetLocalHero()
+-- ------------------------------------------- fallback: auto-report children only ---
+-- Rare enough not to be a nuisance, and they are the entities under study.
 if hero and has(Targeting, "GetTarget") then
     local t = Targeting.GetTarget(hero)
     if t ~= nil and t:IsAlive() then
         local id = tostring(t:GetName())
         if id ~= F3MOD_LAST_TARGET then
             F3MOD_LAST_TARGET = id
-            say(describe(t))
+            local is_child = has(Age, "IsAvailable") and Age.IsAvailable(t)
+                and has(Age, "GetAgeGroup") and EAgeGroup ~= nil
+                and Age.GetAgeGroup(t) == EAgeGroup.EAGE_GROUP_CHILD
+            if is_child then
+                box(describe(t))
+            end
         end
     else
         F3MOD_LAST_TARGET = nil
