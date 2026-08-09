@@ -151,8 +151,7 @@ function F3MOD.menu(hero)
                 box("F3MOD: set scalar to " .. tostring(wanted)
                     .. ". Re-read: scalar=" .. tostring(Age.GetAge(subj))
                     .. " group=" .. tostring(AGE_NAME[g] or g)
-                    .. "
-If the group did not move, they are independent fields.")
+                    .. "  (if the group did not move, they are independent fields)")
             end
         end
     end
