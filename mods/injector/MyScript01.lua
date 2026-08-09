@@ -1,109 +1,109 @@
--- F3MOD bootstrap.
+-- F3MOD - entity inspector.
 --
--- Thin on purpose. The injector re-reads and re-compiles this file every 60 frames, and
--- that shows up in game as a one-frame audio scratch. So this file installs a per-frame
--- worker once and then early-outs on every later run; all the real work happens in the
--- worker, which is resumed by the scheduler and costs nothing to keep running.
+-- Built only from calls the v16 bisect proved safe:
+--   MessageEvents.GetMostRecentMessageID
+--   MessageEvents.IsMessageSentBy(MESSAGE_EVENT_EXPRESSION_PERFORMED, hero, watermark)
+--   Targeting.GetTarget                     (confirmed returning entities, 120 frames)
+--   GUI.DisplayMessageBox                   (the only working text channel)
+--   GeneralScriptManager.AddScript          (per-frame Update)
 --
--- Channel findings, all established in game. Nothing here is speculative:
---   GUI.DisplayMessageBox     WORKS with arbitrary strings. Modal, Escape to close.
---   GeneralScriptManager      WORKS. Per-frame Update via AddScript.
---   GUI.DisplayInfoBoxParams  DEAD. Tried raw string, then a real TEXT_ id plus
---                             TargetHero. Nothing rendered either way.
---   GUI.ShowTopBoxMessage     DEAD with raw strings.
---   Debug.DrawText            DEAD. Renderer stripped from retail; 122 frames drew nothing.
---   Debug.AddLuaDebugKeyFunc  DEAD. No hotkeys, even with SetDebugKeyboardInputEnabled.
---   SetApplicationName, io    DEAD.
+-- Deliberately NOT used: MESSAGE_EVENT_ONE_TO_ONE_EXPRESSION_PERFORMED,
+-- MESSAGE_EVENT_EXPRESSION_MENU_OPENED and MESSAGE_EVENT_INTERACTED_WITH. v15 called all
+-- three and its worker died; v16 called neither and survived every phase. They are the
+-- only difference, so they stay out until something needs them.
 --
--- The web says the community never solved this either: their documented workflow is this
--- same file, edited in Notepad, reporting through DisplayMessageBox and closed with
--- Escape. The modal box is the state of the art, so the goal is to only ever show one the
--- player asked for.
+-- USE: target someone, perform any expression, get their readout.
 --
--- The trigger is an expression. The previous attempt passed nil as the third argument to
--- IsMessageSentBy; it is not optional, it is a watermark from GetMostRecentMessageID, so
--- the call never matched. Fixed here.
+-- If the trigger never fires, silence would be ambiguous again, so after 30 seconds
+-- without a single detection it says so once. Silence is never left to mean two things.
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 14
+local VERSION = 17
 
 if F3MOD ~= nil and F3MOD.version == VERSION then
-    return -- already installed; keep the per-second cost to one comparison
+    return
 end
 
 local function has(t, k)
     return t ~= nil and t[k] ~= nil
 end
 
--- Retire any worker from a previous edit. GeneralScriptManager.Update drops a script
--- whose IsStillRunnable returns false.
 if F3MOD ~= nil and F3MOD.worker ~= nil then
     F3MOD.worker.IsStillRunnable = function() return false end
 end
 
 F3MOD = { version = VERSION }
 
+local AGE_NAME = { [0] = "BABY", [1] = "CHILD", [2] = "ADULT", [3] = "ELDER", [4] = "NONE" }
+
 function F3MOD.describe(e)
     local hero = GetLocalHero and GetLocalHero()
-    local out = "TARGET: " .. tostring(e:GetName())
+    local out = tostring(e:GetName())
+
     if has(Age, "IsAvailable") and Age.IsAvailable(e) and has(Age, "GetAgeGroup") then
         local g = Age.GetAgeGroup(e)
-        local name = "?"
-        if EAgeGroup ~= nil then
-            if g == EAgeGroup.EAGE_GROUP_BABY then name = "BABY"
-            elseif g == EAgeGroup.EAGE_GROUP_CHILD then name = "CHILD"
-            elseif g == EAgeGroup.EAGE_GROUP_ADULT then name = "ADULT"
-            elseif g == EAgeGroup.EAGE_GROUP_ELDER then name = "ELDER"
-            elseif g == EAgeGroup.EAGE_GROUP_NONE then name = "NONE" end
-        end
-        out = out .. "  age=" .. name .. "(" .. tostring(g) .. ")"
+        out = out .. "\nage group: " .. tostring(AGE_NAME[g] or "?") .. " (" .. tostring(g) .. ")"
         if has(Age, "GetAge") then
-            out = out .. " scalar=" .. tostring(Age.GetAge(e))
+            out = out .. "   age scalar: " .. tostring(Age.GetAge(e))
         end
     else
-        out = out .. "  (no age component)"
+        out = out .. "\nno age component"
     end
+
     if has(Gender, "Get") then
-        out = out .. "  gender=" .. tostring(Gender.Get(e))
+        out = out .. "\ngender: " .. tostring(Gender.Get(e))
     end
     if has(PlayerFamily, "IsFamilyMember") and hero then
-        out = out .. "  family=" .. tostring(PlayerFamily.IsFamilyMember(hero, e))
+        out = out .. "   family: " .. tostring(PlayerFamily.IsFamilyMember(hero, e))
+    end
+    if has(Health, "IsAvailable") and Health.IsAvailable(e) and has(Health, "Get") then
+        out = out .. "\nhealth: " .. tostring(Health.Get(e))
     end
     return out
 end
 
--- ------------------------------------------------------------------ per-frame worker ---
 if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     local w = { _Name = "F3MOD_WORKER" }
 
     function w:Update()
-        -- Watermark, so only expressions performed AFTER this point count.
+        local frames, detections = 0, 0
+        local warned = false
         local last = nil
         if has(MessageEvents, "GetMostRecentMessageID") then
             last = MessageEvents.GetMostRecentMessageID()
         end
 
         while true do
+            frames = frames + 1
             local hero = GetLocalHero and GetLocalHero()
-            local quiet = hero
-                and not (has(GUI, "IsScreenFading") and GUI.IsScreenFading())
-                and not (has(GUI, "IsAnyMenuOpen") and GUI.IsAnyMenuOpen())
-                and not (has(GUI, "IsDisplayBoxActive") and GUI.IsDisplayBoxActive())
+            local boxed = has(GUI, "IsDisplayBoxActive") and GUI.IsDisplayBoxActive()
 
-            if quiet and last ~= nil and has(MessageEvents, "IsMessageSentBy")
-                and EMessageEventType ~= nil then
+            if hero and last ~= nil and not boxed and EMessageEventType ~= nil
+                and has(MessageEvents, "IsMessageSentBy")
+                and EMessageEventType.MESSAGE_EVENT_EXPRESSION_PERFORMED ~= nil then
 
-                local performed = MessageEvents.IsMessageSentBy(
-                    EMessageEventType.MESSAGE_EVENT_EXPRESSION_PERFORMED, hero, last)
+                if MessageEvents.IsMessageSentBy(
+                    EMessageEventType.MESSAGE_EVENT_EXPRESSION_PERFORMED, hero, last) then
 
-                if performed then
                     last = MessageEvents.GetMostRecentMessageID()
+                    detections = detections + 1
+
                     local t = has(Targeting, "GetTarget") and Targeting.GetTarget(hero) or nil
                     if t ~= nil and t:IsAlive() and has(GUI, "DisplayMessageBox") then
                         GUI.DisplayMessageBox(F3MOD.describe(t))
+                    elseif has(GUI, "DisplayMessageBox") then
+                        GUI.DisplayMessageBox("F3MOD: expression seen, nothing targeted.")
                     end
                 end
+            end
+
+            -- Make silence mean exactly one thing.
+            if not warned and frames > 1800 and detections == 0 and not boxed
+                and has(GUI, "DisplayMessageBox") then
+                warned = true
+                GUI.DisplayMessageBox("F3MOD: 30s, no expression detected. The worker is"
+                    .. " alive (frames=" .. frames .. ") so the trigger is what does not fire.")
             end
 
             coroutine.yield()
@@ -114,8 +114,6 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
--- One announcement, so it is obvious the new version took.
 if has(GUI, "DisplayMessageBox") then
-    GUI.DisplayMessageBox("F3MOD v14 installed. Target someone and perform an expression"
-        .. " to inspect them. This box will not appear again on its own.")
+    GUI.DisplayMessageBox("F3MOD v17. Target someone, perform any expression, read them.")
 end
