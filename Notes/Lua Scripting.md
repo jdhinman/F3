@@ -36,6 +36,37 @@ DLC/10_ScriptInjector  (package_info.xml: mountOrder 9150, above the base game)
 per 60 frames. No bank rebuild to iterate, no relaunch. That is the edit-and-see loop the
 project came here for.
 
+### The retail build keeps the whole Debug namespace  **[VERIFIED]** 2026-08-06
+
+Probed in game by encoding an 8-bit presence mask as a gold delta, because with no `io` and
+no console, observable state was the only channel available. Result: **mask 255, every bit
+set.**
+
+| Checked | Present in retail |
+|---|---|
+| `Debug` table itself | yes |
+| `Debug.DrawText` | yes |
+| **`Debug.CreateInstantFamily`** | **yes** |
+| **`Debug.CreateFamily`** | **yes** |
+| `Debug.SetUseFreeCamera` | yes |
+| **`Age.SetAgeGroup`** | **yes** |
+| `PlayerFamily.GetChildren` | yes |
+| `Inventory.AddItemOfType` | yes |
+
+This closes the longest-standing [UNKNOWN] in [[Child System]]: the `Debug.*` functions were
+**not** stripped from the release build. `Debug.CreateInstantFamily` can therefore build a
+spouse and children on demand, which means the child-growth work no longer has to wait for a
+playthrough to reach marriage.
+
+Two channels that exist but stayed silent:
+
+- **`SetApplicationName` does not retitle the OS window.** It is the application identity
+  string, set at startup. Worth recording because the project's first smoke test used it as
+  its signal, so that test was doubly blind: no `io`, and a signal that does not move.
+- **`Debug.DrawText` exists but drew nothing** when called from a scheduled `Update`, which
+  is the exact shape `camera/freecamera.lua` uses. Still under investigation;
+  `Debug.SetDrawGUI(true)` is the current suspect.
+
 ### Live editing, no restart  **[VERIFIED]** 2026-08-06
 
 Confirmed in game: edit `data\scripts\MyMod\MyScript01.lua`, save, and the new code runs
