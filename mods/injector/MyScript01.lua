@@ -1,24 +1,20 @@
--- F3MOD - entity inspector.
+-- F3MOD v19 - interactive menu + inspector.
 --
--- Trigger: TARGET CHANGE. Not expressions.
+-- The breakthrough: GUI.AskYesNoQuestion is plain Lua in quests/miscfunctions.lua, and
+-- reading it shows (a) its `caller` argument is ignored, (b) it blocks the calling
+-- coroutine on MESSAGE_EVENT_QUESTION_REPLY, ideal inside our worker, and (c) the barman
+-- subgame passes it a RAW STRING, so it renders arbitrary text like DisplayMessageBox.
+-- It returns a boolean. That is player input, which makes a menu possible.
 --
--- Expressions were the wrong bet. v11 already proved target-change detection works - that
--- is how the child readout appeared - and I moved away from it to avoid modal spam, then
--- spent several rounds chasing a trigger that has never once fired. The spam problem has
--- an easy fix that does not require a new mechanism: report each entity only once, and
--- stop after a cap. So this goes back to what works.
+-- MENU TRIGGER: target your DOG. Deliberate, always available, never accidental.
+-- INSPECTOR: target any new person, get one readout (proven since v11).
 --
--- Everything here is proven in game:
---   Targeting.GetTarget            v16: returned entities on 120 of 120 frames
---   GUI.DisplayMessageBox          the only working text channel
---   GeneralScriptManager.AddScript per-frame Update
---
--- USE: target people. Each new one is reported once. After 25 distinct entities it goes
--- quiet by itself.
+-- Proven calls only, plus exactly one new one (AskYesNoQuestion), whose internals are
+-- shipped code exercised by retail gameplay (bed roll, granny quest, barman job).
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 18
+local VERSION = 19
 
 if F3MOD ~= nil and F3MOD.version == VERSION then
     return
@@ -32,14 +28,26 @@ if F3MOD ~= nil and F3MOD.worker ~= nil then
     F3MOD.worker.IsStillRunnable = function() return false end
 end
 
-F3MOD = { version = VERSION }
+F3MOD = { version = VERSION, inspect = true }
 
 local AGE_NAME = { [0] = "BABY", [1] = "CHILD", [2] = "ADULT", [3] = "ELDER", [4] = "NONE" }
+
+local function box(text)
+    if has(GUI, "DisplayMessageBox") then
+        GUI.DisplayMessageBox(text)
+    end
+end
+
+local function ask(text)
+    if has(GUI, "AskYesNoQuestion") then
+        return GUI.AskYesNoQuestion(text, F3MOD) == true
+    end
+    return false
+end
 
 function F3MOD.describe(e)
     local hero = GetLocalHero and GetLocalHero()
     local out = tostring(e:GetName())
-
     if has(Age, "IsAvailable") and Age.IsAvailable(e) and has(Age, "GetAgeGroup") then
         local g = Age.GetAgeGroup(e)
         out = out .. "\nage group: " .. tostring(AGE_NAME[g] or "?") .. " (" .. tostring(g) .. ")"
@@ -49,7 +57,6 @@ function F3MOD.describe(e)
     else
         out = out .. "\nno age component"
     end
-
     if has(Gender, "Get") then
         out = out .. "\ngender: " .. tostring(Gender.Get(e))
     end
@@ -59,28 +66,57 @@ function F3MOD.describe(e)
     return out
 end
 
+-- The menu runs inside the worker coroutine; each ask() blocks until answered.
+function F3MOD.menu(hero)
+    if not ask("F3MOD MENU - open it?") then
+        return
+    end
+    if ask("Give 10,000 gold?") and has(Money, "Add") then
+        Money.Add(hero, 10000, 0)
+    end
+    if ask("Toggle free camera? (say yes again on the dog to turn it back off)")
+        and has(Debug, "SetUseFreeCamera") then
+        F3MOD.freecam = not F3MOD.freecam
+        Debug.SetUseFreeCamera(F3MOD.freecam)
+    end
+    if ask("Inspector " .. (F3MOD.inspect and "is ON. Turn it OFF?" or "is OFF. Turn it ON?")) then
+        F3MOD.inspect = not F3MOD.inspect
+    end
+    box("F3MOD: menu closed.")
+end
+
 if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     local w = { _Name = "F3MOD_WORKER" }
 
     function w:Update()
         local seen = {}
-        local reports = 0
         local last_id = nil
+        local menu_cool = 0
 
         while true do
             local hero = GetLocalHero and GetLocalHero()
             local boxed = has(GUI, "IsDisplayBoxActive") and GUI.IsDisplayBoxActive()
+            if menu_cool > 0 then
+                menu_cool = menu_cool - 1
+            end
 
             if hero and not boxed and has(Targeting, "GetTarget") then
                 local t = Targeting.GetTarget(hero)
                 if t ~= nil and t:IsAlive() then
-                    local id = tostring(t:GetName())
-                    if id ~= last_id then
-                        last_id = id
-                        if not seen[id] and reports < 25 and has(GUI, "DisplayMessageBox") then
-                            seen[id] = true
-                            reports = reports + 1
-                            GUI.DisplayMessageBox(F3MOD.describe(t))
+                    local dog = GetDog ~= nil and GetDog(hero) or nil
+                    if dog ~= nil and t == dog then
+                        if menu_cool == 0 then
+                            menu_cool = 300 -- ~5s before the dog can reopen it
+                            F3MOD.menu(hero)
+                        end
+                    else
+                        local id = tostring(t:GetName())
+                        if id ~= last_id then
+                            last_id = id
+                            if F3MOD.inspect and not seen[id] then
+                                seen[id] = true
+                                box(F3MOD.describe(t))
+                            end
                         end
                     end
                 else
@@ -96,7 +132,4 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
-if has(GUI, "DisplayMessageBox") then
-    GUI.DisplayMessageBox("F3MOD v18. Target people - each new one is reported once."
-        .. " Goes quiet after 25.")
-end
+box("F3MOD v19. Target your DOG for the menu. Target people to inspect them (once each).")

@@ -85,6 +85,21 @@ that AI unlocks and appearance does not.
 > her. The experiment wants a throwaway entity - `Debug.CreateInstantFamily` makes its own,
 > and both `Debug.*` creators are confirmed present in retail.
 
+## The scalar is banded, not individual  **[VERIFIED]** 2026-08-06
+
+Surveying a dozen Mistpeak camp NPCs with the inspector: **every adult reads scalar 20,
+every child reads scalar 10** - including a quest-owned child. The scalar is not an
+individual age in years; it is a uniform per-band value, presumably what
+`SetAgeWithinAgeGroup` seeds at spawn. Artofeel's ">18" threshold now reads cleanly:
+adults sit at 20, children at 10, and 18 is the boundary between bands.
+
+Two more things the survey settled:
+
+- **Ambient children are distinct creature types too**: `CreatureVillagerGypsyChildMaleMistpeak`
+  vs `CreatureVillagerGypsyMaleMistpeak`. The child/adult type split is not just for hero
+  children.
+- Observed gender values: female = 1, male = 2.
+
 ## Read from the game's own source  **[VERIFIED]** 2026-08-06
 
 Everything below this line is read out of the decompiled scripts, not inferred from a symbol
