@@ -18,7 +18,7 @@
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 24
+local VERSION = 25
 
 -- Rescue, kept forever: the free camera eats all input in retail if it is ever on.
 if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
@@ -66,9 +66,9 @@ local function ask_amount(title, minv, maxv, step, default)
     if not (has(GUI, "AskForAmount") and EAdjusterTypes ~= nil and has(MessageEvents, "GetMostRecentMessageID")) then
         return nil
     end
-    F3MOD.LastPosted = MessageEvents.GetMostRecentMessageID()
+    local caller = { LastPosted = MessageEvents.GetMostRecentMessageID() }
     local hero = GetLocalHero and GetLocalHero()
-    local amount, accepted = GUI.AskForAmount(F3MOD, {
+    local amount, accepted = GUI.AskForAmount(caller, {
         Type = EAdjusterTypes.ADJUSTER_TYPE_MONEY,
         MinVal = minv,
         MaxVal = maxv,
@@ -118,7 +118,12 @@ local function hudline(e)
 end
 
 function F3MOD.menu(hero)
+    if F3MOD.menu_open then
+        return
+    end
+    F3MOD.menu_open = true
     if not ask("F3MOD MENU - open it?") then
+        F3MOD.menu_open = false
         return
     end
     if ask("Set gold to an exact amount?") and has(Money, "Get") then
@@ -159,6 +164,7 @@ function F3MOD.menu(hero)
         F3MOD.inspect = not F3MOD.inspect
     end
     box("F3MOD: menu closed.")
+    F3MOD.menu_open = false
 end
 
 if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
@@ -169,7 +175,7 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
         local menu_cool = 0
         local refresh = 0
 
-        while true do
+        while F3MOD ~= nil and F3MOD.worker == self do
             local hero = GetLocalHero and GetLocalHero()
             local boxed = has(GUI, "IsDisplayBoxActive") and GUI.IsDisplayBoxActive()
             if menu_cool > 0 then
@@ -211,5 +217,5 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
-box("F3MOD v24. Look at someone, then open the dog menu: you can now set THEIR age"
-    .. " scalar with the spinner. The box reports whether the age group followed.")
+box("F3MOD v25. Workers are now self-retiring - doubles cannot recur. If you still see"
+    .. " doubled boxes right now, restart the game once to flush the old ones.")
