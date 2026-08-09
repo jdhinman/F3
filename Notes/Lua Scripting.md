@@ -15,6 +15,55 @@ tags:
 > The Anniversary project spent a day failing to execute a single line of new code. Here the loop is
 > edit-file, alt-tab, see it.
 
+## CODE EXECUTION, CONFIRMED IN GAME  **[VERIFIED]** 2026-08-06
+
+> [!success] The project's longest-standing blocker is cleared
+> A mod script ran in Fable III and changed the game state. The probe added exactly 1234
+> gold and the change persisted through a save. **Arbitrary Lua execution is available.**
+
+The working chain, end to end:
+
+```
+DLC/10_ScriptInjector  (package_info.xml: mountOrder 9150, above the base game)
+  └─ overrides scripts/quests/questsetupscript.lua
+       └─ RunScript("Quests/scriptactivation_additional.lua")   <- the one added line
+            └─ registers ScriptActivation[ScriptCode.DEMO001]
+                 └─ QuestManager loads DEMO001_ScriptInjector via require()
+                      └─ its quest thread RunScripts data\scripts\MyMod\MyScript01.lua
+```
+
+**Everything a mod does goes in `MyScript01.lua`, which is a loose text file** re-run once
+per 60 frames. No bank rebuild to iterate, no relaunch. That is the edit-and-see loop the
+project came here for.
+
+### Three things the run settled
+
+**`io` does not exist in retail.** The probe tried four paths through `io.open` and wrote
+nothing, while its `Money.Add` on the same line took effect. The single `io.open` in the
+shipped scripts is in a file with a hardcoded `d:\Dev\` path, so it was development-only, as
+suspected. **A mod cannot write a log file.** Observable state changes are the only channel,
+which makes `Money`, `Debug.DrawText` and `SetApplicationName` the debugging tools.
+
+**A `RunScript` on a missing file is tolerated.** The community bank calls six scripts that
+exist nowhere in this install and the game loads anyway. The "correction" built for that was
+solving a problem that does not exist.
+
+**Our own rebuilt bank hangs the game; theirs does not.** Both were installed on the same
+save. Cause not conclusively found. Ruled out: the questsetupscript content (byte-identical
+to our decompile of retail, and the disassembly confirms the enum names it references), the
+index framing (same chunk layout, same 326-byte inflated index), `ScriptCode.DEMO001`
+existing, and quest loading through `require`.
+
+The one difference left is the zlib stream header: ours emitted **`78 9C`** (default level)
+where every bank the game ships uses **`78 DA`** (best). Both are valid zlib and any
+conformant inflater takes either, but the game's inflater is fifteen years old and not ours
+to inspect. `write_bank` now uses best compression, with a test pinning the header. Untested
+against the game, and marked **[INFERRED]** until it is.
+
+> [!warning] Do not rebuild the bank without need
+> The community bank works. Ours does not. Until that is understood, ship mod logic in the
+> loose `MyScript01.lua`, which needs no bank at all.
+
 ## The game declares its own mod hook  **[VERIFIED]** 2026-08-06
 
 > [!success] No manifest edit, no quest hijack, no injector

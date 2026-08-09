@@ -252,7 +252,11 @@ pub fn write_bank(inputs: &[Input], leading_word: u32) -> Result<(Vec<u8>, Vec<u
     // Compress the whole index as one zlib stream, then describe it as chunks. The reader
     // concatenates chunk payloads before inflating, so the split is free to be arbitrary;
     // matching the game's 64 KB accounting keeps it recognisable.
-    let mut encoder = ZlibEncoder::new(Vec::new(), Compression::default());
+    // Best compression, so the stream header is 78 DA. Every bank the game ships uses
+    // 78 DA; the default level emits 78 9C. Both are valid zlib and any conformant
+    // inflater takes either, but the game's is neither modern nor ours to inspect, and
+    // matching what it has demonstrably read for fifteen years costs nothing.
+    let mut encoder = ZlibEncoder::new(Vec::new(), Compression::best());
     encoder.write_all(&index).map_err(Error::Zlib)?;
     let compressed = encoder.finish().map_err(Error::Zlib)?;
 
@@ -341,6 +345,21 @@ mod tests {
         for (a, b) in ours.entries.iter().zip(bank.entries.iter()) {
             assert_eq!((&a.path, a.hash, a.offset, a.size, a.meta), (&b.path, b.hash, b.offset, b.size, b.meta));
         }
+    }
+
+    /// The index stream must start 78 DA, like every bank the game ships. 78 9C is equally
+    /// valid zlib and equally readable by anything conformant, but there is no upside to
+    /// handing the engine a variant it has never been given before.
+    #[test]
+    fn index_stream_header_matches_the_shipped_banks() {
+        let inputs = vec![Input {
+            path: "scripts/quests/a.lua".into(),
+            data: b"print('a')".to_vec(),
+            meta: DEFAULT_META,
+        }];
+        let (index, _) = write_bank(&inputs, 0).unwrap();
+        // 4 total + 4 version + 1 flag + 4 compLen + 4 uncompLen = 17
+        assert_eq!(&index[17..19], &[0x78, 0xDA], "index zlib header is not 78 DA");
     }
 
     #[test]
