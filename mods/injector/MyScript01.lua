@@ -18,7 +18,7 @@
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 22
+local VERSION = 23
 
 -- Rescue, kept forever: the free camera eats all input in retail if it is ever on.
 if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
@@ -59,6 +59,33 @@ local function ask(text)
     return false
 end
 
+-- Numeric input via the betting/haggling spinner. Shape copied from the chicken-racing
+-- bet in qv020. caller.LastPosted is the watermark it advances; seed it or the first
+-- call could match a stale reply.
+local function ask_amount(title, minv, maxv, step, default)
+    if not (has(GUI, "AskForAmount") and EAdjusterTypes ~= nil and has(MessageEvents, "GetMostRecentMessageID")) then
+        return nil
+    end
+    F3MOD.LastPosted = MessageEvents.GetMostRecentMessageID()
+    local hero = GetLocalHero and GetLocalHero()
+    local amount, accepted = GUI.AskForAmount(F3MOD, {
+        Type = EAdjusterTypes.ADJUSTER_TYPE_MONEY,
+        MinVal = minv,
+        MaxVal = maxv,
+        Increment = step,
+        DefaultVal = default,
+        ShowSign = false,
+        Title = title,
+        SelectionText = title,
+        ShowEstimate = false,
+        PlayerEntity = hero,
+    }, title, default)
+    if accepted then
+        return amount
+    end
+    return nil
+end
+
 -- Short name: the tail of the type is the informative part, the level prefix is noise.
 -- CreatureVillagerGypsyChildMaleMistpeak_MistPeakGypsyCampVillage_73959 -> GypsyChildMale
 local function shortname(e)
@@ -94,8 +121,16 @@ function F3MOD.menu(hero)
     if not ask("F3MOD MENU - open it?") then
         return
     end
-    if ask("Give 10,000 gold?") and has(Money, "Add") then
-        Money.Add(hero, 10000, 0)
+    if ask("Set gold to an exact amount?") and has(Money, "Get") then
+        local current = Money.Get(hero)
+        local wanted = ask_amount("Set gold", 0, 1000000, 100, current)
+        if wanted ~= nil and wanted ~= current then
+            if wanted > current and has(Money, "AddSilent") then
+                Money.AddSilent(hero, wanted - current, 0)
+            elseif wanted < current and has(Money, "RemoveSilent") then
+                Money.RemoveSilent(hero, current - wanted, 0)
+            end
+        end
     end
     if ask("Refill health?") and Health ~= nil and has(Health, "FillHealth") then
         Health.FillHealth(hero)
@@ -150,5 +185,5 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
-box("F3MOD v22. Inspector is now ON THE HUD: target anyone and read their stats from the"
-    .. " counter widget, no popups. Dog = menu.")
+box("F3MOD v23. Menu gains numeric input: set your gold to an exact figure with the"
+    .. " betting spinner. Dog = menu.")
