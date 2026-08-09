@@ -36,6 +36,31 @@ DLC/10_ScriptInjector  (package_info.xml: mountOrder 9150, above the base game)
 per 60 frames. No bank rebuild to iterate, no relaunch. That is the edit-and-see loop the
 project came here for.
 
+### The output channels that actually work  **[VERIFIED]** 2026-08-06
+
+With no `io` and no reachable console, everything depends on what can reach the screen.
+Tested in game, one at a time:
+
+| Channel | Result |
+|---|---|
+| `GUI.DisplayMessageBox(str)` | **works**, renders arbitrary strings in the game's own frame. Modal, dismissed with Esc. |
+| `GeneralScriptManager.AddScript` per-frame `Update` | **works**, confirmed at 122 frames and counting |
+| `Money.Add` | works, but costs a save-affecting side effect per message |
+| `Debug.DrawText` | **inert.** The symbol survives retail but draws nothing. |
+| `SetApplicationName` | inert as a signal; does not retitle the OS window |
+| `io.open` | absent entirely |
+
+`Debug.DrawText` deserves the detail because the negative took three attempts to establish
+cleanly. The scheduled script that calls it drew **122 frames** while the screen stayed
+blank, which separates "the drawing code never ran" from "the drawing does nothing". Only
+the second is consistent with the evidence. The renderer was compiled out of the release
+build and the Lua binding left behind.
+
+> [!warning] Globals persist across live edits, which hides failures
+> `F3MOD_HUD` survived from v4, so a later `if F3MOD_HUD == nil` skipped registration
+> entirely and left a possibly-dead script in place, producing the same silence as a broken
+> channel. Anything stateful needs a **version key**, not a nil check.
+
 ### The retail build keeps the whole Debug namespace  **[VERIFIED]** 2026-08-06
 
 Probed in game by encoding an 8-bit presence mask as a gold delta, because with no `io` and

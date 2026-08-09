@@ -1,66 +1,85 @@
--- Live-edit harness. Re-read once per 60 frames by DEMO001_ScriptInjector.
+-- Live-edit harness + entity inspector.
 --
--- The probe answered: mask 255, so the whole Debug namespace survives retail, including
--- DrawText, CreateInstantFamily and Age.SetAgeGroup. Gold is a confirmed channel but a
--- terrible one - it costs a save-affecting side effect per message. This version tries to
--- get real text on screen, so the rest of the work has a proper output channel.
+-- Settled by v8: Debug.DrawText is inert in retail. The HUD script drew 122 frames and
+-- nothing appeared, so the symbol survived the release build but the renderer did not.
+-- Confirmed working channels are GUI.DisplayMessageBox (modal) and the per-frame
+-- scheduler, GeneralScriptManager.AddScript, which v8 proved runs every tick.
 --
--- Two candidates, both now known to exist:
---   Debug.DrawText          - freecamera.lua drives it from a scheduled Update, exactly
---                             the shape used below. Lasts one frame, so it must be drawn
---                             every tick, which is why it cannot be called from this file.
---   GUI.DisplayMessageBox   - Keshire read the whole Debug table off these on the forum,
---                             so it renders arbitrary strings, not just localised ids.
+-- This version does two things:
+--   1. tests GUI.ShowTopBoxMessage, the last candidate for non-modal text
+--   2. ships the entity inspector: look at someone, get their stats
 --
--- CAREFUL: an error here propagates into the quest coroutine and GeneralScriptManager
--- re-raises it. pcall is in no shipped script. Nil-check everything.
+-- The inspector reports only when the target CHANGES, so it cannot spam.
+--
+-- CAREFUL: errors propagate into the quest coroutine and GeneralScriptManager re-raises
+-- them. pcall is in no shipped script. Nil-check everything.
 
-local VERSION = 7
+local VERSION = 9
 
 local function has(t, k)
     return t ~= nil and t[k] ~= nil
 end
 
-F3MOD_TEXT = "F3MOD v" .. VERSION .. " - text channel live"
-
--- ------------------------------------------------------- persistent on-screen text ---
--- Registered once and kept across edits; later edits only reassign F3MOD_TEXT.
-if has(Debug, "DrawText") and F3MOD_HUD == nil and GeneralScriptManager ~= nil then
-    F3MOD_HUD = { _Name = "F3MOD_HUD" }
-    function F3MOD_HUD:Update()
-        while true do
-            if F3MOD_TEXT ~= nil then
-                Debug.DrawText(F3MOD_TEXT, CI32Vector2(20, 100), 0, true)
-            end
-            coroutine.yield()
-        end
+local function say(text)
+    -- Prefer the non-modal banner if it renders raw strings; fall back to the modal box,
+    -- which is proven. ShowTopBoxMessage(text, seconds, bool) per the shipped call sites.
+    if has(GUI, "ShowTopBoxMessage") then
+        GUI.ShowTopBoxMessage(text, 6, true)
     end
-    GeneralScriptManager.AddScript(F3MOD_HUD)
 end
 
--- ---------------------------------------------------------------- one-shot per edit ---
+local function describe(e)
+    local parts = "TARGET: " .. tostring(e:GetName())
+
+    if has(Age, "IsAvailable") and Age.IsAvailable(e) and has(Age, "GetAgeGroup") then
+        local g = Age.GetAgeGroup(e)
+        local name = "?"
+        if EAgeGroup ~= nil then
+            if g == EAgeGroup.EAGE_GROUP_BABY then name = "BABY"
+            elseif g == EAgeGroup.EAGE_GROUP_CHILD then name = "CHILD"
+            elseif g == EAgeGroup.EAGE_GROUP_ADULT then name = "ADULT"
+            elseif g == EAgeGroup.EAGE_GROUP_ELDER then name = "ELDER"
+            elseif g == EAgeGroup.EAGE_GROUP_NONE then name = "NONE" end
+        end
+        parts = parts .. "  age=" .. name .. "(" .. tostring(g) .. ")"
+        if has(Age, "GetAge") then
+            parts = parts .. " scalar=" .. tostring(Age.GetAge(e))
+        end
+    end
+
+    if has(Gender, "Get") then
+        parts = parts .. "  gender=" .. tostring(Gender.Get(e))
+    end
+    if has(PlayerFamily, "IsFamilyMember") then
+        parts = parts .. "  family=" .. tostring(PlayerFamily.IsFamilyMember(GetLocalHero(), e))
+    end
+    return parts
+end
+
+-- ------------------------------------------------------------------ one-shot per edit ---
 if F3MOD_VERSION ~= VERSION then
     local hero = GetLocalHero and GetLocalHero()
     local visible = hero
-        and Money ~= nil
-        and Money.IsAvailable ~= nil
-        and Money.IsAvailable(hero)
         and not (GUI ~= nil and GUI.IsScreenFading ~= nil and GUI.IsScreenFading())
         and not (GUI ~= nil and GUI.IsAnyMenuOpen ~= nil and GUI.IsAnyMenuOpen())
-
     if visible then
-        -- Debug text may be suppressed while the game's own GUI is hidden.
-        if has(Debug, "SetDrawGUI") then
-            Debug.SetDrawGUI(true)
-        end
-
-        -- One message box, once. Intrusive by design: it is the loudest channel we have.
-        if has(GUI, "DisplayMessageBox") then
-            GUI.DisplayMessageBox("F3MOD v7 text channel works")
-        end
-
-        -- Small and distinctive, so a silent screen still tells us the file ran.
-        Money.Add(hero, 7, 0)
+        say("F3MOD v9 - top box test. Inspector armed: target someone.")
         F3MOD_VERSION = VERSION
+    end
+end
+
+-- ---------------------------------------------------------------------- the inspector ---
+-- Runs once per second off the injector. Reports only on change.
+local hero = GetLocalHero and GetLocalHero()
+if hero and has(Targeting, "GetTarget") then
+    local t = Targeting.GetTarget(hero)
+    if t ~= nil and t:IsAlive() then
+        local id = tostring(t:GetName())
+        if id ~= F3MOD_LAST_TARGET then
+            F3MOD_LAST_TARGET = id
+            say(describe(t))
+        end
+    else
+        F3MOD_LAST_TARGET = nil
     end
 end
