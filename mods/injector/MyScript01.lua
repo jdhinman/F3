@@ -1,68 +1,51 @@
--- Live-edit harness + entity inspector.
+-- F3MOD bootstrap.
 --
--- Two problems, two experiments in this version.
+-- Thin on purpose. The injector re-reads and re-compiles this file every 60 frames, and
+-- that shows up in game as a one-frame audio scratch. So this file installs a per-frame
+-- worker once and then early-outs on every later run; all the real work happens in the
+-- worker, which is resumed by the scheduler and costs nothing to keep running.
 --
--- 1. NON-MODAL TEXT. GUI.DisplayInfoBoxParams with a raw string showed nothing. Every
---    shipped call passes a TEXT_ id as the second argument, and one of them also passes
---    TargetHero. So either the text must be a real localisation id, or the box needs to
---    know whose HUD to attach to. This fires the box with BOTH fixed - TargetHero set and
---    a genuine id, TEXT_GUI_CHEST_LOCKED - which isolates the mechanism from the text. If
---    a "chest locked" popup appears, the box works and only arbitrary strings are the
---    problem. If nothing appears, the box is unreachable from here and we stop.
+-- Channel findings, all established in game. Nothing here is speculative:
+--   GUI.DisplayMessageBox     WORKS with arbitrary strings. Modal, Escape to close.
+--   GeneralScriptManager      WORKS. Per-frame Update via AddScript.
+--   GUI.DisplayInfoBoxParams  DEAD. Tried raw string, then a real TEXT_ id plus
+--                             TargetHero. Nothing rendered either way.
+--   GUI.ShowTopBoxMessage     DEAD with raw strings.
+--   Debug.DrawText            DEAD. Renderer stripped from retail; 122 frames drew nothing.
+--   Debug.AddLuaDebugKeyFunc  DEAD. No hotkeys, even with SetDebugKeyboardInputEnabled.
+--   SetApplicationName, io    DEAD.
 --
--- 2. ON-DEMAND REPORTS. Debug.AddLuaDebugKeyFunc does not fire, so there are no hotkeys.
---    But the hero performing an expression posts MESSAGE_EVENT_EXPRESSION_PERFORMED, and
---    MessageEvents.IsMessageSentBy can see it. That is a player-driven trigger, which
---    makes a modal box acceptable: it only appears because you asked for it.
+-- The web says the community never solved this either: their documented workflow is this
+-- same file, edited in Notepad, reporting through DisplayMessageBox and closed with
+-- Escape. The modal box is the state of the art, so the goal is to only ever show one the
+-- player asked for.
 --
---    So: target someone, perform any expression, get their readout.
+-- The trigger is an expression. The previous attempt passed nil as the third argument to
+-- IsMessageSentBy; it is not optional, it is a watermark from GetMostRecentMessageID, so
+-- the call never matched. Fixed here.
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 13
+local VERSION = 14
+
+if F3MOD ~= nil and F3MOD.version == VERSION then
+    return -- already installed; keep the per-second cost to one comparison
+end
 
 local function has(t, k)
     return t ~= nil and t[k] ~= nil
 end
 
-local hero = GetLocalHero and GetLocalHero()
-F3MOD_RUNS = (F3MOD_RUNS or 0) + 1
-
-local function box(text)
-    if has(GUI, "DisplayMessageBox") then
-        GUI.DisplayMessageBox(text)
-    end
+-- Retire any worker from a previous edit. GeneralScriptManager.Update drops a script
+-- whose IsStillRunnable returns false.
+if F3MOD ~= nil and F3MOD.worker ~= nil then
+    F3MOD.worker.IsStillRunnable = function() return false end
 end
 
-local watchable = hero
-    and not (GUI ~= nil and GUI.IsScreenFading ~= nil and GUI.IsScreenFading())
-    and not (GUI ~= nil and GUI.IsAnyMenuOpen ~= nil and GUI.IsAnyMenuOpen())
+F3MOD = { version = VERSION }
 
--- ------------------------------------------------ experiment 1: is the info box usable ---
-if F3MOD_STAGE_V ~= VERSION then
-    F3MOD_STAGE_V = VERSION
-    F3MOD_STAGE = 0
-end
-
-if F3MOD_STAGE == 0 and watchable and has(GUI, "DisplayInfoBoxParams") and EDisplayBoxStyle ~= nil then
-    GUI.DisplayInfoBoxParams({
-        ShowAButton = false,
-        ShowYButton = false,
-        DisplayBoxStyle = EDisplayBoxStyle.DBS_INFO_BOX,
-        LifeTime = 8,
-        TargetHero = hero,
-    }, "TEXT_GUI_CHEST_LOCKED")
-    F3MOD_STAGE = 1
-    F3MOD_STAGE_AT = F3MOD_RUNS
-elseif F3MOD_STAGE == 1 and (F3MOD_RUNS - (F3MOD_STAGE_AT or 0)) >= 8 and watchable then
-    box("Test: sent an info box with a REAL text id and TargetHero set."
-        .. "  Did a small popup about a locked chest appear?"
-        .. "\n\nInspector: target someone and perform any expression.")
-    F3MOD_STAGE = 2
-end
-
--- ------------------------------------------------------------------------ inspector ---
-local function describe(e)
+function F3MOD.describe(e)
+    local hero = GetLocalHero and GetLocalHero()
     local out = "TARGET: " .. tostring(e:GetName())
     if has(Age, "IsAvailable") and Age.IsAvailable(e) and has(Age, "GetAgeGroup") then
         local g = Age.GetAgeGroup(e)
@@ -90,23 +73,49 @@ local function describe(e)
     return out
 end
 
--- Expression as the trigger. Debounced by run count rather than by message id, because
--- the id plumbing differs between call sites and a wrong guess here errors.
-if F3MOD_STAGE == 2 and hero and has(MessageEvents, "IsMessageSentBy")
-    and EMessageEventType ~= nil and watchable then
+-- ------------------------------------------------------------------ per-frame worker ---
+if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
+    local w = { _Name = "F3MOD_WORKER" }
 
-    local cooling = F3MOD_EXPR_AT ~= nil and (F3MOD_RUNS - F3MOD_EXPR_AT) < 3
-    if not cooling then
-        local performed = MessageEvents.IsMessageSentBy(
-            EMessageEventType.MESSAGE_EVENT_EXPRESSION_PERFORMED, hero, nil)
-        if performed then
-            F3MOD_EXPR_AT = F3MOD_RUNS
-            local t = has(Targeting, "GetTarget") and Targeting.GetTarget(hero) or nil
-            if t ~= nil and t:IsAlive() then
-                box(describe(t))
-            else
-                box("F3MOD: expression seen, but nothing is targeted.")
+    function w:Update()
+        -- Watermark, so only expressions performed AFTER this point count.
+        local last = nil
+        if has(MessageEvents, "GetMostRecentMessageID") then
+            last = MessageEvents.GetMostRecentMessageID()
+        end
+
+        while true do
+            local hero = GetLocalHero and GetLocalHero()
+            local quiet = hero
+                and not (has(GUI, "IsScreenFading") and GUI.IsScreenFading())
+                and not (has(GUI, "IsAnyMenuOpen") and GUI.IsAnyMenuOpen())
+                and not (has(GUI, "IsDisplayBoxActive") and GUI.IsDisplayBoxActive())
+
+            if quiet and last ~= nil and has(MessageEvents, "IsMessageSentBy")
+                and EMessageEventType ~= nil then
+
+                local performed = MessageEvents.IsMessageSentBy(
+                    EMessageEventType.MESSAGE_EVENT_EXPRESSION_PERFORMED, hero, last)
+
+                if performed then
+                    last = MessageEvents.GetMostRecentMessageID()
+                    local t = has(Targeting, "GetTarget") and Targeting.GetTarget(hero) or nil
+                    if t ~= nil and t:IsAlive() and has(GUI, "DisplayMessageBox") then
+                        GUI.DisplayMessageBox(F3MOD.describe(t))
+                    end
+                end
             end
+
+            coroutine.yield()
         end
     end
+
+    F3MOD.worker = w
+    GeneralScriptManager.AddScript(w)
+end
+
+-- One announcement, so it is obvious the new version took.
+if has(GUI, "DisplayMessageBox") then
+    GUI.DisplayMessageBox("F3MOD v14 installed. Target someone and perform an expression"
+        .. " to inspect them. This box will not appear again on its own.")
 end
