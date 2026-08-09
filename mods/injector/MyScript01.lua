@@ -17,7 +17,7 @@
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 20
+local VERSION = 21
 
 -- ------------------------------------------------------------------------- RESCUE ---
 -- Before the version check, so it runs EVERY 60 frames forever. Idempotent and cheap.
@@ -37,7 +37,14 @@ if F3MOD ~= nil and F3MOD.worker ~= nil then
     F3MOD.worker.IsStillRunnable = function() return false end
 end
 
-F3MOD = { version = VERSION, inspect = true }
+-- Carry state across live edits, or every push re-reports everyone already seen and
+-- forgets the inspector toggle.
+local prev = F3MOD
+F3MOD = {
+    version = VERSION,
+    inspect = (prev ~= nil and prev.inspect ~= nil) and prev.inspect or true,
+    seen = (prev ~= nil and prev.seen ~= nil) and prev.seen or {},
+}
 
 local AGE_NAME = { [0] = "BABY", [1] = "CHILD", [2] = "ADULT", [3] = "ELDER", [4] = "NONE" }
 
@@ -95,7 +102,7 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     local w = { _Name = "F3MOD_WORKER" }
 
     function w:Update()
-        local seen = {}
+        local seen = F3MOD.seen
         local last_id = nil
         local menu_cool = 0
 
@@ -138,5 +145,5 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
-box("F3MOD v20. Free camera is OFF and removed from the menu - it eats all input in"
-    .. " retail. Dog = menu. Inspector: new entities once each.")
+box("F3MOD v21. Scan memory now survives updates: each entity reports once, ever."
+    .. " Dog = menu.")
