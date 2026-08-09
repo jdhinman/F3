@@ -1,26 +1,26 @@
--- F3MOD v20 - RESCUE + menu without the trap.
+-- F3MOD v22 - non-modal HUD inspector.
 --
--- v19's free camera captured ALL keyboard input, including the yes/no box's own keys, so
--- the menu could not be answered and the player was stuck inside it. The camera is driven
--- by the debug key system (F1-F9 in freecamera.lua), which does not work in retail, so
--- there is no way to fly OR to leave. It is not a usable feature; it is a trap.
+-- The channel hunt is over. GUI.SetCounter is the quest-collectable HUD widget (chicken
+-- counter, gnome counter), and the QMP010 multiplayer quest proves it takes a RAW STRING
+-- label with %1 substitution:
+--     GUI.SetCounter("QMP010PlayerOneScoreCounter", "P1 Score: %1", score)
+-- Arbitrary text, on the HUD, persistent, updated at will, NO MODAL. This is the
+-- inspector output channel.
 --
--- This bootstrap runs every 60 frames regardless of any stuck box, so its first job is
--- the rescue: force the free camera OFF unconditionally. Then it retires the old worker,
--- stuck or not - a worker blocked inside AskYesNoQuestion still yields every frame, so
--- the scheduler still consults IsStillRunnable and drops it.
+-- New interaction model:
+--   look at anyone       -> their stats appear on the HUD counter, live, silently
+--   look away            -> the readout stays until the next target replaces it
+--   target your dog      -> yes/no menu (modal, but you asked for it)
 --
--- Menu changes:
---   free camera REMOVED
---   heal added (Health.FillHealth - shipped call)
---   menu now pauses the inspector while it is open, and the inspector ignores the dog
+-- No more scan boxes at all. The seen-set is gone because there is nothing to spam.
+--
+-- One new call this version (SetCounter), per the one-unproven-call rule.
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 21
+local VERSION = 22
 
--- ------------------------------------------------------------------------- RESCUE ---
--- Before the version check, so it runs EVERY 60 frames forever. Idempotent and cheap.
+-- Rescue, kept forever: the free camera eats all input in retail if it is ever on.
 if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
     Debug.SetUseFreeCamera(false)
 end
@@ -37,16 +37,14 @@ if F3MOD ~= nil and F3MOD.worker ~= nil then
     F3MOD.worker.IsStillRunnable = function() return false end
 end
 
--- Carry state across live edits, or every push re-reports everyone already seen and
--- forgets the inspector toggle.
 local prev = F3MOD
 F3MOD = {
     version = VERSION,
     inspect = (prev ~= nil and prev.inspect ~= nil) and prev.inspect or true,
-    seen = (prev ~= nil and prev.seen ~= nil) and prev.seen or {},
 }
 
 local AGE_NAME = { [0] = "BABY", [1] = "CHILD", [2] = "ADULT", [3] = "ELDER", [4] = "NONE" }
+local SEX_NAME = { [1] = "F", [2] = "M" }
 
 local function box(text)
     if has(GUI, "DisplayMessageBox") then
@@ -61,25 +59,35 @@ local function ask(text)
     return false
 end
 
-function F3MOD.describe(e)
-    local hero = GetLocalHero and GetLocalHero()
-    local out = tostring(e:GetName())
+-- Short name: the tail of the type is the informative part, the level prefix is noise.
+-- CreatureVillagerGypsyChildMaleMistpeak_MistPeakGypsyCampVillage_73959 -> GypsyChildMale
+local function shortname(e)
+    local n = tostring(e:GetName())
+    local head = string.gsub(n, "_.*$", "")
+    head = string.gsub(head, "^CreatureVillager", "")
+    head = string.gsub(head, "^Creature", "")
+    if head == "" then head = n end
+    return head
+end
+
+-- One line for the HUD counter label. %1 carries the age scalar as the number.
+local function hudline(e)
+    local label = shortname(e)
+    local scalar = 0
     if has(Age, "IsAvailable") and Age.IsAvailable(e) and has(Age, "GetAgeGroup") then
         local g = Age.GetAgeGroup(e)
-        out = out .. "\nage group: " .. tostring(AGE_NAME[g] or "?") .. " (" .. tostring(g) .. ")"
+        label = label .. " " .. tostring(AGE_NAME[g] or g)
         if has(Age, "GetAge") then
-            out = out .. "    age scalar: " .. tostring(Age.GetAge(e))
+            scalar = Age.GetAge(e)
         end
-    else
-        out = out .. "\nno age component"
     end
     if has(Gender, "Get") then
-        out = out .. "\ngender: " .. tostring(Gender.Get(e))
+        local s = SEX_NAME[Gender.Get(e)]
+        if s ~= nil then
+            label = label .. " " .. s
+        end
     end
-    if has(PlayerFamily, "IsFamilyMember") and hero then
-        out = out .. "    family: " .. tostring(PlayerFamily.IsFamilyMember(hero, e))
-    end
-    return out
+    return label .. "  age %1", scalar
 end
 
 function F3MOD.menu(hero)
@@ -92,7 +100,7 @@ function F3MOD.menu(hero)
     if ask("Refill health?") and Health ~= nil and has(Health, "FillHealth") then
         Health.FillHealth(hero)
     end
-    if ask("Inspector " .. (F3MOD.inspect and "is ON. Turn it OFF?" or "is OFF. Turn it ON?")) then
+    if ask("HUD inspector " .. (F3MOD.inspect and "is ON. Turn it OFF?" or "is OFF. Turn it ON?")) then
         F3MOD.inspect = not F3MOD.inspect
     end
     box("F3MOD: menu closed.")
@@ -102,7 +110,6 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     local w = { _Name = "F3MOD_WORKER" }
 
     function w:Update()
-        local seen = F3MOD.seen
         local last_id = nil
         local menu_cool = 0
 
@@ -122,14 +129,12 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
                             menu_cool = 300
                             F3MOD.menu(hero)
                         end
-                    else
+                    elseif F3MOD.inspect and has(GUI, "SetCounter") then
                         local id = tostring(t:GetName())
                         if id ~= last_id then
                             last_id = id
-                            if F3MOD.inspect and not seen[id] then
-                                seen[id] = true
-                                box(F3MOD.describe(t))
-                            end
+                            local label, num = hudline(t)
+                            GUI.SetCounter("F3MODInspector", label, num)
                         end
                     end
                 else
@@ -145,5 +150,5 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
-box("F3MOD v21. Scan memory now survives updates: each entity reports once, ever."
-    .. " Dog = menu.")
+box("F3MOD v22. Inspector is now ON THE HUD: target anyone and read their stats from the"
+    .. " counter widget, no popups. Dog = menu.")
