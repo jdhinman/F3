@@ -1,20 +1,29 @@
--- F3MOD v19 - interactive menu + inspector.
+-- F3MOD v20 - RESCUE + menu without the trap.
 --
--- The breakthrough: GUI.AskYesNoQuestion is plain Lua in quests/miscfunctions.lua, and
--- reading it shows (a) its `caller` argument is ignored, (b) it blocks the calling
--- coroutine on MESSAGE_EVENT_QUESTION_REPLY, ideal inside our worker, and (c) the barman
--- subgame passes it a RAW STRING, so it renders arbitrary text like DisplayMessageBox.
--- It returns a boolean. That is player input, which makes a menu possible.
+-- v19's free camera captured ALL keyboard input, including the yes/no box's own keys, so
+-- the menu could not be answered and the player was stuck inside it. The camera is driven
+-- by the debug key system (F1-F9 in freecamera.lua), which does not work in retail, so
+-- there is no way to fly OR to leave. It is not a usable feature; it is a trap.
 --
--- MENU TRIGGER: target your DOG. Deliberate, always available, never accidental.
--- INSPECTOR: target any new person, get one readout (proven since v11).
+-- This bootstrap runs every 60 frames regardless of any stuck box, so its first job is
+-- the rescue: force the free camera OFF unconditionally. Then it retires the old worker,
+-- stuck or not - a worker blocked inside AskYesNoQuestion still yields every frame, so
+-- the scheduler still consults IsStillRunnable and drops it.
 --
--- Proven calls only, plus exactly one new one (AskYesNoQuestion), whose internals are
--- shipped code exercised by retail gameplay (bed roll, granny quest, barman job).
+-- Menu changes:
+--   free camera REMOVED
+--   heal added (Health.FillHealth - shipped call)
+--   menu now pauses the inspector while it is open, and the inspector ignores the dog
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 19
+local VERSION = 20
+
+-- ------------------------------------------------------------------------- RESCUE ---
+-- Before the version check, so it runs EVERY 60 frames forever. Idempotent and cheap.
+if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
+    Debug.SetUseFreeCamera(false)
+end
 
 if F3MOD ~= nil and F3MOD.version == VERSION then
     return
@@ -66,7 +75,6 @@ function F3MOD.describe(e)
     return out
 end
 
--- The menu runs inside the worker coroutine; each ask() blocks until answered.
 function F3MOD.menu(hero)
     if not ask("F3MOD MENU - open it?") then
         return
@@ -74,10 +82,8 @@ function F3MOD.menu(hero)
     if ask("Give 10,000 gold?") and has(Money, "Add") then
         Money.Add(hero, 10000, 0)
     end
-    if ask("Toggle free camera? (say yes again on the dog to turn it back off)")
-        and has(Debug, "SetUseFreeCamera") then
-        F3MOD.freecam = not F3MOD.freecam
-        Debug.SetUseFreeCamera(F3MOD.freecam)
+    if ask("Refill health?") and Health ~= nil and has(Health, "FillHealth") then
+        Health.FillHealth(hero)
     end
     if ask("Inspector " .. (F3MOD.inspect and "is ON. Turn it OFF?" or "is OFF. Turn it ON?")) then
         F3MOD.inspect = not F3MOD.inspect
@@ -106,7 +112,7 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
                     local dog = GetDog ~= nil and GetDog(hero) or nil
                     if dog ~= nil and t == dog then
                         if menu_cool == 0 then
-                            menu_cool = 300 -- ~5s before the dog can reopen it
+                            menu_cool = 300
                             F3MOD.menu(hero)
                         end
                     else
@@ -132,4 +138,5 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
-box("F3MOD v19. Target your DOG for the menu. Target people to inspect them (once each).")
+box("F3MOD v20. Free camera is OFF and removed from the menu - it eats all input in"
+    .. " retail. Dog = menu. Inspector: new entities once each.")
