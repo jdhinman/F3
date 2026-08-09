@@ -1,25 +1,24 @@
 -- F3MOD - entity inspector.
 --
--- Built only from calls the v16 bisect proved safe:
---   MessageEvents.GetMostRecentMessageID
---   MessageEvents.IsMessageSentBy(MESSAGE_EVENT_EXPRESSION_PERFORMED, hero, watermark)
---   Targeting.GetTarget                     (confirmed returning entities, 120 frames)
---   GUI.DisplayMessageBox                   (the only working text channel)
---   GeneralScriptManager.AddScript          (per-frame Update)
+-- Trigger: TARGET CHANGE. Not expressions.
 --
--- Deliberately NOT used: MESSAGE_EVENT_ONE_TO_ONE_EXPRESSION_PERFORMED,
--- MESSAGE_EVENT_EXPRESSION_MENU_OPENED and MESSAGE_EVENT_INTERACTED_WITH. v15 called all
--- three and its worker died; v16 called neither and survived every phase. They are the
--- only difference, so they stay out until something needs them.
+-- Expressions were the wrong bet. v11 already proved target-change detection works - that
+-- is how the child readout appeared - and I moved away from it to avoid modal spam, then
+-- spent several rounds chasing a trigger that has never once fired. The spam problem has
+-- an easy fix that does not require a new mechanism: report each entity only once, and
+-- stop after a cap. So this goes back to what works.
 --
--- USE: target someone, perform any expression, get their readout.
+-- Everything here is proven in game:
+--   Targeting.GetTarget            v16: returned entities on 120 of 120 frames
+--   GUI.DisplayMessageBox          the only working text channel
+--   GeneralScriptManager.AddScript per-frame Update
 --
--- If the trigger never fires, silence would be ambiguous again, so after 30 seconds
--- without a single detection it says so once. Silence is never left to mean two things.
+-- USE: target people. Each new one is reported once. After 25 distinct entities it goes
+-- quiet by itself.
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 17
+local VERSION = 18
 
 if F3MOD ~= nil and F3MOD.version == VERSION then
     return
@@ -45,7 +44,7 @@ function F3MOD.describe(e)
         local g = Age.GetAgeGroup(e)
         out = out .. "\nage group: " .. tostring(AGE_NAME[g] or "?") .. " (" .. tostring(g) .. ")"
         if has(Age, "GetAge") then
-            out = out .. "   age scalar: " .. tostring(Age.GetAge(e))
+            out = out .. "    age scalar: " .. tostring(Age.GetAge(e))
         end
     else
         out = out .. "\nno age component"
@@ -55,10 +54,7 @@ function F3MOD.describe(e)
         out = out .. "\ngender: " .. tostring(Gender.Get(e))
     end
     if has(PlayerFamily, "IsFamilyMember") and hero then
-        out = out .. "   family: " .. tostring(PlayerFamily.IsFamilyMember(hero, e))
-    end
-    if has(Health, "IsAvailable") and Health.IsAvailable(e) and has(Health, "Get") then
-        out = out .. "\nhealth: " .. tostring(Health.Get(e))
+        out = out .. "    family: " .. tostring(PlayerFamily.IsFamilyMember(hero, e))
     end
     return out
 end
@@ -67,43 +63,29 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     local w = { _Name = "F3MOD_WORKER" }
 
     function w:Update()
-        local frames, detections = 0, 0
-        local warned = false
-        local last = nil
-        if has(MessageEvents, "GetMostRecentMessageID") then
-            last = MessageEvents.GetMostRecentMessageID()
-        end
+        local seen = {}
+        local reports = 0
+        local last_id = nil
 
         while true do
-            frames = frames + 1
             local hero = GetLocalHero and GetLocalHero()
             local boxed = has(GUI, "IsDisplayBoxActive") and GUI.IsDisplayBoxActive()
 
-            if hero and last ~= nil and not boxed and EMessageEventType ~= nil
-                and has(MessageEvents, "IsMessageSentBy")
-                and EMessageEventType.MESSAGE_EVENT_EXPRESSION_PERFORMED ~= nil then
-
-                if MessageEvents.IsMessageSentBy(
-                    EMessageEventType.MESSAGE_EVENT_EXPRESSION_PERFORMED, hero, last) then
-
-                    last = MessageEvents.GetMostRecentMessageID()
-                    detections = detections + 1
-
-                    local t = has(Targeting, "GetTarget") and Targeting.GetTarget(hero) or nil
-                    if t ~= nil and t:IsAlive() and has(GUI, "DisplayMessageBox") then
-                        GUI.DisplayMessageBox(F3MOD.describe(t))
-                    elseif has(GUI, "DisplayMessageBox") then
-                        GUI.DisplayMessageBox("F3MOD: expression seen, nothing targeted.")
+            if hero and not boxed and has(Targeting, "GetTarget") then
+                local t = Targeting.GetTarget(hero)
+                if t ~= nil and t:IsAlive() then
+                    local id = tostring(t:GetName())
+                    if id ~= last_id then
+                        last_id = id
+                        if not seen[id] and reports < 25 and has(GUI, "DisplayMessageBox") then
+                            seen[id] = true
+                            reports = reports + 1
+                            GUI.DisplayMessageBox(F3MOD.describe(t))
+                        end
                     end
+                else
+                    last_id = nil
                 end
-            end
-
-            -- Make silence mean exactly one thing.
-            if not warned and frames > 1800 and detections == 0 and not boxed
-                and has(GUI, "DisplayMessageBox") then
-                warned = true
-                GUI.DisplayMessageBox("F3MOD: 30s, no expression detected. The worker is"
-                    .. " alive (frames=" .. frames .. ") so the trigger is what does not fire.")
             end
 
             coroutine.yield()
@@ -115,5 +97,6 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
 end
 
 if has(GUI, "DisplayMessageBox") then
-    GUI.DisplayMessageBox("F3MOD v17. Target someone, perform any expression, read them.")
+    GUI.DisplayMessageBox("F3MOD v18. Target people - each new one is reported once."
+        .. " Goes quiet after 25.")
 end
