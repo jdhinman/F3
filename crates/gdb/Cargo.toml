@@ -1,0 +1,14 @@
+[package]
+name = "gdb"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Reader for Fable III GDB object databases"
+
+[[bin]]
+name = "gdbdump"
+path = "src/bin/gdbdump.rs"
+
+[dependencies]
+bnk = { path = "../bnk" }

@@ -41,6 +41,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "gdb"
+version = "0.1.0"
+dependencies = [
+ "bnk",
+]
+
+[[package]]
 name = "korevm"
 version = "0.1.0"
 

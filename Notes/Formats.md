@@ -225,6 +225,53 @@ and, exactly as with BNK indexes, **the chunk payloads concatenate into one zlib
 
 Having already paid for that lesson on the index made this a ten-minute job rather than a day.
 
+## The GDB object database  **[VERIFIED]** 2026-08-06
+
+`crates/gdb` reads it; `gdbdump` is the CLI. Format taken from **BlackDemon's `GDB_Dump.cpp`**
+(mirrored in `122-GDB_Dump.zip`) by reading the source, the same approach that recovered BNK
+from BnkBrowser. The 2013 binary is never run.
+
+**There is no loose `.gdb` on disk.** `globals\globals.gdb` lives inside `levels.bnk`, 4.7 MB,
+stored uncompressed, so the bnk crate hands it over directly:
+
+```bash
+cargo run --release -p gdb --bin gdbdump -- --bank "C:\Games\Fable 3\data\levels.bnk"     --entry 'globals\globals.gdb' --find Dog --names
+```
+
+Result on this install: **114,796 objects, 23,470 named, 11,287 templates, 28,739 labels.**
+
+**Little-endian**, unlike BNK. The dumper's `endian32_swap` only makes its printed hex look
+big-endian; it is not in the data.
+
+```
+@0    u32   (unread)
+@4    u32   object count
+@8    u32   template block offset, relative to 0x18
+@12   u32   index block offset, relative to the template block
+@16   u32   unknown-hash count
+@0x18       objects: u32 template pointer, then one u32 per template field
+            templates: u8 components, u16 field count, u8 pad,
+                       field-count hashes, then field-count (u16 array, u16 type)
+            object hashes: u32 each, in object order
+            unknown words: u16 each, padded to 4
+            unknown table: (u32 float bits, u32 hash) per entry
+            labels: u32 pad, u32 index size, u32 count, then (u32 hash, NUL string)
+```
+
+An object is a template pointer plus raw words; the **template** names and types each field and
+the **label table** turns hashes into strings. Field name is `label(template.hash[i])`; for
+string fields the value is `label(data[i])`.
+
+Two traps, both paid for:
+
+- **Type constants are literal.** The reference comments write `0400 = string hash`, meaning
+  `0x0400`, not `4`. Reading them as small integers makes every field print as unknown type
+  while names still resolve, so it looks almost right.
+- **An object's name is not its hash.** It is the value of its first string-typed field.
+  Using the hash names 1 object out of 114,796; using the field names 23,470.
+
+`0xC59D1C81` is the sentinel for an empty string.
+
 ## The container story
 
 **Everything lives in a Virtual File System.** `.bnk` files are *"compressed archives. Part of the

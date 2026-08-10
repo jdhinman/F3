@@ -18,7 +18,7 @@
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 26
+local VERSION = 27
 
 -- Rescue, kept forever: the free camera eats all input in retail if it is ever on.
 if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
@@ -160,28 +160,11 @@ function F3MOD.menu(hero)
             end
         end
     end
-    -- THE BODY SWAP. Only offered when the target's creature type contains "Child", and
-    -- the adult record is derived from the child's own type name by removing it:
-    -- CreatureVillagerGypsyChildMaleMistpeak -> CreatureVillagerGypsyMaleMistpeak, a type
-    -- verified to exist in the same camp. GraphicAppearanceMorph.SetCharacterRecord is
-    -- what the dog-breed changer uses on a live entity in front of the player.
-    if subj ~= nil and subj:IsAlive() and GraphicAppearanceMorph ~= nil
-        and has(GraphicAppearanceMorph, "SetCharacterRecord") then
-        local full = tostring(subj:GetName())
-        local ctype = string.gsub(full, "_.*$", "")
-        if string.find(ctype, "Child") ~= nil then
-            local adult = string.gsub(ctype, "Child", "")
-            if ask("Swap body of " .. shortname(subj) .. " to adult record " .. adult .. "?") then
-                GraphicAppearanceMorph.SetCharacterRecord(subj, adult)
-                local verified = "unknown"
-                if has(GraphicAppearanceMorph, "IsUsingCharacterRecordWithName") then
-                    verified = tostring(GraphicAppearanceMorph.IsUsingCharacterRecordWithName(subj, adult))
-                end
-                box("F3MOD: record swap requested. Using new record: " .. verified
-                    .. "  (look at them - did the body change?)")
-            end
-        end
-    end
+    -- Body swap REMOVED for now. v26 derived the record name from the creature type
+    -- (GypsyChildMale... minus "Child") and the test subject vanished: creature type
+    -- names are NOT character record names, and a bad record leaves the entity
+    -- unrenderable. Real record names live in the GDB; the entry returns when they are
+    -- enumerated from the mirrored GDB dump.
     if ask("HUD inspector " .. (F3MOD.inspect and "is ON. Turn it OFF?" or "is OFF. Turn it ON?")) then
         F3MOD.inspect = not F3MOD.inspect
     end
@@ -239,5 +222,5 @@ if GeneralScriptManager ~= nil and has(GeneralScriptManager, "AddScript") then
     GeneralScriptManager.AddScript(w)
 end
 
-box("F3MOD v26. New menu entry for child targets: swap their body to the adult record"
-    .. " derived from their own type name. Age + body together = grown up.")
+box("F3MOD v27. Body swap disabled - bad record names make entities vanish. The boy was"
+    .. " ambient: leave the area and return, or reload, and he should be respawned.")

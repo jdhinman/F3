@@ -10,9 +10,10 @@ tags:
 
 The project's target feature.
 
-The Lua side is now **[VERIFIED]** by reading the game's own decompiled scripts - the age model,
-the API that changes it, and what does and does not ship. **Nothing has been run in game**, so
-every claim about behaviour at runtime remains a prediction.
+**Half solved, in game, on 2026-08-06.** Raising the age scalar past ~18 flips an NPC's
+category to adult and the adult AI and interaction set follow immediately. The body does not,
+and the first attempt at swapping it left the test subject invisible. What remains is finding
+the real character record names. → [[Hard Lessons]]
 
 ## What the game does today
 
@@ -135,6 +136,36 @@ across a save/load.
 > She should be set back to 10 through the same menu before moving on. The warning that
 > quest children should not be aged stands; this was a quick reversible probe, not a
 > conversion.
+
+## The body swap failed, and how  **[VERIFIED]** 2026-08-06
+
+Tried on an ambient gypsy boy:
+
+```lua
+GraphicAppearanceMorph.SetCharacterRecord(child, "CreatureVillagerGypsyMaleMistpeak")
+```
+
+**He never materialised again.** The age text confirmed he was an adult by every field the
+engine tracks; he simply had no body. The record name was derived from his own creature type
+by deleting "Child", and that was the mistake:
+
+> **Creature type names are not character record names.** They are different namespaces.
+> Handed a record that does not exist, the appearance system leaves the entity with nothing
+> to draw. → [[Hard Lessons]] rule 1
+
+Every shipped `SetCharacterRecord` call passes a name like `HeroStatueMale`, `YoungHeroFace`
+or a dog breed read from the GDB. None passes a creature type. The rule that produced four
+working channels - *find a shipped call site passing a literal of the same kind* - was the one
+not followed here.
+
+The menu entry was removed in v27. It returns when real record names are enumerated, and when
+the original record is captured first via `GraphicAppearanceMorph.IsUsingCharacterRecordWithName`
+so any swap is reversible.
+
+**Where the names live is now readable:** `crates/gdb` parses `globals.gdb` (114,796 objects,
+23,470 named, 28,739 labels) straight out of `levels.bnk`. A first search for the villager type
+names found nothing, which is consistent with the failure and narrows the target: search the
+**label table** and the appearance-related fields, not object names. → [[Formats]]
 
 ## Read from the game's own source  **[VERIFIED]** 2026-08-06
 
