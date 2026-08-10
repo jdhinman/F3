@@ -15,6 +15,47 @@ tags:
 > The Anniversary project spent a day failing to execute a single line of new code. Here the loop is
 > edit-file, alt-tab, see it.
 
+## The complete channel table  **[VERIFIED]** 2026-08-06
+
+Everything below was established by running it in retail. **The rule that predicted every
+result: a GUI call renders a raw string only if some shipped script passes it a literal.**
+→ [[Hard Lessons]]
+
+### Works
+
+| Call | Notes |
+|---|---|
+| `GUI.DisplayMessageBox(str)` | modal, arbitrary strings, Esc to close |
+| `GUI.SetCounter("id", "label %1", n)` | **non-modal HUD widget.** The inspector's channel |
+| `GUI.AskYesNoQuestion(str, any)` | blocks the coroutine, returns bool; `caller` is ignored |
+| `GUI.AskForAmount(caller, params, str, def)` | numeric spinner; **`caller` is real** - it reads and advances `caller.LastPosted`, so pass a fresh table per call |
+| `GeneralScriptManager.AddScript{Update=..}` | per-frame coroutine; `coroutine.yield()` is one frame |
+| `Money.Add` / `AddSilent` / `Get`, `Health.FillHealth` | state changes as signals |
+| `Targeting.GetTarget(hero)` | the interaction model: what the player looks at |
+| `GetDog(hero)` | a deliberate, always-available menu trigger |
+
+### Dead in retail
+
+| Call | Why |
+|---|---|
+| `io` | absent entirely |
+| `Debug.DrawText` | symbol survives, renderer stripped. Proven by a worker that drew 122 frames onto a blank screen |
+| `Debug.AddLuaDebugKeyFunc` | **no hotkeys**, even with `SetDebugKeyboardInputEnabled(true)` |
+| `GUI.ShowTopBoxMessage` | id-resolving, silent on raw strings |
+| `GUI.DisplayInfoBoxParams` | silent even with a real `TEXT_` id and `TargetHero` |
+| `SetApplicationName` | does not retitle the window; useless as a signal |
+| `MESSAGE_EVENT_EXPRESSION_PERFORMED` | never fires. Proven over 5592 frames |
+| `pcall` | **absent.** Nothing can be caught; nil-check everything |
+| `Debug.SetUseFreeCamera(true)` | a trap: eats all input with no way out |
+
+### The interaction model that resulted
+
+```
+look at anyone   -> HUD counter shows type, age band, sex, age scalar, silently
+target your dog  -> yes/no menu: set gold, refill health, set target's age scalar
+edit the file    -> live in about a second, no restart
+```
+
 ## CODE EXECUTION, CONFIRMED IN GAME  **[VERIFIED]** 2026-08-06
 
 > [!success] The project's longest-standing blocker is cleared

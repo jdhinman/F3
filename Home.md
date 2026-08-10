@@ -1,7 +1,7 @@
 ---
 title: "Home"
 description: "Entry point for the Fable III modding research vault"
-updated: 2026-08-05
+updated: 2026-08-06
 tags:
   - moc
 ---
@@ -22,8 +22,12 @@ tags:
 | [[KoreVM]] | **The VM fully specified.** Encoding, all 87 opcodes, chunk and proto layout |
 | [[Script Corpus]] | **All 803 scripts extracted.** The AI, lifesim and economy architecture |
 | [[Child System]] | The target feature, and why it is harder than one number |
-| [[Open Questions]] | The work queue. Currently everything |
+| [[Open Questions]] | The work queue |
+| [[Hard Lessons]] | **Read before writing mod code.** Twelve rules, each paid for |
+| [[Reference Index]] | Where everything is: artefacts, tools, links |
 
-> [!warning] Nothing is verified yet
-> The game is still installing. Every claim in this vault is **[DOCUMENTED]** from web research and
-> must be checked against the real install before it is trusted. See the trust model in the README.
+> [!success] Code runs in the game
+> As of 2026-08-06 arbitrary Lua executes in retail Fable III, live-editable with no restart,
+> with a working non-modal HUD and an in-game menu. The age system is half solved: raising an
+> NPC's age scalar past ~18 flips them to adult and the adult AI follows. The body does not.
+> → [[Child System]] · [[Hard Lessons]] · [[Reference Index]]
