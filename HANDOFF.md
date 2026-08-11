@@ -9,10 +9,11 @@ touch it.
 
 ## Read these first, in this order
 
-1. `Notes/Hard Lessons.md` - **twenty-one rules, each paid for with a wasted session, a
+1. `Notes/Hard Lessons.md` - **twenty-two rules, each paid for with a wasted session, a
    crash, or a broken thing in game.** Read before writing any mod code. Rule 1 is the
-   important one, rules 10-11 crashed the game twice in one session, and rule 16 is why a
-   byte-perfect round trip is not the end of a format job.
+   important one, rules 10-11 crashed the game twice in one session, and **16-17 are the
+   pair that decide whether a format job is safe to build on** - both were paid for by a
+   black screen that every one of our own tools said was fine.
 2. `Notes/Reference Index.md` - where every artefact, tool and link is.
 3. `Notes/Child System.md` - the target feature and exactly how far it got.
 4. `Notes/Lua Scripting.md` - the complete channel table: what works, what is dead.
@@ -29,7 +30,7 @@ The DLL does one thing: **poll the keyboard in a per-frame hook and write a file
 it with `RunScript` and draws the menu with `GUI.SetCounter`. It deliberately draws nothing
 itself - **drawing through D3D gets the hook silently bypassed after one frame in this game**,
 and threads or a `WH_KEYBOARD_LL` hook stop it launching. All four dead ends are written up in
-[[Bridge DLL]] with the evidence, and as Hard Lessons 18-21. If the game ever fails to launch,
+[[Bridge DLL]] with the evidence, and as Hard Lessons 19-22. If the game ever fails to launch,
 delete `C:\Games\Fable 3\dinput8.dll`. DXVK needs `d3d9.deviceLossOnFocusLoss = True` or
 alt-tab breaks; `tools/dxvk.conf` has it.
 

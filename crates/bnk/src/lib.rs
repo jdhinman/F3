@@ -249,35 +249,46 @@ pub fn write_bank(inputs: &[Input], leading_word: u32) -> Result<(Vec<u8>, Vec<u
         }
     }
 
-    // Compress the whole index as one zlib stream, then describe it as chunks. The reader
-    // concatenates chunk payloads before inflating, so the split is free to be arbitrary;
-    // matching the game's 64 KB accounting keeps it recognisable.
-    // Best compression, so the stream header is 78 DA. Every bank the game ships uses
-    // 78 DA; the default level emits 78 9C. Both are valid zlib and any conformant
-    // inflater takes either, but the game's is neither modern nor ours to inspect, and
-    // matching what it has demonstrably read for fifteen years costs nothing.
+    // Compress the index as ONE continuing zlib stream, flushed at every 64 KB boundary so
+    // that each chunk decodes to exactly its declared uncompressed length by itself.
+    //
+    // The split is NOT free to be arbitrary, whatever the BnkBrowser reader implies.
+    // BnkBrowser concatenates every chunk payload before inflating, so any split that adds
+    // up satisfies it. The game inflates chunk by chunk, and a chunk that declares 65536
+    // but only yields 11787 leaves it with a truncated index - black screen, crash on
+    // launch, nothing in any log. That cost a session. This only ever mattered for indexes
+    // over 64 KB, which is why repacking the community DLC bank never caught it.
+    //
+    // Sync-flushing keeps the dictionary across blocks, which is why a shipped index has
+    // one big chunk followed by small ones. Done this way, rewrapping levels.bnk
+    // reproduces the game's own packer to within a byte: 27179, 3885, 3881, 4469 against
+    // its 27179, 3885, 3881, 4470.
+    //
+    // Best compression, so the stream header is 78 DA, which is what every shipped bank
+    // has; the default level emits 78 9C. Both are valid, but matching what the game has
+    // demonstrably read for fifteen years costs nothing.
     let mut encoder = ZlibEncoder::new(Vec::new(), Compression::best());
-    encoder.write_all(&index).map_err(Error::Zlib)?;
-    let compressed = encoder.finish().map_err(Error::Zlib)?;
-
     let mut body = Vec::new();
-    let mut remaining_uncompressed = index.len();
-    let mut written = 0usize;
-    while written < compressed.len() {
-        // One compressed chunk per 64 KB of uncompressed index.
-        let uncomp = remaining_uncompressed.min(INDEX_CHUNK);
-        let comp = if remaining_uncompressed <= INDEX_CHUNK {
-            compressed.len() - written
-        } else {
-            // Split proportionally; the reader only needs the lengths to add up.
-            (compressed.len() - written).min(compressed.len() * uncomp / index.len().max(1))
-        }
-        .max(1);
+    let mut lengths: Vec<usize> = Vec::new();
+    let mut consumed = 0usize;
+    for block in index.chunks(INDEX_CHUNK) {
+        encoder.write_all(block).map_err(Error::Zlib)?;
+        encoder.flush().map_err(Error::Zlib)?;
+        let so_far = encoder.get_ref().len();
+        lengths.push(so_far - consumed);
+        consumed = so_far;
+    }
+    let compressed = encoder.finish().map_err(Error::Zlib)?;
+    // finish() emits the stream tail, which belongs to the final chunk.
+    if let Some(last) = lengths.last_mut() {
+        *last += compressed.len() - consumed;
+    }
+    let mut at = 0usize;
+    for (block, &comp) in index.chunks(INDEX_CHUNK).zip(lengths.iter()) {
         body.extend_from_slice(&(comp as u32).to_be_bytes());
-        body.extend_from_slice(&(uncomp as u32).to_be_bytes());
-        body.extend_from_slice(&compressed[written..written + comp]);
-        written += comp;
-        remaining_uncompressed -= uncomp;
+        body.extend_from_slice(&(block.len() as u32).to_be_bytes());
+        body.extend_from_slice(&compressed[at..at + comp]);
+        at += comp;
     }
 
     let mut out = Vec::with_capacity(body.len() + 9);
@@ -292,6 +303,50 @@ pub fn write_bank(inputs: &[Input], leading_word: u32) -> Result<(Vec<u8>, Vec<u
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// Each index chunk must decode to exactly its declared uncompressed length when fed
+    /// to a continuing inflater, because that is how the GAME reads it. Our own reader
+    /// concatenates first and cannot tell the difference, so only a test at this level
+    /// catches a bad split - and a bad split is a black screen on launch.
+    #[test]
+    fn index_chunks_each_decode_to_their_declared_length() {
+        // Big enough to need several chunks, and compressible like a real path table.
+        let inputs: Vec<Input> = (0..20000)
+            .map(|i| Input {
+                path: format!("art\\gui\\gameface\\widget{i:05}.lua"),
+                data: vec![0u8; 4],
+                meta: DEFAULT_META,
+            })
+            .collect();
+        let (index, _payload) = write_bank(&inputs, 0).expect("write");
+
+        let mut p = 9usize;
+        let mut d = flate2::Decompress::new(true);
+        let mut chunks = 0;
+        while p + 8 <= index.len() {
+            let comp = u32::from_be_bytes(index[p..p + 4].try_into().unwrap()) as usize;
+            let uncomp = u32::from_be_bytes(index[p + 4..p + 8].try_into().unwrap()) as usize;
+            p += 8;
+            if comp == 0 || p + comp > index.len() {
+                break;
+            }
+            let before = d.total_out();
+            let mut out = vec![0u8; uncomp + 64];
+            d.decompress(&index[p..p + comp], &mut out, flate2::FlushDecompress::Sync)
+                .expect("inflate chunk");
+            assert_eq!(
+                (d.total_out() - before) as usize,
+                uncomp,
+                "chunk {chunks} declared {uncomp} but did not produce it on its own"
+            );
+            p += comp;
+            chunks += 1;
+        }
+        assert!(chunks > 1, "test needs a multi-chunk index, got {chunks}");
+        // And it must still read back.
+        let bank = read_index(&index).expect("read back");
+        assert_eq!(bank.entries.len(), 20000);
+    }
 
     #[test]
     fn hash_is_fnv1_over_the_lowercased_path() {

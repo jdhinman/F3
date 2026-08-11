@@ -9,8 +9,9 @@ tags:
 ---
 
 Each entry cost at least one wasted session or one broken thing in game. They are written as
-rules because that is how they are useful. Rules 18-21 are the native/DLL layer and were paid
-for in one long session; 17 is the expensive one.
+rules because that is how they are useful. Rules 19-22 are the native/DLL layer and were paid
+for in one long session; 16 is the expensive one, and 16-17 are the pair that make a format
+job safe to build on.
 
 ## Working in game
 
@@ -140,7 +141,28 @@ delicate.
 `GDB_Dump.cpp` comments say `0400 = string hash`. That is `0x0400`, not `4`. Reading it as a
 small integer made every field type print as unknown while everything else looked fine.
 
-### 16. A byte-perfect round trip does not prove you know the invariants
+### 16. A reference reader is not the game, and the game is the one you have to satisfy
+
+The BNK index is chunked zlib. BnkBrowser **concatenates every chunk payload and then
+inflates once**, so any split whose declared lengths add up reads back perfectly - and
+`write_bank` split the compressed bytes proportionally on that basis, with a comment saying
+the split was free to be arbitrary. **The game inflates chunk by chunk.** A chunk declaring
+65536 that yields 11787 on its own leaves it with a truncated index: black screen, crash on
+launch, and nothing in any log, because every one of our own tools read the file back
+happily.
+
+The shipped framing says it plainly if you look: `27179, 3885, 3881, 4470` compressed for
+four 64 KB blocks. Wildly uneven, because it is one stream sync-flushed at each boundary so
+the dictionary carries over. Compressing that way reproduces the game's own packer to
+within a byte. There is now a test asserting each chunk decodes to its declared length,
+which is the property the reader cannot see.
+
+It hid this long because it only bites indexes over 64 KB. `ScriptInjector.bnk` repacks
+byte-identically and has one chunk. **When a format is recovered from someone else's
+reader, list the things that reader normalises away - those are exactly where it is silent
+about the real constraint.**
+
+### 17. A byte-perfect round trip does not prove you know the invariants
 
 `gdbwrite --verify` reproduced `globals.gdb` byte for byte, and `--clone` still produced a
 record the engine could never find. Object hashes are stored **sorted** so the engine can
@@ -150,35 +172,35 @@ about the rules a *new* entry has to obey. Before adding anything to a format, c
 shipped files for order, uniqueness and range properties - across all of them, not one:
 sortedness held in 93 of 93. → [[Formats]]
 
-### 17. Do not install a save someone uploaded because it was broken
+### 18. Do not install a save someone uploaded because it was broken
 
 `squark`'s save was posted asking for help diagnosing it. Format compatibility is not evidence
 of safety. → [[Preservation]]
 
 ## Working in native code (the bridge DLL)
 
-### 18. Give native code a log file before anything else
+### 19. Give native code a log file before anything else
 
 In Lua a failure is visible; in an injected DLL every failure looks identical from in front
 of the game. "Not loaded", "hook not firing", "hook fired but drew nothing", and "thread
 died" are the same black screen. One `log()` appending to `<game dir>\f3bridge.log` killed
 four wrong theories in four runs. This is Rule 3 one layer down. → [[Bridge DLL]]
 
-### 19. In this game, hook to READ, never to DRAW
+### 20. In this game, hook to READ, never to DRAW
 
 Rendering anything through the device from an EndScene hook works for exactly one frame,
 then the hook is silently bypassed forever while the game keeps animating. A full
 `D3DSBT_ALL` state block does not save it. Retail ships `DFA.dll` and `F3Secu.exe`. Poll
 input in the hook, and let the game's own HUD (`GUI.SetCounter`) do the drawing.
 
-### 20. Do not add threads or system-wide hooks to this process
+### 21. Do not add threads or system-wide hooks to this process
 
 `CreateThread` from `Direct3DCreate9` wedges startup (`DLL_THREAD_ATTACH` walks every
 loaded DLL, anti-tamper included). Creating it in `DllMain` deadlocks the loader instead.
 `SetWindowsHookEx(WH_KEYBOARD_LL)` stops the game launching at all. All three were
 unnecessary: polling `GetAsyncKeyState` inside the existing Present hook does the job.
 
-### 21. Check the evidence you already have before theorising
+### 22. Check the evidence you already have before theorising
 
 Two rounds were spent on "DirectInput exclusive mode is eating the keyboard", complete with
 supporting web research. The first log ever captured already contained `F1 -> menu OPEN`

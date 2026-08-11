@@ -115,6 +115,22 @@ repeat to EOF:
 > Treating each as its own stream caps recovery at the first 64 KB and silently loses everything
 > after it.
 
+> [!danger] Reading it that way does not mean you may WRITE it that way  **[VERIFIED]** 2026-08-11
+> It is one stream, but it is **sync-flushed at every 64 KB boundary**, so each chunk also
+> decodes to exactly its declared uncompressed length *on its own*. BnkBrowser concatenates
+> before inflating and cannot tell the difference; **the game inflates chunk by chunk**. A
+> proportional split of the compressed bytes reads back perfectly in every tool we own and
+> hands the game a truncated index - black screen, crash on launch, nothing in any log.
+>
+> The shipped framing says it outright: `levels.bnk` is `27179, 3885, 3881, 4470` compressed
+> for four 64 KB blocks. One big chunk then small ones, because the dictionary carries across
+> the flush. Compressing that way reproduces it to within a byte (`...4469`). `crates/bnk` now
+> has a test asserting the per-chunk property and `tools/bnk-replace.py` refuses to write an
+> index that fails it.
+>
+> It only bites indexes over 64 KB, which is why the byte-identical `ScriptInjector.bnk`
+> repack below never caught it: that index is a single chunk. → Hard Lesson 16
+
 **Inflated index:**
 
 ```
@@ -399,9 +415,19 @@ python tools/bnk-replace.py apply  "C:\Games\Fable 3\data\levels.bnk" "globals\g
 python tools/bnk-replace.py revert "C:\Games\Fable 3\data\levels.bnk"
 ```
 
+**[VERIFIED]** 2026-08-11: the game launches and plays with an entry relocated to the end of
+a 2.1 GB payload and its index rewritten, so the delivery route works. It needs the index
+chunk framing above to be right; the first attempt crashed on launch.
+
 Relocating an entry leaves the old bytes orphaned in the payload, which is why
 `weapon-unlock.py` no longer hardcodes its offset - it reads the entry position out of the
 bank index, or it would silently patch the copy the game no longer reads.
+
+> [!warning] There are THREE copies of `globals.gdb` and the DLC ones win
+> Base `levels.bnk`, `traitors_keep\dlc2free.bnk`, and
+> `understone_quest\dlc_freeforall.bnk` each carry one, and **the game loads the newest
+> DLC's copy**. `augment-patch.py` recorded this in 2026-08-09 and it still cost a test
+> round: a record added only to the base copy is simply not there in game. Patch all three.
 
 **Limitation, by design:** `add_label` refuses and returns `None` rather than corrupt the
 file, because a new label would leave the undecoded index one entry short. This costs less

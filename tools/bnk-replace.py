@@ -42,21 +42,47 @@ def inflate_index(data):
 
 
 def deflate_index(inflated):
-    """Rewrap an inflated index. One zlib stream described as 64 KB chunks, which is how
-    the reader wants it: it concatenates the chunk payloads before inflating, so the split
-    only has to add up. Level 9 to match the 78 DA header every shipped bank has."""
-    comp = zlib.compress(inflated, 9)
-    body, written, remaining = b"", 0, len(inflated)
-    while written < len(comp):
-        uncomp = min(remaining, 65536)
-        if remaining <= 65536:
-            take = len(comp) - written
-        else:
-            take = max(1, min(len(comp) - written, len(comp) * uncomp // max(1, len(inflated))))
-        body += struct.pack(">II", take, uncomp) + comp[written:written + take]
-        written += take
-        remaining -= uncomp
+    """Rewrap an inflated index: ONE continuing zlib stream, flushed at every 64 KB
+    boundary so each chunk decodes to exactly its declared uncompressed length on its own.
+
+    This is the part that must be exactly right. BnkBrowser concatenates every chunk
+    payload before inflating, so any split that adds up satisfies it - and an arbitrary
+    split is what the first version did. **The game does not read it that way.** It
+    inflates chunk by chunk, so a chunk that declares 65536 and only yields 11787 leaves it
+    with a truncated index; the result is a black screen and a crash on launch, with
+    nothing in any log.
+
+    Z_SYNC_FLUSH keeps the compressor's dictionary across blocks, which is why the shipped
+    framing has one big chunk and then small ones. Doing it this way reproduces the game's
+    own packer on levels.bnk to within a single byte: 27179, 3885, 3881, 4469 against its
+    27179, 3885, 3881, 4470.
+    """
+    co = zlib.compressobj(9)
+    body = b""
+    for off in range(0, max(len(inflated), 1), 65536):
+        block = inflated[off:off + 65536]
+        last = off + 65536 >= len(inflated)
+        part = co.compress(block) + co.flush(zlib.Z_FINISH if last else zlib.Z_SYNC_FLUSH)
+        body += struct.pack(">II", len(part), len(block)) + part
     return struct.pack(">II", len(body) + 9, 4) + bytes([0]) + body
+
+
+def chunks_decode_individually(raw):
+    """The check that would have caught the black-screen bug. Feed each chunk to a
+    continuing inflater on its own and require it to produce exactly its declared
+    uncompressed length - which is how the game reads an index, and is a stronger
+    condition than the whole thing inflating."""
+    d = zlib.decompressobj()
+    p = 9
+    while p + 8 <= len(raw):
+        clen, ulen = struct.unpack_from(">II", raw, p)
+        p += 8
+        if clen == 0 or p + clen > len(raw):
+            break
+        if len(d.decompress(raw[p:p + clen])) != ulen:
+            return False
+        p += clen
+    return True
 
 
 def entry_table(inflated, flag):
@@ -126,6 +152,10 @@ def apply(bank, want, source):
     back, backflag = inflate_index(rewrapped)
     if back != inflated or backflag != flag:
         print("index rewrap did not round trip; refusing to write", file=sys.stderr)
+        return 1
+    if not chunks_decode_individually(rewrapped):
+        print("index chunks do not decode to their declared lengths; refusing to write",
+              file=sys.stderr)
         return 1
     with open(bank, "wb") as f:
         f.write(rewrapped)
