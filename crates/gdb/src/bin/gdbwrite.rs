@@ -2,9 +2,17 @@
 //!
 //!   gdbwrite --verify <file.gdb>            byte-identical round trip check
 //!   gdbwrite --verify --bank <bnk> [--entry p]
+//!   gdbwrite --verify-all --bank <bnk>      every .gdb in the bank
+//!   gdbwrite --bank <bnk> --clone <src> --name <new> [--set Field=value]...
 //!
 //! The verify mode is the whole justification for the writer: if parse-then-write does not
-//! reproduce the input exactly, nothing built on top can be trusted.
+//! reproduce the input exactly, nothing built on top can be trusted. `--verify-all` is the
+//! strong form of that claim, and the evidence for the label index in particular: the
+//! index is rebuilt from scratch on every write, so 94 files reproducing byte for byte is
+//! 94 independent tests of the probing scheme.
+//!
+//! `--set Field=value` takes a decimal number, or `"text"` in quotes for a string field,
+//! which adds the label if it is not already there.
 
 use std::process::ExitCode;
 
@@ -14,21 +22,64 @@ fn main() -> ExitCode {
     let mut bank: Option<String> = None;
     let mut entry = String::from(r"globals\globals.gdb");
     let mut verify = false;
+    let mut verify_all = false;
     let mut clone_of: Option<String> = None;
     let mut new_name: Option<String> = None;
     let mut out_path: Option<String> = None;
+    let mut sets: Vec<String> = Vec::new();
     let mut i = 0;
     while i < args.len() {
         match args[i].as_str() {
             "--verify" => verify = true,
+            "--verify-all" => verify_all = true,
             "--clone" => { i += 1; clone_of = args.get(i).cloned(); }
             "--name" => { i += 1; new_name = args.get(i).cloned(); }
+            "--set" => { i += 1; if let Some(s) = args.get(i) { sets.push(s.clone()) } }
             "--out" => { i += 1; out_path = args.get(i).cloned(); }
             "--bank" => { i += 1; bank = args.get(i).cloned(); }
             "--entry" => { i += 1; entry = args.get(i).cloned().unwrap_or(entry); }
             other => path = Some(other.to_string()),
         }
         i += 1;
+    }
+
+    // Every GDB in a bank, round-tripped. One failure is a failure overall.
+    if verify_all {
+        let Some(b) = bank.as_ref() else {
+            eprintln!("--verify-all needs --bank");
+            return ExitCode::FAILURE;
+        };
+        let index = std::fs::read(b).unwrap_or_default();
+        let payload = std::fs::read(format!("{b}.dat")).unwrap_or_default();
+        let Ok(parsed) = bnk::read_index(&index) else {
+            eprintln!("{b}: not a bank");
+            return ExitCode::FAILURE;
+        };
+        let (mut ok, mut fail, mut labels) = (0u32, 0u32, 0usize);
+        for e in parsed.entries.iter().filter(|e| e.path.to_lowercase().ends_with(".gdb")) {
+            let Some(data) = gdb::from_bank(&index, &payload, &e.path) else {
+                eprintln!("FAIL {}: could not extract", e.path);
+                fail += 1;
+                continue;
+            };
+            match gdb::parse(&data) {
+                Ok(db) => {
+                    let out = db.to_bytes();
+                    if out == data {
+                        ok += 1;
+                        labels += db.labels.len();
+                    } else {
+                        let at = out.iter().zip(data.iter()).position(|(a, b)| a != b);
+                        eprintln!("FAIL {}: differs at {:?} (len {} vs {})",
+                            e.path, at, out.len(), data.len());
+                        fail += 1;
+                    }
+                }
+                Err(err) => { eprintln!("FAIL {}: {err}", e.path); fail += 1; }
+            }
+        }
+        println!("{ok} GDB files round-tripped byte for byte, {fail} failed, {labels} labels total");
+        return if fail == 0 { ExitCode::SUCCESS } else { ExitCode::FAILURE };
     }
 
     let data = if let Some(b) = bank {
@@ -78,6 +129,41 @@ fn main() -> ExitCode {
         };
         db.set_name(new_idx, name);
         println!("cloned {src_name} (object {src_obj:08X}) -> {name} (object {new_hash:08X})");
+
+        for s in &sets {
+            let Some((field, raw)) = s.split_once('=') else {
+                eprintln!("--set wants Field=value, got {s}");
+                return ExitCode::FAILURE;
+            };
+            // A quoted value is a string: it becomes a label, and the field holds its hash.
+            let value = if raw.len() >= 2 && raw.starts_with('"') && raw.ends_with('"') {
+                let text = &raw[1..raw.len() - 1];
+                match db.add_label(text) {
+                    Some(h) => { println!("  label {text:?} -> hash {h:08X}"); h }
+                    None => {
+                        eprintln!("  {text:?}: FNV-1 collides with a different existing label; rename it");
+                        return ExitCode::FAILURE;
+                    }
+                }
+            } else if raw.contains('.') {
+                // A decimal point means a float field, which stores the f32 bit pattern.
+                match raw.parse::<f32>() {
+                    Ok(v) => v.to_bits(),
+                    Err(_) => { eprintln!("  {raw}: not a number"); return ExitCode::FAILURE; }
+                }
+            } else {
+                match raw.parse::<u32>() {
+                    Ok(v) => v,
+                    Err(_) => { eprintln!("  {raw}: not a number, and not quoted"); return ExitCode::FAILURE; }
+                }
+            };
+            if !db.set_field(new_idx, field, value) {
+                eprintln!("  {field}: this object's template has no such field");
+                return ExitCode::FAILURE;
+            }
+            println!("  set {field} = {value}");
+        }
+
         let bytes = db.to_bytes();
         let path = out_path.unwrap_or_else(|| "work/globals-modified.gdb".to_string());
         if let Err(e) = std::fs::write(&path, &bytes) {

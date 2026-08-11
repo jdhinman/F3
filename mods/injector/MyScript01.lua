@@ -18,7 +18,7 @@
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 62
+local VERSION = 63
 
 -- Rescue, kept forever: the free camera eats all input in retail if it is ever on.
 if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
@@ -185,6 +185,53 @@ function dog_restore()
         GraphicAppearanceMorph.SetCharacterRecord(d, name)
         box("F3MOD: restored dog to " .. name)
     end
+end
+
+-- Does the game load a GDB record that did not ship with it, and resolve a label string
+-- that did not ship with it? Everything else in this file reads data Lionhead authored;
+-- this reads a record and a label written by crates/gdb.
+--
+-- Every call here has a shipped call site passing a literal, per Rule 1:
+--   GDB.RecordExists("BarnumWineCheap")   qotp_fetchpersonmanager and 18 others
+--   GDB.GetRecord("Generic_Scary")        opinionsdebug.lua and 356 others
+--   Record:GetString("NameTag")           375 sites
+--   Base:GetFloat("DelayInSeconds")       170 sites
+--
+-- Reporting is progressive on purpose. There is no pcall: if one of those calls errors the
+-- worker dies silently, and the last line left on the HUD is then the only evidence of how
+-- far it got. So the step is announced BEFORE it is attempted, never after.
+function gdb_probe()
+    local function say(s)
+        if has(GUI, "SetCounter") then GUI.SetCounter("F3MODGDB", "GDB: " .. s, 0) end
+    end
+    if not has(GDB, "RecordExists") then
+        say("no GDB namespace")
+        return
+    end
+    say("1 RecordExists...")
+    if not GDB.RecordExists("F3ProofRecord") then
+        say("F3ProofRecord is NOT in the database - the modified globals.gdb did not load")
+        return
+    end
+    say("2 GetRecord...")
+    local r = GDB.GetRecord("F3ProofRecord")
+    if r == nil then
+        say("record exists but GetRecord returned nil")
+        return
+    end
+    say("3 GetString(NameTag)...")
+    local s = r:GetString("NameTag")
+    say("4 GetFloat(IndirectEffectMultiplier)...")
+    local f = r:GetFloat("IndirectEffectMultiplier")
+    local verdict = "?"
+    if s == "F3ProofLabel" and f ~= nil and f > 7.4 and f < 7.6 then
+        verdict = "BOTH OK"
+    elseif s == "F3ProofLabel" then
+        verdict = "label OK, float wrong"
+    elseif f ~= nil and f > 7.4 and f < 7.6 then
+        verdict = "float OK, label wrong"
+    end
+    say(verdict .. "  NameTag=" .. tostring(s) .. "  mult=" .. tostring(f))
 end
 
 -- Adult creature type for a child type. Ambient children are ...Child... and their adult
@@ -493,6 +540,7 @@ local MENU = {
     -- addressable even though 1,546 of their names are unknown. -> [[Child System]]
     { "Dog -> Collet via ALIAS", function() dog_set("n_rtphaa", "ALIAS of DogCollet") end },
     { "Dog: restore original", function() dog_restore() end },
+    { "GDB: proof record + new label", function() gdb_probe() end },
     { "Toggle inspector", function()
         F3MOD.inspect = not F3MOD.inspect
     end },

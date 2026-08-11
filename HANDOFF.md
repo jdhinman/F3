@@ -9,9 +9,10 @@ touch it.
 
 ## Read these first, in this order
 
-1. `Notes/Hard Lessons.md` - **twenty rules, each paid for with a wasted session, a crash,
-   or a broken thing in game.** Read before writing any mod code. Rule 1 is the important
-   one, and rules 10-11 are the ones that crashed the game twice in one session.
+1. `Notes/Hard Lessons.md` - **twenty-one rules, each paid for with a wasted session, a
+   crash, or a broken thing in game.** Read before writing any mod code. Rule 1 is the
+   important one, rules 10-11 crashed the game twice in one session, and rule 16 is why a
+   byte-perfect round trip is not the end of a format job.
 2. `Notes/Reference Index.md` - where every artefact, tool and link is.
 3. `Notes/Child System.md` - the target feature and exactly how far it got.
 4. `Notes/Lua Scripting.md` - the complete channel table: what works, what is dead.
@@ -28,7 +29,7 @@ The DLL does one thing: **poll the keyboard in a per-frame hook and write a file
 it with `RunScript` and draws the menu with `GUI.SetCounter`. It deliberately draws nothing
 itself - **drawing through D3D gets the hook silently bypassed after one frame in this game**,
 and threads or a `WH_KEYBOARD_LL` hook stop it launching. All four dead ends are written up in
-[[Bridge DLL]] with the evidence, and as Hard Lessons 17-20. If the game ever fails to launch,
+[[Bridge DLL]] with the evidence, and as Hard Lessons 18-21. If the game ever fails to launch,
 delete `C:\Games\Fable 3\dinput8.dll`. DXVK needs `d3d9.deviceLossOnFocusLoss = True` or
 alt-tab breaks; `tools/dxvk.conf` has it.
 
@@ -99,11 +100,12 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 
 | Target | State | What it unlocks |
 |---|---|---|
-| **GDB label index** | trailing u32-per-label block, hash table with local probing, ~1,789 displacements off `hash & 0xFFFF`. Written back verbatim; `add_label` refuses | adding new label STRINGS, so new display names and new string field values |
+| ~~**GDB label index**~~ | **DECODED** 2026-08-11. 65536-slot open-addressing table on `hash & 0xFFFF`, linear probing, inserted in file order, serialized occupied-slots-only. Regenerated on every write; **147/147 shipped GDBs round trip byte for byte**. `add_label` works | done - new label strings, so new string field values |
 | **TEX textures** | "likely DXTn, compression unknown, swizzling possible". Community artifact is a filesize spreadsheet, not a codec | custom textures - retextures, new item art |
 | **MDL models** | community Blender **importer** only; its authors planned export and never shipped it | custom meshes: furniture, weapons, dog breeds, map geometry |
+| **BABEL text tables** | undecoded. A new label is a valid localisation **id**; the text behind it lives here | putting real display text behind a new name/description id |
 | **Save format** | Timeslip's editor decodes herosave / mainsave / checksums / XUIDs / hero x,y,z | persistent state edits the other layers cannot reach |
-| **Per-object u16 array** | one u16 per object in the GDB index block, purpose unknown, preserved verbatim | unknown; clone copies the source value |
+| ~~**Per-object u16 array**~~ | **DECODED** 2026-08-11. A random-access accelerator for the variable-length record array: `word[i] = startOfRecord(i) - ((i * stride) >> 10)` with `stride = 1024 * blockWords / count`, all in u32 words. Exact on **147 files, 2,069,537 objects**. Regenerated on write | done - and it was silently corrupting clones |
 
 ## Tools built, all working
 
@@ -111,7 +113,9 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 |---|---|
 | `crates/korevm` | KoreVM bytecode -> Lua. **797/797 files valid Lua 5.1**, 713 with nothing unrecovered |
 | `crates/bnk` | read and write BNK banks; repacks the community bank byte-identically |
-| `crates/gdb` | read **and write** GDB. `gdbdump`, `fnvpre`, `gdbwrite` (byte-identical round trip; `--clone` adds records) |
+| `crates/gdb` | read **and write** GDB. `gdbdump`, `fnvpre`, `gdbwrite` (`--verify-all` round-trips every GDB in a bank; `--clone` adds records, `--set Field="text"` adds labels) |
+| `tools/bnk-replace.py` | swap one entry's payload inside a bank without repacking it, and `revert` exactly. How a size-changed `globals.gdb` reaches the game |
+| `tools/bnk-extract.py` | Python BNK reader, for research where a REPL beats a rebuild |
 | `tools/api-index.py` | index all 5,401 API calls in the corpus, with a shipped call site each |
 | `crates/bridge` | 32-bit proxy DLL (dinput8 or d3d9 host): real keyboard -> the F1 menu. -> [[Bridge DLL]] |
 | `tools/record-chain.py` | creature type -> character records, with ready-to-use aliases |

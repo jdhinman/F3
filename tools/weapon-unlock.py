@@ -16,6 +16,7 @@ In-place dword writes only, sizes unchanged, no bank repack. An undo log records
 (file, offset, old, new) so revert is exact.
 """
 
+import importlib.util
 import json
 import os
 import struct
@@ -24,11 +25,36 @@ import sys
 SCRIPT_BASE = 0xD13B9689  # INV_ITEM_WEAPON__CONDITION_* ScriptControlled base (Type 5, ScriptTag "")
 UNDO = os.path.join(os.path.dirname(__file__), "weapon-unlock-undo.json")
 
-GDBS = [
-    (r"C:\Games\Fable 3\data\levels.bnk.dat", 60227248, 4699186),
-    (r"C:\Games\Fable 3\DLC\traitors_keep\Content\dlc2free.bnk.dat", 254225384, 4966287),
-    (r"C:\Games\Fable 3\DLC\understone_quest\Content\dlc_freeforall.bnk.dat", 293123672, 4750208),
+# The three banks carrying a globals.gdb. Where inside the payload it sits is looked up in
+# the bank index rather than hardcoded: tools/bnk-replace.py relocates an entry to the end
+# of the payload when its size changes, which leaves the old bytes in place but orphaned.
+# A hardcoded offset would then patch the copy the game no longer reads and report success.
+BANKS = [
+    r"C:\Games\Fable 3\data\levels.bnk",
+    r"C:\Games\Fable 3\DLC\traitors_keep\Content\dlc2free.bnk",
+    r"C:\Games\Fable 3\DLC\understone_quest\Content\dlc_freeforall.bnk",
 ]
+ENTRY = r"globals\globals.gdb"
+
+
+def locate(bank, entry=ENTRY):
+    """(payload path, offset, size) for one entry, read from the bank's own index."""
+    spec = importlib.util.spec_from_file_location(
+        "bnkextract", os.path.join(os.path.dirname(__file__), "bnk-extract.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    with open(bank, "rb") as f:
+        entries = mod.read_index(f.read())
+    want = entry.replace("/", "\\").lower()
+    hit = next((e for e in entries if e["path"].lower() == want), None)
+    if hit is None:
+        raise SystemExit(f"{entry}: not in {bank}")
+    if hit["chunks"]:
+        raise SystemExit(f"{entry} in {bank} is chunk-compressed; in-place patching is unsafe")
+    return bank + ".dat", hit["offset"], hit["size"]
+
+
+GDBS = [locate(b) for b in BANKS]
 
 
 def fnv(s):

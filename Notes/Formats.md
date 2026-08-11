@@ -283,9 +283,92 @@ Two corrections to the layout above came out of this:
 - **`index size` in the label header is the byte length of the label string region**
   (866,714 here), not a count.
 - **There is a trailing block the reader used to ignore**: one u32 per label, each an exact
-  offset of a label entry. It is a hash table with local probing - mostly ordered by
-  `hash & 0xFFFF`, with ~1,789 local displacements - and the probing scheme is **not
-  decoded**. It is written back verbatim.
+  offset of a label entry. It is the label index. → decoded below.
+
+### The label index, decoded  **[VERIFIED]** 2026-08-11
+
+The trailing block is an **open-addressing hash table, serialized sparse-to-dense**:
+
+```
+slots      = the FIRST word of the label block header, 65536   (called "pad" before)
+bucket     = label hash & (slots - 1)
+collision  = linear probe forward one slot, wrapping at the end
+insertion  = labels in file order
+serialize  = walk slots 0..slots, emit the label's byte offset for every OCCUPIED slot
+```
+
+Empty slots emit nothing. That is why the block is one u32 per **label** rather than one
+per slot, and why it looks *almost* sorted by `hash & 0xFFFF`: the ~1,789 apparent
+inversions are displaced entries parked past a run of collisions. In `globals.gdb` the
+longest probe run is 24 and the load factor is 0.44.
+
+Two things fell out of the same look and both matter:
+
+- **The first word of the label header is the table size, not padding.** It is 65536 in
+  every GDB the game ships, including the ones with no labels at all, so it is a fixed
+  constant rather than anything derived from the contents.
+- **A label's hash is FNV-1 of its own text, case-sensitive** - true for all 28,739 labels
+  in `globals.gdb`. So a new label's hash is computed, not chosen, and two different
+  strings whose hashes collide cannot both exist. `add_label` refuses that case rather
+  than let the engine resolve the new hash to the old string.
+
+The index is now **rebuilt from scratch on every write**, nothing is preserved verbatim,
+and the proof is every GDB in the installation:
+
+```bash
+gdbwrite --verify-all --bank "C:\Games\Fable 3\data\levels.bnk"
+```
+
+**147 GDB files across 134 banks - base game, all four DLCs - round trip byte for byte,
+0 failed.** From `morphs.gdb` with no labels at all to `globals.gdb` with 28,739. Since
+the index is regenerated rather than copied, each of those files is an independent test of
+the probing scheme.
+
+`add_label` therefore works, and `--set Field="text"` on `gdbwrite --clone` adds the label
+and points a string field at it in one step.
+
+### The per-object u16, decoded  **[VERIFIED]** 2026-08-11
+
+The one u16 per object in the index block is a **random-access accelerator for a
+variable-length record array**. Records are not fixed size, so finding object `i` would
+normally mean walking every record before it. Instead the engine estimates the offset with
+one multiply and a shift, and this array holds the exact correction:
+
+```
+stride  = (1024 * objectsBlockWords) / objectCount       integer division
+word[i] = startOfRecord(i) - ((i * stride) >> 10)        both in u32 words
+```
+
+Two bytes per object instead of four for a full offset table, and O(1) indexing. The
+correction is signed and small (-586..1886 in `globals.gdb`) because it only tracks how far
+the running record size has drifted from the file's mean - which is also why it looked like
+smooth positional noise and matched nothing about the object itself.
+
+**Exact on every GDB in the installation: 147 files, 2,069,537 objects, no exceptions.**
+The shift is 10 and nothing else - 8, 9, 11, 12 and 16 each fit under half the files,
+because too small a shift quietly matches any file whose stride happens to be even at that
+precision. That near-miss is what made this look unsolvable: a shift of 9 fits 76 of 147
+files perfectly and fails the rest at object 512, exactly where a one-bit error in the
+stride first shows.
+
+> [!warning] This is why a clone cannot copy the source object's word
+> Inserting a record changes every later record's start **and** the stride, so the whole
+> array has to be recomputed. Copying the source value left ~7,600 objects after the
+> insertion point pointing at the wrong bytes. It is now regenerated on every write.
+
+Nothing in the scene had this. The community's GDBEditor calls it `partition`, groups
+records by it in a tree "for research purposes", and says in as many words that it does not
+know what it does. That tool also **writes a wrong label index**: read its
+`GDBFileExport.cs`, and it emits the offsets in label file order, with the comment
+*"There's some type of sorting going on here. Not sure what it is though."* - the correct
+verbatim write is commented out just above it.
+
+> [!note] A new label is an id, not necessarily visible text
+> Labels carry two different kinds of string. Asset paths and internal names
+> (`art\gui\wheelicons\items\icon_tofu5.tex`, `Character.Carry.Hand.Right`) are used
+> directly. Names and descriptions (`INV_ITEM_WEAPON_HAMMER_RUSTYBASE_NAME`) are
+> **localisation ids** resolved through the `.babel` text tables, so inventing one gets a
+> valid id with no text behind it until BABEL is also decoded. → [[Open Questions]]
 
 Adding records works by **cloning an existing object**:
 
@@ -296,6 +379,29 @@ gdbwrite --bank "...\levels.bnk" --entry "globals\globals.gdb" --clone DogCollet
 Reusing the source object's template is what makes it safe: template pointers are offsets
 into a block written back verbatim, so no pointer moves. The tool re-parses what it wrote
 before reporting success.
+
+> [!warning] Object hashes are SORTED, and a new record must be inserted, not appended
+> **[VERIFIED]** 2026-08-11. Every one of the 93 shipped GDBs that has any objects at all
+> holds its object-hash array in ascending order, which is what lets the engine find a
+> record by binary search. `--clone` originally appended, which put the new record past the
+> sort break where no search can reach it - correct bytes, unreachable record. It now
+> inserts in hash order. That is safe because **nothing addresses an object by index**:
+> `parent` fields and the name map both hold object hashes. Only the three index-parallel
+> arrays (objects, hashes, the per-object u16) have to move together.
+
+Changed records get into the game with `tools/bnk-replace.py`, which appends the new blob
+to the payload and rewrites just that entry's offset and size in the bank index. Repacking
+a 2.1 GB `levels.bnk.dat` to change one entry is not on, and the in-place dword patching
+the older GDB tools use stops working the moment a record or a label makes the file longer.
+
+```bash
+python tools/bnk-replace.py apply  "C:\Games\Fable 3\data\levels.bnk" "globals\globals.gdb" work/globals-proof.gdb
+python tools/bnk-replace.py revert "C:\Games\Fable 3\data\levels.bnk"
+```
+
+Relocating an entry leaves the old bytes orphaned in the payload, which is why
+`weapon-unlock.py` no longer hardcodes its offset - it reads the entry position out of the
+bank index, or it would silently patch the copy the game no longer reads.
 
 **Limitation, by design:** `add_label` refuses and returns `None` rather than corrupt the
 file, because a new label would leave the undecoded index one entry short. This costs less

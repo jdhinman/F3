@@ -1,7 +1,7 @@
 ---
 title: "Hard Lessons"
 description: "Every mistake this project paid for, and the rule that prevents each one. Read before writing mod code"
-updated: 2026-08-10
+updated: 2026-08-11
 confidence: verified
 tags:
   - method
@@ -9,8 +9,8 @@ tags:
 ---
 
 Each entry cost at least one wasted session or one broken thing in game. They are written as
-rules because that is how they are useful. Rules 17-20 are the native/DLL layer and were paid
-for in one long session; 16 is the expensive one.
+rules because that is how they are useful. Rules 18-21 are the native/DLL layer and were paid
+for in one long session; 17 is the expensive one.
 
 ## Working in game
 
@@ -140,35 +140,45 @@ delicate.
 `GDB_Dump.cpp` comments say `0400 = string hash`. That is `0x0400`, not `4`. Reading it as a
 small integer made every field type print as unknown while everything else looked fine.
 
-### 16. Do not install a save someone uploaded because it was broken
+### 16. A byte-perfect round trip does not prove you know the invariants
+
+`gdbwrite --verify` reproduced `globals.gdb` byte for byte, and `--clone` still produced a
+record the engine could never find. Object hashes are stored **sorted** so the engine can
+binary-search them; appending a record is byte-legal, parses back correctly, and lands past
+the sort break. A round trip only proves you can reproduce what is there. It says nothing
+about the rules a *new* entry has to obey. Before adding anything to a format, check the
+shipped files for order, uniqueness and range properties - across all of them, not one:
+sortedness held in 93 of 93. → [[Formats]]
+
+### 17. Do not install a save someone uploaded because it was broken
 
 `squark`'s save was posted asking for help diagnosing it. Format compatibility is not evidence
 of safety. → [[Preservation]]
 
 ## Working in native code (the bridge DLL)
 
-### 17. Give native code a log file before anything else
+### 18. Give native code a log file before anything else
 
 In Lua a failure is visible; in an injected DLL every failure looks identical from in front
 of the game. "Not loaded", "hook not firing", "hook fired but drew nothing", and "thread
 died" are the same black screen. One `log()` appending to `<game dir>\f3bridge.log` killed
 four wrong theories in four runs. This is Rule 3 one layer down. → [[Bridge DLL]]
 
-### 18. In this game, hook to READ, never to DRAW
+### 19. In this game, hook to READ, never to DRAW
 
 Rendering anything through the device from an EndScene hook works for exactly one frame,
 then the hook is silently bypassed forever while the game keeps animating. A full
 `D3DSBT_ALL` state block does not save it. Retail ships `DFA.dll` and `F3Secu.exe`. Poll
 input in the hook, and let the game's own HUD (`GUI.SetCounter`) do the drawing.
 
-### 19. Do not add threads or system-wide hooks to this process
+### 20. Do not add threads or system-wide hooks to this process
 
 `CreateThread` from `Direct3DCreate9` wedges startup (`DLL_THREAD_ATTACH` walks every
 loaded DLL, anti-tamper included). Creating it in `DllMain` deadlocks the loader instead.
 `SetWindowsHookEx(WH_KEYBOARD_LL)` stops the game launching at all. All three were
 unnecessary: polling `GetAsyncKeyState` inside the existing Present hook does the job.
 
-### 20. Check the evidence you already have before theorising
+### 21. Check the evidence you already have before theorising
 
 Two rounds were spent on "DirectInput exclusive mode is eating the keyboard", complete with
 supporting web research. The first log ever captured already contained `F1 -> menu OPEN`
