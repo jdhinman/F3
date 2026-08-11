@@ -272,6 +272,37 @@ Two traps, both paid for:
 
 `0xC59D1C81` is the sentinel for an empty string.
 
+## Writing a GDB  **[VERIFIED]** 2026-08-10
+
+`crates/gdb` can now write, not just read. `gdbwrite --verify` round-trips `globals.gdb`
+**byte for byte** (4,699,186 bytes identical), which is the bar that makes anything built on
+top trustworthy - the same standard the BNK repacker was held to.
+
+Two corrections to the layout above came out of this:
+
+- **`index size` in the label header is the byte length of the label string region**
+  (866,714 here), not a count.
+- **There is a trailing block the reader used to ignore**: one u32 per label, each an exact
+  offset of a label entry. It is a hash table with local probing - mostly ordered by
+  `hash & 0xFFFF`, with ~1,789 local displacements - and the probing scheme is **not
+  decoded**. It is written back verbatim.
+
+Adding records works by **cloning an existing object**:
+
+```bash
+gdbwrite --bank "...\levels.bnk" --entry "globals\globals.gdb" --clone DogCollet --name MyDog
+```
+
+Reusing the source object's template is what makes it safe: template pointers are offsets
+into a block written back verbatim, so no pointer moves. The tool re-parses what it wrote
+before reporting success.
+
+**Limitation, by design:** `add_label` refuses and returns `None` rather than corrupt the
+file, because a new label would leave the undecoded index one entry short. This costs less
+than it sounds - the name map stores `(FNV-1 of the name, object hash)` and never the
+string, so **naming a new object needs no label at all**. That is the same property that
+makes 8-character aliases work. → [[Child System]]
+
 ## The container story
 
 **Everything lives in a Virtual File System.** `.bnk` files are *"compressed archives. Part of the

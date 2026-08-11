@@ -34,6 +34,13 @@ if (Test-Path $backup) {
     }
 }
 
+# The bridge DLL (d3d9 proxy). Stock Fable III ships no d3d9.dll, so removing it is safe.
+$proxy = Join-Path $Game 'd3d9.dll'
+if (Test-Path $proxy) {
+    Remove-Item $proxy -Force
+    Write-Output "removed $proxy (bridge d3d9 proxy)"
+}
+
 foreach ($p in @((Join-Path $Game 'DLC\10_ScriptInjector'), (Join-Path $data 'scripts'), (Join-Path $data 'scripts_r'))) {
     if (Test-Path $p) {
         Remove-Item $p -Recurse -Force

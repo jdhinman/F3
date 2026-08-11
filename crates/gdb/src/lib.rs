@@ -103,6 +103,35 @@ pub struct Database {
     pub objects: Vec<Object>,
     pub templates: HashMap<u32, Template>,
     pub labels: HashMap<u32, String>,
+    /// (name hash, object hash) pairs; see the parse comment for the hash function.
+    pub name_map: Vec<(u32, u32)>,
+
+    // Everything below exists so a parsed file can be written back byte for byte. Anything
+    // this reader does not fully understand is kept verbatim rather than regenerated -
+    // the template block is copied as raw bytes, and the per-object u16 array whose meaning
+    // is still unknown is preserved rather than invented.
+    header0: u32,
+    header5: u32,
+    template_block: Vec<u8>,
+    unknown_words: Vec<u16>,
+    label_pad: u32,
+    label_index_size: u32,
+    /// Labels in file order. The map loses ordering, and ordering is part of the bytes.
+    label_order: Vec<(u32, String)>,
+    /// Trailing block: one u32 per label, each an exact offset of a label entry. It is a
+    /// hash table with local probing (mostly ordered by `hash & 0xFFFF`, with ~1,789 local
+    /// displacements), and the probing scheme is NOT decoded. Kept verbatim so files round
+    /// trip; the consequence is that labels cannot be added. See `add_label`.
+    label_index: Vec<u8>,
+}
+
+/// The 32-bit FNV-1 the engine uses for by-name object lookups. Case-sensitive.
+pub fn fnv1(name: &str) -> u32 {
+    let mut h: u32 = 0x811C9DC5;
+    for b in name.bytes() {
+        h = h.wrapping_mul(0x01000193) ^ b as u32;
+    }
+    h
 }
 
 struct Cur<'a> {
@@ -148,7 +177,7 @@ fn template_size(d: &[u8], at: usize) -> Result<usize> {
 
 pub fn parse(d: &[u8]) -> Result<Database> {
     let mut c = Cur { d, p: 0 };
-    let _ = c.u32("header word 0")?;
+    let header0 = c.u32("header word 0")?;
     let num_objects = c.u32("object count")? as usize;
     let template_data_offset = c.u32("template offset")? as usize;
     let index_data_offset = c.u32("index offset")? as usize;
@@ -168,7 +197,8 @@ pub fn parse(d: &[u8]) -> Result<Database> {
     }
 
     // Templates, keyed by their offset from the start of the template block, which is what
-    // each object's pointer holds.
+    // each object's pointer holds. The raw bytes are kept too: object template pointers are
+    // offsets into this block, so writing it back verbatim keeps every pointer valid.
     let template_start = c.p;
     let mut templates = HashMap::new();
     while c.p - template_start < index_data_offset {
@@ -189,25 +219,41 @@ pub fn parse(d: &[u8]) -> Result<Database> {
         }
         templates.insert(key, Template { components, fields });
     }
+    let template_block = d[template_start..c.p].to_vec();
 
     // Object hashes, in object order.
     for i in 0..num_objects {
         objects[i].hash = c.u32("object hash")?;
     }
-    // One u16 per object, purpose unknown, then padding to a 4-byte boundary.
-    c.p += num_objects * 2;
+    // One u16 per object, purpose unknown, then padding to a 4-byte boundary. Unknown does
+    // not mean ignorable: these are preserved so a rewritten file keeps them.
+    let mut unknown_words = Vec::with_capacity(num_objects);
+    for _ in 0..num_objects {
+        unknown_words.push(c.u16("per-object unknown word")?);
+    }
     if c.p % 4 > 0 {
         c.p += 2;
     }
-    // Unknown float/hash table.
-    c.p += unknown_count * 8;
+    // Name map: (FNV-1 hash of the object's name, object hash). This is how the engine
+    // resolves by-name lookups like SetCharacterRecord("SirWalterBeck_Sick"); the names
+    // themselves are not stored, only their hashes, which is why they never show up in
+    // the label table. FNV-1 32-bit, offset basis 0x811C9DC5, prime 0x01000193,
+    // case-sensitive - verified against HeroStatueComponent/HeroStatueNatalComponent
+    // label hashes and seven shipped SetCharacterRecord literals.
+    let mut name_map = Vec::with_capacity(unknown_count);
+    for _ in 0..unknown_count {
+        let name_hash = c.u32("name map name hash")?;
+        let obj_hash = c.u32("name map object hash")?;
+        name_map.push((name_hash, obj_hash));
+    }
 
     // Labels: the hash-to-string table that makes everything else readable.
-    let _pad = c.u32("label pad")?;
-    let _index_size = c.u32("label index size")?;
+    let label_pad = c.u32("label pad")?;
+    let label_index_size = c.u32("label index size")?;
     let label_count = c.u32("label count")? as usize;
 
     let mut labels = HashMap::with_capacity(label_count);
+    let mut label_order = Vec::with_capacity(label_count);
     for _ in 0..label_count {
         let hash = c.u32("label hash")?;
         let start = c.p;
@@ -216,10 +262,20 @@ pub fn parse(d: &[u8]) -> Result<Database> {
         }
         let text = String::from_utf8_lossy(&d[start..c.p]).into_owned();
         c.p += 1; // NUL
-        labels.insert(hash, text);
+        labels.insert(hash, text.clone());
+        label_order.push((hash, text));
     }
 
-    Ok(Database { objects, templates, labels })
+    // Header word 5 is never read by anything here, but it is part of the file.
+    let header5 = u32::from_le_bytes([d[0x14], d[0x15], d[0x16], d[0x17]]);
+
+    let label_index = d[c.p..].to_vec();
+
+    Ok(Database {
+        objects, templates, labels, name_map,
+        header0, header5, template_block, unknown_words, label_pad, label_index_size,
+        label_order, label_index,
+    })
 }
 
 impl Database {
@@ -301,4 +357,123 @@ pub fn from_bank(index: &[u8], payload: &[u8], path: &str) -> Option<Vec<u8>> {
         return None;
     }
     Some(payload[start..end].to_vec())
+}
+
+// -------------------------------------------------------------------------------------
+// Writing. Nothing in the scene can ADD a GDB record: the community editor edits values
+// and re-links nodes, and its author noted that copy/paste was still a wanted feature.
+// Being able to append objects is the difference between changing the Scattershot and
+// defining a new weapon.
+//
+// The correctness bar is a byte-identical round trip: parse(x).to_bytes() == x. Blocks that
+// are not fully understood (the template block, the per-object u16 array) are written back
+// verbatim rather than regenerated, so they cannot drift.
+// -------------------------------------------------------------------------------------
+
+impl Database {
+    /// Serialize back to GDB bytes. Offsets and counts are recomputed from the current
+    /// contents, so this is correct after objects have been appended.
+    pub fn to_bytes(&self) -> Vec<u8> {
+        let mut objects_block: Vec<u8> = Vec::new();
+        for o in &self.objects {
+            objects_block.extend_from_slice(&o.template_pointer.to_le_bytes());
+            for w in &o.data {
+                objects_block.extend_from_slice(&w.to_le_bytes());
+            }
+        }
+
+        let mut out: Vec<u8> = Vec::with_capacity(objects_block.len() + self.template_block.len() + 0x1000);
+        // Header. Word 2 is the template block offset relative to 0x18, i.e. the size of the
+        // objects block; word 3 is the index offset relative to the template block, i.e. the
+        // size of the template block.
+        out.extend_from_slice(&self.header0.to_le_bytes());
+        out.extend_from_slice(&(self.objects.len() as u32).to_le_bytes());
+        out.extend_from_slice(&(objects_block.len() as u32).to_le_bytes());
+        out.extend_from_slice(&(self.template_block.len() as u32).to_le_bytes());
+        out.extend_from_slice(&(self.name_map.len() as u32).to_le_bytes());
+        out.extend_from_slice(&self.header5.to_le_bytes());
+
+        out.extend_from_slice(&objects_block);
+        out.extend_from_slice(&self.template_block);
+
+        for o in &self.objects {
+            out.extend_from_slice(&o.hash.to_le_bytes());
+        }
+        for w in &self.unknown_words {
+            out.extend_from_slice(&w.to_le_bytes());
+        }
+        if out.len() % 4 > 0 {
+            out.extend_from_slice(&[0, 0]);
+        }
+        for (name_hash, obj_hash) in &self.name_map {
+            out.extend_from_slice(&name_hash.to_le_bytes());
+            out.extend_from_slice(&obj_hash.to_le_bytes());
+        }
+
+        out.extend_from_slice(&self.label_pad.to_le_bytes());
+        out.extend_from_slice(&self.label_index_size.to_le_bytes());
+        out.extend_from_slice(&(self.label_order.len() as u32).to_le_bytes());
+        for (hash, text) in &self.label_order {
+            out.extend_from_slice(&hash.to_le_bytes());
+            out.extend_from_slice(text.as_bytes());
+            out.push(0);
+        }
+        out.extend_from_slice(&self.label_index);
+        out
+    }
+
+    /// Append a new object that reuses an existing object's template, copying its field
+    /// values as the starting point. Reusing a template is what keeps this safe: template
+    /// pointers are offsets into a block written back verbatim, so no pointer moves.
+    ///
+    /// Returns the new object's index. The caller sets field values with `set_field` and
+    /// gives it a name with `set_name`.
+    pub fn clone_object(&mut self, src_index: usize, new_hash: u32) -> Option<usize> {
+        let src = self.objects.get(src_index)?;
+        let new = Object {
+            number: self.objects.len(),
+            hash: new_hash,
+            template_pointer: src.template_pointer,
+            data: src.data.clone(),
+        };
+        // The per-object u16 array is index-parallel with objects, so it grows too. Copying
+        // the source object's word is the only defensible choice while its meaning is
+        // unknown - inventing a value would be a guess written into a shipped file.
+        let word = *self.unknown_words.get(src_index).unwrap_or(&0);
+        self.objects.push(new);
+        self.unknown_words.push(word);
+        Some(self.objects.len() - 1)
+    }
+
+    /// Set one field of an object by field name, if its template has that field.
+    pub fn set_field(&mut self, index: usize, field: &str, value: u32) -> bool {
+        let want = fnv1(field);
+        let Some(obj) = self.objects.get(index) else { return false };
+        let Some(t) = self.templates.get(&obj.template_pointer) else { return false };
+        let Some(slot) = t.fields.iter().position(|f| f.hash == want) else { return false };
+        self.objects[index].data[slot] = value;
+        true
+    }
+
+    /// Make `name` resolve to this object, the way SetCharacterRecord("DogCollet") does.
+    ///
+    /// Only a name-map entry is needed: the map stores (FNV-1 of the name, object hash) and
+    /// never the string, which is exactly why an 8-char alias with a colliding hash works.
+    /// So naming a new object needs NO new label, and therefore does not touch the label
+    /// index we cannot regenerate.
+    pub fn set_name(&mut self, index: usize, name: &str) -> bool {
+        let Some(obj) = self.objects.get(index) else { return false };
+        self.name_map.push((fnv1(name), obj.hash));
+        true
+    }
+
+    /// Adding a label is NOT supported, and returns None rather than corrupting the file.
+    ///
+    /// The trailing label index is one u32 per label, and its probing scheme is undecoded,
+    /// so appending a label would leave the index one entry short and out of order. Point
+    /// string fields at labels that already exist, and name objects with `set_name`, which
+    /// needs no label at all.
+    pub fn add_label(&mut self, _text: &str) -> Option<u32> {
+        None
+    }
 }

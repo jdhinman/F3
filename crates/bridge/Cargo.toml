@@ -1,0 +1,13 @@
+[package]
+name = "bridge"
+version = "0.1.0"
+edition = "2021"
+
+# d3d9 proxy DLL for Fable III. Must be 32-bit: Fable3.exe is PE32.
+#   cargo build --release -p bridge --target i686-pc-windows-msvc
+# Output target/i686-pc-windows-msvc/release/bridge.dll, installed as the game's d3d9.dll.
+[lib]
+name = "bridge"
+crate-type = ["cdylib"]
+
+[dependencies]

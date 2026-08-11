@@ -17,6 +17,10 @@ fn main() -> ExitCode {
     let mut object: Option<String> = None;
     let mut stats = false;
     let mut names_only = false;
+    let mut labels_filter: Option<String> = None;
+    let mut hash: Option<u32> = None;
+    let mut parent: Option<u32> = None;
+    let mut namemap = false;
 
     let mut i = 0;
     while i < args.len() {
@@ -27,6 +31,11 @@ fn main() -> ExitCode {
             "--object" => { i += 1; object = args.get(i).cloned(); }
             "--stats" => stats = true,
             "--names" => names_only = true,
+            // empty filter = dump every label
+            "--labels" => { labels_filter = Some(args.get(i + 1).filter(|a| !a.starts_with("--")).cloned().unwrap_or_default()); if labels_filter.as_deref() != Some("") { i += 1; } }
+            "--hash" => { i += 1; hash = args.get(i).and_then(|v| u32::from_str_radix(v.trim_start_matches("0x"), 16).ok()); }
+            "--parent" => { i += 1; parent = args.get(i).and_then(|v| u32::from_str_radix(v.trim_start_matches("0x"), 16).ok()); }
+            "--namemap" => namemap = true,
             other => path = Some(other.to_string()),
         }
         i += 1;
@@ -67,6 +76,19 @@ fn main() -> ExitCode {
         return ExitCode::SUCCESS;
     }
 
+    if let Some(f) = &labels_filter {
+        let needle = f.to_lowercase();
+        let mut n = 0usize;
+        for (hash, text) in &db.labels {
+            if needle.is_empty() || text.to_lowercase().contains(&needle) {
+                println!("{hash:08X} {text}");
+                n += 1;
+            }
+        }
+        println!("-- {n} label(s) matched");
+        return ExitCode::SUCCESS;
+    }
+
     if std::env::var("GDB_PEEK").is_ok() {
         for o in db.objects.iter().take(3) {
             println!("OBJECT hash {:08X} template {:08X}", o.hash, o.template_pointer);
@@ -78,7 +100,27 @@ fn main() -> ExitCode {
         }
         return ExitCode::SUCCESS;
     }
-    let selected: Vec<&gdb::Object> = if let Some(n) = &object {
+    if namemap {
+        for (name_hash, obj_hash) in &db.name_map {
+            println!("{name_hash:08X} {obj_hash:08X}");
+        }
+        println!("-- {} name map entries", db.name_map.len());
+        return ExitCode::SUCCESS;
+    }
+
+    let selected: Vec<&gdb::Object> = if let Some(p) = parent {
+        db.objects.iter()
+            .filter(|o| db.template_of(o).is_some_and(|t|
+                t.fields.iter().enumerate().any(|(i, _)|
+                    db.field_name(o, i) == "parent" && o.data.get(i) == Some(&p))))
+            .collect()
+    } else if let Some(h) = hash {
+        // match on the object's own hash OR any raw field word, so a name hash with no
+        // label entry still finds its object
+        db.objects.iter()
+            .filter(|o| o.hash == h || o.data.iter().any(|&w| w == h))
+            .collect()
+    } else if let Some(n) = &object {
         db.objects.iter().filter(|o| db.name_of(o) == Some(n.as_str())).collect()
     } else if let Some(n) = &find {
         db.find(n)

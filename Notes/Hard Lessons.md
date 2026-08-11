@@ -1,7 +1,7 @@
 ---
 title: "Hard Lessons"
 description: "Every mistake this project paid for, and the rule that prevents each one. Read before writing mod code"
-updated: 2026-08-06
+updated: 2026-08-10
 confidence: verified
 tags:
   - method
@@ -9,7 +9,8 @@ tags:
 ---
 
 Each entry cost at least one wasted session or one broken thing in game. They are written as
-rules because that is how they are useful.
+rules because that is how they are useful. Rules 17-20 are the native/DLL layer and were paid
+for in one long session; 16 is the expensive one.
 
 ## Working in game
 
@@ -87,28 +88,94 @@ It captures all keyboard input, including the yes/no box's own keys, and the cam
 by the debug key system which does not work in retail. There is no way to fly and no way to
 leave. `MyScript01.lua` now force-disables it on every run, before the version check.
 
+### 9. A character record is meshes; the skeleton belongs to the creature type
+
+`SetCharacterRecord` swapped an adult body onto a child and produced a short, wrong-proportioned
+adult. `GraphicAppearance.SetScale` only stretched it. Proportions, animation and rig come from
+the **creature type**, which no call can change - so the entity must be replaced
+(`PutEntityInLimbo` + `Debug.CreateEntityAtEntitysPosition`, the game's own idiom in
+`ReplaceCollieWithACSCollie`). When an appearance fix looks 90% right, ask which component
+actually owns the remaining 10% before patching harder. -> [[Child System]]
+
+### 10. Never hand a nil entity to a native call, and never "tidy" an asymmetric API
+
+Two game-crashing bugs in one session, both from inventing an argument shape:
+`PlayerFamily.AdoptWithSpouse(hero, nil, kid)` (native code dereferences the nil) and
+`Villager.AddChild(hero, kid)` (the hero has no Villager component - every shipped call
+passes a villager, and the hero appears only via `AddParent`). Optional-looking arguments
+are not optional, and an API that looks inconsistent usually reflects a real component
+split. This is Rule 1 again, for arguments rather than functions. -> [[Child System]]
+
+### 11. An entity's NAME is not its creature type
+
+`entity:GetName()` starts with the type only for world-placed NPCs. Anything spawned with a
+custom name (`Debug.CreateEntityAtEntitysPosition(type, "F3Daughter", ...)`) reports that
+name instead, so type-name parsing silently fails on exactly the entities you created for
+testing. `Creature.GetCreatureType` does not rescue it - it returns a broad enum
+(`CREATURE_VILLAGER`). Derive from a real property (sex, age group) where you can.
+
+### 12. Index the corpus, do not grep it reactively
+
+`SearchTools` - a complete entity finder (`StartNewSearch` / `FilterWithinDistanceOfPos` /
+`GetSearchResults`) - sat in dozens of shipped scripts for the entire project while problems
+were worked around for want of it. It was found by reading someone else's published mod, not
+our own 797-file corpus. There are **5,401 distinct API calls across 679 namespaces** in
+there; `python tools/api-index.py search <text>` now answers "does a call for this exist"
+in one step. Ask the index before assuming a capability is missing.
+
 ## Working on the tooling
 
-### 9. Rebuild the binary, not just the library
+### 13. Rebuild the binary, not just the library
 
 `cargo test` builds the lib; a stale `bnkpack.exe` wrote unaligned banks while the alignment
 test passed.
 
-### 10. Do not batch-patch source with scripted string replacement
+### 14. Do not batch-patch source with scripted string replacement
 
 A Python patch turned `\n` inside a Lua string into a real newline. Use `Edit` for anything
 delicate.
 
-### 11. Read the reference implementation's constants literally
+### 15. Read the reference implementation's constants literally
 
 `GDB_Dump.cpp` comments say `0400 = string hash`. That is `0x0400`, not `4`. Reading it as a
 small integer made every field type print as unknown while everything else looked fine.
 
-### 12. Do not install a save someone uploaded because it was broken
+### 16. Do not install a save someone uploaded because it was broken
 
 `squark`'s save was posted asking for help diagnosing it. Format compatibility is not evidence
 of safety. → [[Preservation]]
 
+## Working in native code (the bridge DLL)
+
+### 17. Give native code a log file before anything else
+
+In Lua a failure is visible; in an injected DLL every failure looks identical from in front
+of the game. "Not loaded", "hook not firing", "hook fired but drew nothing", and "thread
+died" are the same black screen. One `log()` appending to `<game dir>\f3bridge.log` killed
+four wrong theories in four runs. This is Rule 3 one layer down. → [[Bridge DLL]]
+
+### 18. In this game, hook to READ, never to DRAW
+
+Rendering anything through the device from an EndScene hook works for exactly one frame,
+then the hook is silently bypassed forever while the game keeps animating. A full
+`D3DSBT_ALL` state block does not save it. Retail ships `DFA.dll` and `F3Secu.exe`. Poll
+input in the hook, and let the game's own HUD (`GUI.SetCounter`) do the drawing.
+
+### 19. Do not add threads or system-wide hooks to this process
+
+`CreateThread` from `Direct3DCreate9` wedges startup (`DLL_THREAD_ATTACH` walks every
+loaded DLL, anti-tamper included). Creating it in `DllMain` deadlocks the loader instead.
+`SetWindowsHookEx(WH_KEYBOARD_LL)` stops the game launching at all. All three were
+unnecessary: polling `GetAsyncKeyState` inside the existing Present hook does the job.
+
+### 20. Check the evidence you already have before theorising
+
+Two rounds were spent on "DirectInput exclusive mode is eating the keyboard", complete with
+supporting web research. The first log ever captured already contained `F1 -> menu OPEN`
+from the Present hook - the input path had worked from the start, and the real fault was a
+thread dying before it polled. Re-read the earliest log before proposing a new mechanism.
+
+
 ## Related
 
-- [[Lua Scripting]] · [[Child System]] · [[Formats]] · [[Reference Index]]
+- [[Lua Scripting]] · [[Child System]] · [[Bridge DLL]] · [[Weapon Augments]] · [[Formats]] · [[Reference Index]]

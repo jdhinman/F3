@@ -1,7 +1,7 @@
 ---
 title: "Child System"
 description: "What Fable III's children do, where the age data reportedly lives, and what growing them up would actually require"
-updated: 2026-08-06
+updated: 2026-08-10
 confidence: verified
 tags:
   - target
@@ -10,10 +10,87 @@ tags:
 
 The project's target feature.
 
-**Half solved, in game, on 2026-08-06.** Raising the age scalar past ~18 flips an NPC's
-category to adult and the adult AI and interaction set follow immediately. The body does not,
-and the first attempt at swapping it left the test subject invisible. What remains is finding
-the real character record names. → [[Hard Lessons]]
+**SOLVED, in game, on 2026-08-10 - ambient children AND the hero's own.** An ambient child can be turned into a genuine adult:
+correct proportions, skeleton, animations, voice and AI. The working call is **entity
+replacement**, not appearance patching. Menu entry: `REPLACE with real adult`.
+
+```lua
+-- child type and adult type differ by one word, and both are in the GDB name map
+local full  = tostring(child:GetName())                  -- CreatureVillagerChildMaleBrightwall_...
+local typ   = string.gsub(full, "_.*$", "")
+local adult = string.gsub(typ, "Child", "Generic")       -- CreatureVillagerGenericMaleBrightwall
+ScriptFunction.PutEntityInLimbo(child)
+Debug.CreateEntityAtEntitysPosition(adult, full, GetLocalHero())
+```
+
+Both calls are shipped with literals in `ReplaceCollieWithACSCollie`
+(`miscfunctions.lua:6615`), which is the game's own replace-in-place idiom.
+
+**Why the obvious approach cannot work.** `GraphicAppearanceMorph.SetCharacterRecord` swaps
+**meshes only**. The **skeleton belongs to the creature type**, so an adult record on a child
+entity renders an adult-looking body at child proportions - big head, short limbs. Scaling it
+with `GraphicAppearance.SetScale` only stretches that: taller, still not proportionate. There
+is no call to change an entity's creature type, so the entity itself has to be replaced.
+
+Four properties, and where each actually lives:
+
+| Property | Lives in | Fixed by |
+|---|---|---|
+| Age group / AI / interactions | entity `AgeComponent` | `Age.SetAge(e, 25)` |
+| Body meshes | character record | `SetCharacterRecord` (alias) |
+| **Skeleton and proportions** | **creature type** | **entity replacement only** |
+| Voice | entity `Talk` | `Talk.SetVoiceType` |
+
+Since replacement brings a real adult type, it supplies all four at once - the record, scale
+and voice work is only needed if you must keep the *same* entity.
+
+**The hero's own children work too, family intact.** Verified 2026-08-10:
+
+```
+F3Daughter -> CreatureVillagerGenericFemale.
+was mine=true, relink=AdoptWithSpouse, now mine=true
+```
+
+Replacement makes a NEW entity, so the family link has to be rebuilt afterwards. That is
+three calls, and the exact shapes matter:
+
+```lua
+-- BEFORE limboing the child, while the family is still intact:
+local spouse = PlayerFamily.GetOrCreatePrimarySpouse(hero, hero:GetPosition(), true)
+-- ... limbo + create ...
+PlayerFamily.AdoptWithSpouse(hero, spouse, newAdult)   -- Adopt is NOT exposed in retail
+Villager.AddChild(spouse, newAdult)                    -- spouse, NEVER the hero
+Villager.AddParent(newAdult, hero)
+Villager.AddParent(newAdult, spouse)
+```
+
+Three findings that each cost a crash or a dead end:
+
+- **`PlayerFamily.Adopt` is not exposed in retail; `AdoptWithSpouse` is.** Both appear in
+  shipped script, only the second survives.
+- **Never pass a nil entity to these.** `AdoptWithSpouse(hero, nil, kid)` crashes the game -
+  native code dereferences it. Guard on a live spouse before calling.
+- **`Villager.AddChild(hero, ...)` crashes**: the hero has no Villager component. Every
+  shipped call passes a villager. The hero is only ever named as a PARENT, via `AddParent`.
+  The asymmetry in the shipped code is load-bearing, not an oversight.
+
+**Marriage requires a home first.** `PlayerFamily.Marry` silently fails to register unless
+`PlayerProperties.SetHomeForMarriageOrAdoption(hero, building_id)` ran first, which is why
+`GetOrCreatePrimarySpouse` kept returning nothing. The shipped married-couple builder does
+this; `Debug.CreateInstantFamily` does not, so re-implement rather than call it.
+
+**Finding children without a spouse:** `PlayerFamily.GetChildrenOnThisLevel(hero)` takes just
+the hero, and `PlayerFamily.IsParentOf(hero, entity)` verifies parentage. Both avoid the
+spouse lookup entirely.
+
+**Deriving the adult type.** The entity NAME equals the creature type only for world-placed
+NPCs; anything spawned with a custom name does not match, and `Creature.GetCreatureType`
+returns a broad enum (`CREATURE_VILLAGER`), not the specific type. So: try the name
+(`...Child...` -> `...Generic...`, `HerosSon`/`HerosDaughter` -> `CreatureVillager` /
+`CreatureVillagerGenericFemale`), then fall back to **sex**, which is all it depends on.
+
+**Still open:** the grown child does not walk home - `SetHomeForMarriageOrAdoption` registers
+the property but does not run move-in behaviour. Cosmetic, and separate from growth.
 
 ## What the game does today
 
@@ -425,6 +502,45 @@ perspective is being asked about - and returns a plain array. The shipped script
 `ipairs` and measure it with `#`, so the loop above matches how `familydivorcegroupmind.lua`,
 `behaviourspouse.lua` and `behaviournanny.lua` already use it. `GetChildrenOnThisLevel` is the
 variant to prefer if only loaded entities should be touched.
+
+## The GDB name map  **[VERIFIED offline]** 2026-08-09
+
+The character record names never appear as strings anywhere in the install. They exist only as
+32-bit hashes in a previously unidentified section of `globals.gdb` (the reference dumper's
+"unknown float/hash table"), which is in fact a **name map**: 22,221 pairs of
+`(FNV-1(name), object hash)`. The hash function is **FNV-1 32-bit, offset basis 0x811C9DC5,
+prime 0x01000193, case-sensitive**, verified against the two label-table pairs
+(`HeroStatueComponent`, `HeroStatueNatalComponent`) and seven shipped `SetCharacterRecord`
+literals. `crates/gdb` now parses the map (`Database::name_map`, `gdb::fnv1`), and `gdbdump`
+grew `--labels`, `--hash`, `--parent`, and `--namemap`.
+
+What the map already proved:
+
+- **Character records are the 1,619 objects with `parent -> 9C8A1C10`** (fields like
+  `TorsoModel`, `HeadModel`, `LegsModel`, `HeadAccessories`, `SkinTextureSets`).
+- The dog breeds land exactly where the shipped bonus-effects script says: `DogBoxer`,
+  `DogCollet`, `DogSetter` are all in the map, resolving to record objects.
+- **The appearance chain**: creature type object -> `GraphicAppearanceMorphComponent` ->
+  `CharacterFolder` -> `ListItem`(s) -> character record(s). Creature types are in the map
+  under their script names (`CreatureVillagerGypsyChildMaleMistpeak` etc.), so a child type's
+  adult counterpart and its records can be walked entirely offline.
+- Artofeel's 2014 "main children offset `101BF01F`" is the object hash of
+  `CreatureVillagerChildMaleBase`, which the name map resolves independently. The forum
+  number was an object hash all along.
+
+**Only ~75 of 1,546 record names crack against the corpus** (script literals: named NPCs,
+dog breeds, hero faces, preorder outfits). Villager record names match no wordlist or
+pattern tried. They do not need to: FNV-1 preimages are cheap. `crates/gdb`'s `fnvpre` tool
+builds a printable 8-char alias for any hash by meet-in-the-middle, so every record in the
+GDB is addressable by a synthetic name IF the engine resolves `SetCharacterRecord` through
+this map.
+
+**The one-call test** [UNTESTED]: the dog is the only entity with three known-good record
+names as rollback. Aliases: `DogBoxer` = `dv49jica`, `DogCollet` = `n_rtphaa`,
+`DogSetter` = `q_xx2tba`. Call `SetCharacterRecord(dog, alias-of-a-different-breed)`; if the
+breed visibly changes, alias resolution is confirmed and the child-growth mod needs only the
+offline chain walk plus `Age.SetAge`. If the dog goes invisible, restore with the real name,
+which is proven shipped behaviour.
 
 ## Related
 
