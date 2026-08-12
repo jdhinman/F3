@@ -554,11 +554,18 @@ impl Database {
     ///
     /// Only a name-map entry is needed: the map stores (FNV-1 of the name, object hash) and
     /// never the string, which is exactly why an 8-char alias with a colliding hash works.
-    /// So naming a new object needs NO new label, and therefore does not touch the label
-    /// index we cannot regenerate.
+    /// So naming a new object needs no label at all.
+    ///
+    /// The entry is **inserted in name-hash order**. The name map is sorted by name hash in
+    /// all 140 shipped GDBs that have more than one entry, and the engine binary-searches
+    /// it: appending produced a record that was present, complete and correct in the file
+    /// and still reported missing by `GDB.RecordExists` in game. Same trap as the object
+    /// hash array, one table over. → Hard Lesson 17
     pub fn set_name(&mut self, index: usize, name: &str) -> bool {
         let Some(obj) = self.objects.get(index) else { return false };
-        self.name_map.push((fnv1(name), obj.hash));
+        let hash = fnv1(name);
+        let at = self.name_map.partition_point(|(n, _)| *n < hash);
+        self.name_map.insert(at, (hash, obj.hash));
         true
     }
 

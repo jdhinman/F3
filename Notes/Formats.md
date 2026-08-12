@@ -396,14 +396,22 @@ Reusing the source object's template is what makes it safe: template pointers ar
 into a block written back verbatim, so no pointer moves. The tool re-parses what it wrote
 before reporting success.
 
-> [!warning] Object hashes are SORTED, and a new record must be inserted, not appended
-> **[VERIFIED]** 2026-08-11. Every one of the 93 shipped GDBs that has any objects at all
-> holds its object-hash array in ascending order, which is what lets the engine find a
-> record by binary search. `--clone` originally appended, which put the new record past the
-> sort break where no search can reach it - correct bytes, unreachable record. It now
-> inserts in hash order. That is safe because **nothing addresses an object by index**:
-> `parent` fields and the name map both hold object hashes. Only the three index-parallel
-> arrays (objects, hashes, the per-object u16) have to move together.
+> [!warning] TWO sorted tables, and a new record must be inserted into both
+> **[VERIFIED]** 2026-08-11, each found by a separate failed in-game test.
+>
+> | Table | Sorted by | Holds in |
+> |---|---|---|
+> | object hashes | object hash | 93 of 93 shipped GDBs with objects |
+> | name map | FNV-1 of the name | 140 of 140 shipped GDBs with >1 entry |
+>
+> Both are binary-searched by the engine. `--clone` originally appended to each, which put
+> the new record past the sort break: correct bytes, verifiably loaded, and still reported
+> missing by `GDB.RecordExists`. Both now insert in order.
+>
+> Inserting into the object array is safe because **nothing addresses an object by index** -
+> `parent` fields and the name map both hold object hashes - so only the index-parallel
+> arrays (objects, hashes, the per-object u16) move together, and the u16 array is
+> recomputed anyway.
 
 Changed records get into the game with `tools/bnk-replace.py`, which appends the new blob
 to the payload and rewrites just that entry's offset and size in the bank index. Repacking

@@ -18,7 +18,7 @@
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 63
+local VERSION = 64
 
 -- Rescue, kept forever: the free camera eats all input in retail if it is ever on.
 if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
@@ -208,9 +208,19 @@ function gdb_probe()
         say("no GDB namespace")
         return
     end
-    say("1 RecordExists...")
+    -- Control first. ExpressionThumbsUp is a record the game already loads, and the
+    -- modified globals.gdb sets its IndirectEffectMultiplier to 3.25 (stock 0.2). That
+    -- separates the two things a missing F3ProofRecord could mean: 3.25 says our file IS
+    -- loaded and only the added record fails to resolve, 0.2 says the file is not loaded
+    -- at all and nothing about added records has been tested yet.
+    say("0 control: reading ExpressionThumbsUp...")
+    local base = GDB.GetRecord("ExpressionThumbsUp")
+    local mult = base ~= nil and base:GetFloat("IndirectEffectMultiplier") or nil
+    local loaded = (mult ~= nil and mult > 3.2 and mult < 3.3)
+    local tag = loaded and "OUR FILE IS LOADED" or "our file is NOT loaded"
+    say("1 " .. tag .. " (ThumbsUp mult=" .. tostring(mult) .. "), RecordExists...")
     if not GDB.RecordExists("F3ProofRecord") then
-        say("F3ProofRecord is NOT in the database - the modified globals.gdb did not load")
+        say(tag .. " (mult=" .. tostring(mult) .. ") but F3ProofRecord is NOT in the database")
         return
     end
     say("2 GetRecord...")

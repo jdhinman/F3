@@ -162,15 +162,25 @@ byte-identically and has one chunk. **When a format is recovered from someone el
 reader, list the things that reader normalises away - those are exactly where it is silent
 about the real constraint.**
 
-### 17. A byte-perfect round trip does not prove you know the invariants
+### 17. Find EVERY sorted table before you add a row to any of them
 
-`gdbwrite --verify` reproduced `globals.gdb` byte for byte, and `--clone` still produced a
-record the engine could never find. Object hashes are stored **sorted** so the engine can
-binary-search them; appending a record is byte-legal, parses back correctly, and lands past
-the sort break. A round trip only proves you can reproduce what is there. It says nothing
-about the rules a *new* entry has to obey. Before adding anything to a format, check the
-shipped files for order, uniqueness and range properties - across all of them, not one:
-sortedness held in 93 of 93. → [[Formats]]
+`gdbwrite --verify` reproduced `globals.gdb` byte for byte and `--clone` still produced a
+record the engine could not find. A round trip only proves you can reproduce what is there;
+it says nothing about the rules a **new** entry has to obey.
+
+Adding one GDB record touches **two** sorted tables, and each cost a separate test round
+because they were found one at a time:
+
+| Table | Sorted by | Missing it gives you |
+|---|---|---|
+| object hashes | object hash, 93 of 93 shipped files | the record is unreachable, silently |
+| name map | FNV-1 of the name, 140 of 140 shipped files | `GDB.RecordExists` says no, and the record really is there |
+
+The second one is the nastier lesson: the record was present, complete, byte-correct and
+verifiably loaded, and the engine's binary search walked straight past it. **Before adding
+a row anywhere, audit every parallel array in the format for order, uniqueness and range,
+across all shipped files rather than one** - and check them all in one pass, because finding
+them one at a time costs a restart each. → [[Formats]]
 
 ### 18. Do not install a save someone uploaded because it was broken
 

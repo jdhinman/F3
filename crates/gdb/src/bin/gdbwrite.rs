@@ -4,6 +4,7 @@
 //!   gdbwrite --verify --bank <bnk> [--entry p]
 //!   gdbwrite --verify-all --bank <bnk>      every .gdb in the bank
 //!   gdbwrite --bank <bnk> --clone <src> --name <new> [--set Field=value]...
+//!   gdbwrite <file.gdb> --edit <record> --set Field=value --out <path>
 //!
 //! The verify mode is the whole justification for the writer: if parse-then-write does not
 //! reproduce the input exactly, nothing built on top can be trusted. `--verify-all` is the
@@ -16,6 +17,60 @@
 
 use std::process::ExitCode;
 
+/// Object index for a record name, resolved the way the engine does it: FNV-1 of the name
+/// through the name map to an object hash, then that hash to an object.
+fn resolve(db: &gdb::Database, name: &str) -> Option<usize> {
+    let want = gdb::fnv1(name);
+    let Some(obj) = db.name_map.iter().find(|(n, _)| *n == want).map(|(_, o)| *o) else {
+        eprintln!("{name}: not in the name map");
+        return None;
+    };
+    match db.objects.iter().position(|o| o.hash == obj) {
+        Some(i) => Some(i),
+        None => {
+            eprintln!("{name}: name maps to object {obj:08X}, which does not exist");
+            None
+        }
+    }
+}
+
+/// Apply `Field=value` assignments. A quoted value is a string and becomes a label; a value
+/// with a decimal point is an f32 bit pattern; anything else is a plain u32.
+fn apply_sets(db: &mut gdb::Database, idx: usize, sets: &[String]) -> Result<(), ()> {
+    for s in sets {
+        let Some((field, raw)) = s.split_once('=') else {
+            eprintln!("--set wants Field=value, got {s}");
+            return Err(());
+        };
+        let value = if raw.len() >= 2 && raw.starts_with('"') && raw.ends_with('"') {
+            let text = &raw[1..raw.len() - 1];
+            match db.add_label(text) {
+                Some(h) => { println!("  label {text:?} -> hash {h:08X}"); h }
+                None => {
+                    eprintln!("  {text:?}: FNV-1 collides with a different existing label; rename it");
+                    return Err(());
+                }
+            }
+        } else if raw.contains('.') {
+            match raw.parse::<f32>() {
+                Ok(v) => v.to_bits(),
+                Err(_) => { eprintln!("  {raw}: not a number"); return Err(()); }
+            }
+        } else {
+            match raw.parse::<u32>() {
+                Ok(v) => v,
+                Err(_) => { eprintln!("  {raw}: not a number, and not quoted"); return Err(()); }
+            }
+        };
+        if !db.set_field(idx, field, value) {
+            eprintln!("  {field}: this object's template has no such field");
+            return Err(());
+        }
+        println!("  set {field} = {value}");
+    }
+    Ok(())
+}
+
 fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().skip(1).collect();
     let mut path: Option<String> = None;
@@ -24,6 +79,7 @@ fn main() -> ExitCode {
     let mut verify = false;
     let mut verify_all = false;
     let mut clone_of: Option<String> = None;
+    let mut edit_of: Option<String> = None;
     let mut new_name: Option<String> = None;
     let mut out_path: Option<String> = None;
     let mut sets: Vec<String> = Vec::new();
@@ -33,6 +89,7 @@ fn main() -> ExitCode {
             "--verify" => verify = true,
             "--verify-all" => verify_all = true,
             "--clone" => { i += 1; clone_of = args.get(i).cloned(); }
+            "--edit" => { i += 1; edit_of = args.get(i).cloned(); }
             "--name" => { i += 1; new_name = args.get(i).cloned(); }
             "--set" => { i += 1; if let Some(s) = args.get(i) { sets.push(s.clone()) } }
             "--out" => { i += 1; out_path = args.get(i).cloned(); }
@@ -104,20 +161,36 @@ fn main() -> ExitCode {
         Err(e) => { eprintln!("parse: {e}"); return ExitCode::FAILURE; }
     };
 
+    // Change fields on an EXISTING record, in place. This exists as the control for
+    // "is the modified file even being loaded": a new record failing to resolve could mean
+    // the file is not loaded OR that name resolution does not work for added objects, and
+    // changing a value on a record the game already reads separates the two.
+    if let Some(name) = edit_of.as_ref() {
+        let Some(idx) = resolve(&db, name) else { return ExitCode::FAILURE };
+        println!("editing {name} (object index {idx})");
+        if apply_sets(&mut db, idx, &sets).is_err() {
+            return ExitCode::FAILURE;
+        }
+        let bytes = db.to_bytes();
+        let path = out_path.unwrap_or_else(|| "work/globals-modified.gdb".to_string());
+        if let Err(e) = std::fs::write(&path, &bytes) {
+            eprintln!("{path}: {e}");
+            return ExitCode::FAILURE;
+        }
+        println!("wrote {} ({} bytes, was {})", path, bytes.len(), data.len());
+        match gdb::parse(&bytes) {
+            Ok(re) => println!("re-parsed OK: {} objects", re.objects.len()),
+            Err(e) => { eprintln!("re-parse FAILED: {e}"); return ExitCode::FAILURE; }
+        }
+        return ExitCode::SUCCESS;
+    }
+
     // Add a record by cloning an existing one and giving it a new name. Reusing the source
     // template is what makes this safe: template pointers index a block written back
     // verbatim, so nothing shifts.
     if let (Some(src_name), Some(name)) = (clone_of.as_ref(), new_name.as_ref()) {
-        let src_hash = gdb::fnv1(src_name);
-        let src_obj = db.name_map.iter().find(|(n, _)| *n == src_hash).map(|(_, o)| *o);
-        let Some(src_obj) = src_obj else {
-            eprintln!("{src_name}: not in the name map");
-            return ExitCode::FAILURE;
-        };
-        let Some(idx) = db.objects.iter().position(|o| o.hash == src_obj) else {
-            eprintln!("{src_name}: name maps to object {src_obj:08X}, which does not exist");
-            return ExitCode::FAILURE;
-        };
+        let Some(idx) = resolve(&db, src_name) else { return ExitCode::FAILURE };
+        let src_obj = db.objects[idx].hash;
         // A fresh object hash that collides with nothing already present.
         let mut new_hash = gdb::fnv1(&format!("F3MOD::{name}"));
         while db.objects.iter().any(|o| o.hash == new_hash) {
@@ -130,38 +203,8 @@ fn main() -> ExitCode {
         db.set_name(new_idx, name);
         println!("cloned {src_name} (object {src_obj:08X}) -> {name} (object {new_hash:08X})");
 
-        for s in &sets {
-            let Some((field, raw)) = s.split_once('=') else {
-                eprintln!("--set wants Field=value, got {s}");
-                return ExitCode::FAILURE;
-            };
-            // A quoted value is a string: it becomes a label, and the field holds its hash.
-            let value = if raw.len() >= 2 && raw.starts_with('"') && raw.ends_with('"') {
-                let text = &raw[1..raw.len() - 1];
-                match db.add_label(text) {
-                    Some(h) => { println!("  label {text:?} -> hash {h:08X}"); h }
-                    None => {
-                        eprintln!("  {text:?}: FNV-1 collides with a different existing label; rename it");
-                        return ExitCode::FAILURE;
-                    }
-                }
-            } else if raw.contains('.') {
-                // A decimal point means a float field, which stores the f32 bit pattern.
-                match raw.parse::<f32>() {
-                    Ok(v) => v.to_bits(),
-                    Err(_) => { eprintln!("  {raw}: not a number"); return ExitCode::FAILURE; }
-                }
-            } else {
-                match raw.parse::<u32>() {
-                    Ok(v) => v,
-                    Err(_) => { eprintln!("  {raw}: not a number, and not quoted"); return ExitCode::FAILURE; }
-                }
-            };
-            if !db.set_field(new_idx, field, value) {
-                eprintln!("  {field}: this object's template has no such field");
-                return ExitCode::FAILURE;
-            }
-            println!("  set {field} = {value}");
+        if apply_sets(&mut db, new_idx, &sets).is_err() {
+            return ExitCode::FAILURE;
         }
 
         let bytes = db.to_bytes();
