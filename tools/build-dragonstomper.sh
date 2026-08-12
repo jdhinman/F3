@@ -37,10 +37,38 @@ BANKS=(
 )
 NAMES=(levels dlc2free dlc_freeforall)
 
+# The weapon's own localisation ids and the text behind them. Both are new: the ids become
+# GDB labels, and the text goes into BABEL. -> tools/babel.py
+ID_NAME=F3MOD_DRAGONSTOMPER_NAME
+ID_DESC=F3MOD_DRAGONSTOMPER_DESC
+TEXT_NAME="The Sovereign"
+TEXT_DESC="Forged from a Marksman that someone had clearly stopped respecting. It does not kick, it does not miss, and it does not leave much to bury."
+# Forward slashes: this path is handed to both bash and Python, and backslashes in a
+# bash string become escapes.
+BABEL='C:/Games/Fable 3/data/language/en-uk/text/book.babel'
+
 if [ "${1:-}" = "revert" ]; then
   for b in "${BANKS[@]}"; do python tools/bnk-replace.py revert "$b"; done
+  if [ -f "$BABEL.stock-backup" ]; then
+    mv -f "$BABEL.stock-backup" "$BABEL"
+    echo "restored book.babel"
+  fi
   exit 0
 fi
+
+# Always start from stock. Without this a second run reads back its own output, the chosen
+# object hashes collide with the ones already there, and the build fails halfway with the
+# banks left modified.
+for b in "${BANKS[@]}"; do python tools/bnk-replace.py revert "$b" 2>/dev/null || true; done
+
+# BABEL first, so a failure there costs nothing. Back up once, then always rebuild from the
+# backup, so re-running does not stack edits.
+if [ ! -f "$BABEL.stock-backup" ]; then cp "$BABEL" "$BABEL.stock-backup"; fi
+python tools/babel.py verify "$BABEL.stock-backup"
+python tools/babel.py add "$BABEL.stock-backup" "$ID_NAME" "$TEXT_NAME" work/book-1.babel
+python tools/babel.py add work/book-1.babel      "$ID_DESC" "$TEXT_DESC" work/book-2.babel
+cp work/book-2.babel "$BABEL"
+echo
 
 # Source records, all from the Marksman legendary rifle line.
 SRC_ITEM=0x9BB71C7C     # ObjectInventoryLegendaryRifleMarksman
@@ -83,12 +111,12 @@ for i in "${!BANKS[@]}"; do
       --set FirearmComponent=$N_FIREARM --set WeaponComponent=$N_WEAPON \
       --out "work/ds-$n-3.gdb"
 
-  # 4. Display name and description. These are BABEL localisation ids, not text, so a new
-  #    label here would render blank - the ids are borrowed from the Dragonstomper .48,
-  #    which is exactly the open question this build also answers. -> [[Formats]]
+  # 4. Display name and description. These are BABEL localisation ids. Both ids are NEW:
+  #    added to the GDB label table here and to the BABEL text table above, so the weapon
+  #    is named with words that are not in the game. -> tools/babel.py
   $GW "work/ds-$n-3.gdb" --clone $SRC_INV --hash $N_INV \
-      --set 'NameTag="INV_ITEM_WEAPON_DRAGONSTOMPER_NAME"' \
-      --set 'DescriptionTag="INV_ITEM_WEAPON_DRAGONSTOMPER_DESC"' --out "work/ds-$n-4.gdb"
+      --set "NameTag=\"$ID_NAME\"" \
+      --set "DescriptionTag=\"$ID_DESC\"" --out "work/ds-$n-4.gdb"
 
   # 5. Price, so it behaves if it ever reaches a shop.
   $GW "work/ds-$n-4.gdb" --clone $SRC_SHOP --hash $N_SHOP \
