@@ -494,8 +494,15 @@ appends to one shared file. → [[Open Questions]]
 | `BGF`, `BSG` | GUI art, third-party |
 | `FAC` | GUI art, lists of UVs. **plain text** |
 
-Tooling: **BlackDemon's BNK Utils** (extract/list/create banks), a **Blender 2.82 model importer**, a
-**TEX converter**, and `mdl.hsl` (a hex-editor template). All captured.
+Tooling, **corrected 2026-08-11 by looking rather than repeating the forum post**: the only
+model/texture artifact actually captured is **`35-mdl.hsl`**, a hex-editor template - and it is
+more useful than "a template" suggests, describing `AnimatedVertex` (halffloat xyz, 4 bone
+indices, 4 weights summing to 255, halffloat UV) and the material blocks, which carry texture
+**names as plain zstrings**.
+
+The **Blender 2.82 importer** and the **TEX converter** the forum mentions are **NOT captured**;
+`reference/` has neither. The only TEX artifact is `171-Fable3TextureResFormat.xlsx`, a
+resolution/filesize spreadsheet - inference, not a codec. Do not plan around tools we do not have.
 
 ## Animation
 
