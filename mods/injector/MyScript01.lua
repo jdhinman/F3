@@ -18,7 +18,7 @@
 --
 -- CAREFUL: errors propagate into the quest coroutine. pcall is unavailable. Nil-check all.
 
-local VERSION = 64
+local VERSION = 65
 
 -- Rescue, kept forever: the free camera eats all input in retail if it is ever on.
 if Debug ~= nil and Debug.SetUseFreeCamera ~= nil then
@@ -551,6 +551,26 @@ local MENU = {
     { "Dog -> Collet via ALIAS", function() dog_set("n_rtphaa", "ALIAS of DogCollet") end },
     { "Dog: restore original", function() dog_restore() end },
     { "GDB: proof record + new label", function() gdb_probe() end },
+    -- The first piece of new CONTENT: an item record that did not ship with the game,
+    -- built by tools/build-dragonstomper.sh out of cloned component records.
+    -- Inventory.AddItemOfType is Rule 1 clean - 1,865 shipped call sites pass a literal
+    -- record name, e.g. combatdebug.lua:14 AddItemOfType(geeza, "ObjectInventoryPotionHealth").
+    { "Give F3Dragonstomper (OP gun)", function(h)
+        local function say(s)
+            if has(GUI, "SetCounter") then GUI.SetCounter("F3MODGDB", "GUN: " .. s, 0) end
+        end
+        if not has(GDB, "RecordExists") or not GDB.RecordExists("F3Dragonstomper") then
+            say("F3Dragonstomper is not in the database - run tools/build-dragonstomper.sh")
+            return
+        end
+        if not has(Inventory, "AddItemOfType") then
+            say("Inventory.AddItemOfType missing")
+            return
+        end
+        say("granting...")
+        Inventory.AddItemOfType(h, "F3Dragonstomper")
+        say("granted. Open the weapon wheel and equip the Dragonstomper.")
+    end },
     { "Toggle inspector", function()
         F3MOD.inspect = not F3MOD.inspect
     end },

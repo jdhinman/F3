@@ -6,6 +6,12 @@
 //!   gdbwrite --bank <bnk> --clone <src> --name <new> [--set Field=value]...
 //!   gdbwrite <file.gdb> --edit <record> --set Field=value --out <path>
 //!
+//! --clone takes a record name OR `0x<objecthash>`, which is the only way to reach the
+//! component records an item is assembled from - they are not in the name map. --hash fixes
+//! the new object's hash so a graph can be built one record at a time, and a --set value of
+//! `0x...` points an object-reference field at another record. --name is optional; only
+//! what a script asks for by name needs one.
+//!
 //! The verify mode is the whole justification for the writer: if parse-then-write does not
 //! reproduce the input exactly, nothing built on top can be trusted. `--verify-all` is the
 //! strong form of that claim, and the evidence for the label index in particular: the
@@ -17,9 +23,31 @@
 
 use std::process::ExitCode;
 
+/// Parse a `--set` / `--clone` / `--hash` scalar: `0x...` hex, or plain decimal.
+fn as_u32(s: &str) -> Option<u32> {
+    match s.strip_prefix("0x").or_else(|| s.strip_prefix("0X")) {
+        Some(hex) => u32::from_str_radix(hex, 16).ok(),
+        None => s.parse::<u32>().ok(),
+    }
+}
+
 /// Object index for a record name, resolved the way the engine does it: FNV-1 of the name
 /// through the name map to an object hash, then that hash to an object.
+///
+/// `0x...` addresses an object by hash instead. Component records - the WeaponComponent and
+/// FirearmComponent an item is assembled from - are not in the name map at all, so a
+/// name-only lookup cannot reach the parts of a record that hold its actual stats.
 fn resolve(db: &gdb::Database, name: &str) -> Option<usize> {
+    if name.starts_with("0x") || name.starts_with("0X") {
+        let Some(h) = as_u32(name) else {
+            eprintln!("{name}: not a hex object hash");
+            return None;
+        };
+        return match db.objects.iter().position(|o| o.hash == h) {
+            Some(i) => Some(i),
+            None => { eprintln!("{name}: no object with that hash"); None }
+        };
+    }
     let want = gdb::fnv1(name);
     let Some(obj) = db.name_map.iter().find(|(n, _)| *n == want).map(|(_, o)| *o) else {
         eprintln!("{name}: not in the name map");
@@ -57,9 +85,10 @@ fn apply_sets(db: &mut gdb::Database, idx: usize, sets: &[String]) -> Result<(),
                 Err(_) => { eprintln!("  {raw}: not a number"); return Err(()); }
             }
         } else {
-            match raw.parse::<u32>() {
-                Ok(v) => v,
-                Err(_) => { eprintln!("  {raw}: not a number, and not quoted"); return Err(()); }
+            // 0x... is how an object-reference field is pointed at another record.
+            match as_u32(raw) {
+                Some(v) => v,
+                None => { eprintln!("  {raw}: not a number, and not quoted"); return Err(()); }
             }
         };
         if !db.set_field(idx, field, value) {
@@ -81,6 +110,7 @@ fn main() -> ExitCode {
     let mut clone_of: Option<String> = None;
     let mut edit_of: Option<String> = None;
     let mut new_name: Option<String> = None;
+    let mut new_hash_arg: Option<u32> = None;
     let mut out_path: Option<String> = None;
     let mut sets: Vec<String> = Vec::new();
     let mut i = 0;
@@ -91,6 +121,7 @@ fn main() -> ExitCode {
             "--clone" => { i += 1; clone_of = args.get(i).cloned(); }
             "--edit" => { i += 1; edit_of = args.get(i).cloned(); }
             "--name" => { i += 1; new_name = args.get(i).cloned(); }
+            "--hash" => { i += 1; new_hash_arg = args.get(i).and_then(|v| as_u32(v)); }
             "--set" => { i += 1; if let Some(s) = args.get(i) { sets.push(s.clone()) } }
             "--out" => { i += 1; out_path = args.get(i).cloned(); }
             "--bank" => { i += 1; bank = args.get(i).cloned(); }
@@ -188,20 +219,42 @@ fn main() -> ExitCode {
     // Add a record by cloning an existing one and giving it a new name. Reusing the source
     // template is what makes this safe: template pointers index a block written back
     // verbatim, so nothing shifts.
-    if let (Some(src_name), Some(name)) = (clone_of.as_ref(), new_name.as_ref()) {
+    if let Some(src_name) = clone_of.as_ref() {
         let Some(idx) = resolve(&db, src_name) else { return ExitCode::FAILURE };
         let src_obj = db.objects[idx].hash;
-        // A fresh object hash that collides with nothing already present.
-        let mut new_hash = gdb::fnv1(&format!("F3MOD::{name}"));
-        while db.objects.iter().any(|o| o.hash == new_hash) {
-            new_hash = new_hash.wrapping_add(1);
-        }
+        // An explicit --hash makes the new object's identity predictable, which is what
+        // lets a multi-record graph be built one call at a time: a component has to be
+        // given a hash before the record that points at it can be written.
+        let new_hash = match new_hash_arg {
+            Some(h) => {
+                if db.objects.iter().any(|o| o.hash == h) {
+                    eprintln!("--hash 0x{h:08X} is already taken by an existing object");
+                    return ExitCode::FAILURE;
+                }
+                h
+            }
+            None => {
+                let base = new_name.as_deref().unwrap_or(src_name);
+                let mut h = gdb::fnv1(&format!("F3MOD::{base}"));
+                while db.objects.iter().any(|o| o.hash == h) {
+                    h = h.wrapping_add(1);
+                }
+                h
+            }
+        };
         let Some(new_idx) = db.clone_object(idx, new_hash) else {
             eprintln!("clone failed");
             return ExitCode::FAILURE;
         };
-        db.set_name(new_idx, name);
-        println!("cloned {src_name} (object {src_obj:08X}) -> {name} (object {new_hash:08X})");
+        // A name is optional: component records are reached by hash from their owner, and
+        // only the thing scripts ask for by name needs a name-map entry.
+        match new_name.as_ref() {
+            Some(name) => {
+                db.set_name(new_idx, name);
+                println!("cloned {src_name} ({src_obj:08X}) -> {name} (object {new_hash:08X})");
+            }
+            None => println!("cloned {src_name} ({src_obj:08X}) -> object {new_hash:08X}, unnamed"),
+        }
 
         if apply_sets(&mut db, new_idx, &sets).is_err() {
             return ExitCode::FAILURE;
@@ -217,8 +270,12 @@ fn main() -> ExitCode {
         // Re-parse what we wrote: a file that cannot be read back is not a file.
         match gdb::parse(&bytes) {
             Ok(re) => {
-                let found = re.name_map.iter().any(|(n, _)| *n == gdb::fnv1(name));
-                println!("re-parsed OK: {} objects, new name resolves: {}", re.objects.len(), found);
+                let named = match new_name.as_ref() {
+                    Some(n) => format!(", name resolves: {}",
+                        re.name_map.iter().any(|(h, _)| *h == gdb::fnv1(n))),
+                    None => String::new(),
+                };
+                println!("re-parsed OK: {} objects{named}", re.objects.len());
             }
             Err(e) => { eprintln!("re-parse FAILED: {e}"); return ExitCode::FAILURE; }
         }
