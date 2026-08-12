@@ -42,6 +42,13 @@ relink calls, and the two crash-causing argument shapes are in [[Child System]].
 **Weapon evolution is fully reverse engineered and cheatable** - see [[Weapon Augments]].
 `tools/weapon-unlock.py` did a one-time GDB pass so any weapon completes from the menu.
 
+**THE GDB IS FULLY WRITABLE, PROVEN IN GAME.** Both remaining unknowns fell on 2026-08-11,
+so every block is now regenerated rather than preserved verbatim, and the game reads the
+result: `GDB: BOTH OK  NameTag=F3ProofLabel  mult=7.5` is a **record and a label string that
+never shipped with Fable III**, resolved live by the engine's own lookups. New records, new
+names, new label strings, and edits to existing records of any size all work end to end.
+Delivery is `tools/bnk-replace.py`. -> [[Formats]]
+
 ## State: code runs in the game
 
 **Arbitrary Lua executes in retail Fable III, live-editable, no restart.** The loop is: edit
@@ -81,6 +88,10 @@ by turning the hero's dog into a collie with the string `n_rtphaa`.
 ## Next actions
 
 - **Package the child-growth mod for release.** It works; it has never been shipped by anyone.
+- **Build something with the writable GDB.** New weapons, new character records and new
+  display strings are all reachable now. The only gap is BABEL: a new label is a valid
+  localisation *id*, so `INV_ITEM_*_NAME`-style fields need BABEL decoded before real text
+  appears behind them. Asset paths and internal tags need nothing.
 - **Grown children do not walk home.** `SetHomeForMarriageOrAdoption` registers the property
   but does not run move-in behaviour. Cosmetic, unsolved.
 - **The clockwork dog record is unidentified** (a DLC record with no name we can crack). With
@@ -101,7 +112,7 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 
 | Target | State | What it unlocks |
 |---|---|---|
-| ~~**GDB label index**~~ | **DECODED** 2026-08-11. 65536-slot open-addressing table on `hash & 0xFFFF`, linear probing, inserted in file order, serialized occupied-slots-only. Regenerated on every write; **147/147 shipped GDBs round trip byte for byte**. `add_label` works | done - new label strings, so new string field values |
+| ~~**GDB label index**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. 65536-slot open-addressing table on `hash & 0xFFFF`, linear probing, inserted in file order, serialized occupied-slots-only. Regenerated on every write; **147/147 shipped GDBs round trip byte for byte**, and the engine resolves a label we invented | done - new label strings, so new string field values |
 | **TEX textures** | "likely DXTn, compression unknown, swizzling possible". Community artifact is a filesize spreadsheet, not a codec | custom textures - retextures, new item art |
 | **MDL models** | community Blender **importer** only; its authors planned export and never shipped it | custom meshes: furniture, weapons, dog breeds, map geometry |
 | **BABEL text tables** | undecoded. A new label is a valid localisation **id**; the text behind it lives here | putting real display text behind a new name/description id |

@@ -423,9 +423,33 @@ python tools/bnk-replace.py apply  "C:\Games\Fable 3\data\levels.bnk" "globals\g
 python tools/bnk-replace.py revert "C:\Games\Fable 3\data\levels.bnk"
 ```
 
-**[VERIFIED]** 2026-08-11: the game launches and plays with an entry relocated to the end of
-a 2.1 GB payload and its index rewritten, so the delivery route works. It needs the index
-chunk framing above to be right; the first attempt crashed on launch.
+### Proven in game  **[VERIFIED]** 2026-08-11
+
+A record and a label that never shipped with Fable III, read back live through the engine's
+own lookups:
+
+```
+GDB: BOTH OK  NameTag=F3ProofLabel  mult=7.5
+```
+
+`ExpressionThumbsUp` was cloned to `F3ProofRecord`, its `NameTag` pointed at a **new label**
+`F3ProofLabel`, and a float changed. In game, `GDB.RecordExists("F3ProofRecord")` is true,
+`GetString("NameTag")` returns the new string, and `GetFloat` returns the new value. So the
+label index decode is right at the level that matters: the engine resolved a hash we
+computed and inserted into a table we regenerated.
+
+Editing an existing record works too - the control for this test set
+`ExpressionThumbsUp.IndirectEffectMultiplier` to 3.25 against a stock 0.2 and read it back.
+That already exceeds `augment-patch.py` and `weapon-unlock.py`, which can only write
+same-size dwords in place.
+
+The delivery route is sound: the game launches and plays with `globals.gdb` relocated to the
+end of a 2.1 GB payload and the bank index rewritten. It needs the index chunk framing above
+to be exactly right; the first attempt black-screened and crashed on launch.
+
+Four separate things had to be true, and each was found by a failed test in this order:
+correct index chunk framing, all three DLC copies patched, object hashes inserted in order,
+name map inserted in order.
 
 Relocating an entry leaves the old bytes orphaned in the payload, which is why
 `weapon-unlock.py` no longer hardcodes its offset - it reads the entry position out of the
