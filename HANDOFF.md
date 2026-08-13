@@ -42,6 +42,11 @@ relink calls, and the two crash-causing argument shapes are in [[Child System]].
 **Weapon evolution is fully reverse engineered and cheatable** - see [[Weapon Augments]].
 `tools/weapon-unlock.py` did a one-time GDB pass so any weapon completes from the menu.
 
+**NEW CONTENT WORKS END TO END, PROVEN IN GAME.** `The Sovereign` is an original weapon -
+an item record, a component graph, a display name and a description that never shipped with
+Fable III - built by `tools/build-dragonstomper.sh` and rendered by the game. The GDB and
+BABEL are both fully writable, and they join on FNV-1 of the id string. -> [[Formats]]
+
 **THE GDB IS FULLY WRITABLE, PROVEN IN GAME.** Both remaining unknowns fell on 2026-08-11,
 so every block is now regenerated rather than preserved verbatim, and the game reads the
 result: `GDB: BOTH OK  NameTag=F3ProofLabel  mult=7.5` is a **record and a label string that
@@ -88,10 +93,13 @@ by turning the hero's dog into a collie with the string `n_rtphaa`.
 ## Next actions
 
 - **Package the child-growth mod for release.** It works; it has never been shipped by anyone.
-- **Build something with the writable GDB.** New weapons, new character records and new
-  display strings are all reachable now. The only gap is BABEL: a new label is a valid
-  localisation *id*, so `INV_ITEM_*_NAME`-style fields need BABEL decoded before real text
-  appears behind them. Asset paths and internal tags need nothing.
+- **Build something real now that content works.** New weapons, items, character records and
+  their names/descriptions are all reachable. `tools/build-dragonstomper.sh` is the working
+  template for an item.
+- **GDB templates are the nearest wall.** A clone gets its source's field set and no more, so
+  a record cannot gain a field the source lacks - that is why the Dragonstomper's firearm
+  stats had to be overridden on a cloned *base* record. Writing new templates is the next
+  feature in `crates/gdb`, not a new format.
 - **Grown children do not walk home.** `SetHomeForMarriageOrAdoption` registers the property
   but does not run move-in behaviour. Cosmetic, unsolved.
 - **The clockwork dog record is unidentified** (a DLC record with no name we can crack). With
@@ -115,7 +123,7 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 | ~~**GDB label index**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. 65536-slot open-addressing table on `hash & 0xFFFF`, linear probing, inserted in file order, serialized occupied-slots-only. Regenerated on every write; **147/147 shipped GDBs round trip byte for byte**, and the engine resolves a label we invented | done - new label strings, so new string field values |
 | **TEX textures** | "likely DXTn, compression unknown, swizzling possible". Community artifact is a filesize spreadsheet, not a codec | custom textures - retextures, new item art |
 | **MDL models** | community Blender **importer** only; its authors planned export and never shipped it | custom meshes: furniture, weapons, dog breeds, map geometry |
-| **BABEL text tables** | undecoded. A new label is a valid localisation **id**; the text behind it lives here | putting real display text behind a new name/description id |
+| ~~**BABEL text tables**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. Big-endian; records keyed by **FNV-1 of the id, the same hash the GDB uses for labels**; 16 KB zlib chunks whose streams omit the trailing checksum; text is UTF-16 **BE**. `tools/babel.py`; **37/37 files round trip byte for byte** | done - new records can carry new words |
 | **Save format** | Timeslip's editor decodes herosave / mainsave / checksums / XUIDs / hero x,y,z | persistent state edits the other layers cannot reach |
 | ~~**Per-object u16 array**~~ | **DECODED** 2026-08-11. A random-access accelerator for the variable-length record array: `word[i] = startOfRecord(i) - ((i * stride) >> 10)` with `stride = 1024 * blockWords / count`, all in u32 words. Exact on **147 files, 2,069,537 objects**. Regenerated on write | done - and it was silently corrupting clones |
 
@@ -128,6 +136,8 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 | `crates/gdb` | read **and write** GDB. `gdbdump`, `fnvpre`, `gdbwrite` (`--verify-all` round-trips every GDB in a bank; `--clone` adds records, `--set Field="text"` adds labels) |
 | `tools/bnk-replace.py` | swap one entry's payload inside a bank without repacking it, and `revert` exactly. How a size-changed `globals.gdb` reaches the game |
 | `tools/bnk-extract.py` | Python BNK reader, for research where a REPL beats a rebuild |
+| `tools/babel.py` | read/edit/add BABEL text. `verify` round-trips 37/37 files byte for byte |
+| `tools/build-dragonstomper.sh` | builds **The Sovereign**, an original weapon, end to end. The template for any new item |
 | `tools/api-index.py` | index all 5,401 API calls in the corpus, with a shipped call site each |
 | `crates/bridge` | 32-bit proxy DLL (dinput8 or d3d9 host): real keyboard -> the F1 menu. -> [[Bridge DLL]] |
 | `tools/record-chain.py` | creature type -> character records, with ready-to-use aliases |

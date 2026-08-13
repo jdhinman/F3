@@ -467,6 +467,76 @@ than it sounds - the name map stores `(FNV-1 of the name, object hash)` and neve
 string, so **naming a new object needs no label at all**. That is the same property that
 makes 8-character aliases work. → [[Child System]]
 
+## BABEL, the text tables  **[VERIFIED]** 2026-08-11
+
+`book.babel` is the localisation store: every display name, description and subtitle. It was
+the last format gating new *content*, and **nothing in the scene had it** - the mirrored
+forums carry no `.babel` documentation and neither does the wider web. `tools/babel.py`
+reads, edits and adds entries.
+
+**Everything is big-endian**, like BNK and unlike GDB.
+
+```
+@0    u32   0x5B010000                     version
+@4    u32   record count
+@8          records: u32 key, u32 chunkId, u32 byteOffset    sorted by key
+      u32   chunk count
+            per chunk: u32 chunkId, u32 compressedLen, u32 uncompressedLen, bytes
+      u32   16384                          chunk size
+      u32   second index count
+            second index: u32 key, u32 chunkId, u24 offset   (11 bytes, sorted by key)
+      ...   two further regions, NOT decoded, preserved verbatim
+            trailing: (u32 key, u32 charCount, UTF-16BE) speaker tags, sorted by key
+```
+
+**The key is FNV-1 of the id string - the same hash `crates/gdb` computes for labels.** That
+is the join between the two formats: a GDB string field holds
+`INV_ITEM_WEAPON_DRAGONSTOMPER_NAME`, and the same hash indexes the text here. Knowing that
+is most of why this took an afternoon rather than a week: the GDB says exactly what to look
+for, and confirming it was one `find()`.
+
+A chunk inflates to a run of `u32 charCount` + that many UTF-16BE units, NUL included in the
+count. A record's `byteOffset` is a byte offset into the **decompressed** chunk.
+
+> [!warning] Two things that make this look like a custom codec when it is not
+> **The zlib streams carry no trailing checksum inside `compressedLen`.**
+> `zlib.decompress` calls them truncated and every chunk appears to be a bespoke bitstream;
+> `decompressobj().decompress()` on exactly `compressedLen` bytes returns exactly
+> `uncompressedLen`. That one detail is most of the format.
+>
+> **The text is UTF-16 BIG endian.** Searching the whole 13 GB installation for
+> `Dragonstomper` in ASCII and UTF-16LE returns nothing at all, which reads as "the text is
+> compressed and unreachable" rather than "you are searching for the wrong bytes".
+
+Chunks are kept compressed and only recompressed when their contents change, so an
+unmodified rebuild is byte-identical: **37 of 37 BABEL files in the installation**, loose
+and in-bank, across 8 languages.
+
+```bash
+python tools/babel.py verify "C:\Games\Fable 3\data\language\en-uk\text\book.babel"
+python tools/babel.py get    "...\book.babel" INV_ITEM_WEAPON_DRAGONSTOMPER_NAME
+python tools/babel.py add    "...\book.babel" MY_ID "My text" out.babel
+```
+
+### Proven in game
+
+`tools/build-dragonstomper.sh` defines a weapon with **its own ids on both sides** - new GDB
+labels `F3MOD_DRAGONSTOMPER_NAME` / `_DESC`, new BABEL entries under the same FNV-1 hashes -
+and the game renders them:
+
+> **The Sovereign** - *Forged from a Marksman that someone had clearly stopped respecting. It
+> does not kick, it does not miss, and it does not leave much to bury.*
+
+Two things that worked but are worth knowing are inference, not proof: the new entry goes in
+a **new chunk with an invented chunk id** (chunk ids are not sorted, so the engine appears to
+map them at load), and only the **base loose `en-uk` file** was patched, on the reasoning
+that the DLC copies must merge rather than shadow - 10k DLC strings cannot be replacing 68k
+base ones. Both held.
+
+Still undecoded and preserved verbatim: the 11-byte second index over the same keys, and two
+regions between it and the speaker-tag block. Neither is needed to read or write display
+text; they are most likely dialogue and audio linkage.
+
 ## The container story
 
 **Everything lives in a Virtual File System.** `.bnk` files are *"compressed archives. Part of the
