@@ -121,8 +121,8 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 | Target | State | What it unlocks |
 |---|---|---|
 | ~~**GDB label index**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. 65536-slot open-addressing table on `hash & 0xFFFF`, linear probing, inserted in file order, serialized occupied-slots-only. Regenerated on every write; **147/147 shipped GDBs round trip byte for byte**, and the engine resolves a label we invented | done - new label strings, so new string field values |
-| **TEX textures** | "likely DXTn, compression unknown, swizzling possible". Community artifact is a filesize spreadsheet, not a codec | custom textures - retextures, new item art |
-| **MDL models** | community Blender **importer** only; its authors planned export and never shipped it | custom meshes: furniture, weapons, dog breeds, map geometry |
+| ~~**TEX textures**~~ | **DECODED** 2026-08-11. The header is not in the file - it is a 92-byte record in a sibling `x_texture_headers.bnk`. 35 = DXT1, 39 = DXT5, flag 2 = cubemap, **no swizzling**. Every texture's payload size predicted from its header: **9,561 of 9,561**. `tools/tex.py` exports and re-encodes | done - retextures and new item art. NOT yet tested in game |
+| **MDL models** | **container and header decoded**: `MeshFile` magic + bounds in `globals_model_headers.bnk`, zlib-chunked payload, and a (hash, index) block directory matching `35-mdl.hsl`. Texture paths and material names are plain strings. **Vertex/index extraction is not done** - that is the remaining work | custom meshes: furniture, weapons, dog breeds, map geometry |
 | ~~**BABEL text tables**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. Big-endian; records keyed by **FNV-1 of the id, the same hash the GDB uses for labels**; 16 KB zlib chunks whose streams omit the trailing checksum; text is UTF-16 **BE**. `tools/babel.py`; **37/37 files round trip byte for byte** | done - new records can carry new words |
 | **Save format** | Timeslip's editor decodes herosave / mainsave / checksums / XUIDs / hero x,y,z | persistent state edits the other layers cannot reach |
 | ~~**Per-object u16 array**~~ | **DECODED** 2026-08-11. A random-access accelerator for the variable-length record array: `word[i] = startOfRecord(i) - ((i * stride) >> 10)` with `stride = 1024 * blockWords / count`, all in u32 words. Exact on **147 files, 2,069,537 objects**. Regenerated on write | done - and it was silently corrupting clones |
@@ -137,6 +137,7 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 | `tools/bnk-replace.py` | swap one entry's payload inside a bank without repacking it, and `revert` exactly. How a size-changed `globals.gdb` reaches the game |
 | `tools/bnk-extract.py` | Python BNK reader, for research where a REPL beats a rebuild |
 | `tools/babel.py` | read/edit/add BABEL text. `verify` round-trips 37/37 files byte for byte |
+| `tools/tex.py` | list/export/import textures. `verify` predicts 9,561/9,561 payload sizes |
 | `tools/build-dragonstomper.sh` | builds **The Sovereign**, an original weapon, end to end. The template for any new item |
 | `tools/api-index.py` | index all 5,401 API calls in the corpus, with a shipped call site each |
 | `crates/bridge` | 32-bit proxy DLL (dinput8 or d3d9 host): real keyboard -> the F1 menu. -> [[Bridge DLL]] |

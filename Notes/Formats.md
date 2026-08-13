@@ -564,6 +564,60 @@ appends to one shared file. → [[Open Questions]]
 | `BGF`, `BSG` | GUI art, third-party |
 | `FAC` | GUI art, lists of UVs. **plain text** |
 
+## TEX, decoded  **[VERIFIED]** 2026-08-11
+
+**The header was never in the file.** A `.tex` is raw DXT blocks from byte zero, which is why
+every attempt to parse one finds nothing and the community settled on "compression unknown,
+swizzling possible".
+
+Every `x_textures.bnk` has a sibling **`x_texture_headers.bnk`** holding a 92-byte
+little-endian record per texture:
+
+```
+@0  u32 0xABCBBBF3 magic   @20 u32 width      @36 u32 0
+@4  u32 4 version          @24 u32 height     @40 u32 mip count
+@8  u32 data size          @28 u32 format     @44 u32 92 header size
+@12 u32 flags (2=cubemap)  @32 u32 13
+@16 u32 usage
+```
+
+`format` 35 = **DXT1**, 39 = **DXT5**, 2 and 4 = uncompressed 32-bit. Cubemaps store six
+faces, so six times the size.
+
+**Proof: the payload size of every texture in the game is predicted from its header alone,
+9,561 of 9,561**, mip chains and cubemaps included.
+
+**There is no swizzling and no byte swapping.** Real DXT1 blocks are 90-100% `c0 > c1` as
+stored; byte-swapping drops that to 40-70%, which is what getting it wrong looks like.
+
+The reason nobody found the header bank is probably that **the texture bank indexes are
+nested inside `levels.bnk`** while their payloads sit loose on disk as `.bnk.dat` with no
+`.bnk` beside them.
+
+`tools/tex.py` lists, exports to PNG (Pillow's BCn decoder), and re-encodes PNG back to
+`.tex` plus its header.
+
+## MDL, opened but not decoded  **[VERIFIED as far as it goes]** 2026-08-11
+
+Same split as textures: `globals_models.bnk` + `globals_model_headers.bnk`, indexes nested in
+`levels.bnk`, payload loose at `data\globals\globals_models.bnk.dat` (345 MB). 6,923 model
+headers, 4,782 model payloads.
+
+- **Header, 115 bytes**, starts with the ASCII magic **`MeshFile`**, then `47`, `115-16`, a
+  u32 id, two zeros, and a run of floats that reads as a bounding box (symmetric min/max
+  pairs on symmetric props).
+- **Payload is zlib**, in the standard chunked form, 32,768-byte slots. The dog collie
+  decompresses 254,821 -> 439,397 bytes.
+- Decompressed, it opens with a u32 id then a table of **(u32 hash, u32 sequential index)**
+  pairs - a block directory - which matches the `Block { dword Hash; dword BlockSize; }`
+  shape in `35-mdl.hsl`. Texture paths and material names (`Body1`) are **plain strings**
+  inside it.
+
+**What is NOT done: vertex and index extraction.** `mdl.hsl` describes the vertex as
+halffloat xyz, 4 bone indices, 4 weights summing to 255, halffloat UV, which is a real head
+start, but nothing here has been checked against actual geometry yet. That is the next job,
+and it is a proper one - skinning, LODs and materials on top of the vertex buffers.
+
 Tooling, **corrected 2026-08-11 by looking rather than repeating the forum post**: the only
 model/texture artifact actually captured is **`35-mdl.hsl`**, a hex-editor template - and it is
 more useful than "a template" suggests, describing `AnimatedVertex` (halffloat xyz, 4 bone
