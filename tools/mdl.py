@@ -221,13 +221,22 @@ def read_skinned(d, sm):
 
 
 def read_geometry(d, sm):
-    """Positions are float16 xyz; the fourth f16 is not position. UVs follow."""
+    """Static vertex, two float16 streams, both confirmed component by component.
+
+    Stream A (6 x f16): `x, y, z, s, u, v`. `s` runs 0.58..1.0 and is per-vertex shading of
+    some kind - the template guessed illumination. `u, v` measure 0..1.
+    Stream B (8 x f16): `nx, ny, nz` are **unit vectors** (|n| = 1.0000 measured), then a
+    zero, then 8 bytes that are not float16 at all (30% of them decode as NaN) and are still
+    unidentified - most likely a packed tangent.
+    """
     import numpy as np
-    v = np.frombuffer(d, dtype="<f2", count=sm["nVerts"] * 6, offset=sm["v0"]).reshape(-1, 6)
-    pos = v[:, 0:3].astype("f4")
-    uv = v[:, 4:6].astype("f4")
+    a = np.frombuffer(d, dtype="<f2", count=sm["nVerts"] * 6, offset=sm["v0"]).reshape(-1, 6)
+    b = np.frombuffer(d, dtype="<f2", count=sm["nVerts"] * 8, offset=sm["v1"]).reshape(-1, 8)
+    pos = a[:, 0:3].astype("f4")
+    uv = a[:, 4:6].astype("f4")
+    nrm = b[:, 0:3].astype("f4")
     tris = np.frombuffer(d, dtype="<u2", count=sm["nTris"] * 3, offset=sm["tri0"]).reshape(-1, 3)
-    return pos, uv, tris
+    return pos, uv, tris, nrm
 
 
 def write_obj(path, meshes):
@@ -298,8 +307,14 @@ def main():
         return 0
 
     if a[0] == "obj":
-        meshes = [read_geometry(d, sm) for sm in find_static_submeshes(d, h)]
+        meshes = [read_geometry(d, sm)[:3] for sm in find_static_submeshes(d, h)]
         meshes += [read_skinned(d, sm)[:3] for sm in find_animated_submeshes(d, h)]
+        # Never emit a submesh whose triangles point outside its vertex buffer. Roughly 2%
+        # of skinned submeshes land there, and silently writing them produces garbage.
+        bad = [i for i, m in enumerate(meshes) if len(m[2]) and m[2].max() >= len(m[0])]
+        for i in reversed(bad):
+            print(f"   skipping submesh {i}: triangle index out of range", file=sys.stderr)
+            meshes.pop(i)
         if not meshes:
             print(f"{e['path']}: no submeshes found "
                   f"(nSubmeshes={h['nSubmeshes']}, nSkel={h['nSkel']})", file=sys.stderr)

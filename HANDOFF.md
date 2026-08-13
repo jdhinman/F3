@@ -122,7 +122,7 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 |---|---|---|
 | ~~**GDB label index**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. 65536-slot open-addressing table on `hash & 0xFFFF`, linear probing, inserted in file order, serialized occupied-slots-only. Regenerated on every write; **147/147 shipped GDBs round trip byte for byte**, and the engine resolves a label we invented | done - new label strings, so new string field values |
 | ~~**TEX textures**~~ | **DECODED** 2026-08-11. The header is not in the file - it is a 92-byte record in a sibling `x_texture_headers.bnk`. 35 = DXT1, 39 = DXT5, flag 2 = cubemap, **no swizzling**. Every texture's payload size predicted from its header: **9,561 of 9,561**. `tools/tex.py` exports and re-encodes | done - retextures and new item art. NOT yet tested in game |
-| ~~**MDL models**~~ | **READING DECODED** 2026-08-13. Header, skeleton, static AND skinned geometry. **4,653 of 4,740 models fully located, 12 partial**. `tools/mdl.py` exports OBJ. Open: the material chain (submeshes are found by invariant, not walked to) and **writing MDL at all** | reading any mesh; authoring still needs a writer |
+| ~~**MDL models**~~ | **READING DECODED AND INDEPENDENTLY VERIFIED** 2026-08-13. Positions reproduce the model header's own bounding box on **554/555** models to within 2%; closed props are exactly watertight; UVs measure 0..1 and normals are unit vectors. Static triangle indices 1,228/1,228 valid; **skinned 2% invalid, now detected and skipped**. Open: the material chain, the A3 and B4-B7 vertex components, and **writing MDL at all** | reading any mesh; authoring still needs a writer |
 | ~~**BABEL text tables**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. Big-endian; records keyed by **FNV-1 of the id, the same hash the GDB uses for labels**; 16 KB zlib chunks whose streams omit the trailing checksum; text is UTF-16 **BE**. `tools/babel.py`; **37/37 files round trip byte for byte** | done - new records can carry new words |
 | **Save format** | Timeslip's editor decodes herosave / mainsave / checksums / XUIDs / hero x,y,z. The `.save` files inside banks are **plain XML** and are a different thing | persistent state edits the other layers cannot reach |
 | ~~**GHF heightfields**~~ | **DECODED** 2026-08-13. Plain **gzip**; inflates ~480x to `f32 scaleX/scaleY, u32 w, u32 h`, then 14 bytes per cell. Grids 385x385 up to 673x769 | terrain shape is readable |
@@ -144,6 +144,7 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 | `tools/tex-patch.py` | replace a texture in place, same size so no index moves. Exact revert |
 | `tools/mdl.py` | read MDL headers, skeletons, static + skinned geometry, export OBJ. 4,653 models |
 | `tools/formats.py` | classify every extension in every bank; crack GHF, ADB and xWMA audio |
+| `tools/mdl-validate.py` | check decoded geometry against the header bbox, manifoldness and UV range |
 | `tools/build-dragonstomper.sh` | builds **The Sovereign**, an original weapon, end to end. The template for any new item |
 | `tools/api-index.py` | index all 5,401 API calls in the corpus, with a shipped call site each |
 | `crates/bridge` | 32-bit proxy DLL (dinput8 or d3d9 host): real keyboard -> the F1 menu. -> [[Bridge DLL]] |

@@ -641,6 +641,46 @@ an occlusion wall is.
 **Zero models were partially located** - where static submeshes exist, all of them are found.
 Exported crates, swords and tables render as recognisable objects.
 
+### Verified against evidence the decoder never sees  **[VERIFIED]** 2026-08-13
+
+Renders looking plausible is not proof, and the first previews looked soft. They were soft
+because the preview renderer used a painter's sort instead of a z-buffer; with a real depth
+buffer the same data draws clean. The decode was checked properly instead:
+
+**The oracle: `globals_model_headers.bnk` carries a bounding sphere and a bbox per model.**
+The geometry decoder never reads it, so it is independent evidence.
+
+| Test | Result |
+|---|---|
+| decoded vertices inside the header bbox | **555 / 555** |
+| ...and **filling** it to within 2% | **554 / 555** (the miss is a morph target, which should differ) |
+| static submeshes with all triangle indices in range | **1,228 / 1,228** |
+| skinned submeshes with all triangle indices in range | 82 / 84 - **2% are wrong** |
+| welded edge manifoldness, closed props | `esa_crate_ind_02` **1.000**, `esa_f_table_worn` **1.000**, 0 boundary edges |
+
+Filling the authored bounding box to 2% is the strong result: a wrong stride, a wrong
+component order or wrong units would land inside the box or outside it, but would not
+reproduce its exact extent on 554 models.
+
+Low average manifoldness across the library (0.71) is **not** a decode error - it is real
+open geometry. Closed props come out exactly watertight; `occlusionwall` (a 4-triangle panel)
+and `sword_blade_base_small` (a segment that mates with a hilt) are open because they are.
+
+**Vertex components, confirmed one at a time** on static meshes:
+
+| | |
+|---|---|
+| A0-A2 | position, float16 |
+| A3 | 0.58 .. 1.00 per-vertex scalar, **unidentified** (the template guessed illumination) |
+| A4-A5 | **UV**, measured 0.00 .. 1.00 |
+| B0-B2 | **normal**, unit vectors, measured \|n\| = 1.0000 |
+| B3 | always zero |
+| B4-B7 | 8 bytes that are **not float16** (30% decode as NaN), **unidentified**, probably a packed tangent |
+
+`tools/mdl.py` now exports normals and **refuses to emit any submesh whose triangles point
+outside its vertex buffer**, so the 2% skinned failures are reported rather than written out
+as garbage. `tools/mdl-validate.py` re-runs all of this.
+
 > [!warning] The submesh start is FOUND, not walked to
 > The material blocks between the header and the first submesh are **not decoded**.
 > `mdl.hsl` describes them as a type-switched chain of hash+size blocks and its sizes do not
