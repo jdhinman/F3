@@ -597,26 +597,60 @@ nested inside `levels.bnk`** while their payloads sit loose on disk as `.bnk.dat
 `tools/tex.py` lists, exports to PNG (Pillow's BCn decoder), and re-encodes PNG back to
 `.tex` plus its header.
 
-## MDL, opened but not decoded  **[VERIFIED as far as it goes]** 2026-08-11
+## MDL, static geometry decoded  **[VERIFIED]** 2026-08-13
 
-Same split as textures: `globals_models.bnk` + `globals_model_headers.bnk`, indexes nested in
-`levels.bnk`, payload loose at `data\globals\globals_models.bnk.dat` (345 MB). 6,923 model
-headers, 4,782 model payloads.
+Same two-bank split as textures: `globals_models.bnk` (index, nested inside `levels.bnk`)
+plus `globals_models.bnk.dat` (payload, loose, 345 MB). Payloads are the standard chunked
+zlib. 6,923 model headers, 4,782 model payloads.
 
-- **Header, 115 bytes**, starts with the ASCII magic **`MeshFile`**, then `47`, `115-16`, a
-  u32 id, two zeros, and a run of floats that reads as a bounding box (symmetric min/max
-  pairs on symmetric props).
-- **Payload is zlib**, in the standard chunked form, 32,768-byte slots. The dog collie
-  decompresses 254,821 -> 439,397 bytes.
-- Decompressed, it opens with a u32 id then a table of **(u32 hash, u32 sequential index)**
-  pairs - a block directory - which matches the `Block { dword Hash; dword BlockSize; }`
-  shape in `35-mdl.hsl`. Texture paths and material names (`Body1`) are **plain strings**
-  inside it.
+Read against **BlackDemon's `35-mdl.hsl`**, the only prior art that exists. Every field it
+names is confirmed by the `tVerts == nTris * 3` invariant holding on real files.
 
-**What is NOT done: vertex and index extraction.** `mdl.hsl` describes the vertex as
-halffloat xyz, 4 bone indices, 4 weights summing to 255, halffloat UV, which is a real head
-start, but nothing here has been checked against actual geometry yet. That is the next job,
-and it is a proper one - skinning, LODs and materials on top of the vertex buffers.
+**Header** (little-endian, after decompression):
+
+```
+u32   FNV hash            u32   nBones2, then nBones2 * 11 floats (bind transforms)
+8     zero padding        10    floats  root origin
+u8    nFlags              u32   nMaterials, nSubmeshes, nSkelSubmeshes,
+u32   flags[nFlags][2]          nPlanes, nUnk, nWTF
+u32   nBones1             u8    pad
+u32   bones[nBones1][2]   u32   nNodes, then nNodes NUL-terminated strings
+        (name hash, parent index; the root's parent is 0xFFFFFFFF)
+```
+
+The dog collie reads 92 bones with a `0xFFFFFFFF` root, 2 materials and 2 skinned submeshes,
+which is what a quadruped should look like.
+
+**Static submesh:** name zstring, u8, meshId, materialId, `nTris`, `tVerts`, `nVerts`, 10
+origin floats, `nElements` then 37 bytes each, then **two float16 vertex streams**
+(`[nVerts][6]` = x,y,z,?,u,v then `[nVerts][8]`), then `u16 tris[nTris][3]`, then 4 bytes pad.
+
+**Positions are float16.** `occlusionwall.mdl` comes out as 8 vertices at x = +/-10,
+y = +/-0.0709, z = 0..20 - a 20x20 panel 0.14 thick, in clean round numbers, which is what
+an occlusion wall is.
+
+### Coverage
+
+| | Models |
+|---|---|
+| **static, every submesh located** | **3,588** |
+| skinned only, `AnimatedMesh` not yet read | 1,077 |
+| no static submeshes | 75 |
+| header failed to parse | 42 |
+
+**Zero models were partially located** - where static submeshes exist, all of them are found.
+Exported crates, swords and tables render as recognisable objects.
+
+> [!warning] The submesh start is FOUND, not walked to
+> The material blocks between the header and the first submesh are **not decoded**.
+> `mdl.hsl` describes them as a type-switched chain of hash+size blocks and its sizes do not
+> line up on these files. So `tools/mdl.py` scans for a position where `tVerts == nTris * 3`
+> and every declared buffer fits inside the file. It is self-validating and it works on 3,588
+> models, but it is a heuristic and is not a substitute for parsing the material chain.
+
+**Still open:** the material chain, `AnimatedMesh` (all characters and creatures), the second
+float16 vertex stream (normals or tangents), `Plane` meshes, LODs, and writing MDL at all.
+Reading static geometry is not the same as being able to author a mesh the game will load.
 
 Tooling, **corrected 2026-08-11 by looking rather than repeating the forum post**: the only
 model/texture artifact actually captured is **`35-mdl.hsl`**, a hex-editor template - and it is
