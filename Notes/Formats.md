@@ -681,6 +681,62 @@ and `sword_blade_base_small` (a segment that mates with a hilt) are open because
 outside its vertex buffer**, so the 2% skinned failures are reported rather than written out
 as garbage. `tools/mdl-validate.py` re-runs all of this.
 
+### The invariant scan produces FALSE POSITIVES, and they look plausible  **[VERIFIED]** 2026-08-13
+
+Found by someone looking at a render and saying the dog's face was wrong. It was.
+
+`tVerts == nTris * 3` is necessary but **not sufficient**. It fires on positions inside the
+vertex data, and a false positive still reads the model's own numbers, so it produces
+geometry that sits roughly on the real surface and passes a glance. The collie's first
+skinned submesh was one:
+
+| | false positive | the real submesh |
+|---|---|---|
+| non-manifold edges | **213** | 0 |
+| median edge length | 5.9% of the diagonal | 0.8% |
+| UV range | **-0.51 .. 4.12** | 0.002 .. 0.998 |
+
+Worse, **the false positive hid the real one**: the true second submesh is 2,151 vertices,
+and the scan never reached it because it stopped at the bogus 606-vertex hit.
+
+`_plausible()` now gates every candidate on UV range and on the triangle list referencing
+most of the vertex buffer, and keeps scanning when one fails. Characters get a tight UV gate
+because they never tile; environment props get a loose one because they tile constantly.
+Measured over 874 models:
+
+| | no gate | tight gate | tuned gate |
+|---|---|---|---|
+| every submesh located | ~844 | 451 | **817** |
+| partial | 12 | 393 | **27** |
+| submeshes with any non-manifold edge | 13% | - | **7%** |
+
+That is a real trade and not a clean win: the gate rejects some true positives too. **7% of
+submeshes still contain non-manifold edges**, so some false positives survive.
+
+### What "the face looks wrong" actually was
+
+Connected-component analysis settled it. The collie's main skinned submesh is exactly five
+parts:
+
+| part | verts | closed | extent |
+|---|---|---|---|
+| body | 2,633 | **yes** | 0.32 x 1.57 x 1.04 |
+| ear | 288 | no | 0.08 x 0.11 x 0.04 |
+| ear | 278 | no | 0.10 x 0.13 x 0.04 |
+| **eyeball** | 79 | **yes** | 0.031 x 0.032 x 0.031 |
+| **eyeball** | 79 | **yes** | 0.031 x 0.032 x 0.031 |
+
+Two identical closed 3.1 cm spheres are the eyes, modelled as separate balls in the sockets,
+which is how character eyes are always built. The LOD carries the same five parts. Nothing
+was scrambled - untextured double-sided flat shading just makes intersecting eyeballs look
+like damage.
+
+**Lesson for previews: a bad preview and a bad decode look the same.** The original smeared
+renders were a painter's sort with no z-buffer; the "wonky barrel rim" was backface culling
+on an open-topped barrel. Neither was a decode error. But the dog's face was, so the only way
+to tell is to measure - manifoldness, UV range, edge length, component structure - rather
+than to look.
+
 > [!warning] The submesh start is FOUND, not walked to
 > The material blocks between the header and the first submesh are **not decoded**.
 > `mdl.hsl` describes them as a type-switched chain of hash+size blocks and its sizes do not

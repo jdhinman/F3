@@ -134,6 +134,8 @@ def find_static_submeshes(d, h):
             end = tri0 + 6 * n_tris
             if end > len(d):
                 continue
+            if not _plausible(d, v0, n_verts, 12, 8, tri0, n_tris, False):
+                continue
             found = dict(nTris=n_tris, nVerts=n_verts, v0=v0, v1=v1, tri0=tri0, end=end)
             break
         if not found:
@@ -141,6 +143,36 @@ def find_static_submeshes(d, h):
         out.append(found)
         p = found["end"]
     return out
+
+
+def _plausible(d, v0, n_verts, stride, uv_off, tri0, n_tris, skinned):
+    """Reject a candidate submesh that decodes into nonsense.
+
+    The `tVerts == nTris * 3` invariant is necessary but NOT sufficient - it fires on false
+    positives inside the vertex data, and a false positive still produces geometry that looks
+    roughly like the model because it is reading the model's own numbers at the wrong offset.
+    The collie's first skinned submesh was exactly that: 213 non-manifold edges, edges seven
+    times longer than its sibling, and UVs running -0.51 to 4.12.
+
+    Two cheap gates catch it. UVs must be near 0..1, and triangle indices must reach most of
+    the vertex buffer - a wrong start tends to index only part of it.
+    """
+    import numpy as np
+    n = min(n_verts, 512)
+    raw = np.frombuffer(d, dtype=np.uint8, count=stride * n, offset=v0).reshape(n, stride)
+    uv = raw[:, uv_off:uv_off + 4].copy().view("<f2").astype("f4")
+    if not np.isfinite(uv).all():
+        return False
+    # Characters do not tile their textures, so their UVs sit in 0..1 and the gate can be
+    # tight. Environment props tile constantly, so theirs must be allowed to run large.
+    lo, hi = (-0.6, 3.0) if skinned else (-16.0, 64.0)
+    if uv.min() < lo or np.percentile(np.abs(uv), 98) > hi:
+        return False
+    tris = np.frombuffer(d, dtype="<u2", count=n_tris * 3, offset=tri0)
+    if tris.max() >= n_verts:
+        return False
+    # a correct submesh references most of the vertex buffer it declares
+    return len(np.unique(tris)) >= 0.35 * n_verts
 
 
 def find_animated_submeshes(d, h):
@@ -196,6 +228,8 @@ def find_animated_submeshes(d, h):
                 if sum(w) not in (0, 255):
                     okw = False; break
             if not okw:
+                continue
+            if not _plausible(d, v0, n_verts, 20, 16, tri0, n_tris, True):
                 continue
             found = dict(nTris=n_tris, nVerts=n_verts, v0=v0, tri0=tri0, end=end,
                          nElem=n_elem, skinned=True)
