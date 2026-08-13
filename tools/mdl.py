@@ -143,6 +143,83 @@ def find_static_submeshes(d, h):
     return out
 
 
+def find_animated_submeshes(d, h):
+    """Skinned submeshes, located by the same invariant.
+
+    An AnimatedMesh has no name string and its vertex record is 20 bytes rather than a pair
+    of streams: 4 float16 (xyz plus one more), 4 bone indices, 4 bone weights summing to 255,
+    2 float16 UV. A second buffer of 16 bytes per vertex follows, most likely normals or
+    tangents, and is skipped.
+    """
+    out = []
+    p = h["after"]
+    for _ in range(h["nSkel"]):
+        found = None
+        for q in range(p, len(d) - 40):
+            n_tris, t_verts, n_verts = struct.unpack_from("<3I", d, q)
+            if t_verts != n_tris * 3 or not (0 < n_tris < 300000) or not (0 < n_verts < 300000):
+                continue
+            r = q + 12
+            if r + 4 > len(d):
+                continue
+            n_elem = struct.unpack_from("<I", d, r)[0]
+            if n_elem > 64:
+                continue
+            r += 4 + 41 * n_elem
+            # then nUnknown7 arrays of (count, count u32s): the bones each element uses
+            if r + 4 > len(d):
+                continue
+            n_arr = struct.unpack_from("<I", d, r)[0]
+            if n_arr > 64:
+                continue
+            r += 4
+            bad = False
+            for _a in range(n_arr):
+                if r + 4 > len(d):
+                    bad = True; break
+                cnt = struct.unpack_from("<I", d, r)[0]
+                if cnt > 4096:
+                    bad = True; break
+                r += 4 + 4 * cnt
+            if bad:
+                continue
+            v0 = r
+            n0 = v0 + 20 * n_verts
+            tri0 = n0 + 16 * n_verts + 1          # the stray pad byte the template complains about
+            end = tri0 + 6 * n_tris
+            if end > len(d):
+                continue
+            # sanity: bone weights must sum to 255 on the first few vertices
+            okw = True
+            for k in range(min(8, n_verts)):
+                w = d[v0 + 20 * k + 12: v0 + 20 * k + 16]
+                if sum(w) not in (0, 255):
+                    okw = False; break
+            if not okw:
+                continue
+            found = dict(nTris=n_tris, nVerts=n_verts, v0=v0, tri0=tri0, end=end,
+                         nElem=n_elem, skinned=True)
+            break
+        if not found:
+            break
+        out.append(found)
+        p = found["end"]
+    return out
+
+
+def read_skinned(d, sm):
+    import numpy as np
+    n = sm["nVerts"]
+    raw = np.frombuffer(d, dtype=np.uint8, count=20 * n, offset=sm["v0"]).reshape(n, 20)
+    pos = raw[:, 0:6].copy().view("<f2").astype("f4")          # xyz
+    uv = raw[:, 16:20].copy().view("<f2").astype("f4")
+    bones = raw[:, 8:12]
+    weights = raw[:, 12:16]
+    tris = np.frombuffer(d, dtype="<u2", count=sm["nTris"] * 3,
+                         offset=sm["tri0"]).reshape(-1, 3)
+    return pos, uv, tris, bones, weights
+
+
 def read_geometry(d, sm):
     """Positions are float16 xyz; the fourth f16 is not position. UVs follow."""
     import numpy as np
@@ -182,18 +259,27 @@ def main():
         return 1
 
     if a[0] == "survey":
-        ok = geom = fail = 0
+        ok = fail = full = partial = none = 0
         for e in index():
             try:
                 d = payload(e)
                 h = header(d)
-                ok += 1
-                if h["nSubmeshes"] and len(find_static_submeshes(d, h)) == h["nSubmeshes"]:
-                    geom += 1
             except Exception:
                 fail += 1
-        print(f"{ok} model headers parsed, {fail} failed; "
-              f"{geom} models had every static submesh located by the invariant")
+                continue
+            ok += 1
+            want = h["nSubmeshes"] + h["nSkel"]
+            got = len(find_static_submeshes(d, h)) + len(find_animated_submeshes(d, h))
+            if want == 0:
+                none += 1
+            elif got == want:
+                full += 1
+            else:
+                partial += 1
+        print(f"{ok} model headers parsed, {fail} failed")
+        print(f"   {full} models: every submesh located (static and skinned)")
+        print(f"   {partial} models: some submeshes not located")
+        print(f"   {none} models: no submeshes declared")
         return 0
 
     e = pick(a[1])
@@ -206,16 +292,18 @@ def main():
                   "nSubmeshes", "nSkel", "nPlanes", "nWTF", "nNodes"):
             print(f"   {k:12} {h[k]}")
         for sm in find_static_submeshes(d, h):
-            print(f"   static submesh: {sm['nVerts']} verts, {sm['nTris']} tris")
+            print(f"   static  submesh: {sm['nVerts']:6} verts, {sm['nTris']:6} tris")
+        for sm in find_animated_submeshes(d, h):
+            print(f"   skinned submesh: {sm['nVerts']:6} verts, {sm['nTris']:6} tris")
         return 0
 
     if a[0] == "obj":
-        sms = find_static_submeshes(d, h)
-        if not sms:
-            print(f"{e['path']}: no static submeshes found "
+        meshes = [read_geometry(d, sm) for sm in find_static_submeshes(d, h)]
+        meshes += [read_skinned(d, sm)[:3] for sm in find_animated_submeshes(d, h)]
+        if not meshes:
+            print(f"{e['path']}: no submeshes found "
                   f"(nSubmeshes={h['nSubmeshes']}, nSkel={h['nSkel']})", file=sys.stderr)
             return 1
-        meshes = [read_geometry(d, sm) for sm in sms]
         write_obj(a[2], meshes)
         print(f"{e['path']} -> {a[2]}: {len(meshes)} submesh(es), "
               f"{sum(len(m[0]) for m in meshes)} verts, {sum(len(m[2]) for m in meshes)} tris")

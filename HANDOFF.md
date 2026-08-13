@@ -122,9 +122,12 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 |---|---|---|
 | ~~**GDB label index**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. 65536-slot open-addressing table on `hash & 0xFFFF`, linear probing, inserted in file order, serialized occupied-slots-only. Regenerated on every write; **147/147 shipped GDBs round trip byte for byte**, and the engine resolves a label we invented | done - new label strings, so new string field values |
 | ~~**TEX textures**~~ | **DECODED** 2026-08-11. The header is not in the file - it is a 92-byte record in a sibling `x_texture_headers.bnk`. 35 = DXT1, 39 = DXT5, flag 2 = cubemap, **no swizzling**. Every texture's payload size predicted from its header: **9,561 of 9,561**. `tools/tex.py` exports and re-encodes | done - retextures and new item art. NOT yet tested in game |
-| **MDL models** | **static geometry DECODED** 2026-08-13. Header, skeleton, and float16 vertex/index buffers read against `35-mdl.hsl`; **3,588 models export to OBJ**, zero partial. `tools/mdl.py`. Open: the material chain (submeshes are located by invariant, not walked to), `AnimatedMesh` for the 1,077 skinned models, and writing MDL at all | reading meshes now; authoring still needs the writer |
+| ~~**MDL models**~~ | **READING DECODED** 2026-08-13. Header, skeleton, static AND skinned geometry. **4,653 of 4,740 models fully located, 12 partial**. `tools/mdl.py` exports OBJ. Open: the material chain (submeshes are found by invariant, not walked to) and **writing MDL at all** | reading any mesh; authoring still needs a writer |
 | ~~**BABEL text tables**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. Big-endian; records keyed by **FNV-1 of the id, the same hash the GDB uses for labels**; 16 KB zlib chunks whose streams omit the trailing checksum; text is UTF-16 **BE**. `tools/babel.py`; **37/37 files round trip byte for byte** | done - new records can carry new words |
-| **Save format** | Timeslip's editor decodes herosave / mainsave / checksums / XUIDs / hero x,y,z | persistent state edits the other layers cannot reach |
+| **Save format** | Timeslip's editor decodes herosave / mainsave / checksums / XUIDs / hero x,y,z. The `.save` files inside banks are **plain XML** and are a different thing | persistent state edits the other layers cannot reach |
+| ~~**GHF heightfields**~~ | **DECODED** 2026-08-13. Plain **gzip**; inflates ~480x to `f32 scaleX/scaleY, u32 w, u32 h`, then 14 bytes per cell. Grids 385x385 up to 673x769 | terrain shape is readable |
+| ~~**WAV audio**~~ | **DECODED** 2026-08-13. NOT XMA2. A 4-byte `xwma` prefix on a standard RIFF/xWMA file, fmt tag `0x0161` = WMAv2. **ffmpeg decodes it directly** - proven, 2.8s 44.1kHz mono voice line | all 56,865 audio entries are readable |
+| ~~**ADB audio db**~~ | **DECODED** 2026-08-13. `LhCoMpRe` + BE lengths + plain **zlib**, wrapping an inner `LhBiNaRy####` container | the audio database opens |
 | ~~**Per-object u16 array**~~ | **DECODED** 2026-08-11. A random-access accelerator for the variable-length record array: `word[i] = startOfRecord(i) - ((i * stride) >> 10)` with `stride = 1024 * blockWords / count`, all in u32 words. Exact on **147 files, 2,069,537 objects**. Regenerated on write | done - and it was silently corrupting clones |
 
 ## Tools built, all working
@@ -139,7 +142,8 @@ These are the decoding jobs that gate what can still be built. Nothing else bloc
 | `tools/babel.py` | read/edit/add BABEL text. `verify` round-trips 37/37 files byte for byte |
 | `tools/tex.py` | list/export/import textures. `verify` predicts 9,561/9,561 payload sizes |
 | `tools/tex-patch.py` | replace a texture in place, same size so no index moves. Exact revert |
-| `tools/mdl.py` | read MDL headers and static geometry, export OBJ. 3,588 models |
+| `tools/mdl.py` | read MDL headers, skeletons, static + skinned geometry, export OBJ. 4,653 models |
+| `tools/formats.py` | classify every extension in every bank; crack GHF, ADB and xWMA audio |
 | `tools/build-dragonstomper.sh` | builds **The Sovereign**, an original weapon, end to end. The template for any new item |
 | `tools/api-index.py` | index all 5,401 API calls in the corpus, with a shipped call site each |
 | `crates/bridge` | 32-bit proxy DLL (dinput8 or d3d9 host): real keyboard -> the F1 menu. -> [[Bridge DLL]] |
