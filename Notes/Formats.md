@@ -777,6 +777,37 @@ the materials in every file. The remaining 3% is honest failure rather than plau
 > accepted a 2,151-vertex submesh that does not exist. **Heuristics fail in both directions
 > and cannot tell you which.**
 
+### Writing MDL  **[VERIFIED]** 2026-08-13
+
+`parse_full` splits a model into editable geometry and verbatim everything-else - the same
+discipline the GDB and BABEL writers use. **Round trip: 4,588 models byte-identical, 0
+differ**, 194 unparsed.
+
+`set_vertices` rewrites positions and UVs while keeping vertex and triangle counts, so every
+downstream offset, every element triangle range and the file length are unchanged.
+
+**Delivery is in place, and no bank index moves.** Model payloads are chunked zlib in **fixed
+32,768-byte slots** - chunk *n* always begins at `offset + n*32768` and only the last is
+short. Keep the original split of the uncompressed data, recompress each piece, and pad each
+slot back to its original length; padding after a zlib stream's end is ignored. The entry
+keeps its exact byte count. That matters because `globals_models.bnk` is nested inside
+`levels.bnk`, so changing its index would mean rewriting two banks.
+
+```bash
+python tools/mdl-patch.py verify <model>          # repack unmodified, prove it is identical
+python tools/mdl-patch.py scale  <model> 1.65
+python tools/mdl-patch.py revert <model>
+```
+
+`verify` repacks an untouched model and checks both that the payload decompresses identically
+and that the entry keeps its size - the gate before any real edit. It passes on 1-chunk and
+8-chunk models alike.
+
+**What this does not do yet:** change vertex or triangle COUNTS. New topology means rewriting
+the counts, the element ranges, the model header's bounding box, and the entry size, which
+needs the nested-bank path. Editing existing geometry works; authoring a mesh from scratch
+does not.
+
 **Still open:** the material chain, `AnimatedMesh` (all characters and creatures), the second
 float16 vertex stream (normals or tangents), `Plane` meshes, LODs, and writing MDL at all.
 Reading static geometry is not the same as being able to author a mesh the game will load.

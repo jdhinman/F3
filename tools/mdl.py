@@ -204,23 +204,92 @@ def find_animated_submeshes(d, h):
     return [s for s in submeshes(d, h) if s["kind"] == "skinned"]
 
 
-def read_geometry(d, sm):
-    """Static vertex, two float16 streams, both confirmed component by component.
+def parse_full(d):
+    """Split a model into editable geometry and verbatim everything-else.
 
-    Stream A (6 x f16): `x, y, z, s, u, v`. `s` runs 0.58..1.0 and is per-vertex shading of
-    some kind - the template guessed illumination. `u, v` measure 0..1.
-    Stream B (8 x f16): `nx, ny, nz` are **unit vectors** (|n| = 1.0000 measured), then a
-    zero, then 8 bytes that are not float16 at all (30% of them decode as NaN) and are still
-    unidentified - most likely a packed tangent.
+    The file is represented as an ordered list of spans. Anything understood well enough to
+    regenerate is parsed; everything else - the header, the bone tables, the material chain,
+    every submesh preamble and the trailing sections - is carried as raw bytes. That is the
+    same discipline the GDB and BABEL writers use, and it is what makes a byte-identical
+    round trip achievable on a format this size.
+    """
+    h = header(d)
+    sms = submeshes(d, h)
+    spans = []
+    p = 0
+    for sm in sms:
+        spans.append(("raw", d[p:sm["v0"]]))
+        if sm["kind"] == "static":
+            spans.append(("vertsA", sm, d[sm["v0"]:sm["v1"]]))
+            spans.append(("vertsB", sm, d[sm["v1"]:sm["tri0"]]))
+        else:
+            spans.append(("vertsS", sm, d[sm["v0"]:sm["tri0"]]))
+        end = sm["tri0"] + 6 * sm["nTris"]
+        spans.append(("tris", sm, d[sm["tri0"]:end]))
+        p = end
+    spans.append(("raw", d[p:]))
+    return h, sms, spans
+
+
+def to_bytes(spans):
+    return b"".join(sp[-1] for sp in spans)
+
+
+def set_vertices(spans, index, positions=None, uvs=None):
+    """Rewrite one submesh's positions and/or UVs, keeping vertex and triangle counts.
+
+    Same counts means every downstream offset, every element triangle range and the file
+    length are unchanged, so the result can be written over the original without touching a
+    bank index. Positions and UVs are stored as float16, so a value outside that range would
+    be silently mangled and is rejected instead.
     """
     import numpy as np
-    a = np.frombuffer(d, dtype="<f2", count=sm["nVerts"] * 6, offset=sm["v0"]).reshape(-1, 6)
-    b = np.frombuffer(d, dtype="<f2", count=sm["nVerts"] * 8, offset=sm["v1"]).reshape(-1, 8)
-    pos = a[:, 0:3].astype("f4")
-    uv = a[:, 4:6].astype("f4")
-    nrm = b[:, 0:3].astype("f4")
-    tris = np.frombuffer(d, dtype="<u2", count=sm["nTris"] * 3, offset=sm["tri0"]).reshape(-1, 3)
-    return pos, uv, tris, nrm
+    seen = -1
+    for k, sp in enumerate(spans):
+        kind = sp[0]
+        if kind not in ("vertsA", "vertsS"):
+            continue
+        seen += 1
+        if seen != index:
+            continue
+        sm = sp[1]
+        nv = sm["nVerts"]
+        stride = 12 if kind == "vertsA" else 20
+        buf = bytearray(sp[2])
+        arr = np.frombuffer(bytes(buf[:stride * nv]), dtype=np.uint8).reshape(nv, stride).copy()
+
+        def put(off, data, comps):
+            v = np.asarray(data, dtype="f4")
+            if v.shape != (nv, comps):
+                raise ValueError("expected %d x %d, got %s" % (nv, comps, v.shape))
+            if not np.isfinite(v).all() or np.abs(v).max() > 65504:
+                raise ValueError("value outside float16 range")
+            arr[:, off:off + 2 * comps] = v.astype("<f2").view(np.uint8).reshape(nv, 2 * comps)
+
+        if positions is not None:
+            put(0, positions, 3)
+        if uvs is not None:
+            put(8 if stride == 12 else 16, uvs, 2)
+        buf[:stride * nv] = arr.tobytes()
+        spans[k] = (kind, sm, bytes(buf))
+        return True
+    return False
+
+
+def read_skinned(d, sm):
+    """Skinned vertex, 20 bytes: 4 float16 (xyz plus one more), 4 bone indices, 4 bone
+    weights summing to 255, then 2 float16 UV. A 16-byte second buffer follows and is
+    skipped. UVs are 0..1 on character skin and **tiled above 1 on fur**, which is normal."""
+    import numpy as np
+    n = sm["nVerts"]
+    raw = np.frombuffer(d, dtype=np.uint8, count=20 * n, offset=sm["v0"]).reshape(n, 20)
+    pos = raw[:, 0:6].copy().view("<f2").astype("f4")
+    uv = raw[:, 16:20].copy().view("<f2").astype("f4")
+    bones = raw[:, 8:12]
+    weights = raw[:, 12:16]
+    tris = np.frombuffer(d, dtype="<u2", count=sm["nTris"] * 3,
+                         offset=sm["tri0"]).reshape(-1, 3)
+    return pos, uv, tris, bones, weights
 
 
 def write_obj(path, meshes):
