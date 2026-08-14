@@ -107,151 +107,101 @@ def header(d):
     return h
 
 
-def find_static_submeshes(d, h):
-    """Locate static submeshes by the tVerts == nTris*3 invariant.
+def materials(d, h):
+    """Walk the material chain. This is what removes the guesswork.
 
-    The material chain in front of them is not parsed, so the start is searched for rather
-    than walked to. Every candidate is checked against the file length before it is used,
-    which is what keeps a false positive from producing garbage geometry.
+    ```
+    per material:  u32 unknown, zstring name, u32 0x1234ABCD sentinel, u32 type,
+                   then `type` blocks of (u32 hash, u32 size, size bytes)
+    ```
+
+    **The type IS the block count.** `mdl.hsl` writes it as a switch with a hand-listed set
+    of blocks per case - 1 block for type 1, 2 for type 2, 7 for type 7, 11 for type 11 -
+    and its author added "Ya, I know. This is stupid. But it works!". It is simply a count,
+    so no case analysis is needed at all.
+
+    Type 7 is near universal and its blocks run [16, strings, 4, 4, 16, 16, 4] bytes. The
+    second block holds six NUL-terminated texture paths and two floats.
     """
     out = []
     p = h["after"]
-    for _ in range(h["nSubmeshes"]):
-        found = None
-        for q in range(p, len(d) - 40):
-            n_tris, t_verts, n_verts = struct.unpack_from("<3I", d, q)
-            if t_verts != n_tris * 3 or not (0 < n_tris < 200000) or not (0 < n_verts < 200000):
-                continue
-            r = q + 12 + 40
-            if r + 4 > len(d):
-                continue
-            n_elem = struct.unpack_from("<I", d, r)[0]
-            if n_elem > 64:
-                continue
-            r += 4 + 37 * n_elem
-            v0, v1 = r, r + 12 * n_verts
-            tri0 = v1 + 16 * n_verts
-            end = tri0 + 6 * n_tris
-            if end > len(d):
-                continue
-            if not _plausible(d, v0, n_verts, 12, 8, tri0, n_tris, False):
-                continue
-            found = dict(nTris=n_tris, nVerts=n_verts, v0=v0, v1=v1, tri0=tri0, end=end)
-            break
-        if not found:
-            break
-        out.append(found)
-        p = found["end"]
+    for _ in range(h["nMaterials"]):
+        p += 4
+        e = d.index(b"\0", p)
+        name = d[p:e].decode("latin-1")
+        p = e + 1
+        sentinel = struct.unpack_from("<I", d, p)[0]
+        p += 4
+        if sentinel != 0x1234ABCD:
+            raise ValueError("material sentinel %08X at %d" % (sentinel, p - 4))
+        typ = struct.unpack_from("<I", d, p)[0]
+        p += 4
+        blocks = []
+        for _b in range(typ):
+            hsh, sz = struct.unpack_from("<2I", d, p)
+            p += 8
+            blocks.append((hsh, d[p:p + sz]))
+            p += sz
+        textures = [t.decode("latin-1") for t in blocks[1][1].split(b"\0")[:6] if t] if len(blocks) > 1 else []
+        out.append(dict(name=name, type=typ, blocks=blocks, textures=textures))
+    h["_after_materials"] = p
     return out
 
 
-def _plausible(d, v0, n_verts, stride, uv_off, tri0, n_tris, skinned):
-    """Reject a candidate submesh that decodes into nonsense.
+def submeshes(d, h):
+    """Every submesh, walked to exactly - no scanning, no invariant, no guessing.
 
-    The `tVerts == nTris * 3` invariant is necessary but NOT sufficient - it fires on false
-    positives inside the vertex data, and a false positive still produces geometry that looks
-    roughly like the model because it is reading the model's own numbers at the wrong offset.
-    The collie's first skinned submesh was exactly that: 213 non-manifold edges, edges seven
-    times longer than its sibling, and UVs running -0.51 to 4.12.
-
-    Two cheap gates catch it. UVs must be near 0..1, and triangle indices must reach most of
-    the vertex buffer - a wrong start tends to index only part of it.
+    Both kinds are laid out the same way after their preamble: vertices, a second per-vertex
+    buffer, then the u16 triangle list. Static meshes carry a name and 10 origin floats and
+    use 37-byte elements; skinned meshes have no name, use 41-byte elements, and follow them
+    with a per-element list of the bones that element touches.
     """
-    import numpy as np
-    n = min(n_verts, 512)
-    raw = np.frombuffer(d, dtype=np.uint8, count=stride * n, offset=v0).reshape(n, stride)
-    uv = raw[:, uv_off:uv_off + 4].copy().view("<f2").astype("f4")
-    if not np.isfinite(uv).all():
-        return False
-    # Characters do not tile their textures, so their UVs sit in 0..1 and the gate can be
-    # tight. Environment props tile constantly, so theirs must be allowed to run large.
-    lo, hi = (-0.6, 3.0) if skinned else (-16.0, 64.0)
-    if uv.min() < lo or np.percentile(np.abs(uv), 98) > hi:
-        return False
-    tris = np.frombuffer(d, dtype="<u2", count=n_tris * 3, offset=tri0)
-    if tris.max() >= n_verts:
-        return False
-    # a correct submesh references most of the vertex buffer it declares
-    return len(np.unique(tris)) >= 0.35 * n_verts
+    materials(d, h)
+    p = h["_after_materials"]
+    out = []
+    for _ in range(h["nSubmeshes"]):
+        e = d.index(b"\0", p)
+        name = d[p:e].decode("latin-1")
+        p = e + 1 + 1                                   # name, then a flag byte
+        p += 8                                          # mesh id, material id
+        n_tris, t_verts, n_verts = struct.unpack_from("<3I", d, p)
+        p += 12 + 40                                    # counts, then 10 origin floats
+        n_elem = struct.unpack_from("<I", d, p)[0]
+        p += 4 + 37 * n_elem
+        v0 = p
+        v1 = v0 + 12 * n_verts
+        tri0 = v1 + 16 * n_verts
+        out.append(dict(kind="static", name=name, nTris=n_tris, nVerts=n_verts,
+                        nElem=n_elem, v0=v0, v1=v1, tri0=tri0))
+        p = tri0 + 6 * n_tris + 4
+    for _ in range(h["nSkel"]):
+        p += 1 + 8
+        n_tris, t_verts, n_verts = struct.unpack_from("<3I", d, p)
+        p += 12
+        n_elem = struct.unpack_from("<I", d, p)[0]
+        p += 4 + 41 * n_elem
+        n_arr = struct.unpack_from("<I", d, p)[0]
+        p += 4
+        for _a in range(n_arr):
+            c = struct.unpack_from("<I", d, p)[0]
+            p += 4 + 4 * c
+        v0 = p
+        tri0 = v0 + 20 * n_verts + 16 * n_verts + 1     # the stray pad byte
+        out.append(dict(kind="skinned", name="", nTris=n_tris, nVerts=n_verts,
+                        nElem=n_elem, v0=v0, tri0=tri0))
+        p = tri0 + 6 * n_tris + 4
+    for sm in out:
+        if sm["tri0"] + 6 * sm["nTris"] > len(d):
+            raise ValueError("submesh runs past the end of the file")
+    return out
+
+
+def find_static_submeshes(d, h):
+    return [s for s in submeshes(d, h) if s["kind"] == "static"]
 
 
 def find_animated_submeshes(d, h):
-    """Skinned submeshes, located by the same invariant.
-
-    An AnimatedMesh has no name string and its vertex record is 20 bytes rather than a pair
-    of streams: 4 float16 (xyz plus one more), 4 bone indices, 4 bone weights summing to 255,
-    2 float16 UV. A second buffer of 16 bytes per vertex follows, most likely normals or
-    tangents, and is skipped.
-    """
-    out = []
-    p = h["after"]
-    for _ in range(h["nSkel"]):
-        found = None
-        for q in range(p, len(d) - 40):
-            n_tris, t_verts, n_verts = struct.unpack_from("<3I", d, q)
-            if t_verts != n_tris * 3 or not (0 < n_tris < 300000) or not (0 < n_verts < 300000):
-                continue
-            r = q + 12
-            if r + 4 > len(d):
-                continue
-            n_elem = struct.unpack_from("<I", d, r)[0]
-            if n_elem > 64:
-                continue
-            r += 4 + 41 * n_elem
-            # then nUnknown7 arrays of (count, count u32s): the bones each element uses
-            if r + 4 > len(d):
-                continue
-            n_arr = struct.unpack_from("<I", d, r)[0]
-            if n_arr > 64:
-                continue
-            r += 4
-            bad = False
-            for _a in range(n_arr):
-                if r + 4 > len(d):
-                    bad = True; break
-                cnt = struct.unpack_from("<I", d, r)[0]
-                if cnt > 4096:
-                    bad = True; break
-                r += 4 + 4 * cnt
-            if bad:
-                continue
-            v0 = r
-            n0 = v0 + 20 * n_verts
-            tri0 = n0 + 16 * n_verts + 1          # the stray pad byte the template complains about
-            end = tri0 + 6 * n_tris
-            if end > len(d):
-                continue
-            # sanity: bone weights must sum to 255 on the first few vertices
-            okw = True
-            for k in range(min(8, n_verts)):
-                w = d[v0 + 20 * k + 12: v0 + 20 * k + 16]
-                if sum(w) not in (0, 255):
-                    okw = False; break
-            if not okw:
-                continue
-            if not _plausible(d, v0, n_verts, 20, 16, tri0, n_tris, True):
-                continue
-            found = dict(nTris=n_tris, nVerts=n_verts, v0=v0, tri0=tri0, end=end,
-                         nElem=n_elem, skinned=True)
-            break
-        if not found:
-            break
-        out.append(found)
-        p = found["end"]
-    return out
-
-
-def read_skinned(d, sm):
-    import numpy as np
-    n = sm["nVerts"]
-    raw = np.frombuffer(d, dtype=np.uint8, count=20 * n, offset=sm["v0"]).reshape(n, 20)
-    pos = raw[:, 0:6].copy().view("<f2").astype("f4")          # xyz
-    uv = raw[:, 16:20].copy().view("<f2").astype("f4")
-    bones = raw[:, 8:12]
-    weights = raw[:, 12:16]
-    tris = np.frombuffer(d, dtype="<u2", count=sm["nTris"] * 3,
-                         offset=sm["tri0"]).reshape(-1, 3)
-    return pos, uv, tris, bones, weights
+    return [s for s in submeshes(d, h) if s["kind"] == "skinned"]
 
 
 def read_geometry(d, sm):

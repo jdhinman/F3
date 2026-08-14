@@ -737,12 +737,45 @@ on an open-topped barrel. Neither was a decode error. But the dog's face was, so
 to tell is to measure - manifoldness, UV range, edge length, component structure - rather
 than to look.
 
-> [!warning] The submesh start is FOUND, not walked to
-> The material blocks between the header and the first submesh are **not decoded**.
-> `mdl.hsl` describes them as a type-switched chain of hash+size blocks and its sizes do not
-> line up on these files. So `tools/mdl.py` scans for a position where `tVerts == nTris * 3`
-> and every declared buffer fits inside the file. It is self-validating and it works on 3,588
-> models, but it is a heuristic and is not a substitute for parsing the material chain.
+### The heuristic is gone: the material chain parses  **[VERIFIED]** 2026-08-13
+
+```
+per material:  u32 unknown, zstring name, u32 0x1234ABCD sentinel, u32 type,
+               then `type` blocks of (u32 hash, u32 size, size bytes)
+```
+
+**The type IS the block count.** `mdl.hsl` writes it as a switch that hand-lists blocks per
+case - 1 block for type 1, 2 for type 2, 7 for type 7, 11 for type 11 - and its author added
+*"Ya, I know. This is stupid. But it works!"*. It is simply a count, so the case analysis is
+unnecessary. Types 1, 2, 6, 7 and 11 all appear and all parse: **10,727 materials**.
+
+Type 7 dominates (9,335 of them) with blocks of [16, strings, 4, 4, 16, 16, 4] bytes; the
+second block holds six NUL-terminated texture paths and two floats.
+
+With that, submeshes are **walked to exactly**. The static preamble is name, flag byte, mesh
+id, material id, `nTris`, `tVerts`, `nVerts`, 10 origin floats, `nElements`, 37 bytes each.
+The skinned preamble has no name, uses 41-byte elements, and follows them with a per-element
+list of the bones it touches. Verified on the crate: materials end at 537 and the submesh
+name `crate_ind_02` begins at 537.
+
+| | scan + gate | **deterministic walk** |
+|---|---|---|
+| models fully resolved | ~93% of a sample | **4,511 of 4,623 (97.6%)** |
+| submeshes | - | **10,635** |
+| triangle indices out of range | 2% of skinned | **2 models** |
+| silently wrong answers | ~7% non-manifold | **none - failures are explicit** |
+
+152 models still fail to walk and say so. They cluster on files with `nNodes > 0` (60 of 190
+such models) which suggests the header's trailing string list is not the last thing before
+the materials in every file. The remaining 3% is honest failure rather than plausible fiction.
+
+> [!note] The scan's diagnosis was WRONG, and the walk proved it
+> The collie's 606-vertex submesh was flagged earlier as a false positive because it had
+> non-manifold edges and UVs running to 4.12. The walk lands on it exactly: it is real, it is
+> the material named `Fur1`, and fur is built from separate cards with **tiled** UVs, which
+> is why both signals looked wrong. Meanwhile the plausibility gate that rejected it then
+> accepted a 2,151-vertex submesh that does not exist. **Heuristics fail in both directions
+> and cannot tell you which.**
 
 **Still open:** the material chain, `AnimatedMesh` (all characters and creatures), the second
 float16 vertex stream (normals or tangents), `Plane` meshes, LODs, and writing MDL at all.
