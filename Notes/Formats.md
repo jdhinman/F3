@@ -777,36 +777,77 @@ the materials in every file. The remaining 3% is honest failure rather than plau
 > accepted a 2,151-vertex submesh that does not exist. **Heuristics fail in both directions
 > and cannot tell you which.**
 
-### Writing MDL  **[VERIFIED]** 2026-08-13
+### Writing MDL  **[VERIFIED for edits, BLOCKED for new topology]** 2026-08-15
 
-`parse_full` splits a model into editable geometry and verbatim everything-else - the same
+`parse_full` splits a model into editable geometry and verbatim everything-else, the same
 discipline the GDB and BABEL writers use. **Round trip: 4,588 models byte-identical, 0
-differ**, 194 unparsed.
+differ.**
 
-`set_vertices` rewrites positions and UVs while keeping vertex and triangle counts, so every
-downstream offset, every element triangle range and the file length are unchanged.
+#### What works, proven in game
 
-**Delivery is in place, and no bank index moves.** Model payloads are chunked zlib in **fixed
-32,768-byte slots** - chunk *n* always begins at `offset + n*32768` and only the last is
-short. Keep the original split of the uncompressed data, recompress each piece, and pad each
-slot back to its original length; padding after a zlib stream's end is ignored. The entry
-keeps its exact byte count. That matters because `globals_models.bnk` is nested inside
-`levels.bnk`, so changing its index would mean rewriting two banks.
+**Editing geometry while the counts stay put.** `tools/mdl-patch.py scale` moved every
+barrel model to 3x and they rendered, towering over the hero.
 
-```bash
-python tools/mdl-patch.py verify <model>          # repack unmodified, prove it is identical
-python tools/mdl-patch.py scale  <model> 1.65
-python tools/mdl-patch.py revert <model>
-```
+Delivery needs **no bank index change**: payloads are chunked zlib in **fixed 32,768-byte
+slots**, chunk *n* always at `offset + n*32768`, only the last short. Keep the original
+split, recompress each piece, pad each slot back to its original length (padding after a
+zlib stream end is ignored) and the entry keeps its exact byte count.
 
-`verify` repacks an untouched model and checks both that the payload decompresses identically
-and that the entry keeps its size - the gate before any real edit. It passes on 1-chunk and
-8-chunk models alike.
+> [!danger] A SKINNED mesh cannot be scaled by touching its vertices
+> Positions are in **bind-pose space** and the engine transforms them through the per-bone
+> bind matrices (`nBones2 x 11 floats` in the header). Scaling vertices alone makes the
+> skinning solve to nonsense: the dog went invisible and the Sanctuary, which renders it on
+> a pedestal, froze. `mdl-patch.py` now refuses skinned models without `--force`.
 
-**What this does not do yet:** change vertex or triangle COUNTS. New topology means rewriting
-the counts, the element ranges, the model header's bounding box, and the entry size, which
-needs the nested-bank path. Editing existing geometry works; authoring a mesh from scratch
-does not.
+#### The container path works too
+
+`tools/mdl-import.py` appends a new payload, rebuilds the nested `globals_models.bnk` index
+and writes it back into `levels.bnk`. Proven in game by writing a model's **byte-identical
+geometry, 4096 bytes longer, at a new offset**: barrels rendered normally. So offsets,
+sizes, the chunk table and the nested-index rewrite are all correct.
+
+`globals_models.bnk` uses the **compressed-entry form**: `hash, offset, realSize, size,
+numChunks` then `numChunks` big-endian words giving **each chunk's uncompressed length**.
+`bnk-replace.deflate_index` needed a `compressed_flag` parameter - writing 0 there makes the
+reader parse 3-field entries and walk off the end of the index.
+
+#### What is BLOCKED: changing vertex or triangle counts
+
+**Every attempt to change the counts fails**, and the failure mode escalated as more models
+were changed:
+
+| test | result |
+|---|---|
+| generated obelisk replacing 3 barrel models | props render as nothing |
+| half a barrel (its own data, fewer verts+tris) | props render as nothing |
+| 37 models, barrels -2 tris / crates +2 verts | **game crashes while loading a save** |
+
+The crash is the strongest signal yet: a count change does not merely fail to draw, it
+corrupts something the save load walks.
+
+**Ruled out** - each checked against untouched game data, each a real conformance fix that
+did NOT resolve it:
+
+- winding: the game winds triangles **opposite** to the stored vertex normals (agreement
+  0.000-0.003 on stock meshes). Writer now flips to match.
+- the submesh's 10 floats are its **bounds** (bbox min, bbox max, centre, radius as
+  half-diagonal), not an origin. Verified exactly on `occlusionwall`. Writer recomputes them.
+- stream B bytes 8..16 are a **4 x int16 tangent** normalised to 32767 with handedness in
+  the fourth. Writing zeros collapses the shader TBN. Writer generates real tangents.
+- the model header bbox in `globals_model_headers.bnk` must be updated. Writer does it.
+- element table: `nElem=1`, mark `FFFFFFFF`, flag 0, `nTris`, start 0, then the bbox -
+  matches stock exactly.
+- material blocks contain only shader floats, no counts.
+- MDL header flag pairs are all zero on static models.
+- per-entry `meta` words: `meta[4]=115` is the model header size, `meta[6]=4` alignment;
+  `meta[0..3]` are unique per entry and are **not** a validated checksum (the self-rebuild
+  changed the payload and still rendered).
+
+**So something else is sized by, or derived from, the vertex/triangle count and is not being
+updated.** It is not in the parts of the MDL this project has decoded. Next places to look:
+the 3 unexplained bytes at the end of the 115-byte model header, `globals_streaming.bnk`,
+the `.gmd` metadata files that accompany most models, or a per-object cache the save
+references.
 
 **Still open:** the material chain, `AnimatedMesh` (all characters and creatures), the second
 float16 vertex stream (normals or tangents), `Plane` meshes, LODs, and writing MDL at all.

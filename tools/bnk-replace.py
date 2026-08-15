@@ -41,7 +41,7 @@ def inflate_index(data):
     return bytearray(zlib.decompressobj().decompress(blob)), flag
 
 
-def deflate_index(inflated):
+def deflate_index(inflated, compressed_flag=0):
     """Rewrap an inflated index: ONE continuing zlib stream, flushed at every 64 KB
     boundary so each chunk decodes to exactly its declared uncompressed length on its own.
 
@@ -64,7 +64,7 @@ def deflate_index(inflated):
         last = off + 65536 >= len(inflated)
         part = co.compress(block) + co.flush(zlib.Z_FINISH if last else zlib.Z_SYNC_FLUSH)
         body += struct.pack(">II", len(part), len(block)) + part
-    return struct.pack(">II", len(body) + 9, 4) + bytes([0]) + body
+    return struct.pack(">II", len(body) + 9, 4) + bytes([compressed_flag]) + body
 
 
 def chunks_decode_individually(raw):

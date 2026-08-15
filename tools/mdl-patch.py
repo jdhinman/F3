@@ -91,6 +91,44 @@ def write_back(entry, blob):
         f.write(blob)
 
 
+HDR_BNK = r"globals\globals_model_headers.bnk"
+HDR_DAT = r"globals\globals_model_headers.bnk.dat"
+LEVELS = mdl.GAME + r"\data\levels.bnk"
+
+
+def update_header_bbox(model_path, pos_min, pos_max):
+    """Rewrite the model's declared bounding sphere and bbox in globals_model_headers.
+
+    The engine culls and does spatial queries against this box, and the decoder never writes
+    it, so geometry that outgrows its declared bounds is a real hazard - almost certainly
+    part of why the scaled dog went invisible. The header is a fixed 115 bytes, so the
+    payload keeps its size and only levels.bnk's entry for it has to be rewritten.
+    """
+    _bespec = importlib.util.spec_from_file_location("be", os.path.join(_here, "bnk-extract.py"))
+    be = importlib.util.module_from_spec(_bespec); _bespec.loader.exec_module(be)
+    les = be.read_index(open(LEVELS, "rb").read())
+    lpl = open(LEVELS + ".dat", "rb").read()
+    hidx = be.read_index(be.extract(next(e for e in les if e["path"].lower() == HDR_BNK), lpl))
+    hdat = bytearray(be.extract(next(e for e in les if e["path"].lower() == HDR_DAT), lpl))
+    hit = next((e for e in hidx if e["path"].lower() == model_path.lower()), None)
+    if hit is None:
+        return False
+    o = hit["offset"]
+    centre = [(a + b) / 2.0 for a, b in zip(pos_min, pos_max)]
+    radius = max(((b - a) / 2.0 for a, b in zip(pos_min, pos_max)))
+    radius = (sum(((b - a) / 2.0) ** 2 for a, b in zip(pos_min, pos_max))) ** 0.5
+    struct.pack_into("<4f", hdat, o + 28, centre[0], centre[1], centre[2], radius)
+    struct.pack_into("<6f", hdat, o + 44, *pos_min, *pos_max)
+    tmp = os.path.join(_here, "..", "work", "model_headers.dat")
+    open(tmp, "wb").write(bytes(hdat))
+    import subprocess
+    r = subprocess.run([sys.executable, os.path.join(_here, "bnk-replace.py"), "apply",
+                        LEVELS, HDR_DAT, tmp], capture_output=True, text=True)
+    if r.returncode:
+        raise SystemExit("header write failed: " + r.stderr[:300])
+    return True
+
+
 def main():
     a = sys.argv[1:]
     if not a:
@@ -130,6 +168,17 @@ def main():
     if a[0] == "scale":
         factor = float(a[2])
         h, sms, spans = mdl.parse_full(data)
+        # A SKINNED mesh cannot be scaled by touching its vertices. Its positions live in
+        # bind-pose space and the engine transforms them through the per-bone bind matrices
+        # in the header (nBones2 x 11 floats). Scale the vertices without scaling those and
+        # the skinning solves to nonsense: the dog went invisible and the Sanctuary, which
+        # renders it on a pedestal, froze. Static meshes have no such coupling.
+        if any(sm["kind"] == "skinned" for sm in sms) and "--force" not in a:
+            print(f"{e['path']}: has skinned submeshes. Scaling vertices alone breaks "
+                  f"skinning, because positions are in bind-pose space and the bone bind "
+                  f"transforms would still be at the old scale. Use a static model, or "
+                  f"pass --force if you know what you are doing.", file=sys.stderr)
+            return 1
         n = 0
         for sm in sms:
             if sm["kind"] == "static":
@@ -150,6 +199,16 @@ def main():
         print(f"{e['path']}: scaled x{factor}, {len(sms)} submesh(es)")
         print(f"   re-read from the bank, submesh 0 bbox now "
               f"{np.round(p2.min(0), 3)} .. {np.round(p2.max(0), 3)}")
+        allp = []
+        for sm in sms2:
+            allp.append(mdl.read_geometry(check, sm)[0] if sm["kind"] == "static"
+                        else mdl.read_skinned(check, sm)[0])
+        allp = np.vstack(allp)
+        if update_header_bbox(e["path"], allp.min(0).tolist(), allp.max(0).tolist()):
+            print(f"   model header bbox updated to {np.round(allp.min(0),3)} .. "
+                  f"{np.round(allp.max(0),3)}")
+        else:
+            print("   WARNING: no model header entry found; bbox left stale", file=sys.stderr)
         return 0
 
     print(__doc__)

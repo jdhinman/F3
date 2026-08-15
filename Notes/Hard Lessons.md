@@ -1,7 +1,7 @@
 ---
 title: "Hard Lessons"
 description: "Every mistake this project paid for, and the rule that prevents each one. Read before writing mod code"
-updated: 2026-08-11
+updated: 2026-08-15
 confidence: verified
 tags:
   - method
@@ -9,9 +9,9 @@ tags:
 ---
 
 Each entry cost at least one wasted session or one broken thing in game. They are written as
-rules because that is how they are useful. Rules 19-22 are the native/DLL layer and were paid
-for in one long session; 16 is the expensive one, and 16-17 are the pair that make a format
-job safe to build on.
+rules because that is how they are useful. Rules 20-23 are the native/DLL layer and were paid
+for in one long session; 16-18 are the ones that decide whether a format job is safe to build
+on, and 18 is the one that would have saved the most time.
 
 ## Working in game
 
@@ -182,35 +182,58 @@ a row anywhere, audit every parallel array in the format for order, uniqueness a
 across all shipped files rather than one** - and check them all in one pass, because finding
 them one at a time costs a restart each. → [[Formats]]
 
-### 18. Do not install a save someone uploaded because it was broken
+### 18. Design the test so a NEGATIVE result means something
+
+Five failed in-game attempts on one feature, and most of them taught nothing, because the
+test could not distinguish the hypotheses:
+
+- **Patch every model that shares a visual role, or "look at a barrel" is meaningless.**
+  Three separate models are "a barrel". Twice a change was shipped on one of them and the
+  answer "looks the same" was ambiguous rather than negative.
+- **Never ask someone to compare props they cannot reach.** A test spanning a Bowerstone
+  model and a Brightwall model is unrunnable by a player standing in Brightwall.
+- **A pass condition of "looks like the original" proves nothing.** Rewriting a bank entry
+  and seeing a normal barrel is equally consistent with "the write worked" and "the write
+  was ignored and the old bytes were read". Make the control differ in a way only a
+  *successful* write can produce.
+- **Order the tests so each one narrows the next.** Container, then size, then counts, then
+  content. Running them out of order means an early failure has four possible causes and the
+  result cannot be attributed.
+
+The corollary that cost the most: **fixing a real bug is not evidence you fixed THE bug.**
+Winding, bounds, tangents and the compressed-entry flag were all genuine conformance errors,
+each measurably wrong against the game's own data, and none of them was the cause. Bisecting
+against a known-good control found more in one step than four rounds of fixing.
+
+### 19. Do not install a save someone uploaded because it was broken
 
 `squark`'s save was posted asking for help diagnosing it. Format compatibility is not evidence
 of safety. → [[Preservation]]
 
 ## Working in native code (the bridge DLL)
 
-### 19. Give native code a log file before anything else
+### 20. Give native code a log file before anything else
 
 In Lua a failure is visible; in an injected DLL every failure looks identical from in front
 of the game. "Not loaded", "hook not firing", "hook fired but drew nothing", and "thread
 died" are the same black screen. One `log()` appending to `<game dir>\f3bridge.log` killed
 four wrong theories in four runs. This is Rule 3 one layer down. → [[Bridge DLL]]
 
-### 20. In this game, hook to READ, never to DRAW
+### 21. In this game, hook to READ, never to DRAW
 
 Rendering anything through the device from an EndScene hook works for exactly one frame,
 then the hook is silently bypassed forever while the game keeps animating. A full
 `D3DSBT_ALL` state block does not save it. Retail ships `DFA.dll` and `F3Secu.exe`. Poll
 input in the hook, and let the game's own HUD (`GUI.SetCounter`) do the drawing.
 
-### 21. Do not add threads or system-wide hooks to this process
+### 22. Do not add threads or system-wide hooks to this process
 
 `CreateThread` from `Direct3DCreate9` wedges startup (`DLL_THREAD_ATTACH` walks every
 loaded DLL, anti-tamper included). Creating it in `DllMain` deadlocks the loader instead.
 `SetWindowsHookEx(WH_KEYBOARD_LL)` stops the game launching at all. All three were
 unnecessary: polling `GetAsyncKeyState` inside the existing Present hook does the job.
 
-### 22. Check the evidence you already have before theorising
+### 23. Check the evidence you already have before theorising
 
 Two rounds were spent on "DirectInput exclusive mode is eating the keyboard", complete with
 supporting web research. The first log ever captured already contained `F1 -> menu OPEN`

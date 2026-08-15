@@ -276,6 +276,25 @@ def set_vertices(spans, index, positions=None, uvs=None):
     return False
 
 
+def read_geometry(d, sm):
+    """Static vertex, two float16 streams, each component confirmed individually.
+
+    Stream A (6 x f16): `x, y, z, s, u, v`. `s` runs 0.58..1.0, per-vertex shading of some
+    kind. `u, v` measure 0..1 on most props and tile above 1 on surfaces that repeat.
+    Stream B (8 x f16): `nx, ny, nz` are unit vectors (measured |n| = 1.0000), then a zero,
+    then 8 bytes that are not float16 (30% decode as NaN) and remain unidentified.
+    """
+    import numpy as np
+    a = np.frombuffer(d, dtype="<f2", count=sm["nVerts"] * 6, offset=sm["v0"]).reshape(-1, 6)
+    b = np.frombuffer(d, dtype="<f2", count=sm["nVerts"] * 8, offset=sm["v1"]).reshape(-1, 8)
+    pos = a[:, 0:3].astype("f4")
+    uv = a[:, 4:6].astype("f4")
+    nrm = b[:, 0:3].astype("f4")
+    tris = np.frombuffer(d, dtype="<u2", count=sm["nTris"] * 3,
+                         offset=sm["tri0"]).reshape(-1, 3)
+    return pos, uv, tris, nrm
+
+
 def read_skinned(d, sm):
     """Skinned vertex, 20 bytes: 4 float16 (xyz plus one more), 4 bone indices, 4 bone
     weights summing to 255, then 2 float16 UV. A 16-byte second buffer follows and is

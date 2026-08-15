@@ -7,165 +7,182 @@ We are building a modding toolchain and research vault for **Fable III** (PC) at
 project `github.com/jdhinman/fa` (Fable Anniversary) is **complete and closed** - do not
 touch it.
 
+## The state of the install RIGHT NOW
+
+**Stock.** Everything is reverted and verified: `levels.bnk` is 39,456 bytes with a
+2,109,341,899-byte payload, all 4,782 models read back at their declared size and original
+offsets, `globals_models.bnk.dat` truncated back to 345,153,079, and all 77 GDBs in
+`levels.bnk` round trip byte for byte.
+
+The mod layer (`dinput8.dll` bridge, `MyScript01.lua` v65, ScriptInjector DLC) is still
+installed and working. `pwsh -File tools/mod-uninstall.ps1` removes it.
+
 ## Read these first, in this order
 
-1. `Notes/Hard Lessons.md` - **twenty-two rules, each paid for with a wasted session, a
-   crash, or a broken thing in game.** Read before writing any mod code. Rule 1 is the
-   important one, rules 10-11 crashed the game twice in one session, and **16-17 are the
-   pair that decide whether a format job is safe to build on** - both were paid for by a
-   black screen that every one of our own tools said was fine.
-2. `Notes/Reference Index.md` - where every artefact, tool and link is.
-3. `Notes/Child System.md` - the target feature and exactly how far it got.
-4. `Notes/Lua Scripting.md` - the complete channel table: what works, what is dead.
+1. `Notes/Hard Lessons.md` - **twenty-three rules, each paid for.** Rule 1 is the important
+   one, 10-11 crashed the game twice, 16-17 decide whether a format job is safe to build on,
+   and **18 is the one that would have saved the most time this session.**
+2. `Notes/Formats.md` - every file format, what is decoded, and what is not.
+3. `Notes/Reference Index.md` · `Notes/Child System.md` · `Notes/Lua Scripting.md`
 
-## State: a real mod menu, on a real keybind
+## What works, all proven in the running game
 
-**Press F1 in game.** A menu line appears on the HUD; up/down cycles; Enter runs the entry.
-Gold +50,000 / refill health / +50 guild seals / evolve held weapon / age last inspected NPC
-to 25 / toggle the inspector. No dog, no modal boxes - both were removed.
+| | |
+|---|---|
+| **Arbitrary Lua, live** | edit, syntax-check, copy, applies in ~1s. No restart |
+| **F1 mod menu** | real keybind via a 32-bit `dinput8.dll` proxy, DXVK alongside |
+| **Child growth** | the original target. Ambient children and the hero's own, family preserved |
+| **Weapon evolution** | fully reverse engineered, any weapon completable |
+| **GDB read+write** | 147 files byte-identical. New records, names, labels, edits of any size |
+| **BABEL read+write** | 37 files byte-identical. New display text |
+| **TEX read+write** | 9,561 textures. Export to PNG, re-encode, patch in place |
+| **MDL read** | 4,511 of 4,623 models fully walked, static and skinned, export OBJ |
+| **MDL edit** | geometry edits **at unchanged vertex/triangle counts**, in place |
+| **Audio** | xWMA, ffmpeg decodes it. GHF terrain is gzip. ADB is zlib |
 
-That works through `crates/bridge`, a 32-bit proxy DLL installed as **`dinput8.dll`**
-(`tools/bridge-install.ps1`), which leaves `d3d9.dll` free for **DXVK** - both run together.
-The DLL does one thing: **poll the keyboard in a per-frame hook and write a file.** Lua reads
-it with `RunScript` and draws the menu with `GUI.SetCounter`. It deliberately draws nothing
-itself - **drawing through D3D gets the hook silently bypassed after one frame in this game**,
-and threads or a `WH_KEYBOARD_LL` hook stop it launching. All four dead ends are written up in
-[[Bridge DLL]] with the evidence, and as Hard Lessons 19-22. If the game ever fails to launch,
-delete `C:\Games\Fable 3\dinput8.dll`. DXVK needs `d3d9.deviceLossOnFocusLoss = True` or
-alt-tab breaks; `tools/dxvk.conf` has it.
+**New content works end to end.** `The Sovereign` is an original weapon - item record,
+component graph, display name and description that never shipped with Fable III - built by
+`tools/build-dragonstomper.sh` and rendered by the game. `FABLE III: ALBION REFORGED` is a
+generated title-screen logo that renders on the menu.
 
-**CHILD GROWTH IS SOLVED** - the project's original target, ambient children *and* the hero's
-own, with family membership preserved (`was mine=true -> now mine=true`). Entity replacement,
-not appearance patching: the skeleton belongs to the creature type. Full recipe, the three
-relink calls, and the two crash-causing argument shapes are in [[Child System]].
+## THE ONE OPEN PROBLEM: changing MDL vertex/triangle counts
 
-**Weapon evolution is fully reverse engineered and cheatable** - see [[Weapon Augments]].
-`tools/weapon-unlock.py` did a one-time GDB pass so any weapon completes from the menu.
+Everything else about MDL works. **Changing the counts does not**, and this is where the next
+session should start. → `Notes/Formats.md`, "Writing MDL"
 
-**NEW CONTENT WORKS END TO END, PROVEN IN GAME.** `The Sovereign` is an original weapon -
-an item record, a component graph, a display name and a description that never shipped with
-Fable III - built by `tools/build-dragonstomper.sh` and rendered by the game. The GDB and
-BABEL are both fully writable, and they join on FNV-1 of the id string. -> [[Formats]]
+Failure escalates with the number of models changed:
 
-**THE GDB IS FULLY WRITABLE, PROVEN IN GAME.** Both remaining unknowns fell on 2026-08-11,
-so every block is now regenerated rather than preserved verbatim, and the game reads the
-result: `GDB: BOTH OK  NameTag=F3ProofLabel  mult=7.5` is a **record and a label string that
-never shipped with Fable III**, resolved live by the engine's own lookups. New records, new
-names, new label strings, and edits to existing records of any size all work end to end.
-Delivery is `tools/bnk-replace.py`. -> [[Formats]]
+| test | result |
+|---|---|
+| generated obelisk replacing 3 barrel models | props render as nothing |
+| half a barrel (its own data, fewer verts and tris) | props render as nothing |
+| 37 models, barrels -2 tris / crates +2 verts | **game crashes while loading a save** |
 
-## State: code runs in the game
+### DO NOT re-derive these - all measured against untouched game data
 
-**Arbitrary Lua executes in retail Fable III, live-editable, no restart.** The loop is: edit
-`mods/injector/MyScript01.lua`, syntax-check, copy to
-`C:\Games\Fable 3\data\scripts\MyMod\MyScript01.lua`, and it applies in about a second.
+Each was a real conformance bug, each is fixed in the tools, and **none of them was the
+cause**:
 
-```bash
-python tools/syntax-check.py mods/injector    # MUST pass, and you MUST read the result
-cp mods/injector/MyScript01.lua "/c/Games/Fable 3/data/scripts/MyMod/MyScript01.lua"
-```
+- **Winding**: the game winds triangles **opposite** to the stored vertex normals - agreement
+  is 0.000-0.003 on stock meshes. Any OBJ tool winds the other way. The writer flips.
+- **The submesh's 10 floats are BOUNDS, not an origin**: bbox min (3), bbox max (3), centre
+  (3), radius as the half-diagonal (1). Exact on `occlusionwall`: `(-10,-0.071,0)`,
+  `(10,0.071,20)`, `(0,0,10)`, `14.142`. The writer recomputes them.
+- **Stream B bytes 8..16 are a 4 x int16 TANGENT** normalised to 32767, handedness in the
+  fourth. Zeros collapse the shader's TBN and the model vanishes. The writer generates real
+  tangents.
+- **The model header bbox** in `globals_model_headers.bnk` must be updated. It is.
+- **`bnk-replace.deflate_index` needs `compressed_flag`**: `globals_models.bnk` uses the
+  5-field entry form. Writing flag 0 makes the reader parse 3-field entries and walk off the
+  end of the index.
+- **Element table**: `nElem=1`, mark `FFFFFFFF`, flag 0, `nTris`, start 0, then bbox. Matches
+  stock exactly.
+- **Not the cause**: material blocks (shader floats only), MDL header flag pairs (all zero on
+  static models), per-entry `meta` (`meta[4]=115` is the header size, `meta[6]=4` alignment,
+  `meta[0..3]` are not a validated checksum - the self-rebuild changed the payload and still
+  rendered).
 
-Currently installed and working (v61):
+### What IS proven about the container, so do not re-test it
 
-- **HUD inspector** - look at any NPC, a non-modal counter widget shows type, age band, sex,
-  age scalar. Updates silently, no popups.
-- **F1 menu** - see above. The dog trigger and every modal yes/no box are gone.
+- **In-place edits at unchanged counts work.** 3x barrels rendered.
+- **The nested-index rewrite works.** Proven by writing a model's byte-identical geometry
+  **4096 bytes longer at a new offset** - barrels rendered normally. So offsets, sizes, the
+  chunk table and the `globals_models.bnk` rebuild are all correct.
+- Payloads are chunked zlib in **fixed 32,768-byte slots**; keeping the split and padding each
+  slot back to its original length keeps the entry byte count identical and needs no index
+  change at all.
 
-The install also has the community `ScriptInjector` DLC at `DLC/10_ScriptInjector` and two
-lines appended to `data/dir.manifest`. `pwsh -File tools/mod-uninstall.ps1` reverts all of it
-and never touches saves.
+### Where to look next
 
-## The headline findings
+Something is sized by or derived from the vertex/triangle count and is not in the parts of MDL
+this project has decoded. Candidates, roughly in order:
 
-**The age scalar is authoritative; the age group derives from it.** `Age.SetAge(npc, 25)`
-alone flips `GetAgeGroup` from CHILD to ADULT and the adult AI follows. Children read scalar
-10, adults 20, boundary ~18 - exactly as a 2014 forum post claimed and nobody had tested.
+1. The **3 unexplained bytes** at the end of the 115-byte model header (`40 1c 46`, constant
+   across models) and the 11 trailing header floats.
+2. **`.gmd` files** - "game mesh data, metadata about a model, not the model. Most models have
+   one." Never examined. If a GMD carries counts, that is the answer.
+3. **`globals_streaming.bnk`** - models may be streamed through it.
+4. Whatever the **save load** walks that a count change corrupts. The crash-on-save-load is
+   the strongest signal available and has not been chased.
 
-**But growth is entity replacement, not appearance patching.** A character record supplies
-meshes only; the skeleton, proportions and animation belong to the creature type, which no
-call can change. Limbo the child and create the adult type in its place. -> [[Child System]]
+**Start by bisecting, not by fixing.** The single most useful next test: change the counts on
+**one** model that is definitely in view, and see whether the crash is the count change itself
+or the *number* of changed models.
 
-**GDB character records are addressable by ALIAS.** The engine resolves them by FNV-1 hash
-through a name map in `globals.gdb`, so an 8-char preimage works exactly like the real name.
-That makes all 1,619 records usable even though 1,546 names are unrecoverable. Proven in game
-by turning the hero's dog into a collie with the string `n_rtphaa`.
+## Method, non-negotiable
 
-## Next actions
+- **Rule 1**: never call a game function whose argument shape you have not seen in a shipped
+  call site passing a literal. Two crashes came from breaking it.
+- **Rule 18**: design the test so a negative result means something. Patch *every* model that
+  shares a visual role; never ask for a comparison across areas the player cannot reach; a
+  pass condition of "looks like the original" proves nothing; order tests container → size →
+  counts → content.
+- **Fixing a real bug is not evidence you fixed THE bug.** Four genuine conformance errors
+  were fixed this session without resolving the failure. Bisect against a known-good control.
+- `python tools/api-index.py search <text>` before assuming an API does not exist. 5,401 calls
+  across 679 namespaces.
+- Prove format work with a **byte-identical round trip** before building on it.
+- The user plays live and can test in seconds. **Tell them exactly what to look at, and make
+  sure they can reach it.**
 
-- **Package the child-growth mod for release.** It works; it has never been shipped by anyone.
-- **Build something real now that content works.** New weapons, items, character records and
-  their names/descriptions are all reachable. `tools/build-dragonstomper.sh` is the working
-  template for an item.
-- **GDB templates are the nearest wall.** A clone gets its source's field set and no more, so
-  a record cannot gain a field the source lacks - that is why the Dragonstomper's firearm
-  stats had to be overridden on a cloned *base* record. Writing new templates is the next
-  feature in `crates/gdb`, not a new format.
-- **Grown children do not walk home.** `SetHomeForMarriageOrAdoption` registers the property
-  but does not run move-in behaviour. Cosmetic, unsolved.
-- **The clockwork dog record is unidentified** (a DLC record with no name we can crack). With
-  aliases working, it is findable by brute-forcing `IsUsingCharacterRecordWithName` over the
-  1,619 record aliases.
-- 5 shipped Lionhead bugs found: `EAgeGroup.EAGE_CHILD` does not exist (it is
-  `EAGE_GROUP_CHILD`), so 5 comparisons test against nil. One makes a branch of child home
-  behaviour unreachable in every copy of the game. Patchable live via Lionhead's own
-  `WatchDog` pattern from `postscriptsloaded.lua`.
-- The 39 group minds for citizen AI / lifesim work.
-- **Kingdom sim** is the researched flagship candidate; town wealth is a real simulation
-  variable (-100..+100, gates gift tables, villager money, gossip). -> [[Kingdom Sim]]
-- **Unfinished RE, blocking content creation** - see the "Open reverse engineering" section.
-
-## Open reverse engineering
-
-These are the decoding jobs that gate what can still be built. Nothing else blocks.
-
-| Target | State | What it unlocks |
-|---|---|---|
-| ~~**GDB label index**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. 65536-slot open-addressing table on `hash & 0xFFFF`, linear probing, inserted in file order, serialized occupied-slots-only. Regenerated on every write; **147/147 shipped GDBs round trip byte for byte**, and the engine resolves a label we invented | done - new label strings, so new string field values |
-| ~~**TEX textures**~~ | **DECODED** 2026-08-11. The header is not in the file - it is a 92-byte record in a sibling `x_texture_headers.bnk`. 35 = DXT1, 39 = DXT5, flag 2 = cubemap, **no swizzling**. Every texture's payload size predicted from its header: **9,561 of 9,561**. `tools/tex.py` exports and re-encodes | done - retextures and new item art. NOT yet tested in game |
-| ~~**MDL models**~~ | **READ AND WRITE** 2026-08-13. Material chain parses (type = block count), so submeshes are walked to exactly. **Round trip 4,588 models byte-identical, 0 differ.** `mdl-patch.py` edits geometry in place, keeping the chunked-zlib slot sizes so no bank index moves. Not yet: changing vertex/triangle COUNTS | editing any existing mesh; new topology still needs the count/bbox/entry-size path |
-| ~~**BABEL text tables**~~ | **DECODED AND PROVEN IN GAME** 2026-08-11. Big-endian; records keyed by **FNV-1 of the id, the same hash the GDB uses for labels**; 16 KB zlib chunks whose streams omit the trailing checksum; text is UTF-16 **BE**. `tools/babel.py`; **37/37 files round trip byte for byte** | done - new records can carry new words |
-| **Save format** | Timeslip's editor decodes herosave / mainsave / checksums / XUIDs / hero x,y,z. The `.save` files inside banks are **plain XML** and are a different thing | persistent state edits the other layers cannot reach |
-| ~~**GHF heightfields**~~ | **DECODED** 2026-08-13. Plain **gzip**; inflates ~480x to `f32 scaleX/scaleY, u32 w, u32 h`, then 14 bytes per cell. Grids 385x385 up to 673x769 | terrain shape is readable |
-| ~~**WAV audio**~~ | **DECODED** 2026-08-13. NOT XMA2. A 4-byte `xwma` prefix on a standard RIFF/xWMA file, fmt tag `0x0161` = WMAv2. **ffmpeg decodes it directly** - proven, 2.8s 44.1kHz mono voice line | all 56,865 audio entries are readable |
-| ~~**ADB audio db**~~ | **DECODED** 2026-08-13. `LhCoMpRe` + BE lengths + plain **zlib**, wrapping an inner `LhBiNaRy####` container | the audio database opens |
-| ~~**Per-object u16 array**~~ | **DECODED** 2026-08-11. A random-access accelerator for the variable-length record array: `word[i] = startOfRecord(i) - ((i * stride) >> 10)` with `stride = 1024 * blockWords / count`, all in u32 words. Exact on **147 files, 2,069,537 objects**. Regenerated on write | done - and it was silently corrupting clones |
-
-## Tools built, all working
+## Tools
 
 | Crate / script | Does |
 |---|---|
-| `crates/korevm` | KoreVM bytecode -> Lua. **797/797 files valid Lua 5.1**, 713 with nothing unrecovered |
-| `crates/bnk` | read and write BNK banks; repacks the community bank byte-identically |
-| `crates/gdb` | read **and write** GDB. `gdbdump`, `fnvpre`, `gdbwrite` (`--verify-all` round-trips every GDB in a bank; `--clone` adds records, `--set Field="text"` adds labels) |
-| `tools/bnk-replace.py` | swap one entry's payload inside a bank without repacking it, and `revert` exactly. How a size-changed `globals.gdb` reaches the game |
-| `tools/bnk-extract.py` | Python BNK reader, for research where a REPL beats a rebuild |
-| `tools/babel.py` | read/edit/add BABEL text. `verify` round-trips 37/37 files byte for byte |
-| `tools/tex.py` | list/export/import textures. `verify` predicts 9,561/9,561 payload sizes |
-| `tools/tex-patch.py` | replace a texture in place, same size so no index moves. Exact revert |
-| `tools/mdl.py` | read MDL headers, skeletons, static + skinned geometry, export OBJ. 4,653 models |
-| `tools/formats.py` | classify every extension in every bank; crack GHF, ADB and xWMA audio |
-| `tools/mdl-validate.py` | check decoded geometry against the header bbox, manifoldness and UV range |
-| `tools/mdl-patch.py` | write a modified MDL back in place; `verify` proves the repack is byte-exact |
-| `tools/build-dragonstomper.sh` | builds **The Sovereign**, an original weapon, end to end. The template for any new item |
-| `tools/api-index.py` | index all 5,401 API calls in the corpus, with a shipped call site each |
-| `crates/bridge` | 32-bit proxy DLL (dinput8 or d3d9 host): real keyboard -> the F1 menu. -> [[Bridge DLL]] |
-| `tools/record-chain.py` | creature type -> character records, with ready-to-use aliases |
-| `tools/weapon-unlock.py` | one-time GDB pass; every weapon augment becomes completable |
-| `tools/syntax-check.py` | Lua 5.1 parse gate |
-| `tools/bridge-install.ps1` | install / `-Remove` the bridge, and DXVK with `-Dxvk` |
-| `tools/dxvk.conf` | tuned DXVK config, incl. the alt-tab fix |
-| `tools/mod-uninstall.ps1` | restore install to stock (removes the DLL too) |
+| `crates/korevm` | KoreVM bytecode -> Lua. 797/797 valid Lua 5.1 |
+| `crates/bnk` | read/write BNK. Test asserts the per-chunk index property |
+| `crates/gdb` | read/write GDB. `gdbdump`, `fnvpre`, `gdbwrite` (`--verify-all`, `--clone`, `--edit`, `--set`) |
+| `crates/bridge` | 32-bit proxy DLL: real keyboard -> the F1 menu |
+| `tools/babel.py` | read/edit/add BABEL text. `verify` round-trips 37/37 |
+| `tools/tex.py` · `tools/tex-patch.py` | textures: list/export/import, and in-place replace |
+| `tools/mdl.py` | MDL headers, skeletons, static + skinned geometry, OBJ export |
+| `tools/mdl-patch.py` | edit geometry in place at unchanged counts. `verify` proves the repack |
+| `tools/mdl-import.py` | **count-changing import. Works mechanically, breaks in game** |
+| `tools/mdl-validate.py` | geometry vs the header bbox, manifoldness, UV range |
+| `tools/formats.py` | classify every extension; crack GHF, ADB, xWMA |
+| `tools/bnk-replace.py` | swap one entry's payload in a bank, exact revert |
+| `tools/bnk-extract.py` | Python BNK reader |
+| `tools/build-dragonstomper.sh` | builds **The Sovereign** end to end. The template for new items |
+| `tools/api-index.py` · `tools/syntax-check.py` · `tools/record-chain.py` | corpus index, Lua gate, record chains |
+| `tools/weapon-unlock.py` · `tools/augment-patch.py` | one-time GDB passes |
+| `tools/bridge-install.ps1` · `tools/dxvk.conf` · `tools/mod-uninstall.ps1` | install/remove |
 
-## Do NOT redo
+## Reverting anything
 
-- Do not re-derive the BNK, KoreVM or GDB formats. All three are documented and verified.
-- Do not chase `Debug.DrawText`, hotkeys, `ShowTopBoxMessage`, `DisplayInfoBoxParams`,
-  `SetApplicationName`, `io`, or expression-message triggers. **All confirmed dead in retail**,
-  each with the evidence recorded.
-- Do not call `Debug.SetUseFreeCamera(true)`. It is an input trap with no way out.
-- Do not rebuild the injector bank. The community one works; ours hung the game and the cause
-  was never isolated.
-- Do not install the mirrored save game. It was uploaded because it was broken.
+```bash
+python tools/bnk-replace.py revert "C:\Games\Fable 3\data\levels.bnk"
+python tools/mdl-patch.py revert <model>
+python tools/tex-patch.py revert-all
+bash tools/build-dragonstomper.sh revert
+pwsh -File tools/mod-uninstall.ps1
+```
+
+`bnk-replace revert` restores the index and truncates the payload, which un-references
+everything appended. **`mdl-import.py` appends to `globals_models.bnk.dat` and never
+truncates it** - check `max(offset+size)` against the file size and truncate the orphaned
+tail by hand.
+
+## Open reverse engineering
+
+| Target | State |
+|---|---|
+| ~~GDB, BABEL, TEX, GHF, ADB, xWMA~~ | **decoded and proven in game** |
+| **MDL count changes** | the one open problem, above |
+| **MDL skinned authoring** | needs the bind matrices handled, not just vertices |
+| Save format | Timeslip's editor decodes it; we have not |
+| `.gmd`, `BFT` fonts, `bin` lipsync, `flpb`/`ppd`/`hdb` | untouched, none gate content |
+| Kynapse (`AIMRT`/`FDL`/`PDL`), Havok, Bink | middleware, documented elsewhere |
+
+## Next actions beyond MDL
+
+- **Package the child-growth mod for release.** It works; nobody has shipped it.
+- **Build an expansion pack.** The DLC mechanism is proven (`DLC/<name>/content.xbx` + a
+  bank). New quests, items, characters, systems, names and descriptions are all reachable now.
+- **GDB templates**: a clone gets its source's field set and no more, so a record cannot gain
+  a field its source lacks. Writing new templates is the next feature in `crates/gdb`.
+- Grown children do not walk home; the clockwork dog record is unidentified; 5 shipped
+  Lionhead bugs are patchable live; 39 group minds for lifesim work; Kingdom Sim is the
+  researched flagship. → `Notes/Kingdom Sim.md`
 
 ## House rules
 
